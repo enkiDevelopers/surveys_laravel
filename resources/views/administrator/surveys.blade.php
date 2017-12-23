@@ -1,9 +1,9 @@
-@extends('layouts.administrator')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 ">
+        <div class="col-md-11">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -13,14 +13,14 @@
                         <div class="col-md-1">&nbsp</div>  
                         <div class="col-md-7 ">
                             <div class="row">
-                                <div class="col-md-2">&nbsp</div>  
+                                <div class="col-md-1">&nbsp</div>  
                                 <div class="col-md-2">
                                     Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div> 
                                 <div class="col-md-2">
                                     Editar&nbsp&nbsp<span class="glyphicon glyphicon-pencil"></span>
                                 </div> 
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span>
                                 </div> 
                                 <div class="col-md-2">
@@ -129,11 +129,11 @@
                         <div class="col-md-1">&nbsp</div>  
                         <div class="col-md-4 ">
                             <div class="row">
-                                <div class="col-md-5">&nbsp</div>
-                                <div class="col-md-3">
+                                <div class="col-md-3">&nbsp</div>
+                                <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
                                 </div> 
-                                <div class="col-md-4 ">
+                                <div class="col-md-5 ">
                                     Finalizada<div class="pull-right survey-status survey-status__finished">&nbsp</div>
                                 </div>      
                             </div>

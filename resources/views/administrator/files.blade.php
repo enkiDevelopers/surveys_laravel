@@ -1,8 +1,8 @@
-@extends('layouts.administrator')
+@extends('layouts.admin')
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 ">
+        <div class="col-md-11 ">
             <div class="panel panel-default">
                 <div class="panel-heading">Archivos Creados <a style="cursor:pointer" data-toggle="modal" data-target="#uploadFileModal" class="pull-right">Crear</a></div>
 

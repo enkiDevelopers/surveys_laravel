@@ -1,6 +1,14 @@
 
 // Body
-$body-bg: #f5f8fa;
+
+$red: #DE0D0D;
+$blue: #B7C8DE;
+$dark_blue: #215F8F;
+$gray: #C0C0C0;
+$dark_gray: #8a9cb1;
+$black: #000000;
+
+$body-bg: #ffffff;
 
 // Borders
 $laravel-border-color: darken($body-bg, 10%);
@@ -10,21 +18,21 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 // Brands
-$brand-primary: #3097D1;
-$brand-info: #8eb4cb;
-$brand-success: #2ab27b;
-$brand-warning: #cbb956;
-$brand-danger: #bf5329;
+$brand-primary: $red;
+$brand-info: $dark_blue;
+$brand-success: #18ce0f;
+$brand-warning: #FFB236;
+$brand-danger: #FF3636;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-$font-family-sans-serif: "Raleway", sans-serif;
+$font-family-sans-serif: "helvetica", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
-$navbar-default-bg: #fff;
+$navbar-default-bg: #C0C0C0;
 
 // Buttons
 $btn-default-color: $text-color;
@@ -35,4 +43,49 @@ $input-border-focus: lighten($brand-primary, 25%);
 $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
-$panel-default-heading-bg: #fff;
+$panel-default-heading-bg: lighten($navbar-default-bg, 5%);
+
+$uvm-dark-red: #D9272E;
+$uvm-light-red: #F50000;
+
+
+
+.bg-dark-red{
+    background: $uvm-dark-red;
+}
+.bg-light-red{
+    background: $uvm-light-red;
+}
+.bg-soft-red{
+    background: lighten($uvm-light-red, 40%);
+}
+.light-grey{
+    background: lighten(#eee, 3%);
+}
+.btn-red{
+    background: $uvm-light-red;
+    color: white;
+    &:hover, &:active, &:focus{
+        background: $uvm-dark-red;
+        color: white !important;
+    }
+}
+
+
+.grey-gradient{
+    background: lighten(#ED4264, 15%) ;  /* fallback for old browsers */
+   // background: -webkit-linear-gradient(to right, #FFEDBC, #ED4264);  /* Chrome 10-25, Safari 5.1-6 */
+    //background: linear-gradient(to right, #FFEDBC, #ED4264); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.survey-status{
+    width: 17px;
+    height: 17px;
+    &__finished{
+        background: $uvm-dark-red;
+    }
+    &__active{
+
+        background: $brand-success;
+    }
+}

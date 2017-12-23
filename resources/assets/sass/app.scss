@@ -1,9 +1,60 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.new-survey__question-container{
+    padding: 15px;
+    //max-height: 80vh;
+   overflow-y: scroll;
+    overflow-x: none;
+}
+
+.new-survey__controls{
+    margin-left: 5px;
+}
+.new-survey__control{
+    margin-bottom: 5px;
+}
+
+.new-question__control{
+    margin-right: 3px;
+    margin-top: 23px;
+}
+
+.avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+
+.template-creator{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.card-text{
+    font-size: 1.2rem;
+}
+
+.profile{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+    }
+    p{
+        color: red !important;
+        
+    }
+}

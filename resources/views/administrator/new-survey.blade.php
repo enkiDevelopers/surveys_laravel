@@ -1,4 +1,4 @@
-@extends('layouts.administrator')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -28,10 +28,10 @@
     <div class="col-md-12 ">
         
         <div class="row">
-            <div class="col-md-9 light-grey">
+            <div class="col-md-9 col-sm-12  light-grey">
                 <h2 class="text-center">Nueva encuesta</h2>
             </div>
-            <div class="col-md-9 light-grey">
+            <div class="col-md-9 col-sm-12  light-grey">
                 <form>
                     <div class="new-survey__question-container">
                     
@@ -193,8 +193,8 @@
             
                 </form>
             </div>
-                <div class="col-md-1">&nbsp</div>
-                <div class="col-md-2 ">
+                <!-- <div class="col-md-1">&nbsp</div> -->
+                <div class="col-md-2  new-survey__controls">
                      
                     <div class="row">
                         <button class="btn btn-success col-md-12 new-survey__control" id="add-question">Agregar pregunta</button>
