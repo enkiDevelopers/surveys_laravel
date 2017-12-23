@@ -68,3 +68,24 @@ Route::get('/administrator/management/new', function(){
 Route::get('/directive/report', function(){
     return view('directive.report');
 });
+
+Route::get('sendemail', function(){
+    $data=array(
+        'name' => "Bienvenido a la plataforma de encuestas Enki",
+    );
+    
+    Mail::send('emails.welcome', $data, function($message){
+
+        $message->from('enkidevelopers@gmail.com', 'Enki Developers');
+
+        $message->to('eliverlara@gmail.com')->subject('Correo de Bienvenida');
+
+    });
+
+    return "Email enviado correctamente!";
+
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
