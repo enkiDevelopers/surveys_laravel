@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-11 ">
+        <div class="col-md-10 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Archivos Creados <a style="cursor:pointer" data-toggle="modal" data-target="#uploadFileModal" class="pull-right">Crear</a></div>
+                <div class="panel-heading">Archivos Creados</div>
 
                 <div class="panel-body">
                     <div class="row">
@@ -14,8 +14,14 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 1</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/administrator/file/open') }}">Ver</a>
-                                    <a  class="" data-toggle="modal" data-target="#deleteFileModal">Eliminar</a>
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -26,8 +32,14 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 2</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/administrator/file/open') }}">Ver</a>
-                                    <a  class="" data-toggle="modal" data-target="#deleteFileModal">Eliminar</a>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -38,8 +50,14 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 3</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/administrator/file/open') }}">Ver</a>
-                                    <a  class="" data-toggle="modal" data-target="#deleteFileModal">Eliminar</a>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -50,8 +68,14 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 4</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/administrator/file/open') }}">Ver</a>
-                                    <a  class="" data-toggle="modal" data-target="#deleteFileModal">Eliminar</a>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -62,8 +86,14 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 5</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/administrator/file/open') }}">Ver</a>
-                                    <a  class="" data-toggle="modal" data-target="#deleteFileModal">Eliminar</a>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -74,8 +104,28 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 6</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/administrator/file/open') }}">Ver</a>
-                                    <a  class="" data-toggle="modal" data-target="#deleteFileModal">Eliminar</a>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       <div class="col-md-3">
+                            <div class="card  card-new-file" >
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Añadir Archivos</h4>
+                                    <p class="card-text"></p>
+                                        <p>
+                                            <a data-toggle="modal" data-target="#uploadFileModal" class="btn btn-default btn-md btn-new-file">
+                                              <span class="glyphicon glyphicon-plus text-center"></span>  
+                                            </a>
+                                        </p>
                                 </div>
                             </div>
                         </div>
@@ -86,14 +136,23 @@
             </div>
 
             <div class="panel panel-default">
-                <div class="panel-heading">Lista de Incidentes <a style="cursor:pointer" class="pull-right" data-toggle="modal" data-target="#addExclude">Añadir</a></div>
+                <div class="panel-heading">Lista de Incidentes</div>
                 <div class="panel-body">
-                    <div class="row">
-                        <ul class="list-group">
-                          <li class="list-group-item text-primary"><center><em><strong>Sin excepciones todavía</strong></em></center></li>
+                    
+                       <div class="col-md-3">
+                            <div class="card  card-new-file" >
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Añadir Lista de incidentes</h4>
+                                    <p class="card-text"></p><br>
+                                        <p>
+                                            <a data-toggle="modal" data-target="#addExclude" class="btn btn-default btn-md btn-new-file">
+                                              <span class="glyphicon glyphicon-plus text-center"></span>  
+                                            </a>
+                                        </p><br>
+                                </div>
+                            </div>
+                        </div>                    
 
-                        </ul>
-                    </div>
                 </div>
            </div>
 

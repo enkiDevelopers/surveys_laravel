@@ -78,7 +78,7 @@ Route::get('sendemail', function(){
 
         $message->from('enkidevelopers@gmail.com', 'Enki Developers');
 
-        $message->to('eliverlara@gmail.com')->subject('Correo de Bienvenida');
+        $message->to('bakur95@gmail.com')->subject('Correo de Bienvenida');
 
     });
 

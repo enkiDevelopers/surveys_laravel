@@ -1,34 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container" >
     <div class="row">
-        <div class="col-md-11">
+        <div class="col-md-10">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-4">
                             Plantillas
-                        </div>  
-                        <div class="col-md-1">&nbsp</div>  
-                        <div class="col-md-7 ">
+                        </div>    
+                        <div class="col-md-8 ">
                             <div class="row">
                                 <div class="col-md-1">&nbsp</div>  
-                                <div class="col-md-2">
+                                <div class="col-md-2 pull-right">
                                     Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div> 
-                                <div class="col-md-2">
+                                <div class="col-md-2 pull-right">
                                     Editar&nbsp&nbsp<span class="glyphicon glyphicon-pencil"></span>
                                 </div> 
-                                <div class="col-md-3">
+                                <div class="col-md-2 pull-right">
                                     Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span>
                                 </div> 
-                                <div class="col-md-2">
+                                <div class="col-md-2 pull-right">
                                     Copiar&nbsp&nbsp<span class="glyphicon glyphicon-copy"></span>
                                 </div>   
-                                <div class="col-md-2">
-                                   <a href="{{ url('/administrator/surveys/new') }}" class="pull-right">Nueva</a>
-                                </div>      
+  
                             </div>
                         </div>
                     </div>    
@@ -89,7 +86,19 @@
                             </div>
                         </div>
 
-                            
+                        <div class="col-md-3">
+                            <div class="card well card-new-survey" >
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Añadir Encuesta</h4>
+                                    <p class="card-text"></p><br>
+                                        <p>
+                                            <a href="{{ url('/administrator/surveys/new') }}" class="btn btn-default btn-lg btn-new-survey">
+                                              <span class="glyphicon glyphicon-plus text-center"></span>  
+                                            </a>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
                             
                     </div>
                 </div>
@@ -129,7 +138,9 @@
                         <div class="col-md-1">&nbsp</div>  
                         <div class="col-md-4 ">
                             <div class="row">
-                                <div class="col-md-3">&nbsp</div>
+                                <div class="col-md-3">
+                                    Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
+                                </div>
                                 <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
                                 </div> 
@@ -158,7 +169,11 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Titulo de la encuesta</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/surveyed/solve') }}">Ver</a>
+                                   <div class="btn-group " role="group" aria-label="...">
+                                        <a href="{{ url('/surveyed/solve') }}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                    </div>                                    
                                     <div class="pull-right survey-status survey-status__finished">&nbsp</div>
                                  
                                     <!-- <a  class="" href="{{ url('/surveyed/solve') }}">Editar</a> -->
@@ -173,16 +188,18 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Titulo de la encuesta</h4>
                                     <p class="card-text"></p>
-                                    <a  class="" href="{{ url('/surveyed/solve') }}">Ver</a>
+                                    <div class="btn-group"   role="group" aria-label="...">
+                                        <a href="{{ url('/surveyed/solve') }}" type="button"  class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                    </div>
                                     <div class="pull-right survey-status survey-status__active">&nbsp</div>
-                                    <!-- <a  class="" href="{{ url('/surveyed/solve') }}">Editar</a> -->
+                                    <!-- <a  class="" href="">Editar</a> -->
                                  
                                 </div>
                             </div>
                         </div>
 
-                            
-                            
                     </div>
                 </div>
             </div>

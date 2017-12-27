@@ -14,8 +14,14 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'name', 'password',
     ];
 
     /**
@@ -27,3 +33,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 }
+
+

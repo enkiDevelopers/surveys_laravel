@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <div class="col-md-11">
         <!-- Modal publicar encuesta-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -37,7 +39,7 @@
                     
                         <div class="form-group">
                             <label for="exampleInputEmail1">Titulo de la encuesta</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
+                            <input type="text" class="form-control text-black" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
                             
                         </div>
                         <div class="row new-satisfaction-question-template hide" id="satisfaction-question-template">
@@ -53,7 +55,7 @@
                                     <div class="col-md-1"><input type="radio" > 7</div>
                                     <div class="col-md-1"><input type="radio" > 8</div>
                                     <div class="col-md-1"><input type="radio" > 9</div>
-                                    <div class="col-md-1"><input type="radio" > 10</div>       
+                                    <div class="col-md-2"><input type="radio" > 10</div>       
                                 </div>
                               
                             </div>
@@ -61,10 +63,10 @@
                         <div class="row new-question-template hide" id="new-question-template">
                             <div class="col-md-12 well">
 
-                                <div class="col-md-1">
+                                <div class="col-md-2">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Numero</label>
-                                        <select class="form-control questions-of-master-survey">
+                                        <label for="exampleInputEmail1">Número</label>
+                                        <select class="form-control questions-of-master-survey text-black-body">
                                             <!-- <option value="1">1</option>
                                             <option value="2">2</option> -->
                                         </select>
@@ -72,22 +74,22 @@
                                 </div>
                                 <div class="col-md-6 ">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Titulo de la pregunta</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
+                                        <label for="exampleInputEmail1">Título de la pregunta</label>
+                                        <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
+                                <div class="col-md-4">
+                                    <div class=" form-group">
                                         <label for="exampleInputEmail1">Tipo</label>
-                                        <select class="form-control yes-no-question">
+                                        <select class="form-control yes-no-question text-black-body">
                                             <option value="1">Pregunta abierta</option>
-                                            <option value="2">Pregunta Si/No</option>
+                                            <option value="2">Pregunta de bifurcación </option>
                                             <option value="3">Pregunta de satisfacción</option>
                                         </select>
                                     </div>
                                 </div>
                                 
-                                <div class="col-md-2 ">
+                                <div class="col-md-2 pull-right ">
                                     <div class="row">
                                         
                                         <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question">
@@ -143,7 +145,6 @@
                                         </div>
                                     </div>
                                 </div> -->
-
                             </div>
                             <div class="col-md-12 well" data-questions="0">
                                 <div class="btn-group btn-group-xs" role="group" aria-label="...">
@@ -182,7 +183,6 @@
                                         </div>
                                     </div>
                                 </div> -->
-
                             </div>
                         </div>
 
@@ -210,6 +210,8 @@
                 </div>
             </div>
     </div>
+</div>
+</div>
 </div>
 </div>
 @endsection
