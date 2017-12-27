@@ -26,25 +26,24 @@
                 <ul class="list-unstyled components">
                     <div class="profile">
                         <img src="/img/avatar.jpeg" alt="">
-                        <p>Eliver Lara</p>
+                        <p>Rafael Alberto Martínez Méndez</p>
                     </div>
-                    
                     <li class="active">
-                        <a href="{{ url('/administrator/management') }}">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Gestión de administradores
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/administrator/surveys')}}">
+                        <a href="{{ url('/administrator/surveys')}}" >
                             <i class="glyphicon glyphicon-briefcase"></i>
-                            Encuestas
+                            <span>Encuestas</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url('/administrator/files') }}">
                             <i class="glyphicon glyphicon-link"></i>
-                            Archivos
+                            <span>Archivos</span>
+                        </a>
+                    </li>              
+                    <li class="">
+                        <a href="{{ url('/administrator/management') }}">
+                            <i class="glyphicon glyphicon-home"></i>
+                            <span>Gestión de administradores</span>
                         </a>
                     </li>
                 </ul>

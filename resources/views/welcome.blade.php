@@ -4,65 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
-
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <link rel="stylesheet" href="{{ asset('css/home.css')}}">
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -71,25 +18,59 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+
+
+                    <div class="container full-screen">
+                      <section class="row">
+                        <h1 class="title">Bienvenido</h1>
+                        <hr/>
+                        <div class="col-xs-8 col-xs-offset-2">
+                          <p class="lead text-center"> Una breve descripcion de la página web</p>
+                          <hr/>
+                        </div>
+                      </section>
+                      <div class="row background">
+                        <article class="col-xs-4">
+                          <div class="cards card-directive"><span class="glyphicon glyphicon-flash icon"></span>
+                            <hr class="divider"/>
+                            <h2 class="title"> Directivo ?</h2>
+                            <div class="info">
+                              <hr class="divider"/>
+                              <p class="lead">Ingresa para visualizar los reportes que las encuestas han generado.</p><a class="btn btn-lg center-block">Iniciar Sesión !</a>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="col-xs-4">
+                          <div class="cards card-alumno"><span class="glyphicon glyphicon-bookmark icon"></span>
+                            <hr class="divider"/>
+                            <h2 class="title">Eres un Alumno ? </h2>
+                            <div class="info">
+                              <hr class="divider"/>
+                              <p class="lead">Comienza a realizar encuestas. </p><a class="btn btn-lg center-block">Empieza !</a>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="col-xs-4">
+                          <div class="cards card-administrador"><span class="glyphicon glyphicon-cog icon"></span>
+                            <hr class="divider"/>
+                            <h2 class="title">Eres un Administrador ?</h2>
+                            <div class="info">
+                              <hr class="divider"/>
+                              <p class="lead">Empieza a generar encuestas, gestionar a los usuarios, etc.</p><a class="btn btn-lg center-block">Iniciar Sesión</a>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>    
+
+
+
+
                         <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+                        @endauth
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
         </div>
     </body>
 </html>

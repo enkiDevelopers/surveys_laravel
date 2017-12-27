@@ -50,10 +50,13 @@ i, span {
 .wrapper {
     display: flex;
     align-items: stretch;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
+
+
 #sidebar {
+
     min-width: 250px;
     max-width: 250px;
     height: 100%;
@@ -62,6 +65,8 @@ i, span {
     transition: all 0.3s;
     box-shadow: 0 0 17px #ddd;
     /*position: fixed;*/
+      margin-bottom: -5000px; /* any large number will do */
+  padding-bottom: 5000px;
     top: 0;
     left: 0;
 }
@@ -72,12 +77,12 @@ i, span {
     text-align: center;
 }
 
-#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+#sidebar.active .sidebar-header h3, #sidebar.active .CTAs, #sidebar.active li span {
     display: none;
 }
 #sidebar.active .sidebar-header{
         padding: 50px;
-        
+
 }
 
 #sidebar.active .sidebar-header strong {
@@ -133,9 +138,12 @@ i, span {
     color: #fff;
     background: #6d7fcc;
 }
-    #sidebar.active {
+ #sidebar.active {
         margin-left: 0 !important;
-    }
+ }
+ #sidebar.active >  span{
+    display: none;
+ } 
 
 a[data-toggle="collapse"] {
     position: relative;
