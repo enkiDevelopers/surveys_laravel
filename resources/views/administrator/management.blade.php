@@ -1,58 +1,91 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">&nbsp</div>
-        <div class="col-md-4 ">
-            <h3 class="text-center">Administradores registrados</h3>
-        </div>
-        <div class="col-md-4 ">
-            <p>
-                <a href="{{ url('/administrator/management/new') }}" class="btn btn-info btn-lg">
-                    <span class="glyphicon glyphicon-plus"></span> Añadir 
-                </a>
-            </p>  
-        </div>
-    </div>
-   
-    <div class="row">
-        <div class="col-md-3 ">&nbsp</div>
-        <div class="col-md-6">
-            <table class="table table-bordered">
-                <thead>
-                
-                    <tr>
-                        <th>No.</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Correo</th>
-                        <th>Operación</th>
-                    </tr>
-                
-                </thead>
 
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Administrador 1</td>
-                        <td>Mi apellido</td>
-                        <td>micorreo@gmail.com</td>
-                        <td>
-                            <button class="btn btn-red ">Dar de baja</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Administrador 2</td>
-                        <td>Mi apellido</td>
-                        <td>micorreo2@gmail.com</td>
-                        <td>
-                            <button class="btn btn-red">Dar de baja</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+ <link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/style.css">
+<div class="menu-margin">
+  <div style="height: 20px;">
+
+  </div>
+    <div class="row">
+
+        <div class="col-md-4 ">
+
         </div>
+        <div class="col-md-4 ">
+            </div>
+    </div>
+
+    <div class="row">
+
+
+
+          <div class="table-users">
+         <div class="header">Administradores registrados <a href="{{ url('/administrator/management/new') }}"
+            class="btn btn-primary pull-right">
+                         <span class="glyphicon glyphicon-plus"></span> Añadir
+                     </a></div>
+
+         <table cellspacing="0">
+            <tr>
+               <th>Imagen</th>
+               <th>Nombre</th>
+               <th>E-mail</th>
+               <th>Correo</th>
+               <th width="230">Acciones</th>
+            </tr>
+
+            <tr>
+               <td><img src="http://lorempixel.com/100/100/people/1" alt="" /></td>
+               <td>Jane Doe</td>
+               <td>jane.doe@foo.com</td>
+               <td>01 800 2000</td>
+               <td>
+
+                 <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
+                  <input type="button" class="btn btn-warning" value="Restablecer Contraseña" >
+
+               </td>
+            </tr>
+
+            <tr>
+               <td><img src="http://lorempixel.com/100/100/sports/2" alt="" /></td>
+               <td>John Doe</td>
+               <td>john.doe@foo.com</td>
+               <td>01 800 2000</td>
+               <td>
+                 <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
+                  <input type="button" class="btn btn-warning" value="Restablecer Contraseña">
+
+               </td>
+            </tr>
+
+            <tr>
+               <td><img src="http://lorempixel.com/100/100/people/9" alt="" /></td>
+               <td>Jane Smith</td>
+               <td>jane.smith@foo.com</td>
+               <td>01 800 2000</td>
+               <td>  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
+                 <input type="button" class="btn btn-warning" value="Restablecer Contraseña">
+</td>
+            </tr>
+
+            <tr>
+               <td><img src="http://lorempixel.com/100/100/people/3" alt="" /></td>
+               <td>John Smith</td>
+               <td>john.smith@foo.com</td>
+               <td>01 800 2000</td>
+               <td>
+                 <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
+                  <input type="button" class="btn btn-warning" value="Restablecer Contraseña">
+               </td>
+            </tr>
+         </table>
+      </div>
+
+
+
     </div>
 </div>
 @endsection
