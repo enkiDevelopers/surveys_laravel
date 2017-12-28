@@ -4,13 +4,13 @@
                 label: 'Número de Estudiantes Encuestados',
                 backgroundColor: 'rgb(2,21,248)',
                 stack: 'Stack 0',
-                data: [230,160,190,185]
+                data: [30,60,90,85,100]
                 
             }, {
                 label: 'Número de Estudiantes No Encuestados',
                 backgroundColor: '#DE0D0D',
                 stack: 'Stack 1',
-                data: [110, 120, 130, 115]
+                data: [70, 40, 10, 15]
                 
             }]
         };
