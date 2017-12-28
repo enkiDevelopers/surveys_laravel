@@ -37,7 +37,7 @@
                     <li>
                         <a href="{{ url('/administrator/files') }}">
                             <i class="glyphicon glyphicon-link"></i>
-                            <span>Archivos</span>
+                            <span>Módulo de Encuestados</span>
                         </a>
                     </li>              
                     <li class="">

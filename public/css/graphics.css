@@ -1,0 +1,34 @@
+@import 'https://code.highcharts.com/css/highcharts.css';
+
+#container {
+	height: 400px;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+/* Link the series colors to axis colors */
+.highcharts-color-0 {
+	fill: #DE0D0D;
+	stroke: #DE0D0D;
+}
+.highcharts-axis.highcharts-color-0 .highcharts-axis-line {
+	stroke: #DE0D0D;
+}
+.highcharts-axis.highcharts-color-0 text {
+	fill: #DE0D0D;
+}
+.highcharts-color-1 {
+	fill: #8a9cb1;
+	stroke: #8a9cb1;
+}
+.highcharts-axis.highcharts-color-1 .highcharts-axis-line {
+	stroke: #8a9cb1;
+}
+.highcharts-axis.highcharts-color-1 text {
+	fill: #8a9cb1;
+}
+
+
+.highcharts-yaxis .highcharts-axis-line {
+	stroke-width: 2px;
+}

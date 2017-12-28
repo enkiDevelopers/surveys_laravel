@@ -33,41 +33,36 @@
                         <article class="col-xs-4">
                           <div class="cards card-directive"><span class="glyphicon glyphicon-flash icon"></span>
                             <hr class="divider"/>
-                            <h2 class="title"> Directivo ?</h2>
+                            <h2 class="title"> Directivo </h2>
                             <div class="info">
                               <hr class="divider"/>
-                              <p class="lead">Ingresa para visualizar los reportes que las encuestas han generado.</p><a class="btn btn-lg center-block">Iniciar Sesión !</a>
+                              <p class="lead">Ingresa para visualizar los reportes que las encuestas han generado.</p><a href="{{('/directive/login')}}" class="btn btn-lg center-block">Iniciar Sesión !</a>
                             </div>
                           </div>
                         </article>
                         <article class="col-xs-4">
                           <div class="cards card-alumno"><span class="glyphicon glyphicon-bookmark icon"></span>
                             <hr class="divider"/>
-                            <h2 class="title">Eres un Alumno ? </h2>
+                            <h2 class="title">Alumno  </h2>
                             <div class="info">
                               <hr class="divider"/>
-                              <p class="lead">Comienza a realizar encuestas. </p><a class="btn btn-lg center-block">Empieza !</a>
+                              <p class="lead">Comienza a realizar encuestas. </p><a href="{{('/surveyed/login')}}" class="btn btn-lg center-block">Empieza !</a>
                             </div>
                           </div>
                         </article>
                         <article class="col-xs-4">
                           <div class="cards card-administrador"><span class="glyphicon glyphicon-cog icon"></span>
                             <hr class="divider"/>
-                            <h2 class="title">Eres un Administrador ?</h2>
+                            <h2 class="title">Administrador</h2>
                             <div class="info">
                               <hr class="divider"/>
-                              <p class="lead">Empieza a generar encuestas, gestionar a los usuarios, etc.</p><a class="btn btn-lg center-block">Iniciar Sesión</a>
+                              <p class="lead">Empieza a generar encuestas, gestionar a los usuarios, etc.</p><a href="{{('/login')}}" class="btn btn-lg center-block">Iniciar Sesión</a>
                             </div>
                           </div>
                         </article>
                       </div>
                     </div>    
-
-
-
-
-                        <a href="{{ route('login') }}">Login</a>
-                        @endauth
+                    @endauth
                 </div>
             @endif
 

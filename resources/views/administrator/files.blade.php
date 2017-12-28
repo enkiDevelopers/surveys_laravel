@@ -138,6 +138,24 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Lista de Incidentes</div>
                 <div class="panel-body">
+
+                         <div class="col-md-3">
+                            <div class="card well" >
+                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <div class="card-body">
+                                    <h4 class="card-title">Lista 1</h4>
+                                    <p class="card-text"></p>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     
                        <div class="col-md-3">
                             <div class="card  card-new-file" >

@@ -89,7 +89,7 @@
                         <div class="col-md-3">
                             <div class="card well card-new-survey" >
                                 <div class="card-body text-center">
-                                    <h4 class="card-title">Añadir Encuesta</h4>
+                                    <h4 class="card-title">Añadir Plantilla de Encuesta</h4>
                                     <p class="card-text"></p><br>
                                         <p>
                                             <a href="{{ url('/administrator/surveys/new') }}" class="btn btn-default btn-lg btn-new-survey">

@@ -89,3 +89,15 @@ Route::get('sendemail', function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/directive/login', function(){
+    return view('auth.directive_login');
+});
+
+Route::get('/surveyed/login', function(){
+    return view('auth.surveyed_login');
+});
+
+Route::get('/directive/report1', function(){
+    return view('directive.report1');
+});

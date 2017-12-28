@@ -204,7 +204,7 @@
                         </div> -->
                        
                         <button type="submit" class="btn btn-primary col-md-12 new-survey__control">Guardar</button>
-                        <button type="submit" class="btn btn-info col-md-12 new-survey__control" data-toggle="modal" data-target="#myModal">Publicar</button>
+                        <!-- <button type="submit" class="btn btn-info col-md-12 new-survey__control" data-toggle="modal" data-target="#myModal">Publicar</button> -->
                     </div>
                    
                 </div>
