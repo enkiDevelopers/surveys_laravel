@@ -8,7 +8,7 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-4">
-                            Plantillas
+                            Reportes
                         </div>    
                         <div class="col-md-8 ">
                             <div class="row">
@@ -26,7 +26,7 @@
                         <div class="col-md-3">
                             <div class="card well" >
                                 <div class="card-body">
-                                    <h4 class="card-title">Primer Reporte </h4>
+                                    <h4 class="card-title">Encuesta Uno </h4>
                                     <p class="card-text"></p><br><br><br>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <a href="{{url('/directive/report')}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Reporte Uno">
@@ -40,7 +40,7 @@
                         <div class="col-md-3">
                             <div class="card well" >
                                 <div class="card-body">
-                                    <h4 class="card-title">Segundo Reporte</h4>
+                                    <h4 class="card-title">Encuesta Dos</h4>
                                     <p class="card-text"></p><br><br><br>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <a href="{{url('/directive/report1')}}" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Reporte Dos">
