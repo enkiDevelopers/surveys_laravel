@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top" alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Titulo de la encuesta</h4>
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p>
@@ -63,7 +63,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Titulo de la encuesta</h4>
                                     <p class="card-text">Creada por <span class="template-creator">Administrador2</span></p>
@@ -165,7 +165,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Titulo de la encuesta</h4>
                                     <p class="card-text"></p>
@@ -184,7 +184,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Titulo de la encuesta</h4>
                                     <p class="card-text"></p>

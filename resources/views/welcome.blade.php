@@ -31,7 +31,7 @@
                       </section>
                       <div class="row background">
                         <article class="col-xs-4">
-                          <div class="cards card-directive"><span class="glyphicon glyphicon-flash icon"></span>
+                          <div class="cards card-directive"><span class="glyphicon glyphicon-briefcase icon"></span>
                             <hr class="divider"/>
                             <h2 class="title"> Directivo </h2>
                             <div class="info">

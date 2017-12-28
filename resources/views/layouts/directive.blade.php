@@ -4,90 +4,81 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
-    <!-- <link rel="stylesheet" href="/css/now-ui-kit.css"> -->
+    <link rel="stylesheet" href="/css/sidebar.css">
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+    <div class="wrapper"  id="app">
+          <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header center text-center">
+                   <button type="button" id="sidebarCollapse" class="btn-default btn navbar-btn pull-right">
+                        <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Encuestas') }}
-                    </a>
+                    <h3 class="administrator-header">Directivo</h3>
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                <ul class="list-unstyled components">
+                    <div class="profile center text-center">
+                        <img src="/img/avatar.jpeg" alt="">
+                        <p>Jorge Luis González Hérnandez</p>
+                    </div>
+                    <li class="active">
+                        <a href="{{ url('/directive')}}" >
+                            <i class="glyphicon glyphicon-list-alt"></i>
+                            <span>Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ url('/directive/report') }}">Reportes</a></li>
-                           
-                            <li>
-                                <a href="#">Directivo</a>
-                            </li>
-                            <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
-                            <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+            <!-- Page Content Holder -->
+            <div id="content" class="menu-margin">
+                <div class="row">
+                    <div class="col-md-11">
 
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                        <nav class="navbar navbar-default  hidden-lg .visible-sm-*">
+                            <div class="container-fluid">
+        
+                                <div class="navbar-header">
+                                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                        <i class="glyphicon glyphicon-align-left"></i>
+                                        <span>Toggle Sidebar</span>
+                                    </button>
+                                </div>
+        
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li><a href="#">Page</a></li>
+                                        <li><a href="#">Page</a></li>
+                                        <li><a href="#">Page</a></li>
+                                        <li><a href="#">Page</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
                 </div>
-            </div>
-        </nav>
 
-        @yield('content')
+             
+                @yield('content')
+            </div>     
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-    <script src="/js/directive-report.js"></script>
+    <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>    
 </body>
 </html>

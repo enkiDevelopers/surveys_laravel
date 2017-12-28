@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 1</h4>
                                     <p class="card-text"></p>
@@ -28,7 +28,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 2</h4>
                                     <p class="card-text"></p>
@@ -46,7 +46,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 3</h4>
                                     <p class="card-text"></p>
@@ -64,7 +64,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 4</h4>
                                     <p class="card-text"></p>
@@ -82,7 +82,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 5</h4>
                                     <p class="card-text"></p>
@@ -100,7 +100,7 @@
 
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Archivo 6</h4>
                                     <p class="card-text"></p>
@@ -141,7 +141,7 @@
 
                          <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top" src="..." alt="Card image cap">
+                                <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
                                     <h4 class="card-title">Lista 1</h4>
                                     <p class="card-text"></p>

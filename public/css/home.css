@@ -1,5 +1,5 @@
 body {
-  background: #fff;
+  background-image: url('http://ubuntuhandbook.org/wp-content/uploads/2016/09/Yakkety_Yak_Wallpaper_grey.jpg');
   font-size: 10px;
   padding: 2em;
 }
@@ -100,11 +100,11 @@ body {
 }
 
 .card-directive{
-  background-color: #132B55; 
+  background-color: #3949ab ; 
 }
 
 .card-alumno{
-  background-color: #9B232C;
+  background-color: #d32f2f;
 }
 
 .card-administrador{

@@ -20,9 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/administrator', function () {
-    return view('administrator.home');
-});
-Route::get('/administrator/surveys', function () {
     return view('administrator.surveys');
 });
 
@@ -47,11 +44,9 @@ Route::get('/administrator/file/open', function(){
 	return view('administrator.openFile');
 });
 
-
 Route::get('/administrator/file/delete', function(){
 	return view('administrator.delete');
 });
-
 
 Route::get('/administrator/exclude', function(){
 	return view('administrator.exclude');
@@ -63,6 +58,10 @@ Route::get('/administrator/management', function(){
 
 Route::get('/administrator/management/new', function(){
 	return view('administrator.new-administrator');
+});
+
+Route::get('/directive', function(){
+    return view('directive.home');
 });
 
 Route::get('/directive/report', function(){

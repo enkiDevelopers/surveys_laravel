@@ -13,7 +13,7 @@
 </head>
 <body>
     
-<div class="wrapper">
+<div class="wrapper" id="app">
             <!-- Sidebar Holder -->
             <nav id="sidebar">
                 <div class="sidebar-header ">
@@ -24,12 +24,12 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <div class="profile">
+                    <div class="profile center text-center">
                         <img src="/img/avatar.jpeg" alt="">
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
                     <li class="active">
-                        <a href="{{ url('/administrator/surveys')}}" >
+                        <a href="{{ url('/administrator')}}" >
                             <i class="glyphicon glyphicon-briefcase"></i>
                             <span>Encuestas</span>
                         </a>
@@ -47,11 +47,10 @@
                         </a>
                     </li>
                 </ul>
-        </nav>
+            </nav>
 
-    
             <!-- Page Content Holder -->
-            <div id="content">
+            <div id="content" class="menu-margin">
                 <div class="row">
                     <div class="col-md-11">
 
