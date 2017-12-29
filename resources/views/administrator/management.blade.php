@@ -29,11 +29,11 @@
 
          <table cellspacing="0">
             <tr>
-               <th>Imagen</th>
-               <th>Nombre</th>
-               <th>E-mail</th>
-               <th>Correo</th>
-               <th width="230">Acciones</th>
+               <th class="text-center">Imagen</th>
+               <th class="text-center">Nombre</th>
+               <th class="text-center">E-mail</th>
+               <th class="text-center">Telefono</th>
+               <th class="text-center" width="230">Acciones</th>
             </tr>
 
             <tr>
@@ -44,8 +44,7 @@
                <td>
 
                  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
-                  <input type="button" class="btn btn-warning" value="Restablecer Contraseña" >
-
+                 
                </td>
             </tr>
 
@@ -56,7 +55,7 @@
                <td>01 800 2000</td>
                <td>
                  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
-                  <input type="button" class="btn btn-warning" value="Restablecer Contraseña">
+                  
 
                </td>
             </tr>
@@ -67,7 +66,7 @@
                <td>jane.smith@foo.com</td>
                <td>01 800 2000</td>
                <td>  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
-                 <input type="button" class="btn btn-warning" value="Restablecer Contraseña">
+                 
 </td>
             </tr>
 
@@ -78,7 +77,7 @@
                <td>01 800 2000</td>
                <td>
                  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
-                  <input type="button" class="btn btn-warning" value="Restablecer Contraseña">
+                  
                </td>
             </tr>
          </table>
