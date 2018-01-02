@@ -1,8 +1,6 @@
-@extends('layouts.admin')
+@extends('layouts.root')
 @section('content')
-
-
- <link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/normalize.css">
 <link rel="stylesheet" href="/css/style.css">
 <div class="menu-margin">
   <div style="height: 20px;">
@@ -22,7 +20,7 @@
 
 
           <div class="table-users">
-         <div class="header">Administradores registrados <a href="{{ url('/administrator/management/new') }}"
+         <div class="header">Administradores registrados <a href="{{ url('/root/new') }}"
             class="btn btn-primary pull-right">
                          <span class="glyphicon glyphicon-plus"></span> Añadir
                      </a></div>
@@ -33,6 +31,7 @@
                <th class="text-center">Nombre</th>
                <th class="text-center">E-mail</th>
                <th class="text-center">Télefono</th>
+               <th class="text-center" width="230">Añadido por</th>
                <th class="text-center" width="230">Acciones</th>
             </tr>
 
@@ -41,6 +40,7 @@
                <td>Jane Doe</td>
                <td>jane.doe@foo.com</td>
                <td>01 800 2000</td>
+               <td>usuario1</td>
                <td>
 
                  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
@@ -53,6 +53,7 @@
                <td>John Doe</td>
                <td>john.doe@foo.com</td>
                <td>01 800 2000</td>
+               <td>usuario1</td>
                <td>
                  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
 
@@ -65,6 +66,7 @@
                <td>Jane Smith</td>
                <td>jane.smith@foo.com</td>
                <td>01 800 2000</td>
+               <td>usuario1</td>
                <td>  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
 
 </td>
@@ -75,7 +77,9 @@
                <td>John Smith</td>
                <td>john.smith@foo.com</td>
                <td>01 800 2000</td>
+               <td>usuario5</td>
                <td>
+
                  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
 
                </td>

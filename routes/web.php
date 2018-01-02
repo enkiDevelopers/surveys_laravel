@@ -100,3 +100,12 @@ Route::get('/surveyed/login', function(){
 Route::get('/directive/report1', function(){
     return view('directive.report1');
 });
+
+Route::get('/root', function(){
+    return view('root.home');
+});
+
+
+Route::get('/root/new', function(){
+    return view('root.new-administrator');
+});
