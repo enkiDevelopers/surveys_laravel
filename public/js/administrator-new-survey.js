@@ -4,6 +4,7 @@ $(document).ready(function(){
     $("#add-question").on("click", function(){
         $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container");
         setNumberOfQuestionsToSelect();
+        getnumberQuestion();
     });
 
     function setNumberOfQuestionsToSelect(){
@@ -18,10 +19,23 @@ $(document).ready(function(){
         }
     }
 
+    function getnumberQuestion(){
+    	var el = $(".question:not(.hide)");
+    	var select = $(".number-questions-survey");
+    	select.empty();
+
+    	for (var i = el.length.selected; i <= el.length; i++) {
+            var o = new Option("i", i);
+            $(o).html(i);
+            select.append(o);
+        }
+    }
+
     // Eliminar una pregunta
     $(".new-survey__question-container").on("click", ".new-question__control--delete-question", function(){
         $(this).parent().parent().parent().parent().remove();
         setNumberOfQuestionsToSelect();
+        getnumberQuestion();
     });
 
     // Crear un bloque de preguntas si/no para la pregunta en cuestion
@@ -55,8 +69,7 @@ $(document).ready(function(){
     function hasNestedQuestionOfType(elem, type){
         return elem.parent().parent().parent().has(type).length != 0;
     }
-    
-
+  
     // Agrega una nueva pregunta a un bloque de preguntas de si/no
     var parentYesNo;
     $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
