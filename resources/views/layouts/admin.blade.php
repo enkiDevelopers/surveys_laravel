@@ -36,8 +36,8 @@
                     </li>
                     <li>
                         <a href="{{ url('/administrator/files') }}">
-                            <i class="glyphicon glyphicon-link"></i>
-                            <span>Módulo de Encuestados</span>
+                            <i class="glyphicon glyphicon-file    Try it"></i>
+                            <span>Archivos y listas de incidentes</span>
                         </a>
                     </li>              
                     <li class="">
@@ -46,37 +46,18 @@
                             <span>Gestión de administradores</span>
                         </a>
                     </li>
+                
+                        <li class="">
+                        <a href="{{ url('/administrator/surv-list') }}">
+                            <i class="glyphicon glyphicon-link"></i>
+                            <span>Lista de encuestados</span>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
 
-            <!-- Page Content Holder -->
-            <div id="content" class="menu-margin">
-                <div class="row">
-                    <div class="col-md-11">
-
-                        <nav class="navbar navbar-default  hidden-lg .visible-sm-*">
-                            <div class="container-fluid">
-        
-                                <div class="navbar-header">
-                                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                        <i class="glyphicon glyphicon-align-left"></i>
-                                        <span>Toggle Sidebar</span>
-                                    </button>
-                                </div>
-        
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav navbar-right">
-                                        <li><a href="#">Page</a></li>
-                                        <li><a href="#">Page</a></li>
-                                        <li><a href="#">Page</a></li>
-                                        <li><a href="#">Page</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                    </div>
-
-                </div>
+       
 
              
                 @yield('content')

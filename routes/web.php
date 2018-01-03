@@ -109,3 +109,7 @@ Route::get('/root', function(){
 Route::get('/root/new', function(){
     return view('root.new-administrator');
 });
+
+Route::get('/administrator/surv-list', function(){
+    return view('administrator.surveyed-list');
+});
