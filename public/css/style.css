@@ -13,6 +13,8 @@ body * {
   padding: 1rem;
   text-align: center;
   text-transform: uppercase;
+  border-radius: 5px;
+  margin-bottom: 7px;
 }
 
 img {
@@ -108,11 +110,12 @@ table tr:nth-child(2n+1) {
 }
 @media screen and (max-width: 500px) {
   .header {
-    background-color: transparent;
+    background-color: #215F8F;
     color: white;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 700;
     padding: 0;
+    border-radius: 6px;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
   }
 

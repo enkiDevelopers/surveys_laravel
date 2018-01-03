@@ -161,5 +161,12 @@
 </div>
 </div>
 
+<script>
+    
+    window.onload = function() {
+        $("#home").addClass('active');
+    }
+</script>
 
 @endsection
+

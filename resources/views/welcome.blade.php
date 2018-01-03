@@ -21,7 +21,8 @@
 
 
                     <div class="container full-screen">
-                      <section class="row">
+                      <div class="row row-centered pos">
+                      <section class="col-lg-12 col-xs-12 col-centered">
                         <h1 class="title">Bienvenido</h1>
                         <hr/>
                         <div class="col-xs-8 col-xs-offset-2">
@@ -29,8 +30,8 @@
                           <hr/>
                         </div>
                       </section>
-                      <div class="row background">
-                        <article class="col-xs-4">
+                      <div class="">
+                        <article class="col-lg-4 col-xs-12 col-centered padding-card-welcome">
                           <div class="cards card-directive"><span class="glyphicon glyphicon-briefcase icon"></span>
                             <hr class="divider"/>
                             <h2 class="title"> Directivo </h2>
@@ -39,8 +40,8 @@
                               <p class="lead">Ingresa para visualizar los reportes que las encuestas han generado.</p><a href="{{('/directive/login')}}" class="btn btn-lg center-block">Iniciar Sesión !</a>
                             </div>
                           </div>
-                        </article>
-                        <article class="col-xs-4">
+                        </article><br><br>
+                        <article class="col-lg-4 col-xs-12 col-centered padding-card-welcome">
                           <div class="cards card-alumno"><span class="glyphicon glyphicon-bookmark icon"></span>
                             <hr class="divider"/>
                             <h2 class="title">Alumno  </h2>
@@ -50,7 +51,7 @@
                             </div>
                           </div>
                         </article>
-                        <article class="col-xs-4">
+                        <article class="col-lg-4 col-xs-12 col-centered padding-card-welcome">
                           <div class="cards card-administrador"><span class="glyphicon glyphicon-cog icon"></span>
                             <hr class="divider"/>
                             <h2 class="title">Administrador</h2>
@@ -60,6 +61,7 @@
                             </div>
                           </div>
                         </article>
+                      </div>
                       </div>
                     </div>    
                     @endauth

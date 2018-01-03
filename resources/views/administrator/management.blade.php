@@ -1,31 +1,16 @@
 @extends('layouts.admin')
 @section('content')
 
-
- <link rel="stylesheet" href="/css/normalize.css">
+<link rel="stylesheet" href="/css/normalize.css">
 <link rel="stylesheet" href="/css/style.css">
-<div class="menu-margin">
-  <div style="height: 20px;">
-
-  </div>
-    <div class="row">
-
-        <div class="col-md-4 ">
-
+<div class=" container ">
+  <div class="row">
+      <div class="col-sm-12">
+        <div class="header ">Administradores registrados 
+          <a href="{{ url('/administrator/management/new') }}"  class="btn btn-primary ">
+            <span class="glyphicon glyphicon-plus"></span> Añadir
+          </a>
         </div>
-        <div class="col-md-4 ">
-            </div>
-    </div>
-
-    <div class="row">
-
-
-
-          <div class="table-users">
-         <div class="header">Administradores registrados <a href="{{ url('/administrator/management/new') }}"
-            class="btn btn-primary pull-right">
-                         <span class="glyphicon glyphicon-plus"></span> Añadir
-                     </a></div>
 
          <table cellspacing="0">
             <tr>
@@ -84,7 +69,14 @@
       </div>
 
 
-
     </div>
 </div>
+
+<script>
+    
+    window.onload = function() {
+        $("#admin-list").addClass('active');
+    }
+</script>
+
 @endsection

@@ -1,8 +1,8 @@
-	#lista4 ol {
+#lista4 ol {
     counter-reset: li; 
     list-style: none; 
     *list-style: decimal; 
-    font: 15px 'trebuchet MS', 'lucida sans';
+    font: 15px 'trebuchet MS', 'lucida sans'; 
     padding: 0;
     margin-bottom: 4em;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
@@ -15,11 +15,9 @@
 #lista4 {
     list-style-type: none;
     list-style-type: decimal !ie; /*IE 7- hack*/
-     
     margin: 0;
-    margin-left: 3em;
+/*    margin-left: 3em; */
     padding: 0;
-     
     counter-reset: li-counter;
 }
 
@@ -36,19 +34,32 @@
     top: 0;
     left: -0.95em;
     width: 1em;
- 
-    font-size: 4em;
+    font-size: 3em; 
     line-height: 1;
     font-weight: bold;
     text-align: right;
     color: #464646;
-     
     transform: rotate(-25deg);
     -ms-transform: rotate(-25deg);
     -webkit-transform: rotate(-25deg);
     z-index: -99;
     overflow: hidden;
-     
     content: counter(li-counter);
     counter-increment: li-counter;
+}
+
+.text-card{
+    width: 100%;
+   /* font-size: 18px; */
+}
+
+.image-list{
+    width:50px; 
+    height:50px;
+    margin-right: 15px;
+}
+
+.responsive-card {
+max-width:100%;
+height:auto;
 }

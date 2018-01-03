@@ -265,6 +265,9 @@
     function uploadFile(){
                 $("#loadingUploadFile").removeClass('invisible');
 
-
     }
+    window.onload = function() {
+        $("#files").addClass('active');
+    }
+
 </script>
