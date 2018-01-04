@@ -1,4 +1,4 @@
-@extends('layouts.volver-admin')
+@extends('layouts.back-survey')
 @section('content')
 
 

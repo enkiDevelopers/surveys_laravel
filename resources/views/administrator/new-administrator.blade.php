@@ -1,5 +1,4 @@
-@extends('layouts.admin')
-
+@extends('layouts.back-admin')
 @section('content')
 <div class="container">
     <div class="row">
@@ -38,8 +37,16 @@
                 </div>
             </div>
 
-          
+
         </div>
     </div>
 </div>
+
+
+<script>
+
+    window.onload = function() {
+        $("#home").addClass('active');
+    }
+</script>
 @endsection
