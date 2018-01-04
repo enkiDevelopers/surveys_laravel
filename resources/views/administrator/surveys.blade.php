@@ -9,7 +9,7 @@
                         <div class="col-md-4">
                             Plantillas
                         </div>    
-                        <div class="col-md-8 ">
+                        <div class="col-md-9 pull-right">
                             <div class="row">
                                 <div class="col-md-1">&nbsp</div>  
                                 <div class="col-md-2 pull-right">
@@ -32,7 +32,7 @@
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card well" >
                                 <img class="card-img-top" alt="Card image cap">
                                 <div class="card-body">
@@ -60,7 +60,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div class="card well" >
                                 <img class="card-img-top"  alt="Card image cap">
                                 <div class="card-body">
@@ -130,20 +130,20 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-6">
                             
                             Encuestas publicadas
                         </div>  
                         <div class="col-md-1">&nbsp</div>  
-                        <div class="col-md-4 ">
+                        <div class="col-md-5 ">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div>
                                 <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
                                 </div> 
-                                <div class="col-md-5 ">
+                                <div class="col-md-4">
                                     Finalizada<div class="pull-right survey-status survey-status__finished">&nbsp</div>
                                 </div>      
                             </div>

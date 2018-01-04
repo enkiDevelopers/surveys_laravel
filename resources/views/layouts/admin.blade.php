@@ -38,13 +38,13 @@
                     <li id="files">
                         <a href="{{ url('/administrator/files') }}" >
                             <i class="glyphicon glyphicon-file    Try it"></i>
-                            <span>Módulo de Encuestados</span>
+                            <span>Encuestados</span>
                         </a>
                     </li>              
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
                             <i class="glyphicon glyphicon-home"></i>
-                            <span>Gestión de administradores</span>
+                            <span>Administradores</span>
                         </a>
                     </li>
                 
@@ -68,7 +68,7 @@
             $(document).ready(function () {
 
                 var alto = (screen.height) - (screen.availHeight); 
-                var barra = screen.availHeight - alto - (alto/2);
+                var barra = screen.availHeight - alto - (alto/2) - (alto/4);
                 
                 $("#sidebar").height(barra);
                  $('#sidebarCollapse').on('click', function () {

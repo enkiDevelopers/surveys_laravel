@@ -58,6 +58,11 @@
     <script src="/js/administrator-new-survey.js"></script>
     <script type="text/javascript">
             $(document).ready(function () {
+
+                var alto = (screen.height) - (screen.availHeight); 
+                var barra = screen.availHeight - alto - (alto/2) - (alto/4);
+                
+                $("#sidebar").height(barra);
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');
                  });
