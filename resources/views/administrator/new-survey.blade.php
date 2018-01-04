@@ -1,5 +1,7 @@
-@extends('layouts.admin')
+@extends('layouts.volver-admin')
 @section('content')
+
+
 <div class="container" style="position: fixed; margin-left: 270px; height: 95%;">
     <div class="row">
         <div class="col-md-11">
@@ -164,11 +166,11 @@
 </div>
 </div>
 
+
 <script>
 
     window.onload = function() {
         $("#home").addClass('active');
     }
 </script>
-
 @endsection
