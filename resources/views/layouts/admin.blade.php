@@ -38,7 +38,7 @@
                     <li id="files">
                         <a href="{{ url('/administrator/files') }}" >
                             <i class="glyphicon glyphicon-file    Try it"></i>
-                            <span>Archivos y listas de incidentes</span>
+                            <span>Módulo de Encuestados</span>
                         </a>
                     </li>              
                     <li id="admin-list">
@@ -48,12 +48,12 @@
                         </a>
                     </li>
                 
-                        <li id="list-surveyed">
+        <!--                <li id="list-surveyed">
                         <a href="{{ url('/administrator/surv-list') }}">
                             <i class="glyphicon glyphicon-link"></i>
                             <span>Lista de encuestados</span>
                         </a>
-                    </li>
+                    </li> --> 
                 </ul>
             </nav>
 
