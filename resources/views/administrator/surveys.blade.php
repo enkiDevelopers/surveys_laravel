@@ -91,7 +91,7 @@
                                     <h4 class="card-title">Añadir Plantilla de Encuesta</h4>
                                     <p class="card-text"></p><br>
                                         <p>
-                                            <a href="{{ url('/administrator/surveys/new') }}" class="btn btn-default btn-lg btn-new-survey">
+                                            <a  href="{{ url('/administrator/surveys/new') }}" class="btn btn-default btn-lg btn-new-survey">
                                               <span class="glyphicon glyphicon-plus text-center"></span>  
                                             </a>
                                         </p>

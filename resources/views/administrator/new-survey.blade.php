@@ -26,7 +26,8 @@
                 </div>
                 </div>
             </div>
-            </div>
+        </div>
+
 <div class="row">
     <div class="col-md-12 ">
 
@@ -34,17 +35,17 @@
             <div class="col-md-9 col-sm-12  light-grey" style="width:100%;">
                 <h2 class="text-center">Nueva encuesta</h2>
             </div>
-            <div class="col-md-9 col-sm-12  light-grey">
+            <div class="col-md-9 col-sm-12  light-grey" style="width:100%;">
                 <form>
                       <div class="form-group" style="position: fixed;">
                         </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
                       </div>
-                      <div class="col-md-10">
-                      <input type="text" class="form-control text-black" id="exampleInputEmail1" onkeyup="verificar();" aria-describedby="emailHelp" placeholder="Respuesta">
+                      <div class="col-md-10" style="margin-top: 20px;">
+                      <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
                       </div>
-                      <div class="col-md-2">
-                          <a href="" class="btn btn-info">
-                              <span class="glyphicon glyphicon-floppy-saved"></span>
+                      <div class="col-md-2" style="margin-top: 20px;">
+                          <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-info">
+                              <span class="glyphicon glyphicon-pencil"></span>
                           </a>
                           <a href="" class="btn btn-success" >
                               <span class=" glyphicon glyphicon-eye-open "></span>
@@ -76,9 +77,9 @@
 
                             </div>
                         </div>
+                        
                         <div class="row new-question-template hide" id="new-question-template">
                             <div class="col-md-12 well">
-
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Número</label>
@@ -105,21 +106,20 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-2 pull-right ">
+                                <div class="col-md-2 pull-right" style="margin-bottom: 15px;">
                                     <div class="row">
+                                        <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        </button>
                                         <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
-                                        <button class="btn btn-info col-md-4  new-question__control">
-                                            <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
-                                        </button>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
+
+
                         <div class="row hide yes-no-question-block " id="yes-no-question-template">
                             <div class="col-md-12 well" data-questions="0" >
                                 <div class="btn-group btn-group-xs pull-right" role="group" aria-label="...">
@@ -128,8 +128,8 @@
                                     </button>
                                 </div>
 
-                                <div class="col-md-12 well">
-                                    <div class="col-md-6 ">
+                                <div class="col-md-12 well" id="multi-options">
+                                    <div class="col-md-6 " data-multioptions="0">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Opción Respuesta</label>
                                             <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
@@ -167,12 +167,37 @@
 </div>
 
 
+
+
+
+        <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel1">Título de la encuesta</h4>
+                </div>
+                <div class="modal-body">
+                   <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Respuesta">
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="publish();" >Publicar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+
 <script>
 
  
 
     window.onload = function() {
         $("#home").addClass('active');
+        $('#ModalTitle').modal();
+
     }
 
     function verificar(){
@@ -181,6 +206,17 @@
         }else{
             
         }
+    }
+
+    function publish(){
+        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " " ) {
+            $("#exampleInputEmail1").val($("#ModalTitleInput").val());
+            $("#ModalTitle").modal('hide');
+            verificar();
+        }else{
+            alert("Ingrese un Título para la encuesta");
+        }
+
     }
 
 </script>

@@ -6,7 +6,6 @@ $(document).ready(function(){
         if ($("#add-question").hasClass("disabled")){
             alert("Ingrese un título");
         }else{
-
         $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container");
         setNumberOfQuestionsToSelect();
         getnumberQuestion();
@@ -46,6 +45,18 @@ $(document).ready(function(){
         getnumberQuestion();
     });
 
+
+    // Editar una pregunta
+    $(".new-survey__question-container").on("click", ".new-question__control--edit-question", function(){
+        $(this).parent().parent().parent().parent().remove();
+        setNumberOfQuestionsToSelect();
+        getnumberQuestion();
+
+        //Abrrir modal
+        //Copiar datos de los inputs del div
+        //igualar los valores de los inputs del moda al del div
+    });
+
     // Crear un bloque de preguntas si/no para la pregunta en cuestion
     $(".new-survey__question-container").on("change", ".yes-no-question", function(){
         switch($(this).val()){
@@ -79,7 +90,7 @@ $(document).ready(function(){
     }
   
     // Agrega una nueva pregunta a un bloque de preguntas de si/no
-    var parentYesNo;
+  /*  var parentYesNo;
     $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
         e.preventDefault();
         parentYesNo = $(this).parent().parent();
@@ -88,6 +99,17 @@ $(document).ready(function(){
         parentYesNo.data("questions", parentYesNo.data("questions") + 1);
        // console.log(parentYesNo.data("questions"));
 
+    });
+*/
+    // Agrega una nueva opcion a un bloque de preguntas de si/no
+    var parentYesNo;
+    $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
+        e.preventDefault();
+        parentYesNo = $(this).parent().parent();
+        var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
+        parentYesNo.append(elem);
+        parentYesNo.data("questions", parentYesNo.data("multi-options") );
+       // console.log(parentYesNo.data("questions"));
     });
 
 });
