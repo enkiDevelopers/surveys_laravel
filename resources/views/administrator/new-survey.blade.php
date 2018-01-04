@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container">
+<div class="container" style="position: fixed; margin-left: 270px; height: 95%;">
     <div class="row">
         <div class="col-md-11">
         <!-- Modal publicar encuesta-->
@@ -27,35 +27,38 @@
             </div>
 <div class="row">
     <div class="col-md-12 ">
-        
+
         <div class="">
-            <div class="col-md-9 col-sm-12  light-grey">
+            <div class="col-md-9 col-sm-12  light-grey" style="width:100%;">
                 <h2 class="text-center">Nueva encuesta</h2>
             </div>
             <div class="col-md-9 col-sm-12  light-grey">
                 <form>
-                    <div class="new-survey__question-container" >
-                    
-                        <div class="form-group">
-                            <div class="col-sm-12 pull-left">
-                               <label for="exampleInputEmail1">Titulo de la encuesta</label>
-                            </div>
-                          
-                            <div class="col-md-10">
-                                <input type="text" class="form-control text-black" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
-                           </div>
-                            <div class="col-md-2">
-                                <a href="" class="btn btn-info">
-                                    <span class="glyphicon glyphicon-floppy-saved"></span>
-                                </a>
-                                <a href="" class="btn btn-success" >
-                                    <span class=" glyphicon glyphicon-eye-open "></span>
-                                </a>
-                            </div>
+                      <div class="form-group" style="position: fixed;">
+                        </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
+                      </div>
+                      <div class="col-md-10">
+                      <input type="text" class="form-control text-black" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
+                      </div>
+                      <div class="col-md-2">
+                          <a href="" class="btn btn-info">
+                              <span class="glyphicon glyphicon-floppy-saved"></span>
+                          </a>
+                          <a href="" class="btn btn-success" >
+                              <span class=" glyphicon glyphicon-eye-open "></span>
+                          </a>
+                      </div>
+                      <br />
+<br /><br /><br /><br />
+    <div class="new-survey__question-container"  style="position: fixed; overflow: auto; height: 70%; width:75%; margin-top: 100px;">
+
+
+
+
                         </div>
                         <div class="row new-satisfaction-question-template hide" id="satisfaction-question-template">
                             <div class="col-md-12 well">
-                                
+
                                 <div class="row">
                                     <div class="col-md-1"><input type="radio" > 1</div>
                                     <div class="col-md-1"><input type="radio" > 2</div>
@@ -66,9 +69,9 @@
                                     <div class="col-md-1"><input type="radio" > 7</div>
                                     <div class="col-md-1"><input type="radio" > 8</div>
                                     <div class="col-md-1"><input type="radio" > 9</div>
-                                    <div class="col-md-2"><input type="radio" > 10</div>       
+                                    <div class="col-md-2"><input type="radio" > 10</div>
                                 </div>
-                              
+
                             </div>
                         </div>
                         <div class="row new-question-template hide" id="new-question-template">
@@ -99,7 +102,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-2 pull-right ">
                                     <div class="row">
                                         <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question">
@@ -113,7 +116,7 @@
 
 
                             </div>
-                    
+
                         </div>
                         <div class="row hide yes-no-question-block " id="yes-no-question-template">
                             <div class="col-md-12 well" data-questions="0" >
@@ -141,13 +144,13 @@
                         </div>
                     </div>
                 </div>
-               
+
                 </form>
             </div>
                 <!-- <div class="col-md-1">&nbsp</div> -->
-                <div class="">
-                    <div class="col-md-2">
-                        <div class=" new-survey__controls pull-right">
+                <div class="" style="margin-left: 400px; margin-top:20px; margin-bottom: 20px;"  >
+                    <div class="col-md-11">
+                        <div class=" new-survey__controls pull-right" >
                     <div class="">
                         <button class="btn btn-success col-md-12 new-survey__control" id="add-question">Agregar pregunta</button>
                     </div>
@@ -162,11 +165,10 @@
 </div>
 
 <script>
-    
+
     window.onload = function() {
         $("#home").addClass('active');
     }
 </script>
 
 @endsection
-
