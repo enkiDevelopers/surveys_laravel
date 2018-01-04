@@ -40,7 +40,7 @@
                         </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
                       </div>
                       <div class="col-md-10">
-                      <input type="text" class="form-control text-black" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
+                      <input type="text" class="form-control text-black" id="exampleInputEmail1" onkeyup="verificar();" aria-describedby="emailHelp" placeholder="Respuesta">
                       </div>
                       <div class="col-md-2">
                           <a href="" class="btn btn-info">
@@ -154,7 +154,7 @@
                     <div class="col-md-11">
                         <div class=" new-survey__controls pull-right" >
                     <div class="">
-                        <button class="btn btn-success col-md-12 new-survey__control" id="add-question">Agregar pregunta</button>
+                        <button class="btn btn-success col-md-12 new-survey__control disabled" id="add-question">Agregar pregunta</button>
                     </div>
                 </div>
                     </div>
@@ -169,8 +169,19 @@
 
 <script>
 
+ 
+
     window.onload = function() {
         $("#home").addClass('active');
     }
+
+    function verificar(){
+        if ($("#exampleInputEmail1").val() != "") {
+            $("#add-question").removeClass('disabled');
+        }else{
+            
+        }
+    }
+
 </script>
 @endsection

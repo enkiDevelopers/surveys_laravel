@@ -2,9 +2,17 @@ $(document).ready(function(){
 
     // Agregar una nueva pregunta a la encuesta general
     $("#add-question").on("click", function(){
+
+        if ($("#add-question").hasClass("disabled")){
+            alert("Ingrese un título");
+        }else{
+
         $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container");
         setNumberOfQuestionsToSelect();
         getnumberQuestion();
+        }
+
+
     });
 
     function setNumberOfQuestionsToSelect(){
