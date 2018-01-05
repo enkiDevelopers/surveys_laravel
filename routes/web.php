@@ -117,3 +117,5 @@ Route::get('/administrator/surv-list', function(){
 Route::get('/config',function(){
   return view('root.config');
 });
+
+Route::post('/save', 'surveyController@save');

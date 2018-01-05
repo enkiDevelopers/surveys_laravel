@@ -84,7 +84,7 @@
 
                             </div>
                         </div>
-                        
+
                         <div class="row new-question-template hide" id="new-question-template">
                             <div class="col-md-12 well">
                                 <div class="col-md-2">
@@ -165,8 +165,13 @@
 </div>
 </div>
 
+
+
+
           <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
+<form method="post" action="/save">
+            {{ csrf_field() }}
                 <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" onclick="window.history.back();" aria-label="Close">
@@ -176,23 +181,26 @@
                 </div>
                 <div class="modal-body">
                     <h5>Titulo de la encuesta:</h5>
-                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo "><br>
+<input type="text" class="form-control text-black " id="ModalTitleInput" name="titulo" aria-describedby="emailHelp" placeholder="Ingrese el titulo "><br>
                     <h5> Descripcición de la encuesta:</h5>
-                    <textarea class="form-control text-black" cols="10" rows="5" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+<textarea class="form-control text-black" cols="10" rows="5" id="ModalDescInput" name="descripcion" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="publish();" >Publicar</button>
+                    <button type="submit" class="btn btn-primary" onclick="publish();" >Publicar</button>
                 </div>
+
+
                 </div>
+</form>
             </div>
         </div>
 
 
 <script>
 
- 
+
 
     window.onload = function() {
         $("#home").addClass('active');
@@ -204,7 +212,7 @@
         if ($("#exampleInputEmail1").val() != "") {
             $("#add-question").removeClass('disabled');
         }else{
-            
+
         }
     }
 
@@ -212,9 +220,9 @@
         if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " " && $("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
             $("#exampleInputEmail1").val($("#ModalTitleInput").val());
             $("#inputDesc").val($("#ModalDescInput").val());
-
             $("#ModalTitle").modal('hide');
             verificar();
+
         }else{
             alert("Ingrese un Título para la encuesta");
         }
