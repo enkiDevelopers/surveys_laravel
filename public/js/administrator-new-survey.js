@@ -5,11 +5,19 @@ $(document).ready(function(){
         if ($("#add-question").hasClass("disabled")){
             alert("Ingrese un título");
         }else{
-        $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("");
-        $("#childSupport").hide();
-        setNumberOfQuestionsToSelect();
-        getnumberQuestion();
-        }
+            if ($("#add-question").hasClass('aux')){
+                $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("");
+                setNumberOfQuestionsToSelect();
+                getnumberQuestion();
+                $("#add-question").removeClass('aux');
+            }else{
+                $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("").end();
+                //("#childSupport").hide();
+                setNumberOfQuestionsToSelect();
+                getnumberQuestion();
+
+            }
+}
     });
 
     function setNumberOfQuestionsToSelect(){

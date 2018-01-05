@@ -56,7 +56,7 @@
                           </a>
                           <div class=" new-survey__controls" style="margin-top: 20px;margin-left: -30px;" >
                             <div class="">
-                                <button class="btn btn-success col-md-11 new-survey__control disabled" id="add-question">Agregar pregunta</button>
+                                <button class="btn btn-success col-md-11 new-survey__control disabled aux" id="add-question">Agregar pregunta</button>
                             </div>
                            </div>
                       </div> <br /><br /><br /><br /><br />
@@ -177,18 +177,29 @@
                     <button type="button" class="close" onclick="window.history.back();" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel1">Datos Principales de la encuesta</h4>
+                    <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <h5>Titulo de la encuesta:</h5>
 <input type="text" class="form-control text-black " id="ModalTitleInput" name="titulo" aria-describedby="emailHelp" placeholder="Ingrese el titulo "><br>
                     <h5> Descripcición de la encuesta:</h5>
 <textarea class="form-control text-black" cols="10" rows="5" id="ModalDescInput" name="descripcion" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+=======
+                    <h5>Título de la encuesta:</h5>
+                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo "><br>
+                    <h5> Descripción de la encuesta:</h5>
+                    <textarea class="form-control text-black" cols="10" rows="5" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+>>>>>>> 1f22cce67277eba83bb38fa35ed840a551b316c4
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
+<<<<<<< HEAD
                     <button type="submit" class="btn btn-primary" onclick="publish();" >Publicar</button>
+=======
+                    <button type="button" class="btn btn-primary" onclick="publish();" >Guardar</button>
+>>>>>>> 1f22cce67277eba83bb38fa35ed840a551b316c4
                 </div>
 
 
@@ -217,6 +228,7 @@
     }
 
     function publish(){
+<<<<<<< HEAD
         if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " " && $("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
             $("#exampleInputEmail1").val($("#ModalTitleInput").val());
             $("#inputDesc").val($("#ModalDescInput").val());
@@ -224,9 +236,22 @@
             verificar();
 
         }else{
+=======
+        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " ") {
+            if ($("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
+                $("#exampleInputEmail1").val($("#ModalTitleInput").val());
+                $("#inputDesc").val($("#ModalDescInput").val());
+                $("#ModalTitle").modal('hide');
+                verificar();
+            }else{
+                alert("Ingrese una descripción para la encuesta");
+            }
+            }else{
+>>>>>>> 1f22cce67277eba83bb38fa35ed840a551b316c4
             alert("Ingrese un Título para la encuesta");
         }
 
     }
+
 </script>
 @endsection
