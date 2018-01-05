@@ -38,7 +38,7 @@
             <div class="col-md-9 col-sm-12  light-grey" style="width:100%;">
                 <form>
                       <div class="form-group" style="position: fixed;">
-                        </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
+                      </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
                       </div>
                       <div class="col-md-10" style="margin-top: 20px;">
                       <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">

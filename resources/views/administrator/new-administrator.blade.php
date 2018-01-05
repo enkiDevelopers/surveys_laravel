@@ -27,7 +27,7 @@
                                 <input type="email" class="form-control" id="inputEmail3" placeholder="Correo">
                             </div>
                         </div>
-                    <br>
+      
                         <div class="form-group col-md-12">
                             <div class="col-sm-1  pull-right" >
                             <button type="submit" class="btn btn-info">Registrar</button>
