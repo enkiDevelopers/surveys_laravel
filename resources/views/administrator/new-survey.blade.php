@@ -40,19 +40,26 @@
                       <div class="form-group" style="position: fixed;">
                       </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
                       </div>
-                      <div class="col-md-10" style="margin-top: 20px;">
-                      <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Respuesta">
+                      <div class="col-md-9" style="margin-top: 20px;">
+                      <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta">
                       </div>
-                      <div class="col-md-2" style="margin-top: 20px;">
+                      <div class="col-md-9" style="margin-top: 20px;">
+                      <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción de la Encuesta"></textarea>
+                      </div><br><br> <div class="col-md-1"></div>
+
+                      <div class="col-md-2 pull-left" style="margin-top:-40px;">
                           <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-info">
                               <span class="glyphicon glyphicon-pencil"></span>
                           </a>
                           <a href="" class="btn btn-success" >
                               <span class=" glyphicon glyphicon-eye-open "></span>
                           </a>
-                      </div>
-                      <br />
-<br /><br /><br /><br />
+                          <div class=" new-survey__controls" style="margin-top: 20px;margin-left: -30px;" >
+                            <div class="">
+                                <button class="btn btn-success col-md-11 new-survey__control disabled" id="add-question">Agregar pregunta</button>
+                            </div>
+                           </div>
+                      </div> <br /><br /><br /><br /><br />
     <div class="new-survey__question-container"  style="position: fixed; overflow: auto; height: 70%; width:75%; margin-top: 100px;">
 
 
@@ -121,7 +128,7 @@
 
 
                         <div class="row hide yes-no-question-block " id="yes-no-question-template">
-                            <div class="col-md-12 well" data-questions="0" >
+                            <div class="col-md-12 well" data-questions="0" id="childSupport">
                                 <div class="btn-group btn-group-xs pull-right" role="group" aria-label="...">
                                     <button class="btn btn-success add-question-to-yes-no">
                                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -150,15 +157,7 @@
                 </form>
             </div>
                 <!-- <div class="col-md-1">&nbsp</div> -->
-                <div class="" style="margin-left: 400px; margin-top:20px; margin-bottom: 20px;"  >
-                    <div class="col-md-11">
-                        <div class=" new-survey__controls pull-right" >
-                    <div class="">
-                        <button class="btn btn-success col-md-12 new-survey__control disabled" id="add-question">Agregar pregunta</button>
-                    </div>
-                </div>
-                    </div>
-                </div>
+
             </div>
     </div>
 </div>
@@ -166,20 +165,21 @@
 </div>
 </div>
 
-
-
-
-
-        <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+          <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel1">Título de la encuesta</h4>
+                    <button type="button" class="close" onclick="window.history.back();" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel1">Datos Principales de la encuesta</h4>
                 </div>
                 <div class="modal-body">
-                   <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Respuesta">
-                
+                    <h5>Titulo de la encuesta:</h5>
+                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo "><br>
+                    <h5> Descripcición de la encuesta:</h5>
+                    <textarea class="form-control text-black" cols="10" rows="5" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
@@ -209,8 +209,10 @@
     }
 
     function publish(){
-        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " " ) {
+        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " " && $("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
             $("#exampleInputEmail1").val($("#ModalTitleInput").val());
+            $("#inputDesc").val($("#ModalDescInput").val());
+
             $("#ModalTitle").modal('hide');
             verificar();
         }else{

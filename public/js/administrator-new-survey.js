@@ -2,16 +2,14 @@ $(document).ready(function(){
 
     // Agregar una nueva pregunta a la encuesta general
     $("#add-question").on("click", function(){
-
         if ($("#add-question").hasClass("disabled")){
             alert("Ingrese un título");
         }else{
-        $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container");
+        $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("");
+        $("#childSupport").hide();
         setNumberOfQuestionsToSelect();
         getnumberQuestion();
         }
-
-
     });
 
     function setNumberOfQuestionsToSelect(){
@@ -108,7 +106,7 @@ $(document).ready(function(){
         parentYesNo = $(this).parent().parent();
         var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
         parentYesNo.append(elem);
-        parentYesNo.data("questions", parentYesNo.data("multi-options") );
+        parentYesNo.data("questions", parentYesNo.data("multi-options") + 1 );
        // console.log(parentYesNo.data("questions"));
     });
 
