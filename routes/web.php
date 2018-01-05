@@ -37,7 +37,7 @@ Route::get('/surveyed/solve', function () {
 
 Route::get('/administrator/files', function () {
     return view('administrator.files');
-    
+
 });
 
 Route::get('/administrator/file/open', function(){
@@ -72,7 +72,7 @@ Route::get('sendemail', function(){
     $data=array(
         'name' => "Bienvenido a la plataforma de encuestas Enki",
     );
-    
+
     Mail::send('emails.welcome', $data, function($message){
 
         $message->from('enkidevelopers@gmail.com', 'Enki Developers');
@@ -112,4 +112,8 @@ Route::get('/root/new', function(){
 
 Route::get('/administrator/surv-list', function(){
     return view('administrator.surveyed-list');
+});
+
+Route::get('/config',function(){
+  return view('root.config');
 });
