@@ -25,7 +25,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <div class="profile center text-center" href="{{url('/administrator')}}">
+                    <div class="profile center text-center" id="perfil" onclick="profile();" style="cursor:pointer;">
                         <img src="/img/avatar.jpeg" alt="">
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
@@ -85,6 +85,10 @@
                   //  $("#sidebar").addClass('active');
                 }
              });
+
+            function profile(){
+                location.href= "{{url('/administrator')}}";
+            }
          </script>
 </body>
 </html>
