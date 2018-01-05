@@ -181,14 +181,14 @@
                 </div>
                 <div class="modal-body">
                     <h5>Título de la encuesta:</h5>
-                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo "><br>
+                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
                     <h5> Descripción de la encuesta:</h5>
-                    <textarea class="form-control text-black" cols="10" rows="5" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+                    <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
-                    <button type="button" class="btn btn-primary" onclick="publish();" >Guardar</button>
+                    <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
                 </div>
 
 
