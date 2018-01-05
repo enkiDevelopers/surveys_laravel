@@ -25,12 +25,12 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <div class="profile center text-center">
+                    <div class="profile center text-center" href="{{url('/administrator')}}">
                         <img src="/img/avatar.jpeg" alt="">
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
                     <li id="home">
-                        <a href="{{ url('/administrator')}}" >
+                        <a href="{{ url('/administrator/surveys')}}" >
                             <i class="glyphicon glyphicon-briefcase"></i>
                             <span>Encuestas</span>
                         </a>
