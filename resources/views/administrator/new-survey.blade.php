@@ -220,6 +220,5 @@
         }
 
     }
-
 </script>
 @endsection
