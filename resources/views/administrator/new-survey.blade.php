@@ -56,7 +56,7 @@
                           </a>
                           <div class=" new-survey__controls" style="margin-top: 20px;margin-left: -30px;" >
                             <div class="">
-                                <button class="btn btn-success col-md-11 new-survey__control disabled aux" id="add-question">Agregar pregunta</button>
+                                <button class="btn btn-success col-md-11 new-survey__control disabled aux" data-toggle="modal" data-target="#new-question-template" id="add-question">Agregar pregunta</button>
                             </div>
                            </div>
                       </div> <br /><br /><br /><br /><br />
@@ -85,8 +85,10 @@
                             </div>
                         </div>
 
-                        <div class="row new-question-template hide" id="new-question-template">
-                            <div class="col-md-12 well">
+                        <div class="row new-question-template modal fade hide" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;position: relative;" role ="dialog" aria-labelledby="myModalLabel1" id="new-question-template">
+                            <div class="col-md-12 well modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Número</label>
@@ -123,6 +125,8 @@
                                         </button>
                                     </div>
                                 </div>
+                            </div>
+                            </div>
                             </div>
                         </div>
 
@@ -170,8 +174,7 @@
 
           <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
-<form method="post" action="/save">
-            {{ csrf_field() }}
+
                 <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" onclick="window.history.back();" aria-label="Close">
@@ -193,7 +196,6 @@
 
 
                 </div>
-</form>
             </div>
         </div>
 
