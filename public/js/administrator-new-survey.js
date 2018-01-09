@@ -81,7 +81,10 @@ $(document).ready(function(){
                 $(this).parent().parent().next().next().remove();
                 if(!hasNestedQuestion($(this))){
                     var elem = $("#yes-no-question-template").clone().removeClass("hide");
+                    var elem1 = $("#multi-options").clone();
                     $(this).parent().parent().parent().append(elem);
+
+                    $(this).parent().parent().parent().append(elem1);
                 }
                 break;
             /*      case "3":
@@ -120,7 +123,14 @@ $(document).ready(function(){
     var parentYesNo;
 //    $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
     $("#ModalQuestion").on("click", ".add-question-to-yes-no", function(e){
-  
+
+        // Habilitar / Deshabilitar Botón de eliminar de opción de bloque de preguntas de si/no 
+        if(classCount() >= '3'){
+            
+            $(".delete-question-to-yes-no").removeAttr("disabled");
+
+        }
+
         e.preventDefault();
         parentYesNo = $(this).parent().parent();
         var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
@@ -129,10 +139,16 @@ $(document).ready(function(){
        // console.log(parentYesNo.data("questions"));
 
            });
-    
+
+    //Eliminar una opcion multiple
     var parentYesNo;
     $("#ModalQuestion").on('click',".delete-question-to-yes-no", function(e){
+        
+    
 
+        if (classCount() <= '4') {
+            $(".delete-question-to-yes-no").attr("disabled", "true");
+        }
         e.preventDefault();
         parentYesNo = $(this).parent().parent();
         parentYesNo.remove();
@@ -141,6 +157,18 @@ $(document).ready(function(){
         // parentYesNo.data("questions", parentYesNo.data("multi-options") - 1 );
         //console.log(parentYesNo);
 
-    });   
+    });
+
+    function classCount(){
+    var divs = $("div"); 
+    var numDivs = divs.length; 
+    var contador = 0; 
+
+    for(var i = 0; i < numDivs; i++) 
+        if(divs[i].id == "multi-options-template") contador++; 
+
+    return contador;
+   
+}
 
 });
