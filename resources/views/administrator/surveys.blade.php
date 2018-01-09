@@ -32,11 +32,12 @@
 
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-4">
+                    	 <?php foreach ($plantillas as $plantilla) { ?>
+                        <div class="col-md-4">                                          
                             <div class="card well" >
                                 <img class="card-img-top" alt="Card image cap">
                                 <div class="card-body">
-                                    <h4 class="card-title">Titulo de la encuesta</h4>
+                                    <h4 class="card-title">  <?php echo $plantilla->Titulo_ecuesta;  ?></h4>
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
@@ -53,37 +54,12 @@
                                         </button>
                                         
                                     </div>
-                                    <!-- <a  class="" href="{{ url('/surveyed/solve') }}">Ver</a>&nbsp&nbsp
-                                    <a  class="" href="{{ url('/surveyed/solve') }}">Editar</a>&nbsp&nbsp
-                                    <a  class="" href="#" data-toggle="modal" data-target="#myModal">Publicar</a> -->
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Titulo de la encuesta</h4>
-                                    <p class="card-text">Creada por <span class="template-creator">Administrador2</span></p>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar">
-                                            <span class="glyphicon glyphicon-send"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Copiar">
-                                            <span class="glyphicon glyphicon-copy"></span>
-                                        </button>
-                                    
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <?php } ?>
+
 
                         <div class="col-md-3">
                             <div class="card well card-new-survey" >
@@ -105,6 +81,7 @@
 
 
             <!-- Modal publicar encuesta-->
+          
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -121,11 +98,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Publicar</button>
+                    <button type="submit" class="btn btn-primary">Publicar</button>
                 </div>
                 </div>
             </div>
             </div>
+       
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -205,8 +183,8 @@
         </div>
     </div>
 </div>
-
-
+				 <form method="post" action="/save">
+            	  {{ csrf_field() }}
         <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
 
@@ -233,8 +211,7 @@
                 </div>
             </div>
         </div>
-
-
+   		  </form>
 <script>
     
     window.onload = function() {

@@ -6,6 +6,7 @@
     <div class="row">
         <div class="col-md-11">
         <!-- Modal publicar encuesta-->
+
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -41,10 +42,10 @@
                       </div> <label for="exampleInputEmail1">Titulo de la encuesta</label>
                       </div>
                       <div class="col-md-9" style="margin-top: 20px;">
-                      <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta">
+                      <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="<?php echo $titulo; ?> ">
                       </div>
                       <div class="col-md-9" style="margin-top: 20px;">
-                      <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción de la Encuesta"></textarea>
+                      <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="<?php echo $descripcion; ?>"></textarea>
                       </div><br><br> <div class="col-md-1"></div>
 
                       <div class="col-md-2 pull-left" style="margin-top:-40px;">
@@ -171,7 +172,7 @@
 
 
 
-
+<!--
           <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
 
@@ -199,7 +200,7 @@
             </div>
         </div>
 
-
+-->
 <script>
 
 
