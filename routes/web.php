@@ -23,9 +23,7 @@ Route::get('/administrator', function () {
     return view('administrator.home');
 });
 
-Route::get('/administrator/surveys', function () {
-    return view('administrator.surveys');
-});
+Route::get('/administrator/surveys', 'surveyController@show_cards');
 
 Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
