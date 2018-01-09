@@ -16,7 +16,7 @@
                                     Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div> 
                                 <div class="col-md-2 pull-right">
-                                    Editar&nbsp&nbsp<span class="glyphicon glyphicon-pencil"></span>
+                                    Editar&nbsp&nbsp<span class="glyphicon glyphicon-pencil" ></span>
                                 </div> 
                                 <div class="col-md-2 pull-right">
                                     Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span>
@@ -40,9 +40,9 @@
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                            <span class="glyphicon glyphicon-eye-open" ></span>
                                         </button>
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                        <button type="button" class="btn btn-default" onclick="editar();" data-toggle="tooltip" data-placement="top" title="Editar">
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </button>
                                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar">
@@ -210,6 +210,10 @@
     
     window.onload = function() {
         $("#home").addClass('active');
+    }
+
+    function editar(){
+        window.location = "{{ url('/administrator/edit') }}";
     }
 </script>
 @endsection

@@ -123,3 +123,7 @@ Route::get('/config',function(){
 });
 
 Route::post('/save', 'surveyController@save');
+
+Route::get('/administrator/edit',function(){
+    return view ('administrator.edit');
+});

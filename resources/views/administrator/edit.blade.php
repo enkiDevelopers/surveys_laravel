@@ -206,7 +206,7 @@
 
     window.onload = function() {
         $("#home").addClass('active');
-        $('#ModalTitle').modal();
+  //      $('#ModalTitle').modal();
 
     }
 
