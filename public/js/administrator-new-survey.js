@@ -17,7 +17,7 @@ $(document).ready(function(){
                 getnumberQuestion();
 
             }
-}
+        }
     });
 
     function setNumberOfQuestionsToSelect(){
@@ -45,12 +45,15 @@ $(document).ready(function(){
     }
 
     // Eliminar una pregunta
-    $(".new-survey__question-container").on("click", ".new-question__control--delete-question", function(){
-        $(this).parent().parent().parent().parent().remove();
-        setNumberOfQuestionsToSelect();
-        getnumberQuestion();
+    $("#ModalQuestion").on("click", ".new-question__control--delete-question", function(){
+       //var a = $(this).parent().parent().parent().prev().children().children().next().next().next().remove();
+       $("#ModalQuestion").modal('hide').find("input").val("").find(".yes-no-question").val("'1");
+       var a = $(this).parent().parent().parent().prev().children().children().next().next().next().remove();
+       
+       console.log(a);
+       setNumberOfQuestionsToSelect();
+       getnumberQuestion();
     });
-
 
     // Editar una pregunta
     $(".new-survey__question-container").on("click", ".new-question__control--edit-question", function(){
@@ -64,11 +67,15 @@ $(document).ready(function(){
     });
 
     // Crear un bloque de preguntas si/no para la pregunta en cuestion
-    $(".new-survey__question-container").on("change", ".yes-no-question", function(){
+//    $(".new-survey__question-container").on("change", ".yes-no-question", function(){
+    $("#ModalQuestion").on("change", ".yes-no-question", function(){
+
         switch($(this).val()){
             case "1":
-                var o = $(this).parent().parent().next().next().remove();
-                console.log(o);
+                //var o = $(this).parent().parent().next().next().remove();
+                //console.log(o);
+                var a = $(this).parent().parent().next().remove();
+                console.log(a);
                 break;
             case "2":
                 $(this).parent().parent().next().next().remove();
@@ -77,20 +84,21 @@ $(document).ready(function(){
                     $(this).parent().parent().parent().append(elem);
                 }
                 break;
-            case "3":
-                $(this).parent().parent().next().next().remove();
-                if(!hasNestedQuestion($(this))){
-                    var elem = $("#satisfaction-question-template").clone().removeClass("hide");
-                    $(this).parent().parent().parent().append(elem);
-                }
-                break;
+            /*      case "3":
+                        $(this).parent().parent().next().next().remove();
+                        if(!hasNestedQuestion($(this))){
+                            var elem = $("#satisfaction-question-template").clone().removeClass("hide");
+                            $(this).parent().parent().parent().append(elem);
+                        }
+                        break;
+            */            
         }
-
     });
 
     function hasNestedQuestion(elem){
         return elem.parent().parent().parent().has('.new-satisfaction-question-template').length != 0 || elem.parent().parent().parent().has('.yes-no-question-block').length != 0;
     }
+
     function hasNestedQuestionOfType(elem, type){
         return elem.parent().parent().parent().has(type).length != 0;
     }
@@ -107,15 +115,32 @@ $(document).ready(function(){
 
     });
 */
+
     // Agrega una nueva opcion a un bloque de preguntas de si/no
     var parentYesNo;
-    $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
+//    $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
+    $("#ModalQuestion").on("click", ".add-question-to-yes-no", function(e){
+  
         e.preventDefault();
         parentYesNo = $(this).parent().parent();
         var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
         parentYesNo.append(elem);
         parentYesNo.data("questions", parentYesNo.data("multi-options") + 1 );
        // console.log(parentYesNo.data("questions"));
-    });
+
+           });
+    
+    var parentYesNo;
+    $("#ModalQuestion").on('click',".delete-question-to-yes-no", function(e){
+
+        e.preventDefault();
+        parentYesNo = $(this).parent().parent();
+        parentYesNo.remove();
+        //var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
+        //parentYesNo.append(elem);
+        // parentYesNo.data("questions", parentYesNo.data("multi-options") - 1 );
+        //console.log(parentYesNo);
+
+    });   
 
 });

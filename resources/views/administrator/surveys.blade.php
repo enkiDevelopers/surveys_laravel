@@ -91,7 +91,7 @@
                                     <h4 class="card-title">Añadir Plantilla de Encuesta</h4>
                                     <p class="card-text"></p><br>
                                         <p>
-                                            <a  href="{{ url('/administrator/surveys/new') }}" class="btn btn-default btn-lg btn-new-survey">
+                                            <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-default btn-lg btn-new-survey">
                                               <span class="glyphicon glyphicon-plus text-center"></span>  
                                             </a>
                                         </p>
@@ -206,6 +206,35 @@
     </div>
 </div>
 
+
+        <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="window.history.back();" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>Título de la encuesta:</h5>
+                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
+                    <h5> Descripción de la encuesta:</h5>
+                    <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
+                </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
 <script>
     
     window.onload = function() {
@@ -215,6 +244,32 @@
     function editar(){
         window.location = "{{ url('/administrator/edit') }}";
     }
+
+        function verificar(){
+        if ($("#exampleInputEmail1").val() != "") {
+            $("#add-question").removeClass('disabled');
+            window.location ="{{ url('/administrator/edit') }}";
+        }else{
+
+        }
+    }
+
+    function publish(){
+        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " ") {
+            if ($("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
+                $("#exampleInputEmail1").val($("#ModalTitleInput").val());
+                $("#inputDesc").val($("#ModalDescInput").val());
+                $("#ModalTitle").modal('hide');
+                verificar();
+            }else{
+                alert("Ingrese una descripción para la encuesta");
+            }
+            }else{
+       alert("Ingrese un Título para la encuesta");
+        }
+
+    }
+
 </script>
 @endsection
 
