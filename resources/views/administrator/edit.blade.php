@@ -217,8 +217,7 @@
 													<div class="col-md-3 pull-right">
 		                                            <label for="brincoInput">Brincar</label>
 		                                            <select class="form-control text-black-body">
-		                                            	<option value="3">3</option>
-		                                            	<option value="4">4</option>
+>
 		                                            </select>
 													</div>
                                          
@@ -229,10 +228,20 @@
 		                                </div>
 
 		                                <div class="col-md-12" id="multi-options">
-		                                    <div class="col-md-6 " data-multioptions="0" id="multi-options-template" >
+		                                    <div class="col-md-12 " data-multioptions="0" id="multi-options-template" >
 		                                        <div class="form-group">
+		                                        	<div class="col-md-6">
 		                                            <label for="exampleInputEmail1">Opción Respuesta</label>
-		                                            <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" value="Opción Dos" disabled="">                    
+		                                            <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" value="Opción Uno" disabled="">
+													</div>
+													<div class="col-md-3 pull-right">
+		                                            <label for="brincoInput">Brincar</label>
+		                                            <select class="form-control text-black-body">
+		                                            	<option value="3">3</option>
+		                                            	<option value="4">4</option>
+		                                            </select>
+													</div>
+                                         
 		                                        </div>
 		                                    </div>
 		                                    <div class="col-md-4">
