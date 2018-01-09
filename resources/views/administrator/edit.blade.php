@@ -88,7 +88,8 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-				            <h4 class="modal-title" id="ModalQuestionLabel">Agregar Pregunta</h4>
+				            <h4 class="modal-title" id="ModalQuestionLabel">Agregar Pregunta</h4>			       				
+			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="10%" height="10%">	
 						</div>
 						<div class="modal-body">
 			                <div class=" col-md-12 well">
@@ -125,7 +126,7 @@
 			                	        <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
 			                        </button>
 			                        <button class="btn btn-info col-md-1 pull-right new-question__control new-question__control--delete-question">
-			                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 			                        </button>
 			                    </div>
 			                </div>
