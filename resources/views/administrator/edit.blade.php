@@ -7,8 +7,13 @@
 			<div class="row">
 			    <div class="col-md-12 ">
 			        <div>
-			            <div class="col-md-10 col-sm-12  light-grey" style="width:100%;">
+			            <div class="col-md-10 col-sm-12  light-grey">
 			                <h2 class="text-center">Plantilla de Encuesta</h2>
+			            </div>
+			       		<div class="col-md-10" style="margin-top:10px;">
+			       			<center>	
+			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="20%" height="20%">
+			            	</center>
 			            </div>
 			            <div class="col-md-10 col-sm-12  " style="width:100%;">
 			                <div class="form-group" style="position: fixed;"></div> 
@@ -207,8 +212,9 @@
 													</div>
 													<div class="col-md-3 pull-right">
 		                                            <label for="brincoInput">Brincar</label>
-		                                            <select class="form-control text-black-body" disabled="">
+		                                            <select class="form-control text-black-body">
 		                                            	<option value="3">3</option>
+		                                            	<option value="4">4</option>
 		                                            </select>
 													</div>
                                          
@@ -238,8 +244,9 @@
 													</div>
 													<div class="col-md-3 pull-right">
 		                                            <label for="brincoInput">Brincar</label>
-		                                            <select class="form-control text-black-body" disabled="">
-		                                            	<option value="3">4</option>
+		                                            <select class="form-control text-black-body" >
+		                                            	<option value="4">4</option>
+		                                            	<option value="3">3</option>
 		                                            </select>
 													</div>
                                          
