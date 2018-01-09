@@ -12,7 +12,7 @@
 			            </div>
 			       		<div class="col-md-10" style="margin-top:10px;">
 			       			<center>	
-			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="20%" height="20%">
+			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="10%" height="10%">
 			            	</center>
 			            </div>
 			            <div class="col-md-10 col-sm-12  " style="width:100%;">
@@ -20,33 +20,37 @@
 			                <label for="exampleInputEmail1" >Título de la encuesta</label>
 			            </div>
 			            <div class="col-md-10" style="margin-top: 5px;margin-bottom:15px;">
-			                <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta" value="asdlkjsadkla">
+			                <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta" value="Título de la plantilla">
 			            </div>
 			            <div class="col-md-10 col-sm-12 " style="width:100%;">
 			                <div class="form-group" style="position: fixed;"></div> 
 			                <label for="exampleInputEmail1" >Descripión de la encuesta</label>
 			            </div>
 			            <div class="col-md-10" style="margin-top: 5px;">
-			                <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción de la Encuesta">sadsa</textarea>
+			                <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción">Breve descripción </textarea>
 			            </div>
-			            <div class="col-md-12">
-			            	<div class="col-md-3 pull-right"></div>
-					            <div class="col-md-1 pull-right" style="margin-top:10px;">
+			            <div class="row col-md-12">
+			            	<div class="col-md-9 "></div>
+					            <div class="col-md-3 pull-right" style="margin-top:10px;">
 					                <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-info">
 						                <span class="glyphicon glyphicon-pencil"></span>
 					                </a>
 					            </div>
 					   </div>
-			                <div class=" new-survey__controls" >
-			                	<div>
-			                		<div class="col-md-3"></div>
-			                        <button class="btn btn-success col-md-3 new-survey__control "  onclick="ModalQuestion();" id="add-question">Agregar pregunta</button>
+					    <div class="row col-md-12">
+			                <div class=" new-survey__controls " > <center>
+			                	<div class="col-md-4 pull-left col-md-offset-3 ">
+			                        <button class="btn btn-success new-survey__control "  onclick="ModalQuestion();" id="add-question">Agregar pregunta</button>
 			                    </div>	
-			                    <div class="col-md-1"></div>
-			                    <a href="" class="btn btn-success col-md-1" style="margin-left: -40px;padding-bottom: 10px;" >
-			                    	<span class=" glyphicon glyphicon-eye-open "></span>
-			                	</a>
+			                    <div class="col-md-1 pull-left">
+				                    <a href="" class="btn btn-success">
+				                    	<span class=" glyphicon glyphicon-eye-open "></span>
+				                	</a>			                    	
+			                    </div>
+</center>
 			                </div>
+	  				    </div>
+
 			    	</div>
 				</div><br><br><br><br><br>
 																						 <!-- height: 70% -->
@@ -348,6 +352,35 @@
     </div>
 </div>      
 </div>
+
+
+          <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>Título de la encuesta:</h5>
+                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
+                    <h5> Descripción de la encuesta:</h5>
+                    <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
+                </div>
+
+
+                </div>
+            </div>
+        </div>
+
  @endsection
 <script>
 
@@ -358,5 +391,30 @@
      function ModalQuestion(){
      	$("#ModalQuestion").appendTo('body').modal();
      }
+
+         function verificar(){
+        if ($("#exampleInputEmail1").val() != "") {
+            $("#add-question").removeClass('disabled');
+        }else{
+
+        }
+    }
+
+    function publish(){
+        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " ") {
+            if ($("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
+                $("#exampleInputEmail1").val($("#ModalTitleInput").val());
+                $("#inputDesc").val($("#ModalDescInput").val());
+                $("#ModalTitle").modal('hide');
+                verificar();
+            }else{
+                alert("Ingrese una descripción para la encuesta");
+            }
+            }else{
+       alert("Ingrese un Título para la encuesta");
+        }
+
+    }
+
 
 </script>
