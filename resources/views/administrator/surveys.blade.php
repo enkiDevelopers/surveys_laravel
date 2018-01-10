@@ -204,20 +204,37 @@
 
                 <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" onclick="window.history.back();" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
+  <div class="row">
+      <div class="col-sm-10">
+        <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
+      </div>
+
+
+      <div class="col-sm-2 pull-right pull-right">
+        <div class="pull-right">
+        <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys"></a>
+        </div>
+      </div>
+    </div>
+
+
                 </div>
                 <div class="modal-body">
                     <h5>Título de la encuesta:</h5>
                     <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
                     <h5> Descripción de la encuesta:</h5>
                     <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+                    <h5> Icono de la encuesta:</h5>
+                    <input type="file" id="foto1" onchange="return ShowImagePreview( this.files );" /> <br />
+                    
+  <div id="previewcanvascontainer" style="height 200px; width 200px;">
+  <canvas id="previewcanvas" >
+  </canvas>
+  </div>
 
                 </div>
                 <div class="modal-footer">
-<a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys">Cancelar</a>
+                  <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys">Cancelar</a>
                     <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
                 </div>
 
@@ -245,6 +262,7 @@
         }
     }
 
+
     function publish(){
         if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " ") {
             if ($("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
@@ -260,6 +278,84 @@
         }
 
     }
+
+
+    function ShowImagePreview( files )
+{
+
+    if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
+    {
+      alert('Por favor Ingrese un archivo de Imagen');
+      return false;
+    }
+
+    if( typeof FileReader === "undefined" )
+    {
+        alert( "Filereader undefined!" );
+        return false;
+    }
+
+    var file = files[0];
+
+    if( !( /image/i ).test( file.type ) )
+    {
+        alert( "El archivo no es una imagen" );
+        return false;
+    }
+
+    reader = new FileReader();
+    reader.onload = function(event)
+            { var img = new Image;
+              img.onload = UpdatePreviewCanvas;
+              img.src = event.target.result;  }
+    reader.readAsDataURL( file );
+}
+
+function UpdatePreviewCanvas()
+{
+    var img = this;
+    var canvas = document.getElementById( 'previewcanvas' );
+
+    if( typeof canvas === "undefined"
+        || typeof canvas.getContext === "undefined" )
+        return;
+
+    var context = canvas.getContext( '2d' );
+
+    var world = new Object();
+    world.width = canvas.offsetWidth;
+    world.height = canvas.offsetHeight;
+
+    canvas.width = world.width;
+    canvas.height = world.height;
+
+    if( typeof img === "undefined" )
+        return;
+
+    var WidthDif = img.width - world.width;
+    var HeightDif = img.height - world.height;
+
+    var Scale = 0.0;
+    if( WidthDif > HeightDif )
+    {
+        Scale = world.width / img.width;
+    }
+    else
+    {
+        Scale = world.height / img.height;
+    }
+    if( Scale > 1 )
+        Scale = 1;
+
+    var UseWidth = Math.floor( img.width * Scale );
+    var UseHeight = Math.floor( img.height * Scale );
+
+    var x = Math.floor( ( world.width - UseWidth ) / 2);
+    var y = Math.floor( ( world.height - UseHeight ) / 2 );
+
+    context.drawImage( img, x, y, 200, 200 );
+}
+
 
 </script>
 @endsection

@@ -125,3 +125,7 @@ Route::post('/save', 'surveyController@save');
 Route::get('/administrator/edit',function(){
     return view ('administrator.edit');
 });
+
+Route::get('/borrar', function(){
+  return view("administrator.borrar");
+});
