@@ -16,7 +16,7 @@ class surveyController extends Controller
     $descripcion = $request['descripcion'];
 
       $surv = new surveys;
-      $surv->Titulo_ecuesta = $titulo;
+      $surv->Titulo_encuesta = $titulo;
       $surv->Descripcion = $descripcion;
       $surv->save();
       return view('administrator.edit',compact('titulo','descripcion'));

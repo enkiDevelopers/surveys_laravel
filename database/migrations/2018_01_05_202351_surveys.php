@@ -16,8 +16,9 @@ class Surveys extends Migration
       Schema::create('surveys',function(Blueprint $table)
       {
           $table->Increments('id');
-          $table->string('Titulo_ecuesta');
+          $table->string('Titulo_encuesta');
           $table->string('Descripcion');
+          $table->string('Image_path');
           $table->timestamps();
       });
 
