@@ -1,39 +1,62 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container" >
+
+
     <div class="row">
-        <div class="col-md-10">
+      <div class="col-md-10">
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-4">
                             Plantillas
-                        </div>    
+                        </div>
+
                         <div class="col-md-9 pull-right">
                             <div class="row">
-                                <div class="col-md-1">&nbsp</div>  
+                                <div class="col-md-1">&nbsp</div>
                                 <div class="col-md-2 pull-right">
                                     Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
-                                </div> 
+                                </div>
                                 <div class="col-md-2 pull-right">
                                     Editar&nbsp&nbsp<span class="glyphicon glyphicon-pencil" ></span>
-                                </div> 
+                                </div>
                                 <div class="col-md-2 pull-right">
                                     Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span>
-                                </div> 
+                                </div>
                                 <div class="col-md-2 pull-right">
                                     Copiar&nbsp&nbsp<span class="glyphicon glyphicon-copy"></span>
-                                </div>   
-  
+                                </div>
+
                             </div>
                         </div>
-                    </div>    
+                    </div>
                 </div>
+<!-- Aqui debe de ir Agregar plantilla -->
 
+
+ <!-- Aqui debe de ir Agregar plantilla -->
                 <div class="panel-body">
                     <div class="row">
+
+
+                             <div class="col-md-3">
+                            <div class="card well card-new-survey" >
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">Añadir Plantilla de Encuesta</h4>
+                                    <p class="card-text"></p><br>
+                                        <p>
+                                            <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-default btn-lg btn-new-survey">
+                                              <span class="glyphicon glyphicon-plus text-center"></span>
+                                            </a>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+
                     	 <?php foreach ($plantillas as $plantilla) { ?>
-                        <div class="col-md-4">                                          
+                        <div class="col-md-4">
                             <div class="card well" >
                                 <img class="card-img-top" alt="Card image cap">
                                 <div class="card-body">
@@ -52,7 +75,7 @@
                                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Copiar">
                                             <span class="glyphicon glyphicon-copy"></span>
                                         </button>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -61,27 +84,15 @@
                 <?php } ?>
 
 
-                        <div class="col-md-3">
-                            <div class="card well card-new-survey" >
-                                <div class="card-body text-center">
-                                    <h4 class="card-title">Añadir Plantilla de Encuesta</h4>
-                                    <p class="card-text"></p><br>
-                                        <p>
-                                            <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-default btn-lg btn-new-survey">
-                                              <span class="glyphicon glyphicon-plus text-center"></span>  
-                                            </a>
-                                        </p>
-                                </div>
-                            </div>
-                        </div>
-                            
+
+
                     </div>
                 </div>
             </div>
 
 
             <!-- Modal publicar encuesta-->
-          
+
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -103,16 +114,16 @@
                 </div>
             </div>
             </div>
-       
+
 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
-                            
+
                             Encuestas publicadas
-                        </div>  
-                        <div class="col-md-1">&nbsp</div>  
+                        </div>
+                        <div class="col-md-1">&nbsp</div>
                         <div class="col-md-5 ">
                             <div class="row">
                                 <div class="col-md-4">
@@ -120,13 +131,13 @@
                                 </div>
                                 <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
-                                </div> 
+                                </div>
                                 <div class="col-md-4">
                                     Finalizada<div class="pull-right survey-status survey-status__finished">&nbsp</div>
-                                </div>      
+                                </div>
                             </div>
                         </div>
-                    </div>    
+                    </div>
                     <!-- <div class=" bg-dark-red simbo">
                         <div class="row">
                             <div class="col-md-4">
@@ -137,7 +148,7 @@
                     clos<div class=" survey-status survey-status__finished">&nbsp</div></div> -->
 
                     </div>
-                    
+
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3">
@@ -150,11 +161,11 @@
                                         <a href="{{ url('/surveyed/solve') }}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                    </div>                                    
+                                    </div>
                                     <div class="pull-right survey-status survey-status__finished">&nbsp</div>
-                                 
+
                                     <!-- <a  class="" href="{{ url('/surveyed/solve') }}">Editar</a> -->
-                                   
+
                                 </div>
                             </div>
                         </div>
@@ -172,7 +183,7 @@
                                     </div>
                                     <div class="pull-right survey-status survey-status__active">&nbsp</div>
                                     <!-- <a  class="" href="">Editar</a> -->
-                                 
+
                                 </div>
                             </div>
                         </div>
@@ -213,7 +224,7 @@
         </div>
    		  </form>
 <script>
-    
+
     window.onload = function() {
         $("#home").addClass('active');
     }
@@ -249,4 +260,3 @@
 
 </script>
 @endsection
-
