@@ -217,7 +217,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.history.back();">Cancelar</button>
+<a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys">Cancelar</a>
                     <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
                 </div>
 
