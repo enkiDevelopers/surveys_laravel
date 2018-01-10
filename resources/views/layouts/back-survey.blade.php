@@ -31,14 +31,14 @@
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
                     <li id="home">
-                        <a href="{{ url('/administrator')}}" >
+                        <a href="{{ url('/administrator/surveys')}}" >
                             <i class="glyphicon glyphicon-arrow-left	Try it
 "></i>
                             <span> volver</span>
                         </a>
                     </li>
 
-                  
+
 
         <!--                <li id="list-surveyed">
                         <a href="{{ url('/administrator/surv-list') }}">
@@ -59,9 +59,9 @@
     <script type="text/javascript">
             $(document).ready(function () {
 
-                var alto = (screen.height) - (screen.availHeight); 
+                var alto = (screen.height) - (screen.availHeight);
                 var barra = screen.availHeight - alto - (alto/2) - (alto/4);
-                
+
                 $("#sidebar").height(barra);
                  $('#sidebarCollapse').on('click', function () {
                      $('#sidebar').toggleClass('active');

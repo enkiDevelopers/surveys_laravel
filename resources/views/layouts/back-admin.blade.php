@@ -31,7 +31,7 @@
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
                     <li id="home">
-                        <a href="{{ url('administrator/management')}}" >
+                        <a href="{{ url('administrator/surveys')}}" >
                             <i class="glyphicon glyphicon-arrow-left	Try it
 "></i>
                             <span> volver</span>
@@ -59,7 +59,7 @@
     <script type="text/javascript">
             $(document).ready(function () {
 
-                var alto = (screen.height) - (screen.availHeight); 
+                var alto = (screen.height) - (screen.availHeight);
                 var barra = screen.availHeight - alto - (alto/2) - (alto/4);
 
                 $("#sidebar").height(barra);

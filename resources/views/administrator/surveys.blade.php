@@ -6,8 +6,8 @@
     <div class="row">
       <div class="col-md-10">
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
+            <div class="panel panel-default ">
+                <div class="panel-heading fijado">
                     <div class="row">
                         <div class="col-md-4">
                             Plantillas
@@ -28,6 +28,9 @@
                                 <div class="col-md-2 pull-right">
                                     Copiar&nbsp&nbsp<span class="glyphicon glyphicon-copy"></span>
                                 </div>
+                                <div class="col-md-2 pull-right">
+                                    Eliminar&nbsp&nbsp<span class="glyphicon glyphicon-trash"></span>
+                                </div>
 
                             </div>
                         </div>
@@ -35,13 +38,10 @@
                 </div>
 <!-- Aqui debe de ir Agregar plantilla -->
 
-
  <!-- Aqui debe de ir Agregar plantilla -->
-                <div class="panel-body">
+                <div class="panel-body scroll">
                     <div class="row">
-
-
-                             <div class="col-md-3">
+                             <div class="col-md-4">
                             <div class="card well card-new-survey" >
                                 <div class="card-body text-center">
                                     <h4 class="card-title">Añadir Plantilla de Encuesta</h4>
@@ -74,6 +74,9 @@
                                         </button>
                                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Copiar">
                                             <span class="glyphicon glyphicon-copy"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                            <span class="glyphicon glyphicon-trash"></span>
                                         </button>
 
                                     </div>

@@ -11,23 +11,23 @@
 			                <h2 class="text-center">Plantilla de Encuesta</h2>
 			            </div>
 			       		<div class="col-md-10" style="margin-top:10px;">
-			       			<center>	
+			       			<center>
 			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="10%" height="10%">
 			            	</center>
 			            </div>
 			            <div class="col-md-10 col-sm-12  " style="width:100%;">
-			                <div class="form-group" style="position: fixed;"></div> 
+			                <div class="form-group" style="position: fixed;"></div>
 			                <label for="exampleInputEmail1" >Título de la encuesta</label>
 			            </div>
 			            <div class="col-md-10" style="margin-top: 5px;margin-bottom:15px;">
-			                <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta" value="Título de la plantilla">
+			                <input type="text" class="form-control text-black" disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta" value="<?php echo $titulo; ?>">
 			            </div>
 			            <div class="col-md-10 col-sm-12 " style="width:100%;">
-			                <div class="form-group" style="position: fixed;"></div> 
+			                <div class="form-group" style="position: fixed;"></div>
 			                <label for="exampleInputEmail1" >Descripión de la encuesta</label>
 			            </div>
 			            <div class="col-md-10" style="margin-top: 5px;">
-			                <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción">Breve descripción </textarea>
+			                <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción"><?php echo $descripcion; ?> </textarea>
 			            </div>
 			            <div class="row col-md-12">
 			            	<div class="col-md-9 "></div>
@@ -41,11 +41,11 @@
 			                <div class=" new-survey__controls " > <center>
 			                	<div class="col-md-4 pull-left col-md-offset-3 ">
 			                        <button class="btn btn-success new-survey__control "  onclick="ModalQuestion();" id="add-question">Agregar pregunta</button>
-			                    </div>	
+			                    </div>
 			                    <div class="col-md-1 pull-left">
 				                    <a href="" class="btn btn-success">
 				                    	<span class=" glyphicon glyphicon-eye-open "></span>
-				                	</a>			                    	
+				                	</a>
 			                    </div>
 </center>
 			                </div>
@@ -71,7 +71,7 @@
 		                                            <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
 				                                    <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled="" style="margin-top: 5px;">
 		                                        		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-		                                    		</button>                                            
+		                                    		</button>
 		                                        </div>
 		                                    </div>
 		                                    <div class="col-md-4">
@@ -88,8 +88,8 @@
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
-				            <h4 class="modal-title" id="ModalQuestionLabel">Agregar Pregunta</h4>			       				
-			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="10%" height="10%">	
+				            <h4 class="modal-title" id="ModalQuestionLabel">Agregar Pregunta</h4>
+			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="10%" height="10%">
 						</div>
 						<div class="modal-body">
 			                <div class=" col-md-12 well">
@@ -114,13 +114,13 @@
 			                                </select>
 			                        </div>
 			                    </div>
-			                </div>				
+			                </div>
 						</div>
 						<div class="modal-footer">
 						 <div class="row">
 							<div class="col-md-12 pull-right">
 
-			           		<!--	<button class="btn btn-info col-md-1 pull-right new-question__control 
+			           		<!--	<button class="btn btn-info col-md-1 pull-right new-question__control
 									new-question__control--edit-question"> -->
 			                        <button class="btn btn-danger col-md-1 pull-right new-question__control new-question__control--add-question">
 			                	        <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
@@ -130,13 +130,13 @@
 			                        </button>
 			                    </div>
 			                </div>
-					
+
 						</div>
 					</div>
 					</div>
 				</div>
 			</div>
-				
+
 		<div style="overflow-x: hidden; overflow-y: auto; height: 54%;position: relative;width: 90%">
             <div class="row col-md-12 new-question-template " style="margin-left: 13px;margin-top: 15px; ">
                 <div class="col-md-11 well">
@@ -178,7 +178,7 @@
 	                                    </div>
 	                </div>
                 </div>
-            </div>   
+            </div>
 
             <div class="row col-md-12 new-question-template " style="margin-left: 13px;margin-top: 15px; ">
                 <div class="col-md-11 well">
@@ -186,7 +186,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Número</label>
                             <select class="form-control questions-of-master-survey text-black-body" disabled="">
-                            	
+
                             	<option value="2">2</option>
                             	<option value="3">3</option>
                             	<option value="4">4</option>
@@ -221,7 +221,7 @@
 >
 		                                            </select>
 													</div>
-                                         
+
 		                                        </div>
 		                                    </div>
 		                                    <div class="col-md-4">
@@ -242,7 +242,7 @@
 		                                            	<option value="4">4</option>
 		                                            </select>
 													</div>
-                                         
+
 		                                        </div>
 		                                    </div>
 		                                    <div class="col-md-4">
@@ -263,12 +263,12 @@
 		                                            	<option value="3">3</option>
 		                                            </select>
 													</div>
-                                         
+
 		                                        </div>
 		                                    </div>
 		                                    <div class="col-md-4">
 		                                    </div>
-		                                </div>		                                	                
+		                                </div>
 	                <div class="col-md-2 pull-right" style="margin-bottom: 15px;">
 	                                    <div class="row">
 	                                        <button class="btn btn-danger col-md-4  new-question__control new-question__control--edit-question">
@@ -280,7 +280,7 @@
 	                                    </div>
 	                </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="row col-md-12 new-question-template " style="margin-left: 13px;margin-top: 15px; ">
                 <div class="col-md-11 well">
@@ -318,7 +318,7 @@
 	                                    </div>
 	                </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="row col-md-12 new-question-template " style="margin-left: 13px;margin-top: 15px; ">
                 <div class="col-md-11 well">
@@ -356,11 +356,11 @@
 	                                    </div>
 	                </div>
                 </div>
-            </div>  
-		</div>                       
+            </div>
+		</div>
         </div>
     </div>
-</div>      
+</div>
 </div>
 
 

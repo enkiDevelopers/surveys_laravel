@@ -19,7 +19,7 @@ class surveyController extends Controller
       $surv->Titulo_ecuesta = $titulo;
       $surv->Descripcion = $descripcion;
       $surv->save();
-      return view('administrator.new-survey',compact('titulo','descripcion'));
+      return view('administrator.edit',compact('titulo','descripcion'));
   }
 
   public function show_cards()
