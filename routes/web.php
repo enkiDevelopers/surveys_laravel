@@ -129,3 +129,7 @@ Route::get('/administrator/edit',function(){
 Route::get('/borrar', function(){
   return view("administrator.borrar");
 });
+
+Route::get('/administrator/surveys/preview',function(){
+    return view("administrator.preview");
+});
