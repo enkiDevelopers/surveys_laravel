@@ -12,7 +12,7 @@
 			            </div>
 			       		<div class="col-md-10" style="margin-top:10px;">
 			       			<center>
-			                	<img src="https://www.mathworks.com/content/mathworks/www/en/solutions/verification-validation/jcr:content/svg.adapt.full.high.svg/1507664300553.svg" width="10%" height="10%">
+			                	<img src="img/iconos/<?php echo $nombre;?>" width="10%" height="10%">
 			            	</center>
 			            </div>
 			            <div class="col-md-10 col-sm-12  " style="width:100%;">

@@ -24,7 +24,7 @@ class surveyController extends Controller
       $surv->Descripcion = $descripcion;
       $surv->Image_path	= $nombre;
       $surv->save();
-      return view('administrator.edit',compact('titulo','descripcion','icono'));
+      return view('administrator.edit',compact('titulo','descripcion','nombre'));
   }
 
   public function show_cards()
