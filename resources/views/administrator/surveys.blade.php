@@ -58,9 +58,9 @@
                     	 <?php foreach ($plantillas as $plantilla) { ?>
                         <div class="col-md-4">
                             <div class="card well" >
-                                <img class="card-img-top" alt="Card image cap">
+                                <img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $plantilla->Image_path;?>" width="200px" height="80px"> 
                                 <div class="card-body">
-                                    <h4 class="card-title">  <?php echo $plantilla->Titulo_ecuesta;  ?></h4>
+                                    <h4 class="card-title">  <?php echo $plantilla->Titulo_encuesta;  ?></h4>
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
@@ -197,7 +197,7 @@
         </div>
     </div>
 </div>
-				 <form method="post" action="/save">
+				 <form method="post" action="/save" enctype="multipart/form-data">
             	  {{ csrf_field() }}
         <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
@@ -221,12 +221,13 @@
                 </div>
                 <div class="modal-body">
                     <h5>Título de la encuesta:</h5>
-                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
+                    <input type="text" class="form-control text-black " required id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
                     <h5> Descripción de la encuesta:</h5>
-                    <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+                    <textarea class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
                     <h5> Icono de la encuesta:</h5>
-                    <input type="file" id="foto1" onchange="return ShowImagePreview( this.files );" /> <br />
-                    
+                    <input type="file" id="foto1" required onchange="return ShowImagePreview( this.files );" name="icono" /> <br />
+
+
   <div id="previewcanvascontainer" style="height 200px; width 200px;">
   <canvas id="previewcanvas" >
   </canvas>
