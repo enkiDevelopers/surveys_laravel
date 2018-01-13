@@ -18,9 +18,10 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
                 <div class="sidebar-header">
-                   <button type="button" id="sidebarCollapse"  class=" btn-default btn navbar-btn pull-right">
+                <!--   <button type="button" id="sidebarCollapse"  class=" btn-default btn navbar-btn pull-right">
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
+                -->    
                     <h3 class="administrator-header">Administrador</h3>
                 </div>
 
@@ -47,13 +48,29 @@
                             <span>Administradores</span>
                         </a>
                     </li>
-                
-        <!--                <li id="list-surveyed">
-                        <a href="{{ url('/administrator/surv-list') }}">
-                            <i class="glyphicon glyphicon-link"></i>
-                            <span>Lista de encuestados</span>
+                </ul>
+            </nav>
+
+            <nav id="sidebarMobile" class="navbar-default navbar-fixed-top  visible-xs" >
+                <ul class="list-inline components">
+                    <div class="profile center text-center" id="perfil" onclick="profile();" style="padding-top:-20px;cursor:pointer;width: 20%;display:inline-block;">
+                        <img src="/img/avatar.jpeg" alt="" style="vertical-align: initial;">
+                    </div>
+                    <li id="home">
+                        <a href="{{ url('/administrator/surveys')}}" >
+                            <i class="glyphicon glyphicon-briefcase"></i>
                         </a>
-                    </li> --> 
+                    </li>
+                    <li id="files">
+                        <a href="{{ url('/administrator/files') }}" >
+                            <i class="glyphicon glyphicon-file"></i>
+                        </a>
+                    </li>              
+                    <li id="admin-list">
+                        <a href="{{ url('/administrator/management') }}">
+                            <i class="glyphicon glyphicon-home"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
@@ -71,20 +88,22 @@
                 var barra = screen.availHeight - alto - (alto/2) - (alto/4);
                 
                 $("#sidebar").height(barra);
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
+                $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
                  });
 
-            //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
+                //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
 
-                if (window.matchMedia('(max-width: 400px)').matches) { // si es menor a 400px 
-                    $("#sidebar").addClass('active');
-                    $(".sidebar-header").hide();
-                    $("p").hide();
+                if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px 
+                    /*    $("#sidebar").addClass('active');
+                        $(".sidebar-header").hide();
+                        $("p").hide(); 
+                    */ 
+                    $(".container").css('margin-top','100px');
+                    
                 }else {
-                  //  $("#sidebar").addClass('active');
                 }
-             });
+            });
 
             function profile(){
                 location.href= "{{url('/administrator')}}";

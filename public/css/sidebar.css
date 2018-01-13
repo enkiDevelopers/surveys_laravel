@@ -65,8 +65,18 @@ i, span {
     transition: all 0.3s;
     box-shadow: 0 0 17px #ddd;
     /*position: fixed;*/
-      margin-bottom: -5000px; /* any large number will do */
-  padding-bottom: 5000px;
+    margin-bottom: -5000px; /* any large number will do */
+    padding-bottom: 5000px;
+    top: 0;
+    left: 0;
+}
+
+#sidebarMobile{
+    height: 80px;
+    background: #f7f7f7;
+    color: #7386D5;
+    transition: all 0.3s;
+    box-shadow: 0 0 17px #ddd;
     top: 0;
     left: 0;
 }
@@ -93,6 +103,18 @@ i, span {
     margin-right: 0;
     display: block;
     font-size: 1.8em; 
+    margin-bottom: 5px;
+}
+
+
+
+#sidebarMobile ul li a i {
+    margin-right: 0;
+    display: block;
+    font-size: 4em; 
+    margin-top: 15px;
+    padding-left: 30px;
+    padding-right: 20px;
     margin-bottom: 5px;
     
     
@@ -141,7 +163,7 @@ i, span {
     background: #6d7fcc;
 }
  #sidebar.active {
-        margin-left: 0 !important;
+        margin-left: 0px !important;
  }
  #sidebar.active >  span{
     display: none;
@@ -210,16 +232,14 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     #sidebar {
         margin-left: -250px;
     }
     #sidebar.active {
-        margin-left: 0;
+        margin-left: -250 !important;
         z-index: 100;
-        
     }
-
 
     #sidebarCollapse span {
         display: none;
@@ -227,4 +247,5 @@ a.article, a.article:hover {
     #content{
         padding-left: 10px;
     }
+
 }
