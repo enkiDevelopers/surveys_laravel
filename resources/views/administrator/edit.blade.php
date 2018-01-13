@@ -47,7 +47,7 @@
 				                    	<span class=" glyphicon glyphicon-eye-open "></span>
 				                	</a>
 			                    </div>
-</center>
+							 </center>
 			                </div>
 	  				    </div>
 
@@ -218,7 +218,7 @@
 													<div class="col-md-3 pull-right">
 		                                            <label for="brincoInput">Brincar</label>
 		                                            <select class="form-control text-black-body">
->
+
 		                                            </select>
 													</div>
 
@@ -364,7 +364,7 @@
 </div>
 
 
-          <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
 
                 <div class="modal-content">
@@ -398,11 +398,11 @@
         $("#home").addClass('active');
      }
 
-     function ModalQuestion(){
+    function ModalQuestion(){
      	$("#ModalQuestion").appendTo('body').modal();
      }
 
-         function verificar(){
+    function verificar(){
         if ($("#exampleInputEmail1").val() != "") {
             $("#add-question").removeClass('disabled');
         }else{
@@ -423,7 +423,6 @@
             }else{
        alert("Ingrese un Título para la encuesta");
         }
-
     }
 
 
