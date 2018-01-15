@@ -14,7 +14,7 @@
 </head>
 <body>
     
-<div class="wrapper" id="app">
+    <div class="wrapper" id="app">
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
                 <div class="sidebar-header">
@@ -48,6 +48,12 @@
                             <span>Administradores</span>
                         </a>
                     </li>
+                    <li id="log-out" class="exit">
+                        <a href="{{ url('/logout') }}">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            <span>Salir</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
@@ -71,12 +77,15 @@
                             <i class="glyphicon glyphicon-home"></i>
                         </a>
                     </li>
+                    <li id="log-out" class="exit">
+                        <a href="{{ url('/logout') }}">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
-
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
+    </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

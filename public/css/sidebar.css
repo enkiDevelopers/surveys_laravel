@@ -219,7 +219,10 @@ a.article, a.article:hover {
     margin-left: 3em;
 }
 
-
+.exit:hover, .exit:focus, #sidebar ul #log-out a:hover{
+    color: #fff;
+    background: #f44336;
+}
 
 /* ---------------------------------------------------
     CONTENT STYLE

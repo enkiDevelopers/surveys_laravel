@@ -133,3 +133,5 @@ Route::get('/borrar', function(){
 Route::get('/administrator/surveys/preview',function(){
     return view("administrator.preview");
 });
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
