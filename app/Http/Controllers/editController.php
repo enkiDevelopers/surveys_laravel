@@ -11,7 +11,16 @@ class editController extends Controller
 {
   public function busqueda($id)
   {
-      $informacion = DB::table('surveys')->where('id', $id)->first()->get();
+      $titulo = DB::table('surveys.Titulo_encuesta')->where('id', $id)->get();
+      $descripcion= DB::table('surveys.Descripcion')->where('id', $id)->get();
+      $nombre= DB::table('surveys.Image_path')->where('id', $id)->get();
+      
+      $informacion = [
+        $titulo=>'titulo',
+        $descripcion=>'descripcion',
+        $nombre=>'nombre'
+      ];
+
       return view("administrator.edit",compact("informacion"));
   }
 }
