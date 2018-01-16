@@ -1,9 +1,8 @@
 @extends('layouts.directive')
 	@section('content')
-
-<div class="container" >
     <div class="row">
-        <div class="col-md-10">
+<div class="container" >
+        <div class="col-md-11">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -22,36 +21,31 @@
                 </div>
 
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3">
+                    <?php foreach ($encuestas as $encuesta) { ?>
+                        <div class="col-md-4">
                             <div class="card well" >
+                                
+
                                 <div class="card-body">
-                                    <h4 class="card-title">Encuesta Regional </h4>
-                                    <p class="card-text"></p><br><br><br>
+                                <div class="row">
+                                    <div class="col-md-6"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->Image_path;?>" width="100%" height="90px"> </div>
+                                    <div class="col-md-6">
+                                    <h4 class="card-title">  <?php echo $encuesta->Titulo_encuesta;  ?></h4>
+                                    <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p>
+                                    </div>
+                                </div>
+                                <hr>
                                     <div class="btn-group " role="group" aria-label="...">
-                                        <a href="{{url('/directive/report')}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Reporte Uno">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-cliente="{{$encuesta->id}}" data-target="#MdReporte" data-toggle="tooltip" data-placement="top" title="Reporte disponible">
+                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                    </button>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <div class="card-body">
-                                    <h4 class="card-title">Encuesta Campus</h4>
-                                    <p class="card-text"></p><br><br><br>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a href="{{url('/directive/report1')}}" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Reporte Dos">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>                        
-
-                    </div>
+                <?php } ?>
                 </div>
             </div>
         </div>
