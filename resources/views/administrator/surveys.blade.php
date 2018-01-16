@@ -79,7 +79,7 @@
                                     <div class="text-center">
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p></div>
                                     <div class="btn-group " role="group" aria-label="...">
-                                          <div class="">
+
                                           <div class="col-md-1">
                                           </div>
 
@@ -87,7 +87,7 @@
                                             <span class="glyphicon glyphicon-eye-open" ></span>
                                         </button>
                   <a href="{{url('administrator/edit')}}/{{$plantilla->id}}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                    
+
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
 
@@ -101,7 +101,7 @@
                                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </button>
-                                          </div>
+
                                     </div>
                                 </div>
                             </div>
