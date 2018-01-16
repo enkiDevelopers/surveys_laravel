@@ -12,7 +12,7 @@
 			            </div>
 			       		<div class="col-md-10" style="margin-top:10px;">
 			       			<center>
-			                <!--	<img src="img/iconos/<?php echo $nombre;?>" width="10%" height="10%"> -->
+			                	<img src="img/iconos/<?php echo $nombre;?>" width="10%" height="10%"> 
 			            	</center>
 			            </div>
 			            <div class="col-md-10 col-sm-12  " style="width:100%;">
@@ -376,9 +376,9 @@
                 </div>
                 <div class="modal-body">
                     <h5>Título de la encuesta:</h5>
-                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
+                    <input type="text" class="form-control text-black " id="ModalTitleInput" aria-describedby="emailHelp" value="<?php echo "$titulo" ?>" name="titulo"><br>
                     <h5> Descripción de la encuesta:</h5>
-                    <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+                    <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" ><?php echo $descripcion; ?></textarea>
 
                 </div>
                 <div class="modal-footer">

@@ -44,7 +44,7 @@
                     </li>              
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
-                            <i class="glyphicon glyphicon-home"></i>
+                            <i class="glyphicon glyphicon-user"></i>
                             <span>Administradores</span>
                         </a>
                     </li>
@@ -74,7 +74,7 @@
                     </li>              
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
-                            <i class="glyphicon glyphicon-home"></i>
+                            <i class="glyphicon glyphicon-user"></i>
                         </a>
                     </li>
                     <li id="log-out" class="exit">
@@ -83,7 +83,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav>            
         @yield('content')
     </div>
 
