@@ -18,20 +18,13 @@ class surveyController extends Controller
     $descripcion = $request['descripcion'];
     $icono=$request->file('icono');
     $nombre=date("his").".png";
-
     $icono->move('img/iconos',$nombre);
       $surv = new surveys;
       $surv->Titulo_encuesta = $titulo;
       $surv->Descripcion = $descripcion;
       $surv->Image_path	= $nombre;
       $surv->save();
-
-      $informacion = [
-        $titulo=>'titulo',
-        $descripcion=>'descripcion',
-        $nombre=>'nombre'
-      ];
-        return view('administrator.edit',compact('informacion'));
+      return view('administrator.edit',compact('titulo','descripcion','nombre'));
   }
 
   public function show_cards()
