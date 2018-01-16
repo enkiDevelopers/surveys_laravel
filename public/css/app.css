@@ -8459,11 +8459,12 @@ button.close {
 
 .btn-new-survey {
   border-radius: 80px;
-  height: 80px;
-  width: 80px;
-  font-size: 40px;
-  padding-top: 18px;
-  padding-left: 20px;
+  height: 60px;
+  width: 60px;
+  font-size: 30px;
+  margin-top: -10%;
+  padding-top: 10px;
+  padding-left: 15px;
   border: 1px solid #f5f5f5;
 }
 
@@ -8471,7 +8472,7 @@ button.close {
   color: #fff;
   background-color: #1976d2;
   border: 1px solid #fafafa;
-  height: 227px;
+  height: 190px;
   margin-left: 40px;
   margin-right: 40px;
 }
@@ -8517,9 +8518,13 @@ button.close {
 
 .scroll
  {
-   position:;
    height: 400px;
    width: 100%;
    margin-top: 20px;
    overflow: scroll;
  }
+
+.textTitle{
+  width: 100px;
+  height: 50px;
+}

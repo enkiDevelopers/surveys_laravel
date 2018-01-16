@@ -64,24 +64,40 @@
                     	 <?php foreach ($plantillas as $plantilla) { ?>
                         <div class="col-md-4">
                             <div class="card well" >
-                              <div class="col-sm-2">
-                              </div>
 
-                                    <img class="card-img-top"
-                                    width="200px" height="150px"
-                                    alt="Card image cap" src="/img/iconos/<?php echo $plantilla->Image_path;?>"
-                                    onerror="this.src='/img/iconos/default.png'">
 
                                      <div class="card-body">
-                                    <div class="text-center">
+<div class="col-md-2">
+
+
+                                       <img class="card-img-top"
+                                       width="100px" height="100px"
+                                       alt="Card image cap" src="/img/iconos/<?php echo $plantilla->Image_path;?>"
+                                       onerror="this.src='/img/iconos/default.png'">
+                                       </div>
+                                       <div class="col-md-3">
+
+                                       </div>
+                                        <div class="col-md-2">
+
+
+                                    <div style="width: 100px; height: 50px;">
                                     <h4 class="card-title">  <?php echo $plantilla->Titulo_encuesta;  ?></h4>
                                     </div>
-                                    <div class="text-center">
+                                    <div class="">
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p></div>
+                                  </div>
+
+
+
                                     <div class="btn-group " role="group" aria-label="...">
 
-                                          <div class="col-md-1">
-                                          </div>
+
+
+
+
+
+
 
                                         <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
