@@ -90,16 +90,17 @@
 
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
-
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar">
-                                            <span class="glyphicon glyphicon-send"></span>
+                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                            <span class="glyphicon glyphicon-trash"></span>
                                         </button>
+
                                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Dublicar">
                                             <span class="glyphicon glyphicon-copy"></span>
                                         </button>
 
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                            <span class="glyphicon glyphicon-trash"></span>
+
+                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar">
+                                            <span class="glyphicon glyphicon-send"></span>
                                         </button>
 
                                     </div>
@@ -258,8 +259,8 @@
 
                 </div>
                 <div class="modal-footer">
-                  <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys">Cancelar</a>
-                    <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
+                  <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
 
 
@@ -268,6 +269,14 @@
         </div>
    		  </form>
 <script>
+function limpiar()
+{
+  var canvas = document.getElementById("previewcanvas");
+  canvas.width=canvas.width;
+
+
+}
+
 
     window.onload = function() {
         $("#home").addClass('active');

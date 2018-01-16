@@ -17,6 +17,8 @@ class editController extends Controller
       $titulo = $consulta[0]->Titulo_encuesta;
       $descripcion = $consulta[0]->Descripcion;
       $nombre = $consulta[0]->Image_path;
+      
+
         return view("administrator.edit",compact('titulo','descripcion','nombre'));
   }
 }
