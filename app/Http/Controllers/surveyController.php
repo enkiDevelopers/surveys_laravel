@@ -13,7 +13,7 @@ class surveyController extends Controller
 
   public function save(Request $request)
   {
-
+    $informacion=$request;
     $titulo = $request['titulo'];
     $descripcion = $request['descripcion'];
     $icono=$request->file('icono');
@@ -24,7 +24,7 @@ class surveyController extends Controller
       $surv->Descripcion = $descripcion;
       $surv->Image_path	= $nombre;
       $surv->save();
-      return view('administrator.edit',compact('titulo','descripcion','nombre'));
+      return view('administrator.edit',compact('informacion'));
   }
 
   public function show_cards()
