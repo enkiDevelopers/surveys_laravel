@@ -12,10 +12,8 @@ class editController extends Controller
   public function busqueda($id)
   {
 
-      $informacion = DB::table('surveys')->where('id', $id)->get();
-
-    return "viendo la info".$informacion;
-
+      $informacion = DB::table('surveys')->where('id', $id)->first()->get();
+      return view("edit",compact("informacion"));
 
   }
 }
