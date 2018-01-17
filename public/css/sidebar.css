@@ -137,8 +137,8 @@ i, span {
     display: block;
 }
 #sidebar ul li a:hover {
-    color: #7386D5;
-    background: #fff;
+    color: #fff;
+    background: #95afd8;
 }
 
 #sidebar.active ul ul a {
