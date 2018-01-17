@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container" >
-
-
     <div class="row">
       <div class="col-md-12 ">
 
@@ -64,15 +62,11 @@
                          <?php foreach ($plantillas as $plantilla) { ?>
                         <div class="col-md-4">
                             <div class="card well" >
-
-
                                      <div class="card-body">
 <div class="col-md-2">
-
-
                                        <img class="card-img-top"
                                        width="100px" height="100px"
-                                       alt="Card image cap" src="/img/iconos/<?php echo $plantilla->Image_path;?>"
+                                       alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
                                        onerror="this.src='/img/iconos/default.png'">
                                        </div>
                                        <div class="col-md-3">
@@ -81,8 +75,8 @@
                                         <div class="col-md-2">
 
 
-                                    <div style="width: 100px; height: 50px;">
-                                    <h4 class="card-title">  <?php echo $plantilla->Titulo_encuesta;  ?></h4>
+                                    <div class="titleA">
+                                    <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
                                     </div>
                                     <div class="">
                                     <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p></div>
@@ -102,13 +96,16 @@
                                         <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
                                         </button>
-                  <a href="{{url('administrator/edit')}}/{{$plantilla->id}}" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                          <a href="{{url('administrator/edit')}}/{{$plantilla->id}}"
+                                        class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
 
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                        <a  href="{{url('administrator/delete')}}/{{$plantilla->id}}"
+                                          class="btn btn-default" data-toggle="tooltip" data-placement="top"
+                                          title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
-                                        </button>
+                                        </a>
 
                                         <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Dublicar">
                                             <span class="glyphicon glyphicon-copy"></span>
@@ -289,8 +286,6 @@ function limpiar()
 {
   var canvas = document.getElementById("previewcanvas");
   canvas.width=canvas.width;
-
-
 }
 
 
