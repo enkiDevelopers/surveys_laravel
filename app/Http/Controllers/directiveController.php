@@ -7,6 +7,7 @@ use App\surveys;
 use DB;
 use File;
 use Input;
+use Response;
 
 class directiveController extends Controller
 {
@@ -34,6 +35,17 @@ class directiveController extends Controller
       $encuestas = DB::table('surveys')->get();
 
       return view('directive.home', compact('encuestas'));
+
+  }
+  public function buscar(Request $request){
+
+  $data = DB::table('surveys')
+                ->where("id", $request->id)
+                ->get();
+
+    return response()->json($data);
+    
+
 
   }
 
