@@ -138,3 +138,5 @@ Route::get('/administrator/surveys/preview',function(){
 });
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::post('/saveQuestionsTemplate','surveyController@saveQuestionsTemplate');
