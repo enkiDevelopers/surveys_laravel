@@ -440,15 +440,12 @@
 	        dataType: 'json',
 	        data: {questionInput: questionInput, questionType: questionType },
 	        success: function(data) {
-	          if (data == 1) {
-	            alert("Se ha agregado la pregunta");
-
-	          }else{
-	            alert("No se ha podido agregar la pregunta :C");
-	          }
+	        	if (data == 1) {
+	        		alert("Se ha agregado correctamente");
+	        	}
 	        },
 	         error: function (textStatus, errorThrown) {
-	            console.log(textStatus, errorThrown);
+				alert("No se ha podido agregar la pregunta");
 	        }
 	      });
     	}
