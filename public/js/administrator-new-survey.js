@@ -33,11 +33,11 @@ $(document).ready(function(){
     }
 
     function getnumberQuestion(){
-    	var el = $(".question:not(.hide)");
-    	var select = $(".number-questions-survey");
-    	select.empty();
+        var el = $(".question:not(.hide)");
+        var select = $(".number-questions-survey");
+        select.empty();
 
-    	for (var i = el.length.selected; i <= el.length; i++) {
+        for (var i = el.length.selected; i <= el.length; i++) {
             var o = new Option("i", i);
             $(o).html(i);
             select.append(o);
@@ -67,7 +67,7 @@ $(document).ready(function(){
     });
 
     // Crear un bloque de preguntas si/no para la pregunta en cuestion
-//    $(".new-survey__question-container").on("change", ".yes-no-question", function(){
+    //    $(".new-survey__question-container").on("change", ".yes-no-question", function(){
     $("#ModalQuestion").on("change", ".yes-no-question", function(){
 
         switch($(this).val()){
@@ -121,11 +121,11 @@ $(document).ready(function(){
 
     // Agrega una nueva opcion a un bloque de preguntas de si/no
     var parentYesNo;
-//    $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
+    //  $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
     $("#ModalQuestion").on("click", ".add-question-to-yes-no", function(e){
 
         // Habilitar / Deshabilitar Botón de eliminar de opción de bloque de preguntas de si/no 
-        if(classCount() >= '3'){
+        if(classCount() >= '3'){ //3
             
             $(".delete-question-to-yes-no").removeAttr("disabled");
 
@@ -146,7 +146,7 @@ $(document).ready(function(){
         
     
 
-        if (classCount() <= '4') {
+        if (classCount() <= '4') { //4
             $(".delete-question-to-yes-no").attr("disabled", "true");
         }
         e.preventDefault();
@@ -156,19 +156,17 @@ $(document).ready(function(){
         //parentYesNo.append(elem);
         // parentYesNo.data("questions", parentYesNo.data("multi-options") - 1 );
         //console.log(parentYesNo);
-
     });
 
     function classCount(){
-    var divs = $("div"); 
-    var numDivs = divs.length; 
-    var contador = 0; 
+        var divs = $('div');
+        var numDivs = divs.length; 
+        var contador = 0; 
 
-    for(var i = 0; i < numDivs; i++) 
-        if(divs[i].id == "multi-options-template") contador++; 
+        for(var i = 0; i < numDivs; i++) 
+            if(divs[i].id == "multi-options-template") contador++; 
 
-    return contador;
-   
-}
+        return contador;
+    }
 
 });

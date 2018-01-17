@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateTemplatesTable extends Migration {
+class CreateQuestionsTemplatesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,19 @@ class CreateTemplatesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('templates', function(Blueprint $table)
+		Schema::create('questionsTemplates', function(Blueprint $table)
 		{
-			$table->integer('idTemplates')->primary();
-			$table->string('name', 45)->nullable();
-			$table->string('description', 45)->nullable();
-			$table->date('dateIni')->nullable();
-			$table->date('dateEnd')->nullable();
-			$table->integer('administrators_idAdministrators')->index('fk_templates_administrators1_idx');
-		});
+			$table->Increments('idQuestionsTemplates');	  
+			$table->string('title', 45)->nullable();
+			$table->string('type', 45)->nullable();
+			$table->integer('order')->nullable();
+			$table->integer('idParent')->nullable();
+			$table->string('bifurcacion', 45)->nullable();
+			$table->integer('templates_idTemplates')->index('fk_questionsTemplates_templates1_idx'); 	
+			$table->timestamps();
+
+
+ 		});
 	}
 
 
@@ -31,7 +35,7 @@ class CreateTemplatesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('templates');
+		Schema::drop('questionsTemplates');
 	}
 
 }
