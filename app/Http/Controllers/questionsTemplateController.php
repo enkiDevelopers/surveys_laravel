@@ -7,7 +7,7 @@ use App\questionstemplates;
 use DB;
 use File;
 use Input;
-class questionstemplate extends Controller
+class questionsTemplateController extends Controller
 {
   public function saveQuestionsTemplate(Request $request){
 
