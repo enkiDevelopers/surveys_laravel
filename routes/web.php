@@ -142,3 +142,11 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::post('busquedamodal', 'directiveController@buscar');
 
 Route::post('/saveQuestionsTemplate','questionsTemplateController@saveQuestionsTemplate');
+
+Route::get('/administrator/saveQuestionsTemplate', function(){
+    return view("administrator.saveQuestionsTemplate");
+});
+
+Route::get('/administrator/modalTitle', function(){
+    return view("administrator.modalTitle");
+});

@@ -12,6 +12,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/alertify.min.css">
+    <link rel="stylesheet" href="/css/alertify.rtl.min">
+
 </head>
 <body>
 
@@ -56,6 +59,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/administrator-new-survey.js"></script>
+    <script src="/js/alertify.min.js"></script>
+
     <script type="text/javascript">
             $(document).ready(function () {
 

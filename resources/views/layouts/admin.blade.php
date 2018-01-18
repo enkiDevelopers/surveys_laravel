@@ -38,7 +38,7 @@
                     </li>
                     <li id="files">
                         <a href="{{ url('/administrator/files') }}" >
-                            <i class="glyphicon glyphicon-file    Try it"></i>
+                            <i class="glyphicon glyphicon-list-alt"></i>
                             <span>Encuestados</span>
                         </a>
                     </li>              
@@ -90,6 +90,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/administrator-new-survey.js"></script>
+
     <script type="text/javascript">
             $(document).ready(function () {
 
