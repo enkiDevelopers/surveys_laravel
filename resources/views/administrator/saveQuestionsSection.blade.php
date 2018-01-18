@@ -1,3 +1,27 @@
+<div class="row hide yes-no-question-block " id="yes-no-question-template">
+  <div class="col-md-12 " data-questions="0" id="childSupport">
+      <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+          <button class="btn btn-success add-question-to-yes-no">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+          </button>
+      </div>
+      <div class="col-md-12" id="multi-options">
+          <div class="col-md-12 " data-multioptions="0" id="multi-options-template" >
+              <div class="form-group">
+                  <label for="exampleInputEmail1">Opción Respuesta</label>
+                  <input type="text" class="form-control text-black-body"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
+              <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled="" style="margin-top: 5px;">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+              </div>
+          </div>
+          <div class="col-md-4">
+          </div>
+      </div>
+  </div>
+</div>
+
+
 <form action="/saveQuestionsTemplate" id="saveQuestionForm">
     {{ csrf_field() }}
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
@@ -10,7 +34,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h4 class="modal-title" id="ModalQuestionLabel">Agregar Pregunta</h4>
-					    <img src="\img/iconos/<?php echo $nombre;?>" width="10%" height="10%"> 
+					    <img src="\img/iconos/<?php echo $nombre;?>" width="10%" height="10%">
                     </div>
                     <div class="modal-body">
                         <div class=" col-md-12 well">

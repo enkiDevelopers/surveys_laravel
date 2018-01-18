@@ -143,10 +143,16 @@ Route::post('busquedamodal', 'directiveController@buscar');
 
 Route::post('/saveQuestionsTemplate','questionsTemplateController@saveQuestionsTemplate');
 
-Route::get('/administrator/saveQuestionsTemplate', function(){
-    return view("administrator.saveQuestionsTemplate");
+Route::get('/administrator/saveQuestionsSection', function(){
+    return view("administrator.saveQuestionsSection");
 });
 
 Route::get('/administrator/modalTitle', function(){
     return view("administrator.modalTitle");
+});
+
+Route::get('/administrator/questionSaved','questionsTemplateController@questionSaved');
+
+Route::get('/administrator/dataTemplate', function(){
+    return view("administrator.dataTemplate");
 });

@@ -26,7 +26,9 @@ class surveyController extends Controller
       $surv->imagePath= $nombre;
       $surv->creador= 1;
       $surv->save();
-      return view('administrator.edit',compact('titulo','descripcion','nombre'));
+
+      $eid =$surv->id;
+      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid'));
   }
 
   public function show_cards()
