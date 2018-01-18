@@ -40,12 +40,42 @@
                                 <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->Descripcion?></span></p>
                                 <p class="card-text">Fecha: <span class="template-creator"><?php echo $encuesta->created_at?></span></p>
 
+                                <?php
+                                 switch ($datosdirective[0]->type) {
+                                    case '1':
+                                ?>
                                     <div class="btn-group " role="group" aria-label="...">
-                                        <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="directiveModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte disponible">
+                                        <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="corporativoModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reportes disponibles">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
                                         </button>
-
                                     </div>
+
+                                <?php 
+                                    break;
+                                    case '2': 
+                                ?>
+                                        <div class="btn-group " role="group" aria-label="...">
+                                        <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idDirectives}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Regional">
+                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                        </button>
+                                        </div>
+                                <?php
+                                    break;
+                                    case '3':
+                                ?>
+                                    <div class="btn-group " role="group" aria-label="...">
+                                        <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="campusModal({{$encuesta->id}},{{$datosdirective[0]->idDirectives}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Campus">
+                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                        </button>
+                                    </div>
+                                <?php 
+                                    break;
+                                    default:
+                                        echo "<p>Sin Asignar</p>";
+                                    break;
+                                }
+                                 ?>   
+
                                 </div>
                             </div>
                         </div>
