@@ -38,14 +38,13 @@
 
  <!-- Aqui debe de ir Agregar plantilla -->
                 <div class="panel-body scroll">
-
                     <div class="row">
                       <div class="col-sm-0">
                       </div>
                              <div class="col-md-4">
                             <div class="card well card-new-survey" >
                                 <div class="card-body text-center">
-                                    <h3 class="card-title">Añadir Plantilla de Encuesta</h3>
+                                    <h3 class="card-title" id="Atitle">Añadir Plantilla de Encuesta</h3>
                                     <p class="card-text"></p><br>
                                         <p>
                                             <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-default btn-lg btn-new-survey">
@@ -63,36 +62,26 @@
                         <div class="col-md-4">
                             <div class="card well" >
                                      <div class="card-body">
-<div class="col-md-2">
-                                       <img class="card-img-top"
+                                        <div class="col-md-2" id="resposiveCard">
+
+                                       <img id="marco" class="card-img-top"
                                        width="100px" height="100px"
                                        alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
                                        onerror="this.src='/img/iconos/default.png'">
+
                                        </div>
                                        <div class="col-md-3">
 
                                        </div>
                                         <div class="col-md-2">
-
-
                                     <div class="titleA">
                                     <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
                                     </div>
                                     <div class="">
-                                    <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p></div>
+                                    <p class="card-text responsiveText">Creada por <span class="template-creator">Administrador1</span></p></div>
                                   </div>
 
-
-
-                                    <div class="btn-group " role="group" aria-label="...">
-
-
-
-
-
-
-
-
+                                    <div class="btn-group centrarbtn" role="group" aria-label="...">
                                         <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
                                         </button>
@@ -246,7 +235,6 @@
         <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
       </div>
 
-
       <div class="col-sm-2 pull-right pull-right">
         <div class="pull-right">
         <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys"></a>
@@ -254,13 +242,12 @@
       </div>
     </div>
 
-
                 </div>
                 <div class="modal-body">
                     <h5>Título de la encuesta:</h5>
-                    <input type="text" class="form-control text-black " required id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
+                    <input type="text" maxlength="40" class="form-control text-black " required id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
                     <h5> Descripción de la encuesta:</h5>
-                    <textarea class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
+                    <textarea maxlength="500"class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
                     <h5> Icono de la encuesta:</h5>
                     <input type="file" id="foto1" required onchange="return ShowImagePreview( this.files );" name="icono" /> <br />
 
