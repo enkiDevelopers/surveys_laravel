@@ -29,12 +29,13 @@ class directiveController extends Controller
       return view('administrator.edit',compact('titulo','descripcion','nombre'));
   }
 
-  public function show_cards()
+  public function show_cards($id)
   {
 
       $encuestas = DB::table('surveys')->get();
+      $datosdirective=DB::table('directives')->select(['nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',$id)->get();
 
-      return view('directive.home', compact('encuestas'));
+      return view('directive.home', compact('encuestas','datosdirective'));
 
   }
   public function buscar(Request $request){
@@ -44,10 +45,8 @@ class directiveController extends Controller
                 ->get();
 
     return response()->json($data);
-    
-
-
   }
+
 
 
 }

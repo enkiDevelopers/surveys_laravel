@@ -89,7 +89,26 @@
                 <ul class="list-unstyled components">
                     <div class="profile center text-center">
                         <img src="/img/avatar.jpeg" alt="">
-                        <p>Jorge Luis González Hérnandez</p>
+                            <p><?php echo $datosdirective[0]->nombre." ".$datosdirective[0]->apPaterno." ".$datosdirective[0]->apMaterno;  ?></p>
+
+                        <?php
+                            switch ($datosdirective[0]->type) {
+                                case '1':
+                                    echo "<p>Directivo General</p>";
+                                    break;
+                                case '2': 
+                                    echo "<p>Directivo Regional</p>";
+                                    break;
+                                case '3':
+                                    echo "<p>Directivo Campus</p>";
+                                    break;
+                                
+                                default:
+                                    echo "<p>Sin Asignar</p>";
+                                    break;
+                            }
+                         ?>
+
                     </div>
                     <li class="active">
                         <a href="{{ url('/directive')}}" >
@@ -114,13 +133,6 @@
 
                         <nav class="navbar navbar-default  hidden-lg .visible-sm-*">
                             <div class="container-fluid">
-        
-                                <div class="navbar-header">
-                                    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                        <i class="glyphicon glyphicon-align-left"></i>
-                                        <span>Toggle Sidebar</span>
-                                    </button>
-                                </div>
         
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right">

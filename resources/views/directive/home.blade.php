@@ -31,13 +31,15 @@
 
                                 <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->Image_path;?>" width="100%" height="90px"> </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->Image_path;?>" width="100%" height="90px"> </div>
+                                    <div class="col-md-7">
                                     <h4 class="card-title">  <?php echo $encuesta->Titulo_encuesta;  ?></h4>
                                     </div>
                                 </div>
                                 <hr size="30">
-                                <p class="card-text">Creada por <span class="template-creator">Administrador1</span></p>
+                                <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->Descripcion?></span></p>
+                                <p class="card-text">Fecha: <span class="template-creator"><?php echo $encuesta->created_at?></span></p>
+
                                     <div class="btn-group " role="group" aria-label="...">
                                         <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="directiveModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte disponible">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
