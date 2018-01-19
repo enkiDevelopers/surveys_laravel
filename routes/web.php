@@ -62,9 +62,7 @@ Route::get('/administrator/management/new', function(){
 	return view('administrator.new-administrator');
 });
 
-Route::get('/directive/{id}/', 'directiveController@show_cards');
-
-
+Route::get('/directive/{id}/', ['as' => 'directive', 'uses'=>'directiveController@show_cards']);
 
 Route::get('/directive/report', function(){
     return view('directive.report');
