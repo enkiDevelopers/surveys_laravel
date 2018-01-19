@@ -23,7 +23,7 @@ Route::get('/administrator', function () {
     return view('administrator.home');
 });
 
-Route::get('/administrator/surveys', 'surveyController@show_cards');
+Route::get('/administrator/surveys/{id}', 'surveyController@show_cards');
 
 Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
@@ -156,4 +156,3 @@ Route::get('/administrator/dataTemplate', function(){
 });
 
 Route::post('buscarcampus', 'directiveController@busquedacampus');
-

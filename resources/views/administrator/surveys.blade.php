@@ -378,7 +378,7 @@ function limpiar2()
 
 
     function ShowImagePreview( files )
-{
+    {
 
     if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
     {
