@@ -1,6 +1,3 @@
-@extends('layouts.back-survey')
-@section('content')
-
 <?php foreach ($datos as $datos) { ?>
     <div class="row new-question-template" id="new-question-template">
         <div class="col-md-12 well ">
@@ -61,4 +58,3 @@
             </div>
         </div>
     </div>
-@endsection    

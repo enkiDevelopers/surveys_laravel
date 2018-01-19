@@ -1,27 +1,3 @@
-<div class="row hide yes-no-question-block " id="yes-no-question-template">
-  <div class="col-md-12 " data-questions="0" id="childSupport">
-      <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
-          <button class="btn btn-success add-question-to-yes-no">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-          </button>
-      </div>
-      <div class="col-md-12" id="multi-options">
-          <div class="col-md-12 " data-multioptions="0" id="multi-options-template" >
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Opción Respuesta</label>
-                  <input type="text" class="form-control text-black-body"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
-              <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled="" style="margin-top: 5px;">
-                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-              </button>
-              </div>
-          </div>
-          <div class="col-md-4">
-          </div>
-      </div>
-  </div>
-</div>
-
-
 <form action="/saveQuestionsTemplate" id="saveQuestionForm">
     {{ csrf_field() }}
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
@@ -47,7 +23,7 @@
                             <div class="col-md-6 ">
                                 <div class="form-group">
                                     <label for="questionInput">Título de la pregunta</label>
-                                    <input type="text" class="form-control text-black-body" id="questionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
+                                    <input type="text" class="form-control text-black-body" id="questionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" maxlength="200">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -77,4 +53,28 @@
                     </div>
         </div>
     </div>
+
+  <div class="row hide yes-no-question-block " id="yes-no-question-template">
+    <div class="col-md-12 " data-questions="0" id="childSupport">
+        <div class="btn-group btn-group-sm pull-right" role="group" aria-label="...">
+            <button class="btn btn-success add-question-to-yes-no">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+        </div>
+        <div class="col-md-12" id="multi-options">
+            <div class="col-md-12 " data-multioptions="0" id="multi-options-template" >
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Opción Respuesta</label>
+                    <input type="text" class="form-control text-black-body"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="50">
+                    <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled="" style="margin-top: 5px;">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+  </div>
+  
 </form>

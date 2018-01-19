@@ -14,6 +14,7 @@
 				@include('administrator.saveQuestionsSection')
 
 				<div style="overflow-x: hidden; overflow-y: auto; height: 54%;position: relative;width: 90%" id="container-questions">
+				@include('administrator.questionSaved')
 				</div>
         	</div>
     	</div>
@@ -64,8 +65,12 @@
 	    //var questionOptionInput = $("#questionOptionInput").text();
 	    var questionType= $("#questionType").val();
         var token = $("#token").val();
-        
-		if (questionInput.length < 200 || questionOptionInput.length < 50){
+
+        if (questionInput.length == 0 || questionOptionInput.length == 0) {
+       		alertify.alert("Ingrese una pregunta.", function(){
+			    alertify.message('OK');
+		  });
+        }else if (questionInput.length < 200 || questionOptionInput.length < 50){
 	        $.ajax({
 		        type: "post",
 		        url: action,
@@ -73,14 +78,20 @@
 		        dataType: 'json',
 		        data: {idTemplate: idTemplate, questionInput: questionInput, questionType: questionType },
 		        success: function(data) {
-		        	if (data == 1) {
-		        		alertify.alert("Pregunta Guardada correctamente", function(){
-						    alertify.message('OK');
+		        	if (data != 1) {
+		        		alertify.alert("Pregunta Guardada correctamente.", function(){
+						    alertify.success('Pregunta Añadida');						
+  				            $("#ModalQuestion").modal('hide').find("input").val("");
+  				            $("#questionType").val("1").attr('selected','true');
+  				            $(".new-question__control--delete-question").parent().parent().parent().prev().children().children().next().next().next().remove();
+
+  				            console.log(data);
+
 						  });
 		        	}
 		        },
 		        error: function (textStatus, errorThrown) {
-					alertify.alert("No se ha podido agregar la pregunta", function(){
+					alertify.alert("No se ha podido agregar la pregunta.", function(){
 					    alertify.message('OK');
 					 });
 		        }

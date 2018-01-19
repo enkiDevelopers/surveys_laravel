@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\templates2s;
+use App\questionstemplates;
 use DB;
 use File;
 use Input;
@@ -36,17 +37,20 @@ class surveyController extends Controller
       $surv->save();
 
       $eid =$surv->id;
-      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid'));
+
+      $datos = questionstemplates::where('templates_idTemplates',$eid);
+
+      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
   }
 
-  public function show_cards()
+  public function show_cards($id)
   {
 
     //$propias = DB::table('templates2s')->join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', '1')->orderby('id_admin', 'asc')->get();
-    $agenas = DB::table('templates2s')->join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=','1')->orderby('id_admin', 'asc')->get();
+    //$agenas = DB::table('templates2s')->join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=','1')->orderby('id_admin', 'asc')->get();
 
-    $propias = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', '1')->orderby('id', 'desc')->get();
-    $agenas = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=','1')->orderby('id', 'desc')->get();
+    $propias = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
+    $agenas = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
 
 
 

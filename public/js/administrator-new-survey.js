@@ -47,7 +47,7 @@ $(document).ready(function(){
     // Eliminar una pregunta
     $("#ModalQuestion").on("click", ".new-question__control--delete-question", function(){
        //var a = $(this).parent().parent().parent().prev().children().children().next().next().next().remove();
-       $("#ModalQuestion").modal('hide').find("input").val("").find(".yes-no-question").val("'1");
+       $("#ModalQuestion").modal('hide').find("input").val("").find(".yes-no-question").val('1');
        var a = $(this).parent().parent().parent().prev().children().children().next().next().next().remove();
        
        console.log(a);

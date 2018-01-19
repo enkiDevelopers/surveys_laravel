@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\templates2s;
+use App\questionstemplates;
 use Illuminate\Http\Request;
 use  DB;
 use App\templateSurvey;
@@ -21,7 +22,11 @@ class editController extends Controller
       $nombre = $consulta[0]->imagePath;
 
       $eid = $id;
-      return view("administrator.edit",compact('titulo','descripcion','nombre','eid'));
+
+      $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
+
+
+      return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos'));
   }
   
   public function delete($id)

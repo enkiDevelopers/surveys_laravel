@@ -14,21 +14,22 @@ class questionsTemplateController extends Controller
     $questionInput = $request['questionInput'];
     $questionType = $request['questionType'];
     $idTemplate = $request['idTemplate'];
-    
+    //$order = $request['order'];
+    //$idParent = $request['idParent'];
+    //$bifurcaccion = $request['bifurcacion'];
+
     $surv = new questionstemplates;
     $surv->templates_idTemplates = $idTemplate;
     $surv->title = $questionInput;
     $surv->type = $questionType;
+    //$surv->order = $order;
+    //$surv->idParent = $idParent;
+    //$surv->bifurcacion = $bifurcacion;
     $surv->save();
     
-    return "1";
-  }
+    $datos = questionstemplates::where('templates_idTemplates',$idTemplate);
+    return response()->json([$datos]);
 
-  public function questionSaved(){
-
-    $datos = questionstemplates::all();
-    return view('administrator.questionSaved', compact('datos'));
-  
   }
 
 }
