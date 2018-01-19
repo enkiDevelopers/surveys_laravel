@@ -98,3 +98,35 @@ function campusModal(comp,region){
           });
 
 }
+
+function selecciona(busq){
+  let id = busq;
+  dato="";
+  $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+        $.ajax({
+              dataType : 'json',
+              type : 'post',
+              url : '/buscarcampus',
+              data : {"id": id},
+              async:true,
+              cache:false,
+              success : function(response){
+              var datos=JSON.stringify(response);
+              console.log(datos);
+              for(var i=0;i<=response.length;i++){
+                var n = i.toString();
+                dato+="<option value="+response[].campus_id+">"+response[n].campus_name+"</option>"
+              } 
+              $("#regionescorp").html(dato);
+                
+              },
+              error : function(error) {
+                console.log(error);
+              }
+          });
+
+}

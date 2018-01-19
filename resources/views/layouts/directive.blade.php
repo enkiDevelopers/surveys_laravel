@@ -40,7 +40,7 @@
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
-            <select class="form-control">
+            <select class="form-control text-black" onchange="selecciona(this.value)">
             <?php
                 foreach ($regionestotal as $regionestotales) {
                     echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";
@@ -55,11 +55,8 @@
         </fieldset>
      <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control">
-                <option value="#">Region 1</option>
-                <option value="#">Region 2</option>
-                <option value="#">Region 2</option>
-                <option value="#">Region 4</option>
+            <select class="form-control text-black" id="regionescorp">
+
             </select>
             <hr>
             <button class="btn btn-default">
@@ -95,7 +92,7 @@
         </div>
         <fieldset>
           <legend>Reporte regional</legend>
-            <select class="form-control">
+            <select class="form-control text-black" disabled>
             <?php
                 foreach ($regiones as $region) {
                     echo "<option value={$region->regions_id}>{$region->regions_name}</option>";
@@ -110,11 +107,13 @@
         </fieldset>
      <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control">
-                <option value="#">Region 1</option>
-                <option value="#">Region 2</option>
-                <option value="#">Region 2</option>
-                <option value="#">Region 4</option>
+            <select class="form-control text-black">
+            <?php
+                foreach ($campusregion as $campusregions) {
+                    echo "<option value={$campusregions->campus_id}>{$campusregions->campus_name}</option>";
+                       
+                }
+            ?>
             </select>
             <hr>
             <button class="btn btn-default">
@@ -148,7 +147,7 @@
         </div>
      <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control">
+            <select class="form-control text-black" disabled>
             <?php
                 foreach ($campus as $campu) {
                     echo "<option value={$campu->campus_id}>{$campu->campus_name}</option>";
