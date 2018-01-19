@@ -89,7 +89,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/directive/login', function(){
+Route::get('/directives/login', function(){
     return view('auth.directive_login');
 });
 
