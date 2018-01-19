@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 @section('content')
+  <link rel="stylesheet" href="/css/alertify.min.css">
+  <link rel="stylesheet" href="/css/alertify.rtl.min">
+      <script src="/js/alertify.min.js"></script>
+
 <div class="container" >
     <div class="row">
       <div class="col-md-12 ">
@@ -58,7 +62,7 @@
 
                         </div>
 
-                         <?php foreach ($plantillas as $plantilla) { ?>
+                         <?php foreach ($propias as $plantilla) { ?>
                         <div class="col-md-4">
                             <div class="card well" >
                                      <div class="card-body">
@@ -78,7 +82,7 @@
                                     <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
                                     </div>
                                     <div class="">
-                                    <p class="card-text responsiveText">Creada por <span class="template-creator">Administrador1</span></p></div>
+                                    <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
                                   </div>
 
                                     <div class="btn-group centrarbtn" role="group" aria-label="...">
@@ -90,13 +94,13 @@
 
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
-                                        <a  href="{{url('administrator/delete')}}/{{$plantilla->id}}"
+                                        <a onclick="alerta({{$plantilla->id}})"
                                           class="btn btn-default" data-toggle="tooltip" data-placement="top"
                                           title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
 
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Dublicar">
+                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
                                             <span class="glyphicon glyphicon-copy"></span>
                                         </button>
 
@@ -111,10 +115,62 @@
                         </div>
 
                 <?php } ?>
+<!-- Iniicia -->
+<?php foreach ($agenas as $plantilla) { ?>
+<div class="col-md-4">
+   <div class="card well" >
+            <div class="card-body">
+               <div class="col-md-2" id="resposiveCard">
+
+              <img id="marco" class="card-img-top"
+              width="100px" height="100px"
+              alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
+              onerror="this.src='/img/iconos/default.png'">
+
+              </div>
+              <div class="col-md-3">
+
+              </div>
+               <div class="col-md-2">
+           <div class="titleA">
+           <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
+           </div>
+           <div class="">
+           <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
+         </div>
+
+           <div class="btn-group centrarbtn" role="group" aria-label="...">
+
+               <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                   <span class="glyphicon glyphicon-eye-open" ></span>
+               </button>
+                 <a
+               class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar" disabled>
+                   <span class="glyphicon glyphicon-pencil"></span>
+               </a>
+               <a
+                 class="btn btn-default" data-toggle="tooltip" data-placement="top"
+                 title="Eliminar" disabled>
+                   <span class="glyphicon glyphicon-trash"></span>
+               </a>
+
+               <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
+                   <span class="glyphicon glyphicon-copy"></span>
+               </button>
 
 
+               <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar" disabled>
+                   <span class="glyphicon glyphicon-send"></span>
+               </button>
 
+           </div>
+       </div>
+   </div>
+</div>
 
+<?php } ?>
+
+<!--Termina-->
                     </div>
                 </div>
             </div>
@@ -223,7 +279,7 @@
         </div>
     </div>
 </div>
-                 <form method="post" action="/save" enctype="multipart/form-data">
+                 <form method="post" action="/save" enctype="multipart/form-data" id="myForm">
                   {{ csrf_field() }}
         <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
@@ -237,7 +293,7 @@
 
       <div class="col-sm-2 pull-right pull-right">
         <div class="pull-right">
-        <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys"></a>
+        <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()"></a>
         </div>
       </div>
     </div>
@@ -249,7 +305,7 @@
                     <h5> Descripción de la encuesta:</h5>
                     <textarea maxlength="500"class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
                     <h5> Icono de la encuesta:</h5>
-                    <input type="file" id="foto1" required onchange="return ShowImagePreview( this.files );" name="icono" /> <br />
+                    <input type="file" id="foto1"  onchange="return ShowImagePreview( this.files );" name="icono" onclick="limpiar2();"/> <br />
 
 
   <div id="previewcanvascontainer" style="height 200px; width 200px;">
@@ -259,7 +315,10 @@
 
                 </div>
                 <div class="modal-footer">
-                  <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
+
+      <!--      <input type="reset" value="Cancelar" class="btn btn-default" data-dismiss="modal"  onclick="limpiar()">-->
+
+             <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
 
@@ -270,6 +329,13 @@
           </form>
 <script>
 function limpiar()
+{
+  var canvas = document.getElementById("previewcanvas");
+  canvas.width=canvas.width;
+document.getElementById("myForm").reset();
+}
+
+function limpiar2()
 {
   var canvas = document.getElementById("previewcanvas");
   canvas.width=canvas.width;
@@ -385,6 +451,19 @@ function UpdatePreviewCanvas()
     var y = Math.floor( ( world.height - UseHeight ) / 2 );
 
     context.drawImage( img, x, y, 200, 200 );
+}
+
+
+
+function alerta(id) {
+  alertify.confirm("¿Elimar Plantilla? ",
+  function(){
+    window.location.href = "{{url('administrator/delete')}}/"+id;
+  },
+  function(){
+    alertify.error('Cancel');
+  });
+
 }
 
 

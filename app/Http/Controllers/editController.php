@@ -23,8 +23,10 @@ class editController extends Controller
       $eid = $id;
       return view("administrator.edit",compact('titulo','descripcion','nombre','eid'));
   }
+  
   public function delete($id)
   {
+
     $post =templates2s::where('id',$id)->first();
       $post->delete();
 

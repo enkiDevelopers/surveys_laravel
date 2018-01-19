@@ -155,5 +155,4 @@ Route::get('/administrator/dataTemplate', function(){
     return view("administrator.dataTemplate");
 });
 
-Route::post('buscarcampus', 'directiveController@busquedacampus');
 
