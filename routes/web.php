@@ -154,3 +154,6 @@ Route::get('/administrator/questionSaved','questionsTemplateController@questionS
 Route::get('/administrator/dataTemplate', function(){
     return view("administrator.dataTemplate");
 });
+
+Route::post('buscarcampus', 'directiveController@busquedacampus');
+
