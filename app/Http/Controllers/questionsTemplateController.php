@@ -27,8 +27,8 @@ class questionsTemplateController extends Controller
     //$surv->bifurcacion = $bifurcacion;
     $surv->save();
     
-    $datos = questionstemplates::where('templates_idTemplates',$idTemplate);
-    return response()->json([$datos]);
+    $datos = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
+    return $datos;
 
   }
 

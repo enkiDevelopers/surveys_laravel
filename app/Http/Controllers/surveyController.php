@@ -10,10 +10,8 @@ use File;
 use Input;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
 class surveyController extends Controller
 {
-
 
   public function save(Request $request)
   {
@@ -38,7 +36,7 @@ class surveyController extends Controller
 
       $eid =$surv->id;
 
-      $datos = questionstemplates::where('templates_idTemplates',$eid);
+      $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
 
       return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
   }
@@ -51,8 +49,6 @@ class surveyController extends Controller
 
     $propias = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
     $agenas = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
-
-
 
 
       return view('administrator.surveys', compact('propias','agenas'));

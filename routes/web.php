@@ -151,6 +151,12 @@ Route::get('/administrator/modalTitle', function(){
 
 Route::get('/administrator/questionSaved','questionsTemplateController@questionSaved');
 
+/*Route::get('/administrator/questionSaved', function(){
+    $datos = App\questionstemplates::where('templates_idTemplates','=','49')->get()->toJson();
+    $datos =Response::Json($datos);
+    dd($datos);
+});
+*/
 Route::get('/administrator/dataTemplate', function(){
     return view("administrator.dataTemplate");
 });

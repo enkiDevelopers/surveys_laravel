@@ -19,8 +19,8 @@
                 <div class=" form-group">
                     <label for="exampleInputEmail1">Tipo</label>
                     <select class="form-control yes-no-question text-black-body">
-                        <option value="1">Pregunta abierta</option>
-                        <option value="2">Pregunta de opción Multiple </option>
+                        <option value="<?php echo $datos->type;?>"><?php echo $datos->type;?></option>
+
                     </select>
                 </div>
             </div>
