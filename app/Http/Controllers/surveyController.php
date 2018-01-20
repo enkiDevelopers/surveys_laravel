@@ -9,6 +9,7 @@ use DB;
 use File;
 use Input;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\administradores;
 
 class surveyController extends Controller
 {
@@ -43,15 +44,18 @@ class surveyController extends Controller
 
   public function show_cards($id)
   {
+    $eAdmin =  administradores::where('id_admin', $id)->count();
 
-    //$propias = DB::table('templates2s')->join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', '1')->orderby('id_admin', 'asc')->get();
-    //$agenas = DB::table('templates2s')->join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=','1')->orderby('id_admin', 'asc')->get();
-
+    if($eAdmin == 0)
+    {
+      return view('errors.404');
+    }
+    else {
     $propias = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
     $agenas = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
 
-
       return view('administrator.surveys', compact('propias','agenas'));
+    }
 
   }
 

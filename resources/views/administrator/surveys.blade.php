@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
   <link rel="stylesheet" href="/css/alertify.min.css">
-  <link rel="stylesheet" href="/css/alertify.rtl.min">
+  <link rel="stylesheet" href="/css/alertify.rtl.min.css">
       <script src="/js/alertify.min.js"></script>
 
 <div class="container" >
