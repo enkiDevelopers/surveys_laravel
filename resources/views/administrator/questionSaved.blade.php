@@ -5,7 +5,7 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
                     <select class="form-control questions-of-master-survey text-black-body">
-                        <option value="<?php echo $datos->id;?>"><?php echo $datos->id;?></option>
+                        <option value="<?php echo $datos->order;?>"><?php echo $datos->order;?></option>
                     </select>
                 </div>
             </div>
@@ -19,8 +19,8 @@
                 <div class=" form-group">
                     <label for="exampleInputEmail1">Tipo</label>
                     <select class="form-control yes-no-question text-black-body">
-                        <option value="<?php echo $datos->type;?>"><?php echo $datos->type;?></option>
-
+                        <option value="1">Pregunta abierta</option>
+                        <option value="2">Pregunta de opción multiple </option>
                     </select>
                 </div>
             </div>
@@ -37,7 +37,6 @@
         </div>
     </div>
 <?php } ?>
-
     <div class="row hide yes-no-question-block " id="yes-no-question-template">
         <div class="col-md-12 well" data-questions="0" id="childSupport">
             <div class="btn-group btn-group-xs pull-right" role="group" aria-label="...">

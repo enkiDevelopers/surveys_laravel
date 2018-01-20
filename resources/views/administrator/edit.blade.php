@@ -13,8 +13,10 @@
 
 				@include('administrator.saveQuestionsSection')
 
-				<div style="overflow-x: hidden; overflow-y: auto; height:54%;position: relative;width:90%" id="container-questions">
-					@include('administrator.questionSaved')
+				<div style="overflow-x: hidden; overflow-y: auto; height: 54%;position: relative;width: 90%" id="">
+					<div id="container-questions">
+						@include('administrator.questionSaved')
+					</div>
 				</div>
         	</div>
     	</div>
@@ -77,26 +79,27 @@
 	            headers: {'X-CSRF-TOKEN': token},
 		        dataType: 'json',
 		        data: {idTemplate: idTemplate, questionInput: questionInput, questionType: questionType },
+		        complete: function(e, xhr, settings){
+				    if(e.status === 200){
+				    	alertify.alert("Pregunta Guardada correctamente.", function(){
+						    alertify.success('Pregunta Añadida');						
+  				            $("#ModalQuestion").modal('hide').find("input").val("");
+  				            $("#questionType").val("1").attr('selected','true');
+  				            $(".new-question__control--delete-question").parent().parent().parent().prev().children().children().next().next().next().remove();
+						  });
+   							$("#container-questions").load(" #container-questions");
+
+				    }else{
+						alertify.alert("No se ha podido agregar la pregunta.", function(){
+						    alertify.message('OK');
+						});    	
+				    }
+				},
 		        error: function (textStatus, errorThrown) {
 					alertify.alert("No se ha podido agregar la pregunta.", function(){
 					    alertify.message('OK');
 					 });
-		        },
-		        complete: function(e, xhr, settings,data){
-				    if(e.status === 200){
-		        		alertify.alert("Pregunta Guardada correctamente.", function(){
-						    alertify.success('Pregunta Añadida');						
-				            $("#ModalQuestion").modal('hide').find("input").val("");
-				            $("#questionType").val("1").attr('selected','true');
-				            $(".new-question__control--delete-question").parent().parent().parent().prev().children().children().next().next().next().remove();
-				            $("#container-questions").appendTo(data);
-						  });
-				    }else{
-						alertify.alert("No se ha podido agregar la pregunta.", function(){
-						    alertify.message('OK');
-			  			});
-				    }
-				}
+		        }				
 		    });
 		}
 		else {
