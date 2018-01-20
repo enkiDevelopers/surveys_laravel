@@ -64,4 +64,9 @@
         </div>
     </div>
 </div>
+<form method="POST" action="/directive">
+    <input type="input" name ="id" id="id" >
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <input type="submit" value="enviar">
+</form>
 @endsection

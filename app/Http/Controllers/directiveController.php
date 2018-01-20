@@ -30,8 +30,9 @@ class directiveController extends Controller
       return view('administrator.edit',compact('titulo','descripcion','nombre'));
   }
 
-  public function show_cards($id)
+  public function show_cards(Request $request)
   {
+      $id = $request->id;
       $encuestas = DB::table('surveys')->get();
       $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',$id)->get();
       

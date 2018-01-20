@@ -40,25 +40,25 @@
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
-            <select class="form-control text-black" onchange="selecciona(this.value)">
-            <?php
+            <select class="form-control text-black" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
+            <option>Seleccione una opcion</option>
+            <?php 
                 foreach ($regionestotal as $regionestotales) {
                     echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";
                        
                 }
             ?>
             </select>
-            <hr>
             <button class="btn btn-default">
                 Ver reporte
             </button>
         </fieldset>
      <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control text-black" id="regionescorp">
+          <p id='cargar'></p>
+            <select class="form-control text-black" value="Seleccione Zona" id="regionescorp">
 
             </select>
-            <hr>
             <button class="btn btn-default">
                 Ver reporte
             </button>
@@ -95,8 +95,7 @@
             <select class="form-control text-black" disabled>
             <?php
                 foreach ($regiones as $region) {
-                    echo "<option value={$region->regions_id}>{$region->regions_name}</option>";
-                       
+                    echo "<option value={$region->regions_id}>{$region->regions_name}</option>";     
                 }
             ?>
             </select>
@@ -147,16 +146,15 @@
         </div>
      <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control text-black" disabled>
+            <select class="form-control text-black" id="region_campus" disabled>
             <?php
                 foreach ($campus as $campu) {
-                    echo "<option value={$campu->campus_id}>{$campu->campus_name}</option>";
-                       
+                    echo "<option value={$campu->campus_id}>{$campu->campus_name}</option>";  
                 }
             ?>
             </select>
             <hr>
-            <button class="btn btn-default">
+            <button class="btn btn-default" href="">
                 Ver reporte
             </button>
         </fieldset>

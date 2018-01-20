@@ -1,3 +1,5 @@
+//$("#divid").load(" #divid");
+
 function corporativoModal(comp){
   let id = comp.id;
   $.ajaxSetup({
@@ -30,7 +32,6 @@ function corporativoModal(comp){
           });
 
 }
-
 
 function regionalModal(comp){
   
@@ -101,7 +102,6 @@ function campusModal(comp,region){
 
 function selecciona(busq){
   let id = busq;
-  dato="";
   $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -114,14 +114,19 @@ function selecciona(busq){
               data : {"id": id},
               async:true,
               cache:false,
+              beforeSend: function () {
+                        $("#cargar").html("Cargando Regiones...");
+              },
               success : function(response){
-              var datos=JSON.stringify(response);
-              console.log(datos);
-              for(var i=0;i<=response.length;i++){
-                var n = i.toString();
-                dato+="<option value="+response[].campus_id+">"+response[n].campus_name+"</option>"
-              } 
+              dato="";
+              var json=jQuery.parseJSON(JSON.stringify(response));
+              for(post in json){
+                dato+="<option value="+json[post].campus_id+">"+json[post].campus_name+"</option>"
+              }
               $("#regionescorp").html(dato);
+              $("#cargar").html("");
+
+
                 
               },
               error : function(error) {
