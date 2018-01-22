@@ -59,5 +59,16 @@ class surveyController extends Controller
 
   }
 
+  public function updateDataTemplate(Request $request)
+  {
+    $idTemplate = $request['idTemplate'];
+    $titulo = $request['titleInput'];
+    $descripcion = $request['descInput'];
+
+     $surv = new templates2s;
+     $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion));
+
+     return $surv;
+  }
 
 }

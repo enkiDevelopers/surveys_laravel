@@ -36,21 +36,44 @@
      	$("#ModalQuestion").appendTo('body').modal();
      }
 
-    function verificar(){
-        if ($("#exampleInputEmail1").val() != "") {
-            $("#add-question").removeClass('disabled');
-        }else{
-
-        }
-    }
-
     function publish(){
-        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " ") {
-            if ($("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
-                $("#exampleInputEmail1").val($("#ModalTitleInput").val());
-                $("#inputDesc").val($("#ModalDescInput").val());
-                $("#ModalTitle").modal('hide');
-                verificar();
+    	var action = document.getElementById("updateDataTemplateForm").action;
+    	var titleInput = $("#ModalTitleInput").val();
+    	var descInput = $("#ModalDescInput").val();
+	    var idTemplate = <?php echo $eid; ?>;
+
+        if (titleInput.length != 0 && titleInput != " ") {
+            if (descInput.length != 0 && descInput != " ") {
+
+		        $.ajax({
+			        type: "get",
+			        url: action,
+		            headers: {'X-CSRF-TOKEN': token},
+			        dataType: 'json',
+			        data: {idTemplate: idTemplate, titleInput: titleInput, descInput: descInput},
+			        complete: function(e, xhr, settings){
+					    if(e.status === 200){
+					    	alertify.alert("Datos Guardados correctamente.", function(){
+	  				            $("#exampleInputEmail1").val(titleInput);
+				                $("#inputDesc").val(descInput);
+				                $("#ModalTitle").modal('hide');
+				                console.log(e);
+							  });
+
+					    }else{
+							alertify.alert("No se han podido guardar los cambios.", function(){
+							    alertify.message('OK');
+							}); 
+							console.log(e);   	
+					    }
+					},
+			        error: function (textStatus, errorThrown) {
+						alertify.alert("No se ha podido agregar la pregunta.", function(){
+						    alertify.message('OK');
+						 });
+						console.log(textStatus);
+			        }				
+			    });
             }else{
                 alert("Ingrese una descripción para la encuesta");
             }

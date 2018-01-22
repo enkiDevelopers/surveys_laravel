@@ -162,3 +162,5 @@ Route::get('/administrator/dataTemplate', function(){
 });
 
 Route::post('buscarcampus', 'directiveController@busquedacampus');
+
+Route::get('/updateDataTemplate','surveyController@updateDataTemplate');
