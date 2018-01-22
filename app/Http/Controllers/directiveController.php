@@ -11,9 +11,6 @@ use Response;
 
 class directiveController extends Controller
 {
-
-
-
   public function save(Request $request)
   {
 
@@ -30,9 +27,9 @@ class directiveController extends Controller
       return view('administrator.edit',compact('titulo','descripcion','nombre'));
   }
 
-  public function show_cards(Request $request)
+  public function show_cards($id)
   {
-      $id = $request->id;
+      //$id = $request->id;
       $encuestas = DB::table('surveys')->get();
       $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',$id)->get();
       

@@ -37,7 +37,7 @@
                             <h2 class="title"> Directivo </h2>
                             <div class="info">
                               <hr class="divider"/>
-                              <p class="lead">Ingresa para visualizar los reportes que las encuestas han generado.</p><a href="{{('/directive/login')}}" class="btn btn-lg center-block">Iniciar Sesión !</a>
+                              <p class="lead">Ingresa para visualizar los reportes que las encuestas han generado.</p><a href="{{('/directives/login')}}" class="btn btn-lg center-block">Iniciar Sesión !</a>
                             </div>
                           </div>
                         </article><br><br>
