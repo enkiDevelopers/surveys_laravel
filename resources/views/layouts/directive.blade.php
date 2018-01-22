@@ -16,159 +16,7 @@
 
 </head>
 
-<!--modal section-->
-<div id="MdCorporativo" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Reportes Disponibles</h4>
-      </div>
-      <div class="modal-body" >
-        <div class="row">
-        <div id="titulo_encuesta" class="col-md-6"></div>
-        <div id="imagen" class="col-md-6"></div>
-
-        </div>
-        <fieldset>
-          <legend>Reporte General</legend>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
-        </fieldset>
-        <fieldset>
-          <legend>Reporte regional</legend>
-            <select class="form-control text-black" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
-            <option>Seleccione una opcion</option>
-            <?php 
-                foreach ($regionestotal as $regionestotales) {
-                    echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";
-                       
-                }
-            ?>
-            </select>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
-        </fieldset>
-     <fieldset>
-          <legend>Reporte Campus</legend>
-          <p id='cargar'></p>
-            <select class="form-control text-black" value="Seleccione Zona" id="regionescorp">
-
-            </select>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
-        </fieldset>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="MdRegional" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Reportes Disponibles</h4>
-      </div>
-      <div class="modal-body" >
-        <div class="row">
-        <div id="titulo_encuestar" class="col-md-6"></div>
-        <div id="imagenr" class="col-md-6">
-
-        </div>
-
-        </div>
-        <fieldset>
-          <legend>Reporte regional</legend>
-            <select class="form-control text-black" disabled>
-            <?php
-                foreach ($regiones as $region) {
-                    echo "<option value={$region->regions_id}>{$region->regions_name}</option>";     
-                }
-            ?>
-            </select>
-            <hr>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
-        </fieldset>
-     <fieldset>
-          <legend>Reporte Campus</legend>
-            <select class="form-control text-black">
-            <?php
-                foreach ($campusregion as $campusregions) {
-                    echo "<option value={$campusregions->campus_id}>{$campusregions->campus_name}</option>";
-                       
-                }
-            ?>
-            </select>
-            <hr>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
-        </fieldset>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="MdCampus" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Reportes Disponibles</h4>
-      </div>
-      <div class="modal-body" >
-        <div class="row">
-        <div id="titulo_encuestac" class="col-md-6"></div>
-        <div id="imagenc" class="col-md-6"></div>
-
-        </div>
-     <fieldset>
-          <legend>Reporte Campus</legend>
-            <select class="form-control text-black" id="region_campus" disabled>
-            <?php
-                foreach ($campus as $campu) {
-                    echo "<option value={$campu->campus_id}>{$campu->campus_name}</option>";  
-                }
-            ?>
-            </select>
-            <hr>
-            <button class="btn btn-default" href="">
-                Ver reporte
-            </button>
-        </fieldset>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!--end modal section-->
 <body id="wrapper">
     <div class="wrapper"  id="app">
           <!-- Sidebar Holder -->
@@ -183,6 +31,9 @@
                 <ul class="list-unstyled components">
                     <div class="profile center text-center">
                         <img src="/img/avatar.jpeg" alt="">
+                        <?php 
+                                $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',1)->get();
+                        ?>
                             <p><?php echo $datosdirective[0]->nombre." ".$datosdirective[0]->apPaterno." ".$datosdirective[0]->apMaterno;  ?></p>
 
                         <?php
@@ -293,52 +144,7 @@ function directiveModal(comp){
 }
 */
 </script>
-    <script type="text/javascript">
 
-    @php
-        $q1a=10;
-        $q1b=20;
-    @endphp
-        Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: null,
-            type: 'pie'
-        },
-        title: {
-            text: 'Campus Norte '
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.y:.0f} puntos </b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Puntos Encuesta',
-            colorByPoint: true,
-            data: [{
-                name: 'Estudiantes No Encuestados',
-                y: {{$q1a}}
-            }, {
-                name: 'Estudiantes Encuestados',
-                y: {{$q1b}}
-            }]
-        }]
-        });
-    </script>
     <script type="text/javascript">
              $(document).ready(function () {
                  $('#sidebarCollapse').on('click', function () {

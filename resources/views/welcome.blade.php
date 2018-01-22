@@ -19,7 +19,6 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
 
-
                     <div class="container full-screen">
                       <div class="row row-centered pos">
                       <section class="col-lg-12 col-xs-12 col-centered">

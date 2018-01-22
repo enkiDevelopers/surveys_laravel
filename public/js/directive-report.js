@@ -1,13 +1,13 @@
  var barChartData = {
-            labels: ["Campus 1", "Campus 2", "Campus 3", "Campus 4",],
+            labels: ["Encuestados",],
             datasets: [{
-                label: 'Porcentaje de Estudiantes Encuestados',
+                label: 'Alumnos',
                 backgroundColor: 'rgb(2,21,248)',
                 stack: 'Stack 0',
                 data: [30,60,90,85,100]
                 
             }, {
-                label: 'Porcentaje de Estudiantes No Encuestados',
+                label: 'Trabajadores',
                 backgroundColor: '#DE0D0D',
                 stack: 'Stack 1',
                 data: [70, 40, 10, 15]
@@ -23,10 +23,10 @@
                 options: {
                     title:{
                         display:true,
-                        fontSize: 30,
+                        fontSize: 20,
                         fontFamily: "Arial",
                         fontColor: "#000",
-                        text:"Reporte Regional"
+                        text:"Encuestados"
                     },
                     tooltips: {
                         mode: 'index',

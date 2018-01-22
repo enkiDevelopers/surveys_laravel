@@ -84,13 +84,15 @@ function campusModal(comp,region){
               success : function(response){
                 var titulo="";
                 var imagen="";
+                var boton="";
                     titulo+="<h4><b>"+response["0"].Titulo_encuesta+"</b></h4>";
                     imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response[0].Image_path+"' width='50%' height='90px'>";
+                    boton+="<a class='btn btn-default' href='/campus/"+comp+"'>Ver reporte</a>";
 
                  $("#titulo_encuestac").html(titulo);
                  $("#imagenc").html(imagen);
-
-                $('#MdCampus').modal('show');
+                 $("#btn").html(boton);
+                 $('#MdCampus').modal('show');
 
               },
               error : function(error) {

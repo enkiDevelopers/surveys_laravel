@@ -51,8 +51,12 @@ class directiveController extends Controller
   public function busquedacampus(Request $request){
     $data = DB::table('campus')->where('regions_regions_id',$request->id)->get();
     return response()->json($data);
-
   }
+  public function estadisticaCampus($id){
+      $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
+      return view('directive.report',compact('datoencuesta'));
+  }
+
 
 
 
