@@ -17,10 +17,17 @@
                         <h5> Descripción de la encuesta:</h5>
                         <textarea class="form-control text-black" cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" ><?php echo $descripcion; ?></textarea>
 
+                        <input type="file" id="foto1"  onchange="return ShowImagePreview( this.files );" name="icono" onclick="limpiar2();"/> <br />
+                        <div id="previewcanvascontainer" style="height 200px; width 200px;">
+                            <canvas id="previewcanvas" > 
+                                <img src="\img/iconos/<?php echo $nombre;?>" width="10%" height="10%">
+                            </canvas>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary" onclick="publish();" >Guardar</button>
+                        <button type="button" class="btn btn-primary" onclick="publish();" >Guardar</button>
                     </div>
 
 

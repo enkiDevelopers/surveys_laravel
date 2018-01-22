@@ -126,7 +126,7 @@ Route::get('/administrator/edit',function(){
     return view ('administrator.edit');
 });
 
-Route::get('/administrator/edit/{id}/', "editController@busqueda" );
+Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
 Route::get('/administrator/delete/{id}/', "editController@delete" );
 
 Route::get('/borrar', function(){

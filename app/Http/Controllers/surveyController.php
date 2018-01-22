@@ -39,7 +39,8 @@ class surveyController extends Controller
 
       $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
 
-      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
+///      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
+      return redirect()->route('editar',array("section" => "$eid"));
   }
 
   public function show_cards($id)
@@ -64,9 +65,10 @@ class surveyController extends Controller
     $idTemplate = $request['idTemplate'];
     $titulo = $request['titleInput'];
     $descripcion = $request['descInput'];
+    $nombre =$request['nombre'];
 
      $surv = new templates2s;
-     $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion));
+     $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion, 'imagePath' => $nombre));
 
      return $surv;
   }
