@@ -4,16 +4,16 @@
                 label: 'Alumnos',
                 backgroundColor: 'rgb(2,21,248)',
                 stack: 'Stack 0',
-                data: [30,60,90,85,100]
+                data: [<?php echo $totalalumnos ?>]
                 
             }, {
                 label: 'Trabajadores',
                 backgroundColor: '#DE0D0D',
                 stack: 'Stack 1',
-                data: [70, 40, 10, 15]
+                data: [<?php echo $totalempleados ?>]
                 
             }]
-        };
+};
 
         window.onload = function() {
             var ctx = document.getElementById('canvas').getContext('2d');
