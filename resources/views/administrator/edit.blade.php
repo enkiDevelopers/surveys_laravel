@@ -7,7 +7,6 @@
 			<div class="row">
 
 				@include('administrator.DataTemplate')
-																						 <!-- height: 70% -->
 			    <div class="new-survey__question-container" style="position: fixed;overflow: auto;height: auto;width:75%;margin-top: 100px;">
 			    </div>
 

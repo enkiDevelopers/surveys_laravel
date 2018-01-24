@@ -33,10 +33,10 @@
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
                     <li id="home">
-                        <a href="{{ url('/administrator/surveys')}}" >
+                        <a href="{{ url('/administrator/surveys')}}/{{$admor}}" >
                             <i class="glyphicon glyphicon-arrow-left	Try it
 "></i>
-                            <span> volver</span>
+                            <span> volver </span>
                         </a>
                     </li>
 

@@ -13,7 +13,7 @@ class editController extends Controller
 {
   public function busqueda($id)
   {
-      $consulta = DB::table('templates2s')->select(['tituloEncuesta','descripcion','imagePath'] )->where('id', $id)->get();
+      $consulta = DB::table('templates2s')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
 
       $titulo = $consulta[0]->tituloEncuesta;
 
@@ -24,9 +24,10 @@ class editController extends Controller
       $eid = $id;
 
       $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
+      $admor = $consulta[0]->creador;
 
 
-      return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos'));
+      return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos','admor'));
   }
   
   public function delete($id)
