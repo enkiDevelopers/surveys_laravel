@@ -4,7 +4,7 @@
   date_default_timezone_set('America/Mexico_City');
   @endphp
   <link rel="stylesheet" href="/css/alertify.min.css">
-  <link rel="stylesheet" href="/css/alertify.rtl.min.css">
+  <link rel="stylesheet" href="/css/alertify.rtl.css">
       <script src="/js/alertify.min.js"></script>
 
 <div class="container" >
@@ -185,8 +185,18 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Publicar encuesta - Titulo de la encuesta</h4>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="col-md-6">
+                      <h4 class="modal-title" id="myModalLabel">Publicar encuesta - Titulo de la encuesta</h4>
+
+                    </div>
+                  </div>
+
+
                 </div>
                 <div class="modal-body">
                 <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
