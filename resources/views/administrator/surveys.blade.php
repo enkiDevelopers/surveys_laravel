@@ -97,7 +97,7 @@
 
                                             <span class="glyphicon glyphicon-pencil"></span>
                                         </a>
-                                        <a onclick="alerta({{$plantilla->id}})"
+                                        <a onclick="alerta({{$plantilla->id}},{{$plantilla->creador}})"
                                           class="btn btn-default" data-toggle="tooltip" data-placement="top"
                                           title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
@@ -581,10 +581,10 @@ function UpdatePreviewCanvas()
 }
 
 
-function alerta(id) {
+function alerta(id,idAdmin) {
   alertify.confirm("¿Seguro que desea eliminar la plantilla? ",
   function(){
-    window.location.href = "{{url('administrator/delete')}}/"+id;
+    window.location.href = "{{url('administrator/delete')}}/"+id+"/"+idAdmin;
   },
   function(){
     alertify.error('Cancel');

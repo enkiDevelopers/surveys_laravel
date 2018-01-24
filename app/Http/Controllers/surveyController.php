@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\templates2s;
+use App\templates;
 use App\questionstemplates;
 use DB;
 use File;
@@ -28,7 +28,7 @@ class surveyController extends Controller
       $icono->move('img/iconos',$nombre);
 
     }
-      $surv = new templates2s;
+      $surv = new templates;
       $surv->tituloEncuesta = $titulo;
       $surv->descripcion= $descripcion;
       $surv->imagePath= $nombre;
@@ -53,8 +53,8 @@ class surveyController extends Controller
       return view('errors.404');
     }
     else {
-    $propias = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
-    $agenas = templates2s::join('administradores', 'templates2s.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
+    $propias = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
+    $agenas = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
 
       return view('administrator.surveys', compact('propias','agenas'));
     }
@@ -68,7 +68,7 @@ class surveyController extends Controller
     $descripcion = $request['descInput'];
     $nombre =$request['nombre'];
 
-     $surv = new templates2s;
+     $surv = new templates;
      $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion, 'imagePath' => $nombre));
 
      return $surv;
