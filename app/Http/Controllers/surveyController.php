@@ -41,6 +41,7 @@ class surveyController extends Controller
 
 ///      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
       return redirect()->route('editar',array("section" => "$eid"));
+
   }
 
   public function show_cards($id)
