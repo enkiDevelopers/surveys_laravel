@@ -1,20 +1,19 @@
 $(document).ready(function(){
 
     // Agregar una nueva pregunta a la encuesta general
-    $("#add-question").on("click", function(){
+    /*$("#add-question").on("click", function(){
+        //Agregando número de pregunta
         if ($("#add-question").hasClass("disabled")){
             alert("Ingrese un título");
         }else{
             if ($("#add-question").hasClass('aux')){
                 $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("");
-                setNumberOfQuestionsToSelect();
-                getnumberQuestion();
                 $("#add-question").removeClass('aux');
             }else{
                 $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("").end();
                 //("#childSupport").hide();
-                setNumberOfQuestionsToSelect();
-                getnumberQuestion();
+                //setNumberOfQuestionsToSelect();
+                //getnumberQuestion();
 
             }
         }
@@ -22,7 +21,7 @@ $(document).ready(function(){
 
     function setNumberOfQuestionsToSelect(){
         var el = $(".question:not(.hide)");
-        var select =  $(".questions-of-master-survey");
+        var select =  $(".questions-of-master-survey");        
         select.empty();
        
         for(var i = 1; i <= el.length; i++){
@@ -43,7 +42,7 @@ $(document).ready(function(){
             select.append(o);
         }
     }
-
+    */
     // Eliminar una pregunta
     $("#ModalQuestion").on("click", ".new-question__control--delete-question", function(){
        //var a = $(this).parent().parent().parent().prev().children().children().next().next().next().remove();
@@ -51,15 +50,15 @@ $(document).ready(function(){
        var a = $(this).parent().parent().parent().prev().children().children().next().next().next().remove();
        
        console.log(a);
-       setNumberOfQuestionsToSelect();
-       getnumberQuestion();
+       //setNumberOfQuestionsToSelect();
+       //getnumberQuestion();
     });
 
     // Editar una pregunta
     $(".new-survey__question-container").on("click", ".new-question__control--edit-question", function(){
         $(this).parent().parent().parent().parent().remove();
-        setNumberOfQuestionsToSelect();
-        getnumberQuestion();
+        //setNumberOfQuestionsToSelect();
+        //getnumberQuestion();
 
         //Abrrir modal
         //Copiar datos de los inputs del div

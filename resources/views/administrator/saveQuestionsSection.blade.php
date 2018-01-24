@@ -17,7 +17,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Número</label>
-                                        <select class="form-control questions-of-master-survey text-black-body"></select>
+                                    <input type="text" class="form-control text-black-body" id="numPregSig" value = "2" aria-describedby="emailHelp" maxlength="5"  disabled>
                                 </div>
                             </div>
                             <div class="col-md-6 ">

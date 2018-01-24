@@ -4,24 +4,19 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
-                    <select class="form-control questions-of-master-survey text-black-body">
-                        <option value="<?php echo $datos->order;?>"><?php echo $datos->order;?></option>
-                    </select>
+                    <input type="text" class="form-control text-black-body numPregs"  aria-describedby="emailHelp" value="<?php echo $datos->order;?>" disabled>
                 </div>
             </div>
             <div class="col-md-6 ">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Título de la pregunta</label>
-                    <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $datos->title;?>">
+                    <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $datos->title;?>" disabled>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class=" form-group">
                     <label for="exampleInputEmail1">Tipo</label>
-                    <select class="form-control yes-no-question text-black-body">
-                        <option value="1">Pregunta abierta</option>
-                        <option value="2">Pregunta de opción multiple </option>
-                    </select>
+                    <input type="text" class="form-control text-black-body" aria-describedby="emailHelp" value="<?php echo ($datos->type==1?'Pregunta Abierta':'Opción Múltiple');?>" disabled>
                 </div>
             </div>
             <div class="col-md-2 pull-right" style="margin-bottom: 15px;">

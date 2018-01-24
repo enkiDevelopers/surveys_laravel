@@ -33,6 +33,7 @@
 
     function ModalQuestion(){
      	$("#ModalQuestion").appendTo('body').modal();
+     	$("#numPregSig").val($(".numPregs").length+1);
     }
 
     function publish(){
@@ -83,9 +84,9 @@
     }
 
     function saveQuestion(){
-
 	    var action = document.getElementById("saveQuestionForm").action;
 	    var idTemplate = <?php echo $eid; ?>;
+	    var numPregSig = $("#numPregSig").val();
 	    var questionInput = $("#questionInput").val();
 	    //var questionOptionInput = $("#questionOptionInput").text();
 	    var questionType= $("#questionType").val();
@@ -101,7 +102,7 @@
 		        url: action,
 	            headers: {'X-CSRF-TOKEN': token},
 		        dataType: 'json',
-		        data: {idTemplate: idTemplate, questionInput: questionInput, questionType: questionType },
+		        data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType },
 		        complete: function(e, xhr, settings){
 				    if(e.status === 200){
 				    	alertify.alert("Pregunta Guardada correctamente.", function(){

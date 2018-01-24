@@ -11,6 +11,7 @@ class questionsTemplateController extends Controller
 {
   public function saveQuestionsTemplate(Request $request){
 
+    $numPregSig = $request['numPregSig'];
     $questionInput = $request['questionInput'];
     $questionType = $request['questionType'];
     $idTemplate = $request['idTemplate'];
@@ -20,6 +21,7 @@ class questionsTemplateController extends Controller
 
     $surv = new questionstemplates;
     $surv->templates_idTemplates = $idTemplate;
+    $surv->order = $numPregSig;
     $surv->title = $questionInput;
     $surv->type = $questionType;
     //$surv->order = $order;
