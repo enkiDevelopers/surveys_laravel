@@ -28,8 +28,7 @@
             <option>Seleccione una opcion</option>
             <?php 
                 foreach ($regionestotal as $regionestotales) {
-                    echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";
-                       
+                    echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";  
                 }
             ?>
             </select>
@@ -72,6 +71,7 @@
         <div id="imagenr" class="col-md-6">
 
         </div>
+        <p id="idencues" name="idencues"></p>
 
         </div>
         <fieldset>
@@ -83,66 +83,23 @@
                 }
             ?>
             </select>
-            <hr>
             <button class="btn btn-default">
                 Ver reporte
             </button>
         </fieldset>
      <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control text-black">
-            <?php
-                foreach ($campusregion as $campusregions) {
-                    echo "<option value={$campusregions->campus_id}>{$campusregions->campus_name}</option>";
-                       
-                }
-            ?>
-            </select>
-            <hr>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
-        </fieldset>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="MdCampus" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Reportes Disponibles</h4>
-      </div>
-      <div class="modal-body" >
-        <div class="row">
-        <div id="titulo_encuestac" class="col-md-6"></div>
-        <div id="imagenc" class="col-md-6"></div>
-
-        </div>
-     <fieldset>
-          <legend>Reporte Campus</legend>
-            <select class="form-control text-black" id="region_campus" disabled>
-            <?php
-                foreach ($campus as $campu) {
-                    echo "<option value={$campu->campus_id}>{$campu->campus_name}</option>";  
-                }
-                      ?>
-
-            </select>
-            <div id="btn">
-                
-            </div>
-
-
+                <select id="cmbcampus" name="cmbcampus" class="form-control text-black">
+                <?php
+                    foreach ($campus as $campuss) {
+                        echo "<option value={$campuss->campus_id}>{$campuss->campus_name}</option>";    
+                    }
+                ?>
+                </select>
+                <a class='btn btn-default' href="javascript:getURL()">
+                    Ver Reporte
+                </a>
         </fieldset>
 
       </div>
@@ -155,8 +112,6 @@
 </div>
 
 <!--end modal section-->
-
-
 <div class="row">
 <div class="container" >
         <div class="col-md-11">
@@ -218,9 +173,9 @@
                                     case '3':
                                 ?>
                                     <div class="btn-group " role="group" aria-label="...">
-                                        <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="campusModal({{$encuesta->id}},{{$datosdirective[0]->idDirectives}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Campus">
+                                        <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
-                                        </button>
+                                        </a>
                                     </div>
                                 <?php 
                                     break;
@@ -241,4 +196,15 @@
     </div>
 </div>
 
+
 	@endsection
+    <script type="text/javascript">
+        function getURL(){
+            var dirt = document.getElementById('cmbcampus').value;
+            var id=document.getElementById('idencues').innerText;
+            console.log(dirt);
+            var url = '/campus/'+id+'/'+dirt;
+            window.location.href=url;
+        }
+    </script>
+

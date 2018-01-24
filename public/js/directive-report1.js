@@ -1,44 +1,65 @@
- @php
-        $q1a=10;
-        $q1b=20;
-    @endphp
+window.onload = function() {
 
-        Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: null,
-            type: 'pie'
-        },
-        title: {
-            text: 'Campus Norte '
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.y:.0f} puntos </b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Puntos Encuesta',
-            colorByPoint: true,
-            data: [{
-                name: 'Estudiantes No Encuestados',
-                y: {{$q1a}}
-            }, {
-                name: 'Estudiantes Encuestados',
-                y: {{$q1b}}
-            }]
-        }]
-        });
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+        text: "Avance General"
+    },
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: <?php echo $porcentajeavance ?>, label: "Avance General"},
+            {y: <?php echo 100-$porcentajeavance ?>, label: "Avance restante"}
+
+        ]
+    }]
+});
+
+chart.render();
+
+
+
+var chart2 = new CanvasJS.Chart("chartContaineralum", {
+    animationEnabled: true,
+    title: {
+        text: "Avance General Alumnos"
+    },
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: <?php echo $porcentajeavancealum ?>, label: "Avance General Alumnos"},
+            {y: <?php echo 100-$porcentajeavancealum ?>, label: "Avance Restante Alumnos"}
+
+        ]
+    }]
+});
+
+chart2.render();
+
+var chart3 = new CanvasJS.Chart("chartContaineremp", {
+    animationEnabled: true,
+    title: {
+        text: "Avance General Empleados"
+    },
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: <?php echo $porcentajeavanceemp ?>, label: "Avance General Alumnos"},
+            {y: <?php echo 100-$porcentajeavanceemp ?>, label: "Avance Restante Alumnos"}
+
+        ]
+    }]
+});
+
+chart3.render();
+
+}

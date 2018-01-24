@@ -32,7 +32,7 @@
                     <div class="profile center text-center">
                         <img src="/img/avatar.jpeg" alt="">
                         <?php 
-                                $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',1)->get();
+                            $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',1)->get();
                         ?>
                             <p><?php echo $datosdirective[0]->nombre." ".$datosdirective[0]->apPaterno." ".$datosdirective[0]->apMaterno;  ?></p>
 
@@ -89,14 +89,18 @@
                                 </div>
                             </div>
                         </nav>
+
                     </div>
 
                 </div>
 
-                 
-                @yield('content')
-            </div>     
+                               @yield('content')
+
+            </div> 
+                              
+   
     </div>
+
 
     <!-- Scripts -->
 
