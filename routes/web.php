@@ -130,6 +130,10 @@ Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editControl
 
 Route::get('/administrator/delete/{id}/', "editController@delete" );
 
+//ruta editar
+Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
+
+
 Route::get('/borrar', function(){
   return view("administrator.borrar");
 });
