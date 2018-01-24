@@ -50,11 +50,13 @@ function regionalModal(comp){
               success : function(response){
                 var titulo="";
                 var imagen="";
+
                     titulo+="<h4><b>"+response["0"].Titulo_encuesta+"</b></h4>";
                     imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response[0].Image_path+"' width='50%' height='90px'>";
 
                  $("#titulo_encuestar").html(titulo);
                  $("#imagenr").html(imagen);
+                 $("#idencues").html(comp);
 
                 $('#MdRegional').modal('show');
 
@@ -67,7 +69,7 @@ function regionalModal(comp){
 
 }
 
-function campusModal(comp,region){
+/*function campusModal(comp,region){
   $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -87,7 +89,6 @@ function campusModal(comp,region){
                 var boton="";
                     titulo+="<h4><b>"+response["0"].Titulo_encuesta+"</b></h4>";
                     imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response[0].Image_path+"' width='50%' height='90px'>";
-                    boton+="<a class='btn btn-default' href='/campus/"+comp+"'>Ver reporte</a>";
 
                  $("#titulo_encuestac").html(titulo);
                  $("#imagenc").html(imagen);
@@ -100,7 +101,7 @@ function campusModal(comp,region){
               }
           });
 
-}
+}*/
 
 function selecciona(busq){
   let id = busq;

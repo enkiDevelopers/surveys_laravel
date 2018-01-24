@@ -170,7 +170,7 @@ Route::get('/administrator/dataTemplate', function(){
 
 Route::post('buscarcampus', 'directiveController@busquedacampus');
 
-Route::get('/campus/{id}/', ['as' => 'campus', 'uses'=>'directiveController@estadisticaCampus']);
+Route::get('/campus/{id}/{idcampus}', ['as' => 'campus', 'uses'=>'directiveController@estadisticaCampus']);
 
 Route::get('/updateDataTemplate','surveyController@updateDataTemplate');
 

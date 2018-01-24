@@ -29,19 +29,41 @@ class directiveController extends Controller
 
   public function show_cards($id)
   {
-      //$id = $request->id;
+      $campus=0;
       $encuestas = DB::table('surveys')->get();
-      $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',$id)->get();
-      
+      $datosdirective =DB::table('directives')->where('idDirectives','=',$id)->get();
+      switch ($datosdirective["0"]->type) {
+        case '1':
+              $datosdirective=DB::table('directives')->where('idDirectives','=',$id)->get();   
+              $campus=DB::table('campus')->select(['campus_name','campus_id'])->get();
+    
+          break;
+        case '2':
+              $datosdirective = DB::table('directives')
+            ->join('regions', 'directives.idDirectives', '=', 'regions.directives_idDirectives')
+            ->select('directives.*','regions.regions_id')
+            ->where('idDirectives','=',$id)
+            ->get();
+              $campus=DB::table('campus')->select(['campus_name','campus_id'])->where('regions_regions_id','=',$datosdirective["0"]->regions_id)->get();
+            break;
+        case '3':
+              $datosdirective = DB::table('directives')
+            ->join('campus', 'directives.idDirectives', '=', 'campus.directives_idDirectives')
+            ->select('directives.*','campus.campus_id')
+            ->where('idDirectives','=',$id)
+            ->get();
+             $campus=DB::table('campus')->select(['campus_name','campus_id'])->where('directives_idDirectives','=',$id)->get();
+
+             break;
+        default:
+          
+          break;
+      }
+
       $regionestotal=DB::table('regions')->get();
       $regiones=DB::table('regions')->select(['regions_name','regions_id'])->where('directives_idDirectives','=',$id)->get();
-      foreach ($regiones as $region) 
-            $regionid=$region->regions_id;
 
-      $campusregion=DB::table('campus')->select(['campus_name','campus_id'])->where('regions_regions_id','=',$regionid)->get();
-    
-      $campus=DB::table('campus')->select(['campus_name','campus_id'])->where('directives_idDirectives','=',$id)->get();
-      return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus','campusregion'));
+      return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus'));
 
   }
   public function buscar(Request $request){
@@ -52,9 +74,11 @@ class directiveController extends Controller
     $data = DB::table('campus')->where('regions_regions_id',$request->id)->get();
     return response()->json($data);
   }
-  public function estadisticaCampus($id){
+  public function estadisticaCampus($id,$idcampus){
 
-      $surveys= DB::table('statistics')->where('surveys_id','=',$id)->count();
+      $surveys= DB::table('statistics')->where([
+                                               ['surveys_id','=',$id],
+                                               ['campus_campus_id','=',$idcampus],])->count();
       if ($surveys==0){
       $idstatica = DB::table('statistics')->insertGetId([
                                                   'total_encuestados' => '0', 
@@ -66,7 +90,7 @@ class directiveController extends Controller
                                                   'total_contestados' =>'0',
                                                   'total_contestados_alumnos'=>'0',
                                                   'total_contestados_empleados'=>'0',
-                                                  'campus_campus_id'=>1,
+                                                  'campus_campus_id'=>$idcampus,
                                                   'directives_idDirectives'=>1,
                                                   'surveys_id'=> $id]);
       }
@@ -74,6 +98,7 @@ class directiveController extends Controller
       $info= DB::table('statistics')->where('surveys_id','=',$id)->get();
 
       $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
+
       return view('directive.report',compact('datoencuesta','info'));
   }
 

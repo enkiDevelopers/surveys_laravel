@@ -1,13 +1,11 @@
 @extends('layouts.directive')
-	@section('content')
-
-
-
-
-	<div class="row">
-		<div class="col-md-6">
+@section('content')
+<div class="row">
+<div class="container">
+	<div class="col-md-11">
 		<?php 
 		foreach ($datoencuesta as $datoencuestas) {
+            echo "<div class='col-md-6'>";
 			echo "<h3><b>Titulo de la escuesta: </b>{$datoencuestas->Titulo_encuesta}</h3>";
 			echo "<h4><b>Región: </b></h4>";
 			echo "<h4><b>Campus: </b></h4>";
@@ -15,35 +13,109 @@
 			echo "<br>";
 			echo "<div class='col-md-6'>";
 			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->Image_path}'>";
-			echo "</div></div>";
-		}
+			echo "</div>";
+		}?>
+        </div>
+        <?php
+        if($info[0]->total_encuestados==0){
+            $avancegrl=0;
+            $avancealum=0;
+            $avanceamp=0;
+            $porcentajeavance=0;
+            $porcentajeavancealum=0;
+            $porcentajeavanceemp=0;
+
+        }else{
             $avancegrl=($info[0]->total_incidentes)+($info[0]->total_contestados);
-            $porcentajeavance=(100*$info[0]->total_encuestados)/$avancegrl;
-            echo "<hr><h4><b>Encuestados Total: </b>{$porcentajeavance}</h4></hr>";
+            $porcentajeavance=(100*$avancegrl)/$info[0]->total_encuestados;
 
             $avancealum=($info[0]->total_incidentes_alumnos)+($info[0]->total_contestados_alumnos);
-            $porcentajeavancealum=(100*$info[0]->total_alumnos)/$avancealum;
+            $porcentajeavancealum=(100*$avancealum)/$info[0]->total_alumnos;
 
             $avanceamp=($info[0]->total_incidentes_empleados)+($info[0]->total_contestados_empleados);
-            $porcentajeavanceemp=(100*$info[0]->total_empleados)/$avanceamp;
+            $porcentajeavanceemp=(100*$avanceamp)/$info[0]->total_empleados;
+        }
 		?>
 
-<script>
+ 
+        <!--Avance General-->
+	<div class="col-md-11">
+        <hr>
+        <div class="col-md-6">
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        </div> 
+        <div class="col-md-6">
+            <p>Situación de avance General de la encuesta</p>
+            <h3><b>Encuestados total: </b>{{$info[0]->total_encuestados}}</h3>
+            <h5><b>Avance contestados: </b>{{$avancegrl}}</h5>
+            <h5><b>Falta por contestar: </b>{{$info[0]->total_encuestados-$avancegrl}}</h5>
+
+        </div>       
+    </div>
+        <!--End Avance General-->
+
+        <!--Avance alumnos-->
+    <div class="col-md-11">
+        <hr>
+
+        <div class="col-md-6">
+            <p>Situación de avance alumnos</p>
+            <h3><b>Alumnos total: </b>{{$info[0]->total_alumnos}}</h3>
+            <h5><b>Avance contestados: </b>{{$avancealum}}</h5>
+            <h5><b>Falta por contestar: </b>{{$info[0]->total_alumnos-$avancealum}}</h5>
+
+        </div> 
+        <div class="col-md-6">
+            <div id="chartContaineralum" style="height: 300px; width: 100%;background: transparent;"></div>
+        </div>  
+    </div>     
+        <!--End Avance alumnos-->
+
+        <!--Avance empleados-->
+    <div class="col-md-11">
+            <hr>
+
+        <div class="col-md-6">
+            <div id="chartContaineremp" style="height: 300px; width: 100%;background: transparent;"></div>
+        </div> 
+        <div class="col-md-6">
+            <p>Situación de avance trabajadores</p>
+            <h3><b>Empleados total: </b>{{$info[0]->total_empleados}}</h3>
+            <h5><b>Avance contestados: </b>{{$avanceamp}}</h5>
+            <h5><b>Falta por contestar: </b>{{$info[0]->total_empleados-$avanceamp}}</h5>
+
+
+        </div>       
+    </div>
+</div>
+</div>
+        <!--End Avance empleados-->
+	@endsection
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+    <!--<script src="/js/directive-report.js"></script>-->
+    <script src="/js/directive-report1.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script type="text/javascript">
 window.onload = function() {
 
 var chart = new CanvasJS.Chart("chartContainer", {
+    backgroundColor: "transparent",
     animationEnabled: true,
     title: {
         text: "Avance General"
     },
+
     data: [{
         type: "pie",
         startAngle: 90,
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $avancegrl ?>, label: "Avance General"},
-            {y: <?php echo 100-$avancegrl ?>, label: "Avance restante"}
+            {y: <?php echo $porcentajeavance ?>, label: "Avance General"},
+            {y: <?php echo 100-$porcentajeavance ?>, label: "Avance restante"}
 
         ]
     }]
@@ -51,7 +123,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
 
 chart.render();
 
+
+
 var chart2 = new CanvasJS.Chart("chartContaineralum", {
+    backgroundColor: "transparent",
     animationEnabled: true,
     title: {
         text: "Avance General Alumnos"
@@ -62,8 +137,8 @@ var chart2 = new CanvasJS.Chart("chartContaineralum", {
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $avancealum ?>, label: "Avance General Alumnos"},
-            {y: <?php echo 100-$avancealum ?>, label: "Avance Restante Alumnos"}
+            {y: <?php echo $porcentajeavancealum ?>, label: "Avance General Alumnos"},
+            {y: <?php echo 100-$porcentajeavancealum ?>, label: "Avance Restante Alumnos"}
 
         ]
     }]
@@ -72,6 +147,7 @@ var chart2 = new CanvasJS.Chart("chartContaineralum", {
 chart2.render();
 
 var chart3 = new CanvasJS.Chart("chartContaineremp", {
+    backgroundColor: "transparent",
     animationEnabled: true,
     title: {
         text: "Avance General Empleados"
@@ -82,8 +158,8 @@ var chart3 = new CanvasJS.Chart("chartContaineremp", {
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $avanceamp ?>, label: "Avance General Alumnos"},
-            {y: <?php echo 100-$avanceamp ?>, label: "Avance Restante Alumnos"}
+            {y: <?php echo $porcentajeavanceemp ?>, label: "Avance General Alumnos"},
+            {y: <?php echo 100-$porcentajeavanceemp ?>, label: "Avance Restante Alumnos"}
 
         ]
     }]
@@ -92,161 +168,7 @@ var chart3 = new CanvasJS.Chart("chartContaineremp", {
 chart3.render();
 
 }
-</script>           
-	<div class="row">
-        <div class="col-md-6">
-            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-        </div> 
-        <div class="col-md-6">
-        <hr>
-            <p>Situación de avance General de la encuesta</p>
-        
-        </div>       
-    </div>
-
-    <div class="row">
-        <div class="col-md-6">
-        <hr>
-            <p>Situación de avance alumnos</p>
-
-        </div> 
-        <div class="col-md-6">
-            <div id="chartContaineralum" style="height: 300px; width: 100%;"></div>
-        </div>       
-    </div>
-    
-    <div class="row">
-        <div class="col-md-6">
-            <div id="chartContaineremp" style="height: 300px; width: 100%;"></div>
-        </div> 
-        <div class="col-md-6">
-        <hr>
-                    <p>Situación de avance trabajadores</p>
-
-        </div>       
-    </div>
-    
-
-
-
-
-
-
-
-	@endsection
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-    <!--<script src="/js/directive-report.js"></script>-->
-    <script src="/js/highcharts.js"></script>
-    <script src="/js/exporting.js"></script>
-    <script src="/js/directive-report1.js"></script>
-
-<script type="text/javascript">
-        var pieChartData = {
-            labels: ["Incidentes por tipo de Encuestados",],
-            datasets: [{
-                label: 'Alumnos',
-                backgroundColor: 'rgb(2,21,248)',
-                stack: 'Stack 0',
-                data: [<?php echo $avancegrl; ?>]
-                
-            }]
-};
-
-        window.onload = function() {
-            var ctx = document.getElementById('pieGraf').getContext('2d');
-            window.myBar = new Chart(ctx, {
-                type: 'pie',
-                data: pieChartData,
-                options: {
-                    title:{
-                        display:true,
-                        fontSize: 20,
-                        fontFamily: "Arial",
-                        fontColor: "#000",
-                        text:"Encuestados"
-                    },
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false
-                    },
-                    responsive: true,
-                    scales: {
-                        xAxes: [{
-                            stacked: true
-                        }],
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    },
-                    layout: {
-                        padding: {
-                            left: 50,
-                            right: 0,
-                            top: 10,
-                            bottom: 10
-                        }
-                    }
-    
-                }
-            });
-        };
-
-
-
-    </script>
-
-
-    <script type="text/javascript">
-    @php
-   	 $q1a=10;
-     $q1b=20;
-    @endphp
-    
-        Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: null,
-            type: 'pie'
-        },
-        title: {
-            text: 'Campus Norte '
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.y:.0f} puntos </b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Puntos Encuesta',
-            colorByPoint: true,
-            data: [{
-                name: 'Estudiantes No Encuestados',
-                y: {{$q1a}}
-            }, {
-                name: 'Estudiantes Encuestados',
-                y: {{$q1b}}
-            }]
-        }]
-        });
-    </script>
-
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+</script>  
 
 
 
