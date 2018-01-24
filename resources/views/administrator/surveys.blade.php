@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('content')
+  @php
+  date_default_timezone_set('America/Mexico_City');
+  @endphp
   <link rel="stylesheet" href="/css/alertify.min.css">
   <link rel="stylesheet" href="/css/alertify.rtl.min.css">
       <script src="/js/alertify.min.js"></script>
@@ -105,9 +108,9 @@
                                         </button>
 
 
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar">
+                                        <a href="#miModal" class="popup-link btn btn-default" data-toggle="modal" data-target="#miModal" data-placement="top" title="Publicar">
                                             <span class="glyphicon glyphicon-send"></span>
-                                        </button>
+                                        </a>
 
                                     </div>
                                 </div>
@@ -327,6 +330,130 @@
             </div>
         </div>
           </form>
+
+<!--  modal de  creacion de encuesta-->
+
+<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
+			</div>
+			<div class="modal-body">
+    <!-- Cuerpo del modal inicio -->
+<form>
+  {{ csrf_field() }}
+<div class="row">
+  <div class="col-md-6">
+        <label for="inicio">Fecha de inicio</label>
+      <input type="datetime"  value="<?php echo date("Y-m-d\ h:i:s"); ?>" readonly id="inicio">
+  </div>
+<div class="col md-6">
+  <label for="termino">Fecha de termino:</label>
+<input type="datetime-local"  value="<?php echo date("Y-m-d\ h:i:s"); ?>"  id="Termino">
+</div>
+</div>
+
+      <hr />
+
+<div class="row">
+  <div class="col-md-12 text-center">
+<label for="descripcion">Instrucciones de la encuesta:</label>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+<textarea id="descripcion" maxlength="500" rows="5" cols="50"></textarea>
+  </div>
+</div>
+<hr />
+<div class="row">
+
+<div class="row">
+  <div class="col-md-12 text-center">
+<p>Dirigido a:</p>
+  </div>
+
+</div>
+<div class="row">
+
+  <div class="col-md-6 text-center">
+    <label for="destinatarios">Destinatarios: </label>
+  </div>
+  <div class="col-md-6 text-center">
+    <label for="periodo">Periodo: </label>
+  </div>
+
+</div>
+
+<div class="row">
+<div class="col-md-6 text-center">
+  <select  name="destinatarios">
+      <option>Directivos</option>
+      <option>Alumnos</option>
+      <option>Generales</option>
+  </select>
+
+</div>
+
+<div class="col-md-6 text-center">
+  <select  name="destinatarios">
+      <option>Enero-Junio 2017</option>
+      <option>Agosto-Diciembre 2017</option>
+      <option>Enero-Junio 2017</option>
+  </select>
+
+</div>
+
+</div>
+
+
+<hr>
+<div class="row">
+
+
+<div class="col-md-12">
+<div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+  <input type="submit" name="enviar" value="Cancelar" class="btn btn-warning">
+  <input type="reset" name="enviar" value="Publicar" class="btn btn-danger">
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+</form>
+</div>
+
+
+
+
+
+
+
+    <!-- Cuerpo del modal Termino -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Termina modal crecion de encuesta -->
+
+
 <script>
 function limpiar()
 {
@@ -454,9 +581,8 @@ function UpdatePreviewCanvas()
 }
 
 
-
 function alerta(id) {
-  alertify.confirm("¿Elimar Plantilla? ",
+  alertify.confirm("¿Seguro que desea eliminar la plantilla? ",
   function(){
     window.location.href = "{{url('administrator/delete')}}/"+id;
   },
@@ -465,7 +591,6 @@ function alerta(id) {
   });
 
 }
-
 
 </script>
 @endsection

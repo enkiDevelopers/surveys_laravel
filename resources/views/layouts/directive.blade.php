@@ -145,6 +145,7 @@ function directiveModal(comp){
 */
 </script>
 
+
     <script type="text/javascript">
              $(document).ready(function () {
                  $('#sidebarCollapse').on('click', function () {

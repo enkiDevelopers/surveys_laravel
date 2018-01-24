@@ -53,8 +53,28 @@ class directiveController extends Controller
     return response()->json($data);
   }
   public function estadisticaCampus($id){
+
+      $surveys= DB::table('statistics')->where('surveys_id','=',$id)->count();
+      if ($surveys==0){
+      $idstatica = DB::table('statistics')->insertGetId([
+                                                  'total_encuestados' => '0', 
+                                                  'total_alumnos' =>'0',
+                                                  'total_empleados' =>'0',
+                                                  'total_incidentes' =>'0',
+                                                  'total_incidentes_alumnos' =>'0',
+                                                  'total_incidentes_empleados' =>'0',
+                                                  'total_contestados' =>'0',
+                                                  'total_contestados_alumnos'=>'0',
+                                                  'total_contestados_empleados'=>'0',
+                                                  'campus_campus_id'=>1,
+                                                  'directives_idDirectives'=>1,
+                                                  'surveys_id'=> $id]);
+      }
+
+      $info= DB::table('statistics')->where('surveys_id','=',$id)->get();
+
       $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
-      return view('directive.report',compact('datoencuesta'));
+      return view('directive.report',compact('datoencuesta','info'));
   }
 
 
