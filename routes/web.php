@@ -128,7 +128,7 @@ Route::post('/save', 'surveyController@save');
 
 Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
 
-Route::get('/administrator/delete/{id}/', "editController@delete" );
+Route::get('/administrator/delete/{id}/{idadmin}', "editController@delete" );
 
 //ruta editar
 Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
@@ -173,3 +173,6 @@ Route::post('buscarcampus', 'directiveController@busquedacampus');
 Route::get('/campus/{id}/', ['as' => 'campus', 'uses'=>'directiveController@estadisticaCampus']);
 
 Route::get('/updateDataTemplate','surveyController@updateDataTemplate');
+
+
+Route::post('/conectar', 'conexionController@conexion');

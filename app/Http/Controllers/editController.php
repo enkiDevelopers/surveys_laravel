@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\templates2s;
+use App\templates;
 use App\questionstemplates;
 use Illuminate\Http\Request;
 use  DB;
@@ -13,7 +13,7 @@ class editController extends Controller
 {
   public function busqueda($id)
   {
-      $consulta = DB::table('templates2s')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
 
       $titulo = $consulta[0]->tituloEncuesta;
 
@@ -29,15 +29,16 @@ class editController extends Controller
 
       return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos','admor'));
   }
-  
-  public function delete($id)
+
+  public function delete($id,$idadmin)
   {
 
-    $post =templates2s::where('id',$id)->first();
+
+    $post =templates::where('id',$id)->first();
       $post->delete();
 
 
-    return Redirect("administrator/surveys");
+    return Redirect("administrator/surveys/".$idadmin);
 
   }
 }
