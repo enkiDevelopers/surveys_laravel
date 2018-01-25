@@ -29,6 +29,12 @@
 		                <span class="glyphicon glyphicon-pencil"></span>
 	                </a>
 	            </div>
+                <div class="col-md-1 pull-left">
+                        <a href="" class="btn btn-success">
+                            <span class=" glyphicon glyphicon-eye-open "></span>
+                        </a>
+                </div>
+
 	   </div>
 	</div>
 </div><br><br><br><br><br>

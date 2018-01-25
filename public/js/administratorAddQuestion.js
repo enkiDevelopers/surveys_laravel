@@ -1,5 +1,3 @@
-
-
 $(document).ready(function(){
 
     /* Abrimos modal para agregar pregunta********************************************/
@@ -82,27 +80,14 @@ $(document).ready(function(){
 
     // Agrega una nueva opcion a un bloque de preguntas de opción múltiple
     $("#ModalQuestion").on("click", ".add-question-to-yes-no", function(e){
-
         // Habilitar-Deshabilitar Botón de eliminar de opción de bloque de preguntas de opción
         var options = $(".multi-options-template").length;
-        //if( options >= '3'){ //3
-            // Se tiene que cuidar que siempre haya al menos dos opciones de pregunta
-        //}
         agregarOpcion(options);
         $(".delete-question-to-yes-no").removeAttr("disabled");
-
-        /*
-        e.preventDefault();
-        parentYesNo = $(this).parent().parent();
-        var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
-        parentYesNo.append(elem);
-        parentYesNo.data("questions", parentYesNo.data("multi-options") + 1 );
-       // console.log(parentYesNo.data("questions"));
-        */
     });
     /*********************************************************************************/      
 
-
+/*
     //Eliminar una opcion multiple
     var parentYesNo;
     $("#ModalQuestion").on('click',".delete-question-to-yes-no", function(e){
@@ -121,7 +106,18 @@ $(document).ready(function(){
         //console.log(parentYesNo);
     });
 
+*/
+    $("#idSaveQuestion").click(function(){
+        alert("Hola Mundo");
+/*
+        var questionOptionInputs=$(".questionOptionInputs");
+        foreach(question as questionOptionInputs){
+            options=options+valor+i:question.val();
 
+        }
+        data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, options}
+*/
+    });
 
 
 
