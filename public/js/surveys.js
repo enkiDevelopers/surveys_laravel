@@ -1,22 +1,20 @@
 
 //limpieza de los formularios
-function limpiar()
-{
+    function limpiar(){
+    var canvas = document.getElementById("previewcanvas");
+    canvas.width=canvas.width;
+    document.getElementById("myForm").reset();
+                      }
+
+    function limpiar3(){
+    document.getElementById("form").reset();
+                        }
+
+  function limpiar2()
+  {
   var canvas = document.getElementById("previewcanvas");
   canvas.width=canvas.width;
-document.getElementById("myForm").reset();
-}
-
-function limpiar3()
-{
-  document.getElementById("form").reset();
-}
-
-function limpiar2()
-{
-  var canvas = document.getElementById("previewcanvas");
-  canvas.width=canvas.width;
-}
+  }
 
 
 
@@ -25,13 +23,13 @@ function limpiar2()
         $("#home").addClass('active');
     }
 
-//redigirige a editar 
+//redigirige a editar
     function editar(){
         window.location = "{{ url('/administrator/edit') }}";
     }
 
- 
-  
+
+
 
 //verificaciones de la carga de una imagen en la creacion de la plantilla
     function ShowImagePreview( files )
@@ -111,24 +109,19 @@ function UpdatePreviewCanvas()
 }
 
 //alerta para eliminar
-function alerta(id,idAdmin) {
+    function alerta(id,idAdmin) {
 
-alertify.defaults.glossary.title = 'Eliminar';
-
-  alertify.confirm("¿Seguro que desea eliminar la plantilla? ",
-  function(){
-   location.replace("/administrator/delete/"+id+"/"+idAdmin);
-   $('#procesando').show();
-  },
-  function(){
+    alertify.defaults.glossary.title = 'Eliminar';
+    alertify.confirm("¿Seguro que desea eliminar la plantilla? ",
+    function(){
+      location.replace("/administrator/delete/"+id+"/"+idAdmin);
+      $('#procesando').show();
+              },
+    function(){
     alertify.error('Cancel');
-  });
-
-}
+              });                             }
 //oculta la pantalla de carga principal cuando la pagina este cargada
-window.onload = detectarCarga;
-function detectarCarga(){
-document.getElementById("loader").style.display="none";
-}
-
-
+      window.onload = detectarCarga;
+      function detectarCarga(){
+        document.getElementById("loader").style.display="none";
+                             }

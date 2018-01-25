@@ -10,7 +10,8 @@ use File;
 use Input;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\administradores;
-
+use App\listas;
+use App\tipos;
 class surveyController extends Controller
 {
 
@@ -34,12 +35,9 @@ class surveyController extends Controller
       $surv->imagePath= $nombre;
       $surv->creador= 1;
       $surv->save();
-
       $eid =$surv->id;
-
       $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
-
-///      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
+//      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
       return redirect()->route('editar',array("section" => "$eid"));
 
   }
@@ -56,7 +54,10 @@ class surveyController extends Controller
     $propias = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
     $agenas = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
 
-      return view('administrator.surveys', compact('propias','agenas'));
+      $tipos = tipos::all();
+
+      $listas=listas::where('creador', $id)->get();
+      return view('administrator.surveys', compact('propias','agenas','listas','tipos'));
     }
 
   }

@@ -37,18 +37,13 @@ Route::get('/surveyed/solve', function () {
     return view('surveyed.solve-survey');
 });
 
-Route::get('/administrator/files', function () {
-    return view('administrator.files');
-
-});
+Route::get('/administrator/files/{id}', 'encuestadosController@showList');
 
 Route::get('/administrator/file/open', function(){
 	return view('administrator.openFile');
 });
 
-Route::get('/administrator/file/delete', function(){
-	return view('administrator.delete');
-});
+Route::get('/administrator/files/delete/{id}', "encuestadosController@deletelist") ;
 
 Route::get('/administrator/exclude', function(){
 	return view('administrator.exclude');

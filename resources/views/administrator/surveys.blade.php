@@ -352,6 +352,7 @@
 <!--  modal de  creacion de encuesta-->
 <form id="form">
   {{ csrf_field() }}
+
 <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
@@ -398,20 +399,39 @@
 </div>
 <div class="row">
 
-  <div class="col-md-12 text-center">
+  <div class="col-md-6 text-center">
     <label for="destinatarios">Destinatarios: </label>
+  </div>
+  <div class="col-md-6 text-center">
+    <label for="tipo">tipo de encuesta: </label>
   </div>
 
 </div>
 
 <div class="row">
-<div class="col-md-12 text-center">
+<div class="col-md-6 text-center">
   <select  name="destinatarios">
-      <option>Directivos</option>
-      <option>Alumnos</option>
-      <option>Generales</option>
+
+<?php foreach ($listas as $lista) {?>
+
+      <option value="{{$lista->idLista}}">  {{$lista->nombre}}</option>
+      <?php
+      } ?>
   </select>
 </div>
+<div class="col-md-6 text-center">
+  <select  name="tipo">
+
+<?php foreach ($tipos as $tipo) {?>
+
+      <option value="{{$tipo->idTipo}}"> <?php echo $tipo->tipo; ?>   </option>
+
+      <?php
+      } ?>
+  </select>
+</div>
+
+
 </div>
 <hr>
 <div class="row">
@@ -436,8 +456,5 @@
 
 </form>
 <!--Termina modal crecion de encuesta -->
-
-
-
 
 @endsection
