@@ -3,9 +3,17 @@
   @php
   date_default_timezone_set('America/Mexico_City');
   @endphp
-  <link rel="stylesheet" href="/css/alertify.min.css">
-  <link rel="stylesheet" href="/css/alertify.rtl.css">
-      <script src="/js/alertify.min.js"></script>
+  <div class="loader" id="loader">
+
+  </div>
+
+  <div class="procesando" id="procesando" >
+
+  </div>
+      <link rel="stylesheet" href="/css/alertify.rtl.css">
+      <link rel="stylesheet" href="/css/themes/default.rtl.css">
+      <script src="/js/alertify.js"></script>
+      <script type="text/javascript" src="/js/surveys.js"></script>
 
 <div class="container" >
     <div class="row">
@@ -342,20 +350,20 @@
           </form>
 
 <!--  modal de  creacion de encuesta-->
-
+<form id="form">
+  {{ csrf_field() }}
 <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar3()">
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
 			</div>
 			<div class="modal-body">
     <!-- Cuerpo del modal inicio -->
-<form>
-  {{ csrf_field() }}
+
 <div class="row">
   <div class="col-md-6">
         <label for="inicio">Fecha de inicio</label>
@@ -390,217 +398,46 @@
 </div>
 <div class="row">
 
-  <div class="col-md-6 text-center">
+  <div class="col-md-12 text-center">
     <label for="destinatarios">Destinatarios: </label>
-  </div>
-  <div class="col-md-6 text-center">
-    <label for="periodo">Periodo: </label>
   </div>
 
 </div>
 
 <div class="row">
-<div class="col-md-6 text-center">
+<div class="col-md-12 text-center">
   <select  name="destinatarios">
       <option>Directivos</option>
       <option>Alumnos</option>
       <option>Generales</option>
   </select>
-
 </div>
-
-<div class="col-md-6 text-center">
-  <select  name="destinatarios">
-      <option>Enero-Junio 2017</option>
-      <option>Agosto-Diciembre 2017</option>
-      <option>Enero-Junio 2017</option>
-  </select>
-
 </div>
-
-</div>
-
-
 <hr>
 <div class="row">
-
-
 <div class="col-md-12">
 <div class="col-md-4">
-
 </div>
 <div class="col-md-4">
-
 </div>
 <div class="col-md-4">
-  <input type="submit" name="enviar" value="Cancelar" class="btn btn-warning">
-  <input type="reset" name="enviar" value="Publicar" class="btn btn-danger">
+  <input type="button" name="cancelar" value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
+  <input type="submit" name="enviar" value="Publicar" class="btn btn-danger">
 </div>
-
-
 </div>
-
 </div>
-
 </div>
-
-
-
-</form>
 </div>
-
-
-
-
-
-
 
     <!-- Cuerpo del modal Termino -->
 			</div>
 		</div>
 	</div>
-</div>
 
+</form>
 <!--Termina modal crecion de encuesta -->
 
 
-<script>
-function limpiar()
-{
-  var canvas = document.getElementById("previewcanvas");
-  canvas.width=canvas.width;
-document.getElementById("myForm").reset();
-}
-
-function limpiar2()
-{
-  var canvas = document.getElementById("previewcanvas");
-  canvas.width=canvas.width;
-}
 
 
-    window.onload = function() {
-        $("#home").addClass('active');
-    }
-
-    function editar(){
-        window.location = "{{ url('/administrator/edit') }}";
-    }
-
-        function verificar(){
-        if ($("#exampleInputEmail1").val() != "") {
-            $("#add-question").removeClass('disabled');
-            window.location ="{{ url('/administrator/edit') }}";
-        }else{
-
-        }
-    }
-
-
-    function publish(){
-        if ($("#ModalTitleInput").val() != "" && $("#ModalTitleInput").val() != " ") {
-            if ($("#ModalDescInput").val() != "" && $("#ModalDescInput").val() != " ") {
-                $("#exampleInputEmail1").val($("#ModalTitleInput").val());
-                $("#inputDesc").val($("#ModalDescInput").val());
-                $("#ModalTitle").modal('hide');
-                verificar();
-            }else{
-                alert("Ingrese una descripción para la encuesta");
-            }
-            }else{
-       alert("Ingrese un Título para la encuesta");
-        }
-
-    }
-
-
-    function ShowImagePreview( files )
-    {
-
-    if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
-    {
-      alert('Por favor Ingrese un archivo de Imagen');
-      return false;
-    }
-
-    if( typeof FileReader === "undefined" )
-    {
-        alert( "Filereader undefined!" );
-        return false;
-    }
-
-    var file = files[0];
-
-    if( !( /image/i ).test( file.type ) )
-    {
-        alert( "El archivo no es una imagen" );
-        return false;
-    }
-
-    reader = new FileReader();
-    reader.onload = function(event)
-            { var img = new Image;
-              img.onload = UpdatePreviewCanvas;
-              img.src = event.target.result;  }
-    reader.readAsDataURL( file );
-}
-
-function UpdatePreviewCanvas()
-{
-    var img = this;
-    var canvas = document.getElementById( 'previewcanvas' );
-
-    if( typeof canvas === "undefined"
-        || typeof canvas.getContext === "undefined" )
-        return;
-
-    var context = canvas.getContext( '2d' );
-
-    var world = new Object();
-    world.width = canvas.offsetWidth;
-    world.height = canvas.offsetHeight;
-
-    canvas.width = world.width;
-    canvas.height = world.height;
-
-    if( typeof img === "undefined" )
-        return;
-
-    var WidthDif = img.width - world.width;
-    var HeightDif = img.height - world.height;
-
-    var Scale = 0.0;
-    if( WidthDif > HeightDif )
-    {
-        Scale = world.width / img.width;
-    }
-    else
-    {
-        Scale = world.height / img.height;
-    }
-    if( Scale > 1 )
-        Scale = 1;
-
-    var UseWidth = Math.floor( img.width * Scale );
-    var UseHeight = Math.floor( img.height * Scale );
-
-    var x = Math.floor( ( world.width - UseWidth ) / 2);
-    var y = Math.floor( ( world.height - UseHeight ) / 2 );
-
-    context.drawImage( img, x, y, 200, 200 );
-}
-
-
-function alerta(id,idAdmin) {
-  alertify.confirm("¿Seguro que desea eliminar la plantilla? ",
-  function(){
-    window.location.href = "{{url('administrator/delete')}}/"+id+"/"+idAdmin;
-  },
-  function(){
-    alertify.error('Cancel');
-  });
-
-}
-
-</script>
 @endsection
