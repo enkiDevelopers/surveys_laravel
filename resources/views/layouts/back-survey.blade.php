@@ -57,7 +57,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/js/administrator-new-survey.js"></script>
+    <script src="/js/administratorAddQuestion.js"></script>
     <script src="/js/alertify.min.js"></script>
 
     <script type="text/javascript">

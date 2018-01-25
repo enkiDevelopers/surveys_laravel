@@ -1,3 +1,17 @@
+        <div class="row col-md-12">
+            <div class=" new-survey__controls " > <center>
+                <div class="col-md-4 pull-left col-md-offset-3 ">
+                    <button class="btn btn-success new-survey__control" id="addQuestion">Agregar pregunta</button>
+                </div>
+                <div class="col-md-1 pull-left">
+                    <a href="" class="btn btn-success">
+                        <span class=" glyphicon glyphicon-eye-open "></span>
+                    </a>
+                </div>
+             </center>
+            </div>
+        </div>
+
 <form action="/saveQuestionsTemplate" id="saveQuestionForm">
     {{ csrf_field() }}
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
@@ -43,7 +57,7 @@
                                 <button class="btn btn-danger col-md-1 pull-right new-question__control new-question__control--add-question" onclick="saveQuestion();">
                                     <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
                                 </button>
-                                <button class="btn btn-info col-md-1 pull-right new-question__control new-question__control--delete-question" >
+                                <button class="btn btn-info col-md-1 pull-right new-question__control new-question__control--delete-question" id="cancelarAgregarPreg" >
                                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                 </button>
                             </div>
@@ -58,11 +72,11 @@
     <!--<div class="col-md-12 " data-questions="0" id="childSupport"> -->
     <div>
         <div class="col-md-12" id="multi-options">
-            <div class="col-md-12 " data-multioptions="0" id="multi-options-template" >
+            <div class="col-md-12 multi-options-template" data-multioptions="0" >
                 <div class="form-group">
                     <label for="exampleInputEmail1">Opción Respuesta</label>
                     <input type="text" class="form-control text-black-body"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="50">
-                    <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled="" style="margin-top: 5px;">
+                    <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
                 </div>
