@@ -67,23 +67,25 @@ $(document).ready(function(){
 
     // Crear un bloque de preguntas si/no para la pregunta en cuestion
     //    $(".new-survey__question-container").on("change", ".yes-no-question", function(){
-    $("#ModalQuestion").on("change", ".yes-no-question", function(){
+    //$("#ModalQuestion").on("change", ".yes-no-question", function(){
+      $("#ModalQuestion").on("change", "#questionType", function(){
 
         switch($(this).val()){
             case "1":
-                //var o = $(this).parent().parent().next().next().remove();
-                //console.log(o);
-                var a = $(this).parent().parent().next().remove();
+                var a = $("#options-template1").remove();
                 console.log(a);
                 break;
             case "2":
-                $(this).parent().parent().next().next().remove();
+                //$(this).parent().parent().next().next().remove();
                 if(!hasNestedQuestion($(this))){
-                    var elem = $("#yes-no-question-template").clone().removeClass("hide");
-                    var elem1 = $("#multi-options").clone();
+                    var elem = $("#options-template").clone().removeClass("hide");
+                    elem.attr("id", "options-template1");
+                    elem.children().first().children().first().attr("id", "option1");
+                    var elem2 = $("#multi-options").clone();
+                    elem2.attr("id", "option2");
                     $(this).parent().parent().parent().append(elem);
-
-                    $(this).parent().parent().parent().append(elem1);
+                    $("#options-template1").children().first().attr("id", "optionsFather");
+                    $("#optionsFather").append(elem2);
                 }
                 break;
             /*      case "3":
