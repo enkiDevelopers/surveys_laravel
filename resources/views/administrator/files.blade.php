@@ -1,121 +1,47 @@
 @extends('layouts.admin')
 @section('content')
+  <link rel="stylesheet" href="/css/alertify.rtl.css">
+  <link rel="stylesheet" href="/css/themes/default.rtl.css">
+  <script src="/js/alertify.js"></script>
 <div class="container">
     <div class="row">
+      <hr />
         <div class="col-md-12 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Archivos Creados</div>
-
-                <div class="panel-body">
+                <div class="panel-heading">Listas Creadas</div>
+                <div class="panel-body scroll">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
+
+
+<?php
+  foreach ($listas as $lista) {
+?>
+
+
+                        <div class="col-md-3" id="delete_{{$lista->idLista}}">
+                            <div class="card well text-center" >
+                                <img class="card-img-top" id="icono"  src="/img/lista.png">
                                 <div class="card-body">
-                                    <h4 class="card-title">Archivo 1</h4>
+                                    <h4 class="card-title"> <?php echo $lista->nombre; ?>    </h4>
                                     <p class="card-text"></p>
                                     <div class="btn-group" role="group" aria-label="...">
                                         <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-trash"></span>
+            <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+          <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+<?php
+                        }  ?>
 
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Archivo 2</h4>
-                                    <p class="card-text"></p>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<!-- FIN FOR EACH -->
 
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Archivo 3</h4>
-                                    <p class="card-text"></p>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Archivo 4</h4>
-                                    <p class="card-text"></p>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Archivo 5</h4>
-                                    <p class="card-text"></p>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Archivo 6</h4>
-                                    <p class="card-text"></p>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+<!--NO BORRAR  -->
                        <div class="col-md-3">
                             <div class="card  card-new-file" >
                                 <div class="card-body text-center">
@@ -130,11 +56,11 @@
                             </div>
                         </div>
                     </div>
-
+<!--hasta aqui termina el cuerpo del panel de archivos creados-->
                 </div>
 
             </div>
-
+<hr />
             <div class="panel panel-default">
                 <div class="panel-heading">Lista de Incidentes</div>
                 <div class="panel-body">
@@ -279,30 +205,30 @@
       </div>
     </div>
 
+    <script>
+    function limpiar()
+    {
+        document.getElementById("myForm").reset();
+    }
+        function addExclude(){
+            $("#loadingExclude").removeClass('invisible');
+        }
+
+
+
+
+        function deleteFile(id){
+          alert("la lista será eliminada un vez agregada esa funcion");
+        }
+
+        function uploadFile(){
+                    $("#loadingUploadFile").removeClass('invisible');
+
+        }
+        window.onload = function() {
+            $("#files").addClass('active');
+        }
+
+    </script>
 
 @endsection
-
-<script>
-function limpiar()
-{
-
-    document.getElementById("myForm").reset();
-
-}
-    function addExclude(){
-        $("#loadingExclude").removeClass('invisible');
-    }
-
-    function deleteFile(){
-
-    }
-
-    function uploadFile(){
-                $("#loadingUploadFile").removeClass('invisible');
-
-    }
-    window.onload = function() {
-        $("#files").addClass('active');
-    }
-
-</script>
