@@ -1,21 +1,24 @@
-@extends('layouts.directive')
-@section('content')
-<div class="row">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 <div class="container">
-	<div class="col-md-11">
+<button name="button" type="button" onclick="window.close();" value="Cerrar esta ventana" /> 
+        <span class="glyphicon glyphicon-remove" ></span>
+</button>
+
+<div class="row col-lg-offset-2">
+	<!--<div class="col-md-13 col-md-offset-2">-->
 		<?php 
 		foreach ($datoencuesta as $datoencuestas) {
             echo "<div class='col-md-6'>";
 			echo "<h3><b>Titulo de la escuesta: </b>{$datoencuestas->Titulo_encuesta}</h3>";
-			echo "<h4><b>Región: </b></h4>";
-			echo "<h4><b>Campus: </b></h4>";
+			echo "<h4><b>Campus: {$campusname[0]->campus_name} </b></h4>";
 			echo "</div>";
-			echo "<br>";
 			echo "<div class='col-md-6'>";
+            echo "<br>";
 			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->Image_path}'>";
 			echo "</div>";
 		}?>
-        </div>
+        
         <?php
         if($info[0]->total_encuestados==0){
             $avancegrl=0;
@@ -87,10 +90,10 @@
 
         </div>       
     </div>
+   <!--  </div>-->
 </div>
 </div>
         <!--End Avance empleados-->
-	@endsection
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
