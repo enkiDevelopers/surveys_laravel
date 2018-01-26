@@ -6,9 +6,7 @@
   <div class="loader" id="loader">
 
   </div>
-
   <div class="procesando" id="procesando" >
-
   </div>
       <link rel="stylesheet" href="/css/alertify.rtl.css">
       <link rel="stylesheet" href="/css/themes/default.rtl.css">
@@ -25,7 +23,6 @@
                         <div class="col-md-4">
                             Plantillas
                         </div>
-
                         <div class="col-md-9 pull-right">
                             <div class="row">
                                 <div class="col-md-1">&nbsp</div>
@@ -110,13 +107,11 @@
                                           title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
-
-                                        <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
+                                      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
                                             <span class="glyphicon glyphicon-copy"></span>
                                         </button>
 
-
-                                        <a href="#miModal" class="popup-link btn btn-default" data-toggle="modal" data-target="#miModal" data-placement="top" title="Publicar">
+                                        <a onclick="openModal({{$plantilla->id}});" class="popup-link btn btn-default"  data-placement="top" title="Publicar">
                                             <span class="glyphicon glyphicon-send"></span>
                                         </a>
 
@@ -149,9 +144,7 @@
            <div class="">
            <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
          </div>
-
            <div class="btn-group centrarbtn" role="group" aria-label="...">
-
                <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                    <span class="glyphicon glyphicon-eye-open" ></span>
                </button>
@@ -168,7 +161,6 @@
                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
                    <span class="glyphicon glyphicon-copy"></span>
                </button>
-
 
                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar" disabled>
                    <span class="glyphicon glyphicon-send"></span>
@@ -314,11 +306,10 @@
 
       <div class="col-sm-2 pull-right pull-right">
         <div class="pull-right">
-        <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()"></a>
-        </div>
-      </div>
-    </div>
-
+          <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()"></a>
+                </div>
+                </div>
+                </div>
                 </div>
                 <div class="modal-body">
                     <h5>Título de la encuesta:</h5>
@@ -327,134 +318,138 @@
                     <textarea maxlength="500"class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
                     <h5> Icono de la encuesta:</h5>
                     <input type="file" id="foto1"  onchange="return ShowImagePreview( this.files );" name="icono" onclick="limpiar2();"/> <br />
-
-
-  <div id="previewcanvascontainer" style="height 200px; width 200px;">
-  <canvas id="previewcanvas" >
-  </canvas>
-  </div>
-
+      <div id="previewcanvascontainer" style="height 200px; width 200px;">
+      <canvas id="previewcanvas" >
+        </canvas>
+          </div>
                 </div>
                 <div class="modal-footer">
-
       <!--      <input type="reset" value="Cancelar" class="btn btn-default" data-dismiss="modal"  onclick="limpiar()">-->
-
              <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
-
-
                 </div>
             </div>
         </div>
           </form>
 
 <!--  modal de  creacion de encuesta-->
-<form id="form">
-  {{ csrf_field() }}
+        <form id="form">
+        {{ csrf_field() }}
 
-<div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  data-backdrop="static" data-keyboard="false">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar3()">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
-			</div>
-			<div class="modal-body">
+
+      <div class="modal fade" id="miModal" tabindex="-1"
+        role="dialog" aria-labelledby="myModalLabel"
+        data-backdrop="static" data-keyboard="false">
+	           <div class="modal-dialog" role="document">
+		              <div class="modal-content">
+			                   <div class="modal-header">
+				                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar3()">
+					                             <span aria-hidden="true">&times;</span>
+				                         </button>
+				                   <h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
+			                    </div>
+			                    <div class="modal-body">
     <!-- Cuerpo del modal inicio -->
-
-<div class="row">
-  <div class="col-md-6">
-        <label for="inicio">Fecha de inicio</label>
-      <input type="datetime"  value="<?php echo date("Y-m-d\ h:i:s"); ?>" readonly id="inicio">
+                        <input type="hidden" id="idModal" value=""/>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <label for="inicio">Fecha de inicio</label>
+                              <input type="datetime"  value="<?php echo date("Y-m-d\ h:i:s"); ?>" readonly id="inicio">
+                            </div>
+                            <div class="col md-6">
+                              <label for="termino">Fecha de termino:</label>
+                              <input type="datetime-local"  value="<?php echo date("Y-m-d\ h:i:s"); ?>"  id="Termino">
+                            </div>
+                          </div>
+                            <hr />
+    <div class="row">
+    <div class="col-md-12 text-center">
+    <label for="descripcion">Instrucciones de la encuesta:</label>
+    </div>
   </div>
-<div class="col md-6">
-  <label for="termino">Fecha de termino:</label>
-<input type="datetime-local"  value="<?php echo date("Y-m-d\ h:i:s"); ?>"  id="Termino">
-</div>
-</div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <textarea id="descripcion" maxlength="500" rows="5" cols="50"></textarea>
+    </div>
+    </div>
+  <hr />
+  <div class="row">
 
-      <hr />
+    <div class="row">
+    <div class="col-md-12 text-center">
+      <p>Dirigido a:</p>
+    </div>
+    </div>
+    <div class="row">
 
-<div class="row">
-  <div class="col-md-12 text-center">
-<label for="descripcion">Instrucciones de la encuesta:</label>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12 text-center">
-<textarea id="descripcion" maxlength="500" rows="5" cols="50"></textarea>
-  </div>
-</div>
-<hr />
-<div class="row">
-
-<div class="row">
-  <div class="col-md-12 text-center">
-<p>Dirigido a:</p>
-  </div>
-
-</div>
-<div class="row">
-
-  <div class="col-md-6 text-center">
+    <div class="col-md-6 text-center">
     <label for="destinatarios">Destinatarios: </label>
-  </div>
-  <div class="col-md-6 text-center">
+    </div>
+    <div class="col-md-6 text-center">
     <label for="tipo">tipo de encuesta: </label>
-  </div>
+    </div>
 
-</div>
+    </div>
 
-<div class="row">
-<div class="col-md-6 text-center">
-  <select  name="destinatarios">
+    <div class="row">
+      <div class="col-md-6 text-center">
+    <select  name="destinatarios">
 
-<?php foreach ($listas as $lista) {?>
+      <?php foreach ($listas as $lista) {?>
 
       <option value="{{$lista->idLista}}">  {{$lista->nombre}}</option>
       <?php
       } ?>
-  </select>
-</div>
-<div class="col-md-6 text-center">
-  <select  name="tipo">
+      </select>
+      </div>
+    <div class="col-md-6 text-center">
+    <select  name="tipo">
 
-<?php foreach ($tipos as $tipo) {?>
+            <?php foreach ($tipos as $tipo) {?>
 
       <option value="{{$tipo->idTipo}}"> <?php echo $tipo->tipo; ?>   </option>
 
       <?php
       } ?>
-  </select>
-</div>
+    </select>
+    </div>
+    </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="col-md-4">
+                      </div>
+                      <div class="col-md-4">
+                      </div>
+                      <div class="col-md-4">
 
+                        <input type="button" name="cancelar"
+                        value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
 
-</div>
-<hr>
-<div class="row">
-<div class="col-md-12">
-<div class="col-md-4">
-</div>
-<div class="col-md-4">
-</div>
-<div class="col-md-4">
-  <input type="button" name="cancelar" value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
-  <input type="submit" name="enviar" value="Publicar" class="btn btn-danger">
-</div>
-</div>
-</div>
-</div>
-</div>
+                        <input type="submit" name="enviar" value="Publicar"
+                        class="btn btn-danger">
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
     <!-- Cuerpo del modal Termino -->
 			</div>
 		</div>
 	</div>
 
-</form>
+    </form>
 <!--Termina modal crecion de encuesta -->
 
+      <script>
+
+    function openModal(id) {
+        alert("modal con id " +id);
+        $("#idModal").val(id);
+        $('#miModal').modal('show');
+        }
+
+        </script>
 @endsection
