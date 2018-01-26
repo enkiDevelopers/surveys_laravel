@@ -27,7 +27,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" onclick="publish();" >Guardar</button>
+                        <button type="button" class="btn btn-primary" onclick="publish(<?php echo $eid ?>);" >Guardar</button>
                     </div>
 
 

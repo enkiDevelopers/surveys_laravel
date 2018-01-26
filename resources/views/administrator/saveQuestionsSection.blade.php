@@ -50,7 +50,7 @@
                         <div class="modal-footer">
                          <div class="row">
                             <div class="col-md-12 pull-right">
-                                <button id="idSaveQuestion" class="btn btn-danger col-md-1 pull-right new-question__control new-question__control--add-question" onclick="saveQuestion();">
+                                <button id="idSaveQuestion" class="btn btn-danger col-md-1 pull-right new-question__control new-question__control--add-question" onclick="saveQuestion(<?php echo $eid ?>);" >
                                     <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
                                 </button>
                                 <button class="btn btn-info col-md-1 pull-right new-question__control new-question__control--delete-question" id="cancelarAgregarPreg" >

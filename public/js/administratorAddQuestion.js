@@ -5,6 +5,8 @@ $(document).ready(function(){
         //alert("Hola");
         $("#ModalQuestion").appendTo('body').modal();
         $("#numPregSig").val($(".numPregs").length+1);
+        $(".new-question__control--add-question").removeAttr('disabled'); 
+        $(".new-question__control--delete-question").removeAttr('disabled');        
         setOpenQuestionAsDefault();
     });    
     /*********************************************************************************/
@@ -107,19 +109,6 @@ $(document).ready(function(){
     });
 
 */
-    $("#idSaveQuestion").click(function(){
-        alert("Hola Mundo");
-/*
-        var questionOptionInputs=$(".questionOptionInputs");
-        foreach(question as questionOptionInputs){
-            options=options+valor+i:question.val();
-
-        }
-        data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, options}
-*/
-    });
-
-
 
 /*
     // Editar una pregunta
@@ -199,6 +188,198 @@ $(document).ready(function(){
         }
     }
     */
-
+    $("#idSaveQuestion").click(function(){
+/*
+        var questionOptionInputs=$(".questionOptionInputs");
+        
+        foreach(question as questionOptionInputs){
+            options=options+valor+i:question.val();
+        },
+        data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, options: options}
+*/
+    });
 
 });
+
+    window.onload = function() {
+        $("#home").addClass('active');
+    }
+
+
+    function publish(id){
+        var action = document.getElementById("updateDataTemplateForm").action;
+        var titleInput = $("#ModalTitleInput").val();
+        var descInput = $("#ModalDescInput").val();
+        var idTemplate = id;
+
+        if (titleInput.length != 0 && titleInput != " ") {
+            if (descInput.length != 0 && descInput != " ") {
+
+                $.ajax({
+                    type: "get",
+                    url: action,
+                    headers: {'X-CSRF-TOKEN': token},
+                    dataType: 'json',
+                    data: {idTemplate: idTemplate, titleInput: titleInput, descInput: descInput},
+                    complete: function(e, xhr, settings){
+                        if(e.status === 200){
+                            alertify.alert("Datos Guardados correctamente.", function(){
+                                $("#exampleInputEmail1").val(titleInput);
+                                $("#inputDesc").val(descInput);
+                                $("#ModalTitle").modal('hide');
+                                console.log(e);
+                              });
+
+                        }else{
+                            alertify.alert("No se han podido guardar los cambios.", function(){
+                                alertify.message('OK');
+                            }); 
+                            console.log(e);     
+                        }
+                    },
+                    error: function (textStatus, errorThrown) {
+                        alertify.alert("No se ha podido agregar la pregunta.", function(){
+                            alertify.message('OK');
+                         });
+                        console.log(textStatus);
+                    }               
+                });
+            }else{
+                alert("Ingrese una descripción para la encuesta");
+            }
+            }else{
+                alert("Ingrese un Título para la encuesta");
+        }
+    }
+
+    function saveQuestion(id){
+        var action = document.getElementById("saveQuestionForm").action;
+        var idTemplate = id;
+        var numPregSig = $("#numPregSig").val();
+        var questionInput = $("#questionInput").val();
+        var questionOptionInputs=$(".questionOptionInputs");
+        var questionType= $("#questionType").val();
+        var token = $("#token").val();
+
+        console.log(questionOptionInputs);
+
+        if (questionInput.length == 0 || questionOptionInputs.length == 0) {
+            alertify.alert("Ingrese una pregunta.", function(){
+                alertify.message('OK');
+          });
+        }else if (questionInput.length < 200 || questionOptionInput.length < 50){
+            $.ajax({
+                type: "post",
+                url: action,
+                headers: {'X-CSRF-TOKEN': token},
+                dataType: 'json',
+                data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType },
+                beforeSend: function( xhr ) {   
+                    $(".new-question__control--add-question").attr('disabled','true'); 
+                    $(".new-question__control--delete-question").attr('disabled','true');
+                },
+                complete: function(e, xhr, settings){
+                    if(e.status === 200){
+                        alertify.alert("Pregunta Guardada correctamente.", function(){
+                            alertify.success('Pregunta Añadida');                       
+                            $("#ModalQuestion").modal('hide').find("input").val("");
+                            $("#questionType").val("1").attr('selected','true');
+                            $(".new-question__control--delete-question").parent().parent().parent().prev().children().children().next().next().next().remove();
+                          });
+                            $("#container-questions").load(" #container-questions");
+
+                    }else{
+                        alertify.alert("No se ha podido agregar la pregunta.", function(){
+                            alertify.message('OK');
+                        });     
+                    }
+                },
+                error: function (textStatus, errorThrown) {
+                    alertify.alert("No se ha podido agregar la pregunta.", function(){
+                        alertify.message('OK');
+                     });
+                }               
+            });
+        }
+        else {
+            alertify.alert("Máximo 200 carácteres", function(){
+                alertify.message('OK');
+            });
+        }
+    }
+
+    function limpiar2(){
+      var canvas = document.getElementById("previewcanvas");
+      canvas.width=canvas.width;
+    }
+
+    function ShowImagePreview( files ){
+        if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
+        {
+          alert('Por favor Ingrese un archivo de Imagen');
+          return false;
+        }
+        if( typeof FileReader === "undefined" )
+        {
+            alert( "Filereader undefined!" );
+            return false;
+        }
+        var file = files[0];
+
+        if( !( /image/i ).test( file.type ) )
+        {
+            alert( "El archivo no es una imagen" );
+            return false;
+        }
+
+        reader = new FileReader();
+        reader.onload = function(event)
+                { var img = new Image;
+                  img.onload = UpdatePreviewCanvas;
+                  img.src = event.target.result;  }
+        reader.readAsDataURL( file );
+    }
+
+    function UpdatePreviewCanvas()  {
+        var img = this;
+        var canvas = document.getElementById( 'previewcanvas' );
+
+        if( typeof canvas === "undefined"
+            || typeof canvas.getContext === "undefined" )
+            return;
+
+        var context = canvas.getContext( '2d' );
+
+        var world = new Object();
+        world.width = canvas.offsetWidth;
+        world.height = canvas.offsetHeight;
+
+        canvas.width = world.width;
+        canvas.height = world.height;
+
+        if( typeof img === "undefined" )
+            return;
+
+        var WidthDif = img.width - world.width;
+        var HeightDif = img.height - world.height;
+
+        var Scale = 0.0;
+        if( WidthDif > HeightDif )
+        {
+            Scale = world.width / img.width;
+        }
+        else
+        {
+            Scale = world.height / img.height;
+        }
+        if( Scale > 1 )
+            Scale = 1;
+
+        var UseWidth = Math.floor( img.width * Scale );
+        var UseHeight = Math.floor( img.height * Scale );
+
+        var x = Math.floor( ( world.width - UseWidth ) / 2);
+        var y = Math.floor( ( world.height - UseHeight ) / 2 );
+
+        context.drawImage( img, x, y, 200, 200 );
+    }

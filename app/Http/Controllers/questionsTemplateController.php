@@ -15,6 +15,7 @@ class questionsTemplateController extends Controller
     $questionInput = $request['questionInput'];
     $questionType = $request['questionType'];
     $idTemplate = $request['idTemplate'];
+    $questionOptionInputs = $request['questionOptionInputs'];
     //$order = $request['order'];
     //$idParent = $request['idParent'];
     //$bifurcaccion = $request['bifurcacion'];
@@ -28,10 +29,44 @@ class questionsTemplateController extends Controller
     //$surv->idParent = $idParent;
     //$surv->bifurcacion = $bifurcacion;
     $surv->save();
+
+  /*  foreach ($questionOptionInputs as $ => $value) {
+
+        $question = new bifurcacion;
+        $question->name = $questionOptionInputs.value ;
+        $question->idParent = $ ;
+        
+    } */
     
     $datos = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
     return $datos;
 
   }
+
+  public function deleteQuestion(){
+
+    $order = $request['order'];
+    $idTemplate = $request['idTemplate'];
+
+    $surv = new questionstemplates;
+
+    $surv::where('id', $idTemplate and 'order',$order)->delete();
+
+    return "1";
+  }
+
+  public function updateQuestion(){
+
+    $order = $request['order'];
+    $idTemplate = $request['idTemplate'];
+
+    $surv = new questionsTemplates;
+
+    $surv::where('id', $idTemplate)->update(array('order' => $order));
+
+    return $surv;
+  }
+
+
 
 }
