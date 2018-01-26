@@ -169,5 +169,6 @@ Route::get('/campus/{id}/{idcampus}', ['as' => 'campus', 'uses'=>'directiveContr
 
 Route::get('/updateDataTemplate','surveyController@updateDataTemplate');
 
+Route::get('/region/{id}/{idcampus}', ['as' => 'region', 'uses'=>'directiveController@estadisticasRegion']);
 
 Route::post('/conectar', 'conexionController@conexion');

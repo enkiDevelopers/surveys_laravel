@@ -14,7 +14,7 @@
         <div class="row">
         <div id="titulo_encuesta" class="col-md-6"></div>
         <div id="imagen" class="col-md-6"></div>
-
+        <p id="variable" name="variable" style='display:none'></p>
         </div>
         <fieldset>
           <legend>Reporte General</legend>
@@ -24,7 +24,7 @@
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
-            <select class="form-control text-black" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
+            <select class="form-control text-black" id="cmbregioncorp" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
             <option>Seleccione una opcion</option>
             <?php 
                 foreach ($regionestotal as $regionestotales) {
@@ -32,19 +32,19 @@
                 }
             ?>
             </select>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
+            <a class='btn btn-default' href="javascript:getURLRegionCorp()">
+                    Ver Reporte
+            </a> 
         </fieldset>
      <fieldset>
           <legend>Reporte Campus</legend>
-          <p id='cargar'></p>
-            <select class="form-control text-black" value="Seleccione Zona" id="regionescorp">
+            <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp">
 
             </select>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
+                        <a class='btn btn-default' href="javascript:getURLCorp()">
+                    Ver Reporte
+            </a> 
+               
         </fieldset>
 
       </div>
@@ -55,6 +55,8 @@
 
   </div>
 </div>
+
+
 
 <div id="MdRegional" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -71,21 +73,21 @@
         <div id="imagenr" class="col-md-6">
 
         </div>
-        <p id="idencues" name="idencues"></p>
+        <p id="idencues" name="idencues" style='display:none'></p>
 
         </div>
         <fieldset>
           <legend>Reporte regional</legend>
-            <select class="form-control text-black" disabled>
+            <select id="cmbregion" name="cmbregion" class="form-control text-black" disabled>
             <?php
                 foreach ($regiones as $region) {
                     echo "<option value={$region->regions_id}>{$region->regions_name}</option>";     
                 }
             ?>
             </select>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
+                <a class='btn btn-default' href="javascript:getURLRegion()">
+                    Ver Reporte
+                </a>
         </fieldset>
      <fieldset>
           <legend>Reporte Campus</legend>
@@ -173,7 +175,7 @@
                                     case '3':
                                 ?>
                                     <div class="btn-group " role="group" aria-label="...">
-                                        <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}">
+                                        <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
                                         </a>
                                     </div>
@@ -200,10 +202,28 @@
 	@endsection
     <script type="text/javascript">
         function getURL(){
-            var dirt = document.getElementById('cmbcampus').value;
             var id=document.getElementById('idencues').innerText;
-            console.log(dirt);
+            var dirt = document.getElementById('cmbcampus').value;
             var url = '/campus/'+id+'/'+dirt;
+            window.location.href=url;
+        }
+        function getURLRegion(){
+            var id   = document.getElementById('idencues').innerText;
+            var cmbre = document.getElementById('cmbregion').value;
+            var url = '/region/'+id+'/'+cmbre;
+            window.location.href=url;
+        }
+
+        function getURLCorp(){
+            var id=document.getElementById('variable').innerText;
+            var dirt = document.getElementById('regionescorp').value;
+            var url = '/campus/'+id+'/'+dirt;
+            window.location.href=url;
+        }
+        function getURLRegionCorp(){
+            var id   = document.getElementById('variable').innerText;
+            var cmbre = document.getElementById('cmbregioncorp').value;
+            var url = '/region/'+id+'/'+cmbre;
             window.location.href=url;
         }
     </script>

@@ -75,11 +75,9 @@ class directiveController extends Controller
     return response()->json($data);
   }
   public function estadisticaCampus($id,$idcampus){
-
-      $surveys= DB::table('statistics')->where([
-                                               ['surveys_id','=',$id],
-                                               ['campus_campus_id','=',$idcampus],])->count();
-      if ($surveys==0){
+      $stadisticas= DB::table('statistics')->where([['surveys_id','=',$id],
+                                                   ['campus_campus_id','=',$idcampus],])->count();
+      if ($stadisticas==0){
       $idstatica = DB::table('statistics')->insertGetId([
                                                   'total_encuestados' => '0', 
                                                   'total_alumnos' =>'0',
@@ -94,12 +92,51 @@ class directiveController extends Controller
                                                   'directives_idDirectives'=>1,
                                                   'surveys_id'=> $id]);
       }
-
-      $info= DB::table('statistics')->where('surveys_id','=',$id)->get();
+      $info= DB::table('statistics')->where([  ['surveys_id','=',$id],
+                                               ['campus_campus_id','=',$idcampus],])->get();
 
       $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
 
       return view('directive.report',compact('datoencuesta','info'));
+  }
+  public function estadisticasRegion($id,$idregion){
+    $campus = DB::table('campus')->where('regions_regions_id','=',$idregion)->get();
+
+    foreach ($campus as $campusdatos) {
+       $stadisticas= DB::table('statistics')->where([['surveys_id','=',$id],
+                                                    ['campus_campus_id','=',$campusdatos->campus_id],])->count();
+      if ($stadisticas==0){
+      $idstatica = DB::table('statistics')->insertGetId([
+                                                  'total_encuestados' => '0', 
+                                                  'total_alumnos' =>'0',
+                                                  'total_empleados' =>'0',
+                                                  'total_incidentes' =>'0',
+                                                  'total_incidentes_alumnos' =>'0',
+                                                  'total_incidentes_empleados' =>'0',
+                                                  'total_contestados' =>'0',
+                                                  'total_contestados_alumnos'=>'0',
+                                                  'total_contestados_empleados'=>'0',
+                                                  'campus_campus_id'=>$campusdatos->campus_id,
+                                                  'directives_idDirectives'=>1,
+                                                  'surveys_id'=> $id]);
+      }
+    }
+
+    $estadisticas = DB::table('statistics')
+                  ->join('campus', 'statistics.campus_campus_id', '=', 'campus.campus_id')
+                  ->select('statistics.*','campus.*')
+                  ->where('statistics.surveys_id','=',$id)
+                  ->where('campus.regions_regions_id','=',$idregion)
+                  ->get();
+
+    $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
+
+    return view('directive.report1',compact('datoencuesta','estadisticas'));
+
+
+  }
+  private function datos(){
+
   }
 
 

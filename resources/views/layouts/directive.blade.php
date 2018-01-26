@@ -107,7 +107,6 @@
 
     <script src="{{ asset('js/directive.js') }}"></script>
 
-    <script src="{{ asset('js/app.js') }}"></script>
 
     <script src="/js/highcharts.js"></script>
     <script src="/js/exporting.js"></script>

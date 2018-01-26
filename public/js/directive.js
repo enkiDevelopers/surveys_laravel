@@ -22,7 +22,7 @@ function corporativoModal(comp){
 
                  $("#titulo_encuesta").html(titulo);
                  $("#imagen").html(imagen);
-
+                 $("#variable").html(id);
                 $('#MdCorporativo').modal('show');
 
               },
@@ -126,6 +126,7 @@ function selecciona(busq){
               for(post in json){
                 dato+="<option value="+json[post].campus_id+">"+json[post].campus_name+"</option>"
               }
+              console.log(dato);
               $("#regionescorp").html(dato);
               $("#cargar").html("");
 
