@@ -1,6 +1,7 @@
 @extends('layouts.directive')
 @section('content')
-<!--modal section-->
+
+<!--modal section -->
 <div id="MdCorporativo" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
