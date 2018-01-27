@@ -17,22 +17,23 @@
         <p id="variable" name="variable" style='display:none'></p>
         </div>
         <fieldset>
-          <legend>Reporte General</legend>
-            <button class="btn btn-default">
-                Ver reporte
-            </button>
+            <a class='btn btn-default' href="javascript:getURLGeneral()" target="_blank">
+                    Reporte General
+            </a> 
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
             <select class="form-control text-black" id="cmbregioncorp" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
-            <option>Seleccione una opcion</option>
+            <option>Seleccione una opción</option>
             <?php 
                 foreach ($regionestotal as $regionestotales) {
                     echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";  
                 }
             ?>
             </select>
-            <a class='btn btn-default' href="javascript:getURLRegionCorp()">
+                <p id="cargar" name="cargar"></p>
+
+            <a class='btn btn-default' href="javascript:getURLRegionCorp()" target="_blank">
                     Ver Reporte
             </a> 
         </fieldset>
@@ -41,7 +42,7 @@
             <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp">
 
             </select>
-                        <a class='btn btn-default' href="javascript:getURLCorp()">
+                <a class='btn btn-default' href="javascript:getURLCorp()" target="_blank">
                     Ver Reporte
             </a> 
                
@@ -85,7 +86,7 @@
                 }
             ?>
             </select>
-                <a class='btn btn-default' href="javascript:getURLRegion()">
+                <a class='btn btn-default' href="javascript:getURLRegion()" target="_blank">
                     Ver Reporte
                 </a>
         </fieldset>
@@ -99,7 +100,7 @@
                     }
                 ?>
                 </select>
-                <a class='btn btn-default' href="javascript:getURL()">
+                <a class='btn btn-default' href="javascript:getURL()" target="_blank">
                     Ver Reporte
                 </a>
         </fieldset>
@@ -205,26 +206,34 @@
             var id=document.getElementById('idencues').innerText;
             var dirt = document.getElementById('cmbcampus').value;
             var url = '/campus/'+id+'/'+dirt;
-            window.location.href=url;
+            window.open(url,'_blank');
         }
         function getURLRegion(){
             var id   = document.getElementById('idencues').innerText;
             var cmbre = document.getElementById('cmbregion').value;
             var url = '/region/'+id+'/'+cmbre;
-            window.location.href=url;
+            window.open(url,'_blank');
         }
 
         function getURLCorp(){
             var id=document.getElementById('variable').innerText;
             var dirt = document.getElementById('regionescorp').value;
             var url = '/campus/'+id+'/'+dirt;
-            window.location.href=url;
+            window.open(url,'_blank');
         }
         function getURLRegionCorp(){
             var id   = document.getElementById('variable').innerText;
             var cmbre = document.getElementById('cmbregioncorp').value;
             var url = '/region/'+id+'/'+cmbre;
-            window.location.href=url;
+            window.open(url,'_blank');
         }
+        function getURLGeneral(){
+            var id   = document.getElementById('variable').innerText;
+            var url = '/general/'+id;
+            window.open(url,'_blank');
+        }
+
+
+        
     </script>
 

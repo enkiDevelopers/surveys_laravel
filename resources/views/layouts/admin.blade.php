@@ -4,16 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/sidebar.css">
+
+    <link rel="stylesheet" href="/css/sweetalert.min.css">
+      <script src="/js/sweetalert.min.js"></script>
 </head>
 <body>
-    
+
     <div class="wrapper" id="app">
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
@@ -21,7 +24,7 @@
                 <!--   <button type="button" id="sidebarCollapse"  class=" btn-default btn navbar-btn pull-right">
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
-                -->    
+                -->
                     <h3 class="administrator-header">Administrador</h3>
                 </div>
 
@@ -41,7 +44,7 @@
                             <i class="glyphicon glyphicon-list-alt"></i>
                             <span>Encuestados</span>
                         </a>
-                    </li>              
+                    </li>
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
                             <i class="glyphicon glyphicon-user"></i>
@@ -71,7 +74,7 @@
                         <a href="{{ url('/administrator/files') }}" >
                             <i class="glyphicon glyphicon-file"></i>
                         </a>
-                    </li>              
+                    </li>
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
                             <i class="glyphicon glyphicon-user"></i>
@@ -83,20 +86,20 @@
                         </a>
                     </li>
                 </ul>
-            </nav>            
+            </nav>
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/js/administrator-new-survey.js"></script>
+
 
     <script type="text/javascript">
             $(document).ready(function () {
 
-                var alto = (screen.height) - (screen.availHeight); 
+                var alto = (screen.height) - (screen.availHeight);
                 var barra = screen.availHeight - alto - (alto/2) - (alto/4);
-                
+
                 $("#sidebar").height(barra);
                 $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
@@ -104,13 +107,13 @@
 
                 //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
 
-                if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px 
+                if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px
                     /*    $("#sidebar").addClass('active');
                         $(".sidebar-header").hide();
-                        $("p").hide(); 
-                    */ 
+                        $("p").hide();
+                    */
                     $(".container").css('margin-top','100px');
-                    
+
                 }else {
                 }
             });
