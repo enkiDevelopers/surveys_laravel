@@ -4,9 +4,6 @@
 <button name="button" type="button" onclick="window.close();" value="Cerrar esta ventana" /> 
         <span class="glyphicon glyphicon-remove" ></span>
 </button>
-<button name="button" type="button" onclick="imprimir()" value="Cerrar esta ventana" /> 
-        <span class="glyphicon glyphicon-remove" ></span>
-</button>
 
 
 <div class="row col-lg-offset-2">
@@ -104,12 +101,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <script src="{{ asset('js/directive.js') }}"></script>
 
     <!--<script src="/js/directive-report1.js"></script>-->
-    <script type="text/javascript"><?php include '/js/directive-report.js"';?></script>
+    <script type="text/javascript"><?php include '/js/directive-report.js'; ?></script>
 
 
 
 
-
+ 

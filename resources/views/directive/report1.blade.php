@@ -124,4 +124,4 @@
 
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<script type="text/javascript"><?php include '/js/directive-report1.js"';?></script>
+<script type="text/javascript"><?php include '/js/directive-report1.js';?></script>
