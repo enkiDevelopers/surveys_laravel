@@ -8,6 +8,9 @@ use DB;
 use File;
 use Input;
 use Response;
+use App\Client;
+use PDF;
+
 
 class directiveController extends Controller
 {
@@ -30,7 +33,8 @@ class directiveController extends Controller
   public function show_cards($id)
   {
       $campus=0;
-      $encuestas = DB::table('surveys')->get();
+      $encuestas = DB::table('publicaciones')->get();
+
       $datosdirective =DB::table('directives')->where('idDirectives','=',$id)->get();
       switch ($datosdirective["0"]->type) {
         case '1':
@@ -41,7 +45,7 @@ class directiveController extends Controller
         case '2':
               $datosdirective = DB::table('directives')
             ->join('ctlRegions', 'directives.idDirectives', '=', 'ctlRegions.directives_idDirectives')
-            ->select('directives.*','ctlRegions.regions_id')
+            ->select('directives.*','ctlRegions.regions_id','ctlRegions.regions_name')
             ->where('idDirectives','=',$id)
             ->get();
               $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('regions_regions_id','=',$datosdirective["0"]->regions_id)->get();
@@ -59,7 +63,6 @@ class directiveController extends Controller
           
           break;
       }
-
       $regionestotal=DB::table('ctlRegions')->get();
       $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->where('directives_idDirectives','=',$id)->get();
 
@@ -67,7 +70,7 @@ class directiveController extends Controller
 
   }
   public function buscar(Request $request){
-    $data = DB::table('surveys')->where("id", $request->id)->get();
+    $data = DB::table('publicaciones')->where("id", $request->id)->get();
     return response()->json($data);
   }
   public function busquedacampus(Request $request){
@@ -96,7 +99,7 @@ class directiveController extends Controller
                                                ['campus_campus_id','=',$idcampus],])->get();
       $campusname=DB::table('ctlCampus')->where('campus_id','=',$idcampus)->get();
 
-      $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
+      $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
 
       return view('directive.report',compact('datoencuesta','info','campusname'));
   }
@@ -130,7 +133,7 @@ class directiveController extends Controller
                   ->where('ctlCampus.regions_regions_id','=',$idregion)
                   ->get();
     $regioname= DB::table('ctlRegions')->where('regions_id','=',$idregion)->get();
-    $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
+    $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
 
     return view('directive.report1',compact('datoencuesta','estadisticas','regioname'));
 
@@ -146,10 +149,15 @@ class directiveController extends Controller
                   ->where('statistics.surveys_id','=',$id)
                   ->get();
 
-        $datoencuesta=DB::table('surveys')->where('id','=',$id)->get();
+        $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
 
         return view('directive.reporteGeneral',compact('datoencuesta','estadisticas','regiones'));
 
+  }
+  public function generarPdf(){
+    $clients =Client::all();
+    $pdf=PDF::loadView('directive.reporteGeneral',['clients'=>$clients]);
+    return $pdf->download('reporte.pdf');
   }
 
 
