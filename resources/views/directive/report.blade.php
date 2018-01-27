@@ -94,6 +94,7 @@
 </div>
         <!--End Avance empleados-->
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
     <!--<script src="/js/directive-report.js"></script>-->
@@ -103,8 +104,10 @@
 
 
     <!--<script src="/js/directive-report1.js"></script>-->
-    <script type="text/javascript"><?php include '/js/directive-report.js'; ?></script>
-
+    <script type="text/javascript">
+        <?php include "js/directive-report.js";
+        ?>
+    </script>
 
 
 

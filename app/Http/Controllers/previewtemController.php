@@ -24,7 +24,7 @@ class previewtemController extends Controller
       $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
 
       $opt = "";
-      foreach ($datos as $dato) {
+      /*foreach ($datos as $dato) {
         if($dato['type']==2){
           $idq=$dato['idQuestionsTemplates'];
           //$opt = $opt . $idq . ",";
@@ -34,7 +34,7 @@ class previewtemController extends Controller
           $optionstr = (string) $option;
           $opt = $opt . $optionstr;
         }
-      }
+      }*/
       $options=$opt;
 
       $admor = $consulta[0]->creador;
