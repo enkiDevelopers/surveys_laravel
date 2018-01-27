@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\questionstemplates;
+use App\optionsMult;
 use DB;
 use File;
 use Input;
@@ -15,33 +16,49 @@ class questionsTemplateController extends Controller
     $questionInput = $request['questionInput'];
     $questionType = $request['questionType'];
     $idTemplate = $request['idTemplate'];
-    $questionOptionInputs = $request['questionOptionInputs'];
-    //$order = $request['order'];
+    $optionsResult = $request['optionsResult'];
     //$idParent = $request['idParent'];
     //$bifurcaccion = $request['bifurcacion'];
 
-    $surv = new questionstemplates;
-    $surv->templates_idTemplates = $idTemplate;
-    $surv->order = $numPregSig;
-    $surv->title = $questionInput;
-    $surv->type = $questionType;
-    //$surv->order = $order;
-    //$surv->idParent = $idParent;
-    //$surv->bifurcacion = $bifurcacion;
-    $surv->save();
+    if($questionType == 1 ){
 
-  /*  foreach ($questionOptionInputs as $ => $value) {
+        $surv = new questionstemplates;
+        $surv->templates_idTemplates = $idTemplate;
+        $surv->order = $numPregSig;
+        $surv->title = $questionInput;
+        $surv->type = $questionType;
+        //$surv->idParent = $idParent;
+        //$surv->bifurcacion = $bifurcacion;
+        $surv->save();
 
-        $question = new bifurcacion;
-        $question->name = $questionOptionInputs.value ;
-        $question->idParent = $ ;
-        
-    } */
-    
-    $datos = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
-    return $datos;
+        $preguntas = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
 
+    }else{
+
+        $surv = new questionstemplates;
+        $surv->templates_idTemplates = $idTemplate;
+        $surv->order = $numPregSig;
+        $surv->title = $questionInput;
+        $surv->type = $questionType;
+        //$surv->idParent = $idParent;
+        //$surv->bifurcacion = $bifurcacion;
+        $surv->save();
+        $eid = $surv->id;
+
+        $opt = new optionsMult;
+        $opt->name = $optionsResult;
+        $opt->idParent = $eid;
+    //    $opt->salto =
+
+        $opt->save();
+
+        $preguntas = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
+        $opciones = questionsTemplates::join('optionsMult', 'questionstemplates.order', '=', 'optionsMult.idParent')->where('optionsMult.id', $numPregSig)->orderby('id', 'desc')->get();
+
+    }
+        return $preguntas;
   }
+
 
   public function deleteQuestion(){
 

@@ -188,16 +188,6 @@ $(document).ready(function(){
         }
     }
     */
-    $("#idSaveQuestion").click(function(){
-/*
-        var questionOptionInputs=$(".questionOptionInputs");
-        
-        foreach(question as questionOptionInputs){
-            options=options+valor+i:question.val();
-        },
-        data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, options: options}
-*/
-    });
 
 });
 
@@ -255,15 +245,25 @@ $(document).ready(function(){
     function saveQuestion(id){
         var action = document.getElementById("saveQuestionForm").action;
         var idTemplate = id;
+        var optionsResult = "";
         var numPregSig = $("#numPregSig").val();
         var questionInput = $("#questionInput").val();
-        var questionOptionInputs=$(".questionOptionInputs");
+        var questionOptionInputsA = document.getElementsByClassName('questionOptionInputs');
         var questionType= $("#questionType").val();
         var token = $("#token").val();
 
-        console.log(questionOptionInputs);
 
-        if (questionInput.length == 0 || questionOptionInputs.length == 0) {
+        for (var i = 0; i < questionOptionInputsA.length; i++)  {
+//            optionsResult = options.value;
+//            console.log(questionOptionInputsA[i].value);
+              optionsResult = optionsResult + questionOptionInputsA[i].value;
+
+        }
+
+        optionsResult = optionsResult.split(',');
+        console.log(optionsResult);
+
+        if (questionInput.length == 0 || questionOptionInput.length == 0) {
             alertify.alert("Ingrese una pregunta.", function(){
                 alertify.message('OK');
           });
@@ -273,7 +273,7 @@ $(document).ready(function(){
                 url: action,
                 headers: {'X-CSRF-TOKEN': token},
                 dataType: 'json',
-                data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType },
+                data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, optionsResult: optionsResult},
                 beforeSend: function( xhr ) {   
                     $(".new-question__control--add-question").attr('disabled','true'); 
                     $(".new-question__control--delete-question").attr('disabled','true');
@@ -287,11 +287,14 @@ $(document).ready(function(){
                             $(".new-question__control--delete-question").parent().parent().parent().prev().children().children().next().next().next().remove();
                           });
                             $("#container-questions").load(" #container-questions");
-
+                    
+                     console.log(e);
+         
                     }else{
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
                             alertify.message('OK');
-                        });     
+                        });
+                 
                     }
                 },
                 error: function (textStatus, errorThrown) {
