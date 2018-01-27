@@ -109,19 +109,95 @@ function UpdatePreviewCanvas()
 }
 
 //alerta para eliminar
-    function alerta(id,idAdmin) {
+  function alerta(id,idAdmin) {
+  	$('#panel').load('#panel');
+swal({ 
+title: "¿Seguro que deseas continuar?",
+text: "No podrás deshacer este paso.",
+type: "warning",
+showCancelButton: true,
+cancelButtonText: "Cancelar",
+confirmButtonColor: "#DD6B55",
+confirmButtonText: "Eliminar",
+closeOnConfirm: false },
+function(){ 
+ $.ajax({
+  url: "/administrator/delete/",
+  type: 'GET',
+  datatype: "json",
+  data:{
+        id:id,
+        idAdmin: idAdmin
+  },success: function( sms ) {
+    swal({
+       title: "Eliminado correctamente",
+       type: "success",
+        });
+     $("#"+id).css("display", "none");
+      },error: function(result) {
+        swal({
+           title: "Error",
+           text: "Ha ocurrido un error",
+           type: "warning",
+            });
 
-    alertify.defaults.glossary.title = 'Eliminar';
-    alertify.confirm("¿Seguro que desea eliminar la plantilla? ",
-    function(){
-      location.replace("/administrator/delete/"+id+"/"+idAdmin);
-      $('#procesando').show();
-              },
-    function(){
-    alertify.error('Cancel');
-              });                             }
+            }
+  });               
+
+});
+            
+}
+
 //oculta la pantalla de carga principal cuando la pagina este cargada
       window.onload = detectarCarga;
       function detectarCarga(){
         document.getElementById("loader").style.display="none";
                              }
+
+
+//modal para publicacion de plantilla
+  function openModal(id) {
+        $("#idModal").val(id);
+        $('#miModal').modal('show');
+      }
+
+//envia los datos para publicar la plantilla
+function enviar()
+{
+  var id = $("#idModal").val();
+  var fechai = $("#inicio").val();
+  var fechat = $("#termino").val();
+  var instrucciones = $("#instrucciones").val();
+  var destinatarios = $("#destinatario").val();
+  var tipo = $("#tipo").val();
+
+  $.ajax({
+  url: "/administrator/publicar/encuesta",
+  type: 'POST',
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  datatype: "json",
+  data:{
+        id:id,
+        fechai:fechai,
+        fechat:fechat,
+        instrucciones:instrucciones,
+        destinatarios: destinatarios
+  },success: function( sms ) {
+    swal({
+       title: "Su encuesta ha sido publicada",
+       text: ""+sms,
+       type: "success",
+        });
+      document.getElementById("form").reset();
+      },error: function(result) {
+        swal({
+           title: "Error",
+           text: "Ingrese valor valido ",
+           type: "warning",
+            });
+            }
+  });
+
+}
+
+
