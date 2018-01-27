@@ -180,3 +180,6 @@ Route::get('/region/{id}/{idcampus}', ['as' => 'region', 'uses'=>'directiveContr
 Route::get('/general/{id}', ['as' => 'general', 'uses'=>'directiveController@estadisticasGeneral']);
 
 Route::post('/conectar', 'conexionController@conexion');
+
+Route::post('pdf', 'directiveController@generarPdf');
+

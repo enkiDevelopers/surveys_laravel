@@ -31,10 +31,7 @@
                 <ul class="list-unstyled components">
                     <div class="profile center text-center">
                         <img src="/img/avatar.jpeg" alt="">
-                        <?php 
-                            $datosdirective=DB::table('directives')->select(['idDirectives','nombre','apPaterno','apMaterno','type'] )->where('idDirectives','=',1)->get();
-                        ?>
-                            <p><?php echo $datosdirective[0]->nombre." ".$datosdirective[0]->apPaterno." ".$datosdirective[0]->apMaterno;  ?></p>
+                            <p style="margin:-5px;"><?php echo $datosdirective[0]->nombre." ".$datosdirective[0]->apPaterno." ".$datosdirective[0]->apMaterno;  ?></p>
 
                         <?php
                             switch ($datosdirective[0]->type) {
@@ -42,10 +39,12 @@
                                     echo "<p>Directivo Corporativo</p>";
                                     break;
                                 case '2': 
-                                    echo "<p>Directivo Regional</p>";
+                                    echo "<p style='margin: -5px 0'>Directivo Regional</p>";
+                                    echo "<p style='margin: -5px 0'>".$datosdirective[0]->regions_name."</p>";                                    
                                     break;
                                 case '3':
-                                    echo "<p>Directivo Campus</p>";
+                                    echo "<p style='margin: -5px 0'>Directivo Campus</p>";
+                                    echo "<p style='margin: -5px 0'>".$campus[0]->campus_name."</p>";
                                     break;
                                 
                                 default:
@@ -112,42 +111,6 @@
     <script src="/js/exporting.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script type="text/javascript">
-/*
-function directiveModal(comp){
-
-  let id = comp.id;
-  console.log(id);
-        $.ajax({
-              dataType : 'json',
-              type : 'post',
-              url : '/busquedamodal',
-              data : {"_token": "{{ csrf_token() }}","id": id,},
-              async:true,
-              cache:false,
-              success : function(response){
-                var titulo="";
-                var imagen="";
-                    titulo+="<h4><b>"+response["0"].Titulo_encuesta+"</b></h4>";
-                    imagen+="<img class='card-img-top' alt='Card image cap' src='\img/iconos/"+response[0].Image_path+"' width='50%' height='90px'>";
-                    console.log(titulo);
-
-                 $("#titulo_encuesta").html(titulo);
-                 $("#imagen").html(imagen);
-
-                $('#MdReporte').modal('show');
-
-              },
-              error : function(error) {
-                console.log(error);
-              }
-          });
-
-}
-*/
-</script>
-
 
     <script type="text/javascript">
              $(document).ready(function () {

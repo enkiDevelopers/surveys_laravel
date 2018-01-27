@@ -12,12 +12,12 @@
 		foreach ($datoencuesta as $datoencuestas) {
             echo "<div class'col-md-11'>";
             echo "<div class='col-md-6'>";
-			echo "<h3><b>Titulo de la escuesta: </b>{$datoencuestas->Titulo_encuesta}</h3>";
+			echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->titulo}</h3>";
 			echo "<h4><b>Región: {$regioname[0]->regions_name}</b></h4>";
 			echo "</div>";
 			echo "<br>";
 			echo "<div class='col-md-6'>";
-			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->Image_path}'>";
+			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagen}'>";
 			echo "</div>";
             echo "</div>";
 		}?>
@@ -29,10 +29,13 @@
         </div>
         <?php
         $totalgrl=0;
+        $total1=0;
         $totalencuesta=0;
+        $total2=0;
         $totalalum=0;
         $totalencuestaalumno=0;
         $totaltra=0;
+        $total3=0;
         $totalencuestatrabajador=0;
 
         foreach ($estadisticas as $estadistica) {
@@ -121,146 +124,4 @@
 
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
-
-
-<script type="text/javascript">
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title:{
-		text: "Reporte de Región"
-	},	
-	axisY: {
-		title: "Encuestas contestadas",
-		titleFontColor: "#4F81BC",
-		lineColor: "#4F81BC",
-		labelFontColor: "#4F81BC",
-		tickColor: "#4F81BC"
-	},
-
-	toolTip: {
-		shared: true
-	},
-	legend: {
-		cursor:"pointer",
-		itemclick: toggleDataSeries
-	},
-	data: [{
-		type: "column",
-		name: "Encuestas contestadas",
-		legendText: "Encuestas contestadas",
-		showInLegend: true, 
-		dataPoints:[
-    <?php
-    	foreach ($estadisticas as $estadistica) {
-    		$dato=$estadistica->total_contestados+$estadistica->total_incidentes;
-    		echo "{ label: ".'"'.$estadistica->campus_name.'"'.",y: ".$dato."},\n";
-    	}
-    ?>
-
-		]
-	},
-	{
-		type: "column",	
-		name: "Encuestas aun no contestadas",
-		legendText: "Encuestas aun no contestadas",
-		showInLegend: true,
-		dataPoints:[
-    <?php
-    	foreach ($estadisticas as $estadistica) {
-    		$faltante=$estadistica->total_encuestados-($estadistica->total_contestados+$estadistica->total_incidentes);
-    		echo "{ label: ".'"'.$estadistica->campus_name.'"'.",y: ".$faltante."},\n";
-    	}
-    ?>
-			
-
-
-
-		]
-	}]
-});
-chart.render();
-
-
-function toggleDataSeries(e) {
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	}
-	else {
-		e.dataSeries.visible = true;
-	}
-	chart.render();
-}
-var chart = new CanvasJS.Chart("chartContainergrl", {
-    backgroundColor: "transparent",
-    animationEnabled: true,
-    title: {
-        text: "Avance General en la Región"
-    },
-
-    data: [{
-        type: "pie",
-        startAngle: 90,
-        yValueFormatString: "##0.00\"%\"",
-        indexLabel: "{label} {y}",
-        dataPoints: [
-            {y:<?php echo $totalgrl ?> , label: "Avance General"},
-            {y:<?php echo 100-$totalgrl ?>, label: "Avance restante"}
-
-        ]
-    }]
-});
-
-chart.render();
-
-
-
-var chart2 = new CanvasJS.Chart("chartContaineralum", {
-    backgroundColor: "transparent",
-    animationEnabled: true,
-    title: {
-        text: "Avance General Alumnos en la Region"
-    },
-    data: [{
-        type: "pie",
-        startAngle: 90,
-        yValueFormatString: "##0.00\"%\"",
-        indexLabel: "{label} {y}",
-        dataPoints: [
-            {y: <?php echo $totalalum?> , label: "Avance General Alumnos"},
-            {y: <?php echo 100-$totalalum?> , label: "Avance Restante Alumnos"}
-
-        ]
-    }]
-});
-
-chart2.render();
-
-var chart3 = new CanvasJS.Chart("chartContaineremp", {
-    backgroundColor: "transparent",
-    animationEnabled: true,
-    title: {
-        text: "Avance General Empleados en la Region"
-    },
-    data: [{
-        type: "pie",
-        startAngle: 90,
-        yValueFormatString: "##0.00\"%\"",
-        indexLabel: "{label} {y}",
-        dataPoints: [
-            {y: <?php echo $totaltra ?> , label: "Avance General Alumnos"},
-            {y: <?php echo 100-$totaltra?>, label: "Avance Restante Alumnos"}
-
-        ]
-    }]
-});
-
-chart3.render();
-
-
-}
-</script>
-
-
+<script type="text/javascript"><?php include '/js/directive-report1.js';?></script>

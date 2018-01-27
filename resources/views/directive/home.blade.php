@@ -1,6 +1,7 @@
 @extends('layouts.directive')
 @section('content')
-<!--modal section-->
+
+<!--modal section -->
 <div id="MdCorporativo" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -100,7 +101,7 @@
                     }
                 ?>
                 </select>
-                <a class='btn btn-default' href="javascript:getURL()" target="_blank">
+                <a class='btn btn-default' href="javascript:getURL()" >
                     Ver Reporte
                 </a>
         </fieldset>
@@ -143,14 +144,15 @@
 
                                 <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->Image_path;?>" width="100%" height="90px"> </div>
+                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagen;?>" width="100%" height="90px"> </div>
                                     <div class="col-md-7">
-                                    <h4 class="card-title">  <?php echo $encuesta->Titulo_encuesta;  ?></h4>
+                                    <h4 class="card-title">  <?php echo $encuesta->titulo;  ?></h4>
                                     </div>
                                 </div>
                                 <hr size="30">
-                                <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->Descripcion?></span></p>
-                                <p class="card-text">Fecha: <span class="template-creator"><?php echo $encuesta->created_at?></span></p>
+                                <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->instrucciones?></span></p>
+                                <p class="card-text">Fecha Inicial: <span class="template-creator"><?php echo $encuesta->fechai ?></span></p>
+                                <p class="card-text">Fecha Termino: <span class="template-creator"><?php echo $encuesta->fechat ?></span></p>
 
                                 <?php
                                  switch ($datosdirective[0]->type) {
@@ -201,39 +203,5 @@
 
 
 	@endsection
-    <script type="text/javascript">
-        function getURL(){
-            var id=document.getElementById('idencues').innerText;
-            var dirt = document.getElementById('cmbcampus').value;
-            var url = '/campus/'+id+'/'+dirt;
-            window.open(url,'_blank');
-        }
-        function getURLRegion(){
-            var id   = document.getElementById('idencues').innerText;
-            var cmbre = document.getElementById('cmbregion').value;
-            var url = '/region/'+id+'/'+cmbre;
-            window.open(url,'_blank');
-        }
 
-        function getURLCorp(){
-            var id=document.getElementById('variable').innerText;
-            var dirt = document.getElementById('regionescorp').value;
-            var url = '/campus/'+id+'/'+dirt;
-            window.open(url,'_blank');
-        }
-        function getURLRegionCorp(){
-            var id   = document.getElementById('variable').innerText;
-            var cmbre = document.getElementById('cmbregioncorp').value;
-            var url = '/region/'+id+'/'+cmbre;
-            window.open(url,'_blank');
-        }
-        function getURLGeneral(){
-            var id   = document.getElementById('variable').innerText;
-            var url = '/general/'+id;
-            window.open(url,'_blank');
-        }
-
-
-        
-    </script>
 

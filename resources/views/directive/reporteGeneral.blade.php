@@ -4,20 +4,23 @@
 <button name="button" type="button" onclick="window.close();" value="Cerrar esta ventana" /> 
         <span class="glyphicon glyphicon-remove" ></span>
 </button>
+<a name="button" type="button" href="pdf"  value="Cerrar esta ventana" /> 
+        <span class="glyphicon glyphicon-remove" ></span>
+</a>
 
 <div class="row col-md-offset-1">
 
-                    <?php 
+    <?php 
         foreach ($datoencuesta as $datoencuestas) {
             echo "<div class='col-md-6'>";
-            echo "<h3><b>Titulo de la escuesta: </b>{$datoencuestas->Titulo_encuesta}</h3>";
-
+            echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->titulo}</h3>";
             echo "</div>";
             echo "<br>";
             echo "<div class='col-md-6'>";
-            echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->Image_path}'>";
+            echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagen}'>";
             echo "</div>";
-        }?>
+    }
+    ?>
 
         <?php
         $totalgrl=0;
@@ -104,154 +107,9 @@
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
     <!--<script src="/js/directive-report.js"></script>-->
-    <script src="/js/directive-report1.js"></script>
+    <script type="text/javascript"><?php include '/js/directive-reportgeneral.js"';?></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-<script type="text/javascript">
-window.onload = function () {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	title:{
-		text: "Reporte de General"
-	},	
-	axisY: {
-		title: "Encuestas contestadas",
-		titleFontColor: "#4F81BC",
-		lineColor: "#4F81BC",
-		labelFontColor: "#4F81BC",
-		tickColor: "#4F81BC"
-	},
-
-	toolTip: {
-		shared: true
-	},
-	legend: {
-		cursor:"pointer",
-		itemclick: toggleDataSeries
-	},
-	data: [{
-		type: "column",
-		name: "Encuestas contestadas",
-		legendText: "Encuestas contestadas",
-		showInLegend: true, 
-		dataPoints:[
-    <?php
-    	foreach ($regiones as $region) {
-            $dato=0;
-            foreach ($estadisticas as $estadistica) {
-                if($region->regions_id==$estadistica->regions_id){
-                $dato+=$estadistica->total_contestados+$estadistica->total_incidentes;
-                }
-                }
-                echo "{ label: ".'"'.$region->regions_name.'"'.",y: ".$dato."},\n";
-    	}
-    ?>
-
-		]
-	},
-	{
-		type: "column",	
-		name: "Encuestas aun no contestadas",
-		legendText: "Encuestas aun no contestadas",
-		showInLegend: true,
-		dataPoints:[
-    <?php
-     foreach ($regiones as $region) {
-        $faltante=0;
-    	foreach ($estadisticas as $estadistica) {
-        if($region->regions_id==$estadistica->regions_id){
-    		$faltante+=$estadistica->total_encuestados-($estadistica->total_contestados+$estadistica->total_incidentes);
-        }
-        }
-                echo "{ label: ".'"'.$region->regions_name.'"'.",y: ".$faltante."},\n";
-
-        
-    }
-    ?>
-		]
-	}]
-});
-chart.render();
-
-function toggleDataSeries(e) {
-    if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-        e.dataSeries.visible = false;
-    }
-    else {
-        e.dataSeries.visible = true;
-    }
-    chart.render();
-}
-
-var chart = new CanvasJS.Chart("chartContainergrl", {
-    backgroundColor: "transparent",
-    animationEnabled: true,
-    title: {
-        text: "Avance General en la Región"
-    },
-
-    data: [{
-        type: "pie",
-        startAngle: 90,
-        yValueFormatString: "##0.00\"%\"",
-        indexLabel: "{label} {y}",
-        dataPoints: [
-            {y:<?php echo $totalgrl ?> , label: "Avance General"},
-            {y:<?php echo 100-$totalgrl ?>, label: "Avance restante"}
-
-        ]
-    }]
-});
-
-chart.render();
-
-
-
-var chart2 = new CanvasJS.Chart("chartContaineralum", {
-    backgroundColor: "transparent",
-    animationEnabled: true,
-    title: {
-        text: "Avance General Alumnos en la Region"
-    },
-    data: [{
-        type: "pie",
-        startAngle: 90,
-        yValueFormatString: "##0.00\"%\"",
-        indexLabel: "{label} {y}",
-        dataPoints: [
-            {y: <?php echo $totalalum?> , label: "Avance General Alumnos"},
-            {y: <?php echo 100-$totalalum?> , label: "Avance Restante Alumnos"}
-
-        ]
-    }]
-});
-
-chart2.render();
-
-var chart3 = new CanvasJS.Chart("chartContaineremp", {
-    backgroundColor: "transparent",
-    animationEnabled: true,
-    title: {
-        text: "Avance General Empleados en la Region"
-    },
-    data: [{
-        type: "pie",
-        startAngle: 90,
-        yValueFormatString: "##0.00\"%\"",
-        indexLabel: "{label} {y}",
-        dataPoints: [
-            {y: <?php echo $totaltra ?> , label: "Avance General Alumnos"},
-            {y: <?php echo 100-$totaltra?>, label: "Avance Restante Alumnos"}
-
-        ]
-    }]
-});
-
-chart3.render();
-
-
-}
-</script>
-
+        <script src="{{ asset('js/directive.js') }}"></script>
