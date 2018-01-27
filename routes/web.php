@@ -37,6 +37,7 @@ Route::get('/surveyed/solve', function () {
     return view('surveyed.solve-survey');
 });
 
+Route::post("/administrator/publicar/encuesta","encuestadosController@publicar");
 Route::get('/administrator/files/{id}', 'encuestadosController@showList');
 
 Route::get('/administrator/file/open', function(){
@@ -123,7 +124,8 @@ Route::post('/save', 'surveyController@save');
 
 Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
 
-Route::get('/administrator/delete/{id}/{idadmin}', "editController@delete" );
+Route::get('/administrator/delete/', "editController@delete" );
+Route::get('/administrator/consultar/publicaciones', 'encuestadosController@consultar');
 
 //ruta editar
 Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);

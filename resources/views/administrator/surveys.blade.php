@@ -3,6 +3,7 @@
   @php
   date_default_timezone_set('America/Mexico_City');
   @endphp
+  @include('sweet::alert')
   <div class="loader" id="loader">
 
   </div>
@@ -16,7 +17,6 @@
 <div class="container" >
     <div class="row">
       <div class="col-md-12 ">
-
             <div class="panel panel-default ">
                 <div class="panel-heading fijado">
                     <div class="row">
@@ -71,7 +71,7 @@
                         </div>
 
                          <?php foreach ($propias as $plantilla) { ?>
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="{{$plantilla->id}}">
                             <div class="card well" >
                                      <div class="card-body">
                                         <div class="col-md-2" id="resposiveCard">
@@ -214,11 +214,10 @@
             </div>
 
 
-            <div class="panel panel-default">
+            <div class="panel panel-default" onload="consultar();" id="panel">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
-
                             Encuestas publicadas
                         </div>
                         <div class="col-md-1">&nbsp</div>
@@ -236,24 +235,18 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class=" bg-dark-red simbo">
-                        <div class="row">
-                            <div class="col-md-4">
-
-                            </div>
                         </div>
-
-                    clos<div class=" survey-status survey-status__finished">&nbsp</div></div> -->
-
-                    </div>
-
-                <div class="panel-body">
+                <div class="panel-body scroll">
                     <div class="row">
+
+<?php foreach ($publicaciones as $publicacion) {?>
                         <div class="col-md-3">
                             <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
+                    <img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagen;?>"
+                      width="100px" height="100px"
+                     >
                                 <div class="card-body">
-                                    <h4 class="card-title">Titulo de la encuesta</h4>
+                                    <h4 class="card-title">{{$publicacion->titulo}}</h4>
                                     <p class="card-text"></p>
                                    <div class="btn-group " role="group" aria-label="...">
                                         <a href="{{ url('/surveyed/solve') }}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
@@ -261,30 +254,11 @@
                                         </a>
                                     </div>
                                     <div class="pull-right survey-status survey-status__finished">&nbsp</div>
-
-                                    <!-- <a  class="" href="{{ url('/surveyed/solve') }}">Editar</a> -->
-
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="card well" >
-                                <img class="card-img-top"  alt="Card image cap">
-                                <div class="card-body">
-                                    <h4 class="card-title">Titulo de la encuesta</h4>
-                                    <p class="card-text"></p>
-                                    <div class="btn-group"   role="group" aria-label="...">
-                                        <a href="{{ url('/surveyed/solve') }}" type="button"  class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                    </div>
-                                    <div class="pull-right survey-status survey-status__active">&nbsp</div>
-                                    <!-- <a  class="" href="">Editar</a> -->
-
-                                </div>
-                            </div>
-                        </div>
+<?php } ?>
 
                     </div>
                 </div>
@@ -332,12 +306,8 @@
             </div>
         </div>
           </form>
-
 <!--  modal de  creacion de encuesta-->
-        <form id="form">
-        {{ csrf_field() }}
-
-
+        <form id="form" >
       <div class="modal fade" id="miModal" tabindex="-1"
         role="dialog" aria-labelledby="myModalLabel"
         data-backdrop="static" data-keyboard="false">
@@ -345,24 +315,26 @@
 		              <div class="modal-content">
 			                   <div class="modal-header">
 				                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar3()">
-					                             <span aria-hidden="true">&times;</span>
-				                         </button>
-				                   <h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
-			                    </div>
+					                      <span aria-hidden="true">&times;</span>
+				                        </button>
+				                            <h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
+
+                          </div>
 			                    <div class="modal-body">
     <!-- Cuerpo del modal inicio -->
+                        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="idModal" value=""/>
-                          <div class="row">
-                            <div class="col-md-6">
+                        <div class="row">
+                        <div class="col-md-6">
                               <label for="inicio">Fecha de inicio</label>
-                              <input type="datetime"  value="<?php echo date("Y-m-d\ h:i:s"); ?>" readonly id="inicio">
-                            </div>
-                            <div class="col md-6">
-                              <label for="termino">Fecha de termino:</label>
-                              <input type="datetime-local"  value="<?php echo date("Y-m-d\ h:i:s"); ?>"  id="Termino">
-                            </div>
-                          </div>
-                            <hr />
+                              <input type="datetime"  value="<?php echo date("Y-m-d h:i:s"); ?>" readonly id="inicio">
+                        </div>
+                        <div class="col md-6">
+                              <label for="termino">Fecha de Termino:</label>
+                              <input type="datetime-local"  value="<?php echo date("Y-m-d\ h:i:s"); ?>" required id="termino">
+                        </div>
+                        </div>
+                        <hr />
     <div class="row">
     <div class="col-md-12 text-center">
     <label for="descripcion">Instrucciones de la encuesta:</label>
@@ -370,86 +342,92 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <textarea id="descripcion" maxlength="500" rows="5" cols="50"></textarea>
+      <textarea id="instrucciones" maxlength="500" rows="5" cols="50" required></textarea>
     </div>
     </div>
   <hr />
-  <div class="row">
-
+    <div class="row">
     <div class="row">
     <div class="col-md-12 text-center">
-      <p>Dirigido a:</p>
+          <p>Dirigido a:</p>
     </div>
     </div>
     <div class="row">
-
     <div class="col-md-6 text-center">
+
     <label for="destinatarios">Destinatarios: </label>
+
     </div>
     <div class="col-md-6 text-center">
+
     <label for="tipo">tipo de encuesta: </label>
-    </div>
 
     </div>
-
+    </div>
     <div class="row">
-      <div class="col-md-6 text-center">
-    <select  name="destinatarios">
+    <div class="col-md-6 text-center">
+
+    <select  name="destinatarios" required>
 
       <?php foreach ($listas as $lista) {?>
+      <option value="{{$lista->nombre}}" id="destinatario">  {{$lista->nombre}}</option>
+                                  <?php } ?>
 
-      <option value="{{$lista->idLista}}">  {{$lista->nombre}}</option>
-      <?php
-      } ?>
       </select>
       </div>
     <div class="col-md-6 text-center">
-    <select  name="tipo">
+    <select  name="tipo" required>
+                                <?php foreach ($tipos as $tipo) {?>
+                              <option value="{{$tipo->idTipo}}" id="tipo"> <?php echo $tipo->tipo; ?>  </option>
+                                <?php  } ?>
 
-            <?php foreach ($tipos as $tipo) {?>
-
-      <option value="{{$tipo->idTipo}}"> <?php echo $tipo->tipo; ?>   </option>
-
-      <?php
-      } ?>
     </select>
     </div>
     </div>
                   <hr>
-                  <div class="row">
+                    <div class="row">
                     <div class="col-md-12">
                       <div class="col-md-4">
                       </div>
                       <div class="col-md-4">
                       </div>
                       <div class="col-md-4">
-
                         <input type="button" name="cancelar"
                         value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
-
-                        <input type="submit" name="enviar" value="Publicar"
-                        class="btn btn-danger">
+                  <a  name="enviar"class="btn btn-danger" id="publicar" onclick="enviar();"> Publicar </a>
         </div>
         </div>
         </div>
         </div>
         </div>
 
-    <!-- Cuerpo del modal Termino -->
-			</div>
-		</div>
-	</div>
+          <!-- Cuerpo del modal Termino -->
+		    </div>
+		    </div>
+	      </div>
 
     </form>
 <!--Termina modal crecion de encuesta -->
 
-      <script>
+      <script type="text/javascript">
+function consultar()
+{
+  $.ajax({
+    url: "/administrator/consusltar/publicaciones",
+    type: 'POST',
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    datatype: "json",
+    data:{
+    },success: function( sms ) {
 
-    function openModal(id) {
-        alert("modal con id " +id);
-        $("#idModal").val(id);
-        $('#miModal').modal('show');
-        }
-
+        },error: function(result) {
+          swal({
+             title: "Error",
+             text: "",
+             type: "warning",
+              });
+              }
+    });
+}
         </script>
 @endsection

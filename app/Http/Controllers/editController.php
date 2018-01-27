@@ -19,10 +19,12 @@ class editController extends Controller
       $admor = $consulta[0]->creador;
       return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos','admor'));
   }
-  public function delete($id,$idadmin)
+  public function delete(Request $request)
   {
+    $id=$request->id;
+    $idadmin=$request->idadmin;
     $post =templates::where('id',$id)->first();
-      $post->delete();
-    return Redirect("administrator/surveys/".$idadmin);
+    $post->delete();
+  return response()->json(array('sms'=>'Eliminado Correctamente'));
   }
 }

@@ -10,8 +10,9 @@ use File;
 use Input;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\administradores;
-use App\listas;
-use App\tipos;
+use App\publicaciones;
+use App\listaEncuestados;
+use App\ctlTipoEncuesta as tipos;
 class surveyController extends Controller
 {
 
@@ -56,8 +57,10 @@ class surveyController extends Controller
 
       $tipos = tipos::all();
 
-      $listas=listas::where('creador', $id)->get();
-      return view('administrator.surveys', compact('propias','agenas','listas','tipos'));
+      $publicaciones = publicaciones::all();
+
+      $listas= listaEncuestados::where('creador', $id)->get();
+      return view('administrator.surveys', compact('propias','agenas','listas','tipos',"publicaciones"));
     }
 
   }
