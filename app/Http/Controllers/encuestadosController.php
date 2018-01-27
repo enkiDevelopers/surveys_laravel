@@ -56,7 +56,7 @@ return false;
 public function consultar()
 {
   $publicaciones = publicaciones::all();
-  return $publicaciones;
+  return view("administrator.cards", compact("publicaciones"));
 }
 
 }
