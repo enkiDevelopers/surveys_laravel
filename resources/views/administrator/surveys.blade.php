@@ -4,7 +4,7 @@
   date_default_timezone_set('America/Mexico_City');
   @endphp
   @include('sweet::alert')
-  <div class="loader" id="loader">
+  <div class="loader" id="loader" >
 
   </div>
   <div class="procesando" id="procesando" >
@@ -46,9 +46,6 @@
                         </div>
                     </div>
                 </div>
-<!-- Aqui debe de ir Agregar plantilla -->
-
- <!-- Aqui debe de ir Agregar plantilla -->
                 <div class="panel-body scroll">
                     <div class="row">
                       <div class="col-sm-0">
@@ -67,9 +64,7 @@
                             </div>
                         </div>
                         <div class="col-sm-0">
-
                         </div>
-
                          <?php foreach ($propias as $plantilla) { ?>
                         <div class="col-md-4" id="{{$plantilla->id}}">
                             <div class="card well" >
@@ -107,9 +102,9 @@
                                           title="Eliminar">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
-                                      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
+                                      <a onclick="DuModal({{$plantilla->id}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
                                             <span class="glyphicon glyphicon-copy"></span>
-                                        </button>
+                                      </a>
 
                                         <a onclick="openModal({{$plantilla->id}});" class="popup-link btn btn-default"  data-placement="top" title="Publicar">
                                             <span class="glyphicon glyphicon-send"></span>
@@ -121,7 +116,7 @@
                         </div>
 
                 <?php } ?>
-<!-- Iniicia -->
+
 <?php foreach ($agenas as $plantilla) { ?>
 <div class="col-md-4">
    <div class="card well" >
@@ -172,15 +167,12 @@
 </div>
 
 <?php } ?>
-
-<!--Termina-->
                     </div>
                 </div>
             </div>
 
 
             <!-- Modal publicar encuesta-->
-
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -193,11 +185,9 @@
                     <div class="col-md-6">
                       <h4 class="modal-title" id="myModalLabel">Publicar encuesta - Titulo de la encuesta</h4>
 
-                    </div>
                   </div>
-
-
-                </div>
+                  </div>
+                  </div>
                 <div class="modal-body">
                 <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
                     <input type="text" class="input-sm form-control" name="start" placeholder="Inicio"/>
@@ -214,7 +204,7 @@
             </div>
 
 
-            <div class="panel panel-default" onload="consultar();" id="panel">
+            <div class="panel panel-default"  id="panel">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
@@ -236,29 +226,13 @@
                         </div>
                     </div>
                         </div>
+
                 <div class="panel-body scroll">
                     <div class="row">
 
-<?php foreach ($publicaciones as $publicacion) {?>
-                        <div class="col-md-3">
-                            <div class="card well" >
-                    <img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagen;?>"
-                      width="100px" height="100px"
-                     >
-                                <div class="card-body">
-                                    <h4 class="card-title">{{$publicacion->titulo}}</h4>
-                                    <p class="card-text"></p>
-                                   <div class="btn-group " role="group" aria-label="...">
-                                        <a href="{{ url('/surveyed/solve') }}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                    </div>
-                                    <div class="pull-right survey-status survey-status__finished">&nbsp</div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="" id="recibiendo">
 
-<?php } ?>
+                        </div>
 
                     </div>
                 </div>
@@ -298,7 +272,7 @@
           </div>
                 </div>
                 <div class="modal-footer">
-      <!--      <input type="reset" value="Cancelar" class="btn btn-default" data-dismiss="modal"  onclick="limpiar()">-->
+
              <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
@@ -307,7 +281,7 @@
         </div>
           </form>
 <!--  modal de  creacion de encuesta-->
-        <form id="form" >
+        <form id="form" onsubmit="return detener();">
       <div class="modal fade" id="miModal" tabindex="-1"
         role="dialog" aria-labelledby="myModalLabel"
         data-backdrop="static" data-keyboard="false">
@@ -321,7 +295,7 @@
 
                           </div>
 			                    <div class="modal-body">
-    <!-- Cuerpo del modal inicio -->
+<!-- Cuerpo del modal inicio -->
                         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="idModal" value=""/>
                         <div class="row">
@@ -377,9 +351,9 @@
       </div>
     <div class="col-md-6 text-center">
     <select  name="tipo" required>
-                                <?php foreach ($tipos as $tipo) {?>
-                              <option value="{{$tipo->idTipo}}" id="tipo"> <?php echo $tipo->tipo; ?>  </option>
-                                <?php  } ?>
+                <?php foreach ($tipos as $tipo) {?>
+                <option value="{{$tipo->idTipo}}" id="tipo"> <?php echo $tipo->tipo; ?>  </option>
+                <?php  } ?>
 
     </select>
     </div>
@@ -387,47 +361,79 @@
                   <hr>
                     <div class="row">
                     <div class="col-md-12">
-                      <div class="col-md-4">
-                      </div>
-                      <div class="col-md-4">
-                      </div>
-                      <div class="col-md-4">
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4">
                         <input type="button" name="cancelar"
                         value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
-                  <a  name="enviar"class="btn btn-danger" id="publicar" onclick="enviar();"> Publicar </a>
+                        <input type="submit" name="enviar" class="btn btn-danger" id="publicar" value="Publicar" />
         </div>
         </div>
         </div>
         </div>
         </div>
-
-          <!-- Cuerpo del modal Termino -->
 		    </div>
 		    </div>
 	      </div>
-
     </form>
-<!--Termina modal crecion de encuesta -->
 
-      <script type="text/javascript">
-function consultar()
-{
-  $.ajax({
-    url: "/administrator/consusltar/publicaciones",
-    type: 'POST',
-    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    datatype: "json",
-    data:{
-    },success: function( sms ) {
+<!-- #######################################################################Modal Duplicar######################################################## -->
+        <form id="duForm" onsubmit="return detener2();">
+              <div class="modal fade" id="duModal" tabindex="-1"
+                role="dialog" aria-labelledby="myModalLabel"
+                data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog" role="document">
+          <div class="modal-content">
+                 <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar4()">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                            <h4 class="modal-title" id="myModalLabel">Duplicar encuesta</h4>
 
-        },error: function(result) {
-          swal({
-             title: "Error",
-             text: "",
-             type: "warning",
-              });
-              }
-    });
-}
-        </script>
+                  </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <input type="hidden" id="idDup" />
+                    <div class="col-md-12">
+                      <div class="col-md-6">
+                          <label for="nNombre">Ingrese nuevo nombre:</label>
+                      </div>
+                    <div class="col-md-6">
+                      <input type="text" maxlength="40" required name="nNombre"/>
+                    </div>
+                    </div>
+
+                    </div>
+                    <div class="row">
+
+                        <hr />
+                <div class="col-md-12">
+                  <div class="col-md-4">
+
+                  </div>
+                  <div class="col-md-2">
+
+                  </div>
+                  <div class="col-md-6">
+                  <input type="button" name="cancelar"
+                      value="Cancelar" class="btn btn-warning" onclick="limpiar4()" data-dismiss="modal">
+                      <input type="submit" name="enviar" class="btn btn-danger" id="duplicar" value="Duplicar" />
+                    </div>
+                </div>
+
+                          </div>
+
+</div>
+</div>
+</div>
+</form>
+
+
+
+<!--######################################### Termina MODAL DUPLICAR ##################################################### -->
+      <script>
+    busca();
+      </script>
 @endsection

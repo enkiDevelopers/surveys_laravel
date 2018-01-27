@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/css/sweetalert.min.css">
-                
         <title>SweetAlert en Laravel 5.5 | Rimorsoft Online</title>
 
 
@@ -14,14 +13,24 @@
 
     </head>
     <body>
-        <div class="container">
-            <h1 class="text-center">SweetAlert en Laravel 5.5</h1>
-            <input type="button" onclick="alerta();" value="ok">
-        </div>
-
-        <script src="/js/sweetalert.min.js"></script>
 
 
+<form id="prueba"  >
+<label for="jorge"> texto</label>
+  <input type="text" name="jorge" value="">
+<input type="submit" value="ok" name="enviar"/>
+</form>
+
+
+<script>
+
+
+
+
+
+
+
+</script>
 
 
 

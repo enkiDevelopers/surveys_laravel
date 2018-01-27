@@ -141,7 +141,7 @@ Route::get('administrator/surveys/preview', function(){
 });
 
 Route::get('/administrator/previewtem/{id}/',["as" => "previewtem", "uses" => "previewtemController@busqueda" ]);
-
+Route::get("/administrator/consultar/publicaciones" ,"encuestadosController@consultar");
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

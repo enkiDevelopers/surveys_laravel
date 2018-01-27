@@ -5,22 +5,25 @@
     canvas.width=canvas.width;
     document.getElementById("myForm").reset();
                       }
+          function limpiar2()
+                    {
+                      var canvas = document.getElementById("previewcanvas");
+                      canvas.width=canvas.width;
+                      }
 
     function limpiar3(){
     document.getElementById("form").reset();
                         }
 
-  function limpiar2()
-  {
-  var canvas = document.getElementById("previewcanvas");
-  canvas.width=canvas.width;
-  }
-
+    function limpiar4(){
+    document.getElementById("duForm").reset();
+        }
 
 
 //pintar opcion del sidebar
     window.onload = function() {
         $("#home").addClass('active');
+
     }
 
 //redigirige a editar
@@ -111,7 +114,7 @@ function UpdatePreviewCanvas()
 //alerta para eliminar
   function alerta(id,idAdmin) {
   	$('#panel').load('#panel');
-swal({ 
+swal({
 title: "¿Seguro que deseas continuar?",
 text: "No podrás deshacer este paso.",
 type: "warning",
@@ -120,7 +123,8 @@ cancelButtonText: "Cancelar",
 confirmButtonColor: "#DD6B55",
 confirmButtonText: "Eliminar",
 closeOnConfirm: false },
-function(){ 
+
+function(){
  $.ajax({
   url: "/administrator/delete/",
   type: 'GET',
@@ -142,10 +146,10 @@ function(){
             });
 
             }
-  });               
+  });
 
 });
-            
+
 }
 
 //oculta la pantalla de carga principal cuando la pagina este cargada
@@ -182,13 +186,20 @@ function enviar()
         fechat:fechat,
         instrucciones:instrucciones,
         destinatarios: destinatarios
-  },success: function( sms ) {
+  },
+  beforeSend: function(){
+    $("#procesando").show();
+  },
+  success: function( sms ) {
+    $("#procesando").hide();
     swal({
        title: "Su encuesta ha sido publicada",
-       text: ""+sms,
+       text: "",
        type: "success",
         });
       document.getElementById("form").reset();
+      $('#miModal').modal('hide');
+      busca();
       },error: function(result) {
         swal({
            title: "Error",
@@ -199,5 +210,42 @@ function enviar()
   });
 
 }
+//detiene el envio del formulario para no recargar la pagina
+function detener()
+{
+event.preventDefault();
+enviar();
+}
 
-
+function detener2()
+{
+event.preventDefault();
+alert("detenido");
+}
+//consulta para mostrar las encuestas publicdas
+function busca(){
+         var xmlhttp;
+         if (window.XMLHttpRequest){
+             // code for IE7+, Firefox, Chrome, Opera, Safari
+             xmlhttp=new XMLHttpRequest();
+         }else{
+             // code for IE6, IE5
+             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+         }
+         xmlhttp.onreadystatechange=function(){
+             if(xmlhttp.status==404){
+                  document.getElementById("recibiendo").innerHTML="Page not found";
+             }
+             if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                 document.getElementById("recibiendo").innerHTML=xmlhttp.responseText;
+             }
+         }
+         xmlhttp.open("GET","/administrator/consultar/publicaciones/",true);
+         xmlhttp.send();
+     }
+//modal para DUPLICAR
+function DuModal(id)
+{
+  $("#idDup").val(id);
+  $('#duModal').modal('show');
+}
