@@ -133,9 +133,7 @@ Route::get('/borrar', function(){
   return view("administrator.borrar");
 });
 
-Route::get('/administrator/surveys/preview',function(){
-    return view("administrator.preview");
-});
+Route::get('/administrator/previewtem/{id}/',["as" => "previewtem", "uses" => "previewtemController@busqueda" ]);
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
