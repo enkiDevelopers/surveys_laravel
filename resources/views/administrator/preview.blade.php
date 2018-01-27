@@ -1,154 +1,110 @@
-@extends('layouts.back-admin')
-@section('content')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<div style="overflow-x: hidden; overflow-y: auto; height: 54%;position: relative;width: 90%">
-            
-            <div class="row col-md-12 new-question-template" id="one" style="margin-left: 13px;margin-top: 15px; ">
-                <div class="col-md-11 well">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">¿Cómo te llamas?</label>
-                        </div>
-                    </div>
-	                <div class="col-md-9 ">
-	                    <div class="form-group">
-	                        <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su respuesta" required="" >
-	                    </div>
-	                </div>
-                </div>
-            </div>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <link rel="stylesheet" href="/css/alertify.min.css">
 
-            <div class="row col-md-12 new-question-template hidden" id="two" style="margin-left: 13px;margin-top: 15px; ">
-                <div class="col-md-11 well">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">¿Practicas algún deporte?</label>
-                        </div>
-                    </div>
-	                <div class="col-md-9 ">
-	                    <div class="form-group" id="resp-group">
-	                    	<div class="radio">
-	                    		<label>
-									<input type="radio" name="resp" value="0"> Raras veces
-								</label>
-	                    	</div>
-	                    	<div class="radio">
-				             	<label >
-									<input type="radio" name="resp" value="3"> Sí
-								</label>	                    		
-	                    	</div>
-							<div class="radio">
-				              	<label>
-									<input type="radio" name="resp" value="4"> No
-								</label>								
-							</div>
 
-	                    </div>
-	                </div>
-	                <div class="col-md-4 pull-right hidden" id="btn-finish">
-	                	<a href="" type="button" class="btn btn-success">
-	                		Finalizar
-	                	</a>	                	
-	                </div>
-                </div>
-            </div>
+</head>
+<body>
 
-            <div class="row col-md-12 new-question-template hidden" id="three" style="margin-left: 13px;margin-top: 15px; ">
-                <div class="col-md-11 well">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">¿Qué deporte prácticas?</label>
-                        </div>
-                    </div>
-	                <div class="col-md-8">
-	                    <div class="form-group">
-	                        <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su respuesta">
-	                    </div>
-	                </div>
-	                <div class="col-md-2 pull-right" >
-	                   	<a href="" type="button" class="btn btn-success">
-	                		Finalizar
-	                	</a>  	
-	                </div>
-                </div>
-            </div>
-
-            <div class="row col-md-12 new-question-template hidden" id="four" style="margin-left: 13px;margin-top: 15px; ">
-                <div class="col-md-11 well">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">¿Presentas alguna enfermedad muscular?</label>
-                        </div>
-                    </div>
-	                <div class="col-md-8">
-	                    <div class="form-group">
-	                        <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su respuesta">
-	                    </div>
-	                </div>
-	                <div class="col-md-2 pull-right">
-	                	<a href="" type="button" class="btn btn-success">
-	                		Finalizar
-	                	</a>
-	           		</div>
-                </div>
-            </div>
-
-			<div class="row col-md-12" style="margin-left: 13px;margin-top: 15px;">
-				<nav aria-label="Page navigation">
-					<ul class="pagination">
-					    <li>
-					      <a href="#" aria-label="Previous">
-					        <span aria-hidden="true">&laquo;</span>
-					      </a></li>
-					    <li onclick="one();"><a >1</a></li>
-					    <li  onclick="two();"><a >2</a></li>
-					    <li onclick="check();"><a >3</a></li>						    
-					    <li>
-					      <a href="#" aria-label="Next">
-					        <span aria-hidden="true">&raquo;</span>
-					      </a></li>
-					</ul>
-				</nav>
-			</div>
     
-		</div>
+        <div class="col-md-10 col-sm-12  light-grey">
+            <h2 class="text-center">Encuesta</h2>
+        </div>
+   		<div class="col-md-10" style="margin-top:10px;">
+   			<center>
+            	<img src="\img/iconos/<?php echo $imagePath;?>" width="10%" height="10%">
+        	</center>
+        </div>
 
+        <div class="col-md-10 col-sm-12  " style="width:100%;">
+            <label for="exampleInputEmail1" >Título de la encuesta</label>
+        </div>
+        <div class="col-md-10" style="margin-top: 5px;margin-bottom:15px;">
+            <input type="text" class="form-control text-black" disabled id="" aria-describedby="emailHelp" placeholder="Titulo de la Encuesta" value="<? echo $titulo?>">
+        </div>
+        <div class="col-md-10 col-sm-12 " style="width:100%;">
+            <label for="exampleInputEmail1" >Descripión de la encuesta</label>
+        </div>
+        <div class="col-md-10" style="margin-top: 5px;">
+            <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción"> 
+            	<? echo $descripcion?>"
+            </textarea>
+        </div>
+
+        <div class="col-md-10 col-sm-12  light-grey">
+            <h2 class="text-center">Pregunta</h2>
+        </div>
+		<div class="col-md-10" style="margin-top: 5px;margin-bottom:15px;">
+	        <div class="col-md-10 pregs" style="margin-top: 5px;margin-bottom:15px; " id="preg0">
+                <div class="form-group">
+                    <label> Para empezar da clic en Siguiente</label>
+                </div>
+    	    </div>
+    	    <br>
+    	    <br>
+        
+		<?php 
+			$i=1;
+			foreach ($datos as $datos) { ?>
+	        <div  class= "pregs" id="preg<?php echo $i?>" style="display:none">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Número: <?php echo $datos->order;?></label>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1"><?php echo $datos->title;?></label>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control text-black-body" id="" placeholder="Escribe tu respuesta" value="">
+                </div>
+    	    </div>
+       	<? $i++;
+			}?>
+        <div class="col-md-10" style="margin-top: 5px;margin-bottom:15px;">
+        	<button type="button" class="btn btn-default" id="idBack" disabled>Back</button>
+        	<button type="button" class="btn btn-danger" id="idNext">Next</button>	
+        </div>
+    	</div>
+<script src="{{asset('js/app.js')}}"></script>
 <script>
-	function one(){
-		$('#one').show();	
-		$('#two').addClass('hidden');
-		$('#three').addClass('hidden');
-		$('#four').addClass('hidden');
-	}
+$(document).ready(function(){
+	var n=0;
+    $("#idBack").click(function(){
+    	if(n==0){
+    		$("#idBack").attr('disabled','disabled');	
+    	}
+    	$("#idNext").removeAttr('disabled');
+    	$("#preg"+n).css("display", "none");
+		n--;
+		$("#preg"+n).css("display", "inline");
+    });
 
-	function two (){
-		$('#one').hide();
-		$('#three').addClass('hidden');
-		$('#four').addClass('hidden');	
-		$('#two').removeClass('hidden');
-	}
+    $("#idNext").click(function(){    	    	
+    	$("#idBack").removeAttr('disabled');
+    	$("#preg"+n).css("display", "none");
+    	n++;
+		$("#preg"+n).css("display", "inline");
+    	if(n>=$(".pregs").length){
+    		$("#idNext").attr('disabled','disabled');		
+    	}
 
-	function check(){
-			if( $("#resp-group input[name='resp']:radio").is(':checked')) {  
-			//	alert("Bien!!!, la opción seleccionada es: " + $('input:radio[name=resp]:checked').val());
-				  if ($('input:radio[name=resp]:checked').val() == '3') {
-				  	$('#one').hide();	
-					$('#two').addClass('hidden');
-					$('#three').removeClass('hidden');	
+    });
+	
+});	
 
-				  } else if($('input:radio[name=resp]:checked').val() == '4'){
-					$('#one').hide();	
-					$('#two').addClass('hidden');
-					$('#four').removeClass('hidden');	
-				  } else if($('input:radio[name=resp]:checked').val() == '0'){
-				  	$('#btn-finish').removeClass('hidden');
-				  }
-				} else{  
-					alert("Selecciona una opción por favor!!!");  
-					}  
-		
 
-	}
 </script>
 
-@endsection
+</body>
+</html>
+
