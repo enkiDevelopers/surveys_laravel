@@ -1,57 +1,69 @@
- var barChartData = {
-            labels: ["Encuestados",],
-            datasets: [{
-                label: 'Alumnos',
-                backgroundColor: 'rgb(2,21,248)',
-                stack: 'Stack 0',
-                data: [<?php echo $totalalumnos ?>]
-                
-            }, {
-                label: 'Trabajadores',
-                backgroundColor: '#DE0D0D',
-                stack: 'Stack 1',
-                data: [<?php echo $totalempleados ?>]
-                
-            }]
-};
+window.onload = function() {
 
-        window.onload = function() {
-            var ctx = document.getElementById('canvas').getContext('2d');
-            window.myBar = new Chart(ctx, {
-                type: 'bar',
-                data: barChartData,
-                options: {
-                    title:{
-                        display:true,
-                        fontSize: 20,
-                        fontFamily: "Arial",
-                        fontColor: "#000",
-                        text:"Encuestados"
-                    },
-                    tooltips: {
-                        mode: 'index',
-                        intersect: false
-                    },
-                    responsive: true,
-                    scales: {
-                        xAxes: [{
-                            stacked: true
-                        }],
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    },
-                    layout: {
-			            padding: {
-			                left: 50,
-			                right: 0,
-			                top: 10,
-			                bottom: 10
-			            }
-        			}
-    
-                }
-            });
-        };
+var chart = new CanvasJS.Chart("chartContainer", {
+    backgroundColor: "transparent",
+    animationEnabled: true,
+    title: {
+        text: "Avance General"
+    },
+
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: <?php echo $porcentajeavance; ?>  , label: "Avance General"},
+            {y: <?php echo 100-$porcentajeavance; ?>, label: "Restante"},
+
+        ]
+    }]
+});
+
+chart.render();
 
 
+
+var chart2 = new CanvasJS.Chart("chartContaineralum", {
+    backgroundColor: "transparent",
+    animationEnabled: true,
+    title: {
+        text: "Avance General Alumnos"
+    },
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: '<?php echo $porcentajeavancealum; ?>', label: "Avance General Alumnos"},
+            {y: '<?php echo 100-$porcentajeavancealum; ?>', label: "Restante Alumnos"}
+
+        ]
+    }]
+});
+
+chart2.render();
+
+var chart3 = new CanvasJS.Chart("chartContaineremp", {
+    backgroundColor: "transparent",
+    animationEnabled: true,
+    title: {
+        text: "Avance General Empleados"
+    },
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        yValueFormatString: "##0.00\"%\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: '<?php echo $porcentajeavanceemp; ?>', label: "Avance General Alumnos"},
+            {y: '<?php echo 100-$porcentajeavanceemp; ?>', label: "Restante Alumnos"}
+
+        ]
+    }]
+});
+
+chart3.render();
+
+}
