@@ -1,7 +1,7 @@
 @extends('layouts.back-survey')
 @section('content')
 
-<div class="container" style="position: fixed; margin-left: 270px; height: 95%;">
+<div class="container" >
     <div class="row">
         <div class="col-md-12">
 			<div class="row">
@@ -12,7 +12,7 @@
 
 				@include('administrator.saveQuestionsSection')
 
-				<div style="overflow-x: hidden; overflow-y: scroll; height: 290px;position: relative;width: 92%;" >
+				<div style="overflow-x: hidden; overflow-y: scroll; height: 345px;position: relative; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" >
 					<div id="container-questions">
 						@include('administrator.questionSaved')
 					</div>

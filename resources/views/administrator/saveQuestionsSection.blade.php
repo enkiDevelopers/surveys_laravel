@@ -1,7 +1,7 @@
         <div class="row col-md-12">
             <div class=" new-survey__controls " > 
                 <center>
-                    <div class="col-md-4 pull-left col-md-offset-3 ">
+                    <div class="mx-auto">
                         <button class="btn btn-success new-survey__control" id="addQuestion">Agregar pregunta</button>
                     </div>
                 </center>

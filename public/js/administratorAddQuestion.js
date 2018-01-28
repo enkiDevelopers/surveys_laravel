@@ -252,16 +252,16 @@ $(document).ready(function(){
         var questionType= $("#questionType").val();
         var token = $("#token").val();
 
-
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
 //            optionsResult = options.value;
 //            console.log(questionOptionInputsA[i].value);
-              optionsResult = optionsResult + questionOptionInputsA[i].value;
+              optionsResult = optionsResult + "," + questionOptionInputsA[i].value;
 
         }
 
-        optionsResult = optionsResult.split(',');
-        console.log(optionsResult);
+       optionsResult = optionsResult.split(',');
+       optionsResult = optionsResult.splice(2,25);
+       //console.log(optionsResult);
 
         if (questionInput.length == 0 || questionOptionInput.length == 0) {
             alertify.alert("Ingrese una pregunta.", function(){
@@ -294,7 +294,7 @@ $(document).ready(function(){
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
                             alertify.message('OK');
                         });
-                 
+                    console.log(e);
                     }
                 },
                 error: function (textStatus, errorThrown) {

@@ -10,79 +10,71 @@ use File;
 use Input;
 class questionsTemplateController extends Controller
 {
-  public function saveQuestionsTemplate(Request $request){
+    public function saveQuestionsTemplate(Request $request){
 
-    $numPregSig = $request['numPregSig'];
-    $questionInput = $request['questionInput'];
-    $questionType = $request['questionType'];
-    $idTemplate = $request['idTemplate'];
-    $optionsResult = $request['optionsResult'];
-    //$idParent = $request['idParent'];
-    //$bifurcaccion = $request['bifurcacion'];
+        $numPregSig = $request['numPregSig'];
+        $questionInput = $request['questionInput'];
+        $questionType = $request['questionType'];
+        $idTemplate = $request['idTemplate'];
+        $optionsResult = $request['optionsResult'];
+        //$idParent = $request['idParent'];
 
-    if($questionType == 1 ){
+            $surv = new questionstemplates;
+            $surv->templates_idTemplates = $idTemplate;
+            $surv->order = $numPregSig;
+            $surv->title = $questionInput;
+            $surv->type = $questionType;
+            //$surv->idParent = $idParent;
+            $surv->save();
 
-        $surv = new questionstemplates;
-        $surv->templates_idTemplates = $idTemplate;
-        $surv->order = $numPregSig;
-        $surv->title = $questionInput;
-        $surv->type = $questionType;
-        //$surv->idParent = $idParent;
-        //$surv->bifurcacion = $bifurcacion;
-        $surv->save();
+        if($questionType == 1){
 
-        $preguntas = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
+            return questionstemplates::where('templates_idTemplates',$idTemplate)->get();
 
-    }else{
+        }else{
 
-        $surv = new questionstemplates;
-        $surv->templates_idTemplates = $idTemplate;
-        $surv->order = $numPregSig;
-        $surv->title = $questionInput;
-        $surv->type = $questionType;
-        //$surv->idParent = $idParent;
-        //$surv->bifurcacion = $bifurcacion;
-        $surv->save();
-        $eid = $surv->id;
+            $eid = $surv->id;
 
-        $opt = new optionsMult;
-        $opt->name = $optionsResult;
-        $opt->idParent = $eid;
-    //    $opt->salto =
+            $valOptions = count(json_decode(json_encode($optionsResult), true));
+            for ($i=0; $i < $valOptions; $i++) { 
+        
+                DB::table('optionsMult')->insert([
+                    ['name' => $optionsResult[$i], 'idParent' => $eid],
+                ]);               
 
-        $opt->save();
+            }
+            
+            $preguntas = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
+            $opciones = questionsTemplates::join('optionsMult', 'questionstemplates.order', '=', 'optionsMult.idParent')->where('optionsMult.id', $numPregSig)->orderby('id', 'desc')->get();
 
-        $preguntas = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
-        $opciones = questionsTemplates::join('optionsMult', 'questionstemplates.order', '=', 'optionsMult.idParent')->where('optionsMult.id', $numPregSig)->orderby('id', 'desc')->get();
+            return $preguntas;
 
+        }
     }
-        return $preguntas;
-  }
 
+    public function deleteQuestion(){
 
-  public function deleteQuestion(){
+        $order = $request['order'];
+        $idTemplate = $request['idTemplate'];
 
-    $order = $request['order'];
-    $idTemplate = $request['idTemplate'];
+        $surv = new questionstemplates;
 
-    $surv = new questionstemplates;
+        $surv::where('id', $idTemplate and 'order',$order)->delete();
 
-    $surv::where('id', $idTemplate and 'order',$order)->delete();
+        return "1";
+    }
 
-    return "1";
-  }
+    public function updateQuestion(){
 
-  public function updateQuestion(){
+        $order = $request['order'];
+        $idTemplate = $request['idTemplate'];
 
-    $order = $request['order'];
-    $idTemplate = $request['idTemplate'];
+        $surv = new questionsTemplates;
 
-    $surv = new questionsTemplates;
+        $surv::where('id', $idTemplate)->update(array('order' => $order));
 
-    $surv::where('id', $idTemplate)->update(array('order' => $order));
-
-    return $surv;
-  }
+        return $surv;
+    }
 
 
 

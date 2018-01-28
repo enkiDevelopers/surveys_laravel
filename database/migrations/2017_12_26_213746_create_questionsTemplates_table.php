@@ -16,7 +16,7 @@ class CreateQuestionsTemplatesTable extends Migration {
 		{
 			$table->integer('idQuestionsTemplates')->primary();
 			$table->string('title', 45)->nullable();
-			$table->string('type', 45)->nullable();
+			$table->integer('type')->nullable();
 			$table->integer('order')->nullable();
 			$table->integer('salto')->nullable();
 			$table->integer('templates_idTemplates')->index('fk_questionsTemplates_templates1_idx');

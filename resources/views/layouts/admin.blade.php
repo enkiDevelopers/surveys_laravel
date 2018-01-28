@@ -95,32 +95,26 @@
 
 
     <script type="text/javascript">
-            $(document).ready(function () {
+        $(document).ready(function () {
 
-                var alto = (screen.height) - (screen.availHeight);
-                var barra = screen.availHeight - alto - (alto/2) - (alto/4);
+            var alto = (screen.height) - (screen.availHeight);
+            var barra = screen.availHeight - alto - (alto/2) - (alto/4);
 
-                $("#sidebar").height(barra);
-                $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                 });
+            $("#sidebar").height(barra);
+            $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+             });
 
-                //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
+            //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
 
-                if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px
-                    /*    $("#sidebar").addClass('active');
-                        $(".sidebar-header").hide();
-                        $("p").hide();
-                    */
-                    $(".container").css('margin-top','100px');
-
-                }else {
-                }
-            });
-
-            function profile(){
-                location.href= "{{url('/administrator')}}";
+            if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px
+                $(".container").css('margin-top','100px');
             }
-         </script>
+        });
+
+        function profile(){
+            location.href= "{{url('/administrator')}}";
+        }
+    </script>
 </body>
 </html>
