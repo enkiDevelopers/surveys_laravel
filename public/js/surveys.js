@@ -113,7 +113,6 @@ function UpdatePreviewCanvas()
 
 //alerta para eliminar
   function alerta(id,idAdmin) {
-  	$('#panel').load('#panel');
 swal({
 title: "¿Seguro que deseas continuar?",
 text: "No podrás deshacer este paso.",
@@ -133,11 +132,13 @@ function(){
         id:id,
         idAdmin: idAdmin
   },success: function( sms ) {
+    showcards();
     swal({
        title: "Eliminado correctamente",
        type: "success",
         });
-     $("#"+id).css("display", "none");
+    // $("#"+id).css("display", "none");
+
       },error: function(result) {
         swal({
            title: "Error",
@@ -162,6 +163,8 @@ function(){
 //modal para publicacion de plantilla
   function openModal(id) {
         $("#idModal").val(id);
+        var today = moment().format('YYYY-MM-DDThh:mm:ss');
+        $("#inicio").val(today);
         $('#miModal').modal('show');
       }
 
@@ -201,9 +204,10 @@ function enviar()
       $('#miModal').modal('hide');
       busca();
       },error: function(result) {
+        $("#procesando").hide();
         swal({
            title: "Error",
-           text: "Ingrese valor valido ",
+           text: "",
            type: "warning",
             });
             }
@@ -217,11 +221,13 @@ event.preventDefault();
 enviar();
 }
 
-function detener2()
+function detener3()
 {
 event.preventDefault();
 alert("detenido");
+enviar2();
 }
+
 //consulta para mostrar las encuestas publicdas
 function busca(){
          var xmlhttp;
@@ -244,8 +250,125 @@ function busca(){
          xmlhttp.send();
      }
 //modal para DUPLICAR
-function DuModal(id)
+function DuModal(id,creador)
 {
   $("#idDup").val(id);
+  $("#idCreador").val(creador);
   $('#duModal').modal('show');
+}
+
+//duplicar
+function duplicar()
+{
+  var id = $("#idDup").val();
+  var creador = $("#idCreador").val();
+  var nNombre = $("#nNombre").val();
+  $.ajax({
+  url: "/administrator/duplicar/plantilla",
+  type: 'POST',
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  datatype: "json",
+  data:{
+        nNombre:nNombre,
+        id:id,
+        nNombre:nNombre,
+        creador:creador
+  },
+  beforeSend: function(){
+    $("#procesando").show();
+  },
+  success: function( sms ) {
+    $("#procesando").hide();
+    swal({
+       title: "Su encuesta ha sido duplicada",
+       text: "",
+       type: "success",
+        });
+      document.getElementById("form").reset();
+      $('#miModal').modal('hide');
+        showcards();
+      },error: function(result) {
+        $("#procesando").hide();
+        swal({
+           title: "Error",
+           text: "",
+           type: "warning",
+            });
+            showcards();
+            }
+  });
+
+}
+
+//no recargar la pagina al duplicar
+function detener2()
+{
+event.preventDefault();
+duplicar();
+}
+
+function showcards(){
+         var xmlhttp;
+         if (window.XMLHttpRequest){
+             // code for IE7+, Firefox, Chrome, Opera, Safari
+             xmlhttp=new XMLHttpRequest();
+         }else{
+             // code for IE6, IE5
+             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+         }
+         xmlhttp.onreadystatechange=function(){
+             if(xmlhttp.status==404){
+                  document.getElementById("actualizar").innerHTML="Page not found";
+             }
+             if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                 document.getElementById("actualizar").innerHTML=xmlhttp.responseText;
+             }
+         }
+         var x = document.getElementById("idadmin").value;
+         xmlhttp.open("get","/administrator/showcards/?value="+x,true);
+         xmlhttp.send();
+     }
+
+
+
+function enviar2()
+{
+var data = new FormData();
+data.append('icono', $('#foto1')[0].files[0]);
+data.append('titulo', $('#ModalTitleInput').prop('value'));
+data.append('descripcion', $('#ModalDescInput').prop('value'));
+data.append('creador', $('#creador').prop('value'));
+
+  $.ajax({
+  url: "/save",
+  type: 'POST',
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  data: data,
+  processData: false, //Evitamos que JQuery procese los datos, daría error
+  contentType: false, //No especificamos ningún tipo de dato
+
+  beforeSend: function(){
+    $("#procesando").show();
+  },
+  success: function( sms ) {
+    $("#procesando").hide();
+    swal({
+       title: "Su plantilla ha sido agregada",
+       text: "",
+       type: "success",
+        });
+      document.getElementById("myForm").reset();
+      $('#ModalTitle').modal('hide');
+        showcards();
+      },error: function(result) {
+        $("#procesando").hide();
+        swal({
+           title: "Error",
+           text: "",
+           type: "warning",
+            });
+            showcards();
+            }
+  });
+
 }

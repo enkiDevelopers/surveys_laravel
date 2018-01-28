@@ -31,14 +31,16 @@ public function publicar(Request $request)
         $instrucciones=$request->instrucciones;
         $destinatarios=$request->destinatarios;
         $tipo=$request->tipo;
+if($fechat <= $fechai)
+{
+  return false;
+}
 
 if($fechat=="" or $instrucciones=="")
 {
 return false;
 }
         $timage = templates::where('id',$id)->get();
-
-
         $insertar = new publicaciones;
         $insertar->titulo= $timage[0]->tituloEncuesta;
         $insertar->instrucciones=$instrucciones;
@@ -55,8 +57,11 @@ return false;
 
 public function consultar()
 {
-  $publicaciones = publicaciones::all();
-  return view("administrator.cards", compact("publicaciones"));
+  $hoy = date("Y-m-d h:i:s");
+
+$actuales = publicaciones::where('fechat','>=',$hoy)->get();
+$finalizadas = publicaciones::where('fechat','<',$hoy)->get();
+return view("administrator.cards", compact("actuales","finalizadas"));
 }
 
 }

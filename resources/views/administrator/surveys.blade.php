@@ -1,17 +1,16 @@
 @extends('layouts.admin')
 @section('content')
-  @php
-  date_default_timezone_set('America/Mexico_City');
-  @endphp
   @include('sweet::alert')
   <div class="loader" id="loader" >
 
   </div>
   <div class="procesando" id="procesando" >
   </div>
+  <input type="hidden" id="idadmin" value="{{$id}}"/>
       <link rel="stylesheet" href="/css/alertify.rtl.css">
       <link rel="stylesheet" href="/css/themes/default.rtl.css">
       <script src="/js/alertify.js"></script>
+      <script src="/js/moment.min.js"></script>
       <script type="text/javascript" src="/js/surveys.js"></script>
 
 <div class="container" >
@@ -47,7 +46,7 @@
                     </div>
                 </div>
                 <div class="panel-body scroll">
-                    <div class="row">
+                    <div class="row" >
                       <div class="col-sm-0">
                       </div>
                              <div class="col-md-4">
@@ -65,108 +64,9 @@
                         </div>
                         <div class="col-sm-0">
                         </div>
-                         <?php foreach ($propias as $plantilla) { ?>
-                        <div class="col-md-4" id="{{$plantilla->id}}">
-                            <div class="card well" >
-                                     <div class="card-body">
-                                        <div class="col-md-2" id="resposiveCard">
+                                  <div id="actualizar">
 
-                                       <img id="marco" class="card-img-top"
-                                       width="100px" height="100px"
-                                       alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
-                                       onerror="this.src='/img/iconos/default.png'">
-
-                                       </div>
-                                       <div class="col-md-3">
-
-                                       </div>
-                                        <div class="col-md-2">
-                                    <div class="titleA">
-                                    <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
-                                    </div>
-                                    <div class="">
-                                    <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
                                   </div>
-
-                                    <div class="btn-group centrarbtn" role="group" aria-label="...">
-                                        <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
-                                        </button>
-                                          <a href="{{url('administrator/edit')}}/{{$plantilla->id}}"
-                                        class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </a>
-                                        <a onclick="alerta({{$plantilla->id}},{{$plantilla->creador}})"
-                                          class="btn btn-default" data-toggle="tooltip" data-placement="top"
-                                          title="Eliminar">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                      <a onclick="DuModal({{$plantilla->id}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
-                                            <span class="glyphicon glyphicon-copy"></span>
-                                      </a>
-
-                                        <a onclick="openModal({{$plantilla->id}});" class="popup-link btn btn-default"  data-placement="top" title="Publicar">
-                                            <span class="glyphicon glyphicon-send"></span>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                <?php } ?>
-
-<?php foreach ($agenas as $plantilla) { ?>
-<div class="col-md-4">
-   <div class="card well" >
-            <div class="card-body">
-               <div class="col-md-2" id="resposiveCard">
-
-              <img id="marco" class="card-img-top"
-              width="100px" height="100px"
-              alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
-              onerror="this.src='/img/iconos/default.png'">
-
-              </div>
-              <div class="col-md-3">
-
-              </div>
-               <div class="col-md-2">
-           <div class="titleA">
-           <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
-           </div>
-           <div class="">
-           <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
-         </div>
-           <div class="btn-group centrarbtn" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                   <span class="glyphicon glyphicon-eye-open" ></span>
-               </button>
-                 <a
-               class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar" disabled>
-                   <span class="glyphicon glyphicon-pencil"></span>
-               </a>
-               <a
-                 class="btn btn-default" data-toggle="tooltip" data-placement="top"
-                 title="Eliminar" disabled>
-                   <span class="glyphicon glyphicon-trash"></span>
-               </a>
-
-               <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar">
-                   <span class="glyphicon glyphicon-copy"></span>
-               </button>
-
-               <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Publicar" disabled>
-                   <span class="glyphicon glyphicon-send"></span>
-               </button>
-
-           </div>
-       </div>
-   </div>
-</div>
-
-<?php } ?>
                     </div>
                 </div>
             </div>
@@ -240,7 +140,8 @@
         </div>
     </div>
 </div>
-                 <form method="post" action="/save" enctype="multipart/form-data" id="myForm">
+<!-- #############################################3 Modal agregar plantilla -->
+          <form id="myForm" onsubmit="return detener3();">
                   {{ csrf_field() }}
         <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">
@@ -260,6 +161,8 @@
                 </div>
                 </div>
                 <div class="modal-body">
+                    <input type="hidden" value="{{$id}}" name="creador" id="creador"/>
+                    <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                     <h5>Título de la encuesta:</h5>
                     <input type="text" maxlength="40" class="form-control text-black " required id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
                     <h5> Descripción de la encuesta:</h5>
@@ -301,11 +204,11 @@
                         <div class="row">
                         <div class="col-md-6">
                               <label for="inicio">Fecha de inicio</label>
-                              <input type="datetime"  value="<?php echo date("Y-m-d h:i:s"); ?>" readonly id="inicio">
+                              <input type="datetime"  value="" readonly id="inicio">
                         </div>
                         <div class="col md-6">
                               <label for="termino">Fecha de Termino:</label>
-                              <input type="datetime-local"  value="<?php echo date("Y-m-d\ h:i:s"); ?>" required id="termino">
+                              <input type="datetime-local"   required id="termino" min="">
                         </div>
                         </div>
                         <hr />
@@ -395,13 +298,15 @@
                   </div>
                     <div class="modal-body">
                       <div class="row">
+                        <input type="hidden" id="idCreador">
                         <input type="hidden" id="idDup" />
+                        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                     <div class="col-md-12">
                       <div class="col-md-6">
                           <label for="nNombre">Ingrese nuevo nombre:</label>
                       </div>
                     <div class="col-md-6">
-                      <input type="text" maxlength="40" required name="nNombre"/>
+                      <input type="text" maxlength="40" required id="nNombre" name="nNombre"/>
                     </div>
                     </div>
 
@@ -435,5 +340,7 @@
 <!--######################################### Termina MODAL DUPLICAR ##################################################### -->
       <script>
     busca();
+    showcards();
+           
       </script>
 @endsection

@@ -45,6 +45,8 @@ Route::get('/administrator/file/open', function(){
 });
 
 Route::get('/administrator/files/delete/{id}', "encuestadosController@deletelist") ;
+Route::post('/administrator/duplicar/plantilla',"surveyController@duplicar");
+Route::get('/administrator/showcards/', 'surveyController@ajaxshowcards');
 
 Route::get('/administrator/exclude', function(){
 	return view('administrator.exclude');
@@ -182,4 +184,3 @@ Route::get('/general/{id}', ['as' => 'general', 'uses'=>'directiveController@est
 Route::post('/conectar', 'conexionController@conexion');
 
 Route::post('pdf', 'directiveController@generarPdf');
-
