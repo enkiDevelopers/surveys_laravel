@@ -155,6 +155,7 @@
                                 <p class="card-text">Fecha Termino: <span class="template-creator"><?php echo $encuesta->fechat ?></span></p>
 
                                 <?php
+                                    
                                  switch ($datosdirective[0]->type) {
                                     case '1':
                                 ?>
@@ -188,6 +189,7 @@
                                         echo "<p>Sin Asignar</p>";
                                     break;
                                 }
+                            
                                  ?>   
 
                                 </div>

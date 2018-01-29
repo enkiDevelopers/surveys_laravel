@@ -22,7 +22,7 @@ class CreateCampusTable extends Migration
                 $table->integer('directives_idDirectives')->index('fk_regiones_directives1_idx');
 
             });
-         }
+    }
 
     /**
      * Reverse the migrations.
@@ -31,6 +31,5 @@ class CreateCampusTable extends Migration
      */
     public function down()
     {
-        //
     }
 }

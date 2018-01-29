@@ -20,15 +20,18 @@
                    <button type="button" id="sidebarCollapse" class="btn-default btn navbar-btn pull-right">
                         <i class="glyphicon glyphicon-menu-hamburger"></i>
                     </button>
-                    <h3 class="administrator-header">ENCUESTADO</h3>
+                    <h3 class="administrator-header">Bienvenido</h3>
                 </div>
 
                 <ul class="list-unstyled components">
                     <div class="profile center text-center">
                         <img src="/img/avatar.jpeg" alt="">
-                        <p>ENCUESTADO</p>
+                        <p>Encuestado</p>
+                        <?php
+                                echo $datos[0]->name." ".$datos[0]->apPaterno." ".$datos[0]->apMaterno."\n";
+                                echo $datos[0]->email;
+                        ?>
                     </div>
-                 
                 </ul>
             </nav>
 
@@ -71,52 +74,6 @@
 
     <script src="/js/highcharts.js"></script>
     <script src="/js/exporting.js"></script>
-    <script type="text/javascript">
-
-            @php
-        $q1a=10;
-        $q1b=20;
-    @endphp
-        Highcharts.chart('container', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: null,
-            type: 'pie'
-        },
-        title: {
-            text: 'Campus Norte '
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.y:.0f} puntos </b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Puntos Encuesta',
-            colorByPoint: true,
-            data: [{
-                name: 'Estudiantes No Encuestados',
-                y: {{$q1a}}
-            }, {
-                name: 'Estudiantes Encuestados',
-                y: {{$q1b}}
-            }]
-        }]
-        });
-    </script>
     <script type="text/javascript">
              $(document).ready(function () {
                  $('#sidebarCollapse').on('click', function () {

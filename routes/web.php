@@ -29,13 +29,11 @@ Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
 });
 
-Route::get('/surveyed', function () {
-    return view('surveyed.home');
-});
-
 Route::get('/surveyed/solve', function () {
     return view('surveyed.solve-survey');
 });
+//
+Route::get('/surveyed/{matricula}','responderController@presentacion');
 
 Route::post("/administrator/publicar/encuesta","encuestadosController@publicar");
 Route::get('/administrator/files/{id}', 'encuestadosController@showList');
@@ -93,7 +91,7 @@ Route::get('/directives/login', function(){
     return view('auth.directive_login');
 });
 
-Route::get('/surveyed/login', function(){
+Route::get('/surveyeds/login', function(){
     return view('auth.surveyed_login');
 });
 

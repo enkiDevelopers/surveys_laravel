@@ -19,6 +19,8 @@ class CreateRespondentsTable extends Migration {
 			$table->string('nombre', 45)->nullable();
 			$table->string('apPaterno', 45)->nullable();
 			$table->string('apMaterno', 45)->nullable();
+			//clave de empleado
+			//matricula de alumno
 		});
 	}
 
