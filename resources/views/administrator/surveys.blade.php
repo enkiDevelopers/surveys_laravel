@@ -341,6 +341,6 @@
       <script>
     busca();
     showcards();
-           
+
       </script>
 @endsection

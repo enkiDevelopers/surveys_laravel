@@ -68,74 +68,68 @@ class surveyController extends Controller
     $titulo = $request['titleInput'];
     $descripcion = $request['descInput'];
     //$nombre =$request['nombre'];
-
-     $surv = new templates;
      $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion));
 
      return $surv;
   }
 
   public function duplicar(Request $request){
-
   $nNombre = $request->nNombre;
   $id=$request->id;
   $creador=$request->creador;
-
   $cPlantilla=templates::where('id', $id)->get();
+  $Plantilla = templates::create([
+          'tituloEncuesta' => $nNombre,
+          'descripcion' => $cPlantilla[0]->descripcion,
+          'imagePath' => $cPlantilla[0]->imagePath,
+          'creador' => $creador
+      ]);
+      $idDupi = $Plantilla->id;
+/*
   $dupi = new templates;
   $dupi->tituloEncuesta = $nNombre;
   $dupi->descripcion= $cPlantilla[0]->descripcion;
   $dupi->imagePath= $cPlantilla[0]->imagePath;
-  $dupi->creador= $creador;
-  $dupi->save();
+  $dupi->creador= $creador;*/
 
-  $preguntasA=questionstemplates::where('templates_idTemplates',$id)->where('type', '1')->get();
-$cA=questionstemplates::where('templates_idTemplates',$id)->where('type', '1')->count();
-if($cA>0)
-  {
-  $cpreguntas = new questionstemplates;
+//va bien;
+$preguntasA=questionstemplates::where('id',$id)->where('type', "1")->get();
+//$cA=questionstemplates::where('templates_idTemplates','=',$id)->where('type', '1')->count();
+$cpreguntas = new questionstemplates;
   foreach ($preguntasA as $pregunta) {
       $cpreguntas->title = $pregunta->title;
       $cpreguntas->type = $pregunta->type;
       $cpreguntas->order=$pregunta->order;
-      $cpreguntas->salto=$pregunta->salto;
-      $cpreguntas->templates_idTemplates=$dupi->id;
+      $cpreguntas->templates_idTemplates=$idDupi;
       $cpreguntas->save();
-  }
-}else{
-  return response()->json(array('sms'=>'Guardado Correctamente'));
-}
+    }
+/*
+
 $preguntasB=questionstemplates::where('templates_idTemplates',$id)->where('type', '2')->get();
 $cant=questionstemplates::where('templates_idTemplates',$id)->where('type', '2')->count();
-if ($cant>0) {
 $copreguntas = new questionstemplates;
   foreach ($preguntasB as $pregunta) {
       $copreguntas->title = $pregunta->title;
       $copreguntas->type = $pregunta->type;
       $copreguntas->order=$pregunta->order;
       $copreguntas->salto=$pregunta->salto;
-      $copreguntas->templates_idTemplates=$dupi->id;
+      $copreguntas->templates_idTemplates=$idDupi;
       $copreguntas->save();
-
-      $opciones = optionsMult::where('idParent',$pregunta->idQuestionsTemplates)->get();
-      $opcout = optionsMult::where('idParent',$pregunta->idQuestionsTemplates)->count();
-if($opcout>0)
-{
-
-      foreach ($opciones as $opcion) {
+      $idCopreguntas=$copreguntas->idQuestionsTemplates;;
+//todo bien
+    $opciones = optionsMult::where('idParent',$pregunta->idQuestionsTemplates)->get();
+    $opcout = optionsMult::where('idParent',$pregunta->idQuestionsTemplates)->count();
+foreach ($opciones as $opcion) {
       $inser = new optionsMult ;
       $inser->name = $opcion->name;
-      $idparent= $copreguntas->idQuestionsTemplates;
-      $salto=$opcion->salto;
+      $inser->idparent= $idCopreguntas;
+      $inser->salto=$opcion->salto;
+      $inser->save();
       }
-    }else{
-      return response()->json(array('sms'=>'Guardado Correctamente'));
-    }
-  }
+
+  }*/
     return response()->json(array('sms'=>'Guardado Correctamente'));
-}else {
-    return response()->json(array('sms'=>'Guardado Correctamente'));
-}
+
 }
 
 public function ajaxshowcards(Request $request)

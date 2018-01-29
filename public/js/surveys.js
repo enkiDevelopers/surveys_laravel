@@ -131,14 +131,17 @@ function(){
   data:{
         id:id,
         idAdmin: idAdmin
-  },success: function( sms ) {
+  },beforeSend: function(){
+    $("#procesando").show();
+  }
+  ,success: function( sms ) {
     showcards();
     swal({
        title: "Eliminado correctamente",
        type: "success",
         });
-    // $("#"+id).css("display", "none");
-
+  $("#"+id).css("display", "none");
+  $("#procesando").hide();
       },error: function(result) {
         swal({
            title: "Error",
@@ -224,7 +227,6 @@ enviar();
 function detener3()
 {
 event.preventDefault();
-alert("detenido");
 enviar2();
 }
 
@@ -285,7 +287,7 @@ function duplicar()
        type: "success",
         });
       document.getElementById("form").reset();
-      $('#miModal').modal('hide');
+      $('#duModal').modal('hide');
         showcards();
       },error: function(result) {
         $("#procesando").hide();
