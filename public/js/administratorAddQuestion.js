@@ -285,13 +285,13 @@ $(document).ready(function(){
                           });
                             $("#container-questions").load(" #container-questions");
                     
-                     //console.log(e);
+                     console.log(e);
          
                     }else{
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
                             alertify.message('OK');
                         });
-                     //console.log(e);
+                     console.log(e);
                     }
                 },
                 error: function (textStatus, errorThrown) {

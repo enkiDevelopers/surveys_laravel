@@ -12,7 +12,7 @@
 
 				@include('administrator.saveQuestionsSection')
 
-				<div style="overflow-x: hidden; overflow-y: auto; height: 345px;position: relative; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" >
+				<div style="overflow-x: hidden; overflow-y: auto; height: 439px;position: relative; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 15px 25px 0px 25px; margin-right: 15px;margin-left: 15px;" >
 					<div id="container-questions">
 						@include('administrator.questionSaved')
 					</div>
