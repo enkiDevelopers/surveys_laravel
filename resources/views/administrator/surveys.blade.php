@@ -141,7 +141,7 @@
     </div>
 </div>
 <!-- #############################################3 Modal agregar plantilla -->
-          <form id="myForm" onsubmit="return detener3();">
+          <form id="myForm" method="post" action="/save" enctype="multipart/form-data" id="myForm">
                   {{ csrf_field() }}
         <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
             <div class="modal-dialog" role="document">

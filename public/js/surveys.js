@@ -31,9 +31,6 @@
         window.location = "{{ url('/administrator/edit') }}";
     }
 
-
-
-
 //verificaciones de la carga de una imagen en la creacion de la plantilla
     function ShowImagePreview( files )
     {
@@ -223,12 +220,12 @@ function detener()
 event.preventDefault();
 enviar();
 }
-
+/*
 function detener3()
 {
 event.preventDefault();
 enviar2();
-}
+}*/
 
 //consulta para mostrar las encuestas publicdas
 function busca(){
@@ -332,7 +329,7 @@ function showcards(){
      }
 
 
-
+/*
 function enviar2()
 {
 var data = new FormData();
@@ -361,7 +358,7 @@ data.append('creador', $('#creador').prop('value'));
         });
       document.getElementById("myForm").reset();
       $('#ModalTitle').modal('hide');
-        showcards();
+
       },error: function(result) {
         $("#procesando").hide();
         swal({
@@ -373,4 +370,4 @@ data.append('creador', $('#creador').prop('value'));
             }
   });
 
-}
+}*/

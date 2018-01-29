@@ -15,7 +15,7 @@ class editController extends Controller
       $descripcion = $consulta[0]->descripcion;
       $nombre = $consulta[0]->imagePath;
       $eid = $id;
-      $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
+      $datos = questionstemplates::where('templates_idTemplates',$eid)->orderby('order','asc')->get();
       $admor = $consulta[0]->creador;
       return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos','admor'));
   }
