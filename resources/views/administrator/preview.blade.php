@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-md-10 col-sm-12 " style="width:100%;">
-            <label for="exampleInputEmail1" >Instrucciones:</label>
+            <label >Instrucciones:</label>
         </div>
         <div class="col-md-10" style="">
             <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción"> 
@@ -62,6 +62,7 @@
                 <div class="form-group">
                     <label><?php echo $dato->title;?></label>
                 </div>
+                <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
                 <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>">                
                 <?php                   
                     if($dato->type==1){
@@ -119,16 +120,15 @@
         </div>
     	</div>
         
-        <?php //echo $options;
-            //$opt = json_encode($options);
-        
+        <?php 
+        /*
             $opciones = unserialize($options);
             foreach ($opciones as $cada) {
                 echo $cada["questions"];
                 echo "**********************************************";
                 echo $cada["options"];
             }
-            
+          */  
         ?>
 
 <script src="{{asset('js/app.js')}}"></script>
@@ -145,8 +145,9 @@ $(document).ready(function(){
     	$("#idNext").removeAttr('disabled');
     	$("#preg"+n).css("display", "none");        
 		//n--;
-        n=b;
-        b=n-1;
+        n=$("#back"+n).val();
+        //n=b;
+        //b=n-1;
 		$("#preg"+n).css("display", "inline");
         $("#idTitlePregunta").text("Pregunta " + n);
     });
@@ -155,7 +156,9 @@ $(document).ready(function(){
     $("#idNext").click(function(){    	    	
     	$("#idBack").removeAttr('disabled');
     	$("#preg"+n).css("display", "none");
-        b=n;
+
+        //b=n;
+
 
         //Si la pregunta es pregunta abierta la siguiente avanza uno
         //si la pregunta es de opción múltiple, se tiene que saber si hay brinco o no
@@ -163,9 +166,11 @@ $(document).ready(function(){
             var tempo= $('input:radio[name=opcion'+n+']:checked');
             if(tempo.val()==null){
                 n++;                            
-            }else{
+            }else{                
+                b=n;
                 m=tempo.val();
                 n=$("#"+n+"salto"+m).val();
+                $("#back"+n).val(b);
             }
         }else{
             n++;            
