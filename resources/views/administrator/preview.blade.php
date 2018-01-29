@@ -53,26 +53,44 @@
         
 		<?php 
 			$i=1;
-			foreach ($datos as $dato) { ?>
+            $preguntas = unserialize($options);
+            foreach ($preguntas as $cada) {
+                $dato=$cada["questions"];
+
+            ?>
 	        <div  class= "pregs" id="preg<?php echo $i?>" style="display:none">
                 <div class="form-group">
                     <label><?php echo $dato->title;?></label>
                 </div>
+                <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>">                
                 <?php                   
                     if($dato->type==1){
                 ?>
                 <div class="form-group">
                     <input type="text" class="form-control text-black-body" id="" placeholder="Escribe tu respuesta" value="">
+
                 </div>
+
                 <?php                   
                     }else{
+                        $opciones=$cada["options"];
+                ?>                        
+                <div class="form-group">
+                    <label id="">Selecciona tu respuesta:</label>
+                </div>
+
+                <?php                                   
+                        //echo unserialize($options);
+                        foreach ($opciones as $option) {
+
                 ?>
                 <div class="form-group">
-                    <input type="radio" id="opcion" name="opcion" value="">
-                    <label for="Choice1">Valor de la opción</label>
+                    <input  type="radio" name="opcion<?php echo $i?>" value="<?php echo $option->id?>">
+                    <label for="Choice1"><?php echo $option->name?></label>                    
+                    <input id="<?php echo $i?>salto<?php echo $option->id?>" type="text" name="salto" value="<?php echo $option->salto?>">
                 </div>
                 <?php                   
-                    }
+                    }}
                 ?>
                 
     	    </div>
@@ -101,21 +119,34 @@
         </div>
     	</div>
         
-        <?php echo $options?>
+        <?php //echo $options;
+            //$opt = json_encode($options);
+        
+            $opciones = unserialize($options);
+            foreach ($opciones as $cada) {
+                echo $cada["questions"];
+                echo "**********************************************";
+                echo $cada["options"];
+            }
+            
+        ?>
 
 <script src="{{asset('js/app.js')}}"></script>
 <script>
 $(document).ready(function(){
-	var b=0;n=0;
+	var b=-1;n=0;
     /********Funcionalidades del botón Atrás******************/
     $("#idBack").click(function(){
-    	if(n==0){
+    	if(n<=1){
     		$("#idBack").attr('disabled','disabled');	
     	}
+
         $("#idSave").css("display","none");
     	$("#idNext").removeAttr('disabled');
-    	$("#preg"+n).css("display", "none");
-		n--;
+    	$("#preg"+n).css("display", "none");        
+		//n--;
+        n=b;
+        b=n-1;
 		$("#preg"+n).css("display", "inline");
         $("#idTitlePregunta").text("Pregunta " + n);
     });
@@ -125,9 +156,21 @@ $(document).ready(function(){
     	$("#idBack").removeAttr('disabled');
     	$("#preg"+n).css("display", "none");
         b=n;
+
         //Si la pregunta es pregunta abierta la siguiente avanza uno
         //si la pregunta es de opción múltiple, se tiene que saber si hay brinco o no
-    	n++;
+        if($("#type"+n).val()=="2"){
+            var tempo= $('input:radio[name=opcion'+n+']:checked');
+            if(tempo.val()==null){
+                n++;                            
+            }else{
+                m=tempo.val();
+                n=$("#"+n+"salto"+m).val();
+            }
+        }else{
+            n++;            
+        }
+
 		$("#preg"+n).css("display", "inline");
         $("#idTitlePregunta").text("Pregunta " + n);
     	if(n>=$(".pregs").length){
