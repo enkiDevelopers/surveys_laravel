@@ -33,8 +33,7 @@ class directiveController extends Controller
   public function show_cards($id)
   {
       $campus=0;
-      $encuestas = DB::table('publicaciones')->get();
-
+      $encuestas = DB::table('publicaciones')->orderByRaw('updated_at - created_at DESC')->get();
       $datosdirective =DB::table('directives')->where('idDirectives','=',$id)->get();
       switch ($datosdirective["0"]->type) {
         case '1':

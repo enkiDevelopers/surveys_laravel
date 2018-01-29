@@ -45,10 +45,10 @@ class questionsTemplateController extends Controller
             }
             
             $preguntas = questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
-            $opciones = questionsTemplates::join('optionsMult', 'questionsTemplates.order', '=', 'optionsMult.idParent')
-            ->where('optionsMult.id', $numPregSig)
-            ->orderby('id', 'desc')->get();
-
+            $opciones = questionsTemplates::join('optionsMult', 'questionsTemplates.id', '=', 'optionsMult.idParent')
+            //->where('optionsMult.id', $numPregSig)
+            //->orderby('id', 'desc')
+            ->get();
             return $preguntas .$opciones;
 
         }

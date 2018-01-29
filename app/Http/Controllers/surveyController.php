@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\templates;
-use App\questionstemplates;
+use App\questionsTemplates;
 use DB;
 use File;
 use Input;
@@ -38,7 +38,7 @@ class surveyController extends Controller
       $surv->creador= $creador;
       $surv->save();
       $eid =$surv->id;
-      $datos = questionstemplates::where('templates_idTemplates',$eid)->get();
+      $datos = questionsTemplates::where('id',$eid)->get();
 //      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
       return redirect()->route('editar',array("section" => "$eid"));
 
@@ -85,6 +85,8 @@ class surveyController extends Controller
           'creador' => $creador
       ]);
       $idDupi = $Plantilla->id;
+
+echo $idDupi;
 /*
   $dupi = new templates;
   $dupi->tituloEncuesta = $nNombre;
@@ -93,9 +95,9 @@ class surveyController extends Controller
   $dupi->creador= $creador;*/
 
 //va bien;
-$preguntasA=questionstemplates::where('id',$id)->where('type', "1")->get();
+$preguntasA=questionsTemplates::where('id',$id)->where('type', "1")->get();
 //$cA=questionstemplates::where('templates_idTemplates','=',$id)->where('type', '1')->count();
-$cpreguntas = new questionstemplates;
+$cpreguntas = new questionsTemplates;
   foreach ($preguntasA as $pregunta) {
       $cpreguntas->title = $pregunta->title;
       $cpreguntas->type = $pregunta->type;
