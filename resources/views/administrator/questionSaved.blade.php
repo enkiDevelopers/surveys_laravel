@@ -1,6 +1,6 @@
 <?php foreach ($datos as $datos) { ?>
     <div class="row new-question-template" id="new-question-template">
-        <div class="col-md-12 well ">
+        <div class="col-md-12 well">
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\questionstemplates;
+use App\questionsTemplates;
 use App\optionsMult;
 use DB;
 use File;
@@ -19,7 +19,7 @@ class questionsTemplateController extends Controller
         $optionsResult = $request['optionsResult'];
         //$idParent = $request['idParent'];
 
-            $surv = new questionstemplates;
+            $surv = new questionsTemplates;
             $surv->templates_idTemplates = $idTemplate;
             $surv->order = $numPregSig;
             $surv->title = $questionInput;
@@ -29,7 +29,7 @@ class questionsTemplateController extends Controller
 
         if($questionType == 1){
 
-            return questionstemplates::where('templates_idTemplates',$idTemplate)->get();
+            return questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
 
         }else{
 
@@ -44,10 +44,12 @@ class questionsTemplateController extends Controller
 
             }
             
-            $preguntas = questionstemplates::where('templates_idTemplates',$idTemplate)->get();
-            $opciones = questionsTemplates::join('optionsMult', 'questionstemplates.order', '=', 'optionsMult.idParent')->where('optionsMult.id', $numPregSig)->orderby('id', 'desc')->get();
+            $preguntas = questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
+            $opciones = questionsTemplates::join('optionsMult', 'questionsTemplates.order', '=', 'optionsMult.idParent')
+            ->where('optionsMult.id', $numPregSig)
+            ->orderby('id', 'desc')->get();
 
-            return $preguntas;
+            return $preguntas .$opciones;
 
         }
     }
@@ -57,7 +59,7 @@ class questionsTemplateController extends Controller
         $order = $request['order'];
         $idTemplate = $request['idTemplate'];
 
-        $surv = new questionstemplates;
+        $surv = new questionsTemplates;
 
         $surv::where('id', $idTemplate and 'order',$order)->delete();
 
