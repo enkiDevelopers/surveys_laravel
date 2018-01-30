@@ -43,7 +43,8 @@ class editController extends Controller
       //log($datosOpt);
       $options=serialize($datosOpt);
 
-      return view("administrator.edit",compact('titulo','descripcion','nombre','eid','datos','admor','options'));
+      return view("administrator.edit",compact('titulo','descripcion','nombre','eid','admor','options'));
+      // echo $options;
   }
   public function delete(Request $request)
   {

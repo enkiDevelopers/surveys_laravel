@@ -90,6 +90,12 @@
             -o-background-size: 90% 90%;           /* Opera 9.5 */
             background-size: 90% 90%;             
         }
+        @media screen and (max-width: 699px) and (min-width: 520px) {
+            ul li a {
+                padding-left: 30px;
+                background: url(email-icon.png) left center no-repeat;
+            }
+        }
 
     </style>
 </head>
@@ -101,6 +107,7 @@
             <h2 class="text-center text-black-body title">{{$titulo}}</h2>
             <textarea type="text" class="form-control text-center descripcion" disabled style="background-color: transparent;cursor: default;">{{$descripcion}}</textarea>
             <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body" style="margin: 3% 42% 0px 42%;background-color: #ffeb3b">
+            
         </div>
 
 <div class="container hidden" id="surveyContainer" style="background-image: url(/img/default_questions.png);">
@@ -154,7 +161,7 @@
                 ?>
                 <div class="form-group">
                     <input  type="radio" name="opcion<?php echo $i?>" value="<?php echo $option->id?>">
-                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="text" name="salto" value="<?php echo $option->salto?>">                    
+                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">                    
 
                 </div>
                 <?php                   
@@ -165,9 +172,7 @@
        	<?php $i++;
 			}?>
             <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
-                <div class="form-group">
-                    <label> Has completado la encuesta, da clic en save para enviar la encuesta. </label>
-                </div>
+                <div class="form-group">                </div>
             </div>
             <?php 
                 $i++;
@@ -175,7 +180,6 @@
             
             <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
                 <div class="form-group">
-                    <label> Gracias has completado la encuesta. </label>
                 </div>
             </div>
 

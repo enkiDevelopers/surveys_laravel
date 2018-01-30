@@ -4,8 +4,8 @@ $(document).ready(function(){
         var anchoP =(screen.availWidth) - (screen.availHeight / 23) + (screen.availHeight / 46);
         var anchoS =(screen.availWidth) - (screen.availHeight / 23);
 
-        //$("#sumary").height(alto).width(anchoP);
-        //$("#surveyContainer").height(alto).width(anchoS);
+        $("#sumary").height(alto).width(anchoP);
+        $("#surveyContainer").height(alto).width(anchoS);
 
         $("#btnStart").click(function(){
             $("#sumary").fadeOut();
