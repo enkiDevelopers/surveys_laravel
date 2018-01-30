@@ -29,7 +29,7 @@
                         <p>Encuestado</p>
                         <?php
                                 echo $datos[0]->name." ".$datos[0]->apPaterno." ".$datos[0]->apMaterno."\n";
-                                echo $datos[0]->email;
+                                echo $datos[0]->email1;
                         ?>
                     </div>
                 </ul>

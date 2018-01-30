@@ -181,4 +181,6 @@ Route::get('/general/{id}', ['as' => 'general', 'uses'=>'directiveController@est
 
 Route::post('/conectar', 'conexionController@conexion');
 
+Route::get('/surveyed/previewtem/{id}/',["as" => "previewtem", "uses" => "responderController@busqueda" ]);
+
 Route::post('pdf', 'directiveController@generarPdf');

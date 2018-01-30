@@ -24,11 +24,12 @@
                                         <h4 class='card-title'>{$dato->titulo}</h4>
                                          <p class='card-text'>{$dato->fechat}</p>
                                         <p class='card-text'></p>
-                                        <a  class='btn btn-red' href='#'>Responder</a>
+                                        <a  class='btn btn-red' href=previewtem/".$dato->id.">Responder</a>
                                     </div>
                                 </div>
                             </div>";
                     }else{
+
                             echo"<div class='col-md-2'>
                                 <div class='card well' >
                                     <img class='card-img-top' src=\img/iconos/$dato->imagen alt='Card image cap' width='100%' height='90px'>

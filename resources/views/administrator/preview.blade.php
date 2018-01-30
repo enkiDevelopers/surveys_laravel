@@ -102,7 +102,7 @@
 <body>
         <div id="sumary" style="" class="popIn duration-2250 ancho">
             <center >
-                <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:13%"">
+                <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:13%">
             </center><br>
             <h2 class="text-center text-black-body title">{{$titulo}}</h2>
             <textarea type="text" class="form-control text-center descripcion" disabled style="background-color: transparent;cursor: default;">{{$descripcion}}</textarea>
@@ -131,7 +131,6 @@
             $preguntas = unserialize($options);
             foreach ($preguntas as $cada) {
                 $dato=$cada["questions"];
-
             ?>
 	        <div  class= "pregs" id="preg<?php echo $i?>" style="display:none">
 
@@ -155,8 +154,8 @@
                 </div>
 
                 <?php                                   
-                        //echo unserialize($options);
-                        foreach ($opciones as $option) {
+                //echo unserialize($options);
+                foreach ($opciones as $option) {
 
                 ?>
                 <div class="form-group">
