@@ -4,8 +4,8 @@ $(document).ready(function(){
         var anchoP =(screen.availWidth) - (screen.availHeight / 23) + (screen.availHeight / 46);
         var anchoS =(screen.availWidth) - (screen.availHeight / 23);
 
-        $("#sumary").height(alto).width(anchoP);
-        $("#surveyContainer").height(alto).width(anchoS);
+        //$("#sumary").height(alto).width(anchoP);
+        //$("#surveyContainer").height(alto).width(anchoS);
 
         $("#btnStart").click(function(){
             $("#sumary").fadeOut();
@@ -23,20 +23,26 @@ $(document).ready(function(){
 
 	var b=-1;n=0;
     /********Funcionalidades del botón Atrás******************/
-    $("#idBack").click(function(){
-    	if(n<=1){
-    		$("#idBack").attr('disabled','disabled');	
-    	}
+
+    function atras(){
+        if(n<=1){
+            $("#idBack").attr('disabled','disabled');   
+        }
 
         $("#idSave").css("display","none");
-    	$("#idNext").removeAttr('disabled');
-    	$("#preg"+n).css("display", "none");        
-		//n--;
+        $("#idNext").removeAttr('disabled');
+        $("#preg"+n).css("display", "none");        
+        //n--;
         n=$("#back"+n).val();
         //n=b;
         //b=n-1;
-		$("#preg"+n).css("display", "inline");
+        $("#preg"+n).css("display", "inline");
         $("#idTitlePregunta").text("Pregunta " + n);
+
+    }
+
+    $("#idBack").click(function(){
+        atras();
     });
 
     /********Funcionalidades del botón Siguiente******************/
@@ -67,8 +73,11 @@ $(document).ready(function(){
 		$("#preg"+n).css("display", "inline");
         $("#idTitlePregunta").text("Pregunta " + n);
     	if(n>=$(".pregs").length){
-    		$("#idNext").addClass('hidden');		
-            $("#idSave").css("display","inline");
+            //$("#preg"+n).css("display", "none");
+            $("#idTitlePregunta").css("display", "none");
+    		$("#idNext").attr('disabled','disabled');		
+            //$("#idSave").css("display","inline");
+
 
             swal({
                 title: "Encuesta Completada !",
@@ -90,9 +99,14 @@ $(document).ready(function(){
                     $("#preg"+n).css("display", "none");
                     n++;
                     $("#preg"+n).css("display", "inline");
-            });
+            }); 
+            //Si es falso entonces
+            //$("#idNext").removeAttr('disabled');
+            //atras();    
+
     	}
     });
+
 
     /********Funcionalidades del botón Guardar******************/
     $("#idSave").click(function(){              

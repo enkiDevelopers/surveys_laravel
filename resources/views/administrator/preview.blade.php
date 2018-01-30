@@ -78,14 +78,25 @@
         .lb_label.active {
           color: white;
         }
+
+        #sumary{
+            background-image: url(/img/default.png);
+        }
         
+        .ancho{            
+            background-size: 90% 90%;
+            -webkit-background-size: 90% 90%;           /* Safari 3.0 */
+            -moz-background-size: 90% 90%;           /* Gecko 1.9.2 (Firefox 3.6) */
+            -o-background-size: 90% 90%;           /* Opera 9.5 */
+            background-size: 90% 90%;             
+        }
 
     </style>
 </head>
 <body>
-        <div id="sumary" style="background-image: url(/img/default.png);" class="popIn duration-2250">
+        <div id="sumary" style="" class="popIn duration-2250 ancho">
             <center >
-                <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:13%">
+                <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:13%"">
             </center><br>
             <h2 class="text-center text-black-body title">{{$titulo}}</h2>
             <textarea type="text" class="form-control text-center descripcion" disabled style="background-color: transparent;cursor: default;">{{$descripcion}}</textarea>
@@ -100,9 +111,11 @@
 		<div class="col-md-10">
 	        <div class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" id="preg0">
                 <div class="form-group text-black-body">
-                    <label > ° Lee con atención las siguiente preguntas.</label>
-                    <label>° Recuerda que puedes retroceder una pregunta, antes de guardar la cuesta, si no respondiste de forma correcta.</label>
-                    <label><strong>° Para empezar da clic en Siguiente.</strong></label>
+                    <ul>
+                        <li>Lee con atención las siguiente preguntas</li>                        
+                        <li>Si no respondiste de forma correcta, recuerda que puedes retroceder una pregunta antes de guardar la cuesta </li>   
+                        <li><strong>Para empezar da clic en Siguiente.</strong></li>
+                    </ul>
                 </div>
   	        </div>
         
@@ -130,7 +143,8 @@
                         $opciones=$cada["options"];
                 ?>                        
                 <div class="form-group text-black-body">
-                    <label >Selecciona tu respuesta:</label>
+                    <label >Selecciona tu respuesta:</label><br>
+                    <label >{{$dato->title}}</label>
                 </div>
 
                 <?php                                   
@@ -140,7 +154,7 @@
                 ?>
                 <div class="form-group">
                     <input  type="radio" name="opcion<?php echo $i?>" value="<?php echo $option->id?>">
-                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label>                    
+                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="text" name="salto" value="<?php echo $option->salto?>">                    
 
                 </div>
                 <?php                   
