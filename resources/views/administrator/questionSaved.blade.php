@@ -9,19 +9,19 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
-                    <input type="text" class="form-control text-black-body numPregs"  aria-describedby="emailHelp" value=" {{$dato->order}}" disabled />
+                    <input type="text" id="staticEmail" readonly class="form-control-static form-control text-black-body numPregs" value=" {{$dato->order}}"/>
                 </div>
             </div>
             <div class="col-md-6 ">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Título de la pregunta</label>
-                    <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$dato->title}}" disabled>
+                    <input type="text" readonly class="form-control-static form-control text-black-body" id="exampleInputEmail1" value="{{$dato->title}}">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class=" form-group">
                     <label for="exampleInputEmail1">Tipo</label>
-                    <input type="text" class="form-control text-black-body" aria-describedby="emailHelp" value="<?php echo ($dato->type==1?'Pregunta Abierta':'Opción Múltiple');?>" disabled>
+                    <input type="text" readonly class="form-control-static form-control text-black-body" value="<?php echo ($dato->type==1?'Pregunta Abierta':'Opción Múltiple');?>">
                 </div>
             </div>
 <?php
@@ -29,23 +29,25 @@
         $opciones=$cada["options"];
         foreach ($opciones as $option) {
 ?>
-    <div class="row  yes-no-question-block " id="yes-no-question-template">
-        <div class="col-md-12" data-questions="0" id="childSupport">
-            <div class="col-md-12" id="multi-options">
-                <div class="col-md-6 " data-multioptions="0">
-                    <div class="form-group">
-                        <label for="{{$option->id}}">Opción de la pregunta {{$dato->order}}</label>
-                        <input type="text" class="form-control text-black-body" id="{{$option->id}}" placeholder="¿Cual es la pregunta?" value="{{$option->name}}" disabled="true">
-                        <input id="{{$i}}salto{{$option->id}}" type="text" class="form-control text-black-body" name="salto" value="{{$option->salto}}">
-                        <select name="" id=""></select>
-
+            <div class="row  yes-no-question-block " id="yes-no-question-template">
+                <div class="col-md-12" data-questions="0" id="childSupport">
+                    <div class="col-md-12" id="multi-options">
+                        <div class="col-md-6 " data-multioptions="0">
+                            <div class="form-group">
+                                <label for="{{$option->id}}">Opción de la pregunta {{$dato->order}}</label>
+                                <input type="text" readonly class="form-control-static form-control text-black-body" id="{{$option->id}}" value="{{$option->name}}" >
+                            </div>
+                        </div>
+                        <div class="col-md-4  pull-right">
+                           <input id="{{$i}}salto{{$option->id}}" type="hidden" class="form-control text-black-body" name="salto" value="{{$option->salto}}">   
+                           <label for="selectNumPreg text-black-body">Redireccionar a: </label>
+                            <select name="numPreg" class="form-control text-black-body selectNumPreg">
+                                <option value="N/A" selected disabled>Selecciona la pregunta</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                </div>
             </div>
-        </div>
-    </div>
 <?php                   
         }
     }

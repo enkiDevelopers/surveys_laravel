@@ -89,6 +89,16 @@ $(document).ready(function(){
     });
     /*********************************************************************************/      
 
+    //Contar todos los divs de todas la preguntas
+    $(".selectNumPreg").mousedown(function(){
+        var sig = $(this).parent().parent().parent().parent().parent().parent().nextAll('.new-question-template').length;
+
+        for (var i = 0; i < sig; i++) {
+            var o = i+2;
+             $(".selectNumPreg").html('<option value="'+o+'">'+o+'</option>');
+        } 
+    });
+
 /*
     //Eliminar una opcion multiple
     var parentYesNo;
@@ -194,7 +204,6 @@ $(document).ready(function(){
     window.onload = function() {
         $("#home").addClass('active');
     }
-
 
     function publish(id){
         var action = document.getElementById("updateDataTemplateForm").action;
