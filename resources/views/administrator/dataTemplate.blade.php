@@ -28,7 +28,7 @@
                 <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-info">
 	                <span class="glyphicon glyphicon-pencil"></span>
                 </a>
-                <a href="" class="btn btn-success">
+                <a href="/administrator/previewtem/{{$eid}}/" target="_blank" class="btn btn-success">
                     <span class=" glyphicon glyphicon-eye-open "></span>
                 </a>
             </div>

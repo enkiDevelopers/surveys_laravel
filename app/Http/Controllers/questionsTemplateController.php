@@ -43,13 +43,28 @@ class questionsTemplateController extends Controller
                 ]);               
 
             }
-            
+
             $preguntas = questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
-            $opciones = questionsTemplates::join('optionsMult', 'questionsTemplates.id', '=', 'optionsMult.idParent')
-            //->where('optionsMult.id', $numPregSig)
-            //->orderby('id', 'desc')
-            ->get();
-            return $preguntas .$opciones;
+
+            $datosOpt;
+            //echo $datos;
+            foreach ($preguntas as $dato) {
+                //echo $dato . ",";
+                if($dato['type']==2){
+                    $idq=$dato['id'];
+                    $opt=optionsMult::where('idParent',$idq)->get();
+                    //echo $opt . ",";
+                }else{
+                    $opt=null;
+                }
+                $datosOpt[] = [
+                "questions" => $dato,
+                "options" => $opt];
+            }
+
+            $options=serialize($datosOpt);
+
+            return $options;
 
         }
     }

@@ -1,3 +1,5 @@
+<!-- -->
+
 <?php foreach ($datos as $datos) { ?>
     <div class="row new-question-template" id="new-question-template">
         <div class="col-md-12 well">
@@ -32,6 +34,22 @@
         </div>
     </div>
 <?php } ?>
+
+<script>
+
+    var options = <?php echo $options;?>;
+    var opciones= options.toArray(); 
+    alert( opciones );
+    
+</script>
+
+
+
+
+
+
+
+
     <div class="row hide yes-no-question-block " id="yes-no-question-template">
         <div class="col-md-12 well" data-questions="0" id="childSupport">
             <div class="btn-group btn-group-xs pull-right" role="group" aria-label="...">
