@@ -17,14 +17,19 @@ class responderController extends Controller
 {	
 	public function presentacion($matricula){
 		//$id es el la variable de la table encuestados donde se almacena la informacion
-		$datos=DB::table('miembros')
-			->join('publicaciones','miembros.idpublicacion','=','publicaciones.id')
-			->where('miembros.matricula','=',$matricula)
+		$datos=DB::table('encuestados')
+			->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.id')
+			->where('encuestados.matricula','=',$matricula)
+			->where('encuestados.contestado','=',0)
 			->get();
-		return view('surveyed.home',compact('datos'));
-
-
+		$constestado=DB::table('encuestados')
+			->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.id')
+			->where('encuestados.matricula','=',$matricula)
+			->where('encuestados.contestado','=',1)
+			->get();
+		return view('surveyed.home',compact('datos','constestado'));
 	}
-
-
+	public function responder(){
+		
+	}
 }

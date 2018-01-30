@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\surveys;
 use DB;
 use File;
@@ -10,6 +11,8 @@ use Input;
 use Response;
 use App\Client;
 use PDF;
+use Illuminate\Support\Facades\Crypt;
+
 
 
 class directiveController extends Controller
@@ -77,10 +80,10 @@ class directiveController extends Controller
     return response()->json($data);
   }
   public function estadisticaCampus($id,$idcampus){
-      $stadisticas= DB::table('statistics')->where([['surveys_id','=',$id],
+      $stadisticas= DB::table('estadisticas')->where([['surveys_id','=',$id],
                                                    ['campus_campus_id','=',$idcampus],])->count();
       if ($stadisticas==0){
-      $idstatica = DB::table('statistics')->insertGetId([
+      $idstatica = DB::table('estadisticas')->insertGetId([
                                                   'total_encuestados' => '0', 
                                                   'total_alumnos' =>'0',
                                                   'total_empleados' =>'0',
@@ -94,7 +97,7 @@ class directiveController extends Controller
                                                   'directives_idDirectives'=>1,
                                                   'surveys_id'=> $id]);
       }
-      $info= DB::table('statistics')->where([  ['surveys_id','=',$id],
+      $info= DB::table('estadisticas')->where([  ['surveys_id','=',$id],
                                                ['campus_campus_id','=',$idcampus],])->get();
       $campusname=DB::table('ctlCampus')->where('campus_id','=',$idcampus)->get();
 
@@ -106,10 +109,10 @@ class directiveController extends Controller
     $campus = DB::table('ctlCampus')->where('regions_regions_id','=',$idregion)->get();
 
     foreach ($campus as $campusdatos) {
-       $stadisticas= DB::table('statistics')->where([['surveys_id','=',$id],
+       $stadisticas= DB::table('estadisticas')->where([['surveys_id','=',$id],
                                                     ['campus_campus_id','=',$campusdatos->campus_id],])->count();
       if ($stadisticas==0){
-      $idstatica = DB::table('statistics')->insertGetId([
+      $idstatica = DB::table('estadisticas')->insertGetId([
                                                   'total_encuestados' => '0', 
                                                   'total_alumnos' =>'0',
                                                   'total_empleados' =>'0',
@@ -125,10 +128,10 @@ class directiveController extends Controller
       }
     }
 
-    $estadisticas = DB::table('statistics')
-                  ->join('ctlCampus', 'statistics.campus_campus_id', '=', 'ctlCampus.campus_id')
-                  ->select('statistics.*','ctlCampus.*')
-                  ->where('statistics.surveys_id','=',$id)
+    $estadisticas = DB::table('estadisticas')
+                  ->join('ctlCampus', 'estadisticas.campus_campus_id', '=', 'ctlCampus.campus_id')
+                  ->select('estadisticas.*','ctlCampus.*')
+                  ->where('estadisticas.surveys_id','=',$id)
                   ->where('ctlCampus.regions_regions_id','=',$idregion)
                   ->get();
     $regioname= DB::table('ctlRegions')->where('regions_id','=',$idregion)->get();
@@ -141,17 +144,18 @@ class directiveController extends Controller
   public function estadisticasGeneral($id){
           $regiones=DB:: table('ctlRegions')->get();
 
-          $estadisticas = DB::table('statistics')
-                  ->join('ctlCampus',  'statistics.campus_campus_id', '=', 'ctlCampus.campus_id')
+          $estadisticas = DB::table('estadisticas')
+                  ->join('ctlCampus',  'estadisticas.campus_campus_id', '=', 'ctlCampus.campus_id')
                   ->join('ctlRegions', 'ctlRegions.regions_id', '=', 'ctlCampus.regions_regions_id')
-                  ->select('statistics.*','ctlCampus.*','ctlRegions.regions_id')
-                  ->where('statistics.surveys_id','=',$id)
+                  ->select('estadisticas.*','ctlCampus.*','ctlRegions.regions_id')
+                  ->where('estadisticas.surveys_id','=',$id)
                   ->get();
 
         $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
 
+        $encrypted = md5($id);
+        echo $encrypted;
         return view('directive.reporteGeneral',compact('datoencuesta','estadisticas','regiones'));
-
   }
   public function generarPdf(){
     $clients =Client::all();
