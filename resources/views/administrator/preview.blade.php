@@ -155,18 +155,16 @@ $(document).ready(function(){
     /********Funcionalidades del botón Siguiente******************/
     $("#idNext").click(function(){    	    	
     	$("#idBack").removeAttr('disabled');
-    	$("#preg"+n).css("display", "none");
-
-        //b=n;
-
-
+        $("#preg"+n).css("display", "none");
         //Si la pregunta es pregunta abierta la siguiente avanza uno
         //si la pregunta es de opción múltiple, se tiene que saber si hay brinco o no
         if($("#type"+n).val()=="2"){
             var tempo= $('input:radio[name=opcion'+n+']:checked');
             if(tempo.val()==null){
-                n++;                            
-            }else{                
+                n++;
+                //$("#idNext").attr('disabled','disabled');               
+            }else{
+                //if(tempo.val)
                 b=n;
                 m=tempo.val();
                 n=$("#"+n+"salto"+m).val();
@@ -175,7 +173,6 @@ $(document).ready(function(){
         }else{
             n++;            
         }
-
 		$("#preg"+n).css("display", "inline");
         $("#idTitlePregunta").text("Pregunta " + n);
     	if(n>=$(".pregs").length){
