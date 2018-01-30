@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-10" style="">
             <textarea rows="2" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción"> 
-            	<? echo $descripcion?>"
+            	<?php echo $descripcion?>"
             </textarea>
         </div>
 
@@ -95,7 +95,7 @@
                 ?>
                 
     	    </div>
-       	<? $i++;
+       	<?php $i++;
 			}?>
             <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
                 <div class="form-group">
@@ -161,14 +161,18 @@ $(document).ready(function(){
         if($("#type"+n).val()=="2"){
             var tempo= $('input:radio[name=opcion'+n+']:checked');
             if(tempo.val()==null){
-                n++;
-                //$("#idNext").attr('disabled','disabled');               
+                //$("#idNext").attr('disabled','disabled');
+                n++; //eliminar esta línea
             }else{
-                //if(tempo.val)
-                b=n;
                 m=tempo.val();
-                n=$("#"+n+"salto"+m).val();
-                $("#back"+n).val(b);
+                salto = $("#"+n+"salto"+m).val();
+                if(salto=="0"){
+                    n++;
+                }else{
+                    b=n;                    
+                    n=salto;
+                    $("#back"+n).val(b);
+                }
             }
         }else{
             n++;            
