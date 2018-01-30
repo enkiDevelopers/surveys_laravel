@@ -22,7 +22,7 @@
          </div>
 
            <div class="btn-group centrarbtn" role="group" aria-label="...">
-               <a href="/administrator/previewtem/{{$plantilla->id}}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+               <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                    <span class="glyphicon glyphicon-eye-open" ></span>
                </a>
                  <a href="{{url('administrator/edit')}}/{{$plantilla->id}}"
@@ -73,9 +73,9 @@ onerror="this.src='/img/iconos/default.png'">
 <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
 </div>
 <div class="btn-group centrarbtn" role="group" aria-label="...">
-<button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-<span class="glyphicon glyphicon-eye-open" ></span>
-</button>
+  <a href="href="{{url('administrator/previewtem')}}/{{$plantilla->id}}"" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+      <span class="glyphicon glyphicon-eye-open" ></span>
+  </a>
 <a
 class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar" disabled>
 <span class="glyphicon glyphicon-pencil"></span>
