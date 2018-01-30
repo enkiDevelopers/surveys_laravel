@@ -22,9 +22,9 @@
          </div>
 
            <div class="btn-group centrarbtn" role="group" aria-label="...">
-               <button type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+               <a href="/administrator/previewtem/{{$plantilla->id}}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                    <span class="glyphicon glyphicon-eye-open" ></span>
-               </button>
+               </a>
                  <a href="{{url('administrator/edit')}}/{{$plantilla->id}}"
                class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
 

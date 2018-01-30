@@ -114,7 +114,7 @@
                         <div class="col-md-5 ">
                             <div class="row">
                                 <div class="col-md-4">
-                                    Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
+                                  Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div>
                                 <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
