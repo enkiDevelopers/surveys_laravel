@@ -21,7 +21,7 @@ class editController extends Controller
       $admor = $consulta[0]->creador;
       $datos = questionstemplates::where('templates_idTemplates',$eid)->orderby('orden','asc')->get();
 
-      $datosOpt;
+      $datosOpt =[];
       //echo $datos;
       foreach ($datos as $dato) {
         //echo $dato . ",";

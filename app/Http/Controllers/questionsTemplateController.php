@@ -21,7 +21,7 @@ class questionsTemplateController extends Controller
 
             $surv = new questionsTemplates;
             $surv->templates_idTemplates = $idTemplate;
-            $surv->order = $numPregSig;
+            $surv->orden = $numPregSig;
             $surv->title = $questionInput;
             $surv->type = $questionType;
             //$surv->idParent = $idParent;
@@ -71,24 +71,24 @@ class questionsTemplateController extends Controller
 
     public function deleteQuestion(){
 
-        $order = $request['order'];
+        $orden = $request['orden'];
         $idTemplate = $request['idTemplate'];
 
         $surv = new questionsTemplates;
 
-        $surv::where('id', $idTemplate and 'order',$order)->delete();
+        $surv::where('id', $idTemplate and 'orden',$orden)->delete();
 
         return "1";
     }
 
     public function updateQuestion(){
 
-        $order = $request['order'];
+        $orden = $request['orden'];
         $idTemplate = $request['idTemplate'];
 
         $surv = new questionsTemplates;
 
-        $surv::where('id', $idTemplate)->update(array('order' => $order));
+        $surv::where('id', $idTemplate)->update(array('orden' => $orden));
 
         return $surv;
     }

@@ -9,7 +9,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
-                    <input type="text" id="order{{$dato->order}}" readonly class="form-control-static form-control text-black-body numPregs" value="{{$dato->order}}"/>
+                    <input type="text" id="orden{{$dato->orden}}" readonly class="form-control-static form-control text-black-body numPregs" value="{{$dato->orden}}"/>
                 </div>
             </div>
             <div class="col-md-6 ">
@@ -25,23 +25,23 @@
                 </div>
             </div>
 <?php
-    if($dato->type==2){
-        $opciones=$cada["options"];
-        foreach ($opciones as $option) {
+        if($dato->type==2){
+            $opciones=$cada["options"];
+            foreach ($opciones as $option) {
 ?>
             <div class="row  yes-no-question-block " id="yes-no-question-template">
                 <div class="col-md-12" data-questions="0" id="childSupport">
                     <div class="col-md-12" id="multi-options">
                         <div class="col-md-6 " data-multioptions="0">
                             <div class="form-group">
-                                <label for="{{$option->id}}">Opción de la pregunta {{$dato->order}}</label>
+                                <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
                                 <input type="text" readonly class="form-control-static form-control text-black-body" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
                         </div>
                         <div class="col-md-4  pull-right">
                            <input id="{{$i}}salto{{$option->id}}" type="hidden" class="form-control text-black-body" name="salto" value="{{$option->salto}}">   
                            <label for="selectNumPreg text-black-body">Redireccionar a: </label>
-                            <select name="numPreg" id="preguntasTotal" order="{{$dato->order}}" class="form-control text-black-body selectNumPreg">
+                            <select name="numPreg" id="preguntasTotal" order="{{$dato->orden}}" class="form-control text-black-body selectNumPreg">
                                 <option value="N/A" selected disabled>Selecciona la pregunta</option>
                             </select>
                         </div>
@@ -49,8 +49,8 @@
                 </div>
             </div>
 <?php                   
+            }
         }
-    }
 ?>
             <div class="col-md-2 pull-right" style="margin-bottom: 15px;">
                 <div class="row">
@@ -66,5 +66,5 @@
         </div>
     </div>
 <?php
-} 
+    } 
 ?>
