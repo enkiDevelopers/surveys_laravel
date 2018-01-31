@@ -33,14 +33,12 @@ class responderController extends Controller
 	}
 
 	public function busqueda($id){
-      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+     $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
-      $datos = questionsTemplates::where('templates_idTemplates',$id)->get();
-
-
-
+      $eid = $id;
+      $datos = questionsTemplates::where('templates_idTemplates',$eid)->get();
 
       $datosOpt;
       //echo $datos;
@@ -59,6 +57,8 @@ class responderController extends Controller
 
 
       }
+      
+
       //log($datosOpt);
       $options=serialize($datosOpt);
       //echo $options;
@@ -69,9 +69,8 @@ class responderController extends Controller
       }
 */
       $admor = $consulta[0]->creador;
-      echo $admor;
 
-      return view("administrator.preview",compact('titulo','descripcion','admor'));
+      return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor'));
 
  //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
   }
