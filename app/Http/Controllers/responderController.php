@@ -33,14 +33,14 @@ class responderController extends Controller
 	}
 
 	public function busqueda($id){
-     $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
       $eid = $id;
-      $datos = questionsTemplates::where('templates_idTemplates',$eid)->get();
+      $datos = questionsTemplates::where('templates_idTemplates',$eid)->orderByRaw('orden')->get();
 
-      $datosOpt;
+      $datosOpt=[];
       //echo $datos;
       foreach ($datos as $dato) {
         //echo $dato . ",";

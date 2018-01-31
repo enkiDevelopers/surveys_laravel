@@ -21,9 +21,9 @@ class previewtemController extends Controller
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
       $eid = $id;
-      $datos = questionsTemplates::where('templates_idTemplates',$eid)->get();
+      $datos = questionsTemplates::where('templates_idTemplates',$eid)->orderByRaw('orden')->get();
 
-      $datosOpt;
+      $datosOpt=[];
       //echo $datos;
       foreach ($datos as $dato) {
         //echo $dato . ",";
