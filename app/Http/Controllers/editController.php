@@ -19,8 +19,8 @@ class editController extends Controller
       $nombre = $consulta[0]->imagePath;
       $eid = $id;
       $admor = $consulta[0]->creador;
-      $datos = questionstemplates::where('templates_idTemplates',$eid)->orderby('order','asc')->get();
-      
+      $datos = questionstemplates::where('templates_idTemplates',$eid)->orderby('orden','asc')->get();
+
       $datosOpt;
       //echo $datos;
       foreach ($datos as $dato) {
@@ -38,7 +38,7 @@ class editController extends Controller
 
 
       }
-      
+
 
       //log($datosOpt);
       $options=serialize($datosOpt);

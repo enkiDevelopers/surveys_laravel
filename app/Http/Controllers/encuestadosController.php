@@ -31,11 +31,24 @@ public function publicar(Request $request)
         $instrucciones=$request->instrucciones;
         $destinatarios=$request->destinatarios;
         $tipo=$request->tipo;
+
 if($fechat <= $fechai)
 {
   return false;
 }
 
+        $timage = templates::where('id',$id)->get();
+        $creador = templates::create([
+        'titulo' => $timage[0]->tituloEncuesta,
+        'instrucciones' => $instrucciones,
+        'fechai' =>$fechai ,
+        'fechat'=>$fechat,
+        'destinatarios' => $destinatarios,
+        'creador' =>$timage[0]->creador,
+        'imagen'=> $timage[0]->imagePath,
+    ]);
+
+/*
         $timage = templates::where('id',$id)->get();
         $insertar = new publicaciones;
         $insertar->titulo= $timage[0]->tituloEncuesta;
@@ -45,7 +58,7 @@ if($fechat <= $fechai)
         $insertar->destinatarios=$destinatarios;
         $insertar->creador= $timage[0]->creador;
         $insertar->imagen= $timage[0]->imagePath;
-        $insertar->save();
+        $insertar->save();*/
 
   return response()->json(array('sms'=>'Guardado Correctamente'));
 }

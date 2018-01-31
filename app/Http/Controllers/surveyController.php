@@ -90,7 +90,7 @@ foreach ($preguntasA as $pregunta) {
     $Plantilla = questionsTemplates::create([
             'title' => $pregunta->title,
             'type' => $pregunta->type,
-            'order' => $pregunta->order,
+            'orden' => $pregunta->orden,
             'templates_idTemplates' => $idDupi
         ]);
 
@@ -102,7 +102,7 @@ $preguntasB=questionstemplates::where('templates_idTemplates',$id)->where('type'
     $Pregunta = questionsTemplates::create([
             'title' => $pregunta->title,
             'type' => $pregunta->type,
-            'order' => $pregunta->order,
+            'orden' => $pregunta->orden,
             'salto'=>$pregunta->salto,
             'templates_idTemplates' => $idDupi
         ]);
