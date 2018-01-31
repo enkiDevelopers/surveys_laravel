@@ -36,10 +36,6 @@ if($fechat <= $fechai)
   return false;
 }
 
-if($fechat=="" or $instrucciones=="")
-{
-return false;
-}
         $timage = templates::where('id',$id)->get();
         $insertar = new publicaciones;
         $insertar->titulo= $timage[0]->tituloEncuesta;

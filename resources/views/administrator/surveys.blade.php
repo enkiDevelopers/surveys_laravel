@@ -12,6 +12,8 @@
       <script src="/js/alertify.js"></script>
       <script src="/js/moment.min.js"></script>
       <script type="text/javascript" src="/js/surveys.js"></script>
+      <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
+
 
 <div class="container" >
     <div class="row">
@@ -71,40 +73,7 @@
                 </div>
             </div>
 
-
-            <!-- Modal publicar encuesta-->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-
-                    <div class="col-md-6">
-                      <h4 class="modal-title" id="myModalLabel">Publicar encuesta - Titulo de la encuesta</h4>
-
-                  </div>
-                  </div>
-                  </div>
-                <div class="modal-body">
-                <div class="input-daterange input-group" id="datepicker" data-provide="datepicker">
-                    <input type="text" class="input-sm form-control" name="start" placeholder="Inicio"/>
-                    <span class="input-group-addon">a</span>
-                    <input type="text" class="input-sm form-control" name="end" placeholder="Final"/>
-                </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Publicar</button>
-                </div>
-                </div>
-            </div>
-            </div>
-
-
-            <div class="panel panel-default"  id="panel">
+                    <div class="panel panel-default"  id="panel">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-md-6">
@@ -184,6 +153,7 @@
         </div>
           </form>
 <!--  modal de  creacion de encuesta-->
+    <!-- Modal publicar encuesta-->
         <form id="form" onsubmit="return detener();">
       <div class="modal fade" id="miModal" tabindex="-1"
         role="dialog" aria-labelledby="myModalLabel"
@@ -195,12 +165,12 @@
 					                      <span aria-hidden="true">&times;</span>
 				                        </button>
 				                            <h4 class="modal-title" id="myModalLabel">Publicar encuesta</h4>
-
                           </div>
 			                    <div class="modal-body">
-<!-- Cuerpo del modal inicio -->
+                              <!-- Cuerpo del modal inicio -->
                         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="idModal" value=""/>
+
                         <div class="row">
                         <div class="col-md-6">
                               <label for="inicio">Fecha de inicio</label>
@@ -212,6 +182,17 @@
                         </div>
                         </div>
                         <hr />
+                        <div class="row">
+                        <div class="col-md-12">
+                          <div class="col-md-6">
+                          <label for="asunto">Asunto</label>
+                          </div>
+                          <div class="col-md-6">
+                          <input type="text" name="asunto"  />
+                          </div>
+                        </div>
+                        </div>
+                        <hr />
     <div class="row">
     <div class="col-md-12 text-center">
     <label for="descripcion">Instrucciones de la encuesta:</label>
@@ -219,7 +200,10 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <textarea id="instrucciones" maxlength="500" rows="5" cols="50" required></textarea>
+      <textarea id="instrucciones" maxlength="500" rows="5" cols="50" required class="ckeditor">
+
+      </textarea>
+    <!--  <textarea class="ckeditor" name="editor1" id="editor1" rows="10" cols="80"> </textarea>-->
     </div>
     </div>
   <hr />

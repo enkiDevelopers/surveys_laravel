@@ -154,10 +154,10 @@ function(){
 }
 
 //oculta la pantalla de carga principal cuando la pagina este cargada
-      window.onload = detectarCarga;
+    /*  window.onload = detectarCarga;
       function detectarCarga(){
         document.getElementById("loader").style.display="none";
-                             }
+      }*/
 
 
 //modal para publicacion de plantilla
@@ -321,6 +321,12 @@ function showcards(){
              }
              if (xmlhttp.readyState==4 && xmlhttp.status==200){
                  document.getElementById("actualizar").innerHTML=xmlhttp.responseText;
+                  setTimeout(function(){
+                  //  document.getElementById("loader").style.display="none";
+                    $("#loader").fadeOut(300);
+                 }, 500);
+
+
              }
          }
          var x = document.getElementById("idadmin").value;

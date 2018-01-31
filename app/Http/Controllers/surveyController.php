@@ -40,7 +40,7 @@ class surveyController extends Controller
       $eid =$surv->id;
       $datos = questionsTemplates::where('id',$eid)->get();
 //      return view('administrator.edit',compact('titulo','descripcion','nombre', 'eid','datos'));
-      return redirect()->route('editar',array("section" => "$eid"));
+      return redirect()->route('editar',array("id" => "$eid"));
 
   }
 
