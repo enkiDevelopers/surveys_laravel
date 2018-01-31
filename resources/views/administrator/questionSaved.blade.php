@@ -9,7 +9,7 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
-                    <input type="text" id="staticEmail" readonly class="form-control-static form-control text-black-body numPregs" value=" {{$dato->order}}"/>
+                    <input type="text" id="order{{$dato->order}}" readonly class="form-control-static form-control text-black-body numPregs" value="{{$dato->order}}"/>
                 </div>
             </div>
             <div class="col-md-6 ">
@@ -41,7 +41,7 @@
                         <div class="col-md-4  pull-right">
                            <input id="{{$i}}salto{{$option->id}}" type="hidden" class="form-control text-black-body" name="salto" value="{{$option->salto}}">   
                            <label for="selectNumPreg text-black-body">Redireccionar a: </label>
-                            <select name="numPreg" class="form-control text-black-body selectNumPreg">
+                            <select name="numPreg" id="preguntasTotal" order="{{$dato->order}}" class="form-control text-black-body selectNumPreg">
                                 <option value="N/A" selected disabled>Selecciona la pregunta</option>
                             </select>
                         </div>

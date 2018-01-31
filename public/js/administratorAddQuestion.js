@@ -91,11 +91,12 @@ $(document).ready(function(){
 
     //Contar todos los divs de todas la preguntas
     $(".selectNumPreg").mousedown(function(){
-        var sig = $(this).parent().parent().parent().parent().parent().parent().nextAll('.new-question-template').length;
-
-        for (var i = 0; i < sig; i++) {
-            var o = i+2;
-             $(".selectNumPreg").html('<option value="'+o+'">'+o+'</option>');
+        var max = $(".numPregs").length;
+        var act = parseInt($(this).attr('order')) + 1;
+        $(this).empty();
+ 
+        for (var i = act; i <= max; i++) {
+             $(this).append('<option value="'+i+'">'+i+'</option>');
         } 
     });
 
