@@ -155,7 +155,7 @@
 <!--  modal de  creacion de encuesta-->
     <!-- Modal publicar encuesta-->
         <form id="form" onsubmit="return detener();">
-      <div class="modal fade" id="miModal" tabindex="-1"
+      <div class="modal fade" id="miModal" 
         role="dialog" aria-labelledby="myModalLabel"
         data-backdrop="static" data-keyboard="false">
 	           <div class="modal-dialog" role="document">
@@ -199,7 +199,8 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <textarea id="instrucciones" maxlength="500" rows="5" cols="50" required class="ckeditor">
+
+      <textarea id="instrucciones" name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor">
 
       </textarea>
     <!--  <textarea class="ckeditor" name="editor1" id="editor1" rows="10" cols="80"> </textarea>-->
