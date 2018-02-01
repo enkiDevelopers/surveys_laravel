@@ -188,3 +188,5 @@ Route::post('pdf', 'directiveController@generarPdf');
 Route::post('/administrator/addSalto/','questionsTemplateController@addSalto');
 
 Route::post('/administrator/deleteQuestion','questionsTemplateController@deleteQuestion');
+
+Route::post('/guardar',['as'=>'guardar' , 'uses'=> 'responderController@guardarencuesta']);

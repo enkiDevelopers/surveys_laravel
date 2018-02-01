@@ -17,8 +17,8 @@ function corporativoModal(comp){
               success : function(response){
                 var titulo="";
                 var imagen="";
-                    titulo+="<h4><b>"+response["0"].titulo+"</b></h4>";
-                    imagen+="<img class='card-img-top' style='border-radius: 10px;' alt='Card image cap' src='/img/iconos/"+response[0].imagen+"' width='50%' height='90px'>";
+                    titulo+="<h4><b>"+response["0"].tituloEncuesta+"</b></h4>";
+                    imagen+="<img class='card-img-top' style='border-radius: 10px;' alt='Card image cap' src='/img/iconos/"+response["0"].imagePath+"' width='50%' height='90px'>";
 
                  $("#titulo_encuesta").html(titulo);
                  $("#imagen").html(imagen);
@@ -51,8 +51,8 @@ function regionalModal(comp){
                 var titulo="";
                 var imagen="";
 
-                    titulo+="<h4><b>"+response["0"].titulo+"</b></h4>";
-                    imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response[0].imagen+"' width='50%' height='90px'>";
+                    titulo+="<h4><b>"+response["0"].tituloEncuesta+"</b></h4>";
+                    imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response["0"].imagePath+"' width='50%' height='90px'>";
 
                  $("#titulo_encuestar").html(titulo);
                  $("#imagenr").html(imagen);
@@ -143,14 +143,14 @@ function selecciona(busq){
             var id=document.getElementById('idencues').innerText;
             var dirt = document.getElementById('cmbcampus').value;
             var url = '/campus/'+id+'/'+dirt;
-            var ventana=window.open(url,'Grafica');
+            var ventana=window.open(url,'_blank');
             ventana.focus();
         }
         function getURLRegion(){
             var id   = document.getElementById('idencues').innerText;
             var cmbre = document.getElementById('cmbregion').value;
             var url = '/region/'+id+'/'+cmbre;
-            var ventana=window.open(url,'Grafica');
+            var ventana=window.open(url,'_blank');
             ventana.focus();
         }
 
@@ -158,20 +158,20 @@ function selecciona(busq){
             var id=document.getElementById('variable').innerText;
             var dirt = document.getElementById('regionescorp').value;
             var url = '/campus/'+id+'/'+dirt;
-            var ventana=window.open(url,'Grafica');
+            var ventana=window.open(url,'_blank');
             ventana.focus();
         }
         function getURLRegionCorp(){
             var id   = document.getElementById('variable').innerText;
             var cmbre = document.getElementById('cmbregioncorp').value;
             var url = '/region/'+id+'/'+cmbre;
-            var ventana=window.open(url,'Grafica');
+            var ventana=window.open(url,'_blank');
             ventana.focus();
         }
         function getURLGeneral(){
             var id   = document.getElementById('variable').innerText;
             var url = '/general/'+id;
-            var ventana=window.open(url,'Grafica');
+            var ventana=window.open(url,'_blank');
             ventana.focus();
         }
    

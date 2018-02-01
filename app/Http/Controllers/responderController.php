@@ -20,20 +20,26 @@ class responderController extends Controller
 	public function presentacion($matricula){
 		//$id es el la variable de la table encuestados donde se almacena la informacion
 		$datos=DB::table('encuestados')
-			->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.id')
+			->join('encuestas','encuestados.idEncuesta','=','encuestas.id')
 			->where('encuestados.matricula','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
 		$constestado=DB::table('encuestados')
-			->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.id')
+			->join('encuestas','encuestados.idEncuesta','=','encuestas.id')
 			->where('encuestados.matricula','=',$matricula)
 			->where('encuestados.contestado','=',1)
 			->get();
 		return view('surveyed.home',compact('datos','constestado'));
 	}
-
 	public function busqueda($id){
-      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+		return $this->buscar($id);
+
+     
+
+ //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
+  }
+	protected function buscar($id){
+	    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
@@ -67,11 +73,29 @@ class responderController extends Controller
         echo $cada["questions"];
         echo $cada["options"];
       }
-*/
-      $admor = $consulta[0]->creador;
 
-      return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor'));
+*/      $admor = $consulta[0]->creador;
+       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor'));
 
- //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
+
+
+	}
+  public function guardarencuesta(Request $request){
+    $idEncuesta=$request->Input('idencuesta');
+    $preguntas=DB::table('questionsTemplates')
+                ->select('id')
+                ->where('templates_idTemplates','=',$idEncuesta)
+                ->get();
+
+    foreach ($preguntas as $pregunta) {
+        $respuesta=$request->Input($pregunta->id);
+        DB::table('respuestas')
+        ->insert(['respuesta' => $respuesta, 
+                  'idEncuesta' => $idEncuesta,
+                  'idPreguntasEncuestas' => $pregunta->id]);
+    }
+
+
   }
+
 }

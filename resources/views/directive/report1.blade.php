@@ -12,12 +12,12 @@
 		foreach ($datoencuesta as $datoencuestas) {
             echo "<div class'col-md-11'>";
             echo "<div class='col-md-6'>";
-			echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->titulo}</h3>";
+			echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->tituloEncuesta}</h3>";
 			echo "<h4><b>Región: {$regioname[0]->regions_name}</b></h4>";
 			echo "</div>";
 			echo "<br>";
 			echo "<div class='col-md-6'>";
-			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagen}'>";
+			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}'>";
 			echo "</div>";
             echo "</div>";
 		}?>
@@ -37,6 +37,7 @@
         $totaltra=0;
         $total3=0;
         $totalencuestatrabajador=0;
+        $campus=0;
 
         foreach ($estadisticas as $estadistica) {
        	  if($estadistica->total_encuestados==0){

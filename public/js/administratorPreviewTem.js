@@ -37,7 +37,11 @@ $(document).ready(function(){
         //n=b;
         //b=n-1;
         $("#preg"+n).css("display", "inline");
+        if(n==0){
+          $("#idTitlePregunta").text("Recomendaciones: ");
+        }else{
         $("#idTitlePregunta").text("Pregunta " + n);
+    }
 
     }
 
@@ -75,10 +79,9 @@ $(document).ready(function(){
     	if(n>=$(".pregs").length){
             //$("#preg"+n).css("display", "none");
             $("#idTitlePregunta").css("display", "none");
-    		$("#idNext").attr('disabled','disabled');		
+    		$("#idNext").attr('disabled','disabled');	
+            $("#idenviar").css("display","");	
             //$("#idSave").css("display","inline");
-
-
             swal({
                 title: "Encuesta Completada !",
                 text: "Haz completado la encuesta satisfactoriamente !",

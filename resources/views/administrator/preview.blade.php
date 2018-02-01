@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -126,67 +126,68 @@
                 </div>
   	        </div>
         
-		<?php 
-			$i=1;
+
+    <form method="POST" action="/guardar">
+        <?php 
+            $i=1;
             $preguntas = unserialize($options);
-            foreach ($preguntas as $cada) {
-                $dato=$cada["questions"];
-            ?>
-	        <div  class= "pregs" id="preg<?php echo $i?>" style="display:none">
-
+            foreach ($preguntas as $cada){
+            $dato=$cada["questions"];
+        ?>
+            <div class= "pregs" id="preg<?php echo $i?>" style="display:none">
                 <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
-                <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>">                
-                <?php                   
-                    if($dato->type==1){
-                ?>
-                <div class="bl_form" style="margin-left: 21%;">
-                    <div class="lb_wrap" style="position:relative; display: inline;"></div>
-                    <input type="text" style="height: 38px;" class="label_better form-control text-black-body" placeholder="{{$dato->title}}">
+                <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
+        <?php
+            if($dato->type==1){
+        ?>
+            <div class="bl_form" style="margin-left: 21%;">
+                <div class="lb_wrap" style="position:relative; display: inline;"></div>
+                    <label>{{$dato->title}}
+                        <input type="input" style="height: 38px;width: 600px;" name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" class="form-control" >
+                    </label>
+            </div>
+        <?php
+            }
+            else{
+        ?>
+                <div class="form-group" style="margin-left: 21%;">
+                <label> {{$dato->title}}</label>
                 </div>
-
-                <?php                   
-                    }else{
-                        $opciones=$cada["options"];
-                ?>                        
-                <div class="form-group text-black-body">
-                    <label >Selecciona tu respuesta:</label><br>
-                    <label >{{$dato->title}}</label>
-                </div>
-
-                <?php                                   
-                //echo unserialize($options);
-                foreach ($opciones as $option) {
-
-                ?>
-                <div class="form-group">
-                    <input  type="radio" name="opcion<?php echo $i?>" value="<?php echo $option->id?>">
+        <?php 
+                $opciones=$cada["options"]; 
+                foreach ($opciones as $option) {?>
+                <div class="form-group" style="margin-left: 21%;">
+                    <input type="radio" name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" value="<?php echo $option->name?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">                    
+                </div>                  
+        <?php
+        }
+        ?>
 
-                </div>
-                <?php                   
-                    }}
-                ?>
-                
-    	    </div>
-       	<?php $i++;
-			}?>
-            <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
-                <div class="form-group">                </div>
+        <?php
+            }
+        ?>
+        </div>
+        <?php
+                 $i++;   
+        }
+        ?>
+        <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
+            <div class="form-group">                
             </div>
-            <?php 
-                $i++;
-            ?>
-            
-            <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
-                <div class="form-group">
-                </div>
-            </div>
+        </div>
+        <?php 
+            $i++;
+        ?>
+        <input type="hidden" name="idencuesta" value="{{$eid}}">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+        <input type="submit" class="btn btn-md btn-default" id="idenviar" value="enviar" style="display:none;">
+        </form>
 
         <div class="col-md-3 pull-right" >
         	<button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
-        	<button type="button" class="btn btn-md btn-danger" id="idNext">Siguiente</button>	
-            <button type="button" class="btn btn-md btn-success" id="idSave" style="display:none">Save</button>  
+        	<button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button>	
         </div>
     	</div>
 </div>        

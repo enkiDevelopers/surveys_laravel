@@ -144,13 +144,13 @@
 
                                 <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagen;?>" width="100%" height="90px"> </div>
+                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagePath;?>" width="100%" height="90px"> </div>
                                     <div class="col-md-7">
-                                    <h4 class="card-title">  <?php echo $encuesta->titulo;  ?></h4>
+                                    <h4 class="card-title">  <?php echo $encuesta->tituloEncuesta;  ?></h4>
                                     </div>
                                 </div>
                                 <hr size="30">
-                                <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->instrucciones?></span></p>
+                                <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->descripcion?></span></p>
                                 <p class="card-text">Fecha Inicial: <span class="template-creator"><?php echo $encuesta->fechai ?></span></p>
                                 <p class="card-text">Fecha Termino: <span class="template-creator"><?php echo $encuesta->fechat ?></span></p>
 

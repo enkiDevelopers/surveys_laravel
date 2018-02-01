@@ -13,11 +13,11 @@
     <?php 
         foreach ($datoencuesta as $datoencuestas) {
             echo "<div class='col-md-6'>";
-            echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->titulo}</h3>";
+            echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->tituloEncuesta}</h3>";
             echo "</div>";
             echo "<br>";
             echo "<div class='col-md-6'>";
-            echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagen}'>";
+            echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}'>";
             echo "</div>";
     }
     ?>

@@ -36,7 +36,7 @@ class directiveController extends Controller
   public function show_cards($id)
   {
       $campus=0;
-      $encuestas = DB::table('publicaciones')->orderByRaw('updated_at - created_at DESC')->get();
+      $encuestas = DB::table('encuestas')->orderByRaw('updated_at - created_at DESC')->get();
       $datosdirective =DB::table('directives')->where('idDirectives','=',$id)->get();
       switch ($datosdirective["0"]->type) {
         case '1':
@@ -72,7 +72,7 @@ class directiveController extends Controller
 
   }
   public function buscar(Request $request){
-    $data = DB::table('publicaciones')->where("id", $request->id)->get();
+    $data = DB::table('encuestas')->where("id", $request->id)->get();
     return response()->json($data);
   }
   public function busquedacampus(Request $request){
@@ -101,7 +101,7 @@ class directiveController extends Controller
                                                ['campus_campus_id','=',$idcampus],])->get();
       $campusname=DB::table('ctlCampus')->where('campus_id','=',$idcampus)->get();
 
-      $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
+      $datoencuesta=DB::table('encuestas')->where('id','=',$id)->get();
 
       return view('directive.report',compact('datoencuesta','info','campusname'));
   }
@@ -133,12 +133,11 @@ class directiveController extends Controller
                   ->select('estadisticas.*','ctlCampus.*')
                   ->where('estadisticas.surveys_id','=',$id)
                   ->where('ctlCampus.regions_regions_id','=',$idregion)
+                  ->orderBy('ctlCampus.campus_name')
                   ->get();
     $regioname= DB::table('ctlRegions')->where('regions_id','=',$idregion)->get();
-    $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
-
+    $datoencuesta=DB::table('encuestas')->where('id','=',$id)->get();
     return view('directive.report1',compact('datoencuesta','estadisticas','regioname'));
-
 
   }
   public function estadisticasGeneral($id){
@@ -151,10 +150,8 @@ class directiveController extends Controller
                   ->where('estadisticas.surveys_id','=',$id)
                   ->get();
 
-        $datoencuesta=DB::table('publicaciones')->where('id','=',$id)->get();
+        $datoencuesta=DB::table('encuestas')->where('id','=',$id)->get();
 
-        $encrypted = md5($id);
-        echo $encrypted;
         return view('directive.reporteGeneral',compact('datoencuesta','estadisticas','regiones'));
   }
   public function generarPdf(){
