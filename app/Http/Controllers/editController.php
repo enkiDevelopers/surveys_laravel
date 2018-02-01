@@ -13,7 +13,7 @@ class editController extends Controller
 {
   public function busqueda($id)
   {
-      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+      $consulta = templates::select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $nombre = $consulta[0]->imagePath;

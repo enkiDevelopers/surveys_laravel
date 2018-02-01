@@ -9,7 +9,7 @@ use DB;
 use File;
 use Input;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\administradores;
+use App\usuarios;
 use App\publicaciones;
 use App\listaEncuestados;
 use App\ctlTipoEncuesta as tipos;
@@ -46,17 +46,18 @@ class surveyController extends Controller
 
   public function show_cards($id)
   {
-    $eAdmin =  administradores::where('id_admin', $id)->count();
+    $eAdmin =  usuarios::where('idUsuario', $id)->where('type', '4')->count();
     if($eAdmin == 0)
     {
       return view('errors.404');
     }
     else {
-    $propias = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
-    $agenas = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
+    $propias = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario', $id)->orderby('id', 'desc')->get();
+    $agenas = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario','!=',$id)->orderby('id', 'desc')->get();
       $tipos = tipos::all();
       $publicaciones = publicaciones::all();
       $listas= listaEncuestados::where('creador', $id)->get();
+
       return view('administrator.surveys', compact('propias','agenas','listas','tipos','publicaciones','id'));
     }
 
@@ -124,15 +125,14 @@ foreach ($opciones as $opcion) {
 public function ajaxshowcards(Request $request)
 {
   $id=$request->value;
-
-  $eAdmin =  administradores::where('id_admin', $id)->count();
+  $eAdmin =  usuarios::where('idUsuario', $id)->count();
   if($eAdmin == 0)
   {
     return view('errors.404');
   }
   else {
-    $propias = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin', $id)->orderby('id', 'desc')->get();
-    $agenas = templates::join('administradores', 'templates.creador', '=', 'administradores.id_admin')->where('administradores.id_admin','!=',$id)->orderby('id', 'desc')->get();
+    $propias = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario', $id)->orderby('templates.id', 'desc')->get();
+    $agenas = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario','!=',$id)->orderby('templates.id', 'desc')->get();
     $tipos = tipos::all();
     $publicaciones = publicaciones::all();
     $listas= listaEncuestados::where('creador', $id)->get();

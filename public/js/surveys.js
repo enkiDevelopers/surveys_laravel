@@ -123,7 +123,6 @@ cancelButtonText: "Cancelar",
 confirmButtonColor: "#DD6B55",
 confirmButtonText: "Eliminar",
 closeOnConfirm: false },
-
 function(){
  $.ajax({
   url: "/administrator/delete/",
@@ -149,7 +148,7 @@ function(){
            text: "Ha ocurrido un error",
            type: "warning",
             });
-
+            $("#procesando").hide();
             }
   });
 

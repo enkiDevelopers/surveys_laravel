@@ -18,7 +18,7 @@
            <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
            </div>
            <div class="">
-           <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
+           <p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->nombre}}</span></p></div>
          </div>
 
            <div class="btn-group centrarbtn" role="group" aria-label="...">
@@ -70,7 +70,7 @@ onerror="this.src='/img/iconos/default.png'">
 <h4 class="card-title"  >  <?php echo $plantilla->tituloEncuesta;  ?></h4>
 </div>
 <div class="">
-<p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->Nombre}}</span></p></div>
+<p class="card-text responsiveText">Creada por <span class="template-creator"> {{$plantilla->nombre}}</span></p></div>
 </div>
 <div class="btn-group centrarbtn" role="group" aria-label="...">
   <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}" target="_blank" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
