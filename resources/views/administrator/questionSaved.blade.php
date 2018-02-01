@@ -29,13 +29,13 @@
             $opciones=$cada["options"];
             foreach ($opciones as $option) {
 ?>
-            <div class="row  yes-no-question-block " id="yes-no-question-template">
-                <div class="col-md-12" data-questions="0" id="childSupport">
+            <div class="row yes-no-question-block" id="yes-no-question-template">
+                <div class="col-md-12" data-questions="0">
                     <div class="col-md-12" id="multi-options">
                         <div class="col-md-6 " data-multioptions="0">
                             <div class="form-group">
                                 <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
-                                <input type="text" readonly class="form-control-static form-control text-black-body" id="{{$option->id}}" value="{{$option->name}}" >
+                                <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
                         </div>
                         <div class="col-md-4  pull-right">                           
@@ -43,7 +43,6 @@
                             <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
                                 <option value="N/A" selected disabled>Selecciona la pregunta</option>
                             </select>
-                            <input id="{{$i}}salto{{$option->id}}" type="text" class="form-control text-black-body" name="salto" value="{{$option->salto}}">   
                         </div>
                     </div>
                 </div>
@@ -57,7 +56,7 @@
                     <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </button>
-                    <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question" id="{{$dato->id}}" typeQuestion="{{$dato->type}}">
+                    <button class="btn btn-danger col-md-4 new-question__control delete-question__control--delete-question" id="{{$dato->id}}" typeQuestion="{{$dato->type}}" orden="{{$dato->orden}}" idTemplate= {{$eid}}>
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
                 </div>

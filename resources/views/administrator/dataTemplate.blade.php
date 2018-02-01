@@ -1,4 +1,4 @@
-<div class="col-md-12 ">
+<div class="col-md-12">
     <div>
         <div class="col-sm-12  light-grey">
             <h2 class="text-center">Plantilla de Encuesta</h2>

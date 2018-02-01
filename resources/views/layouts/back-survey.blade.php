@@ -12,6 +12,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/alertify.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/themes/default.min.css">
 
 </head>
 <body>

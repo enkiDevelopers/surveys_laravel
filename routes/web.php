@@ -190,3 +190,9 @@ Route::post('/administrator/addSalto/','questionsTemplateController@addSalto');
 Route::post('/administrator/deleteQuestion','questionsTemplateController@deleteQuestion');
 
 Route::post('/guardar',['as'=>'guardar' , 'uses'=> 'responderController@guardarencuesta']);
+
+Route::get('/administrator/modalQuestionEdit', function(){
+    return view("administrator.modalQuestionEdit");
+});
+
+Route::post('/administrator/editQuestion/','questionsTemplateController@editQuestion');

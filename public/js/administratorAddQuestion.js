@@ -88,8 +88,9 @@ $(document).ready(function(){
     });
     /*********************************************************************************/      
 
-    //Contar todos los divs de todas la preguntas
-    $(".selectNumPreg").mousedown(function(){
+
+    //Contar todos los divs de todas la preguntas y mostrarlas en el select, enviar salto a la pregunta siguiente 
+    $("#container-questions").on('mousedown','.selectNumPreg',function(){
         var max = $(".numPregs").length;
         var act = parseInt($(this).attr('order')) + 1;
         $(this).empty();
@@ -121,23 +122,41 @@ $(document).ready(function(){
             console.log("complete");
         });        
     });
+    /*********************************************************************************/      
 
-    $('.new-question__control--delete-question').click(function() {
+    //Eliminar una pregunta
+    $('#container-questions').on('click', '.delete-question__control--delete-question',function() {
         var idQuestion = $(this).attr('id');
-        //var idOption = parseInt($(this).attr('idOption'));
+        var idTemplate = $(this).attr('idTemplate');
+        var orden =$(this).attr('orden');
         var typeQuestion = parseInt($(this).attr('typeQuestion'));
 
         alertify.confirm("¿Desea eliminar la pregunta?",function(){
-            $.ajax({
-                url: '/administrator/deleteQuestion',
-                type: 'POST',
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                dataType: 'json',
-                data: {idQuestion: idQuestion, typeQuestion: typeQuestion },
-                beforeSend: function( xhr ) {   
-                    $(".new-question__control--edit-question").attr('disabled','true'); 
-                    $(".new-question__control--delete-question").attr('disabled','true');
-                },
+            eliminarPregunta(idQuestion,typeQuestion,orden,idTemplate);         
+          },
+          function(){
+            
+          });
+    });
+    /*********************************************************************************/      
+
+
+    function eliminarPregunta(idQuestion,typeQuestion,orden,idTemplate){
+    /*    var idQuestion = $(this).attr('id');
+        var idTemplate = $(this).attr('idTemplate');
+        var orden =$(this).attr('orden');
+        var typeQuestion = parseInt($(this).attr('typeQuestion'));
+   */ 
+                $.ajax({
+            url: '/administrator/deleteQuestion',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType: 'json',
+            data: {idQuestion: idQuestion, typeQuestion: typeQuestion, orden:orden,idTemplate:idTemplate },
+            beforeSend: function( xhr ) {   
+                $(".new-question__control--edit-question").attr('disabled','true'); 
+                $(".delete-question__control--delete-question").attr('disabled','true');
+            },
             })
             .done(function() {
                 alertify.alert("Pregunta Eliminada correctamente.", function(){
@@ -150,13 +169,18 @@ $(document).ready(function(){
             })
             .always(function() {
                 $(".new-question__control--edit-question").attr('disabled','false'); 
-                $(".new-question__control--delete-question").attr('disabled','false');
-            });            
-          },
-          function(){
-            
-          });
+                $(".delete-question__control--delete-question").attr('disabled','false');
+            });
+    }
+
+  /*  //Editar una pregunta 
+    $('#container-questions').on('click', '.new-question__control--edit-question', function() {
+        $("#ModalQuestionEdit").appendTo('body').modal();
+        $("#questionInput").append('')
+        //obtener el orden de la pregunta a editar
+        //obtener titulo y tipo de la pregunta
     });
+    /*********************************************************************************/      
 
 /*
     //Eliminar una opcion multiple
@@ -349,18 +373,12 @@ $(document).ready(function(){
                         alertify.alert("Pregunta Guardada correctamente.", function(){
                             alertify.success('Pregunta Añadida');                       
                             $("#ModalQuestion").modal('hide').find("input").val("");
-                            $("#questionType").val("1").attr('selected','true');
-                            $(".new-question__control--delete-question").parent().parent().parent().prev().children().children().next().next().next().remove();
-                          });
+                        });
                             $("#container-questions").load(" #container-questions");
-                    
-                     console.log(e);
-         
                     }else{
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
                             alertify.message('OK');
                         });
-                     console.log(e);
                     }
                 },
                 error: function (textStatus, errorThrown) {

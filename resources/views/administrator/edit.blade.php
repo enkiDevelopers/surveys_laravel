@@ -23,5 +23,4 @@
 </div>
 
 				@include('administrator.modalTitle')
-
  @endsection

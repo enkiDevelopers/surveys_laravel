@@ -83,28 +83,21 @@ class questionsTemplateController extends Controller
     public function deleteQuestion(Request $request){
 
         $idQuestion = $request['idQuestion'];
-        //$idOption = $request['idOption'];
+        $idTemplate = $request['idTemplate'];
+        $orden = $request['orden'];
         $typeQuestion =$request['typeQuestion'];
 
-        if ($typeQuestion == 1) {
-            $result = questionsTemplates::where('id',$idQuestion)->delete();
-        }else{
-        /*
-            $result = questionsTemplates::where('id',$idQuestion)->delete();
+        $result = questionsTemplates::where('id',$idQuestion)->delete();
 
-            $valOptions = count(json_decode(json_encode($optionsResult), true));
-            for ($i=0; $i < $valOptions; $i++) { 
-        
-                DB::table('optionsMult')->insert([
-                    ['name' => $optionsResult[$i], 'idParent' => $eid, 'salto' => $salto],
-                ]);               
-
-            }
-        */
-        
-
+        if ($typeQuestion == 2) {
+            $result = optionsMult::where('idParent', $idQuestion)->delete();
         }
-        
+
+        $update = questionsTemplates::where('orden','>',$orden)
+                    ->where('templates_idTemplates',$idTemplate)
+                    ->decrement('orden');
+
+       
         return $result;
     }
 
