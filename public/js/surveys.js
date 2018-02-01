@@ -13,6 +13,7 @@
 
     function limpiar3(){
     document.getElementById("form").reset();
+    CKEDITOR.instances.instrucciones.setData('');
                         }
 
     function limpiar4(){
@@ -38,12 +39,14 @@
     if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
     {
       alert('Por favor Ingrese un archivo de Imagen');
+      document.getElementById("myForm").reset();
       return false;
     }
 
     if( typeof FileReader === "undefined" )
     {
         alert( "El archivo no es una imagen por favor ingrese una" );
+        document.getElementById("myForm").reset();
         return false;
     }
 
@@ -52,6 +55,7 @@
     if( !( /image/i ).test( file.type ) )
     {
         alert( "El archivo no es una imagen" );
+          document.getElementById("myForm").reset();
         return false;
     }
 
@@ -172,9 +176,11 @@ function(){
 function enviar()
 {
   var id = $("#idModal").val();
+  var asunto=$("#asunto").val();
   var fechai = $("#inicio").val();
   var fechat = $("#termino").val();
-  var instrucciones = $("#instrucciones").val();
+//  var instrucciones = $("#instrucciones").val();
+var instrucciones = CKEDITOR.instances['instrucciones'].getData();
   var destinatarios = $("#destinatario").val();
   var tipo = $("#tipo").val();
 
@@ -188,7 +194,8 @@ function enviar()
         fechai:fechai,
         fechat:fechat,
         instrucciones:instrucciones,
-        destinatarios: destinatarios
+        destinatarios: destinatarios,
+        asunto:asunto
   },
   beforeSend: function(){
     $("#procesando").show();

@@ -169,15 +169,14 @@
 			                    <div class="modal-body">
                               <!-- Cuerpo del modal inicio -->
                         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" id="idModal" value=""/>
-
+                        <input type="hidden" id="idModal" />
                         <div class="row">
                         <div class="col-md-6">
                               <label for="inicio">Fecha de inicio</label>
                               <input type="datetime"  value="" readonly id="inicio">
                         </div>
                         <div class="col md-6">
-                              <label for="termino">Fecha de Termino:</label>
+                              <label for="termino">Fecha de Término:</label>
                               <input type="datetime-local"   required id="termino" min="">
                         </div>
                         </div>
@@ -188,7 +187,7 @@
                           <label for="asunto">Asunto</label>
                           </div>
                           <div class="col-md-6">
-                          <input type="text" name="asunto"  />
+                          <input type="text" name="asunto" id="asunto" maxlength="100"/>
                           </div>
                         </div>
                         </div>
@@ -221,7 +220,7 @@
     </div>
     <div class="col-md-6 text-center">
 
-    <label for="tipo">tipo de encuesta: </label>
+    <label for="tipo">Tipo de encuesta: </label>
 
     </div>
     </div>
