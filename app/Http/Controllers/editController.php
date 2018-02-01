@@ -30,15 +30,12 @@ class editController extends Controller
           $opt=optionsMult::where('idParent',$idq)->get();
           //echo $opt . ",";
         }else{
-          $opt=null;
+          $opt=0;
         }
         $datosOpt[] = [
         "questions" => $dato,
         "options" => $opt];
-
-
       }
-
 
       //log($datosOpt);
       $options=serialize($datosOpt);

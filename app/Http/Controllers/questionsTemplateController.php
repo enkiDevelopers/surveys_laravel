@@ -17,7 +17,7 @@ class questionsTemplateController extends Controller
         $questionType = $request['questionType'];
         $idTemplate = $request['idTemplate'];
         $optionsResult = $request['optionsResult'];
-        //$idParent = $request['idParent'];
+        $salto = $request['salto'];
 
             $surv = new questionsTemplates;
             $surv->templates_idTemplates = $idTemplate;
@@ -39,14 +39,14 @@ class questionsTemplateController extends Controller
             for ($i=0; $i < $valOptions; $i++) { 
         
                 DB::table('optionsMult')->insert([
-                    ['name' => $optionsResult[$i], 'idParent' => $eid],
+                    ['name' => $optionsResult[$i], 'idParent' => $eid, 'salto' => $salto],
                 ]);               
 
             }
 
             $preguntas = questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
 
-            $datosOpt;
+            $datosOpt = [];
             //echo $datos;
             foreach ($preguntas as $dato) {
                 //echo $dato . ",";
@@ -69,19 +69,50 @@ class questionsTemplateController extends Controller
         }
     }
 
-    public function deleteQuestion(){
+    public function addSalto(Request $request){
+        $salto = $request['salto'];
+        $idQuestion = $request['idQuestion'];
+        $idOption = $request['idOption'];
 
-        $orden = $request['orden'];
-        $idTemplate = $request['idTemplate'];
+        $option = optionsMult::where('idParent',$idQuestion)->where('id',$idOption)->update(array('salto' => $salto));
 
-        $surv = new questionsTemplates;
+        return $option;
 
-        $surv::where('id', $idTemplate and 'orden',$orden)->delete();
-
-        return "1";
     }
 
-    public function updateQuestion(){
+    public function deleteQuestion(Request $request){
+
+        $idQuestion = $request['idQuestion'];
+        //$idOption = $request['idOption'];
+        $typeQuestion =$request['typeQuestion'];
+
+        if ($typeQuestion == 1) {
+            $result = questionsTemplates::where('id',$idQuestion)->delete();
+        }else{
+        /*
+            $result = questionsTemplates::where('id',$idQuestion)->delete();
+
+            $valOptions = count(json_decode(json_encode($optionsResult), true));
+            for ($i=0; $i < $valOptions; $i++) { 
+        
+                DB::table('optionsMult')->insert([
+                    ['name' => $optionsResult[$i], 'idParent' => $eid, 'salto' => $salto],
+                ]);               
+
+            }
+        */
+        
+
+        }
+        
+        return $result;
+    }
+
+    public function editQuestion(Request $request){
+        
+    }
+
+    public function updateQuestion(Request $request){
 
         $orden = $request['orden'];
         $idTemplate = $request['idTemplate'];
@@ -92,7 +123,5 @@ class questionsTemplateController extends Controller
 
         return $surv;
     }
-
-
 
 }

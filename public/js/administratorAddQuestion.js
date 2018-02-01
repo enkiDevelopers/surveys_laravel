@@ -31,7 +31,6 @@ $(document).ready(function(){
         $("#optionsFather").append(elem2);
     }
 
-
     function agregarOpcionMultiple(donde){
         var elem = $("#options-template").clone().removeClass("hide");
         elem.attr("id", "options-template1");
@@ -47,7 +46,7 @@ $(document).ready(function(){
     /*********************************************************************************/
 
     // Habilitar opción para cambiar entre pregunta abierta u opción múltiple
-      $("#ModalQuestion").on("change", "#questionType", function(){
+    $("#ModalQuestion").on("change", "#questionType", function(){
         switch($(this).val()){
             case "1": //Seleccionó pregunta abierta
                     eliminarOpcionMultiple();
@@ -94,10 +93,69 @@ $(document).ready(function(){
         var max = $(".numPregs").length;
         var act = parseInt($(this).attr('order')) + 1;
         $(this).empty();
+        $(this).append('<option value="N/A" selected disabled>Selecciona la pregunta</option>');
  
         for (var i = act; i <= max; i++) {
              $(this).append('<option value="'+i+'">'+i+'</option>');
         } 
+    }).change(function() {
+
+        var salto = $(this, ".selectNumPreg").val();
+        var idQuestion = parseInt($(this).attr('id'));
+        var idOption = parseInt($(this).attr('idOption'));
+
+        $.ajax({
+            url: '/administrator/addSalto/',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType: 'json',
+            data: {salto: salto, idQuestion: idQuestion, idOption:idOption },
+        })
+        .done(function() {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });        
+    });
+
+    $('.new-question__control--delete-question').click(function() {
+        var idQuestion = $(this).attr('id');
+        //var idOption = parseInt($(this).attr('idOption'));
+        var typeQuestion = parseInt($(this).attr('typeQuestion'));
+
+        alertify.confirm("¿Desea eliminar la pregunta?",function(){
+            $.ajax({
+                url: '/administrator/deleteQuestion',
+                type: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json',
+                data: {idQuestion: idQuestion, typeQuestion: typeQuestion },
+                beforeSend: function( xhr ) {   
+                    $(".new-question__control--edit-question").attr('disabled','true'); 
+                    $(".new-question__control--delete-question").attr('disabled','true');
+                },
+            })
+            .done(function() {
+                alertify.alert("Pregunta Eliminada correctamente.", function(){
+                    alertify.error('Pregunta Eliminada');
+                  });
+                    $("#container-questions").load(" #container-questions");
+            })
+            .fail(function() {
+               alertify.alert("No se ha podido eliminar la pregunta.", function(){});
+            })
+            .always(function() {
+                $(".new-question__control--edit-question").attr('disabled','false'); 
+                $(".new-question__control--delete-question").attr('disabled','false');
+            });            
+          },
+          function(){
+            
+          });
     });
 
 /*
@@ -260,6 +318,7 @@ $(document).ready(function(){
         var questionInput = $("#questionInput").val();
         var questionOptionInputsA = document.getElementsByClassName('questionOptionInputs');
         var questionType= $("#questionType").val();
+        var salto = parseInt(numPregSig) + 1;
         var token = $("#token").val();
 
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
@@ -280,7 +339,7 @@ $(document).ready(function(){
                 url: action,
                 headers: {'X-CSRF-TOKEN': token},
                 dataType: 'json',
-                data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, optionsResult: optionsResult},
+                data: {idTemplate: idTemplate, numPregSig: numPregSig, questionInput: questionInput, questionType: questionType, optionsResult: optionsResult,salto: salto},
                 beforeSend: function( xhr ) {   
                     $(".new-question__control--add-question").attr('disabled','true'); 
                     $(".new-question__control--delete-question").attr('disabled','true');

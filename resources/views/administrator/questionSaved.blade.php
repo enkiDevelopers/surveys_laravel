@@ -38,12 +38,12 @@
                                 <input type="text" readonly class="form-control-static form-control text-black-body" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
                         </div>
-                        <div class="col-md-4  pull-right">
-                           <input id="{{$i}}salto{{$option->id}}" type="hidden" class="form-control text-black-body" name="salto" value="{{$option->salto}}">   
+                        <div class="col-md-4  pull-right">                           
                            <label for="selectNumPreg text-black-body">Redireccionar a: </label>
-                            <select name="numPreg" id="preguntasTotal" order="{{$dato->orden}}" class="form-control text-black-body selectNumPreg">
+                            <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
                                 <option value="N/A" selected disabled>Selecciona la pregunta</option>
                             </select>
+                            <input id="{{$i}}salto{{$option->id}}" type="text" class="form-control text-black-body" name="salto" value="{{$option->salto}}">   
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </button>
-                    <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question">
+                    <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question" id="{{$dato->id}}" typeQuestion="{{$dato->type}}">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
                 </div>
