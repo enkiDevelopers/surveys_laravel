@@ -187,8 +187,8 @@
         <?php 
             $i++;
         ?>
-        <input type="hidden" name="idencuestado" value="{{$eid}}">
-        <input type="hidden" name="idencuesta" value="{{$idencuestado[0]->idEncuesta}}">
+        <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
+        <input type="hidden" name="idencuesta" value="<?php echo $idencuestado[0]->idEncuesta ?>">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
