@@ -11,6 +11,7 @@ use App\preguntasEncuestas;
 use App\optionsMultEncuestas;
 use App\questionstemplates;
 use DB;
+use Mail;
 use Response;
 class encuestadosController extends Controller
 {
@@ -44,79 +45,53 @@ if($fechat < $fechai)
   return false;
 }
 
+$publicar = templates::find($idPlantilla);
+$publicar->encuesta = 1;
+$publicar->save();
 
-        $Plantillas=templates::where('id', $idPlantilla)->get();
-//creando encuesta
-        $encuesta = encuestas::create([
-                'tituloEncuesta' =>$Plantillas[0]->tituloEncuesta,
-                'descripcion' => $Plantillas[0]->descripcion,
-                'imagePath' => $Plantillas[0]->imagePath,
-                'creador' =>$Plantillas[0]->creador ,
-                'fechai'=> $fechai,
-                'fechat'=> $fechat,
+$crear =  new publicaciones;
+$crear->titulo=$publicar->tituloEncuesta;
+$crear->instrucciones=$instrucciones;
+$crear->destinatarios=$destinatarios;
+$crear->creador=$publicar->creador;
+$crear->asunto=$asunto;
+$crear->fechai=$fechai;
+$crear->fechat=$fechat;
+$crear->idTemplate=$publicar->id;
+$crear->save();
 
-            ]);
-            $idEncuesta =$encuesta->id;
-//clonando preguntas abiertas
-  $preguntas = questionstemplates::where('templates_idTemplates', $idPlantilla )->where('type', '1')->get();
-
-  foreach ($preguntas as $pregunta) {
-
-    $question = preguntasEncuestas::create([
-            'title' => $pregunta->title,
-            'type' => $pregunta->type,
-            'orden' => $pregunta->orden,
-            'idEncuestas' => $idEncuesta,
-                    ]);
-
-  }
-
-//clonando preguntas con opcion multiple
-$preguntasB=questionstemplates::where('templates_idTemplates',$idPlantilla)->where('type', '2')->get();
-
-foreach ($preguntasB as $pregunta) {
-
-  $Pregunta = preguntasEncuestas::create([
-          'title' => $pregunta->title,
-          'type' => $pregunta->type,
-          'orden' => $pregunta->orden,
-          'idEncuestas' => $idEncuesta
-      ]);
-        $idPregunta=$Pregunta->id;
-
-            $opciones = optionsMult::where('idParent',$pregunta->id)->get();
-              foreach ($opciones as $opcion) {
-            $Plantilla = optionsMultEncuestas::create([
-              'name' => $opcion->name,
-              'idParent' => $idPregunta,
-              'salto' => $opcion->salto,
-    ]);
-    }
+return response()->json(array('sms'=>'Guardado Correctamente'));
 }
 
-
-      $publicacion = publicaciones::create([
-        'titulo' => $Plantillas[0]->tituloEncuesta,
-        'instrucciones' => $instrucciones ,
-        'destinatarios' => $destinatarios ,
-        'creador' => $Plantillas[0]->creador,
-        'asunto' => $asunto ,
-        'idEncuestas'=> $idEncuesta,
-    ]);
+public function enviar()
+{
 
 
+  $data =array ('texto'=> "/surveyed/previewtem/"+id);
+    //Mail::to($destino)->send(new enviarCorreo($content));
+  $user = array(
+  'email'=>'colocho364@gmail.com',
+  'name'=>'jorge'
+  );
 
+  Mail::send("administrator.correo", $data, function ($message) use ($user){
+      $message->subject('prueba');
+      $message->to('colocho364@gmail.com');
+  });
 
-  return response()->json(array('sms'=>'Guardado Correctamente'));
+  return "ok";
 }
-
 
 public function consultar()
 {
   $hoy = date("Y-m-d h:i:s");
 
-$actuales = encuestas::where('fechat','>=',$hoy)->get();
-$finalizadas = encuestas::where('fechat','<',$hoy)->get();
+$actuales = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','>=', $hoy)->get();
+$finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','<', $hoy)->get();
+
+
+//$finalizadas = publicaciones::where('fechat','<',$hoy)->get();
+
 return view("administrator.cards", compact("actuales","finalizadas"));
 }
 
