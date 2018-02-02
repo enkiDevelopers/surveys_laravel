@@ -115,8 +115,8 @@
         <div class="col-md-12" style="margin-top: 10%">
             <h2 class="text-center text-black-body" id="idTitlePregunta">Recomendaciones: </h2>
         </div>
-		<div class="col-md-10">
-	        <div class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" id="preg0">
+        <div class="col-md-10">
+            <div class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" id="preg0">
                 <div class="form-group text-black-body">
                     <ul>
                         <li>Lee con atención las siguiente preguntas</li>                        
@@ -124,7 +124,7 @@
                         <li><strong>Para empezar da clic en Siguiente.</strong></li>
                     </ul>
                 </div>
-  	        </div>
+            </div>
     <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
         <p><strong>Gracias!</strong> Por responder la encuestas por favor envie la encuesta para terminar el proceso.</p>
     </div>
@@ -195,11 +195,11 @@
         <div class="col-md-5 pull-right" >
 
             <input type="submit" class="btn btn-md btn-default" id="idenviar" value="Enviar Encuesta" style="display:none;">
-        	<button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
-        	<button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button>	
+            <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
+            <button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button> 
         </div>
         </form>
-    	</div>
+        </div>
 </div>        
         <?php 
         /*
