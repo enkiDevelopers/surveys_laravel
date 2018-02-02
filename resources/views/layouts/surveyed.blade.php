@@ -28,8 +28,8 @@
                         <img src="/img/avatar.jpeg" alt="">
                         <p>Encuestado</p>
                         <?php
-                                echo $datos[0]->name." ".$datos[0]->apPaterno." ".$datos[0]->apMaterno."\n";
-                                echo $datos[0]->email1;
+                                echo $info[0]->name." ".$info[0]->apPaterno." ".$info[0]->apMaterno."\n";
+                                echo $info[0]->email1;
                         ?>
                     </div>
                 </ul>

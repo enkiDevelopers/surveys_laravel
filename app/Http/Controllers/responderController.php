@@ -19,32 +19,50 @@ class responderController extends Controller
 {	
 	public function presentacion($matricula){
 		//$id es el la variable de la table encuestados donde se almacena la informacion
+    $info=DB::table('encuestados')->where('matricula','=',$matricula)->get();
+
 		$datos=DB::table('encuestados')
-			->join('encuestas','encuestados.idEncuesta','=','encuestas.id')
+			->join('templates','encuestados.idEncuesta','=','templates.id')
 			->where('encuestados.matricula','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
-		$constestado=DB::table('encuestados')
-			->join('encuestas','encuestados.idEncuesta','=','encuestas.id')
-			->where('encuestados.matricula','=',$matricula)
-			->where('encuestados.contestado','=',1)
-			->get();
-		return view('surveyed.home',compact('datos','constestado'));
+      $contestado=DB::table('encuestados')
+      ->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->where('encuestados.matricula','=',$matricula)
+      ->where('encuestados.contestado','=',1)
+      ->get();
+		return view('surveyed.home',compact('info','datos','contestado'));
 	}
 	public function busqueda($id){
 		return $this->buscar($id);
 
-     
-
- //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
   }
+  protected function regresar($id){
+        //$id es el la variable de la table encuestados donde se almacena la informacion
+    $info=DB::table('encuestados')->where('idE','=',$id)->get();
+
+    $datos=DB::table('encuestados')
+      ->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->where('encuestados.idE','=',$id)
+      ->where('encuestados.contestado','=',0)
+      ->get();
+      $contestado=DB::table('encuestados')
+      ->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->where('encuestados.idE','=',$id)
+      ->where('encuestados.contestado','=',1)
+      ->get();
+
+    return view('surveyed.home',compact('info','datos','contestado'));
+
+  } 
 	protected function buscar($id){
-	    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+      $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)->get();
+	    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $idencuestado[0]->idEncuesta)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
       $eid = $id;
-      $datos = questionsTemplates::where('templates_idTemplates',$eid)->orderByRaw('orden')->get();
+      $datos = questionsTemplates::where('templates_idTemplates',$idencuestado[0]->idEncuesta)->orderByRaw('orden')->get();
 
       $datosOpt=[];
       //echo $datos;
@@ -75,13 +93,15 @@ class responderController extends Controller
       }
 
 */      $admor = $consulta[0]->creador;
-       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor'));
+       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuestado'));
 
 
 
 	}
   public function guardarencuesta(Request $request){
     $idEncuesta=$request->Input('idencuesta');
+    $idencuestado=$request->Input('idencuestado');
+
     $preguntas=DB::table('questionsTemplates')
                 ->select('id')
                 ->where('templates_idTemplates','=',$idEncuesta)
@@ -92,9 +112,11 @@ class responderController extends Controller
         DB::table('respuestas')
         ->insert(['respuesta' => $respuesta, 
                   'idEncuesta' => $idEncuesta,
+                  'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
-
+    DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
+    return $this->regresar($idencuestado);
 
   }
 

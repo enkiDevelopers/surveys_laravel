@@ -10,26 +10,21 @@
                 <div class="panel-body ">
                   <div class="row">
                   <?php 
-                  $date1 = new DateTime("now");
-                  $date2 = new DateTime("tomorrow");
+
                   foreach ($datos as $dato) {
-                    $datoss=new DateTime($dato->fechat);
-                    $datoss->format('Y/m/d');
-                    if($date1 < $datoss)
-                    {
+
                              echo"<div class='col-md-2'>
                                 <div class='card well' >
                                     <img class='card-img-top' src=\img/iconos/$dato->imagePath alt='Card image cap' width='100%' height='90px'>
                                     <div class='card-body'>
                                         <h4 class='card-title'>{$dato->tituloEncuesta}</h4>
                                         <p class='card-text'></p>
-                                        <a  class='btn btn-red' href=previewtem/".$dato->idEncuesta.">Responder</a>
+                                        <a  class='btn btn-red' href=previewtem/".$dato->idE.">Responder</a>
                                     </div>
                                 </div>
                             </div>";
-                   }else{
 
-                            echo"<div class='col-md-2'>
+                           /* echo"<div class='col-md-2'>
                                 <div class='card well' >
                                     <img class='card-img-top' src=\img/iconos/$dato->imagePath alt='Card image cap' width='100%' height='90px'>
                                     <div class='card-body'>
@@ -37,9 +32,9 @@
                                         <a  class='btn btn-red' href='#' disabled data-toggle='tooltip' data-placement='bottom' title='Periodo de respuesta terminado'>Bloqueado</a>
                                     </div>
                                 </div>
-                            </div>";
+                            </div>";*/
                     }
-                }
+                
                     ?>
 
 
@@ -55,13 +50,12 @@
                 <div class="panel-body">
                   <div class="row">
                   <?php
-                    foreach ($constestado as $constestados) {
+                    foreach ($contestado as $constestados) {
                         echo "<div class='col-md-2'>
                               <div class='card well'>
-                                <img class='card-img-top' src=\img/iconos/$dato->imagen alt='Card image cap' width='100%' height='90px'>
+                                <img class='card-img-top' src=\img/iconos/$constestados->imagePath alt='Card image cap' width='100%' height='90px'>
                                 <div class='card-body'>
-                                    <h4 class='card-title'>{$dato->titulo}</h4>
-                                    <p class='card-text'>{$dato->fechat}</p>
+                                    <h4 class='card-title'>{$constestados->tituloEncuesta}</h4>
                                     <a href='#' class='btn btn-primary'>Ver encuesta</a>
                                 </div>
                             </div>

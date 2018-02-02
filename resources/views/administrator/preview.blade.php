@@ -125,6 +125,9 @@
                     </ul>
                 </div>
   	        </div>
+    <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
+        <p><strong>Gracias!</strong> Por responder la encuestas por favor envie la encuesta para terminar el proceso.</p>
+    </div>
         
 
     <form method="POST" action="/guardar">
@@ -140,26 +143,31 @@
         <?php
             if($dato->type==1){
         ?>
-            <div class="bl_form" style="margin-left: 21%;">
+            <div class="bl_form" class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
                     <label>{{$dato->title}}
-                        <input type="input" style="height: 38px;width: 600px;" name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" class="form-control" >
+                        <input type="input" style="height: 38px;width: 800px;" name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" class="form-control" >
                     </label>
             </div>
         <?php
             }
             else{
         ?>
-                <div class="form-group" style="margin-left: 21%;">
+                <div class="form-group" style="margin-left: 21%;height: 38px;width: 600px;position:relative; display: inline;">
                 <label> {{$dato->title}}</label>
                 </div>
         <?php 
                 $opciones=$cada["options"]; 
                 foreach ($opciones as $option) {?>
-                <div class="form-group" style="margin-left: 21%;">
-                    <input type="radio" name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" value="<?php echo $option->name?>">
-                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">                    
-                </div>                  
+                <div class="form-group"  style="margin-left: 21%;">
+                    <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="<?php echo $dato->id ?>" data-salto="<?php echo $option->id?>" value="<?php echo $option->name?>">
+                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
+                    <input type="hidden"  class="form-control" >
+                <!--<input type="radio" name="<?php// echo $dato->id ?>" id="<?php // echo $dato->id ?>" value="<?php //echo $option->name?>">
+                    <label for="Choice1" class="text-black-body"><?php // echo $option->name?></label>
+                    <input id="<?php //echo $i?>salto<?php //echo $option->id?>" type="text" name="salto" value="<?php //echo $option->salto?>">-->                  
+                </div> 
+                               
         <?php
         }
         ?>
@@ -179,16 +187,18 @@
         <?php 
             $i++;
         ?>
-        <input type="hidden" name="idencuesta" value="{{$eid}}">
+        <input type="hidden" name="idencuestado" value="{{$eid}}">
+        <input type="hidden" name="idencuesta" value="{{$idencuestado[0]->idEncuesta}}">
+
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <input type="submit" class="btn btn-md btn-default" id="idenviar" value="enviar" style="display:none;">
-        </form>
+        <div class="col-md-5 pull-right" >
 
-        <div class="col-md-3 pull-right" >
+            <input type="submit" class="btn btn-md btn-default" id="idenviar" value="Enviar Encuesta" style="display:none;">
         	<button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
         	<button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button>	
         </div>
+        </form>
     	</div>
 </div>        
         <?php 

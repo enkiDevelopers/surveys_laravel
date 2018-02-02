@@ -56,12 +56,17 @@ $(document).ready(function(){
         //Si la pregunta es pregunta abierta la siguiente avanza uno
         //si la pregunta es de opción múltiple, se tiene que saber si hay brinco o no
         if($("#type"+n).val()=="2"){
-            var tempo= $('input:radio[name=opcion'+n+']:checked');
-            if(tempo.val()==null){
+            var tempo= $('input:radio[data-name=opcion'+n+']:checked');
+            //var as = tempo.getElementsByTagName("salto");
+            tempo= $(tempo).data("salto")
+
+            //tempo=$("opcion"+n).val();
+
+            if(tempo==null){
                 //$("#idNext").attr('disabled','disabled');
                 n++; //eliminar esta línea
             }else{
-                m=tempo.val();
+                m=tempo;
                 salto = $("#"+n+"salto"+m).val();
                 if(salto=="0"){
                     n++;
@@ -81,16 +86,10 @@ $(document).ready(function(){
             $("#idTitlePregunta").css("display", "none");
     		$("#idNext").attr('disabled','disabled');	
             $("#idenviar").css("display","");	
+            $("#gracias").css("display","");
             //$("#idSave").css("display","inline");
             swal({
-                title: "Encuesta Completada !",
-                text: "Haz completado la encuesta satisfactoriamente !",
-                icon: "info",
-                showCancelButton: true,
-                cancelButtonText: "Regresar",
-                //confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Enviar Encuesta",
-                closeOnConfirm: false },
+                },
             function(){
                 swal({
                    title: "Encuesta enviada",
