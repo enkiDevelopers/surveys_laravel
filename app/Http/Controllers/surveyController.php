@@ -52,13 +52,31 @@ class surveyController extends Controller
       return view('errors.404');
     }
     else {
-    $propias = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario', $id)->orderby('id', 'desc')->get();
-    $agenas = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario','!=',$id)->orderby('id', 'desc')->get();
+    $propias =
+    templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
+    ->where('usuarios.idUsuario', $id)->whereNull('encuesta')
+    ->orderby('id', 'desc')
+    ->get();
+
+    $agenas = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
+    ->where('usuarios.idUsuario','!=',$id)
+    ->where('encuesta','')
+    ->orderby('id', 'desc')
+    ->get();
+
+    $publicadas=
+    templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
+    ->where('usuarios.idUsuario','=',$id)
+    ->where('encuesta',1)
+    ->orderby('id', 'desc')
+    ->get();
+
+
       $tipos = tipos::all();
       $publicaciones = publicaciones::all();
       $listas= listaEncuestados::where('creador', $id)->get();
 
-      return view('administrator.surveys', compact('propias','agenas','listas','tipos','publicaciones','id'));
+      return view('administrator.surveys', compact('propias','agenas','publicadas','listas','tipos','publicaciones','id'));
     }
 
   }
@@ -131,12 +149,29 @@ public function ajaxshowcards(Request $request)
     return view('errors.404');
   }
   else {
-    $propias = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario', $id)->orderby('templates.id', 'desc')->get();
-    $agenas = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')->where('usuarios.idUsuario','!=',$id)->orderby('templates.id', 'desc')->get();
+    $propias =
+    templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
+    ->where('usuarios.idUsuario', $id)->whereNull('encuesta')
+    ->orderby('id', 'desc')
+    ->get();
+
+    $agenas = templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
+    ->where('usuarios.idUsuario','!=',$id)
+    ->whereNull('encuesta')
+    ->orderby('id', 'desc')
+    ->get();
+
+    $publicadas=
+    templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
+    ->where('usuarios.idUsuario','=',$id)
+    ->where('encuesta','1')
+    ->orderby('id', 'desc')
+    ->get();
+
     $tipos = tipos::all();
     $publicaciones = publicaciones::all();
     $listas= listaEncuestados::where('creador', $id)->get();
-    return view("administrator.showcards",compact('propias','agenas','listas','tipos','publicaciones','id'));
+    return view("administrator.showcards",compact('propias','agenas','publicadas','listas','tipos','publicaciones','id'));
   }
 }
 }

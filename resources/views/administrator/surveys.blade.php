@@ -7,9 +7,7 @@
   <div class="procesando" id="procesando" >
   </div>
   <input type="hidden" id="idadmin" value="{{$id}}"/>
-      <link rel="stylesheet" href="/css/alertify.rtl.css">
-      <link rel="stylesheet" href="/css/themes/default.rtl.css">
-      <script src="/js/alertify.js"></script>
+  
       <script src="/js/moment.min.js"></script>
       <script type="text/javascript" src="/js/surveys.js"></script>
       <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
@@ -155,7 +153,7 @@
 <!--  modal de  creacion de encuesta-->
     <!-- Modal publicar encuesta-->
         <form id="form" onsubmit="return detener();">
-      <div class="modal fade" id="miModal" 
+      <div class="modal fade" id="miModal"
         role="dialog" aria-labelledby="myModalLabel"
         data-backdrop="static" data-keyboard="false">
 	           <div class="modal-dialog" role="document">
