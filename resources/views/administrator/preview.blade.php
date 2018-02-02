@@ -161,7 +161,7 @@
                 foreach ($opciones as $option) {
         ?>
                 <div class="form-group"  style="margin-left: 21%;">
-                    <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="<?php echo $dato->id ?>" data-salto="<?php echo $option->id?>" value="<?php echo $option->name?>">
+                    <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="<?php echo $dato->id ?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden"  class="form-control" >
                 <!--<input type="radio" name="<?php// echo $dato->id ?>" id="<?php // echo $dato->id ?>" value="<?php //echo $option->name?>">
@@ -171,6 +171,7 @@
                                
         <?php
         }
+
 
         }
         ?>
