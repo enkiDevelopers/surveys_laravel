@@ -9,8 +9,10 @@ use App\optionsMult;
 use App\templates;
 use App\preguntasEncuestas;
 use App\optionsMultEncuestas;
+use App\encuestados;
 use App\questionstemplates;
 use DB;
+use App\Mail\mailencuestados;
 use Mail;
 use Response;
 class encuestadosController extends Controller
@@ -60,26 +62,29 @@ $crear->fechat=$fechat;
 $crear->idTemplate=$publicar->id;
 $crear->save();
 
-return response()->json(array('sms'=>'Guardado Correctamente'));
+  return response()->json(array('sms'=>'Guardado Correctamente'));
 }
 
 public function enviar()
 {
+$user =encuestados::where('listaEncuestados_idLista','1')->get();
+$asunto1="Nueva encuesta";
+$asunto =array('sms'=> $asunto1);
 
 
-  $data =array ('texto'=> "/surveyed/previewtem/"+id);
-    //Mail::to($destino)->send(new enviarCorreo($content));
-  $user = array(
-  'email'=>'colocho364@gmail.com',
-  'name'=>'jorge'
-  );
+foreach ($user as $usuario) {
+$data= array(
+'cuerpo'=> "cuerpo",
+'id'=> $usuario->idE
+);
 
-  Mail::send("administrator.correo", $data, function ($message) use ($user){
-      $message->subject('prueba');
-      $message->to('colocho364@gmail.com');
-  });
+Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
+    $message->subject($asunto["sms"]);
+    $message->to($usuario->email1);
+});
+}
+ return $data;
 
-  return "ok";
 }
 
 public function consultar()

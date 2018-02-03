@@ -6,8 +6,16 @@
   </head>
   <body>
     <center>
-      correo de prueba
-      {{$texto}}
+      correo de prueba <br />
+<?php
+echo $cuerpo;
+?>
+<br />
+
+<?php
+echo $id;
+ ?>
+<a href="http://localhost:8000/surveyed/previewtem/3">Contesta aqui tu encuesta</a>
     </center>
   </body>
 </html>
