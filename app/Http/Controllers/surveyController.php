@@ -1,13 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\templates;
+use App\encuestados;
 use App\questionsTemplates;
 use DB;
 use File;
 use Input;
+use Mail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\usuarios;
 use App\publicaciones;
@@ -179,4 +179,35 @@ public function ajaxshowcards(Request $request)
     return view("administrator.showcards",compact('propias','agenas','publicadas','listas','tipos','publicaciones','id'));
   }
 }
+
+
+public function reminder(Request $request)
+{
+  $id= $request->idPub;
+  //$id= 1;
+  $mensaje = publicaciones::where('idPub',$id)->first();
+  $idLista = listaEncuestados::where('nombre', $mensaje->destinatarios)->first();
+  $destinatarios = encuestados::
+  where('listaEncuestados_idLista', $idLista->idLista)
+  ->where('incidente', '0')->where('contestado','0')->get();
+$asunto = $mensaje->asunto;
+  foreach ($destinatarios as $usuario) {
+  $data= array(
+  'cuerpo'=> $mensaje->instrucciones,
+  'id'=> $usuario->idE
+  );
+
+  Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
+      $message->subject($asunto);
+      $message->to($usuario->email1);
+  });
+  }
+
+  return response()->json(array('sms'=> "recordatorio enviado correctamente"));
+
+}
+
+
+
+
 }

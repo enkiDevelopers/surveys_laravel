@@ -7,6 +7,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="pragma" content="no-cache"/>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/sidebar.css">
@@ -17,12 +19,15 @@
     <link href='https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/sweetalert.min.css">
     <script src="/js/sweetalert.min.js"></script>
-
+<script type="text/javascript">
+  if(history.forward(1)){
+    location.replace( history.forward(1) );
+  }
+</script>
 
     <style type="text/css">
         .col-md-10{
-            margin-top: 5px;
-            margin-bottom:15px;
+        
         }
         .title{
             font-size: 20px;
@@ -80,43 +85,60 @@
         }
 
         #sumary{
-            background-image: url(/img/default.png);
+
         }
         
         .ancho{            
-            background-size: 90% 90%;
-            -webkit-background-size: 90% 90%;           /* Safari 3.0 */
-            -moz-background-size: 90% 90%;           /* Gecko 1.9.2 (Firefox 3.6) */
-            -o-background-size: 90% 90%;           /* Opera 9.5 */
-            background-size: 90% 90%;             
+            background-size: 100% 100%;
+            -webkit-background-size: 100% 100%;           /* Safari 3.0 */
+            -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
+            -o-background-size: 100% 100%;           /* Opera 9.5 */
+            background-size: 100% 100%;             
         }
         @media screen and (max-width: 699px) and (min-width: 520px) {
             ul li a {
-                padding-left: 30px;
+                padding-left: ;
                 background: url(email-icon.png) left center no-repeat;
             }
         }
+        html,body { 
+            overflow:hidden; 
+            }
+</style>
 
-    </style>
 </head>
-<body>
-        <div id="sumary" style="" class="popIn duration-2250 ancho">
-            <center >
-                <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:13%">
-            </center><br>
-            <h2 class="text-center text-black-body title">{{$titulo}}</h2>
-            <textarea type="text" class="form-control text-center descripcion" disabled style="background-color: transparent;cursor: default;">{{$descripcion}}</textarea>
-            <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body" style="margin: 3% 42% 0px 42%;background-color: #ffeb3b">
-            
-        </div>
 
-<div class="container hidden" id="surveyContainer" style="background-image: url(/img/default_questions.png);">
-        
-        <div class="col-md-12" style="margin-top: 10%">
-            <h2 class="text-center text-black-body" id="idTitlePregunta">Recomendaciones: </h2>
+<body>
+<div class="row">
+
+        <div id="sumary" class="col-md-12 ">
+            <div class="col-md-12" height="" style="background-color: #333333;">
+                <img src="\img/UVM_Logo.jpg" width="30%" height="25%">
+            </div>
+ <center>
+            <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:5%">
+            <br>
+            <h2 class="text-center text-black-body title">{{$titulo}}</h2>
+            <p>{{$descripcion}}</p>
+            <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body" style="margin-bottom:0%;background-color: #ffeb3b">
+</center>
+    </div>
+
+
+
+</div>
+
+<div class="container hidden" id="surveyContainer" style="background-image:\img/default_questions.jpg;">
+        <div class="col-md-12" >
+                <img src="\img/default_questions.png" width="100%" height="80px">
+                <img src="\img/UVM_Logo.jpg" width="35%" height="30%" >
+
+         </div>    
+        <div class="col-md-12">
+            <h2 class="text-center text-black-body" style="margin-top: 5%;margin-bottom:15px;" id="idTitlePregunta">Recomendaciones: </h2>
         </div>
         <div class="col-md-10">
-            <div class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" id="preg0">
+            <div class="col-md-10 pregs" style="margin-top: 10%;margin-bottom:15px;" id="preg0">
                 <div class="form-group text-black-body">
                     <ul>
                         <li>Lee con atención las siguiente preguntas</li>                        
@@ -126,7 +148,8 @@
                 </div>
             </div>
     <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
-        <p><strong>Gracias!</strong> Por responder la encuestas por favor envie la encuesta para terminar el proceso.</p>
+        <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
+
     </div>
         
 
@@ -137,7 +160,7 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-            <div class= "pregs" id="preg<?php echo $i?>" style="display:none">
+            <div class= "pregs" id="preg<?php echo $i ?>" style="display:none">
                 <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
                 <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
         <?php
@@ -145,8 +168,8 @@
         ?>
             <div class="bl_form" class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
-                    <label>{{$dato->title}}
-                        <input type="input" style="height: 38px;width: 800px;" name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" class="form-control" >
+                    <label >{{$dato->title}}
+                        <input type="input" style="height: 100%;width: 100%;" size="300"  name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" class="form-control" >
                     </label>
             </div>
         <?php
@@ -164,9 +187,7 @@
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="<?php echo $dato->id ?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden"  class="form-control" >
-                <!--<input type="radio" name="<?php// echo $dato->id ?>" id="<?php // echo $dato->id ?>" value="<?php //echo $option->name?>">
-                    <label for="Choice1" class="text-black-body"><?php // echo $option->name?></label>
-                    <input id="<?php //echo $i?>salto<?php //echo $option->id?>" type="text" name="salto" value="<?php //echo $option->salto?>">-->                  
+            
                 </div> 
                                
         <?php
@@ -188,19 +209,23 @@
             $i++;
         ?>
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
-        <input type="hidden" name="idencuesta" value="<?php echo $idencuestado[0]->idEncuesta ?>">
+        <?php
+            foreach ($idencuestado as $idencuestados) {
+                echo "<input type='hidden' name='idencuesta' value='".$idencuestados->idEncuesta."'>";
+            }
 
+        ?>  
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="col-md-5 pull-right" >
 
-            <input type="submit" class="btn btn-md btn-default" id="idenviar" value="Enviar Encuesta" style="display:none;">
+            <input type='submit' class='btn btn-primary' id='idenviar' value='Enviar Encuesta' style='display:none'>
             <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
             <button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button> 
         </div>
         </form>
         </div>
-</div>        
+</div>      
 
 
 <script src="{{asset('js/app.js')}}"></script>

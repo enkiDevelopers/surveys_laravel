@@ -21,17 +21,13 @@
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
                 <div class="sidebar-header">
-                <!--   <button type="button" id="sidebarCollapse"  class=" btn-default btn navbar-btn pull-right">
-                        <i class="glyphicon glyphicon-menu-hamburger"></i>
-                    </button>
-                -->
-                    <h3 class="administrator-header">Administrador</h3>
+                      <h3 class="administrator-header">Administrador</h3>
                 </div>
 
                 <ul class="list-unstyled components">
                     <div class="profile center text-center" id="perfil" onclick="profile();" style="cursor:pointer;">
-                        <img src="/img/avatar.jpeg" alt="">
-                        <p>Rafael Alberto Martínez Méndez</p>
+                        <img src="/img/avatar/default.png">
+                  <a href="{{url("/administrator")}}"><p>Rafael Alberto Martínez Méndez</p></a>
                     </div>
                     <li id="home">
                         <a href="{{ url('/administrator/surveys')}}" >

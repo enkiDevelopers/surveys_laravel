@@ -56,7 +56,7 @@
                                 <img class='card-img-top' src=\img/iconos/$constestados->imagePath alt='Card image cap' width='100%' height='90px'>
                                 <div class='card-body'>
                                     <h4 class='card-title'>{$constestados->tituloEncuesta}</h4>
-                                    <a href='#' class='btn btn-primary'>Ver encuesta</a>
+                                    <a href='contestado' class='btn btn-primary'>Ver encuesta</a>
                                 </div>
                             </div>
                         </div>";

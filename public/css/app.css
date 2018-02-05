@@ -8554,7 +8554,7 @@ hyphens: auto;
 
 @media screen and (max-width: 1300px) {
 
-#resposiveCard
+#responsiveCard
 {
   width: 100%;
 
@@ -8591,7 +8591,7 @@ margin-top: auto;
 
 
 @media screen and (max-width: 1080px) {
-  #resposiveCard{
+  #responsiveCard{
          width:  auto;
        }
      #marco
@@ -8661,4 +8661,13 @@ margin-bottom: 10px;
 {
   width: 100px;
   height: 100px;
+}
+
+.editarImagen
+{
+position: fixed;
+margin-top: 250px;
+margin-left: -20px;
+background-color: white;
+ height:20px;
 }

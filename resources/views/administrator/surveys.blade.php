@@ -2,16 +2,13 @@
 @section('content')
   @include('sweet::alert')
   <div class="loader" id="loader" >
-
   </div>
   <div class="procesando" id="procesando" >
   </div>
   <input type="hidden" id="idadmin" value="{{$id}}"/>
-  
       <script src="/js/moment.min.js"></script>
       <script type="text/javascript" src="/js/surveys.js"></script>
       <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
-
 
 <div class="container" >
     <div class="row">
@@ -309,7 +306,6 @@
                       <input type="submit" name="enviar" class="btn btn-danger" id="duplicar" value="Duplicar" />
                     </div>
                 </div>
-
                           </div>
 
 </div>
@@ -317,9 +313,8 @@
 </div>
 </form>
 
-
-
 <!--######################################### Termina MODAL DUPLICAR ##################################################### -->
+
       <script>
     busca();
     showcards();

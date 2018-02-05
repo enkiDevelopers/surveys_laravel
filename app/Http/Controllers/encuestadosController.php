@@ -46,7 +46,7 @@ public function publicar(Request $request)
         $instrucciones=$request->get('instrucciones');
         $destinatarios=$request->get('destinatarios');
         $tipo=$request->get('tipo');
-
+        ini_set('max_execution_time', 300);
 if($fechat < $fechai)
 {
   return false;
@@ -67,7 +67,22 @@ $crear->fechat=$fechat;
 $crear->idTemplate=$publicar->id;
 $crear->save();
 
-  return response()->json(array('sms'=>'Guardado Correctamente'));
+
+$user = encuestados::where('listaEncuestados_idLista','1')->get();
+$easunto =array('sms'=> $asunto);
+$data= array(
+'cuerpo'=> $instrucciones ,
+'id'=> ""
+);
+
+foreach ($user as $usuario) {
+$data["id"]= $usuario->idE;
+Mail::send('administrator.correo', $data, function ($message) use ($usuario,$easunto){
+    $message->subject($easunto["sms"]);
+    $message->to($usuario->email1);
+});
+}
+  return response()->json(array('sms'=>'Enviado Correctamente'));
 }
 
 public function enviar()
@@ -88,21 +103,20 @@ Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asu
     $message->to($usuario->email1);
 });
 }
- return $data;
 
 }
 
-public function consultar()
+public function consultar(Request $request)
 {
+  $id= $request->session()->get('id');
   $hoy = date("Y-m-d h:i:s");
 
-$actuales = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','>=', $hoy)->get();
+$actuales = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")
+->where('fechat','>=', $hoy)->get();
 $finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','<', $hoy)->get();
-
-
 //$finalizadas = publicaciones::where('fechat','<',$hoy)->get();
 
-return view("administrator.cards", compact("actuales","finalizadas"));
+return view("administrator.cards", compact("actuales","finalizadas", "id"));
 }
 
 }

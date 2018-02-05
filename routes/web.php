@@ -32,6 +32,8 @@ Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
 });
 
+Route::post('/administrator/surveys/reminder/', 'surveyController@reminder');
+
 Route::get('/surveyed/solve', function () {
     return view('surveyed.solve-survey');
 });
@@ -203,3 +205,7 @@ Route::post('/administrator/editQuestion/','questionsTemplateController@editQues
 Route::get('/enviar', 'encuestadosController@enviar');
 
 Route::post('/administrator/editEliminarQuestion/','questionsTemplateController@editEliminarQuestion');
+
+Route::get('contestado',function(){
+    return view("administrator.encuestacontestada");
+});

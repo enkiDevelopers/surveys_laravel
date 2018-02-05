@@ -37,28 +37,32 @@ class directiveController extends Controller
   {
       $campus=0;
       $encuestas = DB::table('encuestas')->orderByRaw('updated_at - created_at DESC')->get();
-      $datosdirective =DB::table('directives')->where('idDirectives','=',$id)->get();
+      $datosdirective =DB::table('usuarios')->where('idUsuario','=',$id)->get();
+
       switch ($datosdirective["0"]->type) {
         case '1':
-              $datosdirective=DB::table('directives')->where('idDirectives','=',$id)->get();   
-              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->get();
-    
+              $datosdirective = DB::table('usuarios')
+            ->join('ctlCampus', 'usuarios.idCampus', '=', 'ctlCampus.campus_id')
+            ->select('usuarios.*','ctlCampus.*')
+            ->where('idUsuario','=',$id)
+            ->get();
+              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('campus_id','=',$datosdirective["0"]->campus_id)->get();
           break;
         case '2':
-              $datosdirective = DB::table('directives')
-            ->join('ctlRegions', 'directives.idDirectives', '=', 'ctlRegions.directives_idDirectives')
-            ->select('directives.*','ctlRegions.regions_id','ctlRegions.regions_name')
-            ->where('idDirectives','=',$id)
+              $datosdirective = DB::table('usuarios')
+            ->join('ctlRegions', 'usuarios.idRegion', '=', 'ctlRegions.regions_id')
+            ->select('usuarios.*','ctlRegions.regions_id','ctlRegions.regions_name')
+            ->where('idUsuario','=',$id)
             ->get();
-              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('regions_regions_id','=',$datosdirective["0"]->regions_id)->get();
+              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('regions_regions_id','=',$datosdirective["0"]->idRegion)->get();
             break;
         case '3':
-              $datosdirective = DB::table('directives')
-            ->join('ctlCampus', 'directives.idDirectives', '=', 'ctlCampus.directives_idDirectives')
-            ->select('directives.*','ctlCampus.campus_id')
-            ->where('idDirectives','=',$id)
+              $datosdirective = DB::table('usuarios')
+            ->join('ctlCampus', 'usuarios.idCampus', '=', 'ctlCampus.campus_id')
+            ->select('usuarios.*','ctlCampus.campus_id')
+            ->where('idUsuario','=',$id)
             ->get();
-             $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('directives_idDirectives','=',$id)->get();
+             $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('campus_id','=',$datosdirective["0"]->campus_id)->get();
 
              break;
         default:
@@ -66,7 +70,7 @@ class directiveController extends Controller
           break;
       }
       $regionestotal=DB::table('ctlRegions')->get();
-      $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->where('directives_idDirectives','=',$id)->get();
+      $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->get();
 
       return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus'));
 
@@ -94,7 +98,7 @@ class directiveController extends Controller
                                                   'total_contestados_alumnos'=>'0',
                                                   'total_contestados_empleados'=>'0',
                                                   'campus_campus_id'=>$idcampus,
-                                                  'directives_idDirectives'=>1,
+                                                  'usuarios_idUsuario'=>1,
                                                   'surveys_id'=> $id]);
       }
       $info= DB::table('estadisticas')->where([  ['surveys_id','=',$id],
@@ -123,7 +127,7 @@ class directiveController extends Controller
                                                   'total_contestados_alumnos'=>'0',
                                                   'total_contestados_empleados'=>'0',
                                                   'campus_campus_id'=>$campusdatos->campus_id,
-                                                  'directives_idDirectives'=>1,
+                                                  'usuarios_idUsuario'=>1,
                                                   'surveys_id'=> $id]);
       }
     }
