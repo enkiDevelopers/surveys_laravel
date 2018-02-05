@@ -41,7 +41,7 @@
                         <div class="col-md-4  pull-right">                           
                            <label for="selectNumPreg text-black-body">Redireccionar a: </label>
                             <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
-                                <option value="N/A" selected disabled>Selecciona la pregunta</option>
+                                <option value="N/A" selected disabled>{{$option->salto}}</option>
                             </select>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
             }
         }
 ?>
-            <div class="col-md-2 pull-right" style="margin-bottom: 15px;">
+            <div class="col-md-2 pull-right btn-control" style="margin-bottom: 15px;">
                 <div class="row">
                     <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question"
                     id="{{$dato->id}}" typeQuestion="{{$dato->type}}" orden="{{$dato->orden}}" idTemplate= {{$eid}}>

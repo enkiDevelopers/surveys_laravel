@@ -125,8 +125,9 @@ $(document).ready(function(){
         for (var i = act; i <= max; i++) {
              $(this).append('<option value="'+i+'">'+i+'</option>');
         } 
-    }).change(function() {
+    });
 
+    $("#container-questions").on('change', '.selectNumPreg', function() {
         var salto = $(this, ".selectNumPreg").val();
         var idQuestion = parseInt($(this).attr('id'));
         var idOption = parseInt($(this).attr('idOption'));
@@ -138,16 +139,19 @@ $(document).ready(function(){
             dataType: 'json',
             data: {salto: salto, idQuestion: idQuestion, idOption:idOption },
         })
-        .done(function() {
-            console.log("success");
+        .done(function(data) {
+            alertify.alert("Se ha redireccionado a la pregunta Número: "+ salto+ " satisfactoriamente.", function(){});
         })
         .fail(function() {
-            console.log("error");
+            alertify.alert("No se ha podido redireccionar la opción a la pregunta deseada.", function(){});
         })
         .always(function() {
-            console.log("complete");
-        });        
+        });               
+
     });
+
+
+
     /*********************************************************************************/      
 
     
@@ -212,6 +216,9 @@ $(document).ready(function(){
            $("#questionTypeEdit").val(typeQuestion);
            $("#idQuestion").val(idQuestion);
 
+           $(".edit-question__control--edit-question").removeAttr('disabled'); 
+           $(".edit-question__control--delete-question").removeAttr('disabled');
+           
            $(".options-edit").empty();
            if (typeQuestion == 2) {
             $(".add-question-to-yes-no").removeClass('hidden');
@@ -223,9 +230,50 @@ $(document).ready(function(){
            }
            
            $("#ModalQuestionEdit").appendTo('body').modal();        
+
+
     });
     /*********************************************************************************/      
 
+
+    $("#sortableQuestions").on('click', function(event) {
+        var clase = $(this).children().attr('class');
+            if (clase == "glyphicon glyphicon-th-list"){
+            alertify.confirm("Si continua se eliminarán todos los saltos de las opciones multiples", 
+            function(){
+
+                $("#sortableQuestions").toggleClass('btn-warning').toggleClass('btn-info');
+                $("#sortableQuestions").children().toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
+
+                $(".yes-no-question-block, .btn-control, #addQuestion").hide('400');
+
+                $("#container-questions").sortable({
+                    placeholder: "placeholder-sort",
+                    forcePlaceholderSize: true,
+                    forceHelperSize: true,
+                    cancel: ".numPregs",
+                    update: function(){
+                        console.log($(".numPregs").sortable('serialize'));
+                        
+                    },
+                    revert: true,
+                    disabled:false
+                });
+                $("#container-questions").disableSelection();            
+                
+            },function(){
+            });
+
+        }else{
+            $("#sortableQuestions").toggleClass('btn-warning').toggleClass('btn-info');
+            $("#sortableQuestions").children().toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
+            $("#container-questions").sortable( "disable" )
+
+            $(".yes-no-question-block, .btn-control, #addQuestion").show('400');
+         }
+
+
+    });
 /*
     //Eliminar una opcion multiple
     var parentYesNo;
@@ -353,22 +401,17 @@ $(document).ready(function(){
                                 $("#exampleInputEmail1").val(titleInput);
                                 $("#inputDesc").val(descInput);
                                 $("#ModalTitle").modal('hide');
-                                console.log(e);
                               });
 
                         }else{
                             alertify.alert("No se han podido guardar los cambios.", function(){
-                                alertify.message('OK');
                             }); 
-                            console.log(e);     
+                                
                         }
                     },
                     error: function (textStatus, errorThrown) {
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
-                            alertify.message('OK');
-                         });
-                        console.log(textStatus);
-                    }               
+                         });                    }               
                 });
             }else{
                 alert("Ingrese una descripción para la encuesta");
@@ -462,6 +505,10 @@ $(document).ready(function(){
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType: 'json',
+            beforeSend: function( xhr ) {   
+                $(".edit-question__control--edit-question").attr('disabled','true'); 
+                $(".edit-question__control--delete-question").attr('disabled','true');
+            },
             data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult },
             })
             .done(function() {

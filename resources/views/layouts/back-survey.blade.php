@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="/css/alertify.min.css">
     <link rel="stylesheet" type="text/css" href="/css/themes/default.min.css">
 
+    <style>
+        .placeholder-sort{
+            width: 100%;
+            height: 119px;
+            margin-bottom: 2%;
+            border: 1px solid #dad55e;
+            background: #fffa90;
+            color: #777620;
+        }
+    </style>
 </head>
 <body>
 
@@ -56,10 +66,12 @@
         </div>
 
     <!-- Scripts -->
+
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/administratorAddQuestion.js"></script>
     <script src="/js/alertify.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 

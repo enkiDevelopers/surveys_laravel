@@ -1,10 +1,17 @@
         <div class="row col-md-12">
             <div class=" new-survey__controls " > 
                 <center>
-                    <div class="mx-auto">
+                    <div class="col-md-11">
                         <button class="btn btn-success new-survey__control" id="addQuestion">Agregar pregunta</button>
                     </div>
+                    <div class="col-md-1">
+                       <a id="sortableQuestions" class="btn btn-warning pull-right">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                        </a>
+                    </div>
+
                 </center>
+
             </div>
         </div>
 
