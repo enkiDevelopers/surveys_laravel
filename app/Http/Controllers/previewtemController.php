@@ -10,13 +10,15 @@ use  DB;
 use App\templateSurvey;
 use Response;
 
-
+ 
 class previewtemController extends Controller
 {
     //
   public function busqueda($id)
   {
-      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+      $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
+                                                                    ->where('contestado','=',0)
+                                                                    ->get();      $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id','=', $id)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
@@ -53,7 +55,8 @@ class previewtemController extends Controller
 */
       $admor = $consulta[0]->creador;
 
-      return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor'));
+
+      return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuestado'));
 
  //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
   }
