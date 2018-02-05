@@ -92,17 +92,17 @@ Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asu
 
 }
 
-public function consultar()
+public function consultar(Request $request)
 {
+  $id= $request->session()->get('id');
   $hoy = date("Y-m-d h:i:s");
 
-$actuales = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','>=', $hoy)->get();
+$actuales = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")
+->where('fechat','>=', $hoy)->get();
 $finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','<', $hoy)->get();
-
-
 //$finalizadas = publicaciones::where('fechat','<',$hoy)->get();
 
-return view("administrator.cards", compact("actuales","finalizadas"));
+return view("administrator.cards", compact("actuales","finalizadas", "id"));
 }
 
 }

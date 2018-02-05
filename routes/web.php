@@ -32,6 +32,8 @@ Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
 });
 
+Route::post('/administrator/surveys/reminder/', 'surveyController@reminder');
+
 Route::get('/surveyed/solve', function () {
     return view('surveyed.solve-survey');
 });

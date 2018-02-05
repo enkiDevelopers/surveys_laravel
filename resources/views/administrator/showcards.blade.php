@@ -2,7 +2,7 @@
 <div class="col-md-4" id="{{$plantilla->id}}">
    <div class="card well" >
             <div class="card-body">
-               <div class="col-md-2" id="resposiveCard">
+               <div class="col-md-2" id="responsiveCard">
 
               <img id="marco" class="card-img-top"
               width="100px" height="100px"

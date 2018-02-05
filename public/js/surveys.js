@@ -341,37 +341,26 @@ function showcards(){
      }
 
 
-/*
-function enviar2()
-{
-var data = new FormData();
-data.append('icono', $('#foto1')[0].files[0]);
-data.append('titulo', $('#ModalTitleInput').prop('value'));
-data.append('descripcion', $('#ModalDescInput').prop('value'));
-data.append('creador', $('#creador').prop('value'));
 
+function reminder(id)
+{
   $.ajax({
-  url: "/save",
+  url: "/administrator/surveys/reminder",
   type: 'POST',
   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-  data: data,
-  processData: false, //Evitamos que JQuery procese los datos, daría error
-  contentType: false, //No especificamos ningún tipo de dato
-
+  data: {idPub:id},
+  datatype: "json",
   beforeSend: function(){
     $("#procesando").show();
   },
   success: function( sms ) {
     $("#procesando").hide();
     swal({
-       title: "Su plantilla ha sido agregada",
-       text: "",
+       title: "recordatorio enviado",
+       text: sms["sms"],
        type: "success",
         });
-      document.getElementById("myForm").reset();
-      $('#ModalTitle').modal('hide');
-
-      },error: function(result) {
+          },error: function(result) {
         $("#procesando").hide();
         swal({
            title: "Error",
@@ -382,4 +371,4 @@ data.append('creador', $('#creador').prop('value'));
             }
   });
 
-}*/
+}
