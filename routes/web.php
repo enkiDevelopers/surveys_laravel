@@ -203,3 +203,5 @@ Route::get('/administrator/modalQuestionEdit', function(){
 Route::post('/administrator/editQuestion/','questionsTemplateController@editQuestion');
 
 Route::get('/enviar', 'encuestadosController@enviar');
+
+Route::post('/administrator/editEliminarQuestion/','questionsTemplateController@editEliminarQuestion');

@@ -93,19 +93,43 @@ class questionsTemplateController extends Controller
             $result = optionsMult::where('idParent', $idQuestion)->delete();
         }
 
-        $update = questionsTemplates::where('orden','>',$orden)
-                    ->where('templates_idTemplates',$idTemplate)
+        $update = questionsTemplates::where('orden','>',$orden)->where('templates_idTemplates',$idTemplate)
                     ->decrement('orden');
 
-       
         return $result;
     }
 
-    public function editQuestion(Request $request){
-        
+    public function editEliminarQuestion(Request $request){
+        $idQuestion = $request['idQuestion'];
+        $typeQuestion = $request['typeQuestion'];
+        $titleEdit = $request['titleEdit'];
+        $salto = $request['salto'];
+        $optionsResult = $request['optionsResult'];
+
+
+            $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
+
+        if ($typeQuestion == 2) {
+
+           // $pregunta = questionsTemplates::where('id',$idQuestion)->delete();
+            $result = optionsMult::where('idParent', $idQuestion)->delete();
+
+            $valOptions = count(json_decode(json_encode($optionsResult), true));
+            for ($i=0; $i < $valOptions; $i++) { 
+            DB::table('optionsMult')->insert([
+                    ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
+                ]);               
+            }
+        }   
+
+        return $result;     
     }
 
-    public function updateQuestion(Request $request){
+    public function editQuestion(Request $request){
+
+    }
+
+    public function updateOrderQuestion(Request $request){
 
         $orden = $request['orden'];
         $idTemplate = $request['idTemplate'];

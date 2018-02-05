@@ -23,4 +23,5 @@
 </div>
 
 				@include('administrator.modalTitle')
+				@include('administrator.modalQuestionEdit')
  @endsection

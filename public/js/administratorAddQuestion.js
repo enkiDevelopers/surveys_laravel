@@ -2,7 +2,6 @@ $(document).ready(function(){
 
     /* Abrimos modal para agregar pregunta********************************************/
     $("#addQuestion").click(function(){
-        //alert("Hola");
         $("#ModalQuestion").appendTo('body').modal();
         $("#numPregSig").val($(".numPregs").length+1);
         $(".new-question__control--add-question").removeAttr('disabled'); 
@@ -88,6 +87,33 @@ $(document).ready(function(){
     });
     /*********************************************************************************/      
 
+    // Agrega una nueva opcion a un bloque de preguntas de opción múltiple
+    $("#ModalQuestionEdit").on("click", ".add-question-to-yes-no", function(e){
+        // Habilitar-Deshabilitar Botón de eliminar de opción de bloque de preguntas de opción
+        var options = $(".multi-options-template-edit").length;
+        agregarOpcionEdit(options);
+        $(".delete-question-to-yes-no").removeAttr("disabled");
+    });
+    /*********************************************************************************/    
+
+    function agregarOpcionEdit(num){
+        var elem2 = $("#optionEdit").clone().removeClass("hidden");
+        elem2.attr({
+            class: 'form-group options-edit'
+        });        
+        $("#optionsMultEdit").append(elem2);
+    }
+
+    /**** Se tiene que cuidar que siempre haya al menos dos opciones de pregunta******/
+    $("#ModalQuestionEdit").on("click", ".delete-question-to-yes-no", function(){
+        $(this).parent().remove();
+        var options = $(".options-edit").length;
+        if( options <= '2'){ //3
+            $(".delete-question-to-yes-no").attr("disabled","disabled");    
+        }
+    });
+    /*********************************************************************************/  
+  
 
     //Contar todos los divs de todas la preguntas y mostrarlas en el select, enviar salto a la pregunta siguiente 
     $("#container-questions").on('mousedown','.selectNumPreg',function(){
@@ -124,6 +150,7 @@ $(document).ready(function(){
     });
     /*********************************************************************************/      
 
+    
     //Eliminar una pregunta
     $('#container-questions').on('click', '.delete-question__control--delete-question',function() {
         var idQuestion = $(this).attr('id');
@@ -140,14 +167,9 @@ $(document).ready(function(){
     });
     /*********************************************************************************/      
 
-
+    
     function eliminarPregunta(idQuestion,typeQuestion,orden,idTemplate){
-    /*    var idQuestion = $(this).attr('id');
-        var idTemplate = $(this).attr('idTemplate');
-        var orden =$(this).attr('orden');
-        var typeQuestion = parseInt($(this).attr('typeQuestion'));
-   */ 
-                $.ajax({
+        $.ajax({
             url: '/administrator/deleteQuestion',
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -173,12 +195,34 @@ $(document).ready(function(){
             });
     }
 
-  /*  //Editar una pregunta 
+    
+    //Abrir modal QuestionEdit 
     $('#container-questions').on('click', '.new-question__control--edit-question', function() {
-        $("#ModalQuestionEdit").appendTo('body').modal();
-        $("#questionInput").append('')
-        //obtener el orden de la pregunta a editar
-        //obtener titulo y tipo de la pregunta
+        var idQuestion = $(this).attr('id');
+        var orden =$(this).attr('orden');   
+        var title = $(this).parent().parent().parent().children('.col-md-6').children().find('input').val();
+        var typeQuestion = parseInt($(this).attr('typeQuestion'));
+        var opciones= $($(this).parent().parent().parent().children('.yes-no-question-block').children().find('input')).map(function() {
+            return $(this).val();
+        }).get().join( ", " ).split(',');
+        var salto = parseInt(orden) + 1;
+        
+           $("#questionInputEdit").val(title);
+           $("#numPregSigEdit").val(orden);
+           $("#questionTypeEdit").val(typeQuestion);
+           $("#idQuestion").val(idQuestion);
+
+           $(".options-edit").empty();
+           if (typeQuestion == 2) {
+            $(".add-question-to-yes-no").removeClass('hidden');
+               for (var i = 0; i < opciones.length; i++) {
+                   $("#optionsMultEdit").append('<div class="form-group options-edit"><label for="exampleInputEmail1">Opción Respuesta</label><input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" value="'+opciones[i]+'" maxlength="50"><button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>');
+               } 
+           }else{
+            $(".add-question-to-yes-no").addClass('hidden');
+           }
+           
+           $("#ModalQuestionEdit").appendTo('body').modal();        
     });
     /*********************************************************************************/      
 
@@ -355,7 +399,7 @@ $(document).ready(function(){
 
         if (questionInput.length == 0 || questionOptionInput.length == 0) {
             alertify.alert("Ingrese una pregunta.", function(){
-                alertify.message('OK');
+                
           });
         }else if (questionInput.length < 200 || questionOptionInput.length < 50){
             $.ajax({
@@ -383,14 +427,54 @@ $(document).ready(function(){
                 },
                 error: function (textStatus, errorThrown) {
                     alertify.alert("No se ha podido agregar la pregunta.", function(){
-                        alertify.message('OK');
+                        
                      });
                 }               
             });
         }
         else {
             alertify.alert("Máximo 200 carácteres", function(){
-                alertify.message('OK');
+                
             });
+        }
+    }
+
+    function editQuestion(id) {
+        var idTemplate = id;
+        var idQuestion = $("#idQuestion").val();
+        var typeQuestion = $("#questionTypeEdit").val();
+        var salto = $("#numPregSigEdit").val();
+
+        var titleEdit = $("#questionInputEdit").val();
+        var optionsResult = "";
+        var questionOptionInputsA = document.getElementsByClassName('questionOptionInputsEdit');
+        for (var i = 0; i < questionOptionInputsA.length; i++)  {
+                    optionsResult = optionsResult + "," + questionOptionInputsA[i].value;
+                }
+
+               optionsResult = optionsResult.split(',');
+               optionsResult = optionsResult.splice(2,25);
+        if (titleEdit.length == 0){
+            alertify.alert("Ingrese una pregunta.", function(){});
+        }else{
+            $.ajax({
+            url: '/administrator/editEliminarQuestion',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            dataType: 'json',
+            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult },
+            })
+            .done(function() {
+                alertify.alert("Pregunta Editada correctamente.", function(){
+                    alertify.success('Pregunta Editada');                       
+                    $("#ModalQuestionEdit").modal('hide').find("input").val("");
+                });
+                $("#container-questions").load(" #container-questions");                    
+            
+            })
+            .fail(function() {
+            })
+            .always(function() {
+            });    
         }
     }
