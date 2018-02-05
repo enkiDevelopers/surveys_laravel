@@ -87,6 +87,33 @@ $(document).ready(function(){
     });
     /*********************************************************************************/      
 
+    // Agrega una nueva opcion a un bloque de preguntas de opción múltiple
+    $("#ModalQuestionEdit").on("click", ".add-question-to-yes-no", function(e){
+        // Habilitar-Deshabilitar Botón de eliminar de opción de bloque de preguntas de opción
+        var options = $(".multi-options-template-edit").length;
+        agregarOpcionEdit(options);
+        $(".delete-question-to-yes-no").removeAttr("disabled");
+    });
+    /*********************************************************************************/    
+
+    function agregarOpcionEdit(num){
+        var elem2 = $("#optionEdit").clone().removeClass("hidden");
+        elem2.attr({
+            class: 'form-group options-edit'
+        });        
+        $("#optionsMultEdit").append(elem2);
+    }
+
+    /**** Se tiene que cuidar que siempre haya al menos dos opciones de pregunta******/
+    $("#ModalQuestionEdit").on("click", ".delete-question-to-yes-no", function(){
+        $(this).parent().remove();
+        var options = $(".options-edit").length;
+        if( options <= '2'){ //3
+            $(".delete-question-to-yes-no").attr("disabled","disabled");    
+        }
+    });
+    /*********************************************************************************/  
+  
 
     //Contar todos los divs de todas la preguntas y mostrarlas en el select, enviar salto a la pregunta siguiente 
     $("#container-questions").on('mousedown','.selectNumPreg',function(){
@@ -196,7 +223,6 @@ $(document).ready(function(){
            }
            
            $("#ModalQuestionEdit").appendTo('body').modal();        
-         
     });
     /*********************************************************************************/      
 
