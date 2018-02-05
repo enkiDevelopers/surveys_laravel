@@ -18,8 +18,13 @@ use Response;
 class encuestadosController extends Controller
 {
 
-public function showList($id)
+public function showList(Request $request)
 {
+  $id= $request->session()->get('id');
+  if($id == null)
+  {
+  return redirect()->route('adminLogin');
+  }
   $listas = listaEncuestados::where("creador", $id)->get();
     return view("administrator.files", compact('listas'));
 }

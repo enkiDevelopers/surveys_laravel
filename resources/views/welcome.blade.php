@@ -56,13 +56,13 @@
                             <h2 class="title">Administrador</h2>
                             <div class="info">
                               <hr class="divider"/>
-                              <p class="lead">Empieza a generar encuestas, gestionar a los usuarios, etc.</p><a href="{{('/login')}}" class="btn btn-lg center-block">Iniciar Sesión</a>
+                              <p class="lead">Empieza a generar encuestas, gestionar a los usuarios, etc.</p><a href="{{('/administrator/login')}}" class="btn btn-lg center-block">Iniciar Sesión</a>
                             </div>
                           </div>
                         </article>
                       </div>
                       </div>
-                    </div>    
+                    </div>
                     @endauth
                 </div>
             @endif

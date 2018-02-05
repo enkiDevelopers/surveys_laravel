@@ -15,15 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/administrator/login',function () {
+    return view('auth.login');})->name("adminLogin");
+
+Route::post('/administrator/validate', 'iniciarSesion@ldap');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/administrator', function () {
-    return view('administrator.home');
-});
+Route::get('/administrator', 'iniciarSesion@validar')->name('adminHome');
 
-Route::get('/administrator/surveys/{id}', 'surveyController@show_cards');
+Route::get('/administrator/surveys/', 'surveyController@show_cards');
 
 Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
@@ -36,7 +39,7 @@ Route::get('/surveyed/solve', function () {
 Route::get('/surveyed/{matricula}','responderController@presentacion');
 
 Route::post("/administrator/publicar/encuesta","encuestadosController@publicar");
-Route::get('/administrator/files/{id}', 'encuestadosController@showList');
+Route::get('/administrator/files/', 'encuestadosController@showList');
 
 Route::get('/administrator/file/open', function(){
 	return view('administrator.openFile');

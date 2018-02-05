@@ -30,7 +30,7 @@
                         <p>Rafael Alberto Martínez Méndez</p>
                     </div>
                     <li id="home">
-                        <a href="{{ url('/administrator/surveys')}}/{{$admor}}" >
+                        <a href="{{ url('/administrator/surveys')}}" >
                             <i class="glyphicon glyphicon-arrow-left"></i>
                             <span> volver </span>
                         </a>
@@ -49,7 +49,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>            
+            </nav>
 
                 @yield('content')
             </div>

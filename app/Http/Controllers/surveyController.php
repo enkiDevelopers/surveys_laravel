@@ -44,8 +44,13 @@ class surveyController extends Controller
 
   }
 
-  public function show_cards($id)
+  public function show_cards(Request $request)
   {
+    $id= $request->session()->get('id');
+    if($id == null)
+    {
+    return redirect()->route('adminLogin');
+    }
     $eAdmin =  usuarios::where('idUsuario', $id)->where('type', '4')->count();
     if($eAdmin == 0)
     {
