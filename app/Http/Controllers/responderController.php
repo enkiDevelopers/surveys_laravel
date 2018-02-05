@@ -19,6 +19,9 @@ class responderController extends Controller
 {	
 	public function presentacion($matricula){
 		//$id es el la variable de la table encuestados donde se almacena la informacion
+    if($matricula==0){
+          return view("administrator.encuestacontestada");
+    }else{
     $info=DB::table('encuestados')->where('matricula','=',$matricula)->get();
 
 		$datos=DB::table('encuestados')
@@ -32,6 +35,7 @@ class responderController extends Controller
       ->where('encuestados.contestado','=',1)
       ->get();
 		return view('surveyed.home',compact('info','datos','contestado'));
+  }
 	}
 	public function busqueda($id){
 		return $this->buscar($id);
@@ -56,7 +60,9 @@ class responderController extends Controller
 
   } 
 	protected function buscar($id){
-      $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)->get();
+      $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
+                                                                    ->where('contestado','=',0)
+                                                                    ->get();
 	    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $idencuestado[0]->idEncuesta)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
@@ -78,11 +84,8 @@ class responderController extends Controller
         $datosOpt[] = [
         "questions" => $dato,
         "options" => $opt];
-
-
       }
       
-
       //log($datosOpt);
       $options=serialize($datosOpt);
       //echo $options;
@@ -92,12 +95,15 @@ class responderController extends Controller
         echo $cada["options"];
       }
 
-*/      $admor = $consulta[0]->creador;
+*/     $admor = $consulta[0]->creador;
        return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuestado'));
 
-
-
 	}
+  public function encuestacontestada(){
+        return view("administrator.encuestacontestada");
+
+
+  }
   public function guardarencuesta(Request $request){
     $idEncuesta=$request->Input('idencuesta');
     $idencuestado=$request->Input('idencuestado');
@@ -115,9 +121,17 @@ class responderController extends Controller
                   'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
-    DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
-    return $this->regresar($idencuestado);
+    //DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
+    $idmatricula=DB::table('encuestados')->select('matricula')->where('idE','=',$idencuestado)->get();
+    //return view("administrator.encuestacontestada");
+    //return redirect()->action('responderController@presentacion',$idmatricula[0]->matricula);
+    return view("administrator.encuestacontestada");
+
+    //return previous();
+    //return redirect()->back();
+    //return $this->regresar($idencuestado);
 
   }
+
 
 }

@@ -170,7 +170,7 @@
                                     case '2': 
                                 ?>
                                         <div class="btn-group " role="group" aria-label="...">
-                                        <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idDirectives}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Regional">
+                                        <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Regional">
                                             <span class="glyphicon glyphicon-eye-open" ></span>
                                         </button>
                                         </div>

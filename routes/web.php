@@ -205,3 +205,7 @@ Route::post('/administrator/editQuestion/','questionsTemplateController@editQues
 Route::get('/enviar', 'encuestadosController@enviar');
 
 Route::post('/administrator/editEliminarQuestion/','questionsTemplateController@editEliminarQuestion');
+
+Route::get('contestado',function(){
+    return view("administrator.encuestacontestada");
+});

@@ -1,21 +1,21 @@
 $(document).ready(function(){
 
-        var alto = (screen.availHeight) - (screen.availHeight / 10);
-        var anchoP =(screen.availWidth) - (screen.availHeight / 23) + (screen.availHeight / 46);
-        var anchoS =(screen.availWidth) - (screen.availHeight / 23);
+      //  var alto = (screen.availHeight) - (screen.availHeight / 10);
+       // var anchoP =(screen.availWidth) - (screen.availHeight / 23) + (screen.availHeight / 46);
+       // var anchoS =(screen.availWidth) - (screen.availHeight / 23);
 
-        $("#sumary").height(alto).width(anchoP);
-        $("#surveyContainer").height(alto).width(anchoS);
+       // $("#sumary").height('100%').width('100%');
+        //$("#surveyContainer").height('100%').width('100%');
 
         $("#btnStart").click(function(){
             $("#sumary").fadeOut();
-            $("#surveyContainer").removeClass('hidden').addClass('popInRight delay-500 duration-2250');
+            $("#surveyContainer").removeClass('hidden').addClass('popInRight delay-40 duration-50');
 
         });
 
         $("input.label_better").label_better({
             position: "top",
-            animationTime: 500,
+            animationTime: 50,
             easing: "ease-in-out",
             offset: 20
           });
@@ -25,8 +25,10 @@ $(document).ready(function(){
     /********Funcionalidades del botón Atrás******************/
 
     function atras(){
+        $("#idTitlePregunta").css("display", "");
         if(n<=1){
-            $("#idBack").attr('disabled','disabled');   
+            $("#idBack").attr('disabled','disabled');  
+ 
         }
 
         $("#idSave").css("display","none");
@@ -41,8 +43,11 @@ $(document).ready(function(){
           $("#idTitlePregunta").text("Recomendaciones: ");
         }else{
         $("#idTitlePregunta").text("Pregunta " + n);
-    }
-
+}
+if(n>=$(".pregs").length){
+    console.log("Escribir");
+}
+ 
     }
 
     $("#idBack").click(function(){
@@ -50,18 +55,30 @@ $(document).ready(function(){
     });
 
     /********Funcionalidades del botón Siguiente******************/
-    $("#idNext").click(function(){    	    	
+    $("#idNext").click(function(){ 
+    var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
     	$("#idBack").removeAttr('disabled');
         $("#preg"+n).css("display", "none");
         //Si la pregunta es pregunta abierta la siguiente avanza uno
         //si la pregunta es de opción múltiple, se tiene que saber si hay brinco o no
         if($("#type"+n).val()=="2"){
             var tempo= $('input:radio[data-name=opcion'+n+']:checked');
+            var dato=tempo;
             //var as = tempo.getElementsByTagName("salto");
             tempo= $(tempo).data("salto")
 
             //tempo=$("opcion"+n).val();
-
+            if(dato.val() == null){
+             swal({
+                title:"",
+                text: "Marque una de las opciones",
+                icon: "info",
+                //confirmButtonColor: "#DD6B55",
+                closeOnConfirm: true
+            }); 
+            }else{
+                console.log("marcado");
+            
             if(tempo==null){
                 //$("#idNext").attr('disabled','disabled');
                 n++; //eliminar esta línea
@@ -76,7 +93,10 @@ $(document).ready(function(){
                     $("#back"+n).val(b);
                 }
             }
-        }else{
+        }
+    }
+
+        else{
             n++;            
         }
 		$("#preg"+n).css("display", "inline");
@@ -84,29 +104,16 @@ $(document).ready(function(){
     	if(n>=$(".pregs").length){
             //$("#preg"+n).css("display", "none");
             $("#idTitlePregunta").css("display", "none");
-    		$("#idNext").attr('disabled','disabled');	
+    		$("#idNext").css('display','none');	
             $("#idenviar").css("display","");	
             $("#gracias").css("display","");
             //$("#idSave").css("display","inline");
-            swal({
-                },
-            function(){
-                swal({
-                   title: "Encuesta enviada",
-                   type: "success",
-                    });
-                    $("#idBack").css("display", "none");
-                    $("#idNext").css("display", "none");
-                    $("#idSave").css("display", "none");
-                    $("#preg"+n).css("display", "none");
-                    n++;
-                    $("#preg"+n).css("display", "inline");
-            }); 
+
             //Si es falso entonces
             //$("#idNext").removeAttr('disabled');
             //atras();    
-
     	}
+    
     });
 
 
@@ -116,7 +123,7 @@ $(document).ready(function(){
         $("#idNext").css("display", "none");
         $("#idSave").css("display", "none");
         $("#preg"+n).css("display", "none");
-        n++;
+        
         $("#preg"+n).css("display", "inline");
     });
 	

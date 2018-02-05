@@ -1,11 +1,39 @@
 @extends('layouts.admin')
 @section('content')
+
+<div id="AgregarLista" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
+      </div>
+      <div class="modal-body" >
+        <form>
+            <input class="form-control" type="text">
+            <input class="form-control" type="file">
+            <input class="form-control"type="submit">
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
   <link rel="stylesheet" href="/css/alertify.rtl.css">
   <link rel="stylesheet" href="/css/themes/default.rtl.css">
   <script src="/js/alertify.js"></script>
 <div class="container">
     <div class="row">
-      <hr />
+      <hr/>
         <div class="col-md-12 ">
             <div class="panel panel-default">
                 <div class="panel-heading">Listas Creadas</div>
@@ -13,23 +41,34 @@
                     <div class="row">
 
 
+                          <div class="col-md-4">
+                            <div class="card well card-new-survey" >
+                                <div class="card-body text-center">
+                                    <h3 class="card-title" id="Atitle">Añadir Nueva Lista</h3>
+                                    <p class="card-text"></p><br>
+                                        <p>
+                                            <a data-toggle="modal" data-target="#AgregarLista" class="btn btn-default btn-lg btn-new-survey">
+                                              <span class="glyphicon glyphicon-plus text-center"></span>
+                                            </a>
+                                        </p>
+                                </div>
+                            </div>
+                        </div>
+
 <?php
   foreach ($listas as $lista) {
 ?>
-
-
-                        <div class="col-md-3" id="delete_{{$lista->idLista}}">
+                        <div class="col-md-4" id="delete_{{$lista->idLista}}">
                             <div class="card well text-center" >
                                 <img class="card-img-top" id="icono"  src="/img/lista.png">
                                 <div class="card-body">
-                                    <h4 class="card-title"> <?php echo $lista->nombre; ?>    </h4>
-                                    <p class="card-text"></p>
+                                    <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
                                     <div class="btn-group" role="group" aria-label="...">
                                         <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-            <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-          <span class="glyphicon glyphicon-trash"></span>
+                                            <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <span class="glyphicon glyphicon-trash"></span>
                                         </a>
                                     </div>
                                 </div>
@@ -41,8 +80,11 @@
 <!-- FIN FOR EACH -->
 
 
+
+
+
 <!--NO BORRAR  -->
-                       <div class="col-md-3">
+                   <!--    <div class="col-md-3">
                             <div class="card  card-new-file" >
                                 <div class="card-body text-center">
                                     <h4 class="card-title">Añadir Archivos</h4>
@@ -55,13 +97,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 <!--hasta aqui termina el cuerpo del panel de archivos creados-->
                 </div>
 
             </div>
 <hr />
-            <div class="panel panel-default">
+          <!--  <div class="panel panel-default">
                 <div class="panel-heading">Lista de Incidentes</div>
                 <div class="panel-body">
 
@@ -98,7 +140,7 @@
                         </div>
 
                 </div>
-           </div>
+           </div>-->
 
         </div>
     </div>
@@ -204,7 +246,8 @@
         </div>
       </div>
     </div>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
     function limpiar()
     {
