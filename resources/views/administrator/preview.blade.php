@@ -153,7 +153,7 @@
     </div>
         
 
-    <form method="POST" action="/guardar">
+    <form method="POST" action="" id="control" onsubmit="get_action();">
         <?php 
             $i=1;
             $preguntas = unserialize($options);
@@ -210,9 +210,8 @@
         ?>
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
         <?php
-            foreach ($idencuestado as $idencuestados) {
-                echo "<input type='hidden' name='idencuesta' value='".$idencuestados->idEncuesta."'>";
-            }
+                echo "<input type='hidden' id='idencuestado' name='idencuesta' value='".$idencuesta1."'>";
+            
 
         ?>  
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -234,4 +233,15 @@
 
 </body>
 </html>
+<script type="text/javascript">
+function get_action() { // inside script tags
+    var id=document.getElementById("idencuestado").value;
+    console.log(id);
+    if(id==null){
+        document.getElementById("control").action = "/contestado";   
+    }else{
+        document.getElementById("control").action = "/guardar";
+}
+}
+</script>
 

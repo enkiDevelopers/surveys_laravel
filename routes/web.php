@@ -39,6 +39,8 @@ Route::get('/surveyed/solve', function () {
 });
 //
 Route::get('/surveyed/{matricula}','responderController@presentacion');
+Route::get('/completo/{matricula}','responderController@completo');
+
 
 Route::post("/administrator/publicar/encuesta","encuestadosController@publicar");
 Route::get('/administrator/files/', 'encuestadosController@showList');
@@ -209,3 +211,4 @@ Route::post('/administrator/editEliminarQuestion/','questionsTemplateController@
 Route::get('contestado',function(){
     return view("administrator.encuestacontestada");
 });
+

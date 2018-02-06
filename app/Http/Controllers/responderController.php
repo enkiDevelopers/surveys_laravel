@@ -60,15 +60,18 @@ class responderController extends Controller
 
   } 
 	protected function buscar($id){
+    $idencuesta1=NULL;
       $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
                                                                     ->where('contestado','=',0)
                                                                     ->get();
-	    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $idencuestado[0]->idEncuesta)->get();
+      $idencuesta1=$idencuestado[0]->idEncuesta;
+	    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $idencuesta1)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
       $imagePath = $consulta[0]->imagePath;
+
       $eid = $id;
-      $datos = questionsTemplates::where('templates_idTemplates',$idencuestado[0]->idEncuesta)->orderByRaw('orden')->get();
+      $datos = questionsTemplates::where('templates_idTemplates',$idencuesta1)->orderByRaw('orden')->get();
 
       $datosOpt=[];
       //echo $datos;
@@ -96,7 +99,7 @@ class responderController extends Controller
       }
 
 */     $admor = $consulta[0]->creador;
-       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuestado'));
+       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuesta1'));
 
 	}
   public function encuestacontestada(){
@@ -124,12 +127,33 @@ class responderController extends Controller
     //DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
     $idmatricula=DB::table('encuestados')->select('matricula')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");
-    //return redirect()->action('responderController@presentacion',$idmatricula[0]->matricula);
+    //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
     return view("administrator.encuestacontestada");
 
     //return previous();
     //return redirect()->back();
     //return $this->regresar($idencuestado);
+
+  }
+  public function completo($matricula){
+
+        if($matricula==0){
+          return view("administrator.encuestacontestada");
+    }else{
+    $info=DB::table('encuestados')->where('matricula','=',$matricula)->get();
+
+    $datos=DB::table('encuestados')
+      ->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->where('encuestados.matricula','=',$matricula)
+      ->where('encuestados.contestado','=',0)
+      ->get();
+      $contestado=DB::table('encuestados')
+      ->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->where('encuestados.matricula','=',$matricula)
+      ->where('encuestados.contestado','=',1)
+      ->get();
+    return view('administrator.encuestacontestada',compact('info','datos','contestado'));
+  }
 
   }
 

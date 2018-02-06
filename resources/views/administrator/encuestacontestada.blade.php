@@ -36,7 +36,7 @@
 		<div class="col-md-6 col-center" style="margin-top:100px;">
 			<center>
         	<p>Usted ya ha contestado esta encuesta <strong>¡Muchas Gracias!</strong></p>
-        	<a class="btn btn-primary btn-lg" href="#">Salir</a>
+        	<a class="btn btn-primary btn-lg" href="javascript:window.close();">Salir</a>
         	</center>
 		</div>
 
