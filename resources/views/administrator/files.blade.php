@@ -11,14 +11,15 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-        <form enctype="multipart/form-data" id="formuploadajax" method="post">
+        <form enctype="multipart/form-data" id="formuploadajax" method="post" >
           <hr>
             <label for="exampleInputFile">Nombre de la Lista</label>
-              <input class="form-control" type="text">
+              <input class="form-control" id="nombreLista" name="nombreLista" type="text">
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file" type="file">
-        <hr>
-            <input type="submit" value="Subir archivos"/>
+              
+          <hr>
+            <input type="button" value="Subir archivos" onclick="selecciona()" />
         </form>
 
 
@@ -253,36 +254,32 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-    $(function(){
-        $("#formuploadajax").on("submit", function(e){
-
+function selecciona(){
+  var nombre=document.getElementById("nombreLista").value;
   $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 });
-          
-            e.preventDefault();
-            var f = $(this);
-            console.log("EntraBien");
-            var formData = new FormData(document.getElementById("formuploadajax"));
-            formData.append("dato", "valor");
-            //formData.append(f.attr("name"), $(this)[0].files[0]);
-            $.ajax({
-                url: "/ingresar",
-                type: "post",
-                dataType: "html",
-                data: formData,
-                cache: false,
-                contentType: false,
-       processData: false
-            })
-                .done(function(res){
-                    $("#mensaje").html("Respuesta: " + res);
-                });
-        });
-    });
+        $.ajax({
+              dataType : 'json',
+              type : 'post',
+              url : '/ingresar',
+              data : {"nombre": nombre},
+              async:true,
+              cache:false,
+              beforeSend: function () {
+                        $("#cargar").html("Cargando Regiones...");
+              },
+              success : function(response){
+                console.log(response);
+              },
+              error : function(error) {
+                console.log(error);
+              }
+          });
 
+}
   </script>
     <script>
     function limpiar()

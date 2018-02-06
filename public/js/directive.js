@@ -1,5 +1,4 @@
 //$("#divid").load(" #divid");
-
 function corporativoModal(comp){
   let id = comp.id;
   $.ajaxSetup({

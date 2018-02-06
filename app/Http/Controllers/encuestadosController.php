@@ -118,8 +118,14 @@ $finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","t
 
 return view("administrator.cards", compact("actuales","finalizadas", "id"));
 }
-    public function ingresarlista(){
+    public function ingresarlista(Request $request){
       
+      $id = DB::table('listaEncuestados')->insertGetId(
+                    array('nombre' => $request->input('nombre'), 
+                           'creador' => 6));
+    return response()->json($id);
+
+
     }
 
 }
