@@ -147,10 +147,7 @@
                     </ul>
                 </div>
             </div>
-    <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
-        <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
 
-    </div>
         
 
     <form method="POST" action="" id="control" onsubmit="get_action();">
@@ -169,7 +166,7 @@
             <div class="bl_form" class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
                     <label >{{$dato->title}}
-                        <input type="input" style="height: 100%;width: 100%;" size="300"  name="<?php echo $dato->id ?>" id="<?php echo $dato->id ?>" class="form-control" >
+                        <input type="input" style="height: 100%;width: 100%;" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control" >
                     </label>
             </div>
         <?php
@@ -184,7 +181,7 @@
                 foreach ($opciones as $option) {
         ?>
                 <div class="form-group"  style="margin-left: 21%;">
-                    <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="<?php echo $dato->id ?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
+                    <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden"  class="form-control" >
             
@@ -200,19 +197,23 @@
         <?php
                  $i++;   
         }
+
         ?>
         <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
             <div class="form-group">                
             </div>
         </div>
         <?php 
-            $i++;
         ?>
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
+        <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
+        <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
+        <input type="text" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+
+    </div>
         <?php
                 echo "<input type='hidden' id='idencuestado' name='idencuesta' value='".$idencuesta1."'>";
             
-
         ?>  
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -220,6 +221,7 @@
 
             <input type='submit' class='btn btn-primary' id='idenviar' value='Enviar Encuesta' style='display:none'>
             <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
+            
             <button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button> 
         </div>
         </form>

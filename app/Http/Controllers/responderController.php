@@ -124,7 +124,7 @@ class responderController extends Controller
                   'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
-    //DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
+    DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
     $idmatricula=DB::table('encuestados')->select('matricula')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");
     //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);

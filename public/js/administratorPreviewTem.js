@@ -25,7 +25,14 @@ $(document).ready(function(){
     /********Funcionalidades del botón Atrás******************/
 
     function atras(){
+
+        if(n>=$(".pregs").length)
+        {
+            $("#idNext").css('display','');
+            $("#idenviar").css("display","none");   
+        }
         $("#idTitlePregunta").css("display", "");
+
         if(n<=1){
             $("#idBack").attr('disabled','disabled');  
  
@@ -44,10 +51,18 @@ $(document).ready(function(){
         }else{
         $("#idTitlePregunta").text("Pregunta " + n);
 }
-if(n>=$(".pregs").length){
-    console.log("Escribir");
-}
- 
+   // document.getElementById("prueba").value = "";
+
+
+   // var tempo= $('input:radio[data-name=opcion'+n+']:checked');
+    //var dato=tempo;
+   // tempo= $(tempo).data("salto")
+   if(document.getElementById("opt"+n)==null){
+        document.getElementById("opcion"+n).checked=false;
+   }else{
+    document.getElementById("opt"+n).value=null;
+   }
+
     }
 
     $("#idBack").click(function(){
@@ -77,7 +92,6 @@ if(n>=$(".pregs").length){
                 closeOnConfirm: true
             }); 
             }else{
-                console.log("marcado");
             
             if(tempo==null){
                 //$("#idNext").attr('disabled','disabled');
