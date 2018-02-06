@@ -51,17 +51,28 @@ $(document).ready(function(){
         }else{
         $("#idTitlePregunta").text("Pregunta " + n);
 }
-   // document.getElementById("prueba").value = "";
+if(n==0){
+         document.getElementById("opt"+1).value=null;
+
+}else{
+        var tempo1= $('input:radio[data-name=opcion'+n+']:checked');
+        var dato1=tempo1;
+        tempo1= $(tempo1).data("salto")
+        if(dato1.val() == null){
+
+            console.log(dato1.val());
+
+        }else{
+            console.log(dato1.val());
+        }
+        if (document.getElementById("opt"+n)==null){
 
 
-   // var tempo= $('input:radio[data-name=opcion'+n+']:checked');
-    //var dato=tempo;
-   // tempo= $(tempo).data("salto")
-   if(document.getElementById("opt"+n)==null){
-        document.getElementById("opcion"+n).checked=false;
-   }else{
-    document.getElementById("opt"+n).value=null;
-   }
+            document.getElementById("opcion"+n).checked=false;
+        }else{
+            document.getElementById("opt"+n).value=null;
+        }
+}
 
     }
 
@@ -111,6 +122,7 @@ $(document).ready(function(){
     }
 
         else{
+
             n++;            
         }
 		$("#preg"+n).css("display", "inline");

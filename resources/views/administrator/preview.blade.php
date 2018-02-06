@@ -153,6 +153,7 @@
     <form method="POST" action="" id="control" onsubmit="get_action();">
         <?php 
             $i=1;
+            
             $preguntas = unserialize($options);
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
@@ -183,7 +184,7 @@
                 <div class="form-group"  style="margin-left: 21%;">
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
-                    <input type="hidden"  class="form-control" >
+                    <input type="hidden" class="form-control" >
             
                 </div> 
                                
@@ -208,7 +209,7 @@
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
         <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
         <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
-        <input type="text" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+        <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
 
     </div>
         <?php

@@ -118,5 +118,8 @@ $finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","t
 
 return view("administrator.cards", compact("actuales","finalizadas", "id"));
 }
+    public function ingresarlista(){
+      
+    }
 
 }
