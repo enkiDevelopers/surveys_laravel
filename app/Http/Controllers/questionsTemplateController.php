@@ -129,16 +129,32 @@ class questionsTemplateController extends Controller
 
     }
 
+    public function deleteOptions(Request $request){
+        $idQuestion = $request['idQuestion'];
+
+        $valOptions = count(json_decode(json_encode($idQuestion), true));
+            for ($i=0; $i < $valOptions; $i++) { 
+            DB::table('optionsMult')->where('idParent', $idQuestion[$i])->update(array('salto' => 0));
+        }
+
+        return "1";
+
+
+    }
+
     public function updateOrderQuestion(Request $request){
 
-        $orden = $request['orden'];
-        $idTemplate = $request['idTemplate'];
+        $newOrden = $request['newOrden'];
+        $idQuestion = $request['idQuestion'];
 
-        $surv = new questionsTemplates;
+        $valOptions = count(json_decode(json_encode($idQuestion), true));
+        for ($i=0; $i < $valOptions; $i++) { 
+            DB::table('questionsTemplates')->where('id', $idQuestion[$i])->update(array('orden' => $newOrden[$i]));
+        }
 
-        $surv::where('id', $idTemplate)->update(array('orden' => $orden));
+//        $surv::where('id', $idTemplate)->update(array('orden' => $orden));
 
-        return $surv;
+        return $valOptions;
     }
 
 }

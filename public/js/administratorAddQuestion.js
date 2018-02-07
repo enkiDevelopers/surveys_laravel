@@ -138,6 +138,9 @@ $(document).ready(function(){
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType: 'json',
             data: {salto: salto, idQuestion: idQuestion, idOption:idOption },
+           beforeSend: function( xhr ) {   
+                $("#loader").modal('show');
+            },
         })
         .done(function(data) {
             alertify.alert("Se ha redireccionado a la pregunta Número: "+ salto+ " satisfactoriamente.", function(){});
@@ -146,6 +149,7 @@ $(document).ready(function(){
             alertify.alert("No se ha podido redireccionar la opción a la pregunta deseada.", function(){});
         })
         .always(function() {
+            $("#loader").modal('hide');
         });               
 
     });
@@ -208,7 +212,7 @@ $(document).ready(function(){
         var typeQuestion = parseInt($(this).attr('typeQuestion'));
         var opciones= $($(this).parent().parent().parent().children('.yes-no-question-block').children().find('input')).map(function() {
             return $(this).val();
-        }).get().join( ", " ).split(',');
+        }).get().join( "," ).split(',');
         var salto = parseInt(orden) + 1;
         
            $("#questionInputEdit").val(title);
@@ -241,6 +245,28 @@ $(document).ready(function(){
             if (clase == "glyphicon glyphicon-th-list"){
             alertify.confirm("Si continua se eliminarán todos los saltos de las opciones multiples", 
             function(){
+               var idQuestion =  $(".title").map(function() {
+                    return $(this).attr('id');
+                }).get().join( "," ).split(',');
+                var idTemplate = parseInt($(".new-question__control--edit-question").attr('idTemplate'));
+
+                $.ajax({
+                    url: '/administrator/deleteOptions/',
+                    type: 'POST',
+                    dataType: 'json',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {idQuestion: idQuestion},
+                })
+                .done(function(data) {
+                    console.log(data);
+                })
+                .fail(function() {
+                    console.log("error");
+                })
+                .always(function(data) {
+                    console.log(data);
+                });
+                
 
                 $("#sortableQuestions").toggleClass('btn-warning').toggleClass('btn-info');
                 $("#sortableQuestions").children().toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
@@ -251,10 +277,39 @@ $(document).ready(function(){
                     placeholder: "placeholder-sort",
                     forcePlaceholderSize: true,
                     forceHelperSize: true,
-                    cancel: ".numPregs",
                     update: function(){
-                        console.log($(".numPregs").sortable('serialize'));
+                        var opciones = $(".numPregs").map(function() {
+                            return $(this).val();
+                        }).get().join( "," ).split(',');
+
+                        for (var i = 0; i <= $(".numPregs").length; i++) {
+                            var sizeOp = sizeOp +","+ i;
+                        }
+                 
+                        size = sizeOp.split(',');
+                        newOrden = size.splice(2,325);
+
+                        var idQuestion =  $(".title").map(function() {
+                            return $(this).attr('id');
+                        }).get().join( "," ).split(',');
+
+                        $.ajax({
+                            url: '/administrator/updateOrderQuestion',
+                            type: 'POST',
+                            dataType: 'json',
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            data: {idQuestion: idQuestion,newOrden: newOrden},
+                        })
+                        .done(function(data) {
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        .always(function(data) {
+                            console.log(data);
+                        });
                         
+
                     },
                     revert: true,
                     disabled:false
@@ -265,6 +320,7 @@ $(document).ready(function(){
             });
 
         }else{
+            $("#container-questions").load(" #container-questions");
             $("#sortableQuestions").toggleClass('btn-warning').toggleClass('btn-info');
             $("#sortableQuestions").children().toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
             $("#container-questions").sortable( "disable" )
@@ -437,7 +493,7 @@ $(document).ready(function(){
         }
 
        optionsResult = optionsResult.split(',');
-       optionsResult = optionsResult.splice(2,25);
+       optionsResult = optionsResult.splice(2,325);
        //console.log(optionsResult);
 
         if (questionInput.length == 0 || questionOptionInput.length == 0) {
@@ -496,7 +552,7 @@ $(document).ready(function(){
                 }
 
                optionsResult = optionsResult.split(',');
-               optionsResult = optionsResult.splice(2,25);
+               optionsResult = optionsResult.splice(2,325);
         if (titleEdit.length == 0){
             alertify.alert("Ingrese una pregunta.", function(){});
         }else{
