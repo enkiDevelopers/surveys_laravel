@@ -7,8 +7,6 @@
   <div class="row">
       <div class="col-sm-12">
         <div class="header ">Administradores registrados
-
-
           <a href="#popup" class="popup-link btn btn-primary">Añadir</a>
         </div>
 
@@ -17,54 +15,30 @@
                <th class="text-center">Imagen</th>
                <th class="text-center">Nombre</th>
                <th class="text-center">E-mail</th>
-               <th class="text-center">Télefono</th>
                <th class="text-center" width="230">Acciones</th>
             </tr>
 
-            <tr>
-               <td><img src="http://lorempixel.com/100/100/people/1" alt="" /></td>
-               <td>Jane Doe</td>
-               <td>jane.doe@foo.com</td>
-               <td>01 800 2000</td>
-               <td>
-
-                 <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
-
-               </td>
-            </tr>
-
-            <tr>
-               <td><img src="http://lorempixel.com/100/100/sports/2" alt="" /></td>
-               <td>John Doe</td>
-               <td>john.doe@foo.com</td>
-               <td>01 800 2000</td>
-               <td>
-                 <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
+            <?php foreach ($usuarios as $usuario) { ?>
+              <tr>
+                  <td class="text-center"><img src="/img/avatar/{{$usuario->imagenPerfil}}"></td>
+                 <td class="text-center">{{$usuario->nombre}}</td>
+                 <td class="text-center"> {{$usuario->email}}</td>
+                <td class="text-center" width="230">
+                  <center>
+                <a href="#">
+               <span class="glyphicon glyphicon-remove"></span>
+               </a>
+               </center>
+      </td>
+              </tr>
 
 
-               </td>
-            </tr>
 
-            <tr>
-               <td><img src="http://lorempixel.com/100/100/people/9" alt="" /></td>
-               <td>Jane Smith</td>
-               <td>jane.smith@foo.com</td>
-               <td>01 800 2000</td>
-               <td>  <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
+          <?php  } ?>
 
-</td>
-            </tr>
 
-            <tr>
-               <td><img src="http://lorempixel.com/100/100/people/3" alt="" /></td>
-               <td>John Smith</td>
-               <td>john.smith@foo.com</td>
-               <td>01 800 2000</td>
-               <td>
-                 <input type="button" class="btn btn-info" value="Dar de baja" style="width: 180px;margin-bottom: 10px;" >
 
-               </td>
-            </tr>
+
          </table>
       </div>
 

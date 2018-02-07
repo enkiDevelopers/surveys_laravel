@@ -93,7 +93,7 @@ class surveyController extends Controller
     $titulo = $request['titleInput'];
     $descripcion = $request['descInput'];
     //$nombre =$request['nombre'];
-    
+
      $surv = new templates;
      $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion));
 
@@ -190,25 +190,10 @@ public function reminder(Request $request)
   //$id= 1;
   $mensaje = publicaciones::where('idPub',$id)->first();
   $idLista = listaEncuestados::where('nombre', $mensaje->destinatarios)->first();
-  $destinatarios = encuestados::
-  where('listaEncuestados_idLista', $idLista->idLista)
-  ->where('incidente', '0')->where('contestado','0')->get();
-$asunto = $mensaje->asunto;
-
 $recordatorios = recordatorios::where('idPlantilla',$id)->get();
-/*
-  foreach ($destinatarios as $usuario) {
-  $data= array(
-  'cuerpo'=> $mensaje->instrucciones,
-  'id'=> $usuario->idE
-  );
 
-  Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
-      $message->subject($asunto);
-      $message->to($usuario->email1);
-  });
-}*/
-  return view("administrator.recordatorio",compact('mensaje','recordatorios'));
+
+return view("administrator.recordatorio",compact('mensaje','recordatorios'));
 
 
 }

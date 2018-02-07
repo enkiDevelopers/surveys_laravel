@@ -122,8 +122,9 @@ showCancelButton: true,
 cancelButtonText: "Cancelar",
 confirmButtonColor: "#DD6B55",
 confirmButtonText: "Eliminar",
-closeOnConfirm: false },
+closeOnConfirm: true },
 function(){
+  $("#procesando").show();
  $.ajax({
   url: "/administrator/delete/",
   type: 'GET',
@@ -286,15 +287,16 @@ function duplicar()
     $("#procesando").show();
   },
   success: function( sms ) {
-    $("#procesando").hide();
+
     swal({
        title: "Su encuesta ha sido duplicada",
        text: "",
        type: "success",
         });
+          showcards();
       document.getElementById("form").reset();
       $('#duModal').modal('hide');
-        showcards();
+
       },error: function(result) {
         $("#procesando").hide();
         swal({
@@ -334,7 +336,7 @@ function showcards(){
                   //  document.getElementById("loader").style.display="none";
                     $("#loader").fadeOut(300);
                  }, 500);
-
+                  $("#procesando").hide();
 
              }
          }

@@ -58,9 +58,7 @@ Route::get('/administrator/exclude', function(){
 	return view('administrator.exclude');
 });
 
-Route::get('/administrator/management', function(){
-	return view('administrator.management');
-});
+Route::get('/administrator/management', 'userController@show' );
 
 Route::get('/administrator/management/new', function(){
 	return view('administrator.new-administrator');

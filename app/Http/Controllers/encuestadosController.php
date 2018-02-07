@@ -68,6 +68,14 @@ $crear->tipo = $tipo;
 $crear->save();
 
 $idLista = listaEncuestados::where('nombre', $destinatarios)->first();
+
+$Iusers = new encuestados;
+$Iusers = encuestados::where('listaEncuestados_idLista', $idLista->idLista)->get();
+foreach ($Iusers as $Iuser) {
+$Iuser->idEncuesta = $idPlantilla;
+$Iuser->save();
+}
+
 $user = encuestados::where('listaEncuestados_idLista',$idLista->idLista)->get();
 $easunto =array('sms'=> $asunto);
 $data= array(
@@ -127,5 +135,7 @@ return view("administrator.cards", compact("actuales","finalizadas", "id"));
 
 
     }
+
+
 
 }
