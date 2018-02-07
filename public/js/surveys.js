@@ -180,7 +180,7 @@ function enviar()
   var fechat = $("#termino").val();
 //  var instrucciones = $("#instrucciones").val();
 var instrucciones = CKEDITOR.instances['instrucciones'].getData();
-  var destinatarios = $("#destinatario").val();
+  var destinatarios = $("#destinatarios").val();
   var tipo = $("#tipo").val();
 
   $.ajax({
@@ -194,7 +194,8 @@ var instrucciones = CKEDITOR.instances['instrucciones'].getData();
         fechat:fechat,
         instrucciones:instrucciones,
         destinatarios: destinatarios,
-        asunto:asunto
+        asunto:asunto,
+        tipo:tipo
   },
   beforeSend: function(){
     $("#procesando").show();
@@ -207,8 +208,10 @@ var instrucciones = CKEDITOR.instances['instrucciones'].getData();
        type: "success",
         });
       document.getElementById("form").reset();
+      CKEDITOR.instances.instrucciones.setData('');
       $('#miModal').modal('hide');
       busca();
+      showcards();
       },error: function(result) {
         $("#procesando").hide();
         swal({
@@ -342,7 +345,6 @@ function showcards(){
 
 function reminder(id)
 {
-alert(id);
   $.ajax({
   url: "/administrator/surveys/reminder",
   type: 'POST',
@@ -353,6 +355,7 @@ alert(id);
     $("#procesando").show();
   },
   success: function( sms ) {
+    $("#ir").attr('href',"/administrator/previewtem/"+id);
     $("#procesando").hide();
 $("#recorRec").html(sms);
 $('#recordatorio').modal('show');
@@ -404,5 +407,11 @@ swal({
             });
             }
   });
+
+}
+
+
+function ir()
+{
 
 }

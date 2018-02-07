@@ -17,7 +17,6 @@ use Mail;
 use Response;
 class encuestadosController extends Controller
 {
-
 public function showList(Request $request)
 {
   $id= $request->session()->get('id');
@@ -65,10 +64,11 @@ $crear->asunto=$asunto;
 $crear->fechai=$fechai;
 $crear->fechat=$fechat;
 $crear->idTemplate=$publicar->id;
+$crear->tipo = $tipo;
 $crear->save();
 
-
-$user = encuestados::where('listaEncuestados_idLista','1')->get();
+$idLista = listaEncuestados::where('nombre', $destinatarios)->first();
+$user = encuestados::where('listaEncuestados_idLista',$idLista->idLista)->get();
 $easunto =array('sms'=> $asunto);
 $data= array(
 'cuerpo'=> $instrucciones ,
@@ -119,9 +119,9 @@ $finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","t
 return view("administrator.cards", compact("actuales","finalizadas", "id"));
 }
     public function ingresarlista(Request $request){
-      
+
       $id = DB::table('listaEncuestados')->insertGetId(
-                    array('nombre' => $request->input('nombre'), 
+                    array('nombre' => $request->input('nombre'),
                            'creador' => 6));
     return response()->json($id);
 

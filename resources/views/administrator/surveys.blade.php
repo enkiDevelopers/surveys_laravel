@@ -226,18 +226,18 @@
     <div class="row">
     <div class="col-md-6 text-center">
 
-    <select  name="destinatarios" required>
+    <select  name="destinatarios"  id="destinatarios" required>
 
       <?php foreach ($listas as $lista) {?>
-      <option value="{{$lista->nombre}}" id="destinatario">  {{$lista->nombre}}</option>
+      <option value="{{$lista->nombre}}" >  {{$lista->nombre}}</option>
                                   <?php } ?>
 
       </select>
       </div>
     <div class="col-md-6 text-center">
-    <select  name="tipo" required>
+    <select  id="tipo" name="tipo" required>
                 <?php foreach ($tipos as $tipo) {?>
-                <option value="{{$tipo->idTipo}}" id="tipo"> <?php echo $tipo->tipo; ?>  </option>
+                <option value="{{$tipo->idTipo}}" > <?php echo $tipo->tipo; ?>  </option>
                 <?php  } ?>
 
     </select>
@@ -316,6 +316,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+        <center>
+          <a class="boton azul" id="ir">Ver encuesta</a>
+        </center>
       </div>
       <div class="modal-body">
         <div id="recorRec">

@@ -52,12 +52,12 @@ table-editable {
   <thead id="encabezado">
     <tr>
 <center>
-            {{$mensaje->titulo}}
+      Titulo:      {{$mensaje->titulo}}
 </center>
 
     </tr>
   </thead>
-<tbody>
+<tbody >
 <tr>
   <td>
     <p>Asunto: </p>
