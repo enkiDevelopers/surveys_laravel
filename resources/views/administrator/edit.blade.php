@@ -23,5 +23,8 @@
 
 				@include('administrator.modalTitle')
 				@include('administrator.modalQuestionEdit')
+	<div id="loader" class="modal fade">
+		<img src="/img/load/loader.gif" alt="cargando...">
+	</div>
  @endsection
 

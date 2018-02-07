@@ -93,6 +93,8 @@ class surveyController extends Controller
     $titulo = $request['titleInput'];
     $descripcion = $request['descInput'];
     //$nombre =$request['nombre'];
+    
+     $surv = new templates;
      $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion));
 
      return $surv;
