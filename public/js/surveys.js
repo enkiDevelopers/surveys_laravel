@@ -375,7 +375,6 @@ $('#recordatorio').modal('show');
 function send()
 {
 var id = $("#idPub").val();
-alert(id);
   $.ajax({
   url: "/administrator/reminderSend",
   type: 'POST',
@@ -389,6 +388,11 @@ alert(id);
     $("#procesando").hide();
 $("#recorRec").html(sms);
 $('#recordatorio').modal('show');
+swal({
+   title: "Su recordatorio ha sido enviado",
+   text: "",
+   type: "success",
+    });
 
           },error: function(result) {
         $("#procesando").hide();
