@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/administrator', 'iniciarSesion@validar')->name('adminHome');
 
 Route::get('/administrator/surveys/', 'surveyController@show_cards');
+Route::post('/administrator/reminderSend', 'surveyController@send');
 
 Route::get('/administrator/surveys/new', function () {
     return view('administrator.new-survey');
@@ -212,4 +213,3 @@ Route::get('contestado',function(){
     return view("administrator.encuestacontestada");
 });
 Route::post('/ingresar','encuestadosController@ingresarlista');
-

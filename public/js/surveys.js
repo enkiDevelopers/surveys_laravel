@@ -340,10 +340,9 @@ function showcards(){
          xmlhttp.send();
      }
 
-
-
 function reminder(id)
 {
+alert(id);
   $.ajax({
   url: "/administrator/surveys/reminder",
   type: 'POST',
@@ -355,19 +354,50 @@ function reminder(id)
   },
   success: function( sms ) {
     $("#procesando").hide();
-    swal({
-       title: "recordatorio enviado",
-       text: sms["sms"],
-       type: "success",
-        });
+$("#recorRec").html(sms);
+$('#recordatorio').modal('show');
+
           },error: function(result) {
         $("#procesando").hide();
+
         swal({
            title: "Error",
            text: "",
            type: "warning",
             });
-            showcards();
+            }
+  });
+
+}
+
+
+
+function send()
+{
+var id = $("#idPub").val();
+alert(id);
+  $.ajax({
+  url: "/administrator/reminderSend",
+  type: 'POST',
+  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+  data: {idPub:id},
+  datatype: "json",
+  beforeSend: function(){
+    $("#procesando").show();
+  },
+  success: function( sms ) {
+    $("#procesando").hide();
+$("#recorRec").html(sms);
+$('#recordatorio').modal('show');
+
+          },error: function(result) {
+        $("#procesando").hide();
+
+        swal({
+           title: "Error",
+           text: "",
+           type: "warning",
+            });
             }
   });
 

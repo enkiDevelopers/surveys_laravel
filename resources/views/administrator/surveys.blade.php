@@ -104,6 +104,7 @@
         </div>
     </div>
 </div>
+
 <!-- #############################################3 Modal agregar plantilla -->
           <form id="myForm" method="post" action="/save" enctype="multipart/form-data" id="myForm">
                   {{ csrf_field() }}
@@ -147,6 +148,8 @@
             </div>
         </div>
           </form>
+
+
 <!--  modal de  creacion de encuesta-->
     <!-- Modal publicar encuesta-->
         <form id="form" onsubmit="return detener();">
@@ -260,7 +263,6 @@
 		    </div>
 	      </div>
     </form>
-
 <!-- #######################################################################Modal Duplicar######################################################## -->
         <form id="duForm" onsubmit="return detener2();">
               <div class="modal fade" id="duModal" tabindex="-1"
@@ -273,7 +275,6 @@
                         <span aria-hidden="true">&times;</span>
                         </button>
                             <h4 class="modal-title" id="myModalLabel">Duplicar encuesta</h4>
-
                   </div>
                     <div class="modal-body">
                       <div class="row">
@@ -288,32 +289,50 @@
                       <input type="text" maxlength="40" required id="nNombre" name="nNombre"/>
                     </div>
                     </div>
-
                     </div>
                     <div class="row">
-
                         <hr />
                 <div class="col-md-12">
-                  <div class="col-md-4">
-
-                  </div>
-                  <div class="col-md-2">
-
-                  </div>
-                  <div class="col-md-6">
-                  <input type="button" name="cancelar"
-                      value="Cancelar" class="btn btn-warning" onclick="limpiar4()" data-dismiss="modal">
-                      <input type="submit" name="enviar" class="btn btn-danger" id="duplicar" value="Duplicar" />
-                    </div>
+                <div class="col-md-6">
+                <input type="button" name="cancelar" value="Cancelar" class="btn btn-warning" onclick="limpiar4()" data-dismiss="modal">
+                <input type="submit" name="enviar" class="btn btn-danger" id="duplicar" value="Duplicar" />
                 </div>
-                          </div>
+                </div>
+                </div>
+</div>
+</div>
+</div></div>
 
-</div>
-</div>
-</div>
 </form>
 
 <!--######################################### Termina MODAL DUPLICAR ##################################################### -->
+
+<!--################################ Modal recordatorio ############################################################################### -->
+<div class="modal" tabindex="-1" role="dialog" id="recordatorio" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Enviar recordatorio</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="recorRec">
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="send();">Enviar recordatorio</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
       <script>
     busca();

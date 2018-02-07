@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\templates;
 use App\encuestados;
 use App\questionsTemplates;
+use App\recordatorios;
 use DB;
 use File;
 use Input;
@@ -191,6 +192,35 @@ public function reminder(Request $request)
   where('listaEncuestados_idLista', $idLista->idLista)
   ->where('incidente', '0')->where('contestado','0')->get();
 $asunto = $mensaje->asunto;
+
+$recordatorios = recordatorios::where('idPlantilla',$id)->get();
+/*
+  foreach ($destinatarios as $usuario) {
+  $data= array(
+  'cuerpo'=> $mensaje->instrucciones,
+  'id'=> $usuario->idE
+  );
+
+  Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
+      $message->subject($asunto);
+      $message->to($usuario->email1);
+  });
+}*/
+  return view("administrator.recordatorio",compact('mensaje','recordatorios'));
+
+
+}
+
+
+public function send(Request $request)
+{
+  $id= $request->idPub;
+  $mensaje = publicaciones::where('idPub',$id)->first();
+  $idLista = listaEncuestados::where('nombre', $mensaje->destinatarios)->first();
+  $destinatarios = encuestados::
+  where('listaEncuestados_idLista', $idLista->idLista)
+  ->where('incidente', '0')->where('contestado','0')->get();
+  $asunto = $mensaje->asunto;
   foreach ($destinatarios as $usuario) {
   $data= array(
   'cuerpo'=> $mensaje->instrucciones,
@@ -202,12 +232,13 @@ $asunto = $mensaje->asunto;
       $message->to($usuario->email1);
   });
   }
+ $record = new recordatorios;
+ $record->fechaEnvio = date("Y-m-d h:i:s");
+$record->idPlantilla=  $id;
+$record->save();
+$recordatorios = recordatorios::where('idPlantilla',$id)->get();
 
-  return response()->json(array('sms'=> "recordatorio enviado correctamente"));
-
+return view("administrator.recordatorio",compact('mensaje','recordatorios'));
 }
-
-
-
 
 }
