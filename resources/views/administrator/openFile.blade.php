@@ -2,16 +2,47 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-md-offset-6">
+        <div class="col-md-12 ">
+            <br>
+            <hr>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>email1</th>
+                    <th>email2</th>
+                    <th>email3</th>
+                    <th>name</th>
+                    <th>apPaterno</th>
+                    <th>apMaterno</th>
+                    <th>matricula</th>
+                    <th>clave</th>
+
+                </tr>
+            </thead>
+                <tbody>
+
             <?php
                 foreach ($data as $info) {
-                    ?>
-                        
+            ?>
+                    <tr>
+                        <td><?php echo $info->email1 ?></td>
+                        <td><?php echo $info->email2 ?></td>
+                        <td><?php echo $info->email3 ?></td>
+                        <td><?php echo $info->name ?></td>
+                        <td><?php echo $info->apPaterno ?></td>
+                        <td><?php echo $info->apMaterno ?></td>
+                        <td><?php echo $info->matricula ?></td>
+                        <td><?php echo $info->clave ?></td>
+                    </tr>      
 
-                    <?php
+            <?php
                 }
 
             ?>
+                </tbody>
+
+            </table>
+
         </div>
                 
             </div>

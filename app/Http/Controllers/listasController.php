@@ -116,7 +116,6 @@ public function ingresarlista(Request $request){
             if($inicial==0){
                 $inicial++;
             }else{
-            try{
                 $infor=DB::table('encuestados')->insert(
                                             ['email1'    => $data[0],
                                              'email2'    => $data[1],
@@ -128,69 +127,21 @@ public function ingresarlista(Request $request){
                                              'clave'     => $data[7],
                                              'listaEncuestados_idLista' => $id]
                                              );
-            return 1;
-        }catch(\Exception  $e){
-                DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->delete();
-                DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
-
-                return 0;
-
-        }
-
-        }
-        }
-
-        /*if (($gestor = fopen("listas/".$dato, "r")) !== FALSE) {
-            while (($datos = fgetcsv($gestor, " ")) !== FALSE) {
-                $numero = count($datos);
-                $fila++;
-                if($inicial==0){
-                    for ($c=0; $c < $numero; $c++) {
-                        $campo=$datos[$c].",";
-                        DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);
-                }
-                    $inicial++;
-                }else{
-
-                }
-
-        }
-    fclose($gestor);
-}*/
-
-       /* while (!feof($data)){
-            if($inicial==0){
-                    $cabecera= fgets($data);
-                    echo $cabecera;
-                    $inicial++;
-            }else{
-                $cuerpo= fgets($data);
-                echo $cuerpo;
-                $inicial++;
-                $id = DB::table('encuestados')->insertGetId(
-                                        ['email' => 'john@example.com', 'votes' => 0]
-                );
-
             }
-        }*/
-           /* if (($fichero = fopen($file, "r")) !== FALSE) {
-                    while (($datos = fgetcsv($fichero, 1000)) !== FALSE) {
-                        // Procesar los datos.
-                        // En $datos[0] está el valor del primer campo,
-                        // en $datos[1] está el valor del segundo campo, etc...
-                    }
-            }*/
-        }else{
-           // return response()->json("1");
+        }
+
+
+        }
+        else{
         }
 
         //return response()->json($data);
 
     }
     public function mostrarDatos($id){
-        $data=DB::table('listaEncuestados')->where('idLista','=',$id)->get();
+        $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
-        return view('administrator/openFile',compact('$data'));
+        return view('administrator/openFile',compact('data'));
 
 
     }

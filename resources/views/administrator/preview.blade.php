@@ -149,8 +149,8 @@
             </div>
 
         
-
-    <form method="POST" action="" id="control" onsubmit="get_action();">
+<!-- onsubmit="get_action();"-->
+    <form method="POST"  id="control"  action="">
         <?php 
             $i=1;
             
@@ -220,7 +220,7 @@
 
         <div class="col-md-5 pull-right" >
 
-            <input type='submit' class='btn btn-primary' id='idenviar' value='Enviar Encuesta' style='display:none'>
+            <input type='button' onclick="get_action()" class='btn btn-primary' id='idenviar' value='Enviar Encuesta' style='display:none'>
             <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
             
             <button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button> 
@@ -237,14 +237,40 @@
 </body>
 </html>
 <script type="text/javascript">
-function get_action() { // inside script tags
+function pop(){
+             swal({
+              title: "Información",
+              text: "Encuesta demostrativa ninguna Información será guardada",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonClass: "btn-danger",
+              confirmButtonText: "Continuar",
+              cancelButtonText: "Cancelar",
+              closeOnConfirm: false,
+              closeOnCancel: false
+            },
+            function(isConfirm) {
+            if (isConfirm) {
+                location.href ="/contestado";
+
+            } else {
+            
+            }
+            });
+}
+function get_action(){
+
     var id=document.getElementById("idencuestado").value;
     console.log(id);
-    if(id==null){
-        document.getElementById("control").action = "/contestado";   
+    if(id==''){
+        pop();
+
     }else{
         document.getElementById("control").action = "/guardar";
+        document.getElementById("control").submit();
+
 }
 }
+
 </script>
 

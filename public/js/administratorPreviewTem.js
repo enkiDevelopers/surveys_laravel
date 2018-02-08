@@ -84,7 +84,9 @@ if(n==0){
 
     /********Funcionalidades del botón Siguiente******************/
     $("#idNext").click(function(){ 
-    var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
+        var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
+        var tipo2=$('#opt'+n).val();
+
     	$("#idBack").removeAttr('disabled');
         $("#preg"+n).css("display", "none");
         //Si la pregunta es pregunta abierta la siguiente avanza uno
@@ -93,12 +95,11 @@ if(n==0){
             var tempo= $('input:radio[data-name=opcion'+n+']:checked');
             var dato=tempo;
             //var as = tempo.getElementsByTagName("salto");
-            tempo= $(tempo).data("salto")
-
+            tempo= $(tempo).data("salto");
             //tempo=$("opcion"+n).val();
             if(dato.val() == null){
              swal({
-                title:"",
+                title:"Información",
                 text: "Marque una de las opciones",
                 icon: "info",
                 //confirmButtonColor: "#DD6B55",
@@ -121,14 +122,34 @@ if(n==0){
                 }
             }
         }
-    }
+    }else{
+        if($("#type"+n).val()=="1"){
+            if(tipo2==''){
+                swal({
+                title:"Información",
+                text: "Escriba su respuesta",
+                icon: "info",
+                //confirmButtonColor: "#DD6B55",
+                closeOnConfirm: true
+            }); 
 
-        else{
+            }else{
+                n++;
+            }
 
-            n++;            
+
+}else{
+                     n++;
+                                       
+
+}
         }
-		$("#preg"+n).css("display", "inline");
-        $("#idTitlePregunta").text("Pregunta " + n);
+
+               $("#preg"+n).css("display", "inline");
+               $("#idTitlePregunta").text("Pregunta " + n);
+
+
+
     	if(n>=$(".pregs").length){
             //$("#preg"+n).css("display", "none");
             $("#idTitlePregunta").css("display", "none");

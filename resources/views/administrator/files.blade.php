@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('content')
+  
 
+
+ <!-- <div class="loader" id="loader" >
+  </div>-->
+ <div class="procesando" id="procesando" ></div>
 <div id="AgregarLista" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -278,24 +283,17 @@ $(function(){
               async:true,
               cache:false,
 
-              beforeSend: function () {
-                  $("#cargar").html("Cargando Regiones...");
+              beforeSend: function () { 
+                  </div></
+
               },
               success : function(response){
 
-                if(response==0){
-                swal({
-                  title:"",
-                  text: "Erro! Verifique su archivo",
-                  icon: "info",
-                  //confirmButtonColor: "#DD6B55",
-                  closeOnConfirm: true
-                }); 
-                }else{
-                                  $("#divid").load(" #divid");
+
+              $("#divid").load(" #divid");
                 $('#nombre').val('');
                 $('#archivo').val('');
-                }
+                
 
               },
               error : function(error) {
@@ -335,5 +333,4 @@ $(function(){
         }
 
     </script>
-
 @endsection
