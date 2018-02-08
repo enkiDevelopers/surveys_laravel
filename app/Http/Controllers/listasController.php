@@ -109,20 +109,45 @@ public function ingresarlista(Request $request){
                                 array( 'nombre'  => $nombre,
                                        'archivo' => $dato, 
                                        'creador' => 6));
-        $data = fopen('listas/'.$dato, "r");
+        $handle = fopen('listas/'.$dato, "r");
 
         $fila = 1;
-        if (($gestor = fopen("listas/".$dato, "r")) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE){
+            if($inicial==0){
+                $inicial++;
+            }else{
+            try{
+                $infor=DB::table('encuestados')->insert(
+                                            ['email1'    => $data[0],
+                                             'email2'    => $data[1],
+                                             'email3'    => $data[2],
+                                             'name'      => $data[3],
+                                             'apPaterno' => $data[4],
+                                             'apMaterno' => $data[5],
+                                             'matricula' => $data[6],
+                                             'clave'     => $data[7],
+                                             'listaEncuestados_idLista' => $id]
+                                             );
+            return 1;
+        }catch(\Exception  $e){
+                DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->delete();
+                DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
+
+                return 0;
+
+        }
+
+        }
+        }
+
+        /*if (($gestor = fopen("listas/".$dato, "r")) !== FALSE) {
             while (($datos = fgetcsv($gestor, " ")) !== FALSE) {
                 $numero = count($datos);
                 $fila++;
                 if($inicial==0){
                     for ($c=0; $c < $numero; $c++) {
                         $campo=$datos[$c].",";
-                        $id = DB::table('Encuestados')->insertGetId(
-                                                array( 'nombre'  => $nombre,
-                                                        'archivo' => $dato, 
-                                                        'creador' => 6));
+                        DB::insert('insert into users (id, name) values (?, ?)', [1, 'Dayle']);
                 }
                     $inicial++;
                 }else{
@@ -131,7 +156,7 @@ public function ingresarlista(Request $request){
 
         }
     fclose($gestor);
-}
+}*/
 
        /* while (!feof($data)){
             if($inicial==0){
@@ -160,6 +185,13 @@ public function ingresarlista(Request $request){
         }
 
         //return response()->json($data);
+
+    }
+    public function mostrarDatos($id){
+        $data=DB::table('listaEncuestados')->where('idLista','=',$id)->get();
+
+        return view('administrator/openFile',compact('$data'));
+
 
     }
 }

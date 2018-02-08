@@ -40,6 +40,8 @@ $(document).ready(function(){
 
         $("#idSave").css("display","none");
         $("#idNext").removeAttr('disabled');
+        $("#gracias").css("display","none");
+
         $("#preg"+n).css("display", "none");        
         //n--;
         n=$("#back"+n).val();

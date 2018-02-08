@@ -69,7 +69,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
                                     <div class="btn-group" role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open/<?php echo $lista->idLista ?>') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                             <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -282,9 +282,20 @@ $(function(){
                   $("#cargar").html("Cargando Regiones...");
               },
               success : function(response){
-                $("#divid").load(" #divid");
+
+                if(response==0){
+                swal({
+                  title:"",
+                  text: "Erro! Verifique su archivo",
+                  icon: "info",
+                  //confirmButtonColor: "#DD6B55",
+                  closeOnConfirm: true
+                }); 
+                }else{
+                                  $("#divid").load(" #divid");
                 $('#nombre').val('');
                 $('#archivo').val('');
+                }
 
               },
               error : function(error) {

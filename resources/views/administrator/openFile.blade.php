@@ -1,6 +1,23 @@
 @extends('layouts.admin')
 @section('content')
-                        <div class="row new-question-template modal fade hide" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;position: relative;" role ="dialog" aria-labelledby="myModalLabel1" id="new-question-template">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-6">
+            <?php
+                foreach ($data as $info) {
+                    ?>
+                        
+
+                    <?php
+                }
+
+            ?>
+        </div>
+                
+            </div>
+    </div>
+</div>
+                      <!--  <div class="row new-question-template modal fade hide" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;position: relative;" role ="dialog" aria-labelledby="myModalLabel1" id="new-question-template">
                             <div class="col-md-12 well modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-body">
@@ -10,7 +27,7 @@
                                         <select class="form-control questions-of-master-survey text-black-body">
                                             <!-- <option value="1">1</option>
                                             <option value="2">2</option> -->
-                                        </select>
+                                      <!--  </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 ">
@@ -26,7 +43,7 @@
                                             <option value="1">Pregunta abierta</option>
                                             <option value="2">Pregunta de opción Multiple </option>
   <!--                                          <option value="3">Pregunta de satisfacción</option> -->
-                                        </select>
+                                     <!--   </select>
                                     </div>
                                 </div>
 
@@ -43,7 +60,7 @@
                             </div>
                             </div>
                             </div>
-                        </div>
+                        </div>-->
 @endsection
 
 <script>

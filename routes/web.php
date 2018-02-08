@@ -46,9 +46,7 @@ Route::get('/completo/{matricula}','responderController@completo');
 Route::post("/administrator/publicar/encuesta","encuestadosController@publicar");
 Route::get('/administrator/files/', 'encuestadosController@showList');
 
-Route::get('/administrator/file/open', function(){
-	return view('administrator.openFile');
-});
+Route::get('/administrator/file/open/{id}','listasController@mostrarDatos');
 
 Route::get('/administrator/files/delete/{id}', "encuestadosController@deletelist") ;
 Route::post('/administrator/duplicar/plantilla',"surveyController@duplicar");
@@ -213,3 +211,5 @@ Route::get('contestado',function(){
 Route::post('/administrator/deleteOptions/', 'questionsTemplateController@deleteOptions');
 
 Route::post('/administrator/updateOrderQuestion', 'questionsTemplateController@updateOrderQuestion');
+
+Route::post('/ingresar','listasController@ingresarlista');//Mi linea
