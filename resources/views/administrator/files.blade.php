@@ -11,15 +11,15 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-        <form enctype="multipart/form-data" id="formuploadajax" method="post" >
+        <form  method="post" id="formuploadajax" enctype="multipart/form-data">
           <hr>
             <label for="exampleInputFile">Nombre de la Lista</label>
-              <input class="form-control" id="nombreLista" name="nombreLista" type="text">
+              <input class="form-control" id="nombre" name="nombre" type="text">
             <label for="exampleInputFile">Subir documento</label>
-              <input class="form-control-file" type="file">
+              <input class="form-control-file"  id="archivo" name="archivo" type="file">
               
           <hr>
-            <input type="button" value="Subir archivos" onclick="selecciona()" />
+            <input type="submit" value="Subir archivos"  />
         </form>
 
 
@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="/css/themes/default.rtl.css">
   <script src="/js/alertify.js"></script>
 <div class="container">
-    <div class="row">
+    <div class="row" id="divid">
       <hr/>
         <div class="col-md-12 ">
             <div class="panel panel-default">
@@ -69,7 +69,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
                                     <div class="btn-group" role="group" aria-label="...">
-                                        <a type="button" href="{{ url('/administrator/file/open') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                        <a type="button" href="{{ url('/administrator/file/open/<?php echo $lista->idLista ?>') }}" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                             <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -254,32 +254,50 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
-function selecciona(){
-  var nombre=document.getElementById("nombreLista").value;
-  $.ajaxSetup({
+$(function(){
+      $("#formuploadajax").on("submit", function(e){
+
+    $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 });
-        $.ajax({
-              dataType : 'json',
+
+          e.preventDefault();
+          var f = $(this);
+          var formData = new FormData($(this)[0]);
+
+
+       $.ajax({
               type : 'post',
               url : '/ingresar',
-              data : {"nombre": nombre},
+              processData: false,
+              contentType: false,
+              data : formData,
+              enctype: 'multipart/form-data',
               async:true,
               cache:false,
+
               beforeSend: function () {
-                        $("#cargar").html("Cargando Regiones...");
+                  $("#cargar").html("Cargando Regiones...");
               },
               success : function(response){
-                console.log(response);
+                $("#divid").load(" #divid");
+                $('#nombre').val('');
+                $('#archivo').val('');
+
               },
               error : function(error) {
                 console.log(error);
               }
-          });
 
-}
+          });
+       $('#AgregarLista').hide();
+      $('.modal-backdrop').hide();
+
+     });
+
+});
   </script>
     <script>
     function limpiar()

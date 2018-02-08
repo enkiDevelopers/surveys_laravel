@@ -212,8 +212,6 @@ Route::post('/administrator/editEliminarQuestion/','questionsTemplateController@
 Route::get('contestado',function(){
     return view("administrator.encuestacontestada");
 });
-Route::post('/ingresar','encuestadosController@ingresarlista');
-
 Route::post('/administrator/deleteOptions/', 'questionsTemplateController@deleteOptions');
 
 Route::post('/administrator/updateOrderQuestion', 'questionsTemplateController@updateOrderQuestion');
