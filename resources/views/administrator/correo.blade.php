@@ -10,10 +10,7 @@
 echo $cuerpo;
 ?>
 <br />
-
-{{$id}}
-
-<a href="http://localhost:8000/surveyed/previewtem/3">Contesta aqui tu encuesta</a>
+<a href="http://localhost:8000/surveyed/previewtem/{{$id}}">Contesta aqui tu encuesta</a>
     </center>
   </body>
 </html>

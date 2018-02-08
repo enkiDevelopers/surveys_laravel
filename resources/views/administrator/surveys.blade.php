@@ -316,9 +316,6 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <center>
-          <a class="boton azul" id="ir">Ver encuesta</a>
-        </center>
       </div>
       <div class="modal-body">
         <div id="recorRec">

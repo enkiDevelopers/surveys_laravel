@@ -12,7 +12,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
               <h4 class="titleA">{{$publicacion->tituloEncuesta}}</h4>
               <p class="card-text"></p>
              <div class="btn-group " role="group" aria-label="...">
-                  <a href="{{ url('/administrator/previewtem') }}/{{$publicacion->idPub}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                  <a href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                       <span class="glyphicon glyphicon-eye-open"></span>
                   </a>
               </div>
