@@ -93,19 +93,25 @@ class surveyController extends Controller
     $idTemplate = $request['idTemplate'];
     $titulo = $request['titulo'];
     $descripcion = $request['descripcion'];
-    $icono = $_FILES['icon_survey']['tmp_name'];
+    $icono=$request->file('icon_survey');
+
+   $surv = new templates;
+
 
     if (empty($icono)) {
-        $nombre="default.png";
+
+      $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion));
+
     }else {
       $nombre=date("his").".png";
       $icono->move('img/iconos',$nombre);
+
+     $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion,'imagePath' => $nombre ));
     }
 
-     $surv = new templates;
-     $surv::where('id', $idTemplate)->update(array('tituloEncuesta' => $titulo, 'descripcion' => $descripcion,'imagePath' => $nombre ));
-    
-    return $idTemplate;
+  
+   
+    return $surv;
   }
 
   public function duplicar(Request $request){

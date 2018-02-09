@@ -270,7 +270,8 @@ $(document).ready(function(){
                 $("#sortableQuestions").toggleClass('btn-warning').toggleClass('btn-info');
                 $("#sortableQuestions").children().toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
 
-                $(".yes-no-question-block, .btn-control, #addQuestion").hide('400');
+                $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").hide('400');
+                $("#questionSaved").css('height', '639px');
 
                 $("#container-questions").sortable({
                     placeholder: "placeholder-sort",
@@ -324,14 +325,15 @@ $(document).ready(function(){
             $("#sortableQuestions").children().toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
             $("#container-questions").sortable( "disable" )
 
-            $(".yes-no-question-block, .btn-control, #addQuestion").show('400');
+            $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").show('400');
+            $("#questionSaved").css('height', '439px');
+
          }
 
 
     });
 
-
-    $("#editDataTemplate").on('submit',function(e) {
+    $("#updateDataTemplateForm").on('submit',function(e) {
         e.preventDefault();
         var titleInput = $('#ModalTitleInput').prop('value');
         var descInput = $('#ModalDescInput').prop('value');
@@ -351,6 +353,7 @@ $(document).ready(function(){
                                 $("#inputDesc").val(descInput);
                                 $("#ModalTitle").modal('hide');
                               });
+                            $("#dataTemplateContainer").load(" #dataTemplateContainer");                            
                         }else{
                             alertify.alert("No se han podido guardar los cambios.", function(){
                             }); 
@@ -467,7 +470,7 @@ $(document).ready(function(){
     window.onload = function() {
         $("#home").addClass('active');
     }
-
+/*
     function publish(id){
 
         var titleInput = $('#ModalTitleInput').prop('value');
@@ -519,7 +522,7 @@ $(document).ready(function(){
                 alert("Ingrese un Título para la encuesta");
         }
     }
-
+*/
     function saveQuestion(id){
         var action = document.getElementById("saveQuestionForm").action;
         var idTemplate = id;
