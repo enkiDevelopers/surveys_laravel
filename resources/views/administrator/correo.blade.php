@@ -19,11 +19,17 @@
       }
     </style>
   </head>
-  <body style="position: fixed; ">
 
-<img src="{{$message["image"]}}" alt="">
-<img src="/img/mail_bottom.jpg" width="80%" height="400px" style="margin-top: 250px; position: fixed; margin-left: 0px;" >
-<img src="/img/mail_logo.png" width="200px" style="position: fixed; margin-top: 10px; margin-left: 520px;">
+
+  <body style="position: fixed; ">
+    <img src="https://image.ibb.co/n9ndQc/mail_top.png" width="80%" height="400px"style="position: fixed;" >
+
+    <img src="https://image.ibb.co/cxugdx/mail_bottom.jpg" width="80%" height="400px" style="margin-top: 250px; position: fixed; margin-left: 0px;" >
+
+    <img src="https://image.ibb.co/eXzEyx/mail_logo.png" width="200px" style="position: fixed; margin-top: 10px; margin-left: 520px;">
+
+
+
   <div id=content>
 <?php echo $instrucciones; ?>
   </div>

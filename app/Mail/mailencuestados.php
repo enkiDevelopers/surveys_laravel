@@ -24,8 +24,7 @@ class mailencuestados extends Mailable
       $this->infousuario = $infousuario;
       $this->instrucciones = $instrucciones;
       $this->subject = $asunto;
-      $this->message = $message->embed("/img/mail_top.png");
-
+  
             if($infousuario->email2!=null)
         {
         $this->cc($infousuario->email2);
