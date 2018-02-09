@@ -329,6 +329,39 @@ $(document).ready(function(){
 
 
     });
+
+
+    $("#editDataTemplate").on('submit',function(e) {
+        e.preventDefault();
+        var titleInput = $('#ModalTitleInput').prop('value');
+        var descInput = $('#ModalDescInput').prop('value');
+ 
+         $.ajax({
+            url: "/updateDataTemplate", // Url to which the request is send
+            type: "POST",             // Type of request to be send, called as method
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+            contentType: false,       // The content type used when sending data to the server.
+            cache: false,             // To unable request pages to be cached
+            processData:false,        // To send DOMDocument or non processed data file it is set to false
+            complete: function(e, xhr, settings){
+                        if(e.status === 200){
+                            alertify.alert("Datos Guardados correctamente.", function(){
+                                $("#exampleInputEmail1").val(titleInput);
+                                $("#inputDesc").val(descInput);
+                                $("#ModalTitle").modal('hide');
+                              });
+                        }else{
+                            alertify.alert("No se han podido guardar los cambios.", function(){
+                            }); 
+                        }
+                    },
+                    error: function (textStatus, errorThrown) {
+                        alertify.alert("No se ha podido agregar la pregunta.", function(){
+                         });                    }               
+
+        });
+    });
 /*
     //Eliminar una opcion multiple
     var parentYesNo;
@@ -440,23 +473,29 @@ $(document).ready(function(){
         var titleInput = $('#ModalTitleInput').prop('value');
         var descInput = $('#ModalDescInput').prop('value');
 
-        var data = new FormData();
-        data.append('icono', $('#icon_survey')[0].files[0]);
-        data.append('titulo', $('#ModalTitleInput').prop('value'));
-        data.append('descripcion', $('#ModalDescInput').prop('value'));
-        data.append('idTemplate', id);
+        var formData = new FormData(); 
+        formData.append('icon_survey', document.getElementById("icon_survey").files[0].name);
+        formData.append('titulo', titleInput);
+        formData.append('descripcion', descInput);
+        formData.append('idTemplate', id);
 
+
+        for (var key of formData.entries()) {
+            console.log(key[0] + ', ' + key[1]);
+        }
+     
 
         if (titleInput.length != 0 && titleInput != " ") {
             if (descInput.length != 0 && descInput != " ") {
 
                 $.ajax({
-                    type: "POST",
                     url: "/updateDataTemplate",
+                    type: 'POST',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    cache: false,
                     contentType: false,
-                    processData:false,
-                    data: {data:data},
+                    processData: false,
+                    data: formData,
                     complete: function(e, xhr, settings){
                         if(e.status === 200){
                             alertify.alert("Datos Guardados correctamente.", function(){

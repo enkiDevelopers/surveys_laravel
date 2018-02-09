@@ -1,4 +1,4 @@
-<form id="updateDataTemplateForm" enctype="multipart/form-data">
+<form id="updateDataTemplateForm" action="" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
     <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
@@ -24,7 +24,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" onclick="publish(<?php echo $eid; ?>)" >Guardar</button>
+                <button type="submit" class="btn btn-primary" id="editDataTemplate" onclick="publish(<?php echo $eid; ?>)" >Guardar</button>
             </div>
             </div>
         </div>
