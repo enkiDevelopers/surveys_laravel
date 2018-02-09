@@ -97,3 +97,8 @@
   </div>
   
 </form>
+
+
+    <div id="loader" class="modal fade">
+        <img src="/img/load/loader.gif" alt="cargando..." width="50px" height="50px" style=" margin-top: 25%;margin-left: 50%">
+    </div>

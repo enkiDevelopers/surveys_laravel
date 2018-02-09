@@ -139,7 +139,7 @@ $(document).ready(function(){
             dataType: 'json',
             data: {salto: salto, idQuestion: idQuestion, idOption:idOption },
            beforeSend: function( xhr ) {   
-                $("#loader").modal('show');
+                $("#loader").appendTo('body').modal();
             },
         })
         .done(function(data) {
@@ -186,6 +186,7 @@ $(document).ready(function(){
             beforeSend: function( xhr ) {   
                 $(".new-question__control--edit-question").attr('disabled','true'); 
                 $(".delete-question__control--delete-question").attr('disabled','true');
+                $("#addQuestion").attr('disabled','true'); 
             },
             })
             .done(function() {
@@ -199,7 +200,8 @@ $(document).ready(function(){
             })
             .always(function() {
                 $(".new-question__control--edit-question").attr('disabled','false'); 
-                $(".delete-question__control--delete-question").attr('disabled','false');
+                $(".delete-question__control--delete-question").attr('disabled','false');    
+                setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
             });
     }
 
@@ -231,11 +233,8 @@ $(document).ready(function(){
                } 
            }else{
             $(".add-question-to-yes-no").addClass('hidden');
-           }
-           
+           }        
            $("#ModalQuestionEdit").appendTo('body').modal();        
-
-
     });
     /*********************************************************************************/      
 
@@ -437,20 +436,27 @@ $(document).ready(function(){
     }
 
     function publish(id){
-        var action = document.getElementById("updateDataTemplateForm").action;
-        var titleInput = $("#ModalTitleInput").val();
-        var descInput = $("#ModalDescInput").val();
-        var idTemplate = id;
+
+        var titleInput = $('#ModalTitleInput').prop('value');
+        var descInput = $('#ModalDescInput').prop('value');
+
+        var data = new FormData();
+        data.append('icono', $('#icon_survey')[0].files[0]);
+        data.append('titulo', $('#ModalTitleInput').prop('value'));
+        data.append('descripcion', $('#ModalDescInput').prop('value'));
+        data.append('idTemplate', id);
+
 
         if (titleInput.length != 0 && titleInput != " ") {
             if (descInput.length != 0 && descInput != " ") {
 
                 $.ajax({
-                    type: "get",
-                    url: action,
-                    headers: {'X-CSRF-TOKEN': token},
-                    dataType: 'json',
-                    data: {idTemplate: idTemplate, titleInput: titleInput, descInput: descInput},
+                    type: "POST",
+                    url: "/updateDataTemplate",
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    contentType: false,
+                    processData:false,
+                    data: {data:data},
                     complete: function(e, xhr, settings){
                         if(e.status === 200){
                             alertify.alert("Datos Guardados correctamente.", function(){
@@ -458,11 +464,9 @@ $(document).ready(function(){
                                 $("#inputDesc").val(descInput);
                                 $("#ModalTitle").modal('hide');
                               });
-
                         }else{
                             alertify.alert("No se han podido guardar los cambios.", function(){
                             }); 
-                                
                         }
                     },
                     error: function (textStatus, errorThrown) {
@@ -488,13 +492,15 @@ $(document).ready(function(){
         var salto = parseInt(numPregSig) + 1;
         var token = $("#token").val();
 
+        $("#addQuestion").attr('disabled','true'); 
+
+
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
             optionsResult = optionsResult + "," + questionOptionInputsA[i].value;
         }
 
        optionsResult = optionsResult.split(',');
        optionsResult = optionsResult.splice(2,325);
-       //console.log(optionsResult);
 
         if (questionInput.length == 0 || questionOptionInput.length == 0) {
             alertify.alert("Ingrese una pregunta.", function(){
@@ -513,21 +519,24 @@ $(document).ready(function(){
                 },
                 complete: function(e, xhr, settings){
                     if(e.status === 200){
+                        $("#loader").modal('hide');
                         alertify.alert("Pregunta Guardada correctamente.", function(){
-                            alertify.success('Pregunta Añadida');                       
+                            alertify.success('Pregunta Añadida');          
                             $("#ModalQuestion").modal('hide').find("input").val("");
                         });
                             $("#container-questions").load(" #container-questions");
+                            setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
                     }else{
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
                             alertify.message('OK');
                         });
+                        setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
                     }
                 },
                 error: function (textStatus, errorThrown) {
-                    alertify.alert("No se ha podido agregar la pregunta.", function(){
-                        
+                    alertify.alert("No se ha podido agregar la pregunta.", function(){                        
                      });
+                setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
                 }               
             });
         }
@@ -542,7 +551,7 @@ $(document).ready(function(){
         var idTemplate = id;
         var idQuestion = $("#idQuestion").val();
         var typeQuestion = $("#questionTypeEdit").val();
-        var salto = $("#numPregSigEdit").val();
+        var salto = parseInt($("#numPregSigEdit").val()) + 1;
 
         var titleEdit = $("#questionInputEdit").val();
         var optionsResult = "";
@@ -581,3 +590,93 @@ $(document).ready(function(){
             });    
         }
     }
+
+    function limpiar2(){
+        var canvas = document.getElementById("previewcanvas");
+        canvas.width=canvas.width;
+    }
+
+//verificaciones de la carga de una imagen en la creacion de la plantilla
+    function ShowImagePreview( files )
+    {
+
+    if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
+    {
+      alert('Por favor Ingrese un archivo de Imagen');
+      document.getElementById("myForm").reset();
+      return false;
+    }
+
+    if( typeof FileReader === "undefined" )
+    {
+        alert( "El archivo no es una imagen por favor ingrese una" );
+        document.getElementById("myForm").reset();
+        return false;
+    }
+
+    var file = files[0];
+
+    if( !( /image/i ).test( file.type ) )
+    {
+        alert( "El archivo no es una imagen" );
+          document.getElementById("myForm").reset();
+        return false;
+    }
+
+    reader = new FileReader();
+    reader.onload = function(event)
+            { var img = new Image;
+              img.onload = UpdatePreviewCanvas;
+              img.src = event.target.result;  }
+    reader.readAsDataURL( file );
+}
+
+
+
+//cargar el preview de la imagen de la encuesta
+function UpdatePreviewCanvas()
+{
+    var img = this;
+    $("#img_survey").hide();
+    $("#previewcanvascontainer").css('display', 'inline');
+    var canvas = document.getElementById( 'previewcanvas' );
+
+    if( typeof canvas === "undefined"
+        || typeof canvas.getContext === "undefined" )
+        return;
+
+    var context = canvas.getContext( '2d' );
+
+    var world = new Object();
+    world.width = canvas.offsetWidth;
+    world.height = canvas.offsetHeight;
+
+    canvas.width = world.width;
+    canvas.height = world.height;
+
+    if( typeof img === "undefined" )
+        return;
+
+    var WidthDif = img.width - world.width;
+    var HeightDif = img.height - world.height;
+
+    var Scale = 0.0;
+    if( WidthDif > HeightDif )
+    {
+        Scale = world.width / img.width;
+    }
+    else
+    {
+        Scale = world.height / img.height;
+    }
+    if( Scale > 1 )
+        Scale = 1;
+
+    var UseWidth = Math.floor( img.width * Scale );
+    var UseHeight = Math.floor( img.height * Scale );
+
+    var x = Math.floor( ( world.width - UseWidth ) / 2);
+    var y = Math.floor( ( world.height - UseHeight ) / 2 );
+
+    context.drawImage( img, x, y, 200, 200 );
+}

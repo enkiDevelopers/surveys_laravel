@@ -177,7 +177,7 @@ Route::post('buscarcampus', 'directiveController@busquedacampus');
 
 Route::get('/campus/{id}/{idcampus}', ['as' => 'campus', 'uses'=>'directiveController@estadisticaCampus']);
 
-Route::get('/updateDataTemplate','surveyController@updateDataTemplate');
+Route::post('/updateDataTemplate','surveyController@updateDataTemplate');
 
 Route::get('/region/{id}/{idcampus}', ['as' => 'region', 'uses'=>'directiveController@estadisticasRegion']);
 
