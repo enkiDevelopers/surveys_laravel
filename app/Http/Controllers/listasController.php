@@ -18,6 +18,7 @@ use App\publicaciones;
 use App\listaEncuestados;
 use App\ctlTipoEncuesta as tipos;
 use App\optionsMult;
+use Illuminate\Support\Facades\Storage;
 
 class listasController extends Controller
 {
@@ -105,10 +106,10 @@ public function ingresarlista(Request $request){
                 $file = $request->file('archivo');
                 $dato=$request->file('archivo')->getClientOriginalName();
                 $file->move('listas', $dato);
-        $id = DB::table('listaEncuestados')->insertGetId(
-                                array( 'nombre'  => $nombre,
-                                       'archivo' => $dato, 
-                                       'creador' => 6));
+                $id = DB::table('listaEncuestados')->insertGetId(
+                                        array( 'nombre'  => $nombre,
+                                                'archivo'=>$dato,
+                                               'creador' => 6));
         $handle = fopen('listas/'.$dato, "r");
 
         $fila = 1;
@@ -133,9 +134,15 @@ public function ingresarlista(Request $request){
 
         }
         else{
-        }
 
-        //return response()->json($data);
+        }
+        fclose($handle);
+
+    if (File::exists('listas/'.$dato)) {
+        File::delete('listas/'.$dato);
+    }else{
+        return "noaparece".$dato;
+    }
 
     }
     public function mostrarDatos($id){

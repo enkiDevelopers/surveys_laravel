@@ -53,28 +53,31 @@ $(document).ready(function(){
         }else{
         $("#idTitlePregunta").text("Pregunta " + n);
 }
-if(n==0){
-         document.getElementById("opt"+1).value=null;
+            if(n==0){
+                    document.getElementById("opt"+1).value=null;
 
-}else{
-        var tempo1= $('input:radio[data-name=opcion'+n+']:checked');
-        var dato1=tempo1;
-        tempo1= $(tempo1).data("salto")
-        if(dato1.val() == null){
+            }else{
+                    var tempo1= $('input:radio[data-name=opcion'+n+']:checked');
+                    var dato1=tempo1;
+                    tempo1= $(tempo1).data("salto")
+                    if(dato1.val() == null){
 
-            console.log(dato1.val());
+                       // console.log(dato1.val());
 
-        }else{
-            console.log(dato1.val());
-        }
-        if (document.getElementById("opt"+n)==null){
+                    }else{
+                        //console.log(dato1.val());
+                    }
+                   /* if (document.getElementById("opt"+n)==null){
 
+                        document.getElementById("opcion"+n).checked=false;
+                    }else{*/
+                        var siguiente=n;
+                        siguiente++;
+                        document.getElementById("opt"+siguiente).value=null;
+                       // document.getElementById("opt"+n).value=null;
 
-            document.getElementById("opcion"+n).checked=false;
-        }else{
-            document.getElementById("opt"+n).value=null;
-        }
-}
+                   // }
+            }
 
     }
 
