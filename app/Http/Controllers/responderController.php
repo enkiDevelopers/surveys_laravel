@@ -110,7 +110,7 @@ class responderController extends Controller
 	}
   public function encuestacontestada(){
         return view("administrator.encuestacontestada");
-
+//
 
   }
   public function guardarencuesta(Request $request){
@@ -126,7 +126,7 @@ class responderController extends Controller
         $respuesta=$request->Input($pregunta->id);
         DB::table('respuestas')
         ->insert(['respuesta' => $respuesta, 
-                  'idEncuesta' => $idEncuesta,
+                  'idEncuesta' => $idEncuesta, 
                   'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
@@ -134,7 +134,7 @@ class responderController extends Controller
     $idmatricula=DB::table('encuestados')->select('matricula')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");
     //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
-    return view("administrator.encuestacontestada");
+    return view("administrator.encuestacontestada2");
 
     //return previous();
     //return redirect()->back();
@@ -142,8 +142,8 @@ class responderController extends Controller
 
   }
   public function completo($matricula){
-
-        if($matricula==0){
+//poner un 1 cuando venga del correo y un 0 cuando venga de la cuenta
+    if($matricula==0){
           return view("administrator.encuestacontestada");
     }else{
     $info=DB::table('encuestados')->where('matricula','=',$matricula)->get();

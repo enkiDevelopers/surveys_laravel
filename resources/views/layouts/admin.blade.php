@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/css/sidebar.css">
 
     <link rel="stylesheet" href="/css/sweetalert.min.css">
-      <script src="/js/sweetalert.min.js"></script>
+    <script src="/js/sweetalert.min.js"></script>
 </head>
 <body>
 
@@ -112,5 +112,10 @@
             location.href= "{{url('/administrator')}}";
         }
     </script>
+    <script type="text/javascript">
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>
 </body>
 </html>

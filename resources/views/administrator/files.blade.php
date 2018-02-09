@@ -5,7 +5,6 @@
 
  <!-- <div class="loader" id="loader" >
   </div>-->
- <div class="procesando" id="procesando" ></div>
 <div id="AgregarLista" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -74,7 +73,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
                                     <div class="btn-group" role="group" aria-label="...">
-                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                             <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -284,7 +283,6 @@ $(function(){
               cache:false,
 
               beforeSend: function () { 
-                  </div></
 
               },
               success : function(response){

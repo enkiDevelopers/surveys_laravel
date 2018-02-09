@@ -1,101 +1,58 @@
-@extends('layouts.admin')
-@section('content')
+<!DOCTYPE html>   
+<html lang="en">   
+<head>   
+<meta charset="utf-8">   
+<title>Final Output</title>   
+<meta name="description" content="Bootstrap.">  
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</head>  
+<body style="margin:20px auto">  
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 ">
-            <br>
-            <hr>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>email1</th>
-                    <th>email2</th>
-                    <th>email3</th>
-                    <th>name</th>
-                    <th>apPaterno</th>
-                    <th>apMaterno</th>
-                    <th>matricula</th>
-                    <th>clave</th>
-
-                </tr>
-            </thead>
-                <tbody>
-
+<div class="row header" style="text-align:center;color:green">
+<h3>Bootstrap</h3>
+</div>
+<table id="myTable" class="table table-striped" >  
+        <thead>  
+          <tr>  
+              <th>email1</th>
+              <th>email2</th>
+              <th>email3</th>
+              <th>name</th>
+  <!--            <th>apPaterno</th>
+              <th>apMaterno</th>
+              <th>matricula</th>
+              <th>clave</th> -->
+          </tr>  
+        </thead>  
+        <tbody>  
             <?php
-                foreach ($data as $info) {
+                foreach ($data as $info) 
+                {
             ?>
                     <tr>
-                        <td><?php echo $info->email1 ?></td>
-                        <td><?php echo $info->email2 ?></td>
-                        <td><?php echo $info->email3 ?></td>
-                        <td><?php echo $info->name ?></td>
-                        <td><?php echo $info->apPaterno ?></td>
-                        <td><?php echo $info->apMaterno ?></td>
-                        <td><?php echo $info->matricula ?></td>
-                        <td><?php echo $info->clave ?></td>
+                        <td><?php echo $info->email1 ?>   </td>
+                        <td><?php echo $info->email2 ?>   </td>
+                        <td><?php echo $info->email3 ?>   </td>
+                        <td><?php echo $info->name      ?></td>
+
                     </tr>      
 
             <?php
                 }
 
-            ?>
-                </tbody>
-
-            </table>
-
-        </div>
-                
-            </div>
+            ?> 
+ 
+        </tbody>  
+      </table>  
     </div>
-</div>
-                      <!--  <div class="row new-question-template modal fade hide" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;position: relative;" role ="dialog" aria-labelledby="myModalLabel1" id="new-question-template">
-                            <div class="col-md-12 well modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Número</label>
-                                        <select class="form-control questions-of-master-survey text-black-body">
-                                            <!-- <option value="1">1</option>
-                                            <option value="2">2</option> -->
-                                      <!--  </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 ">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Título de la pregunta</label>
-                                        <input type="text" class="form-control text-black-body" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class=" form-group">
-                                        <label for="exampleInputEmail1">Tipo</label>
-                                        <select class="form-control yes-no-question text-black-body">
-                                            <option value="1">Pregunta abierta</option>
-                                            <option value="2">Pregunta de opción Multiple </option>
-  <!--                                          <option value="3">Pregunta de satisfacción</option> -->
-                                     <!--   </select>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-2 pull-right" style="margin-bottom: 15px;">
-                                    <div class="row">
-                                        <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                        </button>
-                                        <button class="btn btn-danger col-md-4 new-question__control new-question__control--delete-question">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            </div>
-                        </div>-->
-@endsection
-
+</body>  
 <script>
-$(document).ready(function(){        
-    $("#new-question-template").show();
-    });
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
 </script>
+</html>  
