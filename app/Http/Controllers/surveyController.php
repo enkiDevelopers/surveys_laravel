@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\templates;
 use App\encuestados;
 use App\questionsTemplates;
+use App\Mail\mailencuestados;
 use App\recordatorios;
 use DB;
 use File;
@@ -201,14 +202,21 @@ return view("administrator.recordatorio",compact('mensaje','recordatorios'));
 
 public function send(Request $request)
 {
+  ini_set('max_execution_time', 0);
+
   $id= $request->idPub;
   $mensaje = publicaciones::where('idPub',$id)->first();
   $idLista = listaEncuestados::where('nombre', $mensaje->destinatarios)->first();
   $destinatarios = encuestados::
   where('listaEncuestados_idLista', $idLista->idLista)
   ->where('incidente', '0')->where('contestado','0')->get();
+
   $asunto = $mensaje->asunto;
+  $instrucciones = $mensaje->instrucciones;
   foreach ($destinatarios as $usuario) {
+Mail::to($usuario->email1)->send(new mailencuestados($usuario,$asunto,$instrucciones));
+
+/*
   $data= array(
   'cuerpo'=> $mensaje->instrucciones,
   'id'=> $usuario->idE
@@ -217,7 +225,7 @@ public function send(Request $request)
   Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
       $message->subject($asunto);
       $message->to($usuario->email1);
-  });
+  });*/
   }
  $record = new recordatorios;
  $record->fechaEnvio = date("Y-m-d h:i:s");
