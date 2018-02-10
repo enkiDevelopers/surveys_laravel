@@ -13,15 +13,15 @@
 <body style="margin:20px auto">  
 <div class="container">
 <div class="row header" style="text-align:center;color:green">
-<h3>Bootstrap</h3>
 </div>
 <table id="myTable" class="table table-striped" >  
         <thead>  
           <tr>  
+
+              <th>Nombre</th>
               <th>email1</th>
-              <th>email2</th>
-              <th>email3</th>
-              <th>name</th>
+              <th>Incidente</th>
+              <th>Motivo</th>
   <!--            <th>apPaterno</th>
               <th>apMaterno</th>
               <th>matricula</th>
@@ -34,10 +34,10 @@
                 {
             ?>
                     <tr>
-                        <td><?php echo $info->email1 ?>   </td>
-                        <td><?php echo $info->email2 ?>   </td>
-                        <td><?php echo $info->email3 ?>   </td>
-                        <td><?php echo $info->name      ?></td>
+                        <td><?php echo $info->nombreGeneral  ?>   </td>
+                        <td><?php echo $info->email1         ?>   </td>
+                        <td><?php echo $info->incidente      ?>   </td>
+                        <td><?php echo $info->comentario     ?></td>
 
                     </tr>      
 
