@@ -14,7 +14,7 @@
 	</tr>
 	<tr>
 		<td style="padding: 0">
-			<img style="padding: 0; display: block" src="https://image.ibb.co/fmTvOx/self_assessment.jpg" width="100%">
+			<img style="padding: 0; display: block" src="https://image.ibb.co/fmTvOx/self_assessment.jpg" width="100%" height="200px">
 		</td>
 	</tr>
 

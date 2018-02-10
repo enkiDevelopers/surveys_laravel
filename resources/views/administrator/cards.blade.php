@@ -2,7 +2,6 @@
 if($publicacion->creador == $id)
 {
   ?>
-
   <div class="col-md-3" id="{{$publicacion->idPub}}">
       <div class="card well" >
 <img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagePath;?>"
@@ -12,7 +11,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
               <h4 class="titleA">{{$publicacion->tituloEncuesta}}</h4>
               <p class="card-text"></p>
              <div class="btn-group " role="group" aria-label="...">
-                  <a href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                  <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                       <span class="glyphicon glyphicon-eye-open"></span>
                   </a>
               </div>
@@ -34,7 +33,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
                 <h4 class="titleA">{{$publicacion->tituloEncuesta}}</h4>
                 <p class="card-text"></p>
                <div class="btn-group " role="group" aria-label="...">
-                    <a href="{{ url('/administrator/previewtem') }}/{{$publicacion->idPub}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                    <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
                 </div>
@@ -58,7 +57,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
               <h4 class="titleA">{{$publicacion->tituloEncuesta}}</h4>
               <p class="card-text"></p>
              <div class="btn-group " role="group" aria-label="...">
-                  <a href="{{ url('/surveyed/solve') }}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                  <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}"  type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                       <span class="glyphicon glyphicon-eye-open"></span>
                   </a>
               </div>

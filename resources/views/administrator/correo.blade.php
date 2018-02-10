@@ -14,7 +14,7 @@
 	</tr>
 	<tr>
 		<td style="padding: 0">
-			<img style="padding: 0; display: block" src="https://image.ibb.co/fmTvOx/self_assessment.jpg" width="100%">
+			<img style="padding: 0; display: block" src="https://image.ibb.co/fmTvOx/self_assessment.jpg" width="100%" height="200px">
 		</td>
 	</tr>
 	<tr>
@@ -32,13 +32,13 @@
           <?php
           if (isset($_SERVER['HTTPS'])) { ?>
             <div style="margin-bottom: 20px;">
-        <a href="https://<?php echo $_SERVER["HTTP_HOST"]; ?>/surveyed/previewtem/{{$infousuario->idE}}"> Contesta aqui tu encuesta</a>
+        <a href="https://<?php echo $_SERVER["HTTP_HOST"]; ?>/surveyed/previewtem/{{$infousuario->idE}}"><h1><b>Contesta aquí tu encuesta </b></h1></a>
         </div>
           <?php
           } else {
           ?>
           <div style="margin-bottom: 20px;">
-                          <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/surveyed/previewtem/{{$infousuario->idE}}"> Contesta aqui tu encuesta</a>
+                          <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/surveyed/previewtem/{{$infousuario->idE}}"><h1><b>Contesta aquí tu encuesta </b></h1></a>
                         </div>
             <?php
           }

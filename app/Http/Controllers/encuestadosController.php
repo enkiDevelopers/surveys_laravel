@@ -96,10 +96,10 @@ Mail::send('administrator.correo', $data, function ($message) use ($usuario,$eas
 
 public function enviar()
 {
-  $info = encuestados::where('email1', 'colocho-2104@hotmail.com')->first();
+  $info = encuestados::where('email1', 'jclopezpimentel@gmail.com')->first();
   $asunto ="asdnka";
   $inst = "asjkdas";
-  Mail::to("colocho-2104@hotmail.com")->send(new mailencuestados($info,$asunto,$inst));
+  Mail::to("jclopezpimentel@gmail.com")->send(new mailencuestados($info,$asunto,$inst));
 
 /*
 foreach ($user as $usuario) {

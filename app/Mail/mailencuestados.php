@@ -24,7 +24,7 @@ class mailencuestados extends Mailable
       $this->infousuario = $infousuario;
       $this->instrucciones = $instrucciones;
       $this->subject = $asunto;
-  
+
             if($infousuario->email2!=null)
         {
         $this->cc($infousuario->email2);

@@ -182,7 +182,7 @@
                         <div class="row">
                         <div class="col-md-12">
                           <div class="col-md-6">
-                          <label for="asunto">Asunto</label>
+                          <label for="asunto">Asunto del correo:</label>
                           </div>
                           <div class="col-md-6">
                           <input type="text" name="asunto" id="asunto" maxlength="100"/>
@@ -208,7 +208,7 @@
     <div class="row">
     <div class="row">
     <div class="col-md-12 text-center">
-          <p>Dirigido a:</p>
+
     </div>
     </div>
     <div class="row">
