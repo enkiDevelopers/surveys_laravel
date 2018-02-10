@@ -96,6 +96,7 @@ class listasController extends Controller
 
 
 public function ingresarlista(Request $request){
+        ini_set('max_execution_time', 0);
 
         $inicial=0;
         $arreglo=null;
@@ -192,6 +193,7 @@ public function ingresarlista(Request $request){
 
         $fila = 1;
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE){
+            $data = array_map("utf8_encode", $data);
             if($inicial==0){
                 $inicial++;
             }else{

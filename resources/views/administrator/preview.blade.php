@@ -247,7 +247,7 @@ function pop(){
               confirmButtonText: "Continuar",
               cancelButtonText: "Cancelar",
               closeOnConfirm: false,
-              closeOnCancel: false
+              closeOnCancel: true
             },
             function(isConfirm) {
             if (isConfirm) {
