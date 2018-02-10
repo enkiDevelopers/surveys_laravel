@@ -20,7 +20,7 @@
 
               <th>Nombre</th>
               <th>email1</th>
-              <th>Region</th>
+              <th>Comentario</th>
               <th>Campus</th>
   <!--            <th>apPaterno</th>
               <th>apMaterno</th>
@@ -34,10 +34,10 @@
                 {
             ?>
                     <tr>
-                        <td><?php echo $info->nombreGeneral  ?>   </td>
-                        <td><?php echo $info->email1         ?>   </td>
-                        <td><?php echo $info->region      ?>   </td>
-                        <td><?php echo $info->campus     ?></td>
+                        <td><?php echo $info->nombreGeneral   ?>   </td>
+                        <td><?php echo $info->email1          ?>   </td>
+                        <td><?php echo $info->comentario      ?>   </td>
+                        <td><?php echo $info->campus          ?>   </td>
 
                     </tr>      
 

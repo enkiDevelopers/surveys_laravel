@@ -103,15 +103,19 @@
                                 <img class="card-img-top" id="icono"  src="/img/lista.png">
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
-                                    <div class="btn-group" role="group" aria-label="...">
+
+                                        <div class="btn-group" role="group" aria-label="...">
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
                                         <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
-                                        <a data-toggle="modal" data-target="#AgregarIncidentes" class="btn btn-default">
+                                        <a data-toggle="modal" data-target="#AgregarIncidentes" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
                                             <span class="glyphicon glyphicon-plus"></span>
+                                        </a>
+                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
+                                            <span class="glyphicon glyphicon-alert"></span>
                                         </a>
                                     </div>
                                 </div>

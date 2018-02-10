@@ -96,6 +96,7 @@ class listasController extends Controller
 
 
 public function ingresarlista(Request $request){
+
         $inicial=0;
         $arreglo=null;
         $nombre=$request->input('nombre');
@@ -110,10 +111,11 @@ public function ingresarlista(Request $request){
                                         array( 'nombre'  => $nombre,
                                                 'archivo'=>$dato,
                                                'creador' => 6));
-        $handle = fopen('listas/'.$dato, "r");
+        $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
 
         $fila = 1;
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE){
+            $data = array_map("utf8_encode", $data);
             if($inicial==0){
                 $inicial++;
             }else{
@@ -158,6 +160,15 @@ public function ingresarlista(Request $request){
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
         return view('administrator/openFile',compact('data'));
+
+
+    }
+    public function mostrarIncidentes($id){
+        $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)
+                                      ->where('incidente','=',1)
+                                      ->get();
+
+        return view('administrator/incidentesFile',compact('data'));
 
 
     }
