@@ -17,34 +17,27 @@
     Configuracion Inicial:
   </p>
 
-
 <div class="formulario">
 
 <form>
 <div class="panel panel-default">
   <div class="panel panel-heading">
-  <label for="Contraseña"> Contraseña root </label>
-</div>
-<div class="panel panel-body">
-  <input type="password" name="Contraseña"/>
-</div>
-<div class="panel panel-default">
-<div class="panel panel-heading">
-  <label for="Nombre_BD">Nombre de la base de datos</label>
+    <label for="Contraseña"> Contraseña root </label>
   </div>
   <div class="panel panel-body">
-    <input type="text" name="Nombre_BD" />
+    <input type="password" name="Contraseña"/>
   </div>
 
+  <div class="panel panel-default">
+  <div class="panel panel-heading">
+    <label for="Nombre_BD">Nombre de la base de datos</label>
+  </div>
+  <div class="panel panel-body">
+      <input type="text" name="Nombre_BD" />
+  </div>
 
 </div>
-
-
-
-
 </form>
-
-
 </div>
 </div>
 

@@ -112,10 +112,5 @@
             location.href= "{{url('/administrator')}}";
         }
     </script>
-    <script type="text/javascript">
-$(document).ready(function(){
-    $('#myTable').dataTable();
-});
-</script>
 </body>
 </html>

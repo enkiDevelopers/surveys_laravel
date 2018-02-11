@@ -1,7 +1,7 @@
 <?php
 
-/* */
 namespace App\Http\Controllers;
+
 use App\templates;
 use App\questionstemplates;
 use App\optionsMult;
@@ -13,42 +13,43 @@ class editController extends Controller
 {
   public function busqueda($id)
   {
-      $consulta = templates::select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
-      $titulo = $consulta[0]->tituloEncuesta;
-      $descripcion = $consulta[0]->descripcion;
-      $nombre = $consulta[0]->imagePath;
-      $eid = $id;
-      $admor = $consulta[0]->creador;
-      $datos = questionstemplates::where('templates_idTemplates',$eid)->orderby('orden','asc')->get();
+    $checkId = templates::where("id",$id)->count();
+    if($checkId==0){
+      return view("errors.404");
+    }
+    $consulta = templates::select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $id)->get();
+    $titulo = $consulta[0]->tituloEncuesta;
+    $descripcion = $consulta[0]->descripcion;
+    $nombre = $consulta[0]->imagePath;
+    $eid = $id;
+    $admor = $consulta[0]->creador;
+    $datos = questionstemplates::where('templates_idTemplates',$eid)->orderby('orden','asc')->get();
 
-      $datosOpt =[];
-      //echo $datos;
-      foreach ($datos as $dato) {
-        //echo $dato . ",";
-        if($dato['type']==2){
-          $idq=$dato['id'];
-          $opt=optionsMult::where('idParent',$idq)->get();
-          //echo $opt . ",";
-        }else{
-          $opt=0;
-        }
-        $datosOpt[] = [
-        "questions" => $dato,
-        "options" => $opt];
+    $datosOpt =[];
+    foreach ($datos as $dato) {
+      if($dato['type']==2){
+        $idq=$dato['id'];
+        $opt=optionsMult::where('idParent',$idq)->get();
+      }else{
+        $opt=0;
       }
+      $datosOpt[] = [
+      "questions" => $dato,
+      "options" => $opt];
+    }
 
-      //log($datosOpt);
-      $options=serialize($datosOpt);
+    $options=serialize($datosOpt);
 
-      return view("administrator.edit",compact('titulo','descripcion','nombre','eid','admor','options'));
-      // echo $options;
+    return view("administrator.edit",compact('titulo','descripcion','nombre','eid','admor','options'));
+
   }
-  public function delete(Request $request)
-  {
+
+  public function delete(Request $request){
     $id=$request->id;
     $idadmin=$request->idadmin;
     $post =templates::where('id',$id)->first();
     $post->delete();
-  return response()->json(array('sms'=>'Eliminado Correctamente'));
+
+    return response()->json(array('sms'=>'Eliminado Correctamente'));
   }
 }

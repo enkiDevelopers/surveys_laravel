@@ -5,7 +5,7 @@
         </div>
    		<div class="col-md-3" style="margin-top:4%;">
    			<center>
-            	<img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="100%" height="15%">
+            	<img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="100%" height="15%" onerror="this.src='/img/iconos/default.png'">
         	</center>
         </div>
         <div class="col-sm-8" style="margin-top: 10px;">

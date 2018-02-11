@@ -11,7 +11,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/home.css')}}">
     </head>
-    <body>
+    <body style="height: 77rem;">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">

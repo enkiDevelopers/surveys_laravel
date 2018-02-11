@@ -20,13 +20,13 @@
                 <label class="btn btn-info btn-file">
                     Seleccione su imagen<input type="file" id="icon_survey" onchange="return ShowImagePreview( this.files );" name="icon_survey" onclick="limpiar2();" style="display: none;">
                 </label> <br><br>
-                <img id="img_survey" src="\img/iconos/{{$nombre}}" width="20%" height="20%">
+                <img id="img_survey" src="\img/iconos/{{$nombre}}" width="20%" height="20%" onerror="this.src='/img/iconos/default.png'">
                 <div id="previewcanvascontainer" style="height 200px; width 200px;display: none;">
                     <canvas id="previewcanvas"></canvas>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiar()" data-dismiss="modal">Cancelar</button>
                 <button type="submit" class="btn btn-primary" id="editDataTemplate" >Guardar</button>
             </div>
             </div>
