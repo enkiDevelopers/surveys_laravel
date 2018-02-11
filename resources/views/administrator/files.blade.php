@@ -23,7 +23,38 @@
               <input class="form-control-file"  id="archivo" name="archivo" type="file">
               
           <hr>
-            <input type="submit" value="Subir archivos"  />
+            <input type="submit" class="btn btn-default" value="Subir archivos"  />
+        </form>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="AgregarIncidentes" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
+      </div>
+      <div class="modal-body" >
+        <form  method="post" id="formincidentes" enctype="multipart/form-data">
+          <hr>
+          <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
+            <label for="exampleInputFile">Subir documento</label>
+              <input class="form-control-file"  id="incidentes" name="incidentes" type="file">
+              
+          <hr>
+            <input type="submit" class="btn btn-default" value="Subir archivos"  />
         </form>
 
 
@@ -72,12 +103,19 @@
                                 <img class="card-img-top" id="icono"  src="/img/lista.png">
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
-                                    <div class="btn-group" role="group" aria-label="...">
+
+                                        <div class="btn-group" role="group" aria-label="...">
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
-                                            <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
+                                        <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
                                             <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#AgregarIncidentes" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </a>
+                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
+                                            <span class="glyphicon glyphicon-alert"></span>
                                         </a>
                                     </div>
                                 </div>
@@ -258,6 +296,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
+
 $(function(){
       $("#formuploadajax").on("submit", function(e){
 
@@ -287,8 +326,8 @@ $(function(){
               },
               success : function(response){
 
-
               $("#divid").load(" #divid");
+
                 $('#nombre').val('');
                 $('#archivo').val('');
                 
@@ -305,6 +344,55 @@ $(function(){
      });
 
 });
+
+
+$(function(){
+      $("#formincidentes").on("submit", function(e){
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+
+          e.preventDefault();
+          var f = $(this);
+          var formData = new FormData($(this)[0]);
+
+
+       $.ajax({
+              type : 'post',
+              url : '/incidente',
+              processData: false,
+              contentType: false,
+              data : formData,
+              enctype: 'multipart/form-data',
+              async:true,
+              cache:false,
+
+              beforeSend: function () { 
+
+              },
+              success : function(response){
+
+              $("#divid").load(" #divid");
+
+                $('#nombre').val('');
+                $('#archivo').val('');
+                
+
+              },
+              error : function(error) {
+                console.log(error);
+              }
+
+          });
+       $('#AgregarIncidentes').hide();
+      $('.modal-backdrop').hide();
+
+     });
+
+});
   </script>
     <script>
     function limpiar()
@@ -315,12 +403,48 @@ $(function(){
             $("#loadingExclude").removeClass('invisible');
         }
 
+      function deleteFile(id){
+ $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+          });
+         swal({
+              title: "Confirmación",
+              text: "Desea eliminar esta Lisata, se perdera los registros que contiene",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: '#DD6B55',
+              confirmButtonText: 'Continuar',
+              cancelButtonText: 'Cancelar',
+              closeOnConfirm: true,
+              closeOnCancel: true
+           },
+           function(isConfirm){
+             if (isConfirm){
+                        $.ajax({
+              dataType : 'json',
+              type : 'post',
+              url : '/eliminarlista',
+              data : {"id": id},
+              async:true,
+              cache:false,
+              success : function(response){
+                $("#divid").load(" #divid");
+                //console.log(response);
+              },
+              error : function(error) {
+                console.log(error);
 
+              }
+          });
+              } else {
 
-
-        function deleteFile(id){
-          alert("la lista será eliminada un vez agregada esa funcion");
-        }
+              }
+           });
+          
+                 
+      }
 
         function uploadFile(){
                     $("#loadingUploadFile").removeClass('invisible');

@@ -116,7 +116,7 @@
                 <img src="\img/UVM_Logo.jpg" width="30%" height="25%">
             </div>
  <center>
-            <img src="\img/iconos/{{$imagePath}}" width="15%" height="15%" style="margin-top:5%">
+            <img src="\img/iconos/{{$imagePath}}"  width="15%" height="15%" style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
             <br>
             <h2 class="text-center text-black-body title">{{$titulo}}</h2>
             <p>{{$descripcion}}</p>
@@ -247,7 +247,7 @@ function pop(){
               confirmButtonText: "Continuar",
               cancelButtonText: "Cancelar",
               closeOnConfirm: false,
-              closeOnCancel: false
+              closeOnCancel: true
             },
             function(isConfirm) {
             if (isConfirm) {

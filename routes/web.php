@@ -47,6 +47,7 @@ Route::post("/administrator/publicar/encuesta","encuestadosController@publicar")
 Route::get('/administrator/files/', 'encuestadosController@showList');
 
 Route::get('/administrator/file/open/{id}','listasController@mostrarDatos');
+Route::get('/administrator/file/incidentes/{id}','listasController@mostrarIncidentes');
 
 Route::get('/administrator/files/delete/{id}', "encuestadosController@deletelist") ;
 Route::post('/administrator/duplicar/plantilla',"surveyController@duplicar");
@@ -126,7 +127,7 @@ Route::post('/save', 'surveyController@save');
     return view ('administrator.edit');
 });*/
 
-Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
+//Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
 
 Route::get('/administrator/delete/', "editController@delete" );
 Route::get('/administrator/consultar/publicaciones', 'encuestadosController@consultar');
@@ -213,3 +214,8 @@ Route::post('/administrator/deleteOptions/', 'questionsTemplateController@delete
 Route::post('/administrator/updateOrderQuestion', 'questionsTemplateController@updateOrderQuestion');
 
 Route::post('/ingresar','listasController@ingresarlista');//Mi linea
+
+Route::post('/eliminarlista','listasController@eliminarlista');//Mi linea
+
+Route::post('/incidente','listasController@incidente');//Mi linea
+
