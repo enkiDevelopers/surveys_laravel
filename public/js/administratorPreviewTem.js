@@ -42,7 +42,8 @@ $(document).ready(function(){
         $("#idNext").removeAttr('disabled');
         $("#gracias").css("display","none");
 
-        $("#preg"+n).css("display", "none");        
+        $("#preg"+n).css("display", "none");  
+        var numeroanterior=n;      
         //n--;
         n=$("#back"+n).val();
         //n=b;
@@ -54,26 +55,60 @@ $(document).ready(function(){
         $("#idTitlePregunta").text("Pregunta " + n);
 }
             if(n==0){
+                var dato = document.getElementById("opt"+1);
+               if(dato==null){
+
+                }else{
                     document.getElementById("opt"+1).value=null;
 
-            }else{
-                    var tempo1= $('input:radio[data-name=opcion'+n+']:checked');
-                    var dato1=tempo1;
-                    tempo1= $(tempo1).data("salto")
-                    if(dato1.val() == null){
+                }
+                    var tempo1= $('input:radio[data-name=opcion'+1+']:checked').prop('checked',false);
 
+            }else{
+                    //var siguiente=n;
+                   var tempo1= $('input:radio[data-name=opcion'+n+']:checked');
+                    // $('input:radio[data-name=opcion'+n+']:checked').prop('checked',false);
+
+                    //$("input:radio['data-name=opcion'+n+']").prop('checked',false);
+
+                    var dato1=tempo1;
+                    tempo1= $(tempo1).data("salto");
+
+
+                    if(dato1.val() == null){
                        // console.log(dato1.val());
+                                           // siguiente++;
+
 
                     }else{
                         //console.log(dato1.val());
                     }
-                   /* if (document.getElementById("opt"+n)==null){
-
-                        document.getElementById("opcion"+n).checked=false;
-                    }else{*/
+                   // if (document.getElementById("opt"+n)==null){
+                   
+                   // }else{
                         var siguiente=n;
                         siguiente++;
-                        document.getElementById("opt"+siguiente).value=null;
+                         var borrar=document.getElementById("num"+numeroanterior).value;
+
+                        console.log(borrar);
+                       
+                       
+                        var dato = document.getElementById("opt"+borrar);
+                        if(dato == null){
+                        }else{
+                        console.log("borrar");
+                        document.getElementById("opt"+borrar).value=null;
+
+
+                        }
+
+
+                        var tempo1= $('input:radio[data-name=opcion'+borrar+']:checked').prop('checked',false);
+
+                     //$('input:radio[data-name=opcion'+siguiente+']:checked').prop('checked',false);
+
+                       // document.getElementById("opcion"+n).checked=false;
+
                        // document.getElementById("opt"+n).value=null;
 
                    // }

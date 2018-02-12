@@ -160,6 +160,7 @@
         ?>
             <div class= "pregs" id="preg<?php echo $i ?>" style="display:none">
                 <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+                <input type="hidden" name="back" id="num<?php echo $i?>" value="<?php echo $i ?>">
                 <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
         <?php
             if($dato->type==1){
@@ -198,7 +199,7 @@
         <?php
                  $i++;   
         }
-
+ 
         ?>
         <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
             <div class="form-group">                
@@ -209,7 +210,7 @@
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
         <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
         <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
-        <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+        <input type="text" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
 
     </div>
         <?php
