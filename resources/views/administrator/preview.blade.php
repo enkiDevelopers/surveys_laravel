@@ -113,10 +113,12 @@
 
         <div id="sumary" class="col-md-12 ">
             <div class="col-md-12" height="" style="background-color: #333333;">
-                <img src="\img/UVM_Logo.jpg" width="30%" height="25%">
+                    <div class="col-md-5">
+                            <img src="\img/UVM_Logo.jpg" class="img-responsive" width="100%" height="100%;">
+                    </div>
             </div>
  <center>
-            <img src="\img/iconos/{{$imagePath}}"  width="15%" height="15%" style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+            <img src="\img/iconos/{{$imagePath}}"  width="200px" height="700px" class="img-responsive" style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
             <br>
             <h2 class="text-center text-black-body title">{{$titulo}}</h2>
             <p>{{$descripcion}}</p>
@@ -131,8 +133,9 @@
 <div class="container hidden" id="surveyContainer" style="background-image:\img/default_questions.jpg;">
         <div class="col-md-12" >
                 <img src="\img/default_questions.png" width="100%" height="80px">
-                <img src="\img/UVM_Logo.jpg" width="35%" height="30%" >
-
+                    <div class="col-md-5">
+                            <img src="\img/UVM_Logo.jpg" class="img-responsive" width="100%" height="100%;">
+                    </div>
          </div>    
         <div class="col-md-12">
             <h2 class="text-center text-black-body" style="margin-top: 5%;margin-bottom:15px;" id="idTitlePregunta">Recomendaciones: </h2>

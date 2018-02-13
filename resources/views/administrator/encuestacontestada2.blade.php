@@ -30,7 +30,9 @@
     <div class="row">
             <div class="col-md-12" >
                     <img src="\img/default_questions.png" width="100%" height="50px">
-                    <img src="\img/UVM_Logo.jpg" width="40%" height="100%" >
+                    <div class="col-md-5">
+                            <img src="\img/UVM_Logo.jpg" class="img-responsive" width="100%" height="100%;">
+                    </div>
             </div> 
 
             <div class="col-md-6 col-center" style="margin-top:100px;">

@@ -3,8 +3,7 @@
   
 
 
- <!-- <div class="loader" id="loader" >
-  </div>-->
+
 <div id="AgregarLista" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -74,7 +73,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <style type="text/css">
-  .loader2 {
+  .procesando {
     position: fixed;
     left: 0px;
     top: 0px;
@@ -88,14 +87,13 @@
 
 <script type="text/javascript">
   $(window).load(function() {
-    $(".loader2").fadeOut("slow");
+    $(".loader").fadeOut("slow");
 });
 </script>
 
 
-<div class="loader2"></div>
-  <div class="procesando" id="procesando" >
-  </div>
+  <div class="loader" id="loader"></div>
+  <div class="procesando" id="procesando"></div>
 <div class="container">
     <div class="row" id="divid">
       <hr/>
@@ -318,6 +316,7 @@
     </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/"></script>
   <script type="text/javascript">
 
 $(function(){
@@ -345,7 +344,7 @@ $(function(){
               cache:false,
 
               beforeSend: function () { 
-                $("#loader2").show();
+                $("#procesando").show();
 
               },
               success : function(response){
@@ -353,10 +352,10 @@ $(function(){
                 $('#nombre').val('');
                 $('#archivo').val('');
 
-                $("#loader2").hide();
+                $("#procesando").hide();
               },
               error : function(error) {
-                $("#loader2").hide();
+                $("#procesando").hide();
                  swal({
                       title: "Información",
                       text: "Verifique la estructura de su documento",
@@ -426,6 +425,7 @@ $(function(){
 
 });
   </script>
+
     <script>
     function limpiar()
     {

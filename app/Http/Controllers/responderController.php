@@ -28,11 +28,15 @@ echo $matricula;
 
 		$datos=DB::table('encuestados')
 			->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.idpub')
+
 			->where('encuestados.noCuenta','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
       $contestado=DB::table('encuestados')
-      ->join('templates','encuestados.idEncuesta','=','templates.id')
+      ->join('templates','encuestados.idEncuesta','=','templates.id')      
+      ->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.idpub')
+
       ->where('encuestados.noCuenta','=',$matricula)
       ->where('encuestados.contestado','=',1)
       ->get();
@@ -66,50 +70,62 @@ echo $matricula;
       $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
                                                                     ->where('contestado','=',0)
                                                                     ->count();
-      if($idencuestado==0){
-        return view("administrator.encuestacontestada");
-      }else{
-      	   $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
+
+      $idencuestados=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
                                                                     ->where('contestado','=',0)
                                                                     ->get();
-	      $idencuesta1=$idencuestado[0]->idEncuesta;
-		  $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $idencuesta1)->get();
-	      $titulo = $consulta[0]->tituloEncuesta;
-	      $descripcion = $consulta[0]->descripcion;
-	      $imagePath = $consulta[0]->imagePath;
 
-	      $eid = $id;
-	      $datos = questionsTemplates::where('templates_idTemplates',$idencuesta1)->orderByRaw('orden')->get();
+      $fecha=DB::table('publicaciones')->select(['fechat'])->where('idTemplate','=',$idencuestados[0]->idEncuesta)->get();
+      $factual=date('Y-m-d');
 
-	      $datosOpt=[];
-	      //echo $datos;
-	      foreach ($datos as $dato) {
-	        //echo $dato . ",";
-	        if($dato['type']==2){
-	          $idq=$dato['id'];
-	          $opt=optionsMult::where('idParent',$idq)->get();
-	          //echo $opt . ",";
-	        }else{
-	          $opt=null;
-	        }
-	        $datosOpt[] = [
-	        "questions" => $dato,
-	        "options" => $opt];
-	      }
-	      
-	      //log($datosOpt);
-	      $options=serialize($datosOpt);
-	      //echo $options;
-	/*      
-	      foreach ($datosOpt as $cada) {
-	        echo $cada["questions"];
-	        echo $cada["options"];
-	      }
+        if($factual <= $fecha[0]->fechat){
+            if($idencuestado==0){
+              return view("administrator.encuestacontestada");
+            }else{
+            	   $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
+                                                                          ->where('contestado','=',0)
+                                                                          ->get();
+      	      $idencuesta1=$idencuestado[0]->idEncuesta;
+      		    $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id', $idencuesta1)->get();
+      	      $titulo = $consulta[0]->tituloEncuesta;
+      	      $descripcion = $consulta[0]->descripcion;
+      	      $imagePath = $consulta[0]->imagePath;
 
-	*/     $admor = $consulta[0]->creador;
-	       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuesta1'));
+      	      $eid = $id;
+      	      $datos = questionsTemplates::where('templates_idTemplates',$idencuesta1)->orderByRaw('orden')->get();
+
+      	      $datosOpt=[];
+      	      //echo $datos;
+      	      foreach ($datos as $dato) {
+      	        //echo $dato . ",";
+      	        if($dato['type']==2){
+      	          $idq=$dato['id'];
+      	          $opt=optionsMult::where('idParent',$idq)->get();
+      	          //echo $opt . ",";
+      	        }else{
+      	          $opt=null;
+      	        }
+      	        $datosOpt[] = [
+      	        "questions" => $dato,
+      	        "options" => $opt];
+      	      }
+      	      
+      	      //log($datosOpt);
+      	      $options=serialize($datosOpt);
+      	      //echo $options;
+      	/*      
+      	      foreach ($datosOpt as $cada) {
+      	        echo $cada["questions"];
+      	        echo $cada["options"];
+      	      }
+
+      	*/     $admor = $consulta[0]->creador;
+      	       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuesta1'));
+          }
+       }else{
+              return view("administrator.plazo");
+       }
 }
-	}
   public function encuestacontestada(){
         return view("administrator.encuestacontestada");
 //
