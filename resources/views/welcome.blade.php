@@ -46,7 +46,7 @@
                             <h2 class="title">Alumno  </h2>
                             <div class="info">
                               <hr class="divider"/>
-                              <p class="lead">Comienza a realizar encuestas. </p><a href="{{('/surveyeds/login')}}" class="btn btn-lg center-block">Empieza !</a>
+                              <p class="lead">Comienza a realizar encuestas. </p><a href="{{('/surveyeds/login/sistema')}}" class="btn btn-lg center-block">Empieza !</a>
                             </div>
                           </div>
                         </article>

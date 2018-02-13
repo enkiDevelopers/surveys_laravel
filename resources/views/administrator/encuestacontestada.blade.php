@@ -30,7 +30,7 @@
     <div class="row">
     		<div class="col-md-12" >
                     <img src="\img/default_questions.png" width="100%" height="50px">
-                    <img src="\img/UVM_Logo.jpg" width="30%" height="100px" >
+                    <img src="\img/UVM_Logo.jpg" width="40%" height="100%" >
             </div> 
 
     		<div class="col-md-6 col-center" style="margin-top:100px;">

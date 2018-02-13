@@ -17,21 +17,24 @@ use PDF;
 
 class responderController extends Controller
 {	
-	public function presentacion($matricula){
+	public function presentacion(Request $request){
+    $matricula=$request->session()->get('id');
+
 		//$id es el la variable de la table encuestados donde se almacena la informacion
     if($matricula==0){
+echo $matricula;
           return view("administrator.encuestacontestada");
     }else{
-    $info=DB::table('encuestados')->where('matricula','=',$matricula)->get();
+    $info=DB::table('encuestados')->where('noCuenta','=',$matricula)->get();
 
 		$datos=DB::table('encuestados')
 			->join('templates','encuestados.idEncuesta','=','templates.id')
-			->where('encuestados.matricula','=',$matricula)
+			->where('encuestados.noCuenta','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
       $contestado=DB::table('encuestados')
       ->join('templates','encuestados.idEncuesta','=','templates.id')
-      ->where('encuestados.matricula','=',$matricula)
+      ->where('encuestados.noCuenta','=',$matricula)
       ->where('encuestados.contestado','=',1)
       ->get();
 		return view('surveyed.home',compact('info','datos','contestado'));
@@ -131,7 +134,7 @@ class responderController extends Controller
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
     DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
-    $idmatricula=DB::table('encuestados')->select('matricula')->where('idE','=',$idencuestado)->get();
+    $idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");
     //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
     return view("administrator.encuestacontestada2");
@@ -146,16 +149,16 @@ class responderController extends Controller
     if($matricula==0){
           return view("administrator.encuestacontestada");
     }else{
-    $info=DB::table('encuestados')->where('matricula','=',$matricula)->get();
+    $info=DB::table('encuestados')->where('noCuenta','=',$matricula)->get();
 
     $datos=DB::table('encuestados')
       ->join('templates','encuestados.idEncuesta','=','templates.id')
-      ->where('encuestados.matricula','=',$matricula)
+      ->where('encuestados.noCuenta','=',$matricula)
       ->where('encuestados.contestado','=',0)
       ->get();
       $contestado=DB::table('encuestados')
       ->join('templates','encuestados.idEncuesta','=','templates.id')
-      ->where('encuestados.matricula','=',$matricula)
+      ->where('encuestados.noCuenta','=',$matricula)
       ->where('encuestados.contestado','=',1)
       ->get();
     return view('administrator.encuestacontestada',compact('info','datos','contestado'));

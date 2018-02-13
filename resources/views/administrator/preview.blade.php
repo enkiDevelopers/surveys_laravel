@@ -210,7 +210,7 @@
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
         <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
         <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
-        <input type="text" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+        <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
 
     </div>
         <?php

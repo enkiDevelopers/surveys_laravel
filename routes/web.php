@@ -20,6 +20,9 @@ Route::get('/administrator/login',function () {
 
 Route::post('/administrator/validate', 'iniciarSesion@ldap');
 
+Route::post('/surveyed/validate', 'iniciarSesion@lencuesta');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -39,7 +42,7 @@ Route::get('/surveyed/solve', function () {
     return view('surveyed.solve-survey');
 });
 //
-Route::get('/surveyed/{matricula}','responderController@presentacion');
+Route::get('/surveyed/','responderController@presentacion')->name('encuesta');
 Route::get('/completo/{matricula}','responderController@completo');
 
 
@@ -96,9 +99,9 @@ Route::get('/directives/login', function(){
     return view('auth.directive_login');
 });
 
-Route::get('/surveyeds/login', function(){
-    return view('auth.surveyed_login');
-});
+Route::get('/surveyeds/login/{ruta}/', function($ruta){
+    return view('auth.surveyed_login', ['ruta' => $ruta]);
+})->name('loginpagina');
 
 Route::get('/directive/report1', function(){
     return view('directive.report1');
@@ -146,6 +149,7 @@ Route::get('administrator/surveys/preview', function(){
 });
 
 Route::get('/administrator/previewtem/{id}/',["as" => "previewtem", "uses" => "previewtemController@busqueda" ]);
+
 Route::get("/administrator/consultar/publicaciones" ,"encuestadosController@consultar");
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -218,4 +222,7 @@ Route::post('/ingresar','listasController@ingresarlista');//Mi linea
 Route::post('/eliminarlista','listasController@eliminarlista');//Mi linea
 
 Route::post('/incidente','listasController@incidente');//Mi linea
+
+Route::get('/administrator/informe/{id}/',["as" => "informe", "uses" => "listasController@generarReporte" ]);
+
 

@@ -14,9 +14,12 @@
                   foreach ($datos as $dato) {
 
                              echo"<div class='col-md-2'>
-                                <div class='card well' >
-                                    <img class='card-img-top' src=\img/iconos/$dato->imagePath alt='Card image cap' width='100%' height='90px'>
-                                    <div class='card-body'>
+                                <div class='card well' >"
+                  ?>
+                     <img src="\img/iconos/{{$dato->imagePath}}"  width='100%' height='90px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+
+                  <?php                  
+                            echo"<div class='card-body'>
                                         <h4 class='card-title'>{$dato->tituloEncuesta}</h4>
                                         <p class='card-text'></p>
                                         <a  class='btn btn-red' href=previewtem/".$dato->idE.">Responder</a>
@@ -52,14 +55,17 @@
                   <?php
                     foreach ($contestado as $constestados) {
                         echo "<div class='col-md-2'>
-                              <div class='card well'>
-                                <img class='card-img-top' src=\img/iconos/$constestados->imagePath alt='Card image cap' width='100%' height='90px'>
+                              <div class='card well'>";
+                        ?>
+                     <img src="\img/iconos/{{$constestados->imagePath}}"  width='100%' height='90px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+
                                 <div class='card-body'>
-                                    <h4 class='card-title'>{$constestados->tituloEncuesta}</h4>
-                                    <a href='contestado' class='btn btn-primary'>Ver encuesta</a>
+                                    <h4 class='card-title'>{{$constestados->tituloEncuesta}}</h4>
+                                    <a href='contestado' target="_blank" class='btn btn-primary'>Ver encuesta</a>
                                 </div>
                             </div>
-                        </div>";
+                        </div>;
+                <?php
                     }
                   ?>                        
                   </div>

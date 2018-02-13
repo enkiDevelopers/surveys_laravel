@@ -52,6 +52,7 @@
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file">
+              <input type="hidden" id="idlista" name="idlista" value="<?php echo $listas[0]->idLista ?>">
               
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />
@@ -67,17 +68,40 @@
   </div>
 </div>
 
-
   <link rel="stylesheet" href="/css/alertify.rtl.css">
   <link rel="stylesheet" href="/css/themes/default.rtl.css">
   <script src="/js/alertify.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<style type="text/css">
+  .loader2 {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('img/load/cargando2.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+</style>
+
+<script type="text/javascript">
+  $(window).load(function() {
+    $(".loader2").fadeOut("slow");
+});
+</script>
+
+
+<div class="loader2"></div>
+  <div class="procesando" id="procesando" >
+  </div>
 <div class="container">
     <div class="row" id="divid">
       <hr/>
         <div class="col-md-12 ">
             <div class="panel panel-default">
                 <div class="panel-heading">Listas Creadas</div>
-                <div class="panel-body scroll">
                     <div class="row">
 
 
@@ -148,7 +172,6 @@
 <!--hasta aqui termina el cuerpo del panel de archivos creados-->
                 </div>
 
-            </div>
 <hr />
           <!--  <div class="panel panel-default">
                 <div class="panel-heading">Lista de Incidentes</div>
@@ -322,19 +345,28 @@ $(function(){
               cache:false,
 
               beforeSend: function () { 
+                $("#loader2").show();
 
               },
               success : function(response){
-
-              $("#divid").load(" #divid");
-
+                $("#divid").load(" #divid");
                 $('#nombre').val('');
                 $('#archivo').val('');
-                
 
+                $("#loader2").hide();
               },
               error : function(error) {
-                console.log(error);
+                $("#loader2").hide();
+                 swal({
+                      title: "Información",
+                      text: "Verifique la estructura de su documento",
+                      type: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: '#DD6B55',
+                      confirmButtonText: 'Continuar',
+                      closeOnConfirm: true,
+                   })
+
               }
 
           });
@@ -411,7 +443,7 @@ $(function(){
           });
          swal({
               title: "Confirmación",
-              text: "Desea eliminar esta Lisata, se perdera los registros que contiene",
+              text: "Desea eliminar esta Lista, se perdera los registros que contiene",
               type: "warning",
               showCancelButton: true,
               confirmButtonColor: '#DD6B55',
@@ -430,6 +462,12 @@ $(function(){
               async:true,
               cache:false,
               success : function(response){
+                    swal({
+                      title: "Información",
+                      text: "Lista Eliminada",
+                      type: "info",
+                      confirmButtonText: 'Continuar',
+                   })
                 $("#divid").load(" #divid");
                 //console.log(response);
               },

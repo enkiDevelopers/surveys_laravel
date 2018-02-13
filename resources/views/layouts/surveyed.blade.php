@@ -28,7 +28,7 @@
                         <img src="/img/avatar.jpeg" alt="">
                         <p>Encuestado</p>
                         <?php
-                                echo $info[0]->name." ".$info[0]->apPaterno." ".$info[0]->apMaterno."\n";
+                                echo $info[0]->nombreGeneral."\n";
                                 echo $info[0]->email1;
                         ?>
                     </div>

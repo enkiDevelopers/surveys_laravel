@@ -80,9 +80,13 @@
                                 <div class="col-md-4">
                                   Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div>
+                                
                                 <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
                                 </div>
+
+
+
                                 <div class="col-md-4">
                                     Finalizada<div class="pull-right survey-status survey-status__finished">&nbsp</div>
                                 </div>
