@@ -16,7 +16,7 @@
 
                             <div class="col-md-6">
                                 <input id="cuenta" type="text" class="form-control" name="cuenta" value="{{ old('email') }}" required autofocus>
-                                <input id="ruta" type="hidden" value="{{$ruta}}"> 
+                                <input id="ruta" type="hidden" name="ruta" value="{{$ruta}}"> 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>

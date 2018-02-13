@@ -22,7 +22,7 @@
                             echo"<div class='card-body'>
                                         <h4 class='card-title'>{$dato->tituloEncuesta}</h4>
                                         <p class='card-text'></p>
-                                        <a  class='btn btn-red' href=previewtem/".$dato->idE.">Responder</a>
+                                        <a  class='btn btn-red' href=/surveyed/previewtem/".$dato->idE.">Responder</a>
                                     </div>
                                 </div>
                             </div>";

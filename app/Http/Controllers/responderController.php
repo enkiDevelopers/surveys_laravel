@@ -19,7 +19,6 @@ class responderController extends Controller
 {	
 	public function presentacion(Request $request){
     $matricula=$request->session()->get('id');
-
 		//$id es el la variable de la table encuestados donde se almacena la informacion
     if($matricula==0){
 echo $matricula;
@@ -119,6 +118,7 @@ echo $matricula;
   public function guardarencuesta(Request $request){
     $idEncuesta=$request->Input('idencuesta');
     $idencuestado=$request->Input('idencuestado');
+    $canal =$request->session()->get('canal');
 
     $preguntas=DB::table('questionsTemplates')
                 ->select('id')
@@ -133,7 +133,9 @@ echo $matricula;
                   'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
-    DB::table('encuestados')->where('idE',$idencuestado)->update(['contestado'=>1]);
+    DB::table('encuestados')->where('idE',$idencuestado)->update([
+      'canal'=>$canal,
+      'contestado'=>1]);
     $idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");
     //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);

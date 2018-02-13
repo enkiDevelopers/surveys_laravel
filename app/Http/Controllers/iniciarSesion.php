@@ -69,11 +69,12 @@ if($search== "false")
 
 public function lencuesta(Request $request){
         $cuenta = $request->cuenta;
-        $ruta = $request->ruta;
+        $ruta   =  $request->ruta;
         $isValid = DB::table('encuestados')->where('noCuenta','=',$cuenta)->first();
 
           if($isValid==null)
           {
+            echo $ruta;
           return redirect()->route('loginpagina',"sistema");
           }else{
             /*
@@ -105,7 +106,7 @@ public function lencuesta(Request $request){
           }*/
 
             $id=$isValid->noCuenta;
-            Session::put('id', $id);
+            Session::put(['id'=> $id,'canal'=> $ruta]);
             return redirect()->route('encuesta');
 
           }
