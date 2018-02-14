@@ -13,7 +13,7 @@ use File;
 use Input;
 use Response;
 use App\Client;
-use PDF;
+use PDF; 
 
 class responderController extends Controller
 {	
@@ -72,13 +72,13 @@ echo $matricula;
                                                                     ->count();
 
       $idencuestados=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
-                                                                    ->where('contestado','=',0)
                                                                     ->get();
 
       $fecha=DB::table('publicaciones')->select(['fechat'])->where('idTemplate','=',$idencuestados[0]->idEncuesta)->get();
       $factual=date('Y-m-d');
 
         if($factual <= $fecha[0]->fechat){
+
             if($idencuestado==0){
               return view("administrator.encuestacontestada");
             }else{
@@ -120,6 +120,7 @@ echo $matricula;
       	      }
 
       	*/     $admor = $consulta[0]->creador;
+
       	       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuesta1'));
           }
        }else{
