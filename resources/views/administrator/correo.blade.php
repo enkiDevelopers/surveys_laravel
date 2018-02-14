@@ -29,20 +29,12 @@
 				</div>
 				<div style="width: 100%; text-align: center">
 
-          <?php
-          if (isset($_SERVER['HTTPS'])) { ?>
-            <div style="margin-bottom: 20px;">
-        <a href="https://<?php echo $_SERVER["HTTP_HOST"]; ?>/surveyed/previewtem/{{$infousuario->idE}}"><h1><b>Contesta aquí tu encuesta </b></h1></a>
+
+        <div style="margin-bottom: 20px;">
+        <a href="<?php echo $protocolo; ?>://<?php echo $host; ?>/surveyed/previewtem/{{$infousuario->idE}}"><h1><b>Contesta aquí tu encuesta </b></h1></a>
         </div>
-          <?php
-          } else {
-          ?>
-          <div style="margin-bottom: 20px;">
-                          <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/surveyed/previewtem/{{$infousuario->idE}}"><h1><b>Contesta aquí tu encuesta </b></h1></a>
-                        </div>
-            <?php
-          }
-          ?>
+
+
 
           <div style="width: 80px; display:inline-block">
                   <a href="https://www.facebook.com/UniversidaddelValledeMexico" target="_blank">
@@ -81,4 +73,4 @@
 <!--hasta aquí-->
 
 </body>
-</html>S
+</html>

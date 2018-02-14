@@ -202,7 +202,6 @@ var instrucciones = CKEDITOR.instances['instrucciones'].getData();
     $("#procesando").show();
   },
   success: function( sms ) {
-    $("#procesando").hide();
     swal({
        title: "Su encuesta ha sido publicada",
        text: "",
@@ -210,7 +209,6 @@ var instrucciones = CKEDITOR.instances['instrucciones'].getData();
         });
       document.getElementById("form").reset();
       CKEDITOR.instances.instrucciones.setData('');
-      $('#miModal').modal('hide');
       busca();
       showcards();
       },error: function(result) {
@@ -294,7 +292,7 @@ function duplicar()
        type: "success",
         });
           showcards();
-      document.getElementById("form").reset();
+      document.getElementById("duForm").reset();
       $('#duModal').modal('hide');
 
       },error: function(result) {
@@ -415,5 +413,4 @@ swal({
 
 function ir()
 {
-
 }

@@ -10,29 +10,40 @@ use App\encuestados;
 class mailencuestados extends Mailable
 {
     use Queueable, SerializesModels;
-    public $infousuario;
-    public $asunto;
-    public $instrucciones;
-
+      public $infousuario;
+      public $asunto;
+      public $instrucciones;
+      public $protocolo;
+      public $host;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($infousuario, $asunto, $instrucciones)
+    public function __construct($infousuario, $asunto, $instrucciones, $host)
     {
+
       $this->infousuario = $infousuario;
       $this->instrucciones = $instrucciones;
       $this->subject = $asunto;
+      
+      if($infousuario->email2!=null)
+       {
+       $this->cc($infousuario->email2);
 
-            if($infousuario->email2!=null)
-        {
-        $this->cc($infousuario->email2);
+     }
+       if ($infousuario->email3!=null) {
+         $this->bcc($infousuario->email3);
+     }
 
-      }
-        if ($infousuario->email3!=null) {
-          $this->bcc($infousuario->email3);
-      }
+       $this->host = $host;
+
+           if (isset($_SERVER['HTTPS'])) {
+               $this->protocolo = "https";
+         }else
+           {
+               $this->protocolo = "http";
+           }
 
 
     }
