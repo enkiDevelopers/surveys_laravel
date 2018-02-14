@@ -43,7 +43,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
+        <h4 class="modal-title">Agregar Nueva lista de Incidencias</h4>
       </div>
       <div class="modal-body" >
         <form  method="post" id="formincidentes" enctype="multipart/form-data">
@@ -51,7 +51,7 @@
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file">
-              
+            
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />
         </form>
@@ -66,9 +66,6 @@
   </div>
 </div>
 
-  <link rel="stylesheet" href="/css/alertify.rtl.css">
-  <link rel="stylesheet" href="/css/themes/default.rtl.css">
-  <script src="/js/alertify.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <style type="text/css">
@@ -126,6 +123,7 @@ try{
                                 <img class="card-img-top" id="icono"  src="/img/lista.png">
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
+                                      <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
                                         <div class="btn-group" role="group" aria-label="...">
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
@@ -322,7 +320,6 @@ try{
     </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/"></script>
   <script type="text/javascript">
 
 $(function(){
@@ -408,6 +405,7 @@ $(function(){
               cache:false,
 
               beforeSend: function () { 
+                $("#procesando").show();
 
               },
               success : function(response){
@@ -416,11 +414,14 @@ $(function(){
 
                 $('#nombre').val('');
                 $('#archivo').val('');
-                
+                           $("#procesando").hide();
+     
 
               },
               error : function(error) {
                 console.log(error);
+                                $("#procesando").hide();
+
               }
 
           });
@@ -467,7 +468,13 @@ $(function(){
               data : {"id": id},
               async:true,
               cache:false,
+              beforeSend: function () { 
+                $("#procesando").show();
+
+              },
               success : function(response){
+                $("#procesando").hide();
+
                     swal({
                       title: "Información",
                       text: "Lista Eliminada",
@@ -479,6 +486,7 @@ $(function(){
               },
               error : function(error) {
                 console.log(error);
+                $("#procesando").hide();
 
               }
           });

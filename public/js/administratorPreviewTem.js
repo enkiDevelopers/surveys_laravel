@@ -102,7 +102,6 @@ $(document).ready(function(){
 
                         }
 
-
                         var tempo1= $('input:radio[data-name=opcion'+borrar+']:checked').prop('checked',false);
 
                      //$('input:radio[data-name=opcion'+siguiente+']:checked').prop('checked',false);
@@ -173,6 +172,7 @@ $(document).ready(function(){
 
             }else{
                 n++;
+                $("#back"+n).val(n-1);
             }
 
 
@@ -189,6 +189,7 @@ $(document).ready(function(){
 
 
     	if(n>=$(".pregs").length){
+           // $("#back"+n).val(n-1);
             //$("#preg"+n).css("display", "none");
             $("#idTitlePregunta").css("display", "none");
     		$("#idNext").css('display','none');	

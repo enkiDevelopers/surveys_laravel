@@ -110,11 +110,12 @@ public function ingresarlista(Request $request){
                 $file->move('listas', $dato);
                 $id = DB::table('listaEncuestados')->insertGetId(
                                         array( 'nombre'  => $nombre,
-                                                'archivo'=>$dato,
+                                               'archivo' => $dato,
                                                'creador' => $request->session()->get('id')));
         $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
 
         $fila = 1;
+        
         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE){
             $data = array_map("utf8_encode", $data);
             if($inicial==0){
@@ -142,11 +143,11 @@ public function ingresarlista(Request $request){
                                                     'listaEncuestados_idLista' => $id  ]);
             }
         }
+    if($data=null){
 
+        $data=DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
 
-        }
-        else{
-
+            }else{
         }
         fclose($handle);
 
@@ -157,6 +158,7 @@ public function ingresarlista(Request $request){
     }
 
     }
+}
     public function mostrarDatos($id){
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
