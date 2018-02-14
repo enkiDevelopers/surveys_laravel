@@ -151,8 +151,6 @@
                                 </div>
                                 <hr size="30">
                                 <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->descripcion?></span></p>
-                                <p class="card-text">Fecha Inicial: <span class="template-creator"><?php echo $encuesta->fechai ?></span></p>
-                                <p class="card-text">Fecha Termino: <span class="template-creator"><?php echo $encuesta->fechat ?></span></p>
 
                                 <?php
                                     

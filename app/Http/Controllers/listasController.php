@@ -111,7 +111,7 @@ public function ingresarlista(Request $request){
                 $id = DB::table('listaEncuestados')->insertGetId(
                                         array( 'nombre'  => $nombre,
                                                 'archivo'=>$dato,
-                                               'creador' => 6));
+                                               'creador' => $request->session()->get('id')));
         $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
 
         $fila = 1;

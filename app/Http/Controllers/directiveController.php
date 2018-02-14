@@ -36,7 +36,7 @@ class directiveController extends Controller
   public function show_cards($id)
   {
       $campus=0;
-      $encuestas = DB::table('encuestas')->orderByRaw('updated_at - created_at DESC')->get();
+      $encuestas = DB::table('templates')->orderByRaw('updated_at - created_at DESC')->get();
       $datosdirective =DB::table('usuarios')->where('idUsuario','=',$id)->get();
 
       switch ($datosdirective["0"]->type) {
@@ -76,7 +76,7 @@ class directiveController extends Controller
 
   }
   public function buscar(Request $request){
-    $data = DB::table('encuestas')->where("id", $request->id)->get();
+    $data = DB::table('templates')->where("id", $request->id)->get();
     return response()->json($data);
   }
   public function busquedacampus(Request $request){
@@ -98,7 +98,7 @@ class directiveController extends Controller
                                                   'total_contestados_alumnos'=>'0',
                                                   'total_contestados_empleados'=>'0',
                                                   'campus_campus_id'=>$idcampus,
-                                                  'usuarios_idUsuario'=>1,
+                                                  'directives_idDirectives'=>1,
                                                   'surveys_id'=> $id]);
       }
       $info= DB::table('estadisticas')->where([  ['surveys_id','=',$id],
@@ -127,7 +127,7 @@ class directiveController extends Controller
                                                   'total_contestados_alumnos'=>'0',
                                                   'total_contestados_empleados'=>'0',
                                                   'campus_campus_id'=>$campusdatos->campus_id,
-                                                  'usuarios_idUsuario'=>1,
+                                                  'directives_idDirectives'=>1,
                                                   'surveys_id'=> $id]);
       }
     }

@@ -51,13 +51,13 @@
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file">
-              <input type="hidden" id="idlista" name="idlista" value="<?php echo $listas[0]->idLista ?>">
+             <input type="text" id="idlista" name="idlista" value="<?php echo $listas[0]->idLista ?>">
               
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />
         </form>
 
-
+ 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -118,7 +118,9 @@
                         </div>
 
 <?php
+try{
   foreach ($listas as $lista) {
+
 ?>
                         <div class="col-md-4" id="delete_{{$lista->idLista}}">
                             <div class="card well text-center" >
@@ -144,7 +146,12 @@
                             </div>
                         </div>
 <?php
-                        }  ?>
+                        } 
+
+                      }catch (Exception $e){
+
+      }
+?>
 
 <!-- FIN FOR EACH -->
 
