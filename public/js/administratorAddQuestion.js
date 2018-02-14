@@ -125,6 +125,7 @@ $(document).ready(function(){
         for (var i = act; i <= max; i++) {
              $(this).append('<option value="'+i+'">'+i+'</option>');
         } 
+        $(this).append('<option value="'+i+'">Fin de la encuesta</option>');
     });
 
     $("#container-questions").on('change', '.selectNumPreg', function() {
@@ -364,6 +365,14 @@ $(document).ready(function(){
                          });                    }               
 
         });
+    });
+
+    $("#dataTemplateContainer").on('click', '#minDataTemplate', function() {
+       $("#dataContainer").toggle('400');
+       $("#minDataTemplate").toggleClass('btn-primary').toggleClass('btn-info');
+       $("#minDataTemplate").children().toggleClass('glyphicon-minus ').toggleClass('glyphicon-plus');
+       $("#questionSaved").css('height','55rem');
+       
     });
 /*
     //Eliminar una opcion multiple

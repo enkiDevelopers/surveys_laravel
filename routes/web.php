@@ -107,22 +107,16 @@ Route::get('/directive/report1', function(){
     return view('directive.report1');
 });
 
-Route::get('/root', function(){
-    return view('root.home');
-});
+Route::get('/root', 'rootController@home');
 
+Route::get('/root/manageAdmin', 'rootController@manageAdmin');
 
-Route::get('/root/new', function(){
-    return view('root.new-administrator');
-});
+Route::get('/config','rootController@config');
 
 Route::get('/administrator/surv-list', function(){
     return view('administrator.surveyed-list');
 });
 
-Route::get('/config',function(){
-  return view('root.config');
-});
 
 Route::post('/save', 'surveyController@save');
 

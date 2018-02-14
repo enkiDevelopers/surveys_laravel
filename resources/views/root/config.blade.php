@@ -1,45 +1,44 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>Configuracion</title>
+  <meta charset="UTF-8">
+  <title>Configuración del Sistema</title>
+  <link rel="stylesheet" href="css/login.css">
 </head>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<body>
-
-<div class="text-center">
-  <p>
-    Configuracion Inicial:
-  </p>
-
-<div class="formulario">
-
-<form>
-<div class="panel panel-default">
-  <div class="panel panel-heading">
-    <label for="Contraseña"> Contraseña root </label>
+<body id="bg_config">
+  <div id="login-button">
+    <img src="https://www.shareicon.net/download/2015/09/03/95316_key_512x512.png">
+    </img>
   </div>
-  <div class="panel panel-body">
-    <input type="password" name="Contraseña"/>
-  </div>
-
-  <div class="panel panel-default">
-  <div class="panel panel-heading">
-    <label for="Nombre_BD">Nombre de la base de datos</label>
-  </div>
-  <div class="panel panel-body">
-      <input type="text" name="Nombre_BD" />
-  </div>
-
+<div id="container">
+  <h1>Contraseña Root</h1>
+<!--  <span class="close-btn">
+    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+  </span>  -->
+  <form method="POST" action="" >
+    <input type="password" name="pass" placeholder="Contraseña" required >
+    <input type="password" name="rePass" placeholder="Repetir Contraseña" required >
+    <input type="submit" value="Siguiente">
+  </form>
 </div>
-</form>
-</div>
+
+<div id="container-step2">
+  <h1>Base de Datos</h1>
+<!--  <span class="close-btn">
+    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
+  </span>  -->
+  <form action="" method="POST">
+    <input type="text" name="host" placeholder="Host" class="host" required >
+    <input type="number" name="port" placeholder="Puerto" class="port" required >
+    <input type="text" name="nameDB" placeholder="Nombre de la Base de Datos" required >
+    <input type="text" name="userDB" placeholder="Nombre del Usuario" required >
+    <input type="password" name="passDB" placeholder="Contraseña" required >
+    <input type="submit" value="Guardar">
+  </form>
 </div>
 
 </body>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+<script src="js/login.js"></script>
 </html>

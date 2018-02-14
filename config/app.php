@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        vidhyar2612\Enveditor\EnveditorServiceProvider::class, //lINEA AGREGADA
 
         /*
          * Package Service Providers...
@@ -237,6 +238,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Enveditor' => 'vidhyar2612\Enveditor\Facade',
+
+//        'Enveditor' => vidhyar2612\Enveditor\Facade::class, //lINEA AGREGADA
 
     ],
 
