@@ -75,9 +75,8 @@ class responderController extends Controller
                                                                     ->get();
 
       $fecha=DB::table('publicaciones')->select(['fechat'])->where('idTemplate','=',$idencuestados[0]->idEncuesta)->get();
-      $factual=date('Y-m-d');
-
-        if($factual >= $fecha[0]->fechat){
+      $factual=date('Y-m-d H:m');
+        if($factual <= $fecha[0]->fechat){
 
             if($idencuestado==0){
               return view("administrator.encuestacontestada");
