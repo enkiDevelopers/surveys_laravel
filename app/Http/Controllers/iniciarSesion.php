@@ -58,11 +58,24 @@ if($search== "false")
   $id= $request->session()->get('id');
   if($id == null)
   {
-  return redirect()->route('home');
+  return view('auth.login');
 }else {
-  return view('administrator.home');
+  $info = usuarios::find($id);
+  return view('administrator.home',compact('info'));
 }
 
+}
+
+
+public function validar2(Request $request)
+{
+ $id= $request->session()->get('id');
+ if($id == null)
+ {
+ return view('welcome');
+}else {
+ return redirect('/administrator');
+}
 
 }
 

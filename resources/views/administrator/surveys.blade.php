@@ -79,7 +79,7 @@
                                 <div class="col-md-4">
                                   Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
                                 </div>
@@ -188,24 +188,24 @@
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar text-info"></span>
                                     </span>
-                                </div>                                
+                                </div>
                           </div>
                           <hr>
                         </div>
                         <div class="row col-md-12">
-                          <label for="asunto">Asunto del correo:</label>                          
+                          <label for="asunto">Asunto del correo:</label>
                           <input type="text" name="asunto" id="asunto" maxlength="100" class="form-control text-black-body">
                           <hr>
-                        </div>                 
+                        </div>
                         <div class="row col-md-12 text-center">
                           <label for="descripcion">Instrucciones de la encuesta:</label>
                         </div>
                         <div class="row col-md-12 text-center">
                           <textarea id="instrucciones" name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor"></textarea><hr>
                         </div>
-                        
+
     <div class="row">
-  
+
     <div class="row">
       <div class="col-md-6 text-center">
         <label for="destinatarios">Destinatarios: </label>
@@ -218,8 +218,9 @@
     <div class="col-md-6 text-center">
 
     <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
-      <option value="N/A" selected disabled>Seleccione una lista de destinatarios</option>
+
       <?php foreach ($listas as $lista) {?>
+        <option value="{{$lista->idLista}}" >  {{$lista->nombre}}</option>
       <?php } ?>
     </select>
       </div>
@@ -317,13 +318,7 @@
 
   $(".datetimepicker, .datepicker").datetimepicker({
     format: 'YYYY-MM-DD HH:mm:ss',
-    icons: {
-      time: "fa fa-clock-o",
-      date: "fa fa-calendar",
-      up: "fa fa-arrow-up",
-      down: "fa fa-arrow-down"
-    }
-  });
+      });
 
 </script>
 @endsection

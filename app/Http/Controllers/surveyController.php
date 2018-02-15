@@ -2,9 +2,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\templates;
+use App\Jobs\enviarRecordatorio;
 use App\encuestados;
 use App\questionsTemplates;
-
 use App\jobs\enviarEmail;
 use App\Mail\mailencuestados;
 use App\recordatorios;
@@ -203,13 +203,13 @@ public function ajaxshowcards(Request $request)
 public function reminder(Request $request)
 {
   $id= $request->idPub;
-  //$id= 1;
+
   $mensaje = publicaciones::where('idPub',$id)->first();
-  $idLista = listaEncuestados::where('nombre', $mensaje->destinatarios)->first();
+  $idLista = listaEncuestados::where('idLista', $mensaje->destinatarios)->first();
 $recordatorios = recordatorios::where('idPlantilla',$id)->get();
 
 
-return view("administrator.recordatorio",compact('mensaje','recordatorios'));
+return view("administrator.recordatorio",compact('mensaje','recordatorios','idLista'));
 
 
 }
@@ -218,46 +218,24 @@ return view("administrator.recordatorio",compact('mensaje','recordatorios'));
 public function send(Request $request)
 {
   ini_set('max_execution_time', 0);
-
   $id= $request->idPub;
-
-
   $mensaje = publicaciones::where('idPub',$id)->first();
-  $idLista = listaEncuestados::where('nombre', $mensaje->destinatarios)->first();
+
+  $idLista = listaEncuestados::where('idLista', $mensaje->destinatarios)->first();
+
   $destinatarios = encuestados::
   where('listaEncuestados_idLista', $idLista->idLista)
   ->where('incidente', '0')->where('contestado','0')->get();
-
    $host = $_SERVER["HTTP_HOST"];
-
    $job =
-new enviarEmail($destinatarios,$mensaje->asunto,$mensaje->instrucciones, $id,$host);
+new enviarRecordatorio($destinatarios,$mensaje->asunto,$mensaje->instrucciones, $id,$host);
    dispatch($job);
-
-/*
-  $asunto = $mensaje->asunto;
-  $instrucciones = $mensaje->instrucciones;
-  foreach ($destinatarios as $usuario) {
-Mail::to($usuario->email1)->send(new mailencuestados($usuario,$asunto,$instrucciones));*/
-
-/*
-  $data= array(
-  'cuerpo'=> $mensaje->instrucciones,
-  'id'=> $usuario->idE
-  );
-
-  Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
-      $message->subject($asunto);
-      $message->to($usuario->email1);
-  });
-}*/
  $record = new recordatorios;
  $record->fechaEnvio = date("Y-m-d h:i:s");
 $record->idPlantilla=  $id;
 $record->save();
 $recordatorios = recordatorios::where('idPlantilla',$id)->get();
-
-return view("administrator.recordatorio",compact('mensaje','recordatorios'));
+return view("administrator.recordatorio",compact('mensaje','recordatorios','idLista'));
 }
 
 }

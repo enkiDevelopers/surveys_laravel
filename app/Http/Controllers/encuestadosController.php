@@ -86,9 +86,9 @@ $crear->idTemplate=$publicar->id;
 $crear->tipo = $tipo;
 $crear->save();*/
   $host = $_SERVER["HTTP_HOST"];
-   $idLista = listaEncuestados::where('nombre', $destinatarios)->first();
+   $idLista = $destinatarios;
    $Iusers = new encuestados;
-   $Iusers = encuestados::where('listaEncuestados_idLista', $idLista->idLista)->get();
+   $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->get();
    $job = new enviarEmail($Iusers,$asunto,$instrucciones, $idPlantilla,$host);
    dispatch($job);
   DB::commit();
@@ -105,7 +105,11 @@ if($success){
    DB::table('templates')
               ->where('id', $idPlantilla)
               ->update(['encuesta' => 1]);
-return response()->json(array('sms'=>'Enviado Correctamente'));}
+return response()->json(array('sms'=>'Enviado Correctamente'));
+}
+else {
+  return false;
+}
 
 //$user = encuestados::where('listaEncuestados_idLista',$idLista->idLista)->get();
 //$easunto =array('sms'=> $asunto);
@@ -175,7 +179,6 @@ return view("administrator.cards", compact("actuales","finalizadas", "id"));
                     array('nombre' => $request->input('nombre'),
                            'creador' => 6));
     return response()->json($id);
-
 
     }
 

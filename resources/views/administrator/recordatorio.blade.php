@@ -72,7 +72,7 @@ table-editable {
     <p>Destinatarios: </p>
   </td>
   <td>
-    {{$mensaje->destinatarios}}
+    {{$idLista->nombre}}
   </td>
 </tr>
 </tbody>

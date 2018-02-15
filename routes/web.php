@@ -10,13 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'iniciarSesion@validar2');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/administrator/login',function () {
-    return view('auth.login');})->name("adminLogin");
+Route::get('/administrator/login', 'iniciarSesion@validar')->name("adminLogin");
 
 Route::post('/administrator/validate', 'iniciarSesion@ldap');
 

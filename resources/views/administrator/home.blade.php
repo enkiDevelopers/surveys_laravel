@@ -6,16 +6,14 @@
     <div class="col-md-11 col-md-offset-1">
       <div class="row">
         <div >
-          <img href="#" src="/img/avatar/default.png" class="img-thumbnail img-principal img-responsive" data-toggle="modal" data-target="#editarImagen" data-keyboard="false" data-backdrop="static">
+          <img  src="/img/avatar/{{$info->imagenPerfil}}" class="img-thumbnail img-principal img-responsive" data-toggle="modal" data-target="#editarImagen" data-keyboard="false" data-backdrop="static">
         </div>
       </div>
       <div>
         <label for="name">Nombre: </label><br>
-        <label> Rafael Alberto Martínez Méndez</label><br><br>
+        <label> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}</label><br><br>
         <label for="email">Correo: </label><br>
-        <label>Administrador@gmail.com</label><br><br>
-        <label for="cellphone">Telefono: </label><br>
-        <label>04489798128</label>
+        <label>{{$info->email}}</label><br><br>
       </div>
     </div>
   </div>
