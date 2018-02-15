@@ -2,8 +2,6 @@ $(document).ready(function() {
 
   $("#updateImageProfile").on('submit', function(e) {
     e.preventDefault();
-    alert("sdkj");
-
   });
 });
 

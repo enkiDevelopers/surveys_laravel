@@ -6,7 +6,6 @@
   <div class="procesando" id="procesando" >
   </div>
   <input type="hidden" id="idadmin" value="{{$id}}"/>
-      <script src="/js/moment.min.js"></script>
       <script type="text/javascript" src="/js/surveys.js"></script>
       <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
 
@@ -172,74 +171,60 @@
                               <!-- Cuerpo del modal inicio -->
                         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="idModal" />
-                        <div class="row">
-                        <div class="col-md-6">
-                              <label for="inicio">Fecha de inicio</label>
-                              <input type="datetime"  value="" readonly id="inicio">
-                        </div>
-                        <div class="col md-6">
-                              <label for="termino">Fecha de Término:</label>
-                              <input type="datetime-local"   required id="termino" min="">
-                        </div>
-                        </div>
-                        <hr />
-                        <div class="row">
-                        <div class="col-md-12">
+                        <div class="row col-md-12">
                           <div class="col-md-6">
-                          <label for="asunto">Asunto del correo:</label>
+                                <label for="inicio">Fecha de inicio</label>
+                                <div class='input-group date datetimepicker'>
+                                    <input type="text" readonly id="inicio" class="datepicker form-control"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar text-info"></span>
+                                    </span>
+                                </div>
                           </div>
-                          <div class="col-md-6">
-                          <input type="text" name="asunto" id="asunto" maxlength="100"/>
+                          <div class="col md-6">
+                                <label for="termino">Fecha de Término:</label>
+                                <div class='input-group date datetimepicker'>
+                                    <input type="text" required id="termino" min="" class="datepicker form-control"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar text-info"></span>
+                                    </span>
+                                </div>                                
                           </div>
+                          <hr>
                         </div>
+                        <div class="row col-md-12">
+                          <label for="asunto">Asunto del correo:</label>                          
+                          <input type="text" name="asunto" id="asunto" maxlength="100" class="form-control text-black-body">
+                          <hr>
+                        </div>                 
+                        <div class="row col-md-12 text-center">
+                          <label for="descripcion">Instrucciones de la encuesta:</label>
                         </div>
-                        <hr />
+                        <div class="row col-md-12 text-center">
+                          <textarea id="instrucciones" name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor"></textarea><hr>
+                        </div>
+                        
     <div class="row">
-    <div class="col-md-12 text-center">
-    <label for="descripcion">Instrucciones de la encuesta:</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12 text-center">
-
-      <textarea id="instrucciones" name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor">
-
-      </textarea>
-    <!--  <textarea class="ckeditor" name="editor1" id="editor1" rows="10" cols="80"> </textarea>-->
-    </div>
-    </div>
-  <hr />
+  
     <div class="row">
-    <div class="row">
-    <div class="col-md-12 text-center">
-
+      <div class="col-md-6 text-center">
+        <label for="destinatarios">Destinatarios: </label>
+      </div>
+      <div class="col-md-6 text-center">
+        <label for="tipo">Tipo de encuesta: </label>
+      </div>
     </div>
-    </div>
-    <div class="row">
+    <div >
     <div class="col-md-6 text-center">
 
-    <label for="destinatarios">Destinatarios: </label>
-
-    </div>
-    <div class="col-md-6 text-center">
-
-    <label for="tipo">Tipo de encuesta: </label>
-
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-6 text-center">
-
-    <select  name="destinatarios"  id="destinatarios" required>
-
+    <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
+      <option value="N/A" selected disabled>Seleccione una lista de destinatarios</option>
       <?php foreach ($listas as $lista) {?>
-      <option value="{{$lista->nombre}}" >  {{$lista->nombre}}</option>
-                                  <?php } ?>
-
-      </select>
+      <?php } ?>
+    </select>
       </div>
     <div class="col-md-6 text-center">
-    <select  id="tipo" name="tipo" required>
+    <select  id="tipo" name="tipo" class="form-control text-black-body" required>
                 <?php foreach ($tipos as $tipo) {?>
                 <option value="{{$tipo->idTipo}}" > <?php echo $tipo->tipo; ?>  </option>
                 <?php  } ?>
@@ -248,20 +233,12 @@
     </div>
     </div>
                   <hr>
-                    <div class="row">
-                    <div class="col-md-12">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="button" name="cancelar"
-                        value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
-                        <input type="submit" name="enviar" class="btn btn-danger" id="publicar" value="Publicar" />
+
         </div>
         </div>
-        </div>
-        </div>
+        <div class="modal-footer">
+           <input type="button" name="cancelar" value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
+            <input type="submit" name="enviar" class="btn btn-danger" id="publicar" value="Publicar" />
         </div>
 		    </div>
 		    </div>
@@ -334,13 +311,13 @@
   </div>
 </div>
 
+<script>
+  busca();
+  showcards();
 
+  $(".datetimepicker, .datepicker").datetimepicker({
+    format: 'YYYY-MM-DD',
+  });
 
-
-
-      <script>
-    busca();
-    showcards();
-
-      </script>
+</script>
 @endsection

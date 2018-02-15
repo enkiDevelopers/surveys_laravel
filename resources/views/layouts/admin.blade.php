@@ -11,8 +11,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/sweetalert.min.css">
-    <script src="/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="/css/datepicker.min.css">
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="/js/sweetalert.min.js"></script>
+    <script src="/js/moment.min.js"></script>
+    <script src="/js/datepicker.js"></script>
 </head>
 <body>
  
