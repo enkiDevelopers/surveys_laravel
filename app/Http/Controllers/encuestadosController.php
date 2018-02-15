@@ -25,8 +25,9 @@ public function showList(Request $request)
   {
   return redirect()->route('adminLogin');
   }
-  $listas = listaEncuestados::where("creador", $id)->get();
-    return view("administrator.files", compact('listas'));
+    $listas = listaEncuestados::where("creador", $id)->get();
+
+   return view("administrator.files", compact('listas'));
 }
 
 

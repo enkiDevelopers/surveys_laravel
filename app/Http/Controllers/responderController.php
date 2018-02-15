@@ -21,25 +21,25 @@ class responderController extends Controller
     $matricula=$request->session()->get('id');
 		//$id es el la variable de la table encuestados donde se almacena la informacion
     if($matricula==0){
-echo $matricula;
+          echo $matricula;
           return view("administrator.encuestacontestada");
     }else{
     $info=DB::table('encuestados')->where('noCuenta','=',$matricula)->get();
 
-		$datos=DB::table('encuestados')
+		$datos=DB::table('encuestados') 
 			->join('templates','encuestados.idEncuesta','=','templates.id')
-      ->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.idpub')
-
+      ->join('publicaciones','encuestados.idEncuesta','=','publicaciones.idTemplate')
 			->where('encuestados.noCuenta','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
+
       $contestado=DB::table('encuestados')
       ->join('templates','encuestados.idEncuesta','=','templates.id')      
-      ->join('publicaciones','encuestados.publicaciones_id','=','publicaciones.idpub')
-
+      ->join('publicaciones','encuestados.idEncuesta','=','publicaciones.idTemplate')
       ->where('encuestados.noCuenta','=',$matricula)
       ->where('encuestados.contestado','=',1)
       ->get();
+
 		return view('surveyed.home',compact('info','datos','contestado'));
   }
 	}
@@ -77,7 +77,7 @@ echo $matricula;
       $fecha=DB::table('publicaciones')->select(['fechat'])->where('idTemplate','=',$idencuestados[0]->idEncuesta)->get();
       $factual=date('Y-m-d');
 
-        if($factual <= $fecha[0]->fechat){
+        if($factual >= $fecha[0]->fechat){
 
             if($idencuestado==0){
               return view("administrator.encuestacontestada");

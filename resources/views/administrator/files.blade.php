@@ -76,19 +76,18 @@
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url('img/load/cargando2.gif') 50% 50% no-repeat rgb(249,249,249);
+    background: url('/img/load/cargando2.gif') 50% 50% no-repeat rgb(249,249,249);
     opacity: .8;
 }
 </style>
 
 <script type="text/javascript">
   $(window).load(function() {
-    $(".loader").fadeOut("slow");
+    $(".procesando").fadeOut("slow");
 });
 </script>
 
 
-  <div class="loader" id="loader"></div>
   <div class="procesando" id="procesando"></div>
 <div class="container">
     <div class="row" id="divid">
@@ -120,7 +119,7 @@ try{
 ?>
                         <div class="col-md-4" id="delete_{{$lista->idLista}}">
                             <div class="card well text-center" >
-                                <img class="card-img-top" id="icono"  src="/img/lista.png">
+                                <img class="card-img-top" id="icono"  src="/img/lista.png" width="100px" height="100px">
                                 <div class="card-body">
                                     <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
                                       <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">

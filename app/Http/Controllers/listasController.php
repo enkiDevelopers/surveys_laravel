@@ -97,7 +97,7 @@ class listasController extends Controller
 
 public function ingresarlista(Request $request){
         ini_set('max_execution_time', 0);
-
+//Y-m-d h:i:s
         $inicial=0;
         $arreglo=null;
         $nombre=$request->input('nombre');
@@ -140,6 +140,7 @@ public function ingresarlista(Request $request){
                                                     'semestre'=>$data[15],
                                                     'vertical'=>$data[16],
                                                     'esIntercambio'=>$data[17],
+                                                    'contestado' => 0,
                                                     'listaEncuestados_idLista' => $id  ]);
             }
         }
