@@ -218,5 +218,3 @@ Route::post('/eliminarlista','listasController@eliminarlista');//Mi linea
 Route::post('/incidente','listasController@incidente');//Mi linea
 
 Route::get('/administrator/informe/{id}/',["as" => "informe", "uses" => "listasController@generarReporte" ]);
-
-

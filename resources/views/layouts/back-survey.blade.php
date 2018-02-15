@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +12,6 @@
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/alertify.min.css">
     <link rel="stylesheet" type="text/css" href="/css/themes/default.min.css">
-
     <style>
         .placeholder-sort{
             width: 100%;
@@ -79,13 +77,11 @@
                     </li>
                 </ul>
             </nav>
-
                 @yield('content')
             </div>
         </div>
 
     <!-- Scripts -->
-
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/administratorAddQuestion.js"></script>
     <script src="/js/alertify.min.js"></script>
@@ -93,7 +89,6 @@
     <script src="/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
             var alto = (screen.height) - (screen.availHeight);
             var barra = screen.availHeight - alto - (alto/2) - (alto/4) - (alto/7);
 
@@ -101,12 +96,6 @@
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
              });
-
-        //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
-
-            if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px
-                 $(".container").css('margin-top','100px');
-            }
         });
     </script>
 </body>

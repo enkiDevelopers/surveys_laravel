@@ -88,12 +88,6 @@
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
             });
-
-           //     alert("Ancho: "+screen.availWidth+ "Alto: "+screen.availHeight);
-
-            if (window.matchMedia('(max-width: 770px)').matches) { // si es menor a 400px
-                $(".container").css('margin-top','100px');
-            }
         });        
     </script>
 </body>

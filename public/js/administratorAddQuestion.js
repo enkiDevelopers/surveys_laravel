@@ -134,7 +134,7 @@ $(document).ready(function(){
         var idOption = parseInt($(this).attr('idOption'));
 
         $.ajax({
-            url: '/administrator/addSalto/',
+            url: '/administrator/addSalto',
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             dataType: 'json',
@@ -251,7 +251,7 @@ $(document).ready(function(){
                 var idTemplate = parseInt($(".new-question__control--edit-question").attr('idTemplate'));
 
                 $.ajax({
-                    url: '/administrator/deleteOptions/',
+                    url: '/administrator/deleteOptions',
                     type: 'POST',
                     dataType: 'json',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

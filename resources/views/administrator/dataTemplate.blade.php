@@ -5,11 +5,11 @@
 
         </div>
         <div class="header-template">
-            <a class="btn btn-primary pull-right" id="minDataTemplate">
+            <a class="btn btn-primary pull-right" id="minDataTemplate" style="position: relative; z-index: 1;">
                 <span class=" glyphicon glyphicon-minus"></span>
             </a>
         </div>
-        <div id="dataContainer">
+        <div id="dataContainer" style="position: relative; z-index: 0;">
        		<div class="col-md-3" style="margin-top:1%;">
        			<center>
                 	<img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="200px" style="max-height: 200px;" onerror="this.src='/img/iconos/default.png'">
