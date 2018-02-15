@@ -175,7 +175,7 @@
                           <div class="col-md-6">
                                 <label for="inicio">Fecha de inicio</label>
                                 <div class='input-group date datetimepicker'>
-                                    <input type="text" readonly id="inicio" class="datepicker form-control"/>
+                                    <input type="text" readonly id="inicio" class="datepicker form-control text-black-body"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar text-info"></span>
                                     </span>
@@ -184,7 +184,7 @@
                           <div class="col md-6">
                                 <label for="termino">Fecha de Término:</label>
                                 <div class='input-group date datetimepicker'>
-                                    <input type="text" required id="termino" min="" class="datepicker form-control"/>
+                                    <input type="text" required id="termino" min="" class="datepicker form-control text-black-body"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar text-info"></span>
                                     </span>
@@ -316,7 +316,13 @@
   showcards();
 
   $(".datetimepicker, .datepicker").datetimepicker({
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
+    icons: {
+      time: "fa fa-clock-o",
+      date: "fa fa-calendar",
+      up: "fa fa-arrow-up",
+      down: "fa fa-arrow-down"
+    }
   });
 
 </script>

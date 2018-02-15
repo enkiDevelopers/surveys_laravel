@@ -167,7 +167,7 @@ function(){
 //modal para publicacion de plantilla
   function openModal(id) {
         $("#idModal").val(id);
-        var today = moment().format('YYYY-MM-DDThh:mm:ss');
+        var today = moment().format('YYYY-MM-DD hh:mm:ss');
         $("#inicio").val(today);
         $('#miModal').modal('show');
       }
