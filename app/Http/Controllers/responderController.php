@@ -75,7 +75,9 @@ class responderController extends Controller
                                                                     ->get();
 
       $fecha=DB::table('publicaciones')->select(['fechat'])->where('idTemplate','=',$idencuestados[0]->idEncuesta)->get();
-      $factual=date('Y-m-d H:m');
+      $factual=date('Y-m-d');
+     // $datoactual=str_replace("T"," ",$datoactual);
+
         if($factual <= $fecha[0]->fechat){
 
             if($idencuestado==0){

@@ -19,8 +19,8 @@
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
             <label for="exampleInputFile">Subir documento</label>
-              <input class="form-control-file"  id="archivo" name="archivo" type="file">
-              
+              <input class="form-control-file"  id="archivo" name="archivo" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              <a id="boton" data-toggle="tooltip" title="Ayuda"><span class="glyphicon glyphicon-question-sign"></span>.xlsx</a>
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />
         </form>
@@ -51,7 +51,8 @@
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file">
-            
+                 <input type="hidden" id="idlista" name="idlista" value="">
+        
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />
         </form>
@@ -131,7 +132,7 @@ try{
                                         <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
                                             <span class="glyphicon glyphicon-trash"></span>
                                         </a>
-                                        <a data-toggle="modal" data-target="#AgregarIncidentes" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                                        <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
                                             <span class="glyphicon glyphicon-plus"></span>
                                         </a>
                                         <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
@@ -501,9 +502,39 @@ $(function(){
                     $("#loadingUploadFile").removeClass('invisible');
 
         }
+
+function reply_click(clicked_id)
+{
+document.getElementById("idlista").value = clicked_id;
+}
+
+
+
+
+
+
+document.getElementById("boton").onclick = function() {myFunction()};
+
+function myFunction(){
+                      swal({
+                      title: "Información",
+                      text: "Tener cuidado que los nombres de los campos sean exactamente a los siguientes: \n region, ciclo, campus, tipo_ingreso, linea_negocio, modalidad, no_cuenta, nombre_general, fecha_nacimiento, direccion, correo_electronico, telefono_casa, carrera, programacv, programa_desc, semestre, vertical, es_intercambio.\n Nota: El orden no es relevante.",
+                      type: "info",
+                      showCancelButton: true,
+                      confirmButtonColor: '#DD6B55',
+                      confirmButtonText: 'Continuar',
+                      closeOnConfirm: true,
+                   })
+        /*  Tener cuidado que los nombres de los campos sean exactamente a los siguientes:
+
+campo1, campo2, etc.
+
+Nota: El orden no es relevante.*/
+        }
         window.onload = function() {
             $("#files").addClass('active');
         }
+
 
     </script>
 @endsection

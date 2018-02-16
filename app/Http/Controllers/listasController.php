@@ -18,6 +18,7 @@ use App\publicaciones;
 use App\listaEncuestados;
 use App\ctlTipoEncuesta as tipos;
 use App\optionsMult;
+use Excel;
 use Illuminate\Support\Facades\Storage;
 
 class listasController extends Controller
@@ -108,43 +109,45 @@ public function ingresarlista(Request $request){
                 $file = $request->file('archivo');
                 $dato=$request->file('archivo')->getClientOriginalName();
                 $file->move('listas', $dato);
+
                 $id = DB::table('listaEncuestados')->insertGetId(
                                         array( 'nombre'  => $nombre,
                                                'archivo' => $dato,
                                                'creador' => $request->session()->get('id')));
-        $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
 
+        $idarray=['id' => $id];
+        $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
         $fila = 1;
-        
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE){
-            $data = array_map("utf8_encode", $data);
-            if($inicial==0){
-                $inicial++;
-            }else{
-                $infor=DB::table('encuestados')->insert([
-                                                    'region'  =>  $data[0],
-                                                    'ciclo'=>$data[1],
-                                                    'campus'=>$data[2],
-                                                    'tipoIngreso'=>$data[3],
-                                                    'lineaNegocio'=>$data[4],
-                                                    'modalidad'=>$data[5],
-                                                    'noCuenta'=>$data[6],
-                                                    'nombreGeneral'=>$data[7],
-                                                    'fechaNacimiento'=>$data[8],
-                                                    'direccion'=>$data[9],
-                                                    'email1'=>$data[10],
-                                                    'telefonoCasa'=>$data[11],
-                                                    'carrera'=>$data[12],
-                                                    'programaCV'=>$data[13],
-                                                    'programaDesc'=>$data[14],
-                                                    'semestre'=>$data[15],
-                                                    'vertical'=>$data[16],
-                                                    'esIntercambio'=>$data[17],
+        Excel::load('listas/'.$dato, function($reader) use($idarray)  {
+        $excel = $reader->get();
+
+        $reader->each(function($row) use($idarray) {
+        $infor=DB::table('encuestados')->insert([
+                                                    'region'  =>  $row->region,
+                                                    'ciclo'=>$row->ciclo,
+                                                    'campus'=>$row->campus,
+                                                    'tipoIngreso'=>$row->tipo_ingreso,
+                                                    'lineaNegocio'=>$row->linea_negocio,
+                                                    'modalidad'=>$row->modalidad,
+                                                    'noCuenta'=>$row->no_cuenta,
+                                                    'nombreGeneral'=>$row->nombre_general,
+                                                    'fechaNacimiento'=>$row->fecha_nacimiento,
+                                                    'direccion'=>$row->direccion,
+                                                    'email1'=>$row->correo_electronico,
+                                                    'telefonoCasa'=>$row->telefono_casa,
+                                                    'carrera'=>$row->carrera,
+                                                    'programaCV'=>$row->programacv,
+                                                    'programaDesc'=>$row->programa_desc,
+                                                    'semestre'=>$row->semestre,
+                                                    'vertical'=>$row->vertical,
+                                                    'esIntercambio'=>$row->es_intercambio,
                                                     'contestado' => 0,
-                                                    'listaEncuestados_idLista' => $id  ]);
-            }
-        }
-    if($data=null){
+                                                    'listaEncuestados_idLista' => $idarray['id']  ]);
+        });
+    
+    });
+
+    if($excel=null){
 
         $data=DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
 
@@ -158,7 +161,7 @@ public function ingresarlista(Request $request){
         return "noaparece".$dato;
     }
 
-    }
+ }  
 }
     public function mostrarDatos($id){
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
@@ -185,7 +188,9 @@ public function ingresarlista(Request $request){
     }
     public function incidente(Request $request){
         ini_set('max_execution_time', 0);
-                $listaid=$request->input('idlista');
+        
+        $listaid=$request->input('idlista');
+        $idlista=['idlista' => $listaid];
 
         $inicial=0;
         $arreglo=null;
@@ -198,23 +203,16 @@ public function ingresarlista(Request $request){
         $handle = fopen('listas/'.$dato, "r");
 
         $fila = 1;
-        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE){
-            $data = array_map("utf8_encode", $data);
-            if($inicial==0){
-                $inicial++;
-            }else{
+        Excel::load('listas/'.$dato, function($reader) use($idlista)  {
+        $excel = $reader->get();
 
-             DB::table('encuestados')->where('noCuenta', $data[0])->update(['incidente' => 1,
-                                                                            'comentario' =>$data[1],
-                                                                            'listaEncuestados_idLista'=> $listaid]);
-            }
-        }
-
-
-        }
-        else{
-
-        }
+        $reader->each(function($row) use($idlista) {
+        DB::table('encuestados')->where('noCuenta', $row->clave)->update(['incidente' => 1,
+                                                                          'comentario' =>$row->comentario,
+                                                                          'listaEncuestados_idLista'=> $idlista['idlista']]);
+    });
+        });
+}
     fclose($handle);
 
     if (File::exists('listas/'.$dato)) {
@@ -223,7 +221,9 @@ public function ingresarlista(Request $request){
         return "noaparece".$dato;
     }
 
-    }
+    
+
+}
     public function generarReporte($idEncuesta){
 
         $campus=DB::table('encuestados')->select('campus')

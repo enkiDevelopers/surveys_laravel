@@ -170,16 +170,16 @@
         ?>
             <div class="bl_form" class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
-                    <label >{{$dato->title}}
+                    <p for="title" class="control-label" >{{$dato->title}}</p>
                         <input type="input" style="height: 100%;width: 100%;" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control" >
-                    </label>
+                    
             </div>
         <?php
             }
             else{
         ?>
                 <div class="form-group" style="margin-left: 21%;height: 38px;width: 600px;position:relative; display: inline;">
-                <label> {{$dato->title}}</label>
+                <p for="title" class="control-label" >{{$dato->title}}</p>
                 </div>
         <?php 
                 $opciones=$cada["options"]; 

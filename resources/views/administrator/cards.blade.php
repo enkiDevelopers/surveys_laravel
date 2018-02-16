@@ -22,9 +22,9 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
                        <span class="glyphicon glyphicon-time"></span>
                    </a>
                   <!--  <a target="_blank" href="{{ url('/administrator/informe') }}/{{$publicacion->idTemplate}}"  type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Generar Reporte">-->
-                    <button target="_blank"   type="button" class="btn btn-default" onclick="get_action()"  data-toggle="tooltip" data-placement="top" title="Generar Reporte"> 
+                 <!--   <button target="_blank"   type="button" class="btn btn-default" onclick="get_action()"  data-toggle="tooltip" data-placement="top" title="Generar Reporte"> 
                       <span class="glyphicon glyphicon-pencil"></span>
-                  </button>
+                  </button>-->
                </div>
               <div class="pull-right survey-status survey-status__active">&nbsp</div>
           </div>
@@ -42,9 +42,9 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
                     <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
-                    <button target="_blank"   type="button" class="btn btn-default" onclick="get_action()"  data-toggle="tooltip" data-placement="top" title="Generar Reporte"> 
+                 <!--   <button target="_blank"   type="button" class="btn btn-default" onclick="get_action()"  data-toggle="tooltip" data-placement="top" title="Generar Reporte"> 
                       <span class="glyphicon glyphicon-pencil"></span>
-                  </button>
+                  </button>-->
                 </div>
               <div class="pull-right survey-status survey-status__active">&nbsp</div>
             </div>
@@ -69,9 +69,9 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
                   <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}"  type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                       <span class="glyphicon glyphicon-eye-open"></span>
                   </a>
-                    <button target="_blank"   type="button" class="btn btn-default" onclick="get_action()"  data-toggle="tooltip" data-placement="top" title="Generar Reporte"> 
+                <!--    <button target="_blank"   type="button" class="btn btn-default" onclick="get_action()"  data-toggle="tooltip" data-placement="top" title="Generar Reporte"> 
                       <span class="glyphicon glyphicon-pencil"></span>
-                  </button>
+                  </button>-->
               </div>
               <div class="pull-right survey-status survey-status__finished">&nbsp</div>
           </div>
