@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Configuración del Sistema</title>
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/config.css">
 </head>
 <body id="bg_config">
   <div id="login-button">

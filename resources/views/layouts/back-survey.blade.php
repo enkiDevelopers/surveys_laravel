@@ -47,19 +47,29 @@
 <div class="wrapper" id="app">
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
-                <div class="sidebar-header">
-                    <h3 class="administrator-header">Administrador</h3>
+                <div>
+                    <img src="/img/logos/UVM_Logo_Blanco.png" alt="Logo UVM" class="logo_UVM">
                 </div>
-
+                <hr class="divider">
                 <ul class="list-unstyled components">
-                    <div class="profile center text-center">
-                        <img src="/img/avatar.jpeg" alt="img-profile">
-                        <p>Rafael Alberto Martínez Méndez</p>
-                    </div>
                     <li id="home">
                         <a href="{{ url('/administrator/surveys')}}" >
-                            <i class="glyphicon glyphicon-arrow-left"></i>
-                            <span> volver </span>
+                            <span>ENCUESTAS</span>
+                        </a>
+                    </li>
+                    <li id="files">
+                        <a href="{{ url('/administrator/files') }}" >
+                            <span>LISTAS</span>
+                        </a>
+                    </li>
+                    <li id="admin-list">
+                        <a href="{{ url('/administrator/management') }}">
+                            <span>ADMINISTRADORES</span>
+                        </a>
+                    </li>
+                    <li id="log-out" >
+                        <a href="{{ url('/logout') }}"  style="color:#fc0404; padding-left: 50%;">
+                            <span>SALIR</span>
                         </a>
                     </li>
                 </ul>
@@ -70,8 +80,8 @@
                     <div class="profile center text-center" id="perfil" onclick="profile();" style="padding-top:-20px;cursor:pointer;width: 20%;display:inline-block;">
                         <img src="/img/avatar.jpeg" alt="" style="vertical-align: initial;">
                     </div>
-                    <li id="home"  style="display: inline-flex;padding-right: 10px;" class="pull-right">
-                        <a href="{{ url('/administrator/surveys')}}/{{$admor}}" >
+                    <li id="home">
+                        <a href="{{ url('/administrator/surveys')}}/{{$admor}}"  >
                             <i class="glyphicon glyphicon-arrow-left"></i>
                         </a>
                     </li>
