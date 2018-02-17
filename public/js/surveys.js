@@ -209,6 +209,7 @@ var instrucciones = CKEDITOR.instances['instrucciones'].getData();
         });
       document.getElementById("form").reset();
       CKEDITOR.instances.instrucciones.setData('');
+      $('#miModal').modal('hide');
       busca();
       showcards();
       },error: function(result) {

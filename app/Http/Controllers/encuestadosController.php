@@ -53,12 +53,7 @@ if($fechat < $fechai)
   return false;
 }
 DB::beginTransaction();
-
 try {
-/*
-$publicar = templates::find($idPlantilla);
-$publicar->encuesta = 1;
-$publicar->save();*/
             $publicar = templates::find($idPlantilla);
             DB::table('publicaciones')->insert(
                 [
@@ -73,25 +68,20 @@ $publicar->save();*/
                 'tipo' => $tipo,
               ]
             );
-/*
-$crear =  new publicaciones;
-$crear->titulo=$publicar->tituloEncuesta;
-$crear->instrucciones=$instrucciones;
-$crear->destinatarios=$destinatarios;
-$crear->creador=$publicar->creador;
-$crear->asunto=$asunto;
-$crear->fechai=$fechai;
-$crear->fechat=$fechat;
-$crear->idTemplate=$publicar->id;
-$crear->tipo = $tipo;
-$crear->save();*/
   $host = $_SERVER["HTTP_HOST"];
+
    $idLista = $destinatarios;
    $Iusers = new encuestados;
-   $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->->where('email1', '!=', null)->get();
-   $job = new enviarEmail($Iusers,$asunto,$instrucciones, $idPlantilla,$host);
-   dispatch($job);
-  DB::commit();
+
+   $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)->get();
+
+   foreach ($Iusers as $Iuser) {
+            $Iuser->idEncuesta = $idPlantilla;
+            $Iuser->save();
+    $job = new enviarEmail($Iuser,$asunto,$instrucciones, $idPlantilla,$host);
+    dispatch($job);
+}
+DB::commit();
   $success= true;
  }
    catch (Exception $e) {
@@ -101,7 +91,6 @@ DB::rollback();
    }
 
 if($success){
-
    DB::table('templates')
               ->where('id', $idPlantilla)
               ->update(['encuesta' => 1]);
@@ -111,53 +100,12 @@ else {
   return false;
 }
 
-//$user = encuestados::where('listaEncuestados_idLista',$idLista->idLista)->get();
-//$easunto =array('sms'=> $asunto);
-//$data= array(
-//'cuerpo'=> $instrucciones ,
-//'id'=> ""
-//);
-/*
-foreach ($user as $usuario) {
-$data["id"]= $usuario->idE;
-Mail::send('administrator.correo', $data, function ($message) use ($usuario,$easunto){
-    $message->subject($easunto["sms"]);
-    $message->to($usuario->email1);
-  //  $message->cc($moreUsers)
-  //  $message->bcc($evenMoreUsers)
-});
-}*/
-
 }
 
 public function enviar(Request $request)
 {
 
-return $request->datetimepicker1;
 
-
-/*
-$info = encuestados::where('email1', 'jclopezpimentel@gmail.com')->first();
-$asunto ="asdnka";
-$inst = "asjkdas";
-Mail::to("jclopezpimentel@gmail.com")->send(new mailencuestados($info,$asunto,$inst));
-foreach ($user as $usuario) {
-$data= array(
-'cuerpo'=> "cuerpo",
-'id'=> $usuario->idE
-);
-Mail::send('administrator.correo', $data, function ($message) use ($usuario,$asunto){
-    $message->subject($asunto["sms"]);
-    $message->to($usuario->email1);
-if($usuario->email2 != null)
-{
-$message->cc($usuario->email2);
-}elseif($usuario->email3!= null){
-$message->bcc($usuario->email3);
-}else {}
-
-});
-}*/
 return "enviado Correctamente";
 }
 

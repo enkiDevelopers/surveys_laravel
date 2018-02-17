@@ -44,12 +44,9 @@ class enviarEmail implements ShouldQueue
      */
     public function handle()
     {
-    foreach ($this->Iusers as $Iuser) {
-             $Iuser->idEncuesta = $this->idPlantilla;
-            $Iuser->save();
-           Mail::to($Iuser->email1)
-    ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host));
-}
+    Mail::to($this->Iusers->email1)
+    ->send(new mailencuestados($this->Iusers,$this->asunto,$this->instrucciones,$this->host));
+    Log::info("mensaje enviado");
     $this->delete();
     }
 }
