@@ -34,16 +34,17 @@
             <br>
             <div align="justify" class="col-md-6 col-md-offset-3 fondogris"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
             <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><strong>Descripción de la encuesta: </strong> {{$descripcion}} </div>    
-            <div align="justify" class="col-md-6 col-md-offset-3"><center> <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body" style="margin-bottom:0%;background-color: #ffeb3b"></center></div>
+            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><center> <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnstar" ></center></div>
         </div>
 
-<div id="surveyContainer"  class="col-md-12 fondo" >
+<div id="surveyContainer"  class="col-md-12 fondo">
+
         <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margin-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
         <div align="justify" class="col-md-6 col-md-offset-3 fondogris">
             <h2 class="text-center text-black-body" id="idTitlePregunta">Instrucciones Generales: </h2>
         </div>
 
-        <div class="col-md-6 col-md-offset-3 margenarriba total divmovil">
+        <div class="col-md-6 col-md-offset-3 margenarriba total">
             <div class="col-md-10 pregs " id="preg0">
                 <div align="justify" class="form-group text-black-body "  >
                     <ul>
@@ -64,7 +65,7 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-
+        <div class="divmovil">
             <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
                     <div align="justify" class="fondogris">
                         <h2 class="text-center text-black-body" >{{$dato->title}} </h2>
@@ -84,12 +85,12 @@
             }
             else{
         ?>
-
+ 
         <?php 
                 $opciones=$cada["options"]; 
                 foreach ($opciones as $option) {
         ?>
-                <div class="form-group"  style="margin-left: 21%;">
+                <div class="form-group">
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden" class="form-control" >
@@ -103,6 +104,8 @@
         }
         ?>
         </div>
+</div>
+
         <?php
                  $i++;   
         }
@@ -135,6 +138,7 @@
         </div>
         </form>
         </div>
+    
 </div>
 <!-- onsubmit="get_action();"-->
   

@@ -84,7 +84,7 @@
      	 display: none;
      }
      .anchodiv{
-      height: 100px;
+      height: 30%;
      }
      .margenarriba{
       margin-top: 10px;
@@ -102,7 +102,8 @@
      	height: 90%;
      }
      .btnsiguiente{
-      margin-top: 50px;
+      margin-top: 5%;
+      margin-bottom:5%; 
       width: 300px;
       background-color: #31B404;
      }
@@ -115,26 +116,42 @@
       width: 200px;
       height: 150px;
      }
+     .btnstar{
+      margin-top:10%;
+      background-color: #ffeb3b;
+     }
       @media screen and (max-width: 500px) and (min-height: 600px) {
-             .fondo{
+
+            .fondo{
                    background-image: url('/img/fondoexitoso.png');
                    background-color: #F5F5F5;
                    background-repeat: no-repeat;
-                   background-position: center ; 
-     }
+                   background-position: center; 
+                   position: fixed;
+           }
 
-      .btnsiguiente{
-          margin-top: 50px;
-          width: 200px;
-          background-color: #31B404;
-     }
-     .divmovil{
-        background-color: rgba(221, 222, 214, 0.8); 
-     }
-    .imagen{
-      width: 200px;
-      height: 150px;
-     }
+    .btnstar{
+      margin-top:50px;
+      background-color: #ffeb3b;
+     }       
+     .btnsiguiente{
+                  margin-top: 50px;
+                  width: 200px;
+                  background-color: #31B404;
+             }
+             .divmovil{
+              height: 300%;
+                background-color: rgba(221, 222, 214, 0.8); 
+             }
+            .imagen{
+              width: 200px;
+              height: 150px;
+             }
+              .btnsiguiente{
+                  margin-top: 0%;  
+                  width: 300px;
+                  background-color: #31B404;
+             }
 
       }   
 
