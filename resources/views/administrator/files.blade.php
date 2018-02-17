@@ -50,8 +50,8 @@
           <hr>
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
-              <input class="form-control-file"  id="incidentes" name="incidentes" type="file">
-                 <input type="hidden" id="idlista" name="idlista" value="">
+              <input class="form-control-file"  id="incidentes" name="incidentes" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                 <input type="text" id="idlista" name="idlista" value="">
         
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />
@@ -116,7 +116,7 @@
 <?php
 try{
   foreach ($listas as $lista) {
-
+    if($lista->usado== 0){
 ?>
                         <div class="col-md-4" id="delete_{{$lista->idLista}}">
                             <div class="card well text-center" >
@@ -143,11 +143,39 @@ try{
                             </div>
                         </div>
 <?php
-                        } 
+              }else{
+?>
+                        <div class="col-md-4" id="delete_{{$lista->idLista}}">
+                            <div class="card well text-center" >
+                                <img class="card-img-top" id="icono"  src="/img/lista.png" width="100px" height="100px">
+                                <div class="card-body">
+                                    <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
+                                      <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
-                      }catch (Exception $e){
+                                        <div class="btn-group" role="group" aria-label="...">
+                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </a>
+                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
+                                            <span class="glyphicon glyphicon-alert"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-      }
+
+<?php
+}
+            }
+
+                      }catch (Exception $e){}
 ?>
 
 <!-- FIN FOR EACH -->

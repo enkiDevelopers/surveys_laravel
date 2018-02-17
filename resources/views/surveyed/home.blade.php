@@ -10,7 +10,9 @@
                 <div class="panel-body ">
                   <div class="row">
                   <?php 
-                    $fecha=date('Y-m-d');
+                    $fecha=date('Y-m-d H:m:s');
+                    $fecha=str_replace("T"," ",$fecha);
+
                     foreach ($datos as $dato) {
     
                     if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){

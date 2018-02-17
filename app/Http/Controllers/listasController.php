@@ -147,12 +147,12 @@ public function ingresarlista(Request $request){
     
     });
 
-    if($excel=null){
+   /* if($excel=null){
 
         $data=DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
 
             }else{
-        }
+        }*/
         fclose($handle);
 
     if (File::exists('listas/'.$dato)) {
@@ -205,11 +205,11 @@ public function ingresarlista(Request $request){
         $fila = 1;
         Excel::load('listas/'.$dato, function($reader) use($idlista)  {
         $excel = $reader->get();
-
         $reader->each(function($row) use($idlista) {
-        DB::table('encuestados')->where('noCuenta', $row->clave)->update(['incidente' => 1,
-                                                                          'comentario' =>$row->comentario,
-                                                                          'listaEncuestados_idLista'=> $idlista['idlista']]);
+        DB::table('encuestados')->where('noCuenta', $row->clave)
+                                ->where('listaEncuestados_idLista', $idlista['idlista'])                                
+                                ->update(['incidente' => 1,
+                                         'comentario' =>$row->comentario]);
     });
         });
 }

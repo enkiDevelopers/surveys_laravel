@@ -22,10 +22,6 @@
               <th>email1</th>
               <th>Region</th>
               <th>Campus</th>
-  <!--            <th>apPaterno</th>
-              <th>apMaterno</th>
-              <th>matricula</th>
-              <th>clave</th> -->
           </tr>  
         </thead>  
         <tbody>  
@@ -36,8 +32,8 @@
                     <tr>
                         <td><?php echo $info->nombreGeneral  ?>   </td>
                         <td><?php echo $info->email1         ?>   </td>
-                        <td><?php echo $info->region      ?>   </td>
-                        <td><?php echo $info->campus     ?></td>
+                        <td><?php echo $info->region      ?>      </td>
+                        <td><?php echo $info->campus     ?>       </td>
 
                     </tr>      
 
@@ -52,7 +48,9 @@
 </body>  
 <script>
 $(document).ready(function(){
-    $('#myTable').dataTable();
+    $('#myTable').dataTable( {
+        "order": [[ 1, "desc" ]]
+    } );
 });
 </script>
 </html>  

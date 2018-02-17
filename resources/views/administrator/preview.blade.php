@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/alertify.min.css">
     <link rel="stylesheet" href="/css/vivify.min.css" >
-    <link href="https://fonts.gstatic.com/s/sourcesanspro/v11/toadOcfmlt9b38dHJxOBGEo0As1BFRXtCDhS66znb_k.woff2" rel="stylesheet">
-    <link rel="stylesheet" href="https://fast.fonts.net/dv2/14/aad99a1f-7917-4dd6-bbb5-b07cedbff64f.woff2?d44f19a684109620e484167aa490e818127967a40bc2a6fac3cbfea16366c1393256e6a15be66022bd821b1eda7393f8e9df4393864db74885e8b0829bf26e9d6438d26a78ffa8c8630c7bee60ac8d2e0568b628d79fdac296a0b9874646cee94bcc34f1bc25612dab41b048fb76e05399473a60cf2d59d47dde1607d92967378b209725af01b53de0ac8e78bdfe8b6aabde76e6e052e95a06ebbfc83ce0ba708b202b91c5f9df590ce68d29e7e6c6ba988b3070cad9f20a19361c284bdbf9f930d214bb6c8c808f3722183a7155484c2895126663fa93c45be33d0c78ccf06fc7be5efd6ad0a72205&projectId=6915cd0f-6232-45f4-ba0e-01f23e4e8215">
-    <link href='https://fonts.gstatic.com/s/sourcesanspro/v11/ODelI1aHBYDBqgeIAH2zlNV_2ngZ8dMf8fLgjYEouxg.woff2' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/preview.css">
     <link rel="stylesheet" href="/css/sweetalert.min.css">
     <script src="/js/sweetalert.min.js"></script>
 <script type="text/javascript">
@@ -25,135 +23,40 @@
   }
 </script>
 
-    <style type="text/css">
-        .col-md-10{
-        
-        }
-        .title{
-            font-size: 20px;
-            font-family: "Source Sans Pro",sans-serif;
-            line-height: 30px;
-            color: #3D3D3D;
-            font-weight: bold;
-        }
-        .descripcion{
-            color: #3D3D3D;
-            font-family: "Source Sans Pro",sans-serif;
-            font-size: 19px;
-            line-height: 145%;
-            border-color: transparent;
-            margin-left: 25%;
-            width: 50%;
-        }
-        #btnStart::hover, #btnStart::focus{
-            text-decoration-color: #000;
-            color: #000;
-        }
-        .bl_form {
-          margin: 100px 0 150px;
-        }
 
-        .bl_form input {
-          padding-top: 15px;
-          background-color: #fff ;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-          border: none;
-          color: black;
-          padding: 10px 15px;
-          border-radius: 25px;
-          font-size: 16px;
-          outline: none;
-        }
-
-
-        .lb_wrap .lb_label.top, .lb_wrap .lb_label.bottom {
-          left: 15px !important;
-        }
-
-        .lb_wrap .lb_label.left {
-          left: 0;
-        }
-
-        .lb_label {
-          font-weight: bold;
-          color: #000;
-
-        }
-
-        .lb_label.active {
-          color: white;
-        }
-
-        #sumary{
-
-        }
-        
-        .ancho{            
-            background-size: 100% 100%;
-            -webkit-background-size: 100% 100%;           /* Safari 3.0 */
-            -moz-background-size: 100% 100%;           /* Gecko 1.9.2 (Firefox 3.6) */
-            -o-background-size: 100% 100%;           /* Opera 9.5 */
-            background-size: 100% 100%;             
-        }
-        @media screen and (max-width: 699px) and (min-width: 520px) {
-            ul li a {
-                padding-left: ;
-                background: url(email-icon.png) left center no-repeat;
-            }
-        }
-        html,body { 
-            overflow:hidden; 
-            }
-</style>
 
 </head>
 
 <body>
-<div class="row">
 
-        <div id="sumary" class="col-md-12 ">
-            <div class="col-md-12" height="" style="background-color: #333333;">
-                    <div class="col-md-5">
-                            <img src="\img/UVM_Logo.jpg" class="img-responsive" width="100%" height="100%;">
-                    </div>
-            </div>
- <center>
-            <img src="\img/iconos/{{$imagePath}}"  width="200px" height="700px" class="img-responsive" style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+        <div id="sumary" class="col-md-12 fondo" >
+            <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margin-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
             <br>
-            <h2 class="text-center text-black-body title">{{$titulo}}</h2>
-            <p>{{$descripcion}}</p>
-            <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body" style="margin-bottom:0%;background-color: #ffeb3b">
-</center>
-    </div>
-
-
-
-</div>
-
-<div class="container hidden" id="surveyContainer" style="background-image:\img/default_questions.jpg;">
-        <div class="col-md-12" >
-                <img src="\img/default_questions.png" width="100%" height="80px">
-                    <div class="col-md-5">
-                            <img src="\img/UVM_Logo.jpg" class="img-responsive" width="100%" height="100%;">
-                    </div>
-         </div>    
-        <div class="col-md-12">
-            <h2 class="text-center text-black-body" style="margin-top: 5%;margin-bottom:15px;" id="idTitlePregunta">Recomendaciones: </h2>
+            <div align="justify" class="col-md-6 col-md-offset-3 fondogris"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
+            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><strong>Descripción de la encuesta: </strong> {{$descripcion}} </div>    
+            <div align="justify" class="col-md-6 col-md-offset-3"><center> <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body" style="margin-bottom:0%;background-color: #ffeb3b"></center></div>
         </div>
-        <div class="col-md-10">
-            <div class="col-md-10 pregs" style="margin-top: 10%;margin-bottom:15px;" id="preg0">
-                <div class="form-group text-black-body">
+
+<div id="surveyContainer"  class="col-md-12 fondo" >
+        <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margin-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
+        <div align="justify" class="col-md-6 col-md-offset-3 fondogris">
+            <h2 class="text-center text-black-body" id="idTitlePregunta">Instrucciones Generales: </h2>
+        </div>
+
+        <div class="col-md-6 col-md-offset-3 margenarriba total divmovil">
+            <div class="col-md-10 pregs " id="preg0">
+                <div align="justify" class="form-group text-black-body "  >
                     <ul>
-                        <li>Lee con atención las siguiente preguntas</li>                        
-                        <li>Si no respondiste de forma correcta, recuerda que puedes retroceder una pregunta antes de guardar la cuesta </li>   
-                        <li><strong>Para empezar da clic en Siguiente.</strong></li>
+                        <li><strong>Lee con atención las preguntas </strong></li>
+                        <li>Responde sinceramente</li>
+                        <li>Tómate tu tiempo para responder</li>
+                        <li>No permitas que nadie influencie tus respuestas</li>
+                        <li>Estamos abiertos a recibir ideas, opiniones y sugerencias</li>
                     </ul>
                 </div>
             </div>
 
-        
-<!-- onsubmit="get_action();"-->
-    <form method="POST"  id="control"  action="">
+     <form method="POST"  id="control"  action="" onKeypress="">
         <?php 
             $i=1;
             
@@ -161,7 +64,12 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-            <div class= "pregs" id="preg<?php echo $i ?>" style="display:none">
+
+            <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
+                    <div align="justify" class="fondogris">
+                        <h2 class="text-center text-black-body" >{{$dato->title}} </h2>
+                    </div>
+
                 <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
                 <input type="hidden" name="back" id="num<?php echo $i?>" value="<?php echo $i ?>">
                 <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
@@ -170,17 +78,13 @@
         ?>
             <div class="bl_form" class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
-                    <p for="title" class="control-label" >{{$dato->title}}</p>
-                        <input type="input" style="height: 100%;width: 100%;" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control" >
-                    
+                    <input type="input" style="height: 100%;width: 100%;" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control" >   
             </div>
         <?php
             }
             else{
         ?>
-                <div class="form-group" style="margin-left: 21%;height: 38px;width: 600px;position:relative; display: inline;">
-                <p for="title" class="control-label" >{{$dato->title}}</p>
-                </div>
+
         <?php 
                 $opciones=$cada["options"]; 
                 foreach ($opciones as $option) {
@@ -205,8 +109,7 @@
  
         ?>
         <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
-            <div class="form-group">                
-            </div>
+
         </div>
         <?php 
         ?>
@@ -222,16 +125,22 @@
         ?>  
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <div class="col-md-5 pull-right" >
+        <div class="col-md-12" >
+        <center>
+            <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;'>
+           <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
+            <input type="button" class="btn btn-lg text-black-body btnsiguiente"  id="idNext" value="Entendido!" style="color:white;">
+        </center>   
 
-            <input type='button' onclick="get_action()" class='btn btn-primary' id='idenviar' value='Enviar Encuesta' style='display:none'>
-            <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>
-            
-            <button type="button" class="btn btn-md btn-danger"  id="idNext">Siguiente</button> 
         </div>
         </form>
         </div>
-</div>      
+</div>
+<!-- onsubmit="get_action();"-->
+  
+
+
+
 
 
 <script src="{{asset('js/app.js')}}"></script>
