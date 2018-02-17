@@ -217,7 +217,6 @@ return view("administrator.recordatorio",compact('mensaje','recordatorios','idLi
 
 public function send(Request $request)
 {
-  ini_set('max_execution_time', 0);
   $id= $request->idPub;
   $mensaje = publicaciones::where('idPub',$id)->first();
 

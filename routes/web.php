@@ -17,7 +17,7 @@ Route::get('/administrator/login', 'iniciarSesion@validar')->name("adminLogin");
 Route::post('/administrator/validate', 'iniciarSesion@ldap');
 
 Route::post('/surveyed/validate', 'iniciarSesion@lencuesta');
-
+Route::post('/uploadimage','AdministratorController@uploadImage');
 
 Auth::routes();
 
@@ -129,9 +129,7 @@ Route::get('/administrator/consultar/publicaciones', 'encuestadosController@cons
 Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
 
 
-Route::get('/borrar', function(){
-  return view("administrator.borrar");
-});
+Route::get('/borrar','AdministratorController@verify');
 
 
 Route::get('administrator/surveys/preview', function(){

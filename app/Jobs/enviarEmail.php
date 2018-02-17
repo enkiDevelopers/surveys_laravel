@@ -9,6 +9,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use encuestados;
 use Mail;
+use Log;
 use App\Mail\mailencuestados;
 
 class enviarEmail implements ShouldQueue

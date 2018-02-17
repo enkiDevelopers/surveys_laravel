@@ -88,7 +88,7 @@ $crear->save();*/
   $host = $_SERVER["HTTP_HOST"];
    $idLista = $destinatarios;
    $Iusers = new encuestados;
-   $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->get();
+   $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->->where('email1', '!=', null)->get();
    $job = new enviarEmail($Iusers,$asunto,$instrucciones, $idPlantilla,$host);
    dispatch($job);
   DB::commit();
