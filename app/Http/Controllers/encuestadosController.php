@@ -69,10 +69,15 @@ try {
               ]
             );
   $host = $_SERVER["HTTP_HOST"];
+    $idLista = $destinatarios;
 
-   $idLista = $destinatarios;
+    $ins = listaEncuestados::where('idLista', $idLista)->first();
+    $ins->usado = 1;
+    $ins->save();
+
+
+
    $Iusers = new encuestados;
-
    $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)->get();
 
    foreach ($Iusers as $Iuser) {

@@ -205,10 +205,9 @@ public function reminder(Request $request)
   $id= $request->idPub;
 
   $mensaje = publicaciones::where('idPub',$id)->first();
+
   $idLista = listaEncuestados::where('idLista', $mensaje->destinatarios)->first();
 $recordatorios = recordatorios::where('idPlantilla',$id)->get();
-
-
 return view("administrator.recordatorio",compact('mensaje','recordatorios','idLista'));
 
 
@@ -219,16 +218,18 @@ public function send(Request $request)
 {
   $id= $request->idPub;
   $mensaje = publicaciones::where('idPub',$id)->first();
-
   $idLista = listaEncuestados::where('idLista', $mensaje->destinatarios)->first();
-
   $destinatarios = encuestados::
   where('listaEncuestados_idLista', $idLista->idLista)
   ->where('incidente', '0')->where('contestado','0')->get();
    $host = $_SERVER["HTTP_HOST"];
-   $job =
-new enviarRecordatorio($destinatarios,$mensaje->asunto,$mensaje->instrucciones, $id,$host);
-   dispatch($job);
+
+   foreach ($destinatarios as $Iuser) {
+     $job =
+  new enviarRecordatorio($Iuser,$mensaje->asunto,$mensaje->instrucciones, $id,$host);
+     dispatch($job);
+}
+
  $record = new recordatorios;
  $record->fechaEnvio = date("Y-m-d h:i:s");
 $record->idPlantilla=  $id;

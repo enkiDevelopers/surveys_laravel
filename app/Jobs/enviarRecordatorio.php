@@ -16,7 +16,7 @@ use App\Mail\mailencuestados;
 class enviarRecordatorio implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $Iusers;
+    public $Iuser;
     public $asunto;
     public $instrucciones;
     public $idPlantilla;
@@ -27,10 +27,10 @@ class enviarRecordatorio implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($destinatarios,$asunto,$instrucciones, $id,$host)
+    public function __construct($Iuser,$asunto,$instrucciones, $id,$host)
     {
 
-      $this->Iusers = $destinatarios;
+      $this->Iuser = $Iuser;
       $this->asunto = $asunto;
       $this->instrucciones = $instrucciones;
       $this->idPlantilla = $id;
@@ -44,10 +44,9 @@ class enviarRecordatorio implements ShouldQueue
      */
     public function handle()
     {
-      foreach ($this->Iusers as $Iuser) {
-               Mail::to($Iuser->email1)
-      ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host));
-  }
-  $this->delete();
+
+      Mail::to($this->Iuser->email1)
+      ->send(new mailencuestados($this->Iuser,$this->asunto,$this->instrucciones,$this->host));
+      $this->delete();
     }
 }
