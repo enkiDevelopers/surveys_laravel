@@ -26,14 +26,20 @@ class mailencuestados extends Mailable
       $this->infousuario = $infousuario;
       $this->instrucciones = $instrucciones;
       $this->subject = $asunto;
-      
+
       if($infousuario->email2!=null)
        {
+
+if(filter_var($infousuario->email2, FILTER_VALIDATE_EMAIL)){
        $this->cc($infousuario->email2);
+     }
 
      }
        if ($infousuario->email3!=null) {
-         $this->bcc($infousuario->email3);
+          if(filter_var($infousuario->email3, FILTER_VALIDATE_EMAIL)){
+            $this->bcc($infousuario->email3);
+       }
+
      }
 
        $this->host = $host;

@@ -288,7 +288,7 @@ function duplicar()
   success: function( sms ) {
 
     swal({
-       title: "Su encuesta ha sido duplicada",
+       title: "Su plantilla ha sido duplicada",
        text: "",
        type: "success",
         });
@@ -411,7 +411,20 @@ swal({
 
 }
 
-
-function ir()
+/*
+function ocultar()
 {
-}
+//$("#pBody").toggle();
+$('#pBody').toggle(
+    function () {
+      $("#btnO").removeClass("glyphicon glyphicon-chevron-down");
+      $("#btnO").addClass("glyphicon glyphicon-chevron-up");
+
+          },
+    function () {
+            $("#btnO").removeClass("glyphicon glyphicon-chevron-up");
+            $("#btnO").addClass("glyphicon glyphicon-chevron-down");
+
+          }
+      );
+}*/

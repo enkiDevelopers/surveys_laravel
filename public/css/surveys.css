@@ -1,7 +1,7 @@
 #btn-añadir
 {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
 
   background: rgba(37,66,118,1);
 background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
@@ -12,14 +12,14 @@ background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 
 background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
 
-  -ms-border-radius: 150px;
-  -moz-border-radius: 150px;
-  -webkit-border-radius: 150px;
-  -o-border-radius: 150px;
-  border-radius: 150px;
+-ms-border-radius: 150px;
+-moz-border-radius: 150px;
+-webkit-border-radius: 150px;
+-o-border-radius: 150px;
+border-radius: 150px;
 margin-bottom: 20px;
 margin-left: 2%;
-margin-right: 2%;
+margin-right: 43px;
 margin-top: 4%;
 display: inline-block;
 -webkit-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
@@ -64,33 +64,33 @@ position: relative;
 
 #btn-newSur
 {
-margin-left: -4%;
+margin-left: 10%;
 font-size: 40px;
-margin-top: 10px;
+margin-top: 30px;
 
 }
 
 #content-btn
 {
-  margin-left: 19%;
-  font-size: 30px;
-  text-align: center;
-  width: 100px;
-  margin-top: 20px;
-  color: #fff;
+margin-left: 19%;
+font-size: 30px;
+text-align: center;
+width: 100px;
+margin-top: 20px;
+color: #fff;
 }
 
 .card
 {
-  width: 255px;
-  height: 280px;
-  background-color: #EBECEE;
-  text-align: center;
-  border-radius: 33px 33px 33px 33px;
+width: 255px;
+height: 280px;
+background-color: #EBECEE;
+text-align: center;
+border-radius: 33px 33px 33px 33px;
 -moz-border-radius: 33px 33px 33px 33px;
 -webkit-border-radius: 33px 33px 33px 33px;
 border: 3px solid #8a8a8a;
-margin-left: 2%;
+margin-left: 12px;
 margin-bottom: 2%;
 }
 #crearPlantilla
@@ -197,4 +197,20 @@ word-break: break-all;
 word-wrap: break-word;
 position: relative;
 text-align: center;
+}
+
+.scroll{
+width: 100%;
+height: 400px;
+overflow: scroll;
+}
+
+#btnO{
+  margin-left: 700px;
+  position: relative;
+}
+#btnO:hover
+{
+
+cursor: pointer;
 }

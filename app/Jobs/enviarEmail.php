@@ -47,8 +47,16 @@ class enviarEmail implements ShouldQueue
   foreach ($this->Iusers as $Iuser) {
       $Iuser->idEncuesta = $this->idPlantilla;
       $Iuser->save();
-     Mail::to($Iuser->email1)
-    ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host));
+if(filter_var($Iuser->email1, FILTER_VALIDATE_EMAIL)){
+try {
+  Mail::to($Iuser->email1)
+ ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host));
+} catch (Exception $e) {
+  $file = fopen("archivo.txt", "w");
+fwrite($file, $e . PHP_EOL);
+fclose($file);
+}
+  }
     }
 $this->delete();
     }
