@@ -34,15 +34,18 @@
             <br>
             <div align="justify" class="col-md-6 col-md-offset-3 fondogris"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
             <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><strong>Descripción de la encuesta: </strong> {{$descripcion}}   </div>
-            <div align="justify" class="col-md-6 col-md-offset-3"><center> <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnstar" ></center></div>
+            <div align="justify" class="col-md-6 col-md-offset-3"><center>
+             <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta" ></center>
+            </div>
 
               
         </div>
 
 <div id="surveyContainer"  class="col-md-12 fondo">
-
-        <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margin-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
-        <div align="justify" class="col-md-6 col-md-offset-3 fondogris">
+<center>
+<img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margi-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
+</center>
+        <div align="justify" class="col-md-6 col-md-offset-3">
             <h2 class="text-center text-black-body" id="idTitlePregunta">Instrucciones Generales: </h2>
         </div>
 
@@ -67,7 +70,8 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-        <div class="divmovil">
+                <div class="divmovil">
+
             <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
                     <div align="justify" class="fondogris">
                         <h2 class="text-center text-black-body" >{{$dato->title}} </h2>
@@ -101,12 +105,10 @@
                                
         <?php
         }
-
-
         }
         ?>
         </div>
-</div>
+        </div>
 
         <?php
                  $i++;   
@@ -132,7 +134,7 @@
 
         <div class="col-md-12" >
         <center>
-            <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;'>
+        <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;'>
            <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
             <input type="button" class="btn btn-lg text-black-body btnsiguiente"  id="idNext" value="Entendido!" style="color:white;">
         </center>   
@@ -140,7 +142,6 @@
         </div>
         </form>
         </div>
-    
 </div>
 <!-- onsubmit="get_action();"-->
   
@@ -171,25 +172,19 @@ function pop(){
             function(isConfirm) {
             if (isConfirm) {
                 location.href ="/contestado";
-
             } else {
             
             }
             });
 }
 function get_action(){
-
     var id=document.getElementById("idencuestado").value;
     console.log(id);
     if(id==''){
         pop();
-
     }else{
         document.getElementById("control").action = "/guardar";
         document.getElementById("control").submit();
-
 }
 }
-
 </script>
-

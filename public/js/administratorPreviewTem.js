@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
         $("#btnStart").click(function(){
-                $("#surveyContainer").css('display','inline-block');
+                $("#surveyContainer").css('display','block');
                 $("#sumary").fadeOut( "slow" );
 
         });

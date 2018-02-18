@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
+<div class="contenedor">
+    <div class="">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-
-                <div class="panel-body"> 
+            <section class="col-centered text-center">
+                <img src="/img/logos/UVM_Logo.png" alt="Cargando Logo UVM ..." class="img_UVM_logo">
+            </section>
+            </div><br><br>
+            <section>
+                <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
+            </section>
+            <div class="col-md-6" style="margin-left: 5%;margin-right: 5%;">
                     <form class="form-horizontal" method="POST" action="/surveyed/validate">
                         {{ csrf_field() }}
 
@@ -37,9 +41,7 @@
                                 
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
+                    </form>        
         </div>
     </div>
 </div>

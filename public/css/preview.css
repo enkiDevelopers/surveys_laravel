@@ -58,7 +58,7 @@
 
         @media screen and (max-width: 699px) and (min-width: 520px) {
             ul li a {
-                padding-left: ;
+                
                 background: url(email-icon.png) left center no-repeat;
             }
         }
@@ -75,12 +75,12 @@
                 }
      #sumary{
 
-		height: 100%;
+    height: 100%;
 
      }
      #surveyContainer{
-     	    height: 100%;
-     	 display: none;
+          height: 100%;
+
      }
      .anchodiv{
       height: 20%;
@@ -88,7 +88,7 @@
       overflow:scroll;
      }
      .margenarriba{
-      margin-top: 10px;
+      margin-top: 30px;
      }
      .fondo{
        background-image: url('/img/fondoexitoso.png');
@@ -97,16 +97,16 @@
        background-position: right ; 
      }
      .fondogris{
-     	background-image: url('/img/fondo.png');
+      background-image: url('/img/fondo.png');
      }
 
      .total{
-     	height: 60%;
+      height: 60%;
  
 
      }
      .btnsiguiente{
-      margin-top: 5%;
+      margin-top: 20%;
       margin-bottom:5%; 
       width: 300px;
       background-color: #31B404;
@@ -120,20 +120,23 @@
       width: 200px;
       height: 150px;
      }
-     .btnstar{
-      margin-top:10%;
+    .btnsta{
+      margin-top: 10%;
       background-color: #ffeb3b;
-     }
+      width: 250px;
+      height: 40px;
+     }    
          .scroll{
             height: 40%;
             overflow:scroll;
     }
      @media screen and(max-width: 900px){
             .fondo{
+                   display: inline-block;
                    background-image: url('/img/fondoexitoso.png');
                    background-color: #F5F5F5;
                    background-repeat: no-repeat;
-                   background-position: right; 
+                   background-position: center; 
            }
      }
       @media screen and (max-width: 600px) {
@@ -147,14 +150,14 @@
             height: 30%;
             overflow:scroll;
     }
-    .btnstar{
-      margin-top: 0px;
+    .btnsta{
+      margin-top: 30%;
       background-color: #ffeb3b;
       width: 250px;
       height: 40px;
      }       
      .btnsiguiente{
-                  margin-top: 0px;
+                  margin-top: 20%;
                   width: 200px;
                   background-color: #31B404;
       }
@@ -167,15 +170,14 @@
               height: 100px;
       }
       .btnsiguiente{
-                  margin-top: 0%;  
+                  margin-top: 20%;  
                   width: 200px;
                   background-color: #31B404;
       }
 
       }   
 
-
-    @media screen and (max-width: 300px) {
+         @media screen and (max-width: 300px) {
       .fondo{
                    background-image: url('/img/fondoexitoso.png');
                    background-color: #F5F5F5;
@@ -183,7 +185,8 @@
                    background-position: center; 
            }
 
-    .btnstar{
+    .btnsta{
+      margin-top: 30%;
       background-color: #ffeb3b;
       width: 105px;
       height: 40px;
@@ -192,11 +195,7 @@
             height: 30%;
             overflow:scroll;
     }    
-     .btnsiguiente{
-                  margin-top: 0px;
-                  width: 200px;
-                  background-color: #31B404;
-             }
+
              .divmovil{
                 height: 300%;
                 background-color: rgba(221, 222, 214, 0.8); 
@@ -206,11 +205,10 @@
               height: 50px;
              }
               .btnsiguiente{
-                  margin-top: 0%;  
+                  margin-top: 10%;  
                   width: 200px;
                   height: 50px;
                   background-color: #31B404;
              }
 
-      }  
-
+      }

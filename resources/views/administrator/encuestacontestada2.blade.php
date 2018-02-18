@@ -38,7 +38,6 @@
             <div class="col-md-6 col-center" style="margin-top:100px;">
                 <center>
                 <p>Usted ya ha contestado esta encuesta <strong>¡Muchas Gracias!</strong></p>
-                <a class="btn btn-primary btn-lg" onclick="return quitBox('quit');">Salir</a>
                 </center>
             </div>
     </div>
@@ -46,12 +45,9 @@
 </html>
 
 <script>
-function quitBox(cmd)
-{   
-    if (cmd=='quit')
-    {
-        open(location, '_self').close();
-    }   
-    return false;   
-}
+        function cerrar() {
+            // body...
+            var miventana = window.self;
+            miventana.close();
+        }
 </script>
