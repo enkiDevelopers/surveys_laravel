@@ -6,6 +6,7 @@
   <div class="procesando" id="procesando" >
   </div>
   <input type="hidden" id="idadmin" value="{{$id}}"/>
+      <link href="/css/surveys.css" rel="stylesheet"/>
       <script type="text/javascript" src="/js/surveys.js"></script>
       <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
 
@@ -15,26 +16,27 @@
             <div class="panel panel-default ">
                 <div class="panel-heading fijado">
                     <div class="row">
-                        <div class="col-md-4">
-                            Plantillas
+                        <div class="col-md-3">
+                          <h3><b>  Plantillas </b> </h3>
                         </div>
                         <div class="col-md-9 pull-right">
                             <div class="row">
+                              <br />
                                 <div class="col-md-1">&nbsp</div>
                                 <div class="col-md-2 pull-right">
-                                    Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
+                                    <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
                                 </div>
                                 <div class="col-md-2 pull-right">
-                                    Editar&nbsp&nbsp<span class="glyphicon glyphicon-pencil" ></span>
+                                    <b>  Editar&nbsp&nbsp<span class="glyphicon glyphicon-edit" ></span></b>
                                 </div>
                                 <div class="col-md-2 pull-right">
-                                    Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span>
+                                    <b>  Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span></b>
                                 </div>
                                 <div class="col-md-2 pull-right">
-                                    Duplicar&nbsp&nbsp<span class="glyphicon glyphicon-copy"></span>
+                                    <b>  Duplicar&nbsp&nbsp<span class="glyphicon glyphicon-duplicate"></span></b>
                                 </div>
                                 <div class="col-md-2 pull-right">
-                                    Eliminar&nbsp&nbsp<span class="glyphicon glyphicon-trash"></span>
+                                    <b>  Eliminar&nbsp&nbsp<span class="glyphicon glyphicon-trash"></span></b>
                                 </div>
 
                             </div>
@@ -45,19 +47,24 @@
                     <div class="row" >
                       <div class="col-sm-0">
                       </div>
-                             <div class="col-md-4">
-                            <div class="card well card-new-survey" >
-                                <div class="card-body text-center">
-                                    <h3 class="card-title" id="Atitle">Añadir Plantilla de Encuesta</h3>
-                                    <p class="card-text"></p><br>
-                                        <p>
-                                            <a data-toggle="modal" data-target="#ModalTitle" class="btn btn-default btn-lg btn-new-survey">
-                                              <span class="glyphicon glyphicon-plus text-center"></span>
-                                            </a>
-                                        </p>
-                                </div>
-                            </div>
+
+<!--##################################  inicio boton de añadir plantilla#########################################################################-->
+                       <div id="btn-añadir" class="col-md-12">
+
+                   <a data-toggle="modal" data-target="#ModalTitle" >
+                     <div id="content-btn"class="text-center">
+                   <span class="glyphicon glyphicon-plus" id="btn-newSur"></span>
+                   <div id="crearPlantilla">
+                      <h3>Crear Plantilla</h3>
+                     </div>
+                       </a>
+                      </div>
                         </div>
+
+
+<!--Termina boton añadir plantila de encuesta -->
+
+
                         <div class="col-sm-0">
                         </div>
                                   <div id="actualizar">
