@@ -1,15 +1,9 @@
 $(document).ready(function(){
 
-      //  var alto = (screen.availHeight) - (screen.availHeight / 10);
-       // var anchoP =(screen.availWidth) - (screen.availHeight / 23) + (screen.availHeight / 46);
-       // var anchoS =(screen.availWidth) - (screen.availHeight / 23);
-
-       // $("#sumary").height('100%').width('100%');
-        //$("#surveyContainer").height('100%').width('100%');
 
         $("#btnStart").click(function(){
-            $("#sumary").fadeOut();
-            $("#surveyContainer").removeClass('hidden').addClass('popInRight delay-40 duration-50');
+                $("#surveyContainer").css('display','inline-block');
+                $("#sumary").fadeOut( "slow" );
 
         });
 
@@ -31,8 +25,9 @@ $(document).ready(function(){
             $("#idNext").css('display','');
             $("#idenviar").css("display","none");   
         }
-        $("#idTitlePregunta").css("display", "");
+        $("#idTitlePregunta").css("display", "inline");
 
+        
         if(n<=1){
             $("#idBack").attr('disabled','disabled');  
  
@@ -50,7 +45,7 @@ $(document).ready(function(){
         //b=n-1;
         $("#preg"+n).css("display", "inline");
         if(n==0){
-          $("#idTitlePregunta").text("Recomendaciones: ");
+          $("#idTitlePregunta").text("Intrucciones Generales: ");
         }else{
         $("#idTitlePregunta").text("Pregunta " + n);
 }
@@ -121,6 +116,10 @@ $(document).ready(function(){
 
     /********Funcionalidades del botón Siguiente******************/
     $("#idNext").click(function(){ 
+        $("#idTitlePregunta").css("display","none");
+        if(n==0){
+            $("#idNext").val("Siguiente!")
+        }
         var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
         var tipo2=$('#opt'+n).val();
 
@@ -146,7 +145,7 @@ $(document).ready(function(){
             
             if(tempo==null){
                 //$("#idNext").attr('disabled','disabled');
-                n++; //eliminar esta línea
+              //  n++; //eliminar esta línea
             }else{
                 m=tempo;
                 salto = $("#"+n+"salto"+m).val();
@@ -193,8 +192,8 @@ $(document).ready(function(){
             //$("#preg"+n).css("display", "none");
             $("#idTitlePregunta").css("display", "none");
     		$("#idNext").css('display','none');	
-            $("#idenviar").css("display","");	
-            $("#gracias").css("display","");
+            $("#idenviar").css("display","inline");	
+            $("#gracias").css("display","inline");
             //$("#idSave").css("display","inline");
 
             //Si es falso entonces

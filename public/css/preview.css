@@ -1,0 +1,202 @@
+        .title{
+            font-size: 20px;
+            font-family: "Source Sans Pro",sans-serif;
+            line-height: 30px;
+            color: #3D3D3D;
+            font-weight: bold;
+        }
+        .descripcion{
+            color: #3D3D3D;
+            font-family: "Source Sans Pro",sans-serif;
+            font-size: 19px;
+            line-height: 145%;
+            border-color: transparent;
+            margin-left: 25%;
+            width: 50%;
+        }
+        #btnStart::hover, #btnStart::focus{
+            text-decoration-color: #000;
+            color: #000;
+        }
+        .bl_form {
+          margin: 100px 0 150px;
+        }
+
+        .bl_form input {
+          padding-top: 15px;
+          background-color: #fff ;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+          border: none;
+          color: black;
+          padding: 10px 15px;
+          border-radius: 25px;
+          font-size: 16px;
+          outline: none;
+        }
+
+
+        .lb_wrap .lb_label.top, .lb_wrap .lb_label.bottom {
+          left: 15px !important;
+        }
+
+        .lb_wrap .lb_label.left {
+          left: 0;
+        }
+
+        .lb_label {
+          font-weight: bold;
+          color: #000;
+
+        }
+
+        .lb_label.active {
+          color: white;
+        }
+
+
+    
+
+        @media screen and (max-width: 699px) and (min-width: 520px) {
+            ul li a {
+                padding-left: ;
+                background: url(email-icon.png) left center no-repeat;
+            }
+        }
+                html,body {
+
+                    overflow:hidden; 
+                    }
+                html,body{
+
+                margin:0px;
+
+                height:100%;
+
+                }
+     #sumary{
+
+		height: 100%;
+
+     }
+     #surveyContainer{
+     	    height: 100%;
+     	 display: none;
+     }
+     .anchodiv{
+      height: 20%;
+      background-color: white;
+      overflow:scroll;
+     }
+     .margenarriba{
+      margin-top: 10px;
+     }
+     .fondo{
+       background-image: url('/img/fondoexitoso.png');
+       background-color: #F5F5F5;
+       background-repeat: no-repeat;
+       background-position: right ; 
+     }
+     .fondogris{
+     	background-image: url('/img/fondo.png');
+     }
+     .total{
+     	height: 90%;
+     }
+     .btnsiguiente{
+      margin-top: 5%;
+      margin-bottom:5%; 
+      width: 300px;
+      background-color: #31B404;
+     }
+     .pregunta{
+      margin-left: 1%;
+      margin-right: 1%;
+     }
+     .imagen{
+      margin-top: 3%;
+      width: 200px;
+      height: 150px;
+     }
+     .btnstar{
+      margin-top:10%;
+      background-color: #ffeb3b;
+     }
+     @media screen and(max-width: 900px){
+            .fondo{
+                   background-image: url('/img/fondoexitoso.png');
+                   background-color: #F5F5F5;
+                   background-repeat: no-repeat;
+                   background-position: right; 
+           }
+     }
+      @media screen and (max-width: 600px) {
+      .fondo{
+                   background-image: url('/img/fondoexitoso.png');
+                   background-color: #F5F5F5;
+                   background-repeat: no-repeat;
+                   background-position: center; 
+           }
+
+    .btnstar{
+      margin-top: 0px;
+      background-color: #ffeb3b;
+      width: 250px;
+      height: 40px;
+     }       
+     .btnsiguiente{
+                  margin-top: 0px;
+                  width: 200px;
+                  background-color: #31B404;
+      }
+      .divmovil{
+              height: 300%;
+              background-color: rgba(221, 222, 214, 0.8); 
+      }
+      .imagen{
+              width: 100px;
+              height: 100px;
+      }
+      .btnsiguiente{
+                  margin-top: 0%;  
+                  width: 200px;
+                  background-color: #31B404;
+      }
+
+      }   
+
+
+    @media screen and (max-width: 300px) {
+      .fondo{
+                   background-image: url('/img/fondoexitoso.png');
+                   background-color: #F5F5F5;
+                   background-repeat: no-repeat;
+                   background-position: center; 
+           }
+
+    .btnstar{
+      background-color: #ffeb3b;
+      width: 105px;
+      height: 40px;
+     }       
+     .btnsiguiente{
+                  margin-top: 0px;
+                  width: 200px;
+                  background-color: #31B404;
+             }
+             .divmovil{
+                height: 300%;
+                background-color: rgba(221, 222, 214, 0.8); 
+             }
+            .imagen{
+              width: 50px;
+              height: 50px;
+             }
+              .btnsiguiente{
+                  margin-top: 0%;  
+                  width: 200px;
+                  height: 50px;
+                  background-color: #31B404;
+             }
+
+      }  
+

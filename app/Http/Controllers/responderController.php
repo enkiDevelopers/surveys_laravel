@@ -19,6 +19,7 @@ class responderController extends Controller
 {	
 	public function presentacion(Request $request){
     $matricula=$request->session()->get('id');
+
 		//$id es el la variable de la table encuestados donde se almacena la informacion
     if($matricula==0){
           echo $matricula;
@@ -70,13 +71,16 @@ class responderController extends Controller
       $idencuestado=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
                                                                     ->where('contestado','=',0)
                                                                     ->count();
-
+      $idencuestado2=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
+                                                                    ->where('contestado','=',1)
+                                                                    ->count();
+      if($idencuestado!=0 or $idencuestado2 ==1){
       $idencuestados=DB::table('encuestados')->select(['idEncuesta'])->where('idE','=',$id)
                                                                     ->get();
 
       $fecha=DB::table('publicaciones')->select(['fechat'])->where('idTemplate','=',$idencuestados[0]->idEncuesta)->get();
-      $factual=date('Y-m-d');
-     // $datoactual=str_replace("T"," ",$datoactual);
+      $factual=date('Y-m-d H:m:s');
+      $factual=str_replace("T"," ",$factual);
 
         if($factual <= $fecha[0]->fechat){
 
@@ -127,6 +131,9 @@ class responderController extends Controller
        }else{
               return view("administrator.plazo");
        }
+     }else{
+            abort(404);
+     }
 }
   public function encuestacontestada(){
         return view("administrator.encuestacontestada");
@@ -137,6 +144,9 @@ class responderController extends Controller
     $idEncuesta=$request->Input('idencuesta');
     $idencuestado=$request->Input('idencuestado');
     $canal =$request->session()->get('canal');
+    if($canal==null){
+      $canal="mail";
+    }
 
     $preguntas=DB::table('questionsTemplates')
                 ->select('id')

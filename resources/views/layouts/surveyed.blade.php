@@ -32,7 +32,14 @@
                                 echo $info[0]->email1;
                         ?>
                     </div>
+                                        <li id="log-out" class="exit">
+                        <a href="{{ url('/logout') }}">
+                            <i class="glyphicon glyphicon-log-out"></i>
+                            <span>Salir</span>
+                        </a>
+                    </li>
                 </ul>
+
             </nav>
 
             <!-- Page Content Holder -->
@@ -47,7 +54,7 @@
                                     <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                         <i class="glyphicon glyphicon-align-left"></i>
                                         <span>Toggle Sidebar</span>
-                                    </button>
+                                    </button> 
                                 </div>
         
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
