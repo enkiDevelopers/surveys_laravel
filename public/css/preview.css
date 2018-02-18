@@ -99,8 +99,11 @@
      .fondogris{
      	background-image: url('/img/fondo.png');
      }
+
      .total{
-     	height: 90%;
+     	height: 60%;
+ 
+
      }
      .btnsiguiente{
       margin-top: 5%;
@@ -121,6 +124,10 @@
       margin-top:10%;
       background-color: #ffeb3b;
      }
+         .scroll{
+            height: 40%;
+            overflow:scroll;
+    }
      @media screen and(max-width: 900px){
             .fondo{
                    background-image: url('/img/fondoexitoso.png');
@@ -136,7 +143,10 @@
                    background-repeat: no-repeat;
                    background-position: center; 
            }
-
+    .scroll{
+            height: 30%;
+            overflow:scroll;
+    }
     .btnstar{
       margin-top: 0px;
       background-color: #ffeb3b;
@@ -177,7 +187,11 @@
       background-color: #ffeb3b;
       width: 105px;
       height: 40px;
-     }       
+     }   
+         .scroll{
+            height: 30%;
+            overflow:scroll;
+    }    
      .btnsiguiente{
                   margin-top: 0px;
                   width: 200px;

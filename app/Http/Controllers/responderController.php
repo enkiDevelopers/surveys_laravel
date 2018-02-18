@@ -136,8 +136,7 @@ class responderController extends Controller
      }
 }
   public function encuestacontestada(){
-        return view("administrator.encuestacontestada");
-//
+return back();//
 
   }
   public function guardarencuesta(Request $request){

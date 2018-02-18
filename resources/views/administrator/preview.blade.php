@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-md-6 col-md-offset-3 margenarriba total">
-            <div class="col-md-10 pregs " id="preg0">
+            <div class="col-md-10 pregs scroll" id="preg0">
                 <div align="justify" class="form-group text-black-body "  >
                     <ul>
                         <li><strong>Lee con atención las preguntas </strong></li>
