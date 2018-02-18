@@ -33,8 +33,10 @@
             <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margin-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
             <br>
             <div align="justify" class="col-md-6 col-md-offset-3 fondogris"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
-            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><strong>Descripción de la encuesta: </strong> {{$descripcion}} </div>    
-            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><center> <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnstar" ></center></div>
+            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><strong>Descripción de la encuesta: </strong> {{$descripcion}}   </div>
+            <div align="justify" class="col-md-6 col-md-offset-3"><center> <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnstar" ></center></div>
+
+              
         </div>
 
 <div id="surveyContainer"  class="col-md-12 fondo">
