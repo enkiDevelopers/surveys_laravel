@@ -1,0 +1,200 @@
+#btn-añadir
+{
+  width: 180px;
+  height: 180px;
+
+  background: rgba(37,66,118,1);
+background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(37,66,118,1)), color-stop(51%, rgba(42,76,135,1)), color-stop(100%, rgba(47,85,151,1)));
+background: -webkit-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+background: -o-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
+
+  -ms-border-radius: 150px;
+  -moz-border-radius: 150px;
+  -webkit-border-radius: 150px;
+  -o-border-radius: 150px;
+  border-radius: 150px;
+margin-bottom: 20px;
+margin-left: 2%;
+margin-right: 2%;
+margin-top: 4%;
+display: inline-block;
+-webkit-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
+box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
+position: relative;
+
+}
+#btn-añadir:hover
+{
+  cursor: pointer;
+}
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/img/load/cargando.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
+#procesando {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/img/load/procesando.gif') 50% 50% no-repeat rgba(249,249,249,0.5);
+    opacity: .8;
+    display: none;
+}
+
+#icono
+{
+  width: 100px;
+  height: 100px;
+}
+
+#btn-newSur
+{
+margin-left: -4%;
+font-size: 40px;
+margin-top: 10px;
+
+}
+
+#content-btn
+{
+  margin-left: 19%;
+  font-size: 30px;
+  text-align: center;
+  width: 100px;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.card
+{
+  width: 255px;
+  height: 280px;
+  background-color: #EBECEE;
+  text-align: center;
+  border-radius: 33px 33px 33px 33px;
+-moz-border-radius: 33px 33px 33px 33px;
+-webkit-border-radius: 33px 33px 33px 33px;
+border: 3px solid #8a8a8a;
+margin-left: 2%;
+margin-bottom: 2%;
+}
+#crearPlantilla
+{
+  margin-top: -20px;
+}
+
+#marco
+{
+margin-top: 10%;
+border-radius: 5px;
+-webkit-box-shadow: 0px 0px 0px 6px rgba(163,163,163,1);
+-moz-box-shadow: 0px 0px 0px 6px rgba(163,163,163,1);
+box-shadow: 0px 0px 0px 6px rgba(163,163,163,1);
+width: 60%;
+height: 130px;
+}
+.creador
+{
+  margin-top: 6%;
+}
+
+#btn_dup{
+margin-left: -123px;
+height:  40px;
+width: 40px;
+padding-left: 8px;
+margin-bottom: 2px;
+background-color: #a1a1a1;
+color: #fff;
+font-size: 20px;
+margin-top: 65px;
+display: inline-block;
+position: absolute;
+border-radius: 5px;
+}
+#btn_edit
+{
+background-color: #3265be;
+margin-left: -123px;
+height:  40px;
+width: 40px;
+padding-left: 8px;
+margin-bottom: 2px;
+color: #fff;
+font-size: 20px;
+margin-top: 160px;
+display: inline-block;
+position: absolute;
+border-radius: 10px;
+}
+
+#btn_delete
+{
+  height:  40px;
+  width: 40px;
+  background-color: #ff0000;
+  border-radius: 10px;
+  color: #fff;
+  margin-left: 192px;
+  margin-top: -360px;
+  position: relative;
+  padding-top: 3%;
+}
+
+
+#btn_prev
+{
+  height:  40px;
+  width: 40px;
+  background-color: #a1a1a1;
+  color: #fff;
+  margin-left: 192px;
+  margin-top: -310px;
+  border-radius: 10px;
+  padding-top: 3%;
+
+}
+#btn_pub
+{
+  height:  40px;
+  width: 40px;
+  background-color: #75b44c;
+  color: #fff;
+  margin-left: 192px;
+  margin-top: -250px;
+  padding-top: 3%;
+  border-radius: 10px;
+  padding-top: 3%;
+  position: relative;
+
+}
+#title
+{
+  font-size: 20px;
+  display: block;
+  margin-left: 30px;
+  text-align: center;
+  width: 180px;
+  height: 30px;
+margin-bottom: 50;
+ position: relative
+word-break: break-all;
+word-wrap: break-word;
+position: relative;
+text-align: center;
+}

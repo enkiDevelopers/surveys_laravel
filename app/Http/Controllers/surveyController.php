@@ -83,7 +83,7 @@ class surveyController extends Controller
 
       $tipos = tipos::all();
       $publicaciones = publicaciones::all();
-      $listas= listaEncuestados::where('creador', $id)->get();
+      $listas= listaEncuestados::where('creador', $id)->where('usado', 0)->get();
 
       return view('administrator.surveys', compact('propias','agenas','publicadas','listas','tipos','publicaciones','id'));
     }
@@ -194,7 +194,7 @@ public function ajaxshowcards(Request $request)
 
     $tipos = tipos::all();
     $publicaciones = publicaciones::all();
-    $listas= listaEncuestados::where('creador', $id)->get();
+    $listas= listaEncuestados::where('creador', $id)->where('usado', 0)->get();
     return view("administrator.showcards",compact('propias','agenas','publicadas','listas','tipos','publicaciones','id'));
   }
 }

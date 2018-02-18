@@ -75,17 +75,11 @@ try {
     $ins->usado = 1;
     $ins->save();
 
-
-
    $Iusers = new encuestados;
    $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)->get();
-
-   foreach ($Iusers as $Iuser) {
-            $Iuser->idEncuesta = $idPlantilla;
-            $Iuser->save();
-    $job = new enviarEmail($Iuser,$asunto,$instrucciones, $idPlantilla,$host);
+   $job = new enviarEmail($Iusers,$asunto,$instrucciones, $idPlantilla,$host);
     dispatch($job);
-}
+
 DB::commit();
   $success= true;
  }

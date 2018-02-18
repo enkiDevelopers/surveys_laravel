@@ -19,7 +19,7 @@
     <script src="/js/datepicker.js"></script>
 </head>
 <body>
- 
+
     <div class="wrapper" id="app">
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
