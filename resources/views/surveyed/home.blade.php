@@ -1,8 +1,9 @@
 @extends('layouts.surveyed')
 
 @section('content')
-<div class="row">
-<div class="container">
+<div class="container" style="margin-right: 0px;">
+
+  <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Encuestas Pendientes</div>

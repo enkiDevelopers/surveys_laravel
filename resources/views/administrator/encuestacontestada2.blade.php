@@ -37,7 +37,7 @@
 
             <div class="col-md-6 col-center" style="margin-top:100px;">
                 <center>
-                <p>Usted ya ha contestado esta encuesta <strong>¡Muchas Gracias!</strong></p>
+                <p><strong>¡Muchas Gracias!</strong>Encuesta contestada.</p>
                 </center>
             </div>
     </div>

@@ -9,61 +9,111 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="/css/sidebar.css">
+    <!--<link rel="stylesheet" href="/css/sidebar.css">-->
+    <link rel="stylesheet" href="/css/surveyed.css">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+<style type="text/css">
+
+</style>
 </head>
-<body id="wrapper">
-
-
-
-    <div class="wrapper"  id="app">
-          <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div class="sidebar-header center text-center">
-                   <button type="button" id="sidebarCollapse" class="btn-default btn navbar-btn pull-right">
-                        <i class="glyphicon glyphicon-menu-hamburger"></i>
-                    </button>
-                    <h3 class="administrator-header">Bienvenido</h3>
+<body>
+  
+  
+<nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a id="menu-toggle" href="#" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+            </a>
+        </div>
+        <div id="sidebar-wrapper" class="sidebar-toggle list-unstyled components">
+            <ul class="sidebar-nav">
+                <div class="profile center text-center" style="width:200px;margin-top:20%;">
+                            <img src="/img/avatar.jpeg" alt="">
+                            <p>Encuestado</p>
+                            <?php
+                                    echo $info[0]->nombreGeneral."\n";
+                                    echo $info[0]->email1;
+                            ?>
                 </div>
-
-                <ul class="list-unstyled components">
-                    <div class="profile center text-center">
-                        <img src="/img/avatar.jpeg" alt="">
-                        <p>Encuestado</p>
-                        <?php
-                                echo $info[0]->nombreGeneral."\n";
-                                echo $info[0]->email1;
-                        ?>
-                    </div>
-                                        <li id="log-out" class="exit">
+                    <li id="log-out" class="exit">
                         <a href="{{ url('/logout') }}">
                             <i class="glyphicon glyphicon-log-out"></i>
                             <span>Salir</span>
                         </a>
                     </li>
-                </ul>
 
-            </nav>
-
-            <!-- Page Content Holder -->
-
-
-                 
-                @yield('content')
-            </div>     
+            </ul>
+        </div>
+</nav>
+  <div class="main" >
+                @yield('content')        
     </div>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
     <script src="/js/highcharts.js"></script>
     <script src="/js/exporting.js"></script>
     <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
+    function htmlbodyHeightUpdate(){
+        var height3 = $( window ).height()
+        var height1 = $('.nav').height()+50
+        height2 = $('.main').height()
+        if(height2 > height3){
+            $('html').height(Math.max(height1,height3,height2)+10);
+            $('body').height(Math.max(height1,height3,height2)+10);
+        }
+        else
+        {
+            $('html').height(Math.max(height1,height3,height2));
+            $('body').height(Math.max(height1,height3,height2));
+        }
+        
+    }
+    $(document).ready(function () {
+        htmlbodyHeightUpdate()
+        $( window ).resize(function() {
+            htmlbodyHeightUpdate()
+        });
+        $( window ).scroll(function() {
+            height2 = $('.main').height()
+            htmlbodyHeightUpdate()
+        });
+    });
+
+    $(window).resize(function() {
+    var path = $(this);
+    var contW = path.width();
+    if(contW >= 751){
+        document.getElementsByClassName("sidebar-toggle")[0].style.left="200px";
+    }else{
+        document.getElementsByClassName("sidebar-toggle")[0].style.left="-200px";
+    }
+});
+$(document).ready(function() {
+    $('.dropdown').on('show.bs.dropdown', function(e){
+        $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
+    });
+    $('.dropdown').on('hide.bs.dropdown', function(e){
+        $(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
+    });
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        var elem = document.getElementById("sidebar-wrapper");
+        left = window.getComputedStyle(elem,null).getPropertyValue("left");
+        if(left == "200px"){
+            document.getElementsByClassName("sidebar-toggle")[0].style.left="-200px";
+        }
+        else if(left == "-200px"){
+            document.getElementsByClassName("sidebar-toggle")[0].style.left="200px";
+        }
+    });
+});
          </script>    
 </body>
 </html>

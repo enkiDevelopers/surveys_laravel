@@ -1,0 +1,74 @@
+
+  /* remove outer padding */
+  .main .row{
+    padding: 0px;
+    margin: 0px;
+  }
+    html,body {
+        overflow:hidden; 
+      }
+  /*Remove rounded coners*/
+
+
+  /* Add gap to nav and right windows.*/
+
+  /* .....NavBar: Icon only with coloring/layout.....*/
+
+  /*small/medium side display*/
+
+
+  /* .....NavBar: Fully showing nav bar..... */
+
+
+
+
+  #sidebar-wrapper {
+  left: -200px;
+  width: 200px;
+    background: -webkit-linear-gradient(#616161,#212121, #000 );
+    background: -o-linear-gradient(#616161,#212121, #000 );
+    background: linear-gradient(#616161,#212121, #000 );
+  color: white;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+}
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  width: 250px;
+  list-style: none;
+}
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 50px;
+}
+.sidebar-nav li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+.sidebar-nav li a:hover {
+  background: rgba(255,255,255,0.25);
+  color: white;
+  text-decoration: none;
+}
+.sidebar-nav li a:active, .sidebar-nav li a:focus {
+  text-decoration: none;
+}
+#sidebar-wrapper.sidebar-toggle {
+  transition: all 0.3s ease-out;
+  margin-left: -200px;
+}
+@media screen and (max-width: 900px){
+      html,body {
+          overflow:auto; 
+      }
+}
+@media (min-width: 1300px) {
+  #sidebar-wrapper.sidebar-toggle {
+    transition: 0s;
+    left: 200px;
+}
