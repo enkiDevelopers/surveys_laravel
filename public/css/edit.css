@@ -1,0 +1,128 @@
+.new-question__control--edit-question{
+	box-shadow: 3px 3px 3px #174340;
+    width: 46px;
+    height: 43px;	
+}
+.delete-question__control--delete-question{
+	box-shadow: 3px 3px 3px #de0000;
+    margin-left: 10px;
+    width: 42px;
+    height: 43px;
+}
+.new-survey__control, #sortableQuestions{
+	border-radius: 50px;	
+	height:  46px;
+    background: -webkit-linear-gradient(top left, #1a237e, #0d47a1);
+    background: -o-linear-gradient(top left, #1a237e, #0d47a1);
+    background: linear-gradient(to bottom right, #1a237e, #0d47a1);
+}
+
+@media screen and (max-width: 1095px) {
+	.num{
+		width: 9.799%;
+	}
+	.text-question{
+		width: 45%;
+	}
+	.new-question__control{
+		margin-right: 0px;
+	}
+	#inputDesc{
+		margin-top: -4%;
+	}
+}
+@media screen and (min-width: 767px) and (max-width: 991px) {
+	.light-grey{
+		margin-top: 90px;
+		margin-bottom: -75px;
+	}
+	.img-thumbnail{
+		width: 150px;
+		max-width: 150px;
+		height: 150px;
+		max-height: 150px;
+		float: left;
+	    margin-top: -65px;
+	    margin-left: -2%;
+	}
+	.col-img{
+		margin-top: 0px;
+	}
+	#inputDesc{
+	width: 73%;
+    margin-left: 24%;
+	
+	}
+	.num, .text-question{
+		width: 100%;
+	}		
+}
+
+@media screen and (max-width: 767px) {
+	#sidebar{
+	    box-shadow: 3px 10px 8px #fff;
+	}
+	.container{
+	   padding:0; margin:0;
+	   width: 100%;
+	   margin-top: 97px;
+	}
+	.col-img, .col-desc{
+		display: none;
+	}
+	.btn-editTitle {
+		margin-left: 30%;
+		width: 57px;
+		height: 60px;
+		font-size: 35px;
+	}
+	.btn-preview{
+		margin-left: 25%;
+		width: 57px;
+		height: 60px;
+		font-size: 35px;
+	}
+	.new-survey__control, #sortableQuestions{
+		margin-top: 3%;
+		margin-left: 15%;
+		width: 50px;
+		height: 50px;
+	 	font-size: 20px;
+
+	}
+	.new-survey__control label, #sortableQuestions label{
+		display: none;
+	}
+	 .new-survey__controls{
+	 	margin-bottom: 4%;
+	 } 
+	 #sortableQuestions{
+	 	margin-right: 140px;
+	 }
+	 .num{
+		width: 15%;	
+		margin: 0px 7px 0px 0px;
+		padding: 0px;
+		float: left;
+	 }
+
+	 .text-question{
+	    width: 56%;
+	    margin: 0px 7px 0px 0px;
+	    padding: 0px;
+    	float: left;
+	 }
+	 .type{
+		width: 25.2%;
+		margin: 0px;
+		padding: 0px;
+		float: left;
+	 }
+	 .well{
+	 	height: 185px;
+	 }
+	 input[value=2]{
+	 	border: 1px solid red;
+	 }
+	
+}

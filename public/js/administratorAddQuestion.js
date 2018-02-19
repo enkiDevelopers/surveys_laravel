@@ -120,7 +120,7 @@ $(document).ready(function(){
         var max = $(".numPregs").length;
         var act = parseInt($(this).attr('order')) + 1;
         $(this).empty();
-        $(this).append('<option value="N/A" selected disabled>Selecciona la pregunta</option>');
+        $(this).append('<option value="N/A" selected disabled>Pregunta</option>');
  
         for (var i = act; i <= max; i++) {
              $(this).append('<option value="'+i+'">'+i+'</option>');

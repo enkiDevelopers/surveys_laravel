@@ -12,35 +12,7 @@
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/alertify.min.css">
     <link rel="stylesheet" type="text/css" href="/css/themes/default.min.css">
-    <style>
-        .placeholder-sort{
-            width: 100%;
-            height: 119px;
-            margin-bottom: 2%;
-            border: 1px solid #dad55e;
-            background: #fffa90;
-            color: #777620;
-        }
-        .btn-file {
-		    position: relative;
-		    overflow: hidden;
-		}
-		.btn-file input[type=file] {
-		    position: absolute;
-		    top: 0;
-		    right: 0;
-		    min-width: 100%;
-		    min-height: 100%;
-		    font-size: 100px;
-		    text-align: right;
-		    filter: alpha(opacity=0);
-		    opacity: 0;
-		    outline: none;
-		    background: white;
-		    cursor: inherit;
-		    display: block;
-		}
-    </style>
+    <link rel="stylesheet" href="/css/edit.css">
 </head>
 <body>
 
@@ -75,7 +47,7 @@
                 </ul>
             </nav>
 
-            <nav id="sidebarMobile" class="navbar-default navbar-fixed-top  visible-xs" >
+    <!--        <nav id="sidebarMobile" class="navbar-default navbar-fixed-top  visible-xs" >
                 <ul class="list-unstyled components">
                     <div class="profile center text-center" id="perfil" onclick="profile();" style="padding-top:-20px;cursor:pointer;width: 20%;display:inline-block;">
                         <img src="/img/avatar.jpeg" alt="" style="vertical-align: initial;">
@@ -86,7 +58,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
                 @yield('content')
             </div>
         </div>
