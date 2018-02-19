@@ -411,20 +411,38 @@ swal({
 
 }
 
-/*
+
 function ocultar()
 {
+  var className = $('#btnO').attr('class');
 //$("#pBody").toggle();
 $('#pBody').toggle(
     function () {
-      $("#btnO").removeClass("glyphicon glyphicon-chevron-down");
-      $("#btnO").addClass("glyphicon glyphicon-chevron-up");
+      if(className == "glyphicon glyphicon-chevron-up")
+      {
+        $("#btnO").removeClass(className);
+        $("#btnO").addClass("glyphicon glyphicon-chevron-down");
 
+      }
+  if(className == "glyphicon glyphicon-chevron-down")
+  {
+    $("#btnO").removeClass(className);
+    $("#btnO").addClass("glyphicon glyphicon-chevron-up");
+  }
           },
     function () {
-            $("#btnO").removeClass("glyphicon glyphicon-chevron-up");
-            $("#btnO").addClass("glyphicon glyphicon-chevron-down");
+      if(className == "glyphicon glyphicon-chevron-up")
+      {
+        $("#btnO").removeClass(className);
+        $("#btnO").addClass("glyphicon glyphicon-chevron-down");
+
+      }
+  if(className == "glyphicon glyphicon-chevron-down")
+  {
+    $("#btnO").removeClass(className);
+    $("#btnO").addClass("glyphicon glyphicon-chevron-up");
+  }
 
           }
       );
-}*/
+}

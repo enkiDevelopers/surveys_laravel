@@ -7,7 +7,7 @@
 <!-- boton duplicar -->
 <div class="row">
   <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar" id="btn_dup">
-                    <span class="glyphicon glyphicon-copy"></span>
+                    <span class="glyphicon glyphicon-duplicate"></span>
               </a>
 </div>
 <!-- fin boton duplicar-->
@@ -17,7 +17,7 @@
 
 <a href="{{url('administrator/edit')}}/{{$plantilla->id}}" id="btn_edit"
           class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-              <span class="glyphicon glyphicon-pencil"></span>
+              <span class="glyphicon glyphicon-edit"></span>
           </a>
 </div>
   </div>
