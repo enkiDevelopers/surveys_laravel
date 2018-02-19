@@ -51,7 +51,7 @@
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-                 <input type="text" id="idlista" name="idlista" value="">
+                 <input type="hidden" id="idlista" name="idlista" value="">
         
           <hr>
             <input type="submit" class="btn btn-default" value="Subir archivos"  />

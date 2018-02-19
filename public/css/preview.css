@@ -64,8 +64,10 @@
         }
                 html,body {
 
-                    overflow:hidden; 
+                    overflow-y:hidden; 
+                    overflow-x:hidden;
                     }
+
                 html,body{
 
                 margin:0px;
@@ -126,11 +128,16 @@
       width: 250px;
       height: 40px;
      }    
-         .scroll{
+    .scroll{
             height: 40%;
             overflow:scroll;
     }
      @media screen and(max-width: 900px){
+                html,body {
+
+                    overflow-y:hidden; 
+                    overflow-x:hidden;
+                    }
             .fondo{
                    display: inline-block;
                    background-image: url('/img/fondoexitoso.png');
@@ -138,8 +145,16 @@
                    background-repeat: no-repeat;
                    background-position: center; 
            }
+
+
+
      }
       @media screen and (max-width: 600px) {
+                html,body {
+
+                    overflow-y:hidden; 
+                    overflow-x:hidden;
+                    }
       .fondo{
                    background-image: url('/img/fondoexitoso.png');
                    background-color: #F5F5F5;
@@ -148,7 +163,7 @@
            }
     .scroll{
             height: 30%;
-            overflow:scroll;
+           /* overflow:scroll;*/
     }
     .btnsta{
       margin-top: 30%;
@@ -178,6 +193,14 @@
       }   
 
          @media screen and (max-width: 300px) {
+                html,body {
+
+                    overflow-y:hidden; 
+                    overflow-x:hidden;
+                    }
+      .scrollhidde{
+                     /* overflow: hidden;*/
+      }
       .fondo{
                    background-image: url('/img/fondoexitoso.png');
                    background-color: #F5F5F5;

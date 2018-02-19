@@ -122,6 +122,13 @@ public function ingresarlista(Request $request){
         $excel = $reader->get();
 
         $reader->each(function($row) use($idarray) {
+
+        $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
+        $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
+        $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
+        if($row->region=="" && $row->nombre=="" && $row->no_cuenta=""){
+
+        }else{
         $infor=DB::table('encuestados')->insert([
                                                     'region'  =>  $row->region,
                                                     'ciclo'=>$row->ciclo,
@@ -133,7 +140,9 @@ public function ingresarlista(Request $request){
                                                     'nombreGeneral'=>$row->nombre_general,
                                                     'fechaNacimiento'=>$row->fecha_nacimiento,
                                                     'direccion'=>$row->direccion,
-                                                    'email1'=>$row->correo_electronico,
+                                                    'email1'=>$correo1,
+                                                    'email2'=>$correo2,
+                                                    'email3'=>$correo3,
                                                     'telefonoCasa'=>$row->telefono_casa,
                                                     'carrera'=>$row->carrera,
                                                     'programaCV'=>$row->programacv,
@@ -143,6 +152,7 @@ public function ingresarlista(Request $request){
                                                     'esIntercambio'=>$row->es_intercambio,
                                                     'contestado' => 0,
                                                     'listaEncuestados_idLista' => $idarray['id']  ]);
+}
         });
     
     });
