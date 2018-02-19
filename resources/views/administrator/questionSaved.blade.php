@@ -5,7 +5,7 @@
     $dato=$cada["questions"];
 ?>
     <div class="row new-question-template" id="new-question-template">
-        <div class="col-md-12 well">
+        <div class="col-md-12 well" value="<?php echo ($dato->type==1?'Abierta':'Opc. Múltiple');?>">
             <div class="col-md-1 num">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>

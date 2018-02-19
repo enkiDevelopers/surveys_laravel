@@ -121,7 +121,7 @@
 	 .well{
 	 	height: 185px;
 	 }
-	 input[value=2]{
+	 div[value="Opc. Múltiple"]{
 	 	border: 1px solid red;
 	 }
 	
