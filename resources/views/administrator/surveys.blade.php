@@ -23,6 +23,9 @@
                             <div class="row">
                               <br />
                                 <div class="col-md-1">&nbsp</div>
+                                <div class="col-md-1 pull-right">
+                    <a onclick="ocultar();" id="btnO"><span class="glyphicon glyphicon-chevron-up"></span> </a>
+                                </div>
                                 <div class="col-md-2 pull-right">
                                     <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
                                 </div>
@@ -43,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body scroll">
+                <div class="panel-body scroll" id="pBody">
                     <div class="row" >
                       <div class="col-sm-0">
                       </div>
@@ -81,6 +84,7 @@
                             Encuestas publicadas
                         </div>
                         <div class="col-md-1">&nbsp</div>
+
                         <div class="col-md-5 ">
                             <div class="row">
                                 <div class="col-md-4">
@@ -98,6 +102,10 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                <img src="/img/redes/Facebook.png"  width="40" height="40"/>
+                <img src="/img/redes/twitter.png"  width="40" height="40"/>
                     </div>
                         </div>
 

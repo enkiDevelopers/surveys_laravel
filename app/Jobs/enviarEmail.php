@@ -28,9 +28,9 @@ class enviarEmail implements ShouldQueue
      public $host;
      public $timeout = 1200;
 
-    public function __construct($Iusers, $asunto, $instrucciones, $idPlantilla, $host)
+    public function __construct($Iusers2, $asunto, $instrucciones, $idPlantilla, $host)
     {
-          $this->Iusers = $Iusers;
+          $this->Iusers = $Iusers2;
           $this->asunto = $asunto;
           $this->instrucciones = $instrucciones;
           $this->idPlantilla = $idPlantilla;
