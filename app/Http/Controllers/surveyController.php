@@ -189,7 +189,7 @@ public function ajaxshowcards(Request $request)
     templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
     ->where('usuarios.idUsuario','=',$id)
     ->where('encuesta','1')
-    ->orderby('id', 'desc')
+    ->orderby('id', 'asc')
     ->get();
 
     $tipos = tipos::all();
@@ -216,22 +216,35 @@ return view("administrator.recordatorio",compact('mensaje','recordatorios','idLi
 
 public function send(Request $request)
 {
+
   $id= $request->idPub;
+
   $mensaje = publicaciones::where('idPub',$id)->first();
   $idLista = listaEncuestados::where('idLista', $mensaje->destinatarios)->first();
-  $destinatarios = encuestados::
-  where('listaEncuestados_idLista', $idLista->idLista)
-  ->where('incidente', '0')->where('contestado','0')->get();
+
+  $Iusers = encuestados::
+  where('listaEncuestados_idLista', $idLista->idLista)->where('email1', '!=', null)
+  ->where('incidente', '0')->where('contestado','0')->count();
    $host = $_SERVER["HTTP_HOST"];
 
-   foreach ($destinatarios as $Iuser) {
-     $job =
-  new enviarRecordatorio($Iuser,$mensaje->asunto,$mensaje->instrucciones, $id,$host);
-     dispatch($job);
-}
+$iteraciones =intdiv($Iusers, 2000 )+1;
+$inicio=0;
+$termino=2000;
 
- $record = new recordatorios;
- $record->fechaEnvio = date("Y-m-d h:i:s");
+for ($i=0; $i < $iteraciones ; $i++) {
+$Iusers2 = encuestados::where('listaEncuestados_idLista', $idLista->idLista)
+                ->where('email1', '!=', null)
+                ->where('incidente', '0')
+                ->where('contestado','0')
+                ->offset($inicio)
+                ->limit($termino)
+                ->get();
+  $job = new enviarRecordatorio($Iusers2,$mensaje->asunto,$mensaje->instrucciones, $id,$host);
+   dispatch($job);
+                 $inicio = $inicio+$termino;
+               }
+$record = new recordatorios;
+$record->fechaEnvio = date("Y-m-d h:i:s");
 $record->idPlantilla=  $id;
 $record->save();
 $recordatorios = recordatorios::where('idPlantilla',$id)->get();

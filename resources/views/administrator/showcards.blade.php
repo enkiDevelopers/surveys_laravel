@@ -75,11 +75,13 @@
 
 <?php } ?>
 <div class="col-md-12">
+  <hr />
 <center>
   <h5><b>plantillas creadas por otros administradores</b></h5>
   </center>
 <hr />
 </div>
+
 <?php foreach ($agenas as $plantilla) { ?>
 
   <div class="col-md-2 card" id="{{$plantilla->id}}">
@@ -158,6 +160,13 @@
 <?php } ?>
 
 
+<div class="col-md-12">
+  <hr />
+<center>
+  <h5><b>plantillas publicadas</b></h5>
+  </center>
+<hr />
+</div>
 
 <?php foreach ($publicadas as $plantilla) { ?>
 

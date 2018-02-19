@@ -16,7 +16,7 @@ use App\Mail\mailencuestados;
 class enviarRecordatorio implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    public $Iuser;
+    public $Iusers;
     public $asunto;
     public $instrucciones;
     public $idPlantilla;
@@ -27,10 +27,10 @@ class enviarRecordatorio implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($Iuser,$asunto,$instrucciones, $id,$host)
+    public function __construct($Iusers2,$asunto,$instrucciones, $id,$host)
     {
 
-      $this->Iuser = $Iuser;
+      $this->Iusers = $Iusers2;
       $this->asunto = $asunto;
       $this->instrucciones = $instrucciones;
       $this->idPlantilla = $id;
@@ -44,9 +44,19 @@ class enviarRecordatorio implements ShouldQueue
      */
     public function handle()
     {
+      foreach ($this->Iusers as $Iuser) {
 
-      Mail::to($this->Iuser->email1)
-      ->send(new mailencuestados($this->Iuser,$this->asunto,$this->instrucciones,$this->host));
-      $this->delete();
+    if(filter_var($Iuser->email1, FILTER_VALIDATE_EMAIL)){
+    try {
+      Mail::to($Iuser->email1)
+     ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host));
+    } catch (Exception $e) {
+      $file = fopen("archivo.txt", "w");
+    fwrite($file, $e . PHP_EOL);
+    fclose($file);
+    }
+      }
+        }
+    $this->delete();
     }
 }

@@ -83,6 +83,7 @@ try {
      $termino=2000;
 $Iusers2 = new encuestados;
      for ($i=0; $i < $iteraciones ; $i++) {
+
      $Iusers2 = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)
                      ->offset($inicio)
                        ->limit($termino)
@@ -149,7 +150,7 @@ public function consultar(Request $request)
   $hoy = date("Y-m-d h:i:s");
 
 $actuales = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")
-->where('fechat','>=', $hoy)->get();
+->where('fechat','>=', $hoy)->orderby("idPub","desc")->get();
 $finalizadas = publicaciones::join("templates","publicaciones.idTemplate","=","templates.id")->where('fechat','<', $hoy)->get();
 //$finalizadas = publicaciones::where('fechat','<',$hoy)->get();
 
