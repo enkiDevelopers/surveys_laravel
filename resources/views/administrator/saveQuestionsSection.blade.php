@@ -1,13 +1,15 @@
         <div class="row col-md-12">
-            <div class=" new-survey__controls " > 
+            <div class="new-survey__controls " > 
                 <center>
                     <div class="col-md-11">
-                        <button class="btn btn-success new-survey__control" id="addQuestion">Agregar pregunta</button>
-                    </div>
-                    <div class="col-md-1">
-                       <a id="sortableQuestions" class="btn btn-warning pull-right">
+                        <button class="btn btn-info new-survey__control" id="addQuestion">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <label>Agregar pregunta</label>
+                        </button>
+                       <button id="sortableQuestions" class="btn btn-info pull-right">
                             <span class="glyphicon glyphicon-th-list"></span>
-                        </a>
+                            <label>Reacomodar</label>
+                        </button>
                     </div>
 
                 </center>
@@ -47,8 +49,8 @@
                                  <div class=" form-group">
                                     <label for="questionType">Tipo</label>
                                     <select class="form-control yes-no-question text-black-body" id="questionType">
-                                        <option value="1">Pregunta abierta</option>
-                                        <option value="2">Pregunta de opción multiple </option>
+                                        <option value="1">Abierta</option>
+                                        <option value="2">Opción multiple </option>
                                     </select>
                                 </div>
                             </div>
