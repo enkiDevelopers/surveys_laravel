@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ERROR 404 - Pagina no encontrada</title>
+    <title>ERROR - Pagina no encontrada</title>
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
@@ -11,6 +11,6 @@
     </div>
   </body>
   <script>
-    setTimeout(function(){ window.history.back();}, 3000);
+    setTimeout(function(){  location.href ="/"; }, 3000);
 </script>
 </html>
