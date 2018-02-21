@@ -149,6 +149,8 @@
 
 
      }
+
+
       @media screen and (max-width: 600px) {
                 html,body {
 
@@ -191,7 +193,7 @@
       }
 
       }   
-
+   
          @media screen and (max-width: 300px) {
                 html,body {
 
@@ -233,5 +235,15 @@
                   height: 50px;
                   background-color: #31B404;
              }
+
+      }
+
+      @media screen and (max-width: 800px) and (orientation: landscape) {
+                html,body {
+                    overflow-y:auto; 
+                    }
+#surveyContainer{
+  display: none;
+}
 
       }

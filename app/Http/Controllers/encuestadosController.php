@@ -81,7 +81,8 @@ try {
 
      $inicio=0;
      $termino=2000;
-$Iusers2 = new encuestados;
+     $Iusers2 = new encuestados;
+     
      for ($i=0; $i < $iteraciones ; $i++) {
 
      $Iusers2 = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)

@@ -35,13 +35,13 @@
             <div align="justify" class="col-md-6 col-md-offset-3 fondogris"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
             <div align="justify" class="col-md-6 col-md-offset-3 anchodiv"><strong>Descripción de la encuesta: </strong> {{$descripcion}}   </div>
             <div align="justify" class="col-md-6 col-md-offset-3"><center>
-             <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta" ></center>
+            <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta" ></center>
             </div>
 
               
         </div>
 
-<div id="surveyContainer"  class="col-md-12 fondo">
+<div id="surveyContainer"  class="col-md-12 fondo" >
 <center>
 <img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margi-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
 </center>
@@ -49,7 +49,7 @@
             <h2 class="text-center text-black-body" id="idTitlePregunta">Instrucciones Generales: </h2>
         </div>
 
-        <div class="col-md-6 col-md-offset-3 margenarriba total">
+        <div class="col-md-6 col-md-offset-3 margenarriba total" style="overflow:auto;">
             <div class="col-md-10 pregs scroll" id="preg0">
                 <div align="justify" class="form-group text-black-body "  >
                     <ul>
@@ -77,9 +77,10 @@
                         <h2 class="text-center text-black-body" >{{$dato->title}} </h2>
                     </div>
 
-                <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
-                <input type="hidden" name="back" id="num<?php echo $i?>" value="<?php echo $i ?>">
-                <input type="hidden" name="type" id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
+                <input type="hidden" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+                <input type="hidden" name="back"  id="num<?php echo $i?>" value="<?php echo $i ?>">
+                <input type="hidden" name="type"  id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
+                <input type="hidden" name="salto" id="saltoa<?php echo $i?>" value="<?php echo $dato->salto?>"> 
         <?php
             if($dato->type==1){
         ?>

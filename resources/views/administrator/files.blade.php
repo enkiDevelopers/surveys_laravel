@@ -1,9 +1,23 @@
 @extends('layouts.admin')
 @section('content')
-  
+  <style type="text/css">
+    .progress {
+    display: block;
+    text-align: center;
+    width: 0;
+    height: 3px;
+    background: red;
+    transition: width .3s;
+}
+.progress.hide {
+    opacity: 0;
+    transition: opacity 1.3s;
+}
+
+  </style>
 
 
-
+<div class="progress"></div>
 <div id="AgregarLista" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -353,6 +367,8 @@ try{
 $(function(){
       $("#formuploadajax").on("submit", function(e){
 
+    var data=false;
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -370,6 +386,7 @@ $(function(){
               processData: false,
               contentType: false,
               data : formData,
+              timeout: 0,
               enctype: 'multipart/form-data',
               async:true,
               cache:false,
@@ -379,14 +396,15 @@ $(function(){
 
               },
               success : function(response){
+
                 $("#divid").load(" #divid");
                 $('#nombre').val('');
                 $('#archivo').val('');
-
                 $("#procesando").hide();
               },
               error : function(error) {
-                $("#procesando").hide();
+                  console.log(error);
+              /*  $("#procesando").hide();
                  swal({
                       title: "Información",
                       text: "Verifique la estructura de su documento",
@@ -395,9 +413,10 @@ $(function(){
                       confirmButtonColor: '#DD6B55',
                       confirmButtonText: 'Continuar',
                       closeOnConfirm: true,
-                   })
+                   })*/
 
               }
+
 
           });
        $('#AgregarLista').hide();
@@ -416,7 +435,8 @@ $(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 });
-
+setTimeout(function(){checkData()}, 5000);
+    function checkData(){
           e.preventDefault();
           var f = $(this);
           var formData = new FormData($(this)[0]);
@@ -442,7 +462,7 @@ $(function(){
 
                 $('#nombre').val('');
                 $('#archivo').val('');
-                           $("#procesando").hide();
+                $("#procesando").hide();
      
 
               },

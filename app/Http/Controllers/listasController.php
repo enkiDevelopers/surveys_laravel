@@ -170,7 +170,7 @@ public function ingresarlista(Request $request){
     }else{
         return "noaparece".$dato;
     }
-
+    return "listo";
  }  
 }
     public function mostrarDatos($id){
@@ -195,6 +195,9 @@ public function ingresarlista(Request $request){
 
     return response()->json($request);
 
+    }
+    public function respuesta(){
+        return "algo";
     }
     public function incidente(Request $request){
         ini_set('max_execution_time', 0);

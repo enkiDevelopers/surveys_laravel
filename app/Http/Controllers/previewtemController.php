@@ -57,7 +57,6 @@ class previewtemController extends Controller
 
 
 
-
       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuesta1'));
 
  //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
