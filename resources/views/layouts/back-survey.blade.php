@@ -39,8 +39,8 @@
                             <span>ADMINISTRADORES</span>
                         </a>
                     </li>
-                    <li id="log-out" >
-                        <a href="{{ url('/logout') }}"  style="color:#fc0404; padding-left: 50%;">
+                    <li id="log-out">
+                        <a href="{{ url('/logout') }}">
                             <span>SALIR</span>
                         </a>
                     </li>

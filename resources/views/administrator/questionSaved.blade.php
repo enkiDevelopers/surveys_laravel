@@ -4,8 +4,9 @@
     foreach ($preguntas as $cada) {
     $dato=$cada["questions"];
 ?>
+<div class="well">
     <div class="row new-question-template" id="new-question-template">
-        <div class="col-md-12 well" value="<?php echo ($dato->type==1?'Abierta':'Opc. Múltiple');?>">
+        <div class="col-md-12 " value="<?php echo ($dato->type==1?'Abierta':'Opc. Múltiple');?>">
             <div class="col-md-1 num">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
@@ -24,7 +25,18 @@
                     <input type="text" readonly class="form-control-static form-control text-black-body" value="<?php echo ($dato->type==1?'Abierta':'Opc. Múltiple');?>">
                 </div>
             </div>
-
+<?php
+    if($dato->type==1){
+?>
+            <div class="col-md-2 salto">
+               <label for="selectNumPregParent text-black-body">Redireccionar: </label>
+                <select  order="{{$dato->orden}}" id="{{$dato->id}}" class="form-control text-black-body selectNumPregParent">
+                    <option value="N/A" selected disabled>{{$dato->salto}}</option>
+                </select>                
+            </div>
+<?php 
+    }
+?>
             <div class="col-md-2 pull-right btn-control" style="margin-bottom: 15px;">
                 <div class="row">
                     <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question"
@@ -45,7 +57,7 @@
                 <div class="col-md-12" data-questions="0">
                     <div id="multi-options">
                         <div class="col-md-6 col-md-offset-1 " data-multioptions="0">
-                            <div class="form-group" style="margin-top: 75px;">
+                            <div class="form-group">
                                 <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
                                 <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
@@ -63,10 +75,9 @@
             }
         }
 ?>
-
-
         </div>
     </div>
+</div>
 <?php
     } 
 ?>

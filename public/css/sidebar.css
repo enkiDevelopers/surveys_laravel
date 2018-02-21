@@ -219,6 +219,13 @@ a.article, a.article:hover {
 .container{
     margin-left: 250px;
 }
+#log-out a{
+    color:#fc0404 !important; 
+    padding-left: 50% !important;
+}
+#log-out a:hover{
+    color: white !important;
+}
 
 
 /* ---------------------------------------------------

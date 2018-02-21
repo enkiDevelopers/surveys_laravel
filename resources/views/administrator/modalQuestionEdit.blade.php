@@ -3,7 +3,7 @@
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
     <div class="row new-question-template " id="edit-question-template">
         <div aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="position: fixed" class="modal fade" id="ModalQuestionEdit" role="dialog" aria-labelledby="ModalQuestionLabelEdit" >
-            <div class="modal-dialog" role="document" style="width: 825px;">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -1,3 +1,4 @@
+
 #bg_config{ 
   background: #50a3a2;
   background: linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
@@ -7,6 +8,8 @@
   -o-background-size: cover;
   background-size: cover;
   overflow: hidden;
+  position: static;
+  height: all;
 }
 
 img{

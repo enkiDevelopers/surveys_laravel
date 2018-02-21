@@ -24,6 +24,7 @@ class questionsTemplateController extends Controller
             $surv->orden = $numPregSig;
             $surv->title = $questionInput;
             $surv->type = $questionType;
+            $surv->salto = $salto;
             //$surv->idParent = $idParent;
             $surv->save();
 
@@ -78,6 +79,15 @@ class questionsTemplateController extends Controller
 
         return $option;
 
+    }
+
+    public function addSaltoParent(Request $request){
+        $salto = $request['salto'];
+        $idQuestion = $request['idQuestion'];
+
+        $option = questionsTemplates::where('id',$idQuestion)->update(array('salto' => $salto));
+
+        return $option;
     }
 
     public function deleteQuestion(Request $request){
