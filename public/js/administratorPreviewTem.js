@@ -170,8 +170,17 @@ $(document).ready(function(){
             }); 
 
             }else{
-                n++;
-                $("#back"+n).val(n-1);
+                salto = $("#saltoa"+n).val();
+                if(salto==""){
+                    n++;  
+                    $("#back"+n).val(n-1);//configurar regreso para salto en pregunta abierta
+                }else{
+
+                    n=salto;
+
+                }
+
+
             }
 
 

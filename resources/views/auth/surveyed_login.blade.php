@@ -15,16 +15,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-md-offset-4" style="margin-top:10%;">
+            <div class="col-md-4 col-md-offset-4">
                     <form class="form-horizontal" method="POST" action="/surveyed/validate">
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <p>Número Cuenta: </p>
-                                <input id="cuenta" type="text" class="form-control" name="cuenta" value="{{ old('email') }}" placeholder="Número Cuenta" required autofocus>
+                            <label for ="correo" class="col-md-4 control-label">Correo Electronico</label>
+                                <input id="correo" type="email" class="form-control" value="" placeholder="Correo Electronico" required>
+                                <br>
+                            <label for="cuenta" class="col-md-4 control-label">Matricula</label>
+
+                                <input id="cuenta" type="text"  class="form-control" name="cuenta" value="{{ old('email') }}" placeholder="Número Cuenta" required autofocus>
                                 <input id="ruta"   type="hidden" name="ruta" value="{{$ruta}}"> 
                         </div>
-                            <div class="col-md-6">
-                                <button type="submit" class="btn">
+                            <div class="col-md-10">
+                                <button type="submit" class="btn btn-primary">
                                     Ingresar
                                 </button>
                             </div>

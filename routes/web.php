@@ -207,6 +207,8 @@ Route::post('/administrator/updateOrderQuestion', 'questionsTemplateController@u
 
 Route::post('/ingresar','listasController@ingresarlista');//Mi linea
 
+Route::post('/respuesta','listasController@respuesta');//Mi linea
+
 Route::post('/eliminarlista','listasController@eliminarlista');//Mi linea
 
 Route::post('/incidente','listasController@incidente');//Mi linea
