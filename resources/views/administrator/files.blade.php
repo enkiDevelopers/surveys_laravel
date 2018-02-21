@@ -28,7 +28,7 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-        <form  method="post" id="formuploadajax" enctype="multipart/form-data">
+        <form  method="get" id="formuploadajax" enctype="multipart/form-data">
           <hr>
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
@@ -279,8 +279,8 @@ try{
           <div class="modal-footer">
 
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    					<span aria-hidden="true">&times;</span>
-    				</button>
+              <span aria-hidden="true">&times;</span>
+            </button>
        <!--     <button type="button" class="btn btn-primary" onclick="addExclude()">Guardar Cambios</button> -->
             <button class="btn btn-primary" onclick="addExclude()">Conectar a la Base de Datos remota UVM</button>
 
@@ -424,8 +424,9 @@ $(function(){
 
      });
 
-});
 
+
+});
 
 $(function(){
       $("#formincidentes").on("submit", function(e){
@@ -476,9 +477,9 @@ setTimeout(function(){checkData()}, 5000);
        $('#AgregarIncidentes').hide();
       $('.modal-backdrop').hide();
 
-     });
-
-});
+     };
+   });
+  });
   </script>
 
     <script>
