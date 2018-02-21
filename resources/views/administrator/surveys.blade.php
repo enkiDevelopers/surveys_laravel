@@ -19,12 +19,12 @@
                         <div class="col-md-3">
                           <h3><b>  Plantillas </b> </h3>
                         </div>
-                        <div class="col-md-9 pull-right">
+                        <div class="col-md-9 pull-right" id="infob">
                             <div class="row">
                               <br />
                                 <div class="col-md-1">&nbsp</div>
                                 <div class="col-md-1 pull-right">
-                    <a onclick="ocultar();" id="btnO"><span class="glyphicon glyphicon-chevron-up"></span> </a>
+                    <a onclick="ocultar();" id="btnO"><span id="cambiar" class="glyphicon glyphicon-chevron-up"></span> </a>
                                 </div>
                                 <div class="col-md-2 pull-right">
                                     <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
@@ -67,7 +67,6 @@
 
 <!--Termina boton añadir plantila de encuesta -->
 
-
                         <div class="col-sm-0">
                         </div>
                                   <div id="actualizar">
@@ -77,39 +76,42 @@
                 </div>
             </div>
 
-                    <div class="panel panel-default"  id="panel">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-6">
-                            Encuestas publicadas
+                    <div class="panel panel-default"  id="panel" >
+                    <div class="panel-heading"> <!-- INICIO ENCABEZADO PANEL -->
+                      <div class="row">
+                          <div class="col-md-3">
+                            <h4><b>  Encuestas publicadas </b> </h4>
+                          </div>
+                          <div class="col-md-9 pull-right" id="infob">
+                              <div class="row">
+                                <br />
+                                  <div class="col-md-1">&nbsp</div>
+                                  <div class="col-md-1 pull-right">
+                      <a onclick="ocultar2();" id="btnOp"><span id="cambiar2" class="glyphicon glyphicon-chevron-up"></span> </a>
+                                  </div>
+                                  <div class="col-md-2 pull-right">
+                                      <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
+                                  </div>
+                                  <div class="col-md-2 pull-right">
+                                    Activa<div class="pull-right survey-status survey-status__active"></div>
+                                  </div>
+                                  <div class="col-md-2 pull-right">
+                                    Finalizada<div class="pull-right survey-status survey-status__finished"></div>
+                                  </div>
+                                  <div class="col-md-2 pull-right">
+                                  <img id="btnT" src="/img/redes/twitter.png"  width="40" height="40" onclick="infoT();"/>
+                                  </div>
+                                  <div class="col-md-2 pull-right">
+                                  <img id="btnF" src="/img/redes/Facebook.png"  width="40" height="40" onclick="infoF();"/>
+                                  </div>
+
+                              </div>
+                          </div>
+                      </div>
+
                         </div>
-                        <div class="col-md-1">&nbsp</div>
-
-                        <div class="col-md-5 ">
-                            <div class="row">
-                                <div class="col-md-4">
-                                  Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
-                                </div>
-
-                                <div class="col-md-4">
-                                    Activa<div class="pull-right survey-status survey-status__active">&nbsp</div>
-                                </div>
-
-
-
-                                <div class="col-md-4">
-                                    Finalizada<div class="pull-right survey-status survey-status__finished">&nbsp</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                <img src="/img/redes/Facebook.png"  width="40" height="40"/>
-                <img src="/img/redes/twitter.png"  width="40" height="40"/>
-                    </div>
-                        </div>
-
-                <div class="panel-body scroll">
+                        <!-- fin ENCABEZADO PANEL -->
+                <div class="panel-body scroll" id="pPBody">
                     <div class="row">
 
                         <div class="" id="recibiendo">

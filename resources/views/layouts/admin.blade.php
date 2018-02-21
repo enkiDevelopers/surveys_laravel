@@ -23,36 +23,34 @@
     <div class="wrapper" id="app">
             <!-- Sidebar Holder -->
             <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
-                <div class="sidebar-header">
-                      <h3 class="administrator-header">Administrador</h3>
-                </div>
 
+              <div>
+                  <img src="/img/logos/UVM_Logo_Blanco.png" alt="Logo UVM" class="logo_UVM">
+              </div>
+<hr class="divider">
                 <ul class="list-unstyled components">
-                    <div class="profile center text-center" id="perfil" onclick="profile();" style="cursor:pointer;">
-                        <img src="/img/avatar/default.png">
-                  <a href="{{url("/administrator")}}"><p>Rafael Alberto Martínez Méndez</p></a>
-                    </div>
+
                     <li id="home">
                         <a href="{{ url('/administrator/surveys')}}" >
-                            <i class="glyphicon glyphicon-briefcase"></i>
+
                             <span>Encuestas</span>
                         </a>
                     </li>
                     <li id="files">
                         <a href="{{ url('/administrator/files') }}" >
-                            <i class="glyphicon glyphicon-list-alt"></i>
+
                             <span>Encuestados</span>
                         </a>
                     </li>
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
-                            <i class="glyphicon glyphicon-user"></i>
+
                             <span>Administradores</span>
                         </a>
                     </li>
                     <li id="log-out" class="exit">
                         <a href="{{ url('/logout') }}">
-                            <i class="glyphicon glyphicon-log-out"></i>
+
                             <span>Salir</span>
                         </a>
                     </li>
@@ -62,7 +60,7 @@
             <nav id="sidebarMobile" class="navbar-default navbar-fixed-top  visible-xs" >
                 <ul class="list-inline components">
                     <div class="profile center text-center" id="perfil" onclick="profile();" style="padding-top:-20px;cursor:pointer;width: 20%;display:inline-block;">
-                        <img src="/img/avatar.jpeg" alt="" style="vertical-align: initial;">
+                        <img src="/img/logo/UVM_Logo.png" alt="" style="vertical-align: initial;">
                     </div>
                     <li id="home">
                         <a href="{{ url('/administrator/surveys')}}" >
@@ -106,6 +104,13 @@
         function profile(){
             location.href= "{{url('/administrator')}}";
         }
+
+
+        $( document ).ready(function() {
+
+        });
+
+
     </script>
 </body>
 </html>

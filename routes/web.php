@@ -129,7 +129,7 @@ Route::get('/administrator/consultar/publicaciones', 'encuestadosController@cons
 Route::get('/administrator/edit/{id}/',["as" => "editar", "uses" => "editController@busqueda" ]);
 
 
-Route::get('/borrar','encuestadosController@enviar');
+Route::get('/borrar',function(){ return view("administrator.borrar");});
 
 
 Route::get('administrator/surveys/preview', function(){

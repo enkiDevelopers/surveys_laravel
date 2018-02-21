@@ -2048,7 +2048,7 @@ pre code {
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding-left: 1px;
+  padding-left: 15px;
   padding-right: 15px;
 }
 
@@ -6901,7 +6901,6 @@ button.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
-  width: 100%;
 }
 
 .panel-heading > .dropdown .dropdown-toggle {
@@ -8511,3 +8510,4 @@ button.close {
   margin-top: 20px;
   margin-bottom: 50px;
 }
+
