@@ -257,7 +257,7 @@ $(document).ready(function(){
         var typeQuestion = parseInt($(this).attr('typeQuestion'));
         var opciones= $($(this).parent().parent().parent().children('.yes-no-question-block').children().find('input')).map(function() {
             return $(this).val();
-        }).get().join( ";" ).split(';');
+        }).get().join("¬").split('¬');
         var salto = parseInt(orden) + 1;
         
            $("#questionInputEdit").val(title);
@@ -289,7 +289,7 @@ $(document).ready(function(){
             function(){
                var idQuestion =  $(".title").map(function() {
                     return $(this).attr('id');
-                }).get().join( ";" ).split(';');
+                }).get().join('¬').split('¬');
                 var idTemplate = parseInt($(".new-question__control--edit-question").attr('idTemplate'));
 
                 $.ajax({
@@ -322,18 +322,18 @@ $(document).ready(function(){
                     update: function(){
                         var opciones = $(".numPregs").map(function() {
                             return $(this).val();
-                        }).get().join( ";" ).split(';');
+                        }).get().join("¬").split('¬');
 
                         for (var i = 0; i <= $(".numPregs").length; i++) {
-                            var sizeOp = sizeOp +";"+ i;
+                            var sizeOp = sizeOp +'¬'+ i;
                         }
                  
-                        size = sizeOp.split(';');
+                        size = sizeOp.split('¬');
                         newOrden = size.splice(2,325);
 
                         var idQuestion =  $(".title").map(function() {
                             return $(this).attr('id');
-                        }).get().join( ";" ).split(';');
+                        }).get().join( "¬" ).split('¬');
 
                         $.ajax({
                             url: '/administrator/updateOrderQuestion',
@@ -587,10 +587,10 @@ $(document).ready(function(){
 
 
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
-            optionsResult = optionsResult + ";" + questionOptionInputsA[i].value;
+            optionsResult = optionsResult + '¬' + questionOptionInputsA[i].value;
         }
 
-       optionsResult = optionsResult.split(';');
+       optionsResult = optionsResult.split('¬');
        optionsResult = optionsResult.splice(2,325);
 
         if (questionInput.length == 0 || questionOptionInput.length == 0) {
@@ -648,10 +648,10 @@ $(document).ready(function(){
         var optionsResult = "";
         var questionOptionInputsA = document.getElementsByClassName('questionOptionInputsEdit');
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
-                    optionsResult = optionsResult + ";" + questionOptionInputsA[i].value;
+                    optionsResult = optionsResult + '¬' + questionOptionInputsA[i].value;
                 }
 
-               optionsResult = optionsResult.split(';');
+               optionsResult = optionsResult.split('¬');
                optionsResult = optionsResult.splice(2,325);
         if (titleEdit.length == 0){
             alertify.alert("Ingrese una pregunta.", function(){});

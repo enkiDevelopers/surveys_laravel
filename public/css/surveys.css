@@ -2,6 +2,23 @@
 {
   width: 100%;
 }
+.infoUser{
+  margin-top: 10px;
+  height: 85px;
+  background: -webkit-linear-gradient(top left,#304ffe, #1565c0);
+  background: -o-linear-gradient(top left, #304ffe, #1565c0);
+  background: linear-gradient(to bottom right ,#304ffe, #1565c0);
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: right;
+  border-radius: 14px;
+  margin-left: -80px;
+  z-index: -10;
+}
+.infoUser span{
+  margin-right: 25px;
+}
 #btn-añadir
 {
   width: 200px;
@@ -302,14 +319,17 @@ color: #fff;
 }
 
 .circle {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    max-width: 150px;
+    max-height: 150px;
+    height: 100px;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    border-radius: 50%;
-    background: #4679BD;
     display: inline-block;
     margin-left: 0;
+    border-radius: 60px;
+    box-shadow: 7px 0 35px #ccd;
+    background: #9e9e9e;
 }
 
 #texto
@@ -391,6 +411,9 @@ overflow: hidden;
   {
     margin-left: 20%;
   }
+  .col-infoUser{
+        display: none;
+    }
 
   }
 

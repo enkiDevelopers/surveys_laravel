@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
+  <link rel="stylesheet" href="/css/surveys.css">
   <link href="css/input/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
   <script src="/js/input/jquery-3.2.1.min.js"></script>
   <script src="/js/input/piexif.min.js" type="text/javascript"></script>
@@ -14,18 +15,19 @@
 <script src="/js/homeAdministrator.js"></script>
 <div class="container">
   <div class="row">
-    <div class="col-md-11 col-md-offset-1">
+    <div class="col-md-11 col-md-offset-1 col-infoUser">
       <div class="row">
-        <div >
-          <img  src="/img/avatar/{{$info->imagenPerfil}}" class="img-thumbnail img-principal img-responsive" data-toggle="modal" data-target="#editarImagen" data-keyboard="false" data-backdrop="static"
+          <div class="col-md-11 col-md-offset-3">
+            <div class="col-md-1">
+            <img  src="/img/avatar/{{$info->imagenPerfil}}" class="img-thumbnail circle img-principal img-responsive" data-toggle="modal" data-target="#editarImagen" data-keyboard="false" data-backdrop="static"
           style="cursor: pointer;">
-        </div>
-      </div>
-      <div>
-        <label for="name">Nombre: </label><br>
-        <label> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}</label><br><br>
-        <label for="email">Correo: </label><br>
-        <label>{{$info->email}}</label><br><br>
+            </div>
+            <div class="col-md-5 infoUser">
+              <span class="glyphicon glyphicon-cog pull-left" style="padding-left: 100px;"></span>
+              <label style="padding-top: -10px">{{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}</label>   
+              <label>{{$info->email}}</label>
+            </div>
+          </div>
       </div>
     </div>
   </div>
