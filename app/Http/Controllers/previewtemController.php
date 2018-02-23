@@ -18,6 +18,10 @@ class previewtemController extends Controller
   {
 
       $idencuesta1=NULL;
+      $dato=DB::table('templates')->where('id','=', $id)->count();
+      if($dato==0){
+        return view("errors.404");
+      }else{
       $consulta = DB::table('templates')->select(['tituloEncuesta','descripcion','imagePath','creador'] )->where('id','=', $id)->get();
       $titulo = $consulta[0]->tituloEncuesta;
       $descripcion = $consulta[0]->descripcion;
@@ -58,7 +62,7 @@ class previewtemController extends Controller
 
 
       return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','options','admor','idencuesta1'));
-
+}
  //     return view("administrator.preview",compact('titulo','descripcion','imagePath','eid','datos','options','admor'));
     }
   

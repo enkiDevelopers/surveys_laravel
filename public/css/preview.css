@@ -84,17 +84,19 @@
           height: 100%;
 
      }
+     .fondogris{
+      background-color: #ECEAE6;
+     }
      .anchodiv{
       height: 20%;
       background-color: white;
-      overflow:scroll;
      }
      .margenarriba{
       margin-top: 30px;
      }
      .fondo{
-       background-image: url('/img/fondoexitoso.png');
-       background-color: #F5F5F5;
+       /*background-image: url('/img/fondoexitoso.png');*/
+       background-color: white;
        background-repeat: no-repeat;
        background-position: right ; 
      }
@@ -108,7 +110,7 @@
 
      }
      .btnsiguiente{
-      margin-top: 20%;
+      margin-top: 15%;
       margin-bottom:5%; 
       width: 300px;
       background-color: #31B404;
@@ -128,10 +130,7 @@
       width: 250px;
       height: 40px;
      }    
-    .scroll{
-            height: 40%;
-            overflow:scroll;
-    }
+
      @media screen and(max-width: 900px){
                 html,body {
 
@@ -140,8 +139,8 @@
                     }
             .fondo{
                    display: inline-block;
-                   background-image: url('/img/fondoexitoso.png');
-                   background-color: #F5F5F5;
+                  /* background-image: url('/img/fondoexitoso.png');*/
+                   background-color: white;
                    background-repeat: no-repeat;
                    background-position: center; 
            }
@@ -158,8 +157,8 @@
                     overflow-x:hidden;
                     }
       .fondo{
-                   background-image: url('/img/fondoexitoso.png');
-                   background-color: #F5F5F5;
+                 /*  background-image: url('/img/fondoexitoso.png');*/
+                   background-color: white;
                    background-repeat: no-repeat;
                    background-position: center; 
            }
@@ -179,7 +178,7 @@
                   background-color: #31B404;
       }
       .divmovil{
-              height: 300%;
+              overflow: auto;
               background-color: rgba(221, 222, 214, 0.8); 
       }
       .imagen{
@@ -204,8 +203,8 @@
                      /* overflow: hidden;*/
       }
       .fondo{
-                   background-image: url('/img/fondoexitoso.png');
-                   background-color: #F5F5F5;
+                /*   background-image: url('/img/fondoexitoso.png');*/
+                   background-color: white;
                    background-repeat: no-repeat;
                    background-position: center; 
            }
@@ -247,3 +246,8 @@
 }
 
       }
+          .scroll{
+            background-color: rgba(221, 222, 214, 0.8); ;
+            height: 200px;
+            overflow:auto;
+       }

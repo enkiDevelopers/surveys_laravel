@@ -49,8 +49,8 @@
             <h2 class="text-center text-black-body" id="idTitlePregunta">Instrucciones Generales: </h2>
         </div>
 
-        <div class="col-md-6 col-md-offset-3 margenarriba total" style="overflow:auto;">
-            <div class="col-md-10 pregs scroll" id="preg0">
+        <div class="col-md-6 col-md-offset-3 margenarriba total" >
+            <div class="col-md-10 pregs" id="preg0">
                 <div align="justify" class="form-group text-black-body "  >
                     <ul>
                         <li><strong>Lee con atención las preguntas </strong></li>
@@ -70,13 +70,11 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-                <div class="divmovil">
-
             <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
                     <div align="justify" class="fondogris">
                         <h2 class="text-center text-black-body" >{{$dato->title}} </h2>
                     </div>
-
+       <!-- <div class="divmovil">-->
                 <input type="hidden" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
                 <input type="hidden" name="back"  id="num<?php echo $i?>" value="<?php echo $i ?>">
                 <input type="hidden" name="type"  id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
@@ -84,36 +82,39 @@
         <?php
             if($dato->type==1){
         ?>
-            <div class="bl_form" class="col-md-10 pregs" style="margin-top: 7%;margin-bottom:15px;" >
+        <div class="scroll">
+            <div class="bl_form" class="col-md-10 pregs " style="margin-top: 7%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
-                    <input type="input" style="height: 100%;width: 100%;" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control" >   
+                    <input type="input" style="height: 100%;width: 100%; " class="fondogris" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control"  placeholder="Escribe tu respuesta">   
             </div>
+        </div>
         <?php
             }
             else{
         ?>
- 
+ <div class="scroll">
         <?php 
                 $opciones=$cada["options"]; 
                 foreach ($opciones as $option) {
         ?>
-                <div class="form-group">
+                <div>
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden" class="form-control" >
-            
                 </div> 
                                
         <?php
         }
-        }
         ?>
-        </div>
+</div>
+        <?php }
+        ?>
+       <!-- </div>-->
         </div>
 
         <?php
                  $i++;   
-        }
+        } 
  
         ?>
         <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
@@ -122,7 +123,7 @@
         <?php 
         ?>
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
-        <div class="col-md-10" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
+        <div class="col-md-10 scroll" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
         <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
         <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
 
@@ -135,8 +136,8 @@
 
         <div class="col-md-12" >
         <center>
-        <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;'>
-           <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
+            <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;'>
+            <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
             <input type="button" class="btn btn-lg text-black-body btnsiguiente"  id="idNext" value="Entendido!" style="color:white;">
         </center>   
 

@@ -28,8 +28,10 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-        <form  method="post" id="formuploadajax" enctype="multipart/form-data">
+        <form  method="post" id="formuploadajax" action="/ingresar" enctype="multipart/form-data">
           <hr>
+          {{ csrf_field() }}
+
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
             <label for="exampleInputFile">Subir documento</label>
@@ -130,7 +132,8 @@
 <?php
 try{
   foreach ($listas as $lista) {
-    if($lista->usado== 0){
+    if($lista->carga==1){
+      if($lista->usado== 0){
 ?>
                         <div class="col-md-4" id="delete_{{$lista->idLista}}">
                             <div class="card well text-center" >
@@ -186,6 +189,36 @@ try{
 
 
 <?php
+}
+}else{
+  ?>
+                        <div class="col-md-4" id="delete_{{$lista->idLista}}">
+                            <div class="card well text-center" >
+                                <img class="card-img-top" id="icono"  src="/img/lista.png" width="100px" height="100px">
+                                <div class="card-body">
+                                    <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
+                                      <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
+
+                                        <div class="btn-group" role="group" aria-label="...">
+                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black" disabled>
+                                            <span class="glyphicon glyphicon-eye-open"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                        <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled>
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </a>
+                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black" disabled>
+                                            <span class="glyphicon glyphicon-alert"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+  <?php
 }
             }
 
@@ -364,10 +397,8 @@ try{
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
 
-$(function(){
+/*$(function(){
       $("#formuploadajax").on("submit", function(e){
-
-    var data=false;
 
     $.ajaxSetup({
         headers: {
@@ -386,7 +417,6 @@ $(function(){
               processData: false,
               contentType: false,
               data : formData,
-              timeout: 0,
               enctype: 'multipart/form-data',
               async:true,
               cache:false,
@@ -396,15 +426,14 @@ $(function(){
 
               },
               success : function(response){
-
                 $("#divid").load(" #divid");
                 $('#nombre').val('');
                 $('#archivo').val('');
+
                 $("#procesando").hide();
               },
               error : function(error) {
-                  console.log(error);
-              /*  $("#procesando").hide();
+                $("#procesando").hide();
                  swal({
                       title: "Información",
                       text: "Verifique la estructura de su documento",
@@ -413,18 +442,16 @@ $(function(){
                       confirmButtonColor: '#DD6B55',
                       confirmButtonText: 'Continuar',
                       closeOnConfirm: true,
-                   })*/
+                   })
 
               }
-
 
           });
        $('#AgregarLista').hide();
       $('.modal-backdrop').hide();
 
      });
-
-});
+});*/
 
 
 $(function(){
@@ -436,7 +463,6 @@ $(function(){
         }
 });
 setTimeout(function(){checkData()}, 5000);
-    function checkData(){
           e.preventDefault();
           var f = $(this);
           var formData = new FormData($(this)[0]);
