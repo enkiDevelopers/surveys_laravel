@@ -39,26 +39,14 @@
                             <span>ADMINISTRADORES</span>
                         </a>
                     </li>
-                    <li id="log-out" >
-                        <a href="{{ url('/logout') }}"  style="color:#fc0404; padding-left: 50%;">
+                    <li id="log-out">
+                        <a href="{{ url('/logout') }}">
                             <span>SALIR</span>
                         </a>
                     </li>
                 </ul>
             </nav>
 
-    <!--        <nav id="sidebarMobile" class="navbar-default navbar-fixed-top  visible-xs" >
-                <ul class="list-unstyled components">
-                    <div class="profile center text-center" id="perfil" onclick="profile();" style="padding-top:-20px;cursor:pointer;width: 20%;display:inline-block;">
-                        <img src="/img/avatar.jpeg" alt="" style="vertical-align: initial;">
-                    </div>
-                    <li id="home">
-                        <a href="{{ url('/administrator/surveys')}}/{{$admor}}"  >
-                            <i class="glyphicon glyphicon-arrow-left"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav> -->
                 @yield('content')
             </div>
         </div>

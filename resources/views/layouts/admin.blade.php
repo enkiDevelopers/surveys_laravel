@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,95 +17,106 @@
     <script src="/js/sweetalert.min.js"></script>
     <script src="/js/moment.min.js"></script>
     <script src="/js/datepicker.js"></script>
-</head>
-<body>
+  </head>
+  <body>
 
     <div class="wrapper" id="app">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
-                <div class="sidebar-header">
-                      <h3 class="administrator-header">Administrador</h3>
-                </div>
+      <!-- Sidebar Holder -->
+      <nav id="sidebar" class="visible-lg-* visible-md-* .visible-sm-*">
+        <div>
+          <img src="/img/logos/UVM_Logo_Blanco.png" alt="Logo UVM" class="logo_UVM">
+        </div>
+        <hr class="divider">
+        <ul class="list-unstyled components">
+          <li id="home">
+            <a href="{{ url('/administrator/surveys')}}" >
+              <span>ENCUESTAS</span>
+            </a>
+          </li>
+          <li id="files">
+            <a href="{{ url('/administrator/files') }}" >
+              <span>LISTAS</span>
+            </a>
+          </li>
+          <li id="admin-list">
+            <a href="{{ url('/administrator/management') }}">
+              <span>ADMINISTRADORES</span>
+            </a>
+          </li>
+          <li id="log-out" class="exit">
+            <a href="{{ url('/logout') }}">
+              <span>SALIR</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-                <ul class="list-unstyled components">
-                    <div class="profile center text-center" id="perfil" onclick="profile();" style="cursor:pointer;">
-                        <img src="/img/avatar/default.png">
-                  <a href="{{url("/administrator")}}"><p>Rafael Alberto Martínez Méndez</p></a>
-                    </div>
-                    <li id="home">
-                        <a href="{{ url('/administrator/surveys')}}" >
-                            <i class="glyphicon glyphicon-briefcase"></i>
-                            <span>Encuestas</span>
-                        </a>
-                    </li>
-                    <li id="files">
-                        <a href="{{ url('/administrator/files') }}" >
-                            <i class="glyphicon glyphicon-list-alt"></i>
-                            <span>Encuestados</span>
-                        </a>
-                    </li>
-                    <li id="admin-list">
-                        <a href="{{ url('/administrator/management') }}">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <span>Administradores</span>
-                        </a>
-                    </li>
-                    <li id="log-out" class="exit">
-                        <a href="{{ url('/logout') }}">
-                            <i class="glyphicon glyphicon-log-out"></i>
-                            <span>Salir</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+      <nav id="sidebarMobile" class="navbar-default navbar-fixed-top visible-xs">
+        <ul class="list-inline components">
+          <li id="UVM_Movil">
+            <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;margin-left: 15%;" >
+          </li>
+          <li id="menu" style="float: left;background-color: darkred;height: 80px;width: 18%;">
+            <a href="#" style="text-align: center;color: white">
+              <i class="glyphicon glyphicon-menu-hamburger"></i>
+            </a>
+          </li> 
+          <li id="rol" style="float: right;background-color: blue;height: 80px;width: 18%;">
+            <a href="#" style="text-align: center;color: white">
+              <i class="glyphicon glyphicon-cog"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
 
-            <nav id="sidebarMobile" class="navbar-default navbar-fixed-top  visible-xs" >
-                <ul class="list-inline components">
-                    <div class="profile center text-center" id="perfil" onclick="profile();" style="padding-top:-20px;cursor:pointer;width: 20%;display:inline-block;">
-                        <img src="/img/avatar.jpeg" alt="" style="vertical-align: initial;">
-                    </div>
-                    <li id="home">
-                        <a href="{{ url('/administrator/surveys')}}" >
-                            <i class="glyphicon glyphicon-briefcase"></i>
-                        </a>
-                    </li>
-                    <li id="files">
-                        <a href="{{ url('/administrator/files') }}" >
-                            <i class="glyphicon glyphicon-file"></i>
-                        </a>
-                    </li>
-                    <li id="admin-list">
-                        <a href="{{ url('/administrator/management') }}">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </a>
-                    </li>
-                    <li id="log-out" class="exit">
-                        <a href="{{ url('/logout') }}">
-                            <i class="glyphicon glyphicon-log-out"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        @yield('content')
-    </div>
+      <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
+        <ul class="list-unstyled components">
+          <li>
+            <span aria-hidden="true" style="font-size: 50px;float: right;color: white;border:5px solid white;border-radius: 50px;height: 40px;">&times;</span>
+          </li>
+          <li id="home" >
+            <a href="{{ url('/administrator/surveys')}}" >
+              <span>ENCUESTAS</span>
+            </a>
+          </li>
+          <li id="files">
+            <a href="{{ url('/administrator/files') }}" >
+              <span>LISTAS</span>
+            </a>
+          </li>
+          <li id="admin-list">
+            <a href="{{ url('/administrator/management') }}">
+              <span>ADMINISTRADORES</span>
+            </a>
+          </li>
+          <li id="log-out__Content" class="exit">
+            <a href="{{ url('/logout') }}">
+              <span>SALIR</span>
+            </a>
+          </li>     
+        </ul>
+
+      </nav>
+          @yield('content')
+      </div>
 
     <!-- Scripts -->
     <script type="text/javascript">
-        $(document).ready(function () {
+      $(document).ready(function () {
 
-            var alto = (screen.height) - (screen.availHeight);
-            var barra = screen.availHeight - alto - (alto/2) - (alto/4);
+          var alto = (screen.height) - (screen.availHeight);
+          var barra = screen.availHeight - alto - (alto/2) - (alto/4);
 
-            $("#sidebar").height(barra);
-            $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-             });
+          $("#sidebar").height(barra);
+          $('#sidebarCollapse').on('click', function () {
+          $('#sidebar').toggleClass('active');
+           });
 
+        $("#sidebarMobile").on('click', '#menu', function(event) {
+          $("#contentSidebarMobile").toggle("slide");
         });
 
-        function profile(){
-            location.href= "{{url('/administrator')}}";
-        }
+      });
     </script>
-</body>
+  </body>
 </html>

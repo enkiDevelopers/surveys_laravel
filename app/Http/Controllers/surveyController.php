@@ -134,7 +134,8 @@ foreach ($preguntasA as $pregunta) {
             'title' => $pregunta->title,
             'type' => $pregunta->type,
             'orden' => $pregunta->orden,
-            'templates_idTemplates' => $idDupi
+            'templates_idTemplates' => $idDupi,
+            'salto'=> $pregunta->salto
         ]);
 
           }

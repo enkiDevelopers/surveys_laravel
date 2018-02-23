@@ -10,9 +10,11 @@ use Input;
 
 class rootController extends Controller
 {
-    public function config(Request $request){
+    public function config(){
 
-        return view('root.config');
+		$todo =	Enveditor::all();
+
+        return view('root.config',compact('todo'));
 	}
 
 	public function home(){

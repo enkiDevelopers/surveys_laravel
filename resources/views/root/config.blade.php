@@ -10,18 +10,20 @@
     <img src="https://www.shareicon.net/download/2015/09/03/95316_key_512x512.png">
     </img>
   </div>
+
+<?php 
+echo $todo['DB_HOST'];
+
+ ?>
+
 <div id="container">
   <h1>Contraseña Root</h1>
-<!--  <span class="close-btn">
-    <img src="https://cdn4.iconfinder.com/data/icons/miu/22/circle_close_delete_-128.png"></img>
-  </span>  -->
   <form method="POST" action="" >
-    <input type="password" name="pass" placeholder="Contraseña" required >
-    <input type="password" name="rePass" placeholder="Repetir Contraseña" required >
+    <input type="password" name="pass" id="pass" minlength="6" placeholder="Contraseña" required >
+    <input type="password" name="rePass" id="rePass" minlength="6" placeholder="Repetir Contraseña" required >
     <input type="submit" value="Siguiente">
   </form>
 </div>
-
 <div id="container-step2">
   <h1>Base de Datos</h1>
 <!--  <span class="close-btn">
@@ -40,5 +42,5 @@
 </body>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
-<script src="js/login.js"></script>
+<script src="js/config.js"></script>
 </html>

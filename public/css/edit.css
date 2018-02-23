@@ -1,3 +1,9 @@
+hr{
+    border-top: 2px solid #c62828;
+}
+.container{
+	width: 100%;
+}
 .new-question__control--edit-question{
 	box-shadow: 3px 3px 3px #174340;
     width: 46px;
@@ -10,11 +16,23 @@
     height: 43px;
 }
 .new-survey__control, #sortableQuestions{
+	margin-left: 12%;
 	border-radius: 50px;	
 	height:  46px;
     background: -webkit-linear-gradient(top left, #1a237e, #0d47a1);
     background: -o-linear-gradient(top left, #1a237e, #0d47a1);
     background: linear-gradient(to bottom right, #1a237e, #0d47a1);
+}
+.new-survey__controls{
+    display: block;
+    text-align: -webkit-center;
+}
+@media screen and (max-width: 1220px) {
+	.col-desc{
+	float: right;
+    margin-right: 6%;
+    width: 63%;
+	}
 }
 
 @media screen and (max-width: 1095px) {
@@ -32,6 +50,12 @@
 	}
 }
 @media screen and (min-width: 767px) and (max-width: 991px) {
+	.col-desc{
+	margin-top: 1%;
+    width: 90%;
+    float: inherit;
+    margin-left: 7%;
+	}
 	.light-grey{
 		margin-top: 90px;
 		margin-bottom: -75px;
@@ -118,11 +142,5 @@
 		padding: 0px;
 		float: left;
 	 }
-	 .well{
-	 	height: 185px;
-	 }
-	 div[value="Opc. Múltiple"]{
-	 	border: 1px solid red;
-	 }
-	
+
 }

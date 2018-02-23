@@ -25,4 +25,3 @@
 				@include('administrator.modalQuestionEdit')
 
  @endsection
-

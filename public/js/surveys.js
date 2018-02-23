@@ -412,37 +412,28 @@ swal({
 }
 
 
+
 function ocultar()
 {
-  var className = $('#btnO').attr('class');
 //$("#pBody").toggle();
-$('#pBody').toggle(
-    function () {
-      if(className == "glyphicon glyphicon-chevron-up")
-      {
-        $("#btnO").removeClass(className);
-        $("#btnO").addClass("glyphicon glyphicon-chevron-down");
+    $("#cambiar").toggleClass('glyphicon-chevron-up glyphicon-chevron-down')
+$('#pBody').toggle("fadeOut");
+}
 
-      }
-  if(className == "glyphicon glyphicon-chevron-down")
-  {
-    $("#btnO").removeClass(className);
-    $("#btnO").addClass("glyphicon glyphicon-chevron-up");
-  }
-          },
-    function () {
-      if(className == "glyphicon glyphicon-chevron-up")
-      {
-        $("#btnO").removeClass(className);
-        $("#btnO").addClass("glyphicon glyphicon-chevron-down");
+function ocultar2()
+{
+//$("#pBody").toggle();
+    $("#cambiar2").toggleClass('glyphicon-chevron-up glyphicon-chevron-down')
+$('#pPBody').toggle("fadeOut");
+}
 
-      }
-  if(className == "glyphicon glyphicon-chevron-down")
-  {
-    $("#btnO").removeClass(className);
-    $("#btnO").addClass("glyphicon glyphicon-chevron-up");
-  }
+function infoF()
+{
+  swal("Comparte en Facebook:","52.173.36.209/surveyeds/login/facebook");
 
-          }
-      );
+}
+
+function infoT()
+{
+swal("Comparte en twitter:","52.173.36.209/surveyeds/login/twitter");
 }

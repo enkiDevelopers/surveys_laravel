@@ -1,19 +1,15 @@
         <div class="row col-md-12">
             <div class="new-survey__controls " > 
-                <center>
-                    <div class="col-md-11">
+                <div class="col-md-11">
                         <button class="btn btn-info new-survey__control" id="addQuestion">
                             <span class="glyphicon glyphicon-plus"></span>
                             <label>Agregar pregunta</label>
                         </button>
-                       <button id="sortableQuestions" class="btn btn-info pull-right">
+                       <button id="sortableQuestions" class="btn btn-info">
                             <span class="glyphicon glyphicon-th-list"></span>
                             <label>Reacomodar</label>
                         </button>
                     </div>
-
-                </center>
-
             </div>
         </div>
 
@@ -22,7 +18,7 @@
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
     <div class="row new-question-template " id="new-question-template">
         <div aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="position: fixed;z-index: 1070;" class="modal fade" id="ModalQuestion" role="dialog" aria-labelledby="ModalQuestionLabel" >
-            <div class="modal-dialog" role="document" style="width: 825px;">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -102,5 +98,5 @@
 
 
     <div id="loader" class="modal fade">
-        <img src="/img/load/loader.gif" alt="cargando..." width="50px" height="50px" style=" margin-top: 25%;margin-left: 50%">
+        <img src="/img/load/loader.gif" alt="cargando..." width="50px" height="50px" style="margin-top: 25%;margin-left: 50%">
     </div>

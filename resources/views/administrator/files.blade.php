@@ -28,7 +28,11 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
+<<<<<<< HEAD
         <form  method="post" id="formuploadajax" action="/ingresar" enctype="multipart/form-data">
+=======
+        <form  method="get" id="formuploadajax" enctype="multipart/form-data">
+>>>>>>> 047320a80454864d9ac2a8238aaf3c9987b4eb08
           <hr>
           {{ csrf_field() }}
 
@@ -312,8 +316,8 @@ try{
           <div class="modal-footer">
 
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-    					<span aria-hidden="true">&times;</span>
-    				</button>
+              <span aria-hidden="true">&times;</span>
+            </button>
        <!--     <button type="button" class="btn btn-primary" onclick="addExclude()">Guardar Cambios</button> -->
             <button class="btn btn-primary" onclick="addExclude()">Conectar a la Base de Datos remota UVM</button>
 
@@ -451,8 +455,14 @@ try{
       $('.modal-backdrop').hide();
 
      });
+<<<<<<< HEAD
 });*/
+=======
 
+>>>>>>> 047320a80454864d9ac2a8238aaf3c9987b4eb08
+
+
+});
 
 $(function(){
       $("#formincidentes").on("submit", function(e){
@@ -502,9 +512,9 @@ setTimeout(function(){checkData()}, 5000);
        $('#AgregarIncidentes').hide();
       $('.modal-backdrop').hide();
 
-     });
-
-});
+     };
+   });
+  });
   </script>
 
     <script>
