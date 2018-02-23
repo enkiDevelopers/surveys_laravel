@@ -82,7 +82,7 @@ try {
      $inicio=0;
      $termino=2000;
      $Iusers2 = new encuestados;
-     
+
      for ($i=0; $i < $iteraciones ; $i++) {
 
      $Iusers2 = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)
@@ -117,30 +117,24 @@ else {
 
 public function enviar(Request $request)
 {
-/*
-  $Iusers = encuestados::where('listaEncuestados_idLista', 275)->where('email1', '!=', null)
-  ->select('email1','email2','email3','idE','listaEncuestados_idLista','idEncuesta')->count();
-//5149/
 
 
-if ($Iusers>=1500) {
-  $iteraciones =round (  $Iusers/1500 ,0,  PHP_ROUND_HALF_UP );
-}
+  $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)->count();
+  $iteraciones =intdiv($Iusers, 2000 )+1;
   $inicio=0;
-  $termino=200;
+  $termino=2000;
+  $Iusers2 = new encuestados;
   for ($i=0; $i < $iteraciones ; $i++) {
-  $Iusers2 = encuestados::where('listaEncuestados_idLista', 275)->where('email1', '!=', null)
+  $Iusers2 = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)
                   ->offset($inicio)
                     ->limit($termino)
-                    ->orderby("idE")
-                    ->get();
-                  $inicio = $inicio+$termino;
-  }
+                      ->get();
+                  $job = new enviarEmail($Iusers2,$asunto,$instrucciones, $idPlantilla,$host);
+                   dispatch($job);
+                   $inicio = $inicio+$termino;
+                 }
 
-*/
-
-
-return round(1.3 ,7,  PHP_ROUND_HALF_UP);
+return "ok";
 
 
 }

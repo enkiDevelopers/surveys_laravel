@@ -429,11 +429,11 @@ $('#pPBody').toggle("fadeOut");
 
 function infoF()
 {
-  swal("Comparte en Facebook:","52.173.36.209/surveyeds/login/facebook");
+  swal("Comparte en Facebook:","www.uvmmejoraporti.mx/surveyeds/login/facebook");
 
 }
 
 function infoT()
 {
-swal("Comparte en twitter:","52.173.36.209/surveyeds/login/twitter");
+swal("Comparte en twitter:","www.uvmmejoraporti.mx/surveyeds/login/twitter");
 }
