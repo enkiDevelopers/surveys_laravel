@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'uvm@mejoraporti.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'uvm@mejoraporti.mx'),
         'name' => env('MAIL_FROM_NAME', 'Universidad del Valle de México - UVM'),
     ],
 

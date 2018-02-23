@@ -12,7 +12,7 @@
 
 <div class="container" >
     <div class="row">
-          <div class="col-md-11 col-md-offset-3 col-infoUser">
+          <div class="col-md-12 col-md-offset-3 col-infoUser">
             <div class="col-md-1">
             <img  src="/img/avatar/default.png" class="img-thumbnail circle img-principal img-responsive" style="cursor: pointer;">
             </div>

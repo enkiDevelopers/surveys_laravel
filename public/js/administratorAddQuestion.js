@@ -1,4 +1,4 @@
-$(document).ready(function(){
+﻿$(document).ready(function(){
 
     /* Abrimos modal para agregar pregunta********************************************/
     $("#addQuestion").click(function(){
@@ -597,7 +597,7 @@ $(document).ready(function(){
             alertify.alert("Ingrese una pregunta.", function(){
                 
           });
-        }else if (questionInput.length < 200 || questionOptionInput.length < 50){
+        }else if (questionInput.length < 250 || questionOptionInput.length < 250){
             $.ajax({
                 type: "post",
                 url: action,

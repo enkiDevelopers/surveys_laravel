@@ -23,17 +23,15 @@
   }
 </script>
 
-
-
 </head>
 
 <body>
 
-        <div id="sumary" class="col-md-12 fondo">
-            <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margin-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
+        <div id="sumary" class="col-md-12 fondo ">
+            <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
             <br>
             <div align="justify" class="col-md-6 col-md-offset-3 fondogris" style="word-wrap: break-word;"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
-            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv" style="word-wrap: break-word;"><br><strong style="float: left">Descripción de la encuesta: </strong><br> {{$descripcion}}   </div>
+            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv scroll" style="word-wrap: break-word;"><br><strong style="float: left">Descripción de la encuesta: </strong><br> {{$descripcion}}   </div>
             <div align="justify" class="col-md-6 col-md-offset-3"><center>
             <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta" ></center>
             </div>
@@ -41,17 +39,17 @@
               
         </div>
 
-<div id="surveyContainer"  class="col-md-12 fondo" >
+<div id="surveyContainer"  class="col-md-12 fondo scroll" >
 <center>
-<img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" style="margi-top:2%" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
+<img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
 </center>
-        <div align="justify" class="col-md-6 col-md-offset-3">
-            <h2 class="text-center text-black-body" id="idTitlePregunta">Instrucciones Generales: </h2>
+        <div align="center" class="col-md-6 col-md-offset-3">
+            <label class="text-center text-black-body title fondogris" id="idTitlePregunta">Instrucciones Generales: </label>
         </div>
 
-        <div class="col-md-6 col-md-offset-3 margenarriba total" >
-            <div class="col-md-10 pregs" id="preg0">
-                <div align="justify" class="form-group text-black-body "  >
+        <div class="col-md-6 col-md-offset-3 total" >
+            <div class="col-md-10 pregs scroll " id="preg0" style="word-wrap: break-word;">
+                <div align="justify" class="form-group text-black-body ">
                     <ul>
                         <li><strong>Lee con atención las preguntas </strong></li>
                         <li>Responde sinceramente</li>
@@ -71,8 +69,8 @@
             $dato=$cada["questions"];
         ?>
             <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
-                    <div align="justify" class="fondogris">
-                        <h2 class="text-center text-black-body" >{{$dato->title}} </h2>
+                    <div align="center" class="fondogris">
+                        <label class="text-center text-black-body" >{{$dato->title}} </label>
                     </div>
        <!-- <div class="divmovil">-->
                 <input type="hidden" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
@@ -82,8 +80,8 @@
         <?php
             if($dato->type==1){
         ?>
-        <div class="scroll">
-            <div class="bl_form" class="col-md-10 pregs " style="margin-top: 7%;margin-bottom:15px;" >
+        <div class="scrolla">
+            <div class="bl_form" class="col-md-10 pregs " style="margin-top: 3%;margin-bottom:15px;" >
                 <div class="lb_wrap" style="position:relative; display: inline;"></div>
                     <input type="input" style="height: 100%;width: 100%; " class="fondogris" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control"  placeholder="Escribe tu respuesta">   
             </div>

@@ -42,7 +42,7 @@
                                 <div class="col-md-12 multi-options-template-edit" data-multioptions="0" >
                                     <div class="form-group hidden" id="optionEdit">
                                         <label for="exampleInputEmail1">Opción Respuesta</label>
-                                        <input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="50">
+                                        <input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="250">
                                         <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
