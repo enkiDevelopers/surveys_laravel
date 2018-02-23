@@ -219,8 +219,9 @@ a.article, a.article:hover {
     margin-left: 3em;
 }
 .logo_UVM{
-    width: 100%;
+    width: 220px;
     margin-top: 6%;
+    padding-left: 20px;
 }
 .divider{
     font-weight: bold;

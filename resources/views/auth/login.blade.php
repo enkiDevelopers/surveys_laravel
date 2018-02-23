@@ -8,10 +8,10 @@
                 <img src="/img/logos/UVM_Logo.png" alt="Cargando Logo UVM ..." class="img_UVM_logo">
             </section>
             </div>
-            <section>
+            <div class="col-md-4 pull-right" style="margin-right: 16%">
                 <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
-            </section>
-            <div class="col-md-6" style="margin-left: 5%;">
+            </div>
+            <div class="col-md-5 col-md-offset-1" >
             <form class="form-horizontal" method="POST" action="/administrator/validate">
                 {{ csrf_field() }}
                 <div class=" col-md-12 form-group{{ $errors->has('email') ? ' has-error' : ''  }}" style="margin-bottom: 7%">
@@ -26,8 +26,8 @@
                     </div>
                 </div>
 
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                    <label for="password" class="col-md-5 control-label text-black">Contraseña: </label><br><br>
+                <div class="col-md-12 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                    <label for="password" class="col-md-5 control-label text-black" style="margin-left: 37px;">Contraseña: </label><br><br>
                     <div class="col-md-10">
                     <input id="password" type="password" placeholder="Contraseña" class="form-control text-black-body" name="password" required>
                         @if ($errors->has('password'))

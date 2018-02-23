@@ -619,7 +619,10 @@ $(document).ready(function(){
                             setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
                     }else{
                         alertify.alert("No se ha podido agregar la pregunta.", function(){
-                            alertify.message('OK');
+                            alertify.alert('Error al subir la pregunta');
+                            console.log(e.status);
+    //                        $("#ModalQuestion").modal('hide').find("input").val("");
+
                         });
                         setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
                     }

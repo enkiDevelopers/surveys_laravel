@@ -4,6 +4,35 @@ hr{
 .container{
 	width: 100%;
 }
+#numPregSig{
+	width: 36px;
+}
+.titleQuestionModal{
+	margin-left: 22px;
+	width: 54%;
+}
+.btn-control{
+	margin-bottom: 15px;
+	width: 104px;
+}
+.salto{
+	width: 18% !important;
+}
+.type{
+	width: 17% !important;
+}
+.text-question{
+	width: 42% !important;
+}
+#questionSaved{
+	 overflow-x: hidden;
+	 overflow-y: auto;
+	 height: 50rem;
+	 position: relative;
+	 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	 padding: 15px 10px 0px 10px;
+	 margin: 0px 15px 0px 258px;
+}
 .new-question__control--edit-question{
 	box-shadow: 3px 3px 3px #174340;
     width: 46px;
@@ -16,8 +45,9 @@ hr{
     height: 43px;
 }
 .new-survey__control, #sortableQuestions{
-	margin-left: 12%;
-	border-radius: 50px;	
+	margin-bottom: 15px;
+	border-radius: 50px;
+	width: 100%;	
 	height:  46px;
     background: -webkit-linear-gradient(top left, #1a237e, #0d47a1);
     background: -o-linear-gradient(top left, #1a237e, #0d47a1);
@@ -25,28 +55,50 @@ hr{
 }
 .new-survey__controls{
     display: block;
-    text-align: -webkit-center;
 }
+.num{
+	margin-left: -22px;
+	margin-right: 20px;
+}
+.text-question{
+	width: 46%;
+}
+.numPregs{
+	width: 42px;
+}
+
 @media screen and (max-width: 1220px) {
 	.col-desc{
 	float: right;
     margin-right: 6%;
     width: 63%;
 	}
+	.new-survey__control, #sortableQuestions{
+		font-size: 13px;
+	}
 }
 
-@media screen and (max-width: 1095px) {
+@media screen and (max-width: 1098px) {
 	.num{
 		width: 9.799%;
 	}
+	#questionSaved{
+		margin-left: 180px !important;
+	}
+	.new-survey__control, #sortableQuestions{
+		font-size: 11px;
+	}
 	.text-question{
-		width: 45%;
+		width: 44%;
 	}
 	.new-question__control{
 		margin-right: 0px;
 	}
 	#inputDesc{
 		margin-top: -4%;
+	}
+	.btn-control{
+		width: 100px;
 	}
 }
 @media screen and (min-width: 767px) and (max-width: 991px) {
@@ -55,6 +107,13 @@ hr{
     width: 90%;
     float: inherit;
     margin-left: 7%;
+	}
+	.new-survey__control, #sortableQuestions{
+		font-size: 14px;
+		width: 48%;
+	}
+	#questionSaved{
+		margin-left: 15px !important;
 	}
 	.light-grey{
 		margin-top: 90px;
@@ -94,21 +153,24 @@ hr{
 	.col-img, .col-desc{
 		display: none;
 	}
+	#questionSaved{
+		margin-left: 15px !important;
+	}
 	.btn-editTitle {
-		margin-left: 30%;
+		margin-left: 10%;
 		width: 57px;
 		height: 60px;
 		font-size: 35px;
 	}
 	.btn-preview{
-		margin-left: 25%;
+		margin-left: 50%;
 		width: 57px;
 		height: 60px;
 		font-size: 35px;
 	}
 	.new-survey__control, #sortableQuestions{
 		margin-top: 3%;
-		margin-left: 15%;
+		margin-left: 14%;
 		width: 50px;
 		height: 50px;
 	 	font-size: 20px;
@@ -131,16 +193,32 @@ hr{
 	 }
 
 	 .text-question{
-	    width: 56%;
+	    width: 48%;
 	    margin: 0px 7px 0px 0px;
 	    padding: 0px;
     	float: left;
+    	margin-left: -33px;
 	 }
 	 .type{
-		width: 25.2%;
+		width: 19%;
 		margin: 0px;
 		padding: 0px;
 		float: left;
 	 }
+	 .salto{
+	 	width:20%;
+	 	float:right;
+	 }
+	 .btn-control{
+	 	width: 104px;
+	 }
+	 .titleQuestionModal{
+	 	width: 100%;
+	 	margin-left: 0px;
+	 }
+	 #numPregSig{
+	 	width: 100%;
+	 }
+
 
 }

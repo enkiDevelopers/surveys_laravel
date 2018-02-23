@@ -1,18 +1,3 @@
-        <div class="row col-md-12">
-            <div class="new-survey__controls " > 
-                <div class="col-md-11">
-                        <button class="btn btn-info new-survey__control" id="addQuestion">
-                            <span class="glyphicon glyphicon-plus"></span>
-                            <label>Agregar pregunta</label>
-                        </button>
-                       <button id="sortableQuestions" class="btn btn-info">
-                            <span class="glyphicon glyphicon-th-list"></span>
-                            <label>Reacomodar</label>
-                        </button>
-                    </div>
-            </div>
-        </div>
-
 <form action="/saveQuestionsTemplate" id="saveQuestionForm">
     {{ csrf_field() }}
     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
@@ -25,20 +10,19 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h4 class="modal-title" id="ModalQuestionLabel">Agregar Pregunta</h4>
-					    <img src="\img/iconos/<?php echo $nombre;?>" width="10%" height="10%">
                     </div>
                     <div class="modal-body">
                         <div class=" col-md-12 well">
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Número</label>
+                                    <label for="exampleInputEmail1" style="margin-left: -10px;">Número</label>
                                     <input type="text" class="form-control text-black-body" id="numPregSig" value = "2" aria-describedby="emailHelp" maxlength="5"  disabled>
                                 </div>
                             </div>
-                            <div class="col-md-6 ">
+                            <div class="col-md-6 titleQuestionModal" >
                                 <div class="form-group">
                                     <label for="questionInput">Título de la pregunta</label>
-                                    <input type="text" class="form-control text-black-body" id="questionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" maxlength="200">
+                                    <input type="text" class="form-control text-black-body" id="questionInput" aria-describedby="emailHelp" placeholder="¿Cuál es la pregunta?" maxlength="256">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -76,7 +60,7 @@
             <div class="col-md-12 multi-options-template" data-multioptions="0" >
                 <div class="form-group">
                     <label for="exampleInputEmail1">Opción Respuesta</label>
-                    <input type="text" class="form-control text-black-body questionOptionInputs"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="50">
+                    <input type="text" class="form-control text-black-body questionOptionInputs"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="256">
                     <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>

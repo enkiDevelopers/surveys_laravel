@@ -1,6 +1,6 @@
 @extends('layouts.back-survey')
 @section('content')
-<div class="container" >
+<div class="container" style="width: 100%">
     <div class="row">
         <div class="col-md-12">
 			<div class="row">
@@ -11,7 +11,22 @@
 
 				@include('administrator.saveQuestionsSection')
 
-				<div id="questionSaved" style="overflow-x: hidden; overflow-y: auto; height: 45rem;position: relative; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); padding: 15px 25px 0px 25px; margin: 0px 15px 0px 15px;" >
+		        <div class="row col-md-3">
+		            <div class="new-survey__controls " > 
+		                <div class="col-md-12">
+		                        <button class="btn btn-info new-survey__control" id="addQuestion">
+		                            <span class="glyphicon glyphicon-plus"></span>
+		                            <label>Agregar pregunta</label>
+		                        </button>
+		                       <button id="sortableQuestions" class="btn btn-info">
+		                            <span class="glyphicon glyphicon-th-list"></span>
+		                            <label>Reacomodar</label>
+		                        </button>
+		                    </div>
+		            </div>
+		        </div>
+
+				<div id="questionSaved">
 					<div id="container-questions">
 						@include('administrator.questionSaved')
 					</div>

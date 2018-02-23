@@ -57,11 +57,15 @@
   margin-top: 2%;
 }
 .img_Por_ti_logo{
-  height: 20%;
-  max-height: 20%;
-  width: 20%;
-  max-width: 20%;
+  height: 200px;
  }
+
+ @media screen and (max-width: 767px) {
+  .container{
+    margin-top: 0px !important;
+  } 
+}
+
 
 @media screen and (max-width: 592px){
   .container{

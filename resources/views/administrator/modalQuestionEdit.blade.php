@@ -10,7 +10,6 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                         <h4 class="modal-title" id="ModalQuestionLabelEdit">Editar Pregunta</h4>
-                        <img src="\img/iconos/{{$nombre}}" width="10%" height="10%">
                     </div>
                     <div class="modal-body">
                         <div class=" col-md-12 well" id="optionsMultEdit">

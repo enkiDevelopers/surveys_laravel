@@ -47,6 +47,53 @@
                 </ul>
             </nav>
 
+                 <nav id="sidebarMobile" class="navbar-default navbar-fixed-top visible-xs">
+        <ul class="list-inline components">
+          <li id="UVM_Movil">
+            <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;margin-left: 15%;" >
+          </li>
+          <li id="menu" style="float: left;background-color: darkred;height: 80px;width: 18%;">
+            <a href="#" style="text-align: center;color: white">
+              <i class="glyphicon glyphicon-menu-hamburger"></i>
+            </a>
+          </li> 
+          <li id="rol" style="float: right;background-color: blue;height: 80px;width: 18%;">
+            <a href="#" style="text-align: center;color: white">
+              <i class="glyphicon glyphicon-cog"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
+        <ul class="list-unstyled components">
+          <li>
+            <span aria-hidden="true" style="font-size: 50px;float: right;color: white;border:5px solid white;border-radius: 50px;height: 40px;">&times;</span>
+          </li>
+          <li id="home" >
+            <a href="{{ url('/administrator/surveys')}}" >
+              <span>ENCUESTAS</span>
+            </a>
+          </li>
+          <li id="files">
+            <a href="{{ url('/administrator/files') }}" >
+              <span>LISTAS</span>
+            </a>
+          </li>
+          <li id="admin-list">
+            <a href="{{ url('/administrator/management') }}">
+              <span>ADMINISTRADORES</span>
+            </a>
+          </li>
+          <li id="log-out__Content" class="exit">
+            <a href="{{ url('/logout') }}">
+              <span>SALIR</span>
+            </a>
+          </li>     
+        </ul>
+
+      </nav>
+
                 @yield('content')
             </div>
         </div>
@@ -66,6 +113,10 @@
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
              });
+
+            $("#sidebarMobile").on('click', '#menu', function(event) {
+                $("#contentSidebarMobile").toggle("slide");
+            });
         });
     </script>
 </body>

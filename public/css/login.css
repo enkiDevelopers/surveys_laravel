@@ -1,5 +1,5 @@
 .img_UVM_logo{
-	margin-top: 5%;
+	margin-top: 2%;
 }
 .text-black{
 	color: #000;
@@ -19,7 +19,6 @@ label{
     font-weight: normal;
 }
 .img_Por_ti_logo{
-	margin-right: 20%;
 	height: 200px;
 	width:280px;
 }
@@ -32,7 +31,7 @@ label{
     font-weight: bold;
     font-size: 29px;
     margin-top: 17%;
-    margin-left: 75%
+    margin-left: 50%
 }
 @media screen and (max-width: 1135px) {
 	.img_Por_ti_logo{
@@ -48,7 +47,6 @@ label{
 	.form-control{
 		margin-left: 10%;
 	}	
-
 	.form-group{
 	   padding:0; margin:0;
 	}
@@ -67,7 +65,7 @@ label{
 
 	.img_UVM_logo{
 		content:url("/img/logos/UVM_Logo_Blanco.png");	
-		margin-top: 11%;
+		margin-top: 2%;
 		width: 100%;
 		height: 23%;
 	}

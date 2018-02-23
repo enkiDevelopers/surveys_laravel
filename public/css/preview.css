@@ -1,57 +1,57 @@
-        .title{
-            font-size: 20px;
-            font-family: "Source Sans Pro",sans-serif;
-            line-height: 30px;
-            color: #3D3D3D;
-            font-weight: bold;
-        }
-        .descripcion{
-            color: #3D3D3D;
-            font-family: "Source Sans Pro",sans-serif;
-            font-size: 19px;
-            line-height: 145%;
-            border-color: transparent;
-            margin-left: 25%;
-            width: 50%;
-        }
-        #btnStart::hover, #btnStart::focus{
-            text-decoration-color: #000;
-            color: #000;
-        }
-        .bl_form {
-          margin: 100px 0 150px;
-        }
+.title{
+    font-size: 20px;
+    font-family: "Source Sans Pro",sans-serif;
+    line-height: 30px;
+    color: #3D3D3D;
+    font-weight: bold;
+}
+.descripcion{
+    color: #3D3D3D;
+    font-family: "Source Sans Pro",sans-serif;
+    font-size: 19px;
+    line-height: 145%;
+    border-color: transparent;
+    margin-left: 25%;
+    width: 50%;
+}
+#btnStart::hover, #btnStart::focus{
+    text-decoration-color: #000;
+    color: #000;
+}
+.bl_form {
+  margin: 100px 0 150px;
+}
 
-        .bl_form input {
-          padding-top: 15px;
-          background-color: #fff ;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-          border: none;
-          color: black;
-          padding: 10px 15px;
-          border-radius: 25px;
-          font-size: 16px;
-          outline: none;
-        }
+.bl_form input {
+  padding-top: 15px;
+  background-color: #fff ;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: none;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+}
 
 
-        .lb_wrap .lb_label.top, .lb_wrap .lb_label.bottom {
-          left: 15px !important;
-        }
+.lb_wrap .lb_label.top, .lb_wrap .lb_label.bottom {
+  left: 15px !important;
+}
 
-        .lb_wrap .lb_label.left {
-          left: 0;
-        }
+.lb_wrap .lb_label.left {
+  left: 0;
+}
 
-        .lb_label {
-          font-weight: bold;
-          color: #000;
+.lb_label {
+  font-weight: bold;
+  color: #000;
 
-        }
+}
 
-        .lb_label.active {
-          color: white;
-        }
+.lb_label.active {
+  color: white;
+}
 
 
     
@@ -125,7 +125,6 @@
       height: 150px;
      }
     .btnsta{
-      margin-top: 10%;
       background-color: #ffeb3b;
       width: 250px;
       height: 40px;
@@ -167,7 +166,6 @@
            /* overflow:scroll;*/
     }
     .btnsta{
-      margin-top: 30%;
       background-color: #ffeb3b;
       width: 250px;
       height: 40px;
@@ -210,7 +208,6 @@
            }
 
     .btnsta{
-      margin-top: 30%;
       background-color: #ffeb3b;
       width: 105px;
       height: 40px;
