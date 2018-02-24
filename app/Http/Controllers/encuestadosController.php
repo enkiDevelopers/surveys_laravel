@@ -118,25 +118,17 @@ else {
 public function enviar(Request $request)
 {
 
+  $data =  array('mensaje' => "correo normal" );
+  $user = array('destino'=> 'colocho364@hotmail.com');
 
-  $Iusers = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)->count();
-  $iteraciones =intdiv($Iusers, 2000 )+1;
-  $inicio=0;
-  $termino=2000;
-  $Iusers2 = new encuestados;
-  for ($i=0; $i < $iteraciones ; $i++) {
-  $Iusers2 = encuestados::where('listaEncuestados_idLista', $idLista)->where('email1', '!=', null)
-                  ->offset($inicio)
-                    ->limit($termino)
-                      ->get();
-                  $job = new enviarEmail($Iusers2,$asunto,$instrucciones, $idPlantilla,$host);
-                   dispatch($job);
-                   $inicio = $inicio+$termino;
-                 }
+  Mail::send('administrator.prueba', $data, function ($message) use ($user){
+      $message->subject('Asunto del correo');
+      $message->to('colocho-2104@hotmail.com');
+      $message->sender("colocho364@hotmail.com", $name = 'jorge Luis Gonzalez');
 
-return "ok";
+  });
 
-
+  return "nueva prueba enviada";
 }
 
 public function consultar(Request $request)
