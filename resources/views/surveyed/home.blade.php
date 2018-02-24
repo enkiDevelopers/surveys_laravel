@@ -2,19 +2,20 @@
 
 @section('content')
 
-  <div class="row">
+
     <div class="col-md-8 col-md-offset-2">
+
             <div class="panel panel-default">
                 <div class="panel-heading">Encuestas Pendientes</div>
 
-                  <div class="row">
+                <div class="panel-body">
                   <?php 
                     $fecha=date('Y-m-d H:m:s');
                     $fecha=str_replace("T"," ",$fecha);
                     foreach ($datos as $dato) {
                     if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){
 
-                             echo"<div class='col-md-3 tarjeta'>
+                       echo"<div class='col-md-4'>
                                 <div class='card well' >"
                   ?>
                      <img src="\img/iconos/{{$dato->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
@@ -32,7 +33,7 @@
                       if($fecha >= $dato->fechai){
                     ?>
 
-                      <div class='col-md-3 tarjeta'>
+                      <div class='col-md-4'>
                           <div class='card well' >
                               <img src="\img/iconos/{{$dato->imagePath}}"  width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
                           <div class='card-body'>
@@ -54,7 +55,7 @@
 
 
                         
-                </div>
+                  </div>
             </div>
 
 
@@ -65,7 +66,7 @@
                 <div class="panel-body">
                   <?php
                     foreach ($contestado as $constestados) {
-                        echo "<div class='col-md-3 tarjeta'>
+                        echo "<div class='col-md-4'>
                               <div class='card well'>"
                         ?>
                      <img src="\img/iconos/{{$constestados->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
@@ -82,8 +83,5 @@
                   ?>                        
                   </div>
                   </div>
-            </div>
-        </div>
-    </div>
 
 @endsection

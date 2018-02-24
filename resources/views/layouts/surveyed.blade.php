@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/surveyed.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <style type="text/css">
 
@@ -33,7 +32,7 @@
         ?>
             <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?></p>
         <?php
-            }if($info[0]->email1 != ""  && $info[0]->email2 != "" && $info[0]->email3!="" ){
+            }if($info[0]->email1 != ""  && $info[0]->email2 != "" && $info[0]->email3=="" ){
         ?>
             <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?> | <?php echo $info[0]->email3?></p>
 
@@ -79,64 +78,7 @@
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-    <script src="/js/highcharts.js"></script>
-    <script src="/js/exporting.js"></script>
-    <script type="text/javascript">
-    function htmlbodyHeightUpdate(){
-        var height3 = $( window ).height()
-        var height1 = $('.nav').height()+50
-        height2 = $('.main').height()
-        if(height2 > height3){
-            $('html').height(Math.max(height1,height3,height2)+10);
-            $('body').height(Math.max(height1,height3,height2)+10);
-        }
-        else
-        {
-            $('html').height(Math.max(height1,height3,height2));
-            $('body').height(Math.max(height1,height3,height2));
-        }
-        
-    }
-    $(document).ready(function () {
-        htmlbodyHeightUpdate()
-        $( window ).resize(function() {
-            htmlbodyHeightUpdate()
-        });
-        $( window ).scroll(function() {
-            height2 = $('.main').height()
-            htmlbodyHeightUpdate()
-        });
-    });
-
-    $(window).resize(function() {
-    var path = $(this);
-    var contW = path.width();
-    if(contW >= 751){
-        document.getElementsByClassName("sidebar-toggle")[0].style.left="200px";
-    }else{
-        document.getElementsByClassName("sidebar-toggle")[0].style.left="-200px";
-    }
-});
-$(document).ready(function() {
-    $('.dropdown').on('show.bs.dropdown', function(e){
-        $(this).find('.dropdown-menu').first().stop(true, true).slideDown(300);
-    });
-    $('.dropdown').on('hide.bs.dropdown', function(e){
-        $(this).find('.dropdown-menu').first().stop(true, true).slideUp(300);
-    });
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        var elem = document.getElementById("sidebar-wrapper");
-        left = window.getComputedStyle(elem,null).getPropertyValue("left");
-        if(left == "200px"){
-            document.getElementsByClassName("sidebar-toggle")[0].style.left="-200px";
-        }
-        else if(left == "-200px"){
-            document.getElementsByClassName("sidebar-toggle")[0].style.left="200px";
-        }
-    });
-});
-         </script>    
 </body>
 </html>
