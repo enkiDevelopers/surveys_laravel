@@ -13,6 +13,10 @@
                     $fecha=date('Y-m-d H:m:s');
                     $fecha=str_replace("T"," ",$fecha);
                     foreach ($datos as $dato) {
+                        $date = $dato->fechat;
+                        $createDate = new DateTime($date);
+                        $strip = $createDate->format('Y-m-d H:s');
+
                     if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){
 
                        echo"<div class='col-md-4'>
@@ -38,7 +42,7 @@
                               <img src="\img/iconos/{{$dato->imagePath}}"  width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
                           <div class='card-body'>
                                         <h4 class='card-title'><?php echo $dato->tituloEncuesta ?></h4>
-                                        <p class='card-text'><strong>Fecha Límite: </strong><?php echo $dato->fechat ?></p>
+                                        <p class='card-text'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
                                         <a  class='btn btn-red' href="#" disabled>Responder</a>
                           </div>
                           </div>
@@ -66,6 +70,11 @@
                 <div class="panel-body">
                   <?php
                     foreach ($contestado as $constestados) {
+
+                        $date = $constestados->fechat;
+                        $createDate = new DateTime($date);
+                        $strip = $createDate->format('Y-m-d H:s');
+
                         echo "<div class='col-md-4 tarjetas'>
                               <div class='card well'>"
                         ?>
@@ -73,7 +82,7 @@
 
                                 <div class='card-body'>
                                     <h4 class='card-title'>{{$constestados->tituloEncuesta}}</h4>
-                                    <p class='card-text'><strong>Fecha Límite: </strong><?php echo $constestados->fechat ?></p>
+                                    <p class='card-text'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
                                     <a href='contestado' target="_blank" class='btn btn-primary'>Ver encuesta</a>
                                 </div>
                             </div>
