@@ -1,10 +1,9 @@
 @extends('layouts.surveyed')
 
 @section('content')
-<div class="container" style="margin-right: 0px;">
 
   <div class="row">
-        <div class="col-md-12">
+    <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Encuestas Pendientes</div>
 
@@ -14,7 +13,7 @@
                     $fecha=date('Y-m-d H:m:s');
                     $fecha=str_replace("T"," ",$fecha);
                     foreach ($datos as $dato) {
-    
+                    
                     if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){
 
                              echo"<div class='col-md-2'>
@@ -24,7 +23,7 @@
 
                   <?php                  
                             echo"<div class='card-body'>
-                                        <h4 class='card-title'>{$dato->tituloEncuesta}</h4>
+                                        <h4 class='card-title'><p>{$dato->tituloEncuesta}</p></h4>
                                         <p class='card-text'><strong>Fecha: {$dato->fechat}</strong></p>
                                         <a  class='btn btn-red' href=/surveyed/previewtem/".$dato->idE.">Responder</a>
                                     </div>
@@ -85,10 +84,9 @@
                     }
                   ?>                        
                   </div>
-                </div>
+                  </div>
             </div>
         </div>
     </div>
-</div>
 
 @endsection

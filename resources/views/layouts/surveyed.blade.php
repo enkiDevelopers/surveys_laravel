@@ -20,9 +20,15 @@
 </style>
 </head>
 <body>
+  <div class="row">
+    <center>
+        <img src="/img/mail_logo.png">
+        <p><?php echo $info[0]->nombreGeneral ?></p>
+        <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?> | <?php echo $info[0]->email3?> </p>
+    </center>
+  </div>
   
-  
-<nav class="navbar navbar-default" role="navigation">
+<!--<nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <a id="menu-toggle" href="#" class="navbar-toggle">
                     <span class="sr-only">Toggle navigation</span>
@@ -50,8 +56,9 @@
 
             </ul>
         </div>
-</nav>
+</nav>-->
   <div class="main" >
+
                 @yield('content')        
     </div>
     <!-- Scripts -->

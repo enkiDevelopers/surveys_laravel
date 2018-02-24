@@ -19,8 +19,6 @@ use App\listaEncuestados;
 use App\ctlTipoEncuesta as tipos;
 use App\optionsMult;
 use Excel;
-use App\jobs\IngresarLista;
-use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -157,19 +155,17 @@ $id = DB::table('listaEncuestados')->insertGetId(
                                                'archivo' => $dato,
                                                'carga'=>0,
                                                'creador' => $id2));
-        
-            $idarray=['id' => $id]; 
-            $job = new IngresarLista($dato,$id);
-            dispatch($job);
+    
+            /*$job = new IngresarLista($dato,$id);
+            dispatch($job);*/
 }
 
 
 public function ingresarlista(Request $request){
         $nombre=$request->input('nombre');
         $id=$request->session()->get('id');
-//        ini_set('max_execution_time', 0);
+        ini_set('max_execution_time', 0);
 //Y-m-d h:i:s
-    /*try{
         $arreglo=null;
         $nombre=$request->input('nombre');
         //$nombre="lista.js";
@@ -181,20 +177,18 @@ public function ingresarlista(Request $request){
                 $usrid=$request->session()->get('id');  
 
         }
-    }catch(Exception $e){
-        echo $e;
-    }*/
-    
-        $dato='alumnosinscritos2018.xlsx';
-        $this->guardarListaBD($dato,$nombre,$id);
-        return back();
-      //  return $this->ingresarDatos($idarray ,$dato,$request);
-                                     
-        //$handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
-        // Excel::load('listas/'.$dato, function($reader) use($idarray)  {
-        // $excel = $reader->get();
 
-       /* $reader->each(function($row) use($idarray) {
+    $id = DB::table('listaEncuestados')->insertGetId(
+                                        array( 'nombre'  => $nombre,
+                                               'archivo' => $dato,
+                                               'carga'=>0,
+                                               'creador' => $usrid));
+
+        $idarray=['id' => $id]; 
+         Excel::load('listas/'.$dato, function($reader) use($idarray)  {
+         $excel = $reader->get();
+
+        $reader->each(function($row) use($idarray) {
 
         $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
         $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
@@ -227,8 +221,8 @@ public function ingresarlista(Request $request){
                                                     'contestado' => 0,
                                                     'listaEncuestados_idLista' => $idarray['id']  ]);
 }
-        });*/
-    
+        });
+     });
    /* if($excel=null){
 
         $data=DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
@@ -243,10 +237,12 @@ public function ingresarlista(Request $request){
         return "noaparece".$dato;
     }*/
    // return "listo";
-   
-//return back();
+     $INFO=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
+                                       ->update(['carga'=> 1]);  
+return back();
 
 }
+
     public function mostrarDatos($id){
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
