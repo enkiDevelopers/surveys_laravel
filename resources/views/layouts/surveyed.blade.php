@@ -23,8 +23,24 @@
   <div class="row">
     <center>
         <img src="/img/mail_logo.png">
-        <p><?php echo $info[0]->nombreGeneral ?></p>
-        <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?> | <?php echo $info[0]->email3?> </p>
+        <h3><p><?php echo $info[0]->nombreGeneral ?></p></h3>
+        <?php
+            if($info[0]->email2 == "" ){
+        ?>
+            <p><?php echo $info[0]->email1?></p>
+        <?php
+            }if($info[0]->email2 != "" && $info[0]->email3=="" ){
+        ?>
+            <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?></p>
+        <?php
+            }if($info[0]->email1 != ""  && $info[0]->email2 != "" && $info[0]->email3!="" ){
+        ?>
+            <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?> | <?php echo $info[0]->email3?></p>
+
+        <?php
+            }
+
+        ?>
     </center>
   </div>
   
