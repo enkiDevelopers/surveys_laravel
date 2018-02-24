@@ -19,7 +19,7 @@
 
                     if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){
 
-                       echo"<div class='col-md-4'>
+                       echo"<div class='col-md-4 tarjetas'>
                                 <div class='card well' >"
                   ?>
                      <img src="\img/iconos/{{$dato->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
@@ -27,7 +27,7 @@
                   <?php                  
                             echo"<div class='card-body'>
                                         <h4 class='card-title'><p>{$dato->tituloEncuesta}</p></h4>
-                                        <p class='card-text'><strong>Fecha Límite: {$dato->fechat}</strong></p>
+                                        <p class='card-text'><strong>Fecha Límite: ".$strip."</strong></p>
                                         <a  class='btn btn-red' href=/surveyed/previewtem/".$dato->idE.">Responder</a>
                                     </div>
                                 </div>
