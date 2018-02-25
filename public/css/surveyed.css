@@ -4,9 +4,7 @@
     padding: 0px;
     margin: 0px;
   }
-    html,body {
-        overflow:hidden; 
-      }
+
   /*Remove rounded coners*/
 
 
@@ -58,6 +56,11 @@
   transition: all 0.3s ease-out;
   margin-left: -200px;
 }
+@media screen and (max-width: 991px){
+	.tarjetas{
+		width: 33%;
+	}
+}
 @media screen and (max-width: 900px){
       html,body {
           overflow:auto; 
@@ -65,8 +68,25 @@
 }
 
 }
-@media screen and(max-width: 800px){
+@media screen and (max-width: 800px){
   .col-md-4{
     width: 40px;
   }
+}
+@media screen and (max-width: 650px){
+	.tarjetas{
+		width: 40%;
+	}
+}
+
+@media screen and (max-width: 565px){
+	.tarjetas{
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 475px){
+	.tarjetas{
+		width: 100%;
+	}
 }

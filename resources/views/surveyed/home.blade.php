@@ -33,7 +33,7 @@
                       if($fecha >= $dato->fechai){
                     ?>
 
-                      <div class='col-md-4'>
+                      <div class='col-md-4 tarjetas'>
                           <div class='card well' >
                               <img src="\img/iconos/{{$dato->imagePath}}"  width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
                           <div class='card-body'>
@@ -66,7 +66,7 @@
                 <div class="panel-body">
                   <?php
                     foreach ($contestado as $constestados) {
-                        echo "<div class='col-md-4'>
+                        echo "<div class='col-md-4 tarjetas'>
                               <div class='card well'>"
                         ?>
                      <img src="\img/iconos/{{$constestados->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
