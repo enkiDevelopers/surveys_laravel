@@ -19,6 +19,9 @@ use App\listaEncuestados;
 use App\ctlTipoEncuesta as tipos;
 use App\optionsMult;
 use Excel;
+use App\jobs\IngresarLista;
+use App\jobs\ingresarIncidente;
+
 
 use Illuminate\Support\Facades\Storage;
 
@@ -155,95 +158,51 @@ $id = DB::table('listaEncuestados')->insertGetId(
                                                'archivo' => $dato,
                                                'carga'=>0,
                                                'creador' => $id2));
-    
-            /*$job = new IngresarLista($dato,$id);
-            dispatch($job);*/
+  return $id;  
 }
+public function ingresarMasDatos(Request $request){
+        ini_set('max_execution_time', 0);
+        $listaid=$request->input('listaid');
 
+        if($request->hasFile('datos')) {
+                $file = $request->file('datos');
+                $dato=$request->file('datos')->getClientOriginalName();
+                $file->move('listas/', $dato);
+        }
+        $job = new IngresarLista($dato,$listaid);
+        dispatch($job);
+         $INFO=DB::table('listaEncuestados')->where('idLista','=',$listaid)
+                                            ->update(['carga'=> 0]); 
+
+return back();
+
+}
 
 public function ingresarlista(Request $request){
         $nombre=$request->input('nombre');
-        $id=$request->session()->get('id');
         ini_set('max_execution_time', 0);
-//Y-m-d h:i:s
+
         $arreglo=null;
         $nombre=$request->input('nombre');
-        //$nombre="lista.js";
-        //$archivo->move('listas',$nombre);
+
         if($request->hasFile('archivo')) {
                 $file = $request->file('archivo');
                 $dato=$request->file('archivo')->getClientOriginalName();
                 $file->move('listas/', $dato);
                 $usrid=$request->session()->get('id');  
-
+                $id=$this->guardarListaBD($dato,$nombre,$usrid);
         }
+            $job = new IngresarLista($dato,$id);
+            dispatch($job);
 
-    $id = DB::table('listaEncuestados')->insertGetId(
-                                        array( 'nombre'  => $nombre,
-                                               'archivo' => $dato,
-                                               'carga'=>0,
-                                               'creador' => $usrid));
-
-        $idarray=['id' => $id]; 
-         Excel::load('listas/'.$dato, function($reader) use($idarray)  {
-         $excel = $reader->get();
-
-        $reader->each(function($row) use($idarray) {
-
-        $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
-        $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
-        $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
-
-        if($row->region=="" && $row->nombre=="" && $row->no_cuenta=""){
-
-        }else{
-        $infor=DB::table('encuestados')->insert([
-                                                    'region'  =>  $row->region,
-                                                    'ciclo'=>$row->ciclo,
-                                                    'campus'=>$row->campus,
-                                                    'tipoIngreso'=>$row->tipo_ingreso,
-                                                    'lineaNegocio'=>$row->linea_negocio,
-                                                    'modalidad'=>$row->modalidad,
-                                                    'noCuenta'=>$row->no_cuenta,
-                                                    'nombreGeneral'=>$row->nombre_general,
-                                                    'fechaNacimiento'=>$row->fecha_nacimiento,
-                                                    'direccion'=>$row->direccion,
-                                                    'email1'=>$correo1,
-                                                    'email2'=>$correo2,
-                                                    'email3'=>$correo3,
-                                                    'telefonoCasa'=>$row->telefono_casa,
-                                                    'carrera'=>$row->carrera,
-                                                    'programaCV'=>$row->programacv,
-                                                    'programaDesc'=>$row->programa_desc,
-                                                    'semestre'=>$row->semestre,
-                                                    'vertical'=>$row->vertical,
-                                                    'esIntercambio'=>$row->es_intercambio,
-                                                    'contestado' => 0,
-                                                    'listaEncuestados_idLista' => $idarray['id']  ]);
-}
-        });
-     });
-   /* if($excel=null){
-
-        $data=DB::table('listaEncuestados')->where('idLista','=',$id)->delete();
-
-            }else{
-        }*/
-       // fclose($handle);
-
-  /*  if (File::exists('listas/'.$dato)) {
-        File::delete('listas/'.$dato);
-    }else{
-        return "noaparece".$dato;
-    }*/
-   // return "listo";
-     $INFO=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
-                                       ->update(['carga'=> 1]);  
+ 
+    /* $INFO=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
+                                        ->update(['carga'=> 1]); */ 
 return back();
 
 }
 
-    public function mostrarDatos($id){
+public function mostrarDatos($id){
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
         return view('administrator/openFile',compact('data'));
@@ -271,38 +230,25 @@ return back();
     }
     public function incidente(Request $request){
         ini_set('max_execution_time', 0);
-        
         $listaid=$request->input('idlista');
-        $idlista=['idlista' => $listaid];
-
         $inicial=0;
         $arreglo=null;
          if($request->hasFile('incidentes')) {
-
                 $file = $request->file('incidentes');
                 $dato=$request->file('incidentes')->getClientOriginalName();
                 $file->move('listas', $dato);
-               
-        $handle = fopen('listas/'.$dato, "r");
+        }
+      $job = new ingresarIncidente($listaid,$dato);
+      dispatch($job);
+    
 
-        $fila = 1;
-        Excel::load('listas/'.$dato, function($reader) use($idlista)  {
-        $excel = $reader->get();
-        $reader->each(function($row) use($idlista) {
-        DB::table('encuestados')->where('noCuenta', $row->clave)
-                                ->where('listaEncuestados_idLista', $idlista['idlista'])                                
-                                ->update(['incidente' => 1,
-                                         'comentario' =>$row->comentario]);
-    });
-        });
-}
-    fclose($handle);
+    /*fclose($handle);
 
     if (File::exists('listas/'.$dato)) {
         File::delete('listas/'.$dato);
     }else{
         return "noaparece".$dato;
-    }
+    }*/
 
     
 

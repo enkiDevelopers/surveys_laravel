@@ -39,52 +39,45 @@ class IngresarLista implements ShouldQueue
      */
     public function handle()
     {
-
+//public_path
         try{
         $idarray=['id' => $this->id1]; 
-        Excel::filter('chunk')->load("../listas/".$this->dato1)->chunk(250, function($results) use ($idarray){
-    //(("../listas/".$this->dato1)
+        Excel::filter('chunk')->load(public_path("/listas/".$this->dato1))->chunk(250, function($results) use ($idarray){
+ 
+        foreach($results as $row){
+            if( $row->nombre=="" && $row->no_cuenta==""){
+            }else{
+                    $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
+                    $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
+                    $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
 
-       // $reader->each(function($row) use ($idarray) {
-             foreach($results as $row){
-            $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
-            $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
-            $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
-
-                    $infor=DB::table('encuestados')->insert([
-                                                    'region'  =>  $row->region,
-                                                    'ciclo'=>$row->ciclo,
-                                                    'campus'=>$row->campus,
-                                                    'tipoIngreso'=>$row->tipo_ingreso,
-                                                    'lineaNegocio'=>$row->linea_negocio,
-                                                    'modalidad'=>$row->modalidad,
-                                                    'noCuenta'=>$row->no_cuenta,
-                                                    'nombreGeneral'=>$row->nombre_general,
-                                                    'fechaNacimiento'=>$row->fecha_nacimiento,
-                                                    'direccion'=>$row->direccion,
-                                                    'email1'=>$correo1,
-                                                    'email2'=>$correo2,
-                                                    'email3'=>$correo3,
-                                                    'telefonoCasa'=>$row->telefono_casa,
-                                                    'carrera'=>$row->carrera,
-                                                    'programaCV'=>$row->programacv,
-                                                    'programaDesc'=>$row->programa_desc,
-                                                    'semestre'=>$row->semestre,
-                                                    'vertical'=>$row->vertical,
-                                                    'esIntercambio'=>$row->es_intercambio,
-                                                    'contestado' => 0,
-                                                    'listaEncuestados_idLista' => $idarray['id']  ]);
-       // });
-}
-        },$shouldQueue = false);
-        /*Excel::filter('chunk')->load('prueba.xlsx')->chunk(250, function($results)
-        {
-                foreach($results as $row)
-                {
-                    // do stuff
-                }
-        });*/
-    $INFO=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
+                            $infor=DB::table('encuestados')->insert([
+                                                            'region'  =>  $row->region,
+                                                            'ciclo'=>$row->ciclo,
+                                                            'campus'=>$row->campus,
+                                                            'tipoIngreso'=>$row->tipo_ingreso,
+                                                            'lineaNegocio'=>$row->linea_negocio,
+                                                            'modalidad'=>$row->modalidad,
+                                                            'noCuenta'=>$row->no_cuenta,
+                                                            'nombreGeneral'=>$row->nombre_general,
+                                                            'fechaNacimiento'=>$row->fecha_nacimiento,
+                                                            'direccion'=>$row->direccion,
+                                                            'email1'=>$correo1,
+                                                            'email2'=>$correo2,
+                                                            'email3'=>$correo3,
+                                                            'telefonoCasa'=>$row->telefono_casa,
+                                                            'carrera'=>$row->carrera,
+                                                            'programaCV'=>$row->programacv,
+                                                            'programaDesc'=>$row->programa_desc,
+                                                            'semestre'=>$row->semestre,
+                                                            'vertical'=>$row->vertical,
+                                                            'esIntercambio'=>$row->es_intercambio,
+                                                            'contestado' => 0,
+                                                            'listaEncuestados_idLista' => $idarray['id']  ]);
+        }
+    }
+                });
+    $info=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
                                        ->update(['carga'=> 1]);
 }catch(Exception $e){
     echo $e;

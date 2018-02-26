@@ -143,6 +143,7 @@ class responderController extends Controller
     $idEncuesta=$request->Input('idencuesta');
     $idencuestado=$request->Input('idencuestado');
     $canal =$request->session()->get('canal');
+    $factual=date('Y-m-d H:m:s');
     if($canal==null){
       $canal="mail";
     }
@@ -154,14 +155,14 @@ class responderController extends Controller
 
     foreach ($preguntas as $pregunta) {
         $respuesta=$request->Input($pregunta->id);
-        DB::table('respuestas')
-        ->insert(['respuesta' => $respuesta, 
+        DB::table('respuestas')->insert(['respuesta' => $respuesta, 
                   'idEncuesta' => $idEncuesta, 
                   'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
     }
     DB::table('encuestados')->where('idE',$idencuestado)->update([
       'canal'=>$canal,
+      'contestado_fecha' => $factual,
       'contestado'=>1]);
     $idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");

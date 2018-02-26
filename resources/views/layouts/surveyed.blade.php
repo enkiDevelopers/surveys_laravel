@@ -26,15 +26,15 @@
         <img src="/img/mail_logo.png">
         <h3><p><?php echo $info[0]->nombreGeneral ?></p></h3>
         <?php
-            if($info[0]->email2 == "" ){
+            if($info[0]->email2 == 0 ){
         ?>
             <p><?php echo $info[0]->email1?></p>
         <?php
-            }if($info[0]->email2 != "" && $info[0]->email3=="" ){
+            }if($info[0]->email2 != 0 && $info[0]->email3==0 ){
         ?>
             <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?></p>
         <?php
-            }if($info[0]->email1 != ""  && $info[0]->email2 != "" && $info[0]->email3=="" ){
+            }if($info[0]->email1 != 0  && $info[0]->email2 != 0 && $info[0]->email3==0 ){
         ?>
             <p><?php echo $info[0]->email1?> | <?php echo $info[0]->email2?> | <?php echo $info[0]->email3?></p>
 

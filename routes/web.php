@@ -217,3 +217,4 @@ Route::get('/administrator/informe/{id}/',["as" => "informe", "uses" => "listasC
 
 Route::post('/administrator/addSaltoParent', 'questionsTemplateController@addSaltoParent');
 
+Route::post('/agregarRegistros','listasController@ingresarMasDatos');

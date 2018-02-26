@@ -28,21 +28,20 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-<<<<<<< HEAD
         <form  method="post" id="formuploadajax" action="/ingresar" enctype="multipart/form-data">
-=======
-        <form  method="get" id="formuploadajax" enctype="multipart/form-data">
->>>>>>> 047320a80454864d9ac2a8238aaf3c9987b4eb08
           <hr>
           {{ csrf_field() }}
 
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
             <label for="exampleInputFile">Subir documento</label>
-              <input class="form-control-file"  id="archivo" name="archivo" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              <input class="form-control-file"  id="archivo" name="archivo" type="file" data-max-size="5148" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
               <a id="boton" data-toggle="tooltip" title="Ayuda"><span class="glyphicon glyphicon-question-sign"></span>.xlsx</a>
+              <br>
+              <strong>Maximo por archivo 5mbs</strong>
           <hr>
-            <input type="submit" class="btn btn-default" value="Subir archivos"  />
+            <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>
+          <!--  <input type="submit" class="btn btn-default" value="Subir archivos"  />-->
         </form>
 
 
@@ -54,6 +53,41 @@
 
   </div>
 </div>
+
+<div id="AgregarDatos" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar Datos</h4>
+      </div>
+      <div class="modal-body" >
+        <form  method="post" id="agregardatos" action="/agregarRegistros" enctype="multipart/form-data">
+          <hr>
+        {{ csrf_field() }}
+          <p>Agregar datos en la lista existente.</p>
+            <label for="exampleInputFile">Subir documento</label>
+              <input class="form-control-file"  id="datos" name="datos" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                 <input type="hidden" id="listaid" name="listaid" value="">
+                 <strong>Maximo por archivo 5mbs</strong>       
+          <hr>
+            <button type="button" id="btnsubir2" class="btn btn-default"> Subir Archivos</button>
+          <!--  <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>-->
+        </form>
+
+ 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
 
 <div id="AgregarIncidentes" class="modal fade" role="dialog">
@@ -67,6 +101,8 @@
       </div>
       <div class="modal-body" >
         <form  method="post" id="formincidentes" enctype="multipart/form-data">
+                  {{ csrf_field() }}
+
           <hr>
           <p>Los registros que suba seran marcados como incidentes dentro de la lista seleccionada.</p>
             <label for="exampleInputFile">Subir documento</label>
@@ -147,6 +183,9 @@ try{
                                       <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
                                         <div class="btn-group" role="group" aria-label="...">
+                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
@@ -174,6 +213,9 @@ try{
                                       <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
                                         <div class="btn-group" role="group" aria-label="...">
+                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Registros" disabled>
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>                                        
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
@@ -204,6 +246,9 @@ try{
                                       <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
                                         <div class="btn-group" role="group" aria-label="...">
+                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Registros" disabled>
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>                                        
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black" disabled>
                                             <span class="glyphicon glyphicon-eye-open"></span>
                                         </a>
@@ -399,6 +444,60 @@ try{
     </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+  var form = document.getElementById("formuploadajax");
+  var form2=document.getElementById("agregardatos");
+  var file = document.getElementById("archivo");
+  var file2 = document.getElementById("datos");
+
+
+document.getElementById("btnsubir").addEventListener("click", function () {
+  if(file.files[0].size > 5242880){
+            swal({
+                      title: "Información",
+                      text: "El archivo que intenta subir excede el limite permitido.",
+                      type: "info",
+                      showCancelButton: true,
+                      confirmButtonColor: '#DD6B55',
+                      confirmButtonText: 'Continuar',
+                      closeOnConfirm: true,
+                   });
+  }else{
+    form.submit();
+  }
+  
+
+ 
+});
+
+document.getElementById("btnsubir2").addEventListener("click", function () {
+  if(file2.files[0].size > 5242880){
+            swal({
+                      title: "Información",
+                      text: "El archivo que intenta subir excede el limite permitido.",
+                      type: "info",
+                      showCancelButton: true,
+                      confirmButtonColor: '#DD6B55',
+                      confirmButtonText: 'Continuar',
+                      closeOnConfirm: true,
+                   });
+  }else{
+    form2.submit();
+  }
+  
+
+ 
+});
+
+
+</script>
+
+
+
+
+
   <script type="text/javascript">
 
 /*$(function(){
@@ -457,12 +556,9 @@ try{
      });
 <<<<<<< HEAD
 });*/
-=======
-
->>>>>>> 047320a80454864d9ac2a8238aaf3c9987b4eb08
 
 
-});
+
 
 $(function(){
       $("#formincidentes").on("submit", function(e){
@@ -472,7 +568,6 @@ $(function(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
 });
-setTimeout(function(){checkData()}, 5000);
           e.preventDefault();
           var f = $(this);
           var formData = new FormData($(this)[0]);
@@ -512,7 +607,7 @@ setTimeout(function(){checkData()}, 5000);
        $('#AgregarIncidentes').hide();
       $('.modal-backdrop').hide();
 
-     };
+     
    });
   });
   </script>
@@ -590,6 +685,7 @@ setTimeout(function(){checkData()}, 5000);
 function reply_click(clicked_id)
 {
 document.getElementById("idlista").value = clicked_id;
+document.getElementById("listaid").value=clicked_id;
 }
 
 
