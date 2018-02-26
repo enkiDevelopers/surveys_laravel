@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
  <meta charset="utf-8">
@@ -34,7 +34,7 @@
           <center>
               <p><h2>¡Muchas gracias por hacerte escuchar!
                 </h2></p>
-                <img src="img/logos/Por_Ti_EXPERIENCIA_UVM.png" height="180px" class="img-resposive"><br><br>
+                <img src="\img/logos/Por_Ti_EXPERIENCIA_UVM.png" height="180px" class="img-resposive"><br><br>
               </center>
         </div>
     </div>

@@ -7,7 +7,7 @@
     margin-top: 20px;
 }
 .imagen{
-  width: 23%;
+  width: 27%;
   padding-top: 2%;
 }
 .descripcion{
@@ -58,8 +58,37 @@
   color: white;
 }
 
+@media screen and (max-width: 991px){
+	#descTemplate, #descripciondeEncuesta{
+		margin-left:25%;
+		margin-right:25%;
+}
 
-    
+}
+
+
+@media screen and (max-width:550px){
+	.scroll label{
+	max-width:95%;
+	}
+	#descTemplate{
+	width:100%;
+	}
+}
+
+@media screen and (max-width:517px){
+	input[type="radio"], label {
+    	vertical-align: middle;
+    	padding: 3px;
+}
+}    
+
+@media screen and (max-width:390px){
+	.scroll label{
+	max-width:90%;
+}
+}
+
 
         @media screen and (max-width: 699px) and (min-width: 520px) {
             ul li a {
@@ -90,7 +119,7 @@
 
      }
      .fondogris{
-      background-color: #ECEAE6;
+
      }
      .anchodiv{
       height: 20%;
@@ -105,10 +134,6 @@
        background-repeat: no-repeat;
        background-position: right ; 
      }
-     .fondogris{
-      background-image: url('/img/fondo.png');
-     }
-
      .total{
       height: 60%;
  
@@ -142,6 +167,7 @@
                    background-repeat: no-repeat;
                    background-position: center; 
            }
+	
 
 
 
@@ -165,8 +191,8 @@
            /* overflow:scroll;*/
     }
     .imagen{
-  height: 120px;
-  width: 170px;
+  height: 110px;
+
   padding-top: 5%;
 }
     .btnsta{
@@ -175,6 +201,7 @@
       height: 40px;
      }       
      .btnsiguiente{
+margin-top:0px !important;
                   width: 200px;
                   background-color: #31B404;
       }

@@ -1,4 +1,4 @@
-$(document).ready(function(){
+﻿$(document).ready(function(){
 
 
         $("#btnStart").click(function(){
@@ -118,7 +118,7 @@ $(document).ready(function(){
     $("#idNext").click(function(){ 
         $("#idTitlePregunta").css("display","none");
         if(n==0){
-            $("#idNext").val("Siguiente!")
+            $("#idNext").val("Siguiente")
         }
         var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
         var tipo2=$('#opt'+n).val();

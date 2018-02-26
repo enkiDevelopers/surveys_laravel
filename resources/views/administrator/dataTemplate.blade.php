@@ -1,4 +1,4 @@
-<div class="col-md-12" id="dataTemplateContainer">
+﻿<div class="col-md-12" id="dataTemplateContainer">
   <div class="col-sm-7 col-sm-offset-4  light-grey">
       <h2 class="text-center text-black-body" id="exampleInputEmail1">{{$titulo}}</h2>
    </div>
@@ -19,7 +19,7 @@
                 	<img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="250px" style="max-height: 250px;" onerror="this.src='/img/iconos/default.png'">
             	</center>
             </div>
-            <div class="col-md-8 col-desc" style="margin-top: -8%;margin-bottom: 1%;">
+            <div class="col-md-8 col-desc" style="margin-top: -8%;margin-bottom: 1%;margin-left:270px;">
                 <textarea rows="4" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción">{{$descripcion}}</textarea>
             </div>
         </div>

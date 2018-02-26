@@ -54,7 +54,7 @@
       <nav id="sidebarMobile" class="navbar-default navbar-fixed-top visible-xs">
         <ul class="list-inline components">
           <li id="UVM_Movil">
-            <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="230px;" style="margin-top: 10px;">
+            <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;">
           </li>
           <li id="menu" style="float: left;background-color: darkred;height: 80px;width: 17%;">
             <a href="#" style="text-align: center;color: white">

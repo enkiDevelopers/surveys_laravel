@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}"> 
 <head>
     <meta charset="utf-8">
@@ -31,7 +31,7 @@
             <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
             <br>
             <div align="justify" class="col-md-6 col-md-offset-3 fondogris" style="word-wrap: break-word;"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
-            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv scroll" style="word-wrap: break-word;"><br><strong style="float: left">Descripción de la encuesta: </strong><br> {{$descripcion}}   </div>
+            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv scroll" style="word-wrap: break-word;overflow-x:hidden;"><br><strong style="float: left" id="descripciondeEncuesta">Descripción de la encuesta: </strong><br><label id="descTemplate" style="word-wrap: break-word;width: 55%;font-weight:normal"> {{$descripcion}}</label>   </div>
             <div align="justify" class="col-md-6 col-md-offset-3"><center>
             <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta" ></center>
             </div>
@@ -39,7 +39,7 @@
               
         </div>
 
-<div id="surveyContainer"  class="col-md-12 fondo scroll" >
+<div id="surveyContainer"  class="col-md-12 fondo scroll" style="margin:0px;" >
 <center>
 <img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
 </center>
@@ -70,7 +70,7 @@
         ?>
             <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
                     <div align="center" class="fondogris">
-                        <label class="text-center text-black-body" >{{$dato->title}} </label>
+                        <label class="text-center text-black-body" style="font-size:21px;" >{{$dato->title}} </label>
                     </div>
        <!-- <div class="divmovil">-->
                 <input type="hidden" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
@@ -122,7 +122,7 @@
         ?>
         <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
         <div class="col-md-10 scroll" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
-        <p><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
+        <p align="center"><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
         <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
 
     </div>
@@ -134,15 +134,15 @@
 
         <div class="col-md-12" >
         <center>
-            <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;'>
+            <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;margin-top: 25px;'>
             <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
-            <input type="button" class="btn btn-lg text-black-body btnsiguiente"  id="idNext" value="Entendido!" style="color:white;">
+            <input type="button" class="btn btn-lg text-black-body btnsiguiente"  id="idNext" value="Entendido" style="color:white;margin-top: 35px;">
         </center>   
 
         </div>
         </form>
         </div>
-</div>
+</div><br><br><br>
 <!-- onsubmit="get_action();"-->
   
 
