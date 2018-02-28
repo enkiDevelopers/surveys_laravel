@@ -21,7 +21,7 @@ use App\optionsMult;
 use Excel;
 use App\jobs\IngresarLista;
 use App\jobs\ingresarIncidente;
-
+use App\jobs\Marcarlisto;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -195,6 +195,8 @@ public function ingresarlista(Request $request){
             $job = new IngresarLista($dato,$id);
             dispatch($job);
 
+
+
  
     /* $INFO=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
                                         ->update(['carga'=> 1]); */ 
@@ -240,92 +242,149 @@ public function mostrarDatos($id){
         }
       $job = new ingresarIncidente($listaid,$dato);
       dispatch($job);
-    
-
-    /*fclose($handle);
-
-    if (File::exists('listas/'.$dato)) {
-        File::delete('listas/'.$dato);
-    }else{
-        return "noaparece".$dato;
-    }*/
-
-    
+        
 
 }
-    public function generarReporte($idEncuesta){
-
+    public function generarReporte(Request $request){
+        $idEncuesta=$request->id;
+        //Obtenemos los campus en la encusta
         $campus=DB::table('encuestados')->select('campus')
                                         ->where('idEncuesta','=',$idEncuesta)->get();
+        //recorremos el nombre de los campus
+
         foreach ($campus as $campusid) {
             $idcampus=DB::table('ctlCampus')->select('campus_id')
                                             ->where('campus_name','=',$campusid->campus)->get();
-
-        foreach ($idcampus as $idcampu) {        
-                                
-        $totalencuestados=DB::table('encuestados')->where('idEncuesta','=',$idEncuesta)
-        ->where('campus','=',$campusid->campus)->count();
-
-        $totalalumnos=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->whereNotNull('noCuenta')
-                                            ->where('campus','=',$campusid->campus)->count();
-        $totalempleados=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->whereNull('noCuenta')
-                                            ->where('campus','=',$campusid->campus)->count();
-        $totalincidentes=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->where('incidente','=',1)
+                    foreach ($idcampus as $idcampu) { 
+                        $check=DB::table('estadisticas')->where('campus_campus_id','=',$idcampu->campus_id)
+                                                        ->where('surveys_id','=',$idEncuesta)->count();
+                        if($check==0){
+                        $totalencuestados=DB::table('encuestados')->where('idEncuesta','=',$idEncuesta)
                                             ->where('campus','=',$campusid->campus)->count();
 
-
-        $totalincidentesalumnos=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->where('incidente','=',1)
-                                            ->whereNotNull('noCuenta')
-                                            ->where('campus','=',$campusid->campus)->count();
-
-        $totalincidentesempleados=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->where('incidente','=',1)
-                                            ->whereNull('noCuenta')
-                                            ->where('campus','=',$campusid->campus)->count();
-        $totalcontestados=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->where('incidente', '=',0)
-                                            ->where('contestado','=',1)
-                                            ->where('campus','=',$campusid->campus)->count();
-        $totalcontestadosalumnos=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->where('incidente', '=',0)
-                                            ->where('contestado','=',1)
-                                            ->whereNotNull('noCuenta')
-                                           ->where('campus','=',$campusid->campus)->count();
-
-        $totalcontestadosempleados=DB::table('encuestados')
-                                            ->where('idEncuesta','=',$idEncuesta)
-                                            ->where('incidente', '=',0)
-                                            ->where('contestado','=',1)
-                                            ->whereNull('noCuenta')
-                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalalumnos=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->whereNotNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalempleados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->whereNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalincidentes=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente','=',1)
+                                                            ->where('campus','=',$campusid->campus)->count();
 
 
-        $idEstadisticas=DB::table('estadisticas')->insertGetId([
-                                                                'total_encuestados'=>$totalencuestados,
-                                                                'total_alumnos'=>$totalalumnos,
-                                                                'total_empleados'=>$totalempleados,
-                                                                'total_incidentes'=>$totalincidentes,
-                                                                'total_incidentes_alumnos'=>$totalincidentesalumnos,
-                                                                'total_incidentes_empleados'=>$totalincidentesempleados,
-                                                                'total_contestados'=>$totalcontestados,
-                                                                'total_contestados_alumnos'=>$totalcontestadosalumnos,
-                                                                'total_contestados_empleados'=>$totalcontestadosempleados,
-                                                                'campus_campus_id'=>$idcampu->campus_id,
-                                                                'surveys_id'=> $idEncuesta]);
+                        $totalincidentesalumnos=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente','=',1)
+                                                            ->whereNotNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+
+                        $totalincidentesempleados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente','=',1)
+                                                            ->whereNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalcontestados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente', '=',0)
+                                                            ->where('contestado','=',1)
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalcontestadosalumnos=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente', '=',0)
+                                                            ->where('contestado','=',1)
+                                                            ->whereNotNull('noCuenta')
+                                                           ->where('campus','=',$campusid->campus)->count();
+
+                        $totalcontestadosempleados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente', '=',0)
+                                                            ->where('contestado','=',1)
+                                                            ->whereNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+
+
+                        $idEstadisticas=DB::table('estadisticas')->insertGetId([
+                                                                                'total_encuestados'=>$totalencuestados,
+                                                                                'total_alumnos'=>$totalalumnos,
+                                                                                'total_empleados'=>$totalempleados,
+                                                                                'total_incidentes'=>$totalincidentes,
+                                                                                'total_incidentes_alumnos'=>$totalincidentesalumnos,
+                                                                                'total_incidentes_empleados'=>$totalincidentesempleados,
+                                                                                'total_contestados'=>$totalcontestados,
+                                                                                'total_contestados_alumnos'=>$totalcontestadosalumnos,
+                                                                                'total_contestados_empleados'=>$totalcontestadosempleados,
+                                                                                'campus_campus_id'=>$idcampu->campus_id,
+                                                                                'surveys_id'=> $idEncuesta]);
+                        }if($check!=0){
+
+                        $totalencuestados=DB::table('encuestados')->where('idEncuesta','=',$idEncuesta)
+                                                                  ->where('campus','=',$campusid->campus)->count();
+
+                        $totalalumnos=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->whereNotNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+
+                        $totalempleados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->whereNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalincidentes=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente','=',1)
+                                                            ->where('campus','=',$campusid->campus)->count();
+
+
+                        $totalincidentesalumnos=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente','=',1)
+                                                            ->whereNotNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+
+                        $totalincidentesempleados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente','=',1)
+                                                            ->whereNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalcontestados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente', '=',0)
+                                                            ->where('contestado','=',1)
+                                                            ->where('campus','=',$campusid->campus)->count();
+                        $totalcontestadosalumnos=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente', '=',0)
+                                                            ->where('contestado','=',1)
+                                                            ->whereNotNull('noCuenta')
+                                                           ->where('campus','=',$campusid->campus)->count();
+
+                        $totalcontestadosempleados=DB::table('encuestados')
+                                                            ->where('idEncuesta','=',$idEncuesta)
+                                                            ->where('incidente', '=',0)
+                                                            ->where('contestado','=',1)
+                                                            ->whereNull('noCuenta')
+                                                            ->where('campus','=',$campusid->campus)->count();
+
+
+                        $idEstadisticas=DB::table('estadisticas')->where('surveys_id',$idEncuesta)
+                                                                 ->where('campus_campus_id',$idcampu->campus_id)
+                                                                 ->update([
+                                                                                'total_encuestados'=>$totalencuestados,
+                                                                                'total_alumnos'=>$totalalumnos,
+                                                                                'total_empleados'=>$totalempleados,
+                                                                                'total_incidentes'=>$totalincidentes,
+                                                                                'total_incidentes_alumnos'=>$totalincidentesalumnos,
+                                                                                'total_incidentes_empleados'=>$totalincidentesempleados,
+                                                                                'total_contestados'=>$totalcontestados,
+                                                                                'total_contestados_alumnos'=>$totalcontestadosalumnos,
+                                                                                'total_contestados_empleados'=>$totalcontestadosempleados]);
+            }
         }
 }
 
-                                   
-    }
+}
 }

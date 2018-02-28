@@ -37,7 +37,7 @@ class ingresarIncidente implements ShouldQueue
     public function handle()
     {
         $idarray=['id' => $this->idlista1]; 
-        Excel::filter('chunk')->load(public_path("/listas/".$this->archivonombre1))->chunk(250, function($results) use ($idarray){
+        Excel::filter('chunk')->load(public_path("/listas/".$this->archivonombre1))->chunk(30000, function($results) use ($idarray){
             foreach($results as $row){
                 if($row->De_Cuenta_De_Alumno=="" && $row->nombre_alumno==""){
                 }else{
@@ -52,7 +52,7 @@ class ingresarIncidente implements ShouldQueue
                                                             'causa'         =>  $row->causa,
                                                             'id_encuestados'=>  $idencuestados[0]->idE]);
 
-                    DB::table('encuestados')->where('idE','=' ,$idencuestados[0]->idE)
+                    DB::table('encuestados')->where('idE','=' ,$idencuestados[0]->idE   )
                                             ->update(['incidente' => 1]);
                 } 
             }
