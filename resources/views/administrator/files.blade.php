@@ -246,21 +246,7 @@ try{
                                       <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
                                         <div class="btn-group" role="group" aria-label="...">
-                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Registros" disabled>
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </a>                                        
-                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black" disabled>
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled>
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                        </a>
-                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black" disabled>
-                                            <span class="glyphicon glyphicon-alert"></span>
-                                        </a>
+                                          <img src="/img/load/load.gif">
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +340,6 @@ try{
           <div class="modal-body">
             <center>
                 <div class="invisible" id="loadingExclude">
-                    <img src="http://smartmo.unl.edu/portal_includes/images/loading_circle.gif" alt="Cargando..." width="150px" height="100px">
                 </div>
             </center>
           </div>
@@ -499,6 +484,15 @@ document.getElementById("btnsubir2").addEventListener("click", function () {
 
 
   <script type="text/javascript">
+   $(document).ready(function() {
+        var refreshId = setInterval(function() {
+            $("#divid").load(" #divid");
+                    }, 5000);
+
+        $.ajaxSetup({ cache: false });              
+    });
+
+
 
 /*$(function(){
       $("#formuploadajax").on("submit", function(e){
