@@ -17,6 +17,9 @@ Route::get('/administrator/login', 'iniciarSesion@validar')->name("adminLogin");
 Route::post('/administrator/validate', 'iniciarSesion@ldap');
 
 Route::post('/surveyed/validate', 'iniciarSesion@lencuesta');
+Route::post('/directive/validate', 'iniciarSesion@ldirective');
+
+
 Route::post('/uploadimage','AdministratorController@uploadImage');
 
 Auth::routes();
@@ -62,7 +65,7 @@ Route::get('/administrator/management/new', function(){
 	return view('administrator.new-administrator');
 });
 
-Route::get('/directive/{id}/', ['as' => 'directive', 'uses'=>'directiveController@show_cards']);
+Route::get('/directive/', 'directiveController@show_cards')->name('directive');
 
 //Route::post('/directive', 'directiveController@show_cards');
 
@@ -213,7 +216,7 @@ Route::post('/eliminarlista','listasController@eliminarlista');//Mi linea
 
 Route::post('/incidente','listasController@incidente');//Mi linea
 
-Route::get('/administrator/informe/{id}/',["as" => "informe", "uses" => "listasController@generarReporte" ]);
+Route::post('/informe',"listasController@generarReporte");
 
 Route::post('/administrator/addSaltoParent', 'questionsTemplateController@addSaltoParent');
 

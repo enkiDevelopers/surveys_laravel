@@ -50,6 +50,10 @@ if($publicacion->creador == $id)
     <a id="btn_rec" onclick="reminder({{$publicacion->idPub}})" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Enviar recordatorio">
     <span class="glyphicon glyphicon-time"></span>
     </a>
+                                        <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>
+
 </div>
 
 
@@ -127,7 +131,9 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
               <a id="btn_prevPub" target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-
+                                        <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>
 
 </div>
 
@@ -185,7 +191,9 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
               <a id="btn_prevPub" target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                                 <span class="glyphicon glyphicon-eye-open"></span>
                             </a>
-
+                                        <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </a>
 
 </div>
 
@@ -197,35 +205,3 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 <script src="{{asset('js/app.js')}}"></script>
 <script src="/js/label_better.min.js"></script>
 <script src="/js/administratorPreviewTem.js"></script>
-
-
-<script type="text/javascript">
-
-function pop(){
-             swal({
-              title: "Información",
-              text: "Encuesta demostrativa ninguna Información será guardada",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonClass: "btn-danger",
-              confirmButtonText: "Continuar",
-              cancelButtonText: "Cancelar",
-              closeOnConfirm: false,
-              closeOnCancel: true
-            },
-            function(isConfirm) {
-            if (isConfirm) {
-
-            } else {
-
-            }
-            });
-}
-function get_action(){
-
-        pop();
-
-}
-
-
-</script>
