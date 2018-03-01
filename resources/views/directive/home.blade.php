@@ -116,9 +116,9 @@
 </div>
 
 <!--end modal section-->
-<div class="row">
-<div class="container" >
-        <div class="col-md-11">
+<div class="container" style="width:86%">
+   <div class="row">
+     <div class="col-md-11">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -159,7 +159,7 @@
                                 ?>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="corporativoModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reportes disponibles">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                            <span class="glyphicon glyphicon-signal" ></span>
                                         </button>
                                     </div>
 
@@ -169,7 +169,7 @@
                                 ?>
                                         <div class="btn-group " role="group" aria-label="...">
                                         <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Regional">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                            <span class="glyphicon glyphicon-signal" ></span>
                                         </button>
                                         </div>
                                 <?php
@@ -178,7 +178,7 @@
                                 ?>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                            <span class="glyphicon glyphicon-signal" ></span>
                                         </a>
                                     </div>
                                 <?php 
