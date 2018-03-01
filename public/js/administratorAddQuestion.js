@@ -125,7 +125,7 @@
         for (var i = act; i <= max; i++) {
              $(this).append('<option value="'+i+'">'+i+'</option>');
         } 
-        $(this).append('<option value="'+i+'">Fin de la encuesta</option>');
+        $(this).append('<option value="'+i+'">Fin</option>');
     });
 
     $("#container-questions").on('change', '.selectNumPreg', function() {
@@ -169,7 +169,7 @@
              $(this).append('<option value="'+i+'">'+i+'</option>');
         }
         var final = i+1; 
-        $(this).append('<option value="'+final+'">Fin de la encuesta</option>');
+        $(this).append('<option value="'+final+'">Fin</option>');
     });
 
     $("#container-questions").on('change', '.selectNumPregParent', function() {

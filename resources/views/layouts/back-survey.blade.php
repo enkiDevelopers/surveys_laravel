@@ -49,15 +49,17 @@
 
                  <nav id="sidebarMobile" class="navbar-default navbar-fixed-top visible-xs">
         <ul class="list-inline components">
-          <li id="UVM_Movil">
-            <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;margin-left: 15%;" >
-          </li>
-          <li id="menu" style="float: left;background-color: darkred;height: 80px;width: 18%;">
+          <center>
+            <li id="UVM_Movil">
+              <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;" >
+            </li>
+          </center>
+          <li id="menu" style="float: left;background-color: darkred;height: 82px;width: 17%;margin-top: -74px;">
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
           </li> 
-          <li id="rol" style="float: right;background-color: blue;height: 80px;width: 18%;">
+          <li id="rol" style="float: right;background-color: blue;height: 82px;width: 17%;margin-top: -74px;">
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-cog"></i>
             </a>

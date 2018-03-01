@@ -2,27 +2,15 @@
 {
   width: 100%;
 }
-.infoUser{
-  margin-top: 10px;
-  height: 85px;
-  background: -webkit-linear-gradient(top left,#304ffe, #1565c0);
-  background: -o-linear-gradient(top left, #304ffe, #1565c0);
-  background: linear-gradient(to bottom right ,#304ffe, #1565c0);
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  text-align: right;
-  border-radius: 14px;
-  margin-left: -80px;
-  z-index: -10;
-}
-.infoUser span{
-  margin-right: 25px;
+
+.sep{
+width: auto;
+height: 150px;
 }
 #btn-añadir
 {
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 240px;
 
   background: rgba(37,66,118,1);
 background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
@@ -33,15 +21,13 @@ background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 
 background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
 
--ms-border-radius: 150px;
--moz-border-radius: 150px;
--webkit-border-radius: 150px;
--o-border-radius: 150px;
-border-radius: 150px;
+-moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+
 margin-bottom: 20px;
-margin-left: 2%;
-margin-right: 43px;
-margin-top: 4%;
+margin-left: 12px;
+margin-top: 1px;
 display: inline-block;
 -webkit-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
 -moz-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
@@ -85,15 +71,15 @@ position: relative;
 
 #btn-newSur
 {
-margin-left: 10%;
+margin-left: 30%;
 font-size: 40px;
 margin-top: 30px;
 }
 
 #content-btn
 {
-margin-left: 19%;
-font-size: 30px;
+margin-left: 20%;
+font-size: 50px;
 text-align: center;
 width: 100px;
 margin-top: 20px;
@@ -102,17 +88,32 @@ color: #fff;
 
 .card
 {
-width: 255px;
-height: 280px;
-background-color: #EBECEE;
+width: 230px;
+height: 240px;
 text-align: center;
-border-radius: 33px 33px 33px 33px;
--moz-border-radius: 33px 33px 33px 33px;
--webkit-border-radius: 33px 33px 33px 33px;
-border: 3px solid #8a8a8a;
-margin-left: 12px;
+border: 3px solid gray;
+border-radius: 10px;
+margin-left: 30px;
 margin-bottom: 2%;
+background-image: url("/img/iconos/default.png");
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: center;
 }
+.card2
+{
+width: 230px;
+height: 240px;
+text-align: center;
+border: 3px solid gray;
+border-radius: 10px;
+margin-left: 30px;
+margin-bottom: 2%;
+background-size: 100%;
+background-repeat: no-repeat;
+background-position: center;
+}
+
 #crearPlantilla
 {
   margin-top: -20px;
@@ -120,21 +121,32 @@ margin-bottom: 2%;
 
 #marco
 {
-margin-top: 10%;
-border-radius: 5px;
--webkit-box-shadow: 0px 0px 0px 6px rgba(163,163,163,1);
--moz-box-shadow: 0px 0px 0px 6px rgba(163,163,163,1);
-box-shadow: 0px 0px 0px 6px rgba(163,163,163,1);
-width: 60%;
-height: 130px;
+margin-top: 0%;
+border-radius: 2px;
+width: 100%;
+height: auto;
+border-radius: 33px 33px 33px 33px;
+-moz-border-radius: 33px 33px 33px 33px;
+-webkit-border-radius: 33px 33px 33px 33px;
+}
+.pub-icon
+{
+width: 100%;
+height: 135px;
+
+
 }
 .creador
 {
-  margin-top: 6%;
+width: 80%;
+height: 30%;
+text-align: center;
+  color: #000;
+font-family: fantasy;
 }
 
 #btn_dup{
-margin-left: -123px;
+margin-left: -110px;
 height:  40px;
 width: 40px;
 padding-left: 8px;
@@ -142,15 +154,15 @@ margin-bottom: 2px;
 background-color: #a1a1a1;
 color: #fff;
 font-size: 20px;
-margin-top: 65px;
+margin-top: 43px;
 display: inline-block;
 position: absolute;
-border-radius: 5px;
+border-radius: 10px;
 }
 #btn_edit
 {
 background-color: #3265be;
-margin-left: -123px;
+margin-left: -110px;
 height:  40px;
 width: 40px;
 padding-left: 10px;
@@ -158,7 +170,7 @@ padding-top: 4px;
 margin-bottom: 2px;
 color: #fff;
 font-size: 20px;
-margin-top: 160px;
+margin-top: 140px;
 display: inline-block;
 position: absolute;
 border-radius: 10px;
@@ -171,8 +183,8 @@ border-radius: 10px;
   background-color: #ff0000;
   border-radius: 10px;
   color: #fff;
-  margin-left: 192px;
-  margin-top: -360px;
+  margin-left: 167px;
+  margin-top: -330px;
   position: relative;
   padding-top: 3%;
 }
@@ -184,8 +196,8 @@ border-radius: 10px;
   width: 40px;
   background-color: #a1a1a1;
   color: #fff;
-  margin-left: 192px;
-  margin-top: -310px;
+  margin-left: 167px;
+  margin-top: -280px;
   border-radius: 10px;
   padding-top: 3%;
 
@@ -196,11 +208,10 @@ border-radius: 10px;
   width: 40px;
   background-color: #75b44c;
   color: #fff;
-  margin-left: 192px;
-  margin-top: -250px;
-  padding-top: 3%;
+  margin-left: 167px;
+  margin-top: -220px;
+  padding-top: 4%;
   border-radius: 10px;
-  padding-top: 3%;
   position: relative;
 
 }
@@ -227,11 +238,12 @@ border-radius: 10px;
 }
 #title
 {
-  font-size: 20px;
+  margin-left: 10%;
+  color: #000;
+font-family: fantasy;
   display: block;
-  margin-left: 30px;
   text-align: center;
-  width: 180px;
+  width: 80%;
   height: 30px;
 margin-bottom: 50;
  position: relative
@@ -240,11 +252,33 @@ word-wrap: break-word;
 position: relative;
 text-align: center;
 }
+#ver
+{
+  width: 80%;
+  height: 30px;
+opacity: 0.5;
+background-color: white;
+margin-top: 10px;
+margin-left: 10%;
+position: absolute;
+}
+#ver2
+{
+  width: 80%;
+  height: 30px;
+opacity: 0.5;
+background-color: white;
+margin-top: 10px;
+margin-left: 10%;
+position: absolute;
+}
+
+
 
 .scroll{
-width: 100%;
+width: 90%;
 height: 400px;
-overflow: scroll;
+overflow-y: scroll;
 }
 
 
@@ -281,12 +315,12 @@ position: relative;
 }
 #pBody
 {
-  width: 101.4%;
+  width: 100%;
 }
 
 #pPBody
 {
-  width: 101.4%;
+  width: 100%;
 }
 .CCperfil
 {
@@ -317,19 +351,85 @@ position: relative;
 display: inline-block;
 color: #fff;
 }
+.cuadroPerfilSup
+{
 
+  background: rgba(37,66,118,1);
+  background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(37,66,118,1)), color-stop(51%, rgba(42,76,135,1)), color-stop(100%, rgba(47,85,151,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
+  width: 480px;
+  height: 100px;
+  z-index: -1;
+  border-radius: 30px;
+  margin-top: 25px;
+
+  position: relative;
+  margin-left: 100px;
+  display: inline-block;
+}
+.eng
+{
+  color: white;
+  position: relative;
+  margin-left: 100px;
+  font-size: 30px;
+}
+#content{
+  width: 380px;
+  float: right;
+  text-align: right;
+  color: white;
+  margin-right: 20px;
+  margin-top: -40px;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 80%;
+  font-size: 20px;
+  font-family: fantasy;
+}
+.nombre{
+height: 40px;
+text-align:right;
+overflow: hidden;
+}
+.correo
+{
+  overflow: hidden;
+  height: 40px;
+  text-align:right;
+  overflow: hidden;
+
+}
 .circle {
-    width: 100px;
-    max-width: 150px;
-    max-height: 150px;
-    height: 100px;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    top: 10px;
     display: inline-block;
-    margin-left: 0;
-    border-radius: 60px;
-    box-shadow: 7px 0 35px #ccd;
-    background: #9e9e9e;
+    margin-left: 50px;
+    position: absolute;
+    border-radius: 100%;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+
+}
+.circle:hover
+{
+  cursor: pointer;
+}
+.supSide
+{
+  position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+
 }
 
 #texto
@@ -340,8 +440,11 @@ overflow: hidden;
   margin-left: 90px;
 
 }
-
-
+#actualizar
+{
+width: 100%
+}
+/* Media querys */
 @media (max-width: 991px) {
   #btn-añadir
   {
