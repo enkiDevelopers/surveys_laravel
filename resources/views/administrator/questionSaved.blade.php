@@ -57,12 +57,12 @@
                 <div class="col-md-12" data-questions="0">
                     <div id="multi-options">
                         <div class="col-md-6 col-md-offset-1 " data-multioptions="0">
-                            <div class="form-group">
+                            <div class="form-group opcionesRespon" >
                                 <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
                                 <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
                         </div>
-                        <div class="col-md-2 col-md-offset-1 pull-left">                           
+                        <div class="col-md-2 col-md-offset-1 pull-left selectRespon">                           
                            <label for="selectNumPreg text-black-body">Redireccionar: </label>
                             <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
                                 <option value="N/A" selected disabled>{{$option->salto}}</option>

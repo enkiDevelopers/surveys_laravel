@@ -223,6 +223,14 @@ hr{
 	 #numPregSig{
 	 	width: 100%;
 	 }
+	 .opcionesRespon{
+	 	width: 70%;
+	 	float: left;
+	 	margin-left: -15px;
+	 }
+	 .selectRespon{
+	 	width: 36%;
+	 }
 
 
 }
