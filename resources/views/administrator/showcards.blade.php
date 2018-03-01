@@ -1,7 +1,7 @@
 
 <?php foreach ($propias as $plantilla) { ?>
   <!--Publicaciones -->
-<div class="col-md-2 card" id="{{$plantilla->id}}">
+<div class="col-md-2 card" id="{{$plantilla->id}}" style="background-image: url('/img/iconos/{{$plantilla->imagePath}}'), url('/img/iconos/default.png')">
 
   <div class="left_buttons">
 <!-- boton duplicar -->
@@ -25,30 +25,37 @@
 <!-- fin boton editar -->
 <!--Titulo encuesta -->
 <div class="row">
+<div id="ver">
+  </div>
+
   <div  id="title">
     <div id="title2">
-
-
-<h4>
-
-
- <?php echo $plantilla->tituloEncuesta;  ?></h4>
+<h5>
+ <?php echo $plantilla->tituloEncuesta;  ?></h5>
      </div>
   </div>
+
 </div>
 <!--icono encuesta -->
 <div class="row">
+
 <div class="pub-icon">
-  <img id="marco" class="card-img-top"
-                alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
-                onerror="this.src='/img/iconos/default.png'">
+
 </div>
+
 </div>
 <!--creador encuesta -->
 <div class="row">
-  <div class="creador">
-<b><p>Creado por: <span class="template-creator"> {{$plantilla->nombre}}</span></p></b>
-  </div>
+
+  <div id="ver2">
+    </div>
+
+    <div  id="title">
+      <div id="title2">
+  <h5>
+   <?php echo $plantilla->nombre;  ?></h5>
+       </div>
+    </div>
 
 </div>
 
@@ -74,17 +81,11 @@
 </div>
 
 <?php } ?>
-<div class="col-md-12">
-  <hr />
-<center>
-  <h5><b>plantillas creadas por otros administradores</b></h5>
-  </center>
-<hr />
-</div>
+
 
 <?php foreach ($agenas as $plantilla) { ?>
 
-  <div class="col-md-2 card" id="{{$plantilla->id}}">
+  <div class="col-md-2 card" id="{{$plantilla->id}}" style="background-image: url('/img/iconos/{{$plantilla->imagePath}}'), url('/img/iconos/default.png')">
 
     <div class="left_buttons">
   <!-- boton duplicar -->
@@ -120,16 +121,24 @@
   <!--icono encuesta -->
   <div class="row">
   <div class="pub-icon">
-    <img id="marco" class="card-img-top"
-                  alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
-                  onerror="this.src='/img/iconos/default.png'">
+
+
   </div>
   </div>
   <!--creador encuesta -->
   <div class="row">
-    <div class="creador">
-  <b><p>Creado por: <span class="template-creator"> {{$plantilla->nombre}}</span></p></b>
-    </div>
+
+
+    <div id="ver2">
+      </div>
+
+      <div  id="title">
+        <div id="title2">
+    <h5>
+     <?php echo $plantilla->nombre;  ?></h5>
+         </div>
+      </div>
+
 
   </div>
 
@@ -160,17 +169,12 @@
 <?php } ?>
 
 
-<div class="col-md-12">
-  <hr />
-<center>
-  <h5><b>plantillas publicadas</b></h5>
-  </center>
-<hr />
-</div>
+
+
 
 <?php foreach ($publicadas as $plantilla) { ?>
 
-  <div class="col-md-2 card" id="{{$plantilla->id}}">
+  <div class="col-md-2 card" id="{{$plantilla->id}}" style="background-image: url('/img/iconos/{{$plantilla->imagePath}}'), url('/img/iconos/default.png')">
 
     <div class="left_buttons">
   <!-- boton duplicar -->
@@ -194,28 +198,35 @@
   <!-- fin boton editar -->
   <!--Titulo encuesta -->
   <div class="row">
+    <div id="ver">
+
+    </div>
     <div  id="title">
       <div id="title2">
 
 
-  <h4>
-   <?php echo $plantilla->tituloEncuesta;  ?></h4>
+  <h5>
+   <?php echo $plantilla->tituloEncuesta;  ?></h5>
        </div>
     </div>
   </div>
   <!--icono encuesta -->
   <div class="row">
   <div class="pub-icon">
-    <img id="marco" class="card-img-top"
-                  alt="Card image cap" src="/img/iconos/<?php echo $plantilla->imagePath;?>"
-                  onerror="this.src='/img/iconos/default.png'">
+
   </div>
   </div>
   <!--creador encuesta -->
   <div class="row">
-    <div class="creador">
-  <b><p>Creado por: <span class="template-creator"> {{$plantilla->nombre}}</span></p></b>
-    </div>
+    <div id="ver2">
+      </div>
+
+      <div  id="title">
+        <div id="title2">
+    <h5>
+     <?php echo $plantilla->nombre;  ?></h5>
+         </div>
+      </div>
 
   </div>
 

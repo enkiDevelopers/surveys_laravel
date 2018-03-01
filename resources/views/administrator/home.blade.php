@@ -13,25 +13,26 @@
   <script src="/js/input/es.js"></script>
 
 <script src="/js/homeAdministrator.js"></script>
-<div class="container">
-  <div class="row">
-    <div class="col-md-11 col-md-offset-1 col-infoUser">
-      <div class="row">
-          <div class="col-md-11 col-md-offset-3">
-            <div class="col-md-1">
-            <img  src="/img/avatar/{{$info->imagenPerfil}}" class="img-thumbnail circle img-principal img-responsive" data-toggle="modal" data-target="#editarImagen" data-keyboard="false" data-backdrop="static"
-          style="cursor: pointer;">
-            </div>
-            <div class="col-md-5 infoUser">
-              <span class="glyphicon glyphicon-cog pull-left" style="padding-left: 100px;"></span>
-              <label style="padding-top: -10px">{{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}</label>   
-              <label>{{$info->email}}</label>
-            </div>
-          </div>
-      </div>
+<div class="sep">
+<div class="row">
+  <div class="supSide">
+  <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')"
+    data-toggle="modal" data-target="#editarImagen">
+
+  </div>
+<div class="cuadroPerfilSup">
+  <div class="eng">
+    <span class="glyphicon glyphicon-cog"> &nbsp</span>
     </div>
+  <div id="content">
+    <div class="nombre"> {{$info->nombre}} </div>
+    <div class="correo">{{$info->email}} </div>
+        </div>
+</div>
   </div>
 </div>
+</div>
+
 
 
 <!-- ##################################  Modal editar Imagen perfil ################################## -->

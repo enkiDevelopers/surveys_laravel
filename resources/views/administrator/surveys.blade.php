@@ -12,18 +12,27 @@
 
 <div class="container" >
     <div class="row">
-          <div class="col-md-12 col-md-offset-3 col-infoUser">
-            <div class="col-md-1">
-            <img  src="/img/avatar/default.png" class="img-thumbnail circle img-principal img-responsive" style="cursor: pointer;">
-            </div>
-            <div class="col-md-5 infoUser">
-              <span class="glyphicon glyphicon-cog"></span>
-              <label style="padding-top: -10px">Rafael Alberto Martínez Méndez</label>   
-              <label>admin@admin.com</label>
-            </div>
-          </div>
 
       <div class="col-md-12 ">
+              <div class="sep">
+              <div class="row">
+                <div class="supSide">
+                <div class="circle">
+                </div>
+              <div class="cuadroPerfilSup">
+                <div class="eng">
+                  <span class="glyphicon glyphicon-cog"> &nbsp</span>
+                  </div>
+                <div id="content">
+                  <div class="nombre"> Jorge Luis González Hernandez </div>
+                  <div class="correo">colocho-2104@gmail.com </div>
+                      </div>
+              </div>
+                </div>
+              </div>
+              </div>
+
+
             <div class="panel panel-default ">
                 <div class="panel-heading fijado">
                     <div class="row">
@@ -69,7 +78,7 @@
                      <div id="content-btn"class="text-center">
                    <span class="glyphicon glyphicon-plus" id="btn-newSur"></span>
                    <div id="crearPlantilla">
-                      <h3>Crear Plantilla</h3>
+                      <h1>Crear Plantilla</h1>
                      </div>
                        </a>
                       </div>

@@ -8,23 +8,23 @@
 
   </head>
   <body>
-  
-  <div class="col-md-9 col-md-offset-3">
-    <div class="col-md-1">
-      <img src="/img/avatar/default.png" class="circle" alt="">
+    <div class="supSide">
+    <div class="circle">
     </div>
-    <div class="col-md-5 infoUser">
-      <span class="glyphicon glyphicon-cog"></span>
-      <label style="padding-top: -10px">Rafael Alberto Martínez Méndez</label>   
-      <label>admin@admin.com</label>
+<div class="cuadroPerfilSup">
+    <div class="eng">
+      <span class="glyphicon glyphicon-cog"> &nbsp</span>
+      </div>
+    <div id="content">
+      <div class="nombre"> Jorge Luis González Hernandez </div>
+      <div class="correo">colocho-2104@gmail.com </div>
+          </div>
+</div>
     </div>
-  </div>
 
-      <?php
-  echo $_SERVER['SERVER_NAME'];
-    echo "<br />";
-  echo $_SERVER["HTTP_HOST"];;
-  ?>
+
+
+
 
   </body>
 </html>

@@ -3,7 +3,7 @@ if($publicacion->creador == $id)
 {
   ?>
   <!--Publicaciones -->
-<div class="col-md-2 card" id="{{$publicacion->idPub}}">
+<div class="col-md-2 card" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}'), url('/img/iconos/default.png')">
   <div class="left_buttons">
 <!-- boton duplicar -->
 <div class="row">
@@ -20,18 +20,20 @@ if($publicacion->creador == $id)
 <!-- fin boton editar -->
 <!--Titulo encuesta -->
 <div class="row">
-  <div  id="title">
-    <div id="title2">
-<h4> <?php echo $publicacion->tituloEncuesta;  ?></h4>
-     </div>
-  </div>
+  <div id="ver">
+    </div>
+
+    <div  id="title">
+      <div id="title2">
+  <h5>
+   <?php echo $publicacion->tituloEncuesta;  ?></h5>
+       </div>
+    </div>
 </div>
 <!--icono encuesta -->
 <div class="row">
 <div class="pub-icon">
-  <img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagePath;?>"
-  width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
-  >
+
 </div>
 </div>
 <!--creador encuesta -->
@@ -88,7 +90,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
    -->
 <?php }else{?>
   <!--Publicaciones -->
-<div class="col-md-2 card" id="{{$publicacion->idPub}}">
+<div class="col-md-2 card" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}'), url('/img/iconos/default.png')">
   <div class="left_buttons">
 <!-- boton duplicar -->
 <div class="row">
@@ -105,18 +107,21 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 <!-- fin boton editar -->
 <!--Titulo encuesta -->
 <div class="row">
-  <div  id="title">
-    <div id="title2">
-<h4> <?php echo $publicacion->tituloEncuesta;  ?></h4>
-     </div>
+  <div id="ver">
+    </div>
+
+    <div  id="title">
+      <div id="title2">
+  <h5>
+   <?php echo $publicacion->tituloEncuesta;  ?></h5>
+       </div>
+    </div>
   </div>
 </div>
 <!--icono encuesta -->
 <div class="row">
 <div class="pub-icon">
-  <img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagePath;?>"
-  width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
-  >
+
 </div>
 </div>
 <!--creador encuesta -->
@@ -148,7 +153,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 
 <?php foreach ($finalizadas as $publicacion) {?>
   <!--Publicaciones -->
-<div class="col-md-2 card" id="{{$publicacion->idPub}}">
+<div class="col-md-2 card2" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}'), url('/img/iconos/default.png')">
   <div class="left_buttons">
 <!-- boton duplicar -->
 <div class="row">
@@ -165,18 +170,21 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 <!-- fin boton editar -->
 <!--Titulo encuesta -->
 <div class="row">
-  <div  id="title">
-    <div id="title2">
-<h4> <?php echo $publicacion->tituloEncuesta;  ?></h4>
-     </div>
-  </div>
+  <div id="ver">
+    </div>
+
+    <div  id="title">
+      <div id="title2">
+  <h5>
+   <?php echo $publicacion->tituloEncuesta;  ?></h5>
+       </div>
+    </div>
+
 </div>
 <!--icono encuesta -->
 <div class="row">
 <div class="pub-icon">
-  <img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagePath;?>"
-  width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
-  >
+
 </div>
 </div>
 <!--creador encuesta -->
