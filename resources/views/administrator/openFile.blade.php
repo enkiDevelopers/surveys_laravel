@@ -20,7 +20,7 @@
 
               <th>Nombre</th>
               <th>email1</th>
-              <th>Region</th>
+              <th>Cuenta</th>
               <th>Campus</th>
           </tr>  
         </thead>  
@@ -33,7 +33,7 @@
                         <td><?php echo $info->nombreGeneral  ?>   </td>
                         <td><?php echo $info->email1         ?>   </td>
                         <td><?php echo $info->region      ?>      </td>
-                        <td><?php echo $info->campus     ?>       </td>
+                        <td><?php echo $info->noCuenta     ?>       </td>
 
                     </tr>      
 

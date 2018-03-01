@@ -17,7 +17,7 @@ function corporativoModal(comp){
                 var titulo="";
                 var imagen="";
                     titulo+="<h4><b>"+response["0"].tituloEncuesta+"</b></h4>";
-                    imagen+="<img class='card-img-top' style='border-radius: 10px;' alt='Card image cap' src='/img/iconos/"+response["0"].imagePath+"' width='50%' height='90px'>";
+                    imagen+="<img class='card-img-top' style='border-radius: 10px;' alt='Card image cap' src='/img/iconos/"+response["0"].imagePath+"' width='50%' height='90px' onerror=\"this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'\">";
 
                  $("#titulo_encuesta").html(titulo);
                  $("#imagen").html(imagen);
@@ -51,7 +51,7 @@ $.ajaxSetup({
                 var imagen="";
 
                     titulo+="<h4><b>"+response["0"].tituloEncuesta+"</b></h4>";
-                    imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response["0"].imagePath+"' width='50%' height='90px'>";
+                    imagen+="<img class='card-img-top' style='border-radius:150px;' alt='Card image cap' src='/img/iconos/"+response["0"].imagePath+"' width='50%' height='90px' onerror=\"this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'\">";
 
                  $("#titulo_encuestar").html(titulo);
                  $("#imagenr").html(imagen);

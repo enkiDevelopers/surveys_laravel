@@ -101,6 +101,8 @@
       </div>
 
     <!-- Scripts -->
+  <script src="/js/reporte.js"></script>
+
     <script type="text/javascript">
       $(document).ready(function () {
 

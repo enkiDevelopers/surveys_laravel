@@ -1,6 +1,6 @@
 window.onload = function() {
 
-var chart = new CanvasJS.Chart("chartContainer", {
+/*var chart = new CanvasJS.Chart("chartContainer", {
     backgroundColor: "transparent",
     animationEnabled: true,
     title: {
@@ -20,11 +20,32 @@ var chart = new CanvasJS.Chart("chartContainer", {
     }]
 });
 
+chart.render();*/
+
+var chart = new CanvasJS.Chart("canales", {
+    backgroundColor: "transparent",
+    animationEnabled: true,
+    data: [{
+        type: "pie",
+        startAngle: 90,
+        showInLegend: true,
+        yValueFormatString: "##0.00\"\"",
+        indexLabel: "{label} {y}",
+        dataPoints: [
+            {y: <?php echo $conexion; ?>,label:"Conexion"  , name: "Conexion"},
+            {y: <?php echo $facebook; ?>,label:"Facebook"  , name: "Facebook"},
+            {y: <?php echo $hp12c; ?>,label:"HPC12C"  , name: "HP12C"},
+            {y: <?php echo $mail; ?>,label:"Mail"  , name: "Mail"},
+            {y: <?php echo $online; ?>,label:"Online"  , name: "Online"},
+            {y: <?php echo $sistema; ?>,label:"Sistema"  , name: "Sistema"},
+
+        ]
+    }]
+});
+
 chart.render();
 
-
-
-var chart2 = new CanvasJS.Chart("chartContaineralum", {
+/*var chart2 = new CanvasJS.Chart("chartContaineralum", {
     backgroundColor: "transparent",
     animationEnabled: true,
     title: {
@@ -43,9 +64,9 @@ var chart2 = new CanvasJS.Chart("chartContaineralum", {
     }]
 });
 
-chart2.render();
+chart2.render();*/
 
-var chart3 = new CanvasJS.Chart("chartContaineremp", {
+/*var chart3 = new CanvasJS.Chart("chartContaineremp", {
     backgroundColor: "transparent",
     animationEnabled: true,
     title: {
@@ -57,13 +78,11 @@ var chart3 = new CanvasJS.Chart("chartContaineremp", {
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: '<?php echo $porcentajeavanceemp; ?>', label: "Avance General Alumnos"},
-            {y: '<?php echo 100-$porcentajeavanceemp; ?>', label: "Restante Alumnos"}
 
         ]
     }]
 });
 
-chart3.render();
+chart3.render();*/
 
 }

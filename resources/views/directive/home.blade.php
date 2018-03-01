@@ -144,7 +144,7 @@
 
                                 <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagePath;?>" width="100%" height="90px"> </div>
+                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagePath;?>" width="100%" height="90px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"> </div>
                                         <div class="col-md-7">
                                         <h4 class="card-title">  <?php echo $encuesta->tituloEncuesta;  ?></h4>
                                     </div>
@@ -153,7 +153,7 @@
                                 <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->descripcion?></span></p>
 
                                 <?php
-                                    
+                                     
                                  switch ($datosdirective[0]->type) {
                                     case '1':
                                 ?>
