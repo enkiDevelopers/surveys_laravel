@@ -21,7 +21,7 @@
 			echo "</div>";
 			echo "<div class='col-md-6'>";
             echo "<br>";
-			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}' onerror=\"this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'\">";
+			//echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}' onerror=\"this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'\">";
 			echo "</div>";
 		}?>
         
