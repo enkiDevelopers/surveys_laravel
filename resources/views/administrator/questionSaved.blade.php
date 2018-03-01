@@ -29,7 +29,7 @@
     if($dato->type==1){
 ?>
             <div class="col-md-2 salto">
-               <label for="selectNumPregParent text-black-body">Redireccionar: </label>
+               <label for="selectNumPregParent text-black-body">Salto: </label>
                 <select  order="{{$dato->orden}}" id="{{$dato->id}}" class="form-control text-black-body selectNumPregParent">
                     <option value="N/A" selected disabled>{{$dato->salto}}</option>
                 </select>                
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="col-md-2 col-md-offset-1 pull-left selectRespon">                           
-                           <label for="selectNumPreg text-black-body">Redireccionar: </label>
+                           <label for="selectNumPreg text-black-body">Salto: </label>
                             <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
                                 <option value="N/A" selected disabled>{{$option->salto}}</option>
                             </select>

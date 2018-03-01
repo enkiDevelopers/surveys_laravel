@@ -141,6 +141,7 @@ hr{
 	}		
 }
 
+
 @media screen and (max-width: 767px) {
 	#sidebar{
 	    box-shadow: 3px 10px 8px #fff;
@@ -229,8 +230,6 @@ hr{
 	 	margin-left: -15px;
 	 }
 	 .selectRespon{
-	 	width: 36%;
+	 	width: 30%;
 	 }
-
-
 }
