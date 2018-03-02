@@ -32,7 +32,7 @@
         <img class="img-responsive float" width="150px" height="150px" src="/img/Por_Ti_EXPERIENCIA_UVM.png">    
     </div>      
         <?php
-        if($info[0]->total_encuestados==0){
+        /*if($info[0]->total_encuestados==0){
             $avancegrl=0;
             $avancealum=0;
             $avanceamp=0;
@@ -49,7 +49,7 @@
 
            /* $avanceamp=($info[0]->total_incidentes_empleados)+($info[0]->total_contestados_empleados);
             $porcentajeavanceemp=(100*$avanceamp)/$info[0]->total_empleados;*/
-        }
+        //}
 		?>
 
  
@@ -75,9 +75,9 @@
 
         <div class="col-md-6">
             <p>Situación de avance alumnos</p>
-            <h3><b>Alumnos total: </b>{{$info[0]->total_alumnos}}</h3>
-            <h5><b>Avance contestados: </b>{{$avancealum}}</h5>
-            <h5><b>Restante: </b>{{$info[0]->total_alumnos-$avancealum}}</h5>
+            <h3><b>Alumnos total: </b></h3>
+            <h5><b>Avance contestados: </b></h5>
+            <h5><b>Restante: </b></h5>
 
         </div> 
         <div class="col-md-6">
@@ -124,16 +124,32 @@
                 <p><strong>NPS Promedio</strong></p>
             </div>
         </div>
+        <div class="col-md-7 cuadrogris">
+            <div class="dato">
+                <h3><?php echo $info?></h3>
+                <p><strong>Total Contestados</strong></p>
+            </div>
+        </div>
     </div>
 </div>
 
     <div class="row col-center">
         <div class="col-md-6">
+            <legend>Campus</legend>
+                <select class="form-control text-black"  value="Linea de negocios" selected="selected" disabled>
+                    <option>{{$campusname[0]->campus_name}}</option>
+                </select>
+        </div>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+
           <legend>Línea de negocios</legend>
           <input type="hidden" id="idencuesta" value="{{$datoencuesta[0]->id}}">
           <input type="hidden" id="campus" value="{{$campusname[0]->campus_name}}">
+
             <select class="form-control text-black" id="cmblineanegocios" value="Linea de negocios" selected="selected" onchange="sltlinea(this.value)">
-                    <option>Seleccione una opción</option> 
+                    <option value="1">Seleccione una opción</option> 
                 <?php
                         foreach ($lineanegocios as $lineanegocio) {
                         echo "<option value={$lineanegocio->lineaNegocio}>{$lineanegocio->lineaNegocio}</option>";    
@@ -144,7 +160,7 @@
         <div class="col-md-6">
           <legend>Modalidad</legend>
             <select class="form-control text-black" id="cmbmodalidad" value="Modalidades" selected="selected" onchange="sltmodalidades(this.value)">
-                    <option>Seleccione una opción</option>  
+                    <option >Seleccione una opción</option>  
                     <?php
                         foreach ($modalidad as $modalidades) {
                     ?>
@@ -155,6 +171,7 @@
             </select>
         </div>
     </div>
+    <br>
     <div class="row-center scroll">
         <div class="col-md-12 ">
             <table class="table">

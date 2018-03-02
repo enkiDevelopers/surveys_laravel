@@ -225,3 +225,7 @@ Route::post('/agregarRegistros','listasController@ingresarMasDatos');
 Route::post('/buscarlinea','directiveController@busquedalinea');
 
 Route::post('/buscarmodalidad','directiveController@busquedamodalidad');
+
+Route::post('/buscargeneral','directiveController@busquedageneral');
+
+Route::post('/buscargeneralr','directiveController@busquedageneralr');
