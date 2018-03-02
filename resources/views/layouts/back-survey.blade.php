@@ -54,12 +54,12 @@
               <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;" >
             </li>
           </center>
-          <li id="menu" style="float: left;background-color: darkred;height: 82px;width: 17%;margin-top: -74px;">
+          <li id="menu" style="float: left;background-color: darkred;height: 81px;width: 17%;margin-top: -74px;">
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
           </li> 
-          <li id="rol" style="float: right;background-color: blue;height: 82px;width: 17%;margin-top: -74px;">
+          <li id="rol" style="float: right;background-color: blue;height: 81px;width: 17%;margin-top: -74px;">
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-cog"></i>
             </a>

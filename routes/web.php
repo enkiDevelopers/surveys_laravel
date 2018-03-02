@@ -221,3 +221,5 @@ Route::post('/informe',"listasController@generarReporte");
 Route::post('/administrator/addSaltoParent', 'questionsTemplateController@addSaltoParent');
 
 Route::post('/agregarRegistros','listasController@ingresarMasDatos');
+
+Route::post('/buscarlinea','directiveController@busquedalinea');

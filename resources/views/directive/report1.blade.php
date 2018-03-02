@@ -17,7 +17,7 @@
 			echo "</div>";
 			echo "<br>";
 			echo "<div class='col-md-6'>";
-			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}'>";
+			echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}' onerror=\"this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'\">";
 			echo "</div>";
             echo "</div>";
 		}?>
@@ -110,14 +110,12 @@
         </div>
         <div class="col-md-11">
         	<hr>
-        <div class="col-md-6">
-            <h3><b>Encuestados total: </b>{{$totalencuestatrabajador}}</h3>
-            <h5><b>Avance contestados: </b>{{$total3}}</h5>
-            <h5><b>Falta por contestar: </b>{{$totalencuestatrabajador-$total3}}</h5>
-        </div>
-        <div class="col-md-6">
-            <div id="chartContaineremp" style="height: 300px; width: 100%;background: transparent;"></div>
-        </div> 
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+           <!-- <div id="chartContaineremp" style="height: 300px; width: 100%;background: transparent;"></div>-->
+            </div> 
         </div>
 </div>
 </div>

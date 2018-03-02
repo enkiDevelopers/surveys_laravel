@@ -1,0 +1,16 @@
+@media screen and (max-width: 767px){
+    .container{
+        margin-left: 0px;
+        margin-top: 90px; 
+    }
+    .col-md-11{
+        margin-right: -14%;
+    }
+  
+}
+@media screen and (max-width:991px) and (min-width:768px)  {
+    .col-md-6{
+        width: 43%;
+        display: -webkit-inline-box;
+    }
+}
