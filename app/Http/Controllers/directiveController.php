@@ -140,7 +140,7 @@ class directiveController extends Controller
     $regionname=DB::table('ctlRegions')->select('regions_name')->where('regions_id','=',$idregion)->get();
     
 
-          /*SELECCION DE LOS CANALES DE LA TABLA ENCUESTADOS*/
+      /*SELECCION DE LOS CANALES DE LA TABLA ENCUESTADOS*/
       $mail= DB::table('encuestados')->where([['idEncuesta','=',$id],
                                                ['region','=',$regionname[0]->regions_name],
                                                ['canal','=','mail'],])->count();
@@ -188,6 +188,7 @@ class directiveController extends Controller
 
   }
   public function estadisticasGeneral($id){
+          $totalEncuestados=DB::table('encuestados')->where([['idEncuesta','=',$id],])->count();
           $regiones=DB:: table('ctlRegions')->get();
 
           $estadisticas = DB::table('estadisticas')
@@ -196,16 +197,39 @@ class directiveController extends Controller
                   ->select('estadisticas.*','ctlCampus.*','ctlRegions.regions_id')
                   ->where('estadisticas.surveys_id','=',$id)
                   ->get();
+        $info=DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                            ['contestado','=',1],])->count();
+
+      $mail= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['canal','=','mail'],])->count();
+      $conexion= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['canal','=','conexion'],])->count();
+      $hp12c= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['canal','=','hp12c'],])->count();
+      $facebook= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['canal','=','facebook'],])->count();
+      $online= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['canal','=','online'],])->count();
+      $sistema= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['canal','=','sistema'],])->count();
+
+      /*Obtiene la linea de negocios de los encuestados disponibles*/
+      $lineanegocios=DB::table('encuestados')->select('lineaNegocio')->where([['idEncuesta','=',$id],])->distinct()->get();
+
+
+      /*Obtiene las modalidades diponibles en linea de negocios*/
+      $modalidad=DB::table('encuestados')->select('modalidad')->where([['idEncuesta','=',$id],])->distinct()->get();
 
         $datoencuesta=DB::table('templates')->where('id','=',$id)->get();
 
-        return view('directive.reporteGeneral',compact('datoencuesta','estadisticas','regiones'));
+        return view('directive.reporteGeneral',compact('mail','conexion','hp12c','facebook','online','sistema','modalidad','lineanegocios','totalEncuestados','info','datoencuesta','estadisticas','regiones'));
   }
   public function generarPdf(){
     $clients =Client::all();
     $pdf=PDF::loadView('directive.reporteGeneral',['clients'=>$clients]);
     return $pdf->download('reporte.pdf');
   }
+  /*funciones para directivo campus*/
   public function busquedalinea(Request $request){
       $idlinea=$request->Input('id');
       $idencuesta=$request->input('idencuesta');
@@ -266,7 +290,10 @@ class directiveController extends Controller
 
   }
 
+  /* Fin funciones directivos campus*/
 
+
+  /*Funciones para directivo regional*/
     public function busquedageneralr(Request $request){
       //$idmodalidad=$request->Input('id');
       $idencuesta=$request->input('idencuesta');
@@ -285,6 +312,47 @@ class directiveController extends Controller
       return response()->json(array('info'=>$info,'infot'=>$infot));
 
   }
+    public function busquedalinear(Request $request){
+      $idlinea=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $regionsname=$request->input('region');
+
+      $info=DB::table('encuestados')->where('region','=',$regionsname)
+                                    ->where('lineaNegocio','=',$idlinea)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('region','=',$regionsname)
+                                     ->where('lineaNegocio','=',$idlinea)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+  public function busquedamodalidadr(Request $request){
+      $idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $regionsname=$request->input('region');
+
+      $info=DB::table('encuestados')->where('region','=',$regionsname)
+                                    ->where('modalidad','=',$idmodalidad)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('region','=',$regionsname)
+                                     ->where('modalidad','=',$idmodalidad)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+  /*Fin funciones directivo regional*/
 
 
 

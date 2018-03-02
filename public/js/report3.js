@@ -3,17 +3,17 @@ function sltlinea(busq){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-}); 
+  }); 
   let id = busq;
   var idencuesta=document.getElementById("idencuesta").value;
-  var campus=document.getElementById("campus").value;
+  var region=document.getElementById("region").value;
   if(id==1){
             $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscargeneral',
+              url : '/buscargeneralr',
               data : {"idencuesta":idencuesta,
-                      "campus":campus},
+                      "region":region},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -56,7 +56,7 @@ function sltlinea(busq){
                     if(json2[post].canal=="mail"){
                       EMAIL++;
                     } 
-}
+  }
 
                   }
                     Avance=(100*ENC)/Total;
@@ -79,7 +79,7 @@ function sltlinea(busq){
                     dato +="</tr>";
                   $("#tabla").html(dato);
                   i++;
-}
+  }
                 
               },
               error : function(error) {
@@ -91,10 +91,10 @@ function sltlinea(busq){
         $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscarlinea',
+              url : '/buscarlinear',
               data : {"id": id,
                       "idencuesta":idencuesta,
-                      "campus":campus},
+                      "region":region},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -137,7 +137,7 @@ function sltlinea(busq){
                     if(json2[post].canal=="mail"){
                       EMAIL++;
                     } 
-}
+  }
 
                   }
                                     Avance=(100*ENC)/Total;
@@ -160,14 +160,14 @@ function sltlinea(busq){
                     dato +="</tr>";
                   $("#tabla").html(dato);
                   i++;
-}
+  }
                 
               },
               error : function(error) {
                 console.log(error);
               }
           });
-}
+  }
 
 }
 
@@ -178,18 +178,18 @@ function sltmodalidades(busq){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-}); 
+  }); 
   let id = busq;
   var idencuesta=document.getElementById("idencuesta").value;
-  var campus=document.getElementById("campus").value;
+  var region=document.getElementById("region").value;
   console.log(id);
-if(id==1){
-              $.ajax({
+  if(id==1){
+                $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscargeneral',
+              url : '/buscargeneralr',
               data : {"idencuesta":idencuesta,
-                      "campus":campus},
+                      "region":region},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -232,7 +232,7 @@ if(id==1){
                     if(json2[post].canal=="mail"){
                       EMAIL++;
                     } 
-}
+  }
 
                   }
                     Avance=(100*ENC)/Total;
@@ -255,7 +255,7 @@ if(id==1){
                     dato +="</tr>";
                   $("#tabla").html(dato);
                   i++;
-}
+  }
                 
               },
               error : function(error) {
@@ -263,15 +263,14 @@ if(id==1){
               }
           });
 
-
 }else{
-        $.ajax({
+          $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscarmodalidad',
+              url : '/buscarmodalidadr',
               data : {"id": id,
                       "idencuesta":idencuesta,
-                      "campus":campus},
+                      "region":region},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -314,7 +313,7 @@ if(id==1){
                     if(json2[post].canal=="mail"){
                       EMAIL++;
                     } 
-}
+  }
 
                   }
                   Avance=(100*ENC)/Total;
@@ -337,7 +336,7 @@ if(id==1){
                     dato +="</tr>";
                   $("#tabla").html(dato);
                   i++;
-}
+  }
                 
               },
               error : function(error) {

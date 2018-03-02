@@ -229,3 +229,9 @@ Route::post('/buscarmodalidad','directiveController@busquedamodalidad');
 Route::post('/buscargeneral','directiveController@busquedageneral');
 
 Route::post('/buscargeneralr','directiveController@busquedageneralr');
+
+Route::post('/buscargeneralmr','directiveController@busquedageneralmodalidadr');
+
+Route::post('/buscarlinear','directiveController@busquedalinear');
+
+Route::post('/buscarmodalidadr','directiveController@busquedamodalidadr');
