@@ -7,6 +7,55 @@
 width: auto;
 height: 150px;
 }
+.cuadro
+{
+  position: absolute;
+  display: inline-block;
+margin-top: -50px;
+height:auto;
+border: 1px solid red;
+width: 100%;
+margin-left: 2px;
+}
+
+.activa{
+border: 1px solid brown;
+width: auto;
+margin-right: 47px;
+display: inline-block;
+}
+
+.finalizada
+{
+  display: inline-block;
+  border: 1px solid black;
+  width: auto;
+}
+
+.redes
+{
+  border: 2px solid blue;
+display: inline-block;
+position: relative;
+height: auto;
+width: 140px;
+margin-top: 3px;
+}
+.let
+{
+  margin-top: 10px;
+    border: 2px solid black;
+    display: inline-block;
+    width: 60%;
+    float: right;
+
+}
+.btnOcultar
+{
+  border: 1px solid green;
+  display: inline-block;
+  margin-left: 12px;
+}
 #btn-añadir
 {
   width: 230px;
@@ -297,17 +346,7 @@ margin-left: 200px;
 margin-top: -15px;
 position: relative;
 }
-#redes
-{
-  margin-left: 0px;
-  margin-right: 20px;
-  margin-top: 10px;
-  width: 120px;
-  display: inline-block;
-}
-#redes:hover{
-  cursor: pointer;
-}
+
 
 #publicadas
 {
@@ -415,7 +454,7 @@ overflow: hidden;
     border-radius: 100%;
     background-color: #fff;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: 100% ;
     background-position: center;
 
 }
@@ -445,57 +484,175 @@ overflow: hidden;
 width: 100%
 }
 /* Media querys */
+@media (max-width: 1125px) {
+.let
+{
+  width: 70%;
+}
+
+}
+
+@media (max-width: 1125px) {
+.let{
+  width: 70%;
+}
+.activa
+{
+margin-right: 30px;
+}
+}
+
+@media (max-width: 1070px) {
+  .cuadro
+  {
+  }
+.activa
+{
+margin-right: 20px;
+}
+
+}
+
+@media (max-width: 1037px)
+{
+  .cuadro
+{
+margin-left: 20px;
+
+width: 90%;
+}
+.redes{
+  width: 30%;
+}
+.let
+{
+margin-top: 0px;
+  background-color: red;
+}
+#infVer
+{
+  margin-right: -20px;
+}
+.activa
+{
+
+  width: 70px;
+}
+.finalizada
+{
+width: 70px;
+}
+.btnOcultar
+{
+background-color: blue;
+margin-top: 10px;
+margin-left: 10%;
+position: absolute;
+}
+}
+
+
+
 @media (max-width: 991px) {
   #btn-añadir
   {
     width: 400px;
     height: 120px;
-
-    background: rgba(37,66,118,1);
-  background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(37,66,118,1)), color-stop(51%, rgba(42,76,135,1)), color-stop(100%, rgba(47,85,151,1)));
-  background: -webkit-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-  background: -o-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-  background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-  background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
-
-  -ms-border-radius: 150px;
-  -moz-border-radius: 150px;
-  -webkit-border-radius: 150px;
-  -o-border-radius: 150px;
   border-radius: 150px;
   margin-bottom: 20px;
   margin-left: 20%;
   margin-right: 43px;
   margin-top: 4%;
-  display: inline-block;
-  -webkit-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
-  -moz-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
-  box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
   position: relative;
   }
 
   #btn-newSur
   {
-  margin-left: 0px;
+  margin-left: -90px;
   font-size: 40px;
   margin-top: 20px;
   }
 
   #crearPlantilla
   {
-  margin-left: 50%;
-  font-size: 80px;
 
-  width: 200px;
-  margin-top: -65px;
+  font-size: 80px;
+  width: 400px;
+  margin-top: -85px;
+  margin-left: -50px;
   color: #fff;
   }
   #actualizar
   {
     margin-left: 30%;
   }
+
+.cuadro
+{
+  margin-left: -400px;
+  width: 430px;
+}
+.redes
+{
+  width: 120px;
+}
+#btnF
+{
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 50px;
+  margin-top: -55px;
+}
+#btnT
+{
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  margin-left: 0px;
+}
+.activa
+{
+  width: 50px;
+  margin-left: 40px;
+}
+.infoVer
+{
+border: 1px solid white;
+width: 40px;
+height: auto;
+display: inline-block;
+}
+
+#Epublicadas
+{
+  width: 200px;
+}
+
+.cuadro
+{
+  margin-top: -60px;
+}
+
+
+}
+@media (max-width: 854px) {
+  #Epublicadas
+  {
+    width: 100%;
+    text-align: center;
+    height: auto;
+  }
+.cuadro
+{
+  position: relative;
+  margin-top: 0px;
+  margin-right: 70px;
+  margin-left: 55px;
+}
+
+}
+/*Aqí me quedué continuar con  los querys desde aqui...... */
 
   @media (max-width: 847px) {
 
@@ -504,6 +661,8 @@ width: 100%
       margin-left: 10%;
     }
   }
+
+
 
   @media (max-width: 767px) {
   .container

@@ -437,3 +437,8 @@ function infoT()
 {
 swal("Comparte en twitter:","www.uvmmejoraporti.mx/surveyeds/login/twitter");
 }
+
+function principal()
+{
+location.href ="/";
+}

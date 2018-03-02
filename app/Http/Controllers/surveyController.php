@@ -85,7 +85,8 @@ class surveyController extends Controller
       $publicaciones = publicaciones::all();
       $listas= listaEncuestados::where('creador', $id)->where('usado', 0)->get();
 
-      return view('administrator.surveys', compact('propias','agenas','publicadas','listas','tipos','publicaciones','id'));
+      $info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
+      return view('administrator.surveys', compact('propias','agenas','publicadas','listas','tipos','publicaciones','id','info'));
     }
 
   }
