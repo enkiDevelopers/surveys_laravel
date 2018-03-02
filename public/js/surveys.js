@@ -442,3 +442,14 @@ function principal()
 {
 location.href ="/";
 }
+
+window.onresize = cambiar_tamaño();
+
+function cambiar_tamaño()
+{
+    if (window.innerWidth < 500)
+    {
+        window.resizeTo(502,window.innerHeight); //esto no lo permiten los exploradores prueba un window.locaton.reload
+
+    }
+}

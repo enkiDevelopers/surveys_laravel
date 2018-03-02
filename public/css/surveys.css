@@ -730,10 +730,9 @@ display: inline-block;
     margin-right: 150px;
     margin-left: 300px;
       }
-    .descGeneral{
-      left: 10%;
-      width: 80%;
-    }
+  #panel1{
+    margin-top: 100px;
+  }
 
   }
 
@@ -919,6 +918,18 @@ width: 20px;
 
 @media(max-width: 360px)
 {
+
+  #recibiendo
+  {
+    height: 270px;
+  margin-left: -10px;
+    overflow: scroll;
+  }
+  #pPBody
+{
+  height: 280px;
+  overflow: scroll;
+}
 .cuadro {
   margin-left: 170px;
   width: auto;

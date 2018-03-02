@@ -3,7 +3,7 @@ if($publicacion->creador == $id)
 {
   ?>
   <!--Publicaciones -->
-<div class="col-md-2 card" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}'), url('/img/iconos/default.png')">
+<div class="col-md-2 card2" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}'), url('/img/iconos/default.png')">
   <div class="left_buttons">
 <!-- boton duplicar -->
 <div class="row">
