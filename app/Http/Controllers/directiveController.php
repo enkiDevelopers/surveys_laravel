@@ -182,10 +182,15 @@ class directiveController extends Controller
                                     ->where('idEncuesta','=',$idencuesta)
                                     ->get();
 
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('campus','=',$campusname)
+                                     ->where('lineaNegocio','=',$idlinea)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
 
-
-
-      return response()->json($info);
+                                     //echo $infot;
+      return response()->json(array('info'=>$info,'infot'=>$infot));
 
   }
 

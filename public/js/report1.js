@@ -21,57 +21,62 @@ function sltlinea(busq){
                 $("#cargar").html("Cargando Regiones...");
               },
               success : function(response){
-                console.log(response);
-              var  dato="";
-              var ENC=0; FAL=0;  Total=0;  SIS=0;  OLN=0;  CNX=0;  FBK=0;  HP12=0; EMAIL=0;  PRM=0;  DET=0;  NPS=0;  Avance=0;
-              var json=jQuery.parseJSON(JSON.stringify(response));
-              var json2=jQuery.parseJSON(JSON.stringify(response));
-              for(post in json2){
-                ENC++;
-                if(json[post].contestado==0){
-                  FAL++;
-                }
-                if(json[post].canal=="sistema"){
-                  SIS++;
-                }
-                if(json[post].canal=="online"){
-                  OLN++;
-                }
-                if(json[post].canal=="conexion"){
-                  CNX++;
-                }
-                if(json[post].canal=="facebook"){
-                  FBK++;
-                }
-                if(json[post].canal=="hp12c"){
-                  HP12++;
-                }
-                if(json[post].canal=="mail"){
-                  EMAIL++;
-                } 
+              console.log(response["infot"].length);
+              leg=response["infot"].length;
+              var dato="";
+              i=0;
+              //var ENC=0; FAL=0;  Total=0;  SIS=0;  OLN=0;  CNX=0;  FBK=0;  HP12=0; EMAIL=0;  PRM=0;  DET=0;  NPS=0;  Avance=0;
+              var json=jQuery.parseJSON(JSON.stringify(response["infot"]));
+              var json2=jQuery.parseJSON(JSON.stringify(response["info"]));//completo
+              while(i<leg){
+                  var ENC=0; FAL=0;  Total=0;  SIS=0;  OLN=0;  CNX=0;  FBK=0;  HP12=0; EMAIL=0;  PRM=0;  DET=0;  NPS=0;  Avance=0;
+                  for(post in json2){
+                    if(json[i].modalidad==json2[post].modalidad){
+                    ENC++;
+                    if(json2[post].contestado=="0"){
+                      FAL++;
+                    }
+                    if(json2[post].canal=="sistema"){
+                      SIS++;
+                    }
+                    if(json2[post].canal=="online"){
+                      OLN++;
+                    }
+                    if(json2[post].canal=="conexion"){
+                      CNX++;
+                    }
+                    if(json2[post].canal=="facebook"){
+                      FBK++;
+                    }
+                    if(json2[post].canal=="hp12c"){
+                      HP12++;
+                    }
+                    if(json2[post].canal=="mail"){
+                      EMAIL++;
+                    } 
+}
 
-              }
-              for(post in json){
-              dato +="<tr>";
-                dato+="<td>"+json[post].lineaNegocio+"</td>"
-                dato+="<td>"+json[post].modalidad+"</td>"
-                dato+="<td>"+ENC+"</td>"
-                dato+="<td>"+FAL+"</td>"
-                dato+="<td>"+ENC+"</td>"
-                dato+="<td>"+SIS+"</td>"
-                dato+="<td>"+OLN+"</td>"
-                dato+="<td>"+CNX+"</td>"
-                dato+="<td>"+FBK+"</td>"
-                dato+="<td>"+HP12+"</td>"
-                dato+="<td>"+EMAIL+"</td>"
-                dato+="<td>"+json[post].lineaNegocio+"</td>"
-                dato+="<td>"+json[post].lineaNegocio+"</td>"
-                dato+="<td>"+json[post].lineaNegocio+"</td>"
-                dato+="<td>"+json[post].lineaNegocio+"</td>"
-              dato +="</tr>";
-              }
-              $("#tabla").html(dato);
-
+                  }
+                    dato +="<tr>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].modalidad+"</td>"
+                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+FAL+"</td>"
+                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+SIS+"</td>"
+                    dato+="<td>"+OLN+"</td>"
+                    dato+="<td>"+CNX+"</td>"
+                    dato+="<td>"+FBK+"</td>"
+                    dato+="<td>"+HP12+"</td>"
+                    dato+="<td>"+EMAIL+"</td>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato +="</tr>";
+                  $("#tabla").html(dato);
+                  i++;
+}
                 
               },
               error : function(error) {
