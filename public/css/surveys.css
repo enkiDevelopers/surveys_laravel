@@ -1,3 +1,5 @@
+
+
 .container
 {
   width: 100%;
@@ -13,13 +15,12 @@ height: 150px;
   display: inline-block;
 margin-top: -50px;
 height:auto;
-border: 1px solid red;
 width: 100%;
 margin-left: 2px;
 }
 
 .activa{
-border: 1px solid brown;
+
 width: auto;
 margin-right: 47px;
 display: inline-block;
@@ -28,13 +29,13 @@ display: inline-block;
 .finalizada
 {
   display: inline-block;
-  border: 1px solid black;
+
   width: auto;
 }
 
 .redes
 {
-  border: 2px solid blue;
+
 display: inline-block;
 position: relative;
 height: auto;
@@ -44,7 +45,7 @@ margin-top: 3px;
 .let
 {
   margin-top: 10px;
-    border: 2px solid black;
+
     display: inline-block;
     width: 60%;
     float: right;
@@ -52,7 +53,7 @@ margin-top: 3px;
 }
 .btnOcultar
 {
-  border: 1px solid green;
+
   display: inline-block;
   margin-left: 12px;
 }
@@ -75,12 +76,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', end
      border-radius: 50%;
 
 margin-bottom: 20px;
-margin-left: 12px;
+margin-left: 30px;
 margin-top: 1px;
+margin-right: 0;
+
 display: inline-block;
 -webkit-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
 -moz-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
 box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
+
 position: relative;
 
 }
@@ -502,10 +506,47 @@ margin-right: 30px;
 }
 }
 
-@media (max-width: 1070px) {
-  .cuadro
+@media(max-width: 1091px)
+{
+  #recibiendo
   {
+    position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+      -webkit-transform: translate(-50%);
+
   }
+
+#btn-añadir
+{
+  width: 400px;
+  height: 120px;
+  border-radius: 70px;
+  margin-left: 200px;
+}
+#btn-newSur
+{
+  margin-left: -160px;
+  margin-top: 20px;
+}
+#crearPlantilla
+{
+  margin-top: -80px;
+  width: 300px;
+  margin-left: -20px;
+
+}
+#actualizar
+{
+  margin-left: 33%;
+  width: 200px;
+}
+
+}
+
+
+@media (max-width: 1070px) {
+
 .activa
 {
 margin-right: 20px;
@@ -527,7 +568,6 @@ width: 90%;
 .let
 {
 margin-top: 0px;
-  background-color: red;
 }
 #infVer
 {
@@ -544,7 +584,6 @@ width: 70px;
 }
 .btnOcultar
 {
-background-color: blue;
 margin-top: 10px;
 margin-left: 10%;
 position: absolute;
@@ -618,7 +657,7 @@ position: absolute;
 }
 .infoVer
 {
-border: 1px solid white;
+
 width: 40px;
 height: auto;
 display: inline-block;
@@ -667,23 +706,63 @@ display: inline-block;
   @media (max-width: 767px) {
   .container
   {
-  margin-left: 100px;
+  margin-left: 0px;
   }
   #actualizar
   {
     margin-left: 20%;
   }
-  .col-infoUser{
+  .sep{
         display: none;
     }
+    .cuadro
+    {
+    display: block;
+    margin-right: 150px;
+    margin-left: 300px;
+      }
 
   }
+
+@media (max-width: 700px)
+{
+  .cuadro
+  {
+    margin-left: 10px;
+    margin-right: 100px;
+  }
+}
+
 
 @media (max-width: 600px)
 {
   .container{
     margin-left: 0px;
+    width: 100%;
   }
+  }
+@media (max-width: 590px)
+{
+  .cuadro{
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 545px)
+{
+.cuadro
+{
+  margin-left: 15%;
+}
+}
+
+@media (max-width: 505px)
+{
+  .cuadro
+  {
+    margin-left: 17%;
+  }
+}
 
   @media (max-width: 500px)
   {
@@ -705,7 +784,23 @@ display: inline-block;
     {
       margin-left: 10%;
     }
+
+    .cuadro
+    {
+      margin-left: -40px;
+    }
+    #btnF
+    {
+      margin-top: -37px;
+    }
+    #btnT{
+      margin-top: 10px;
+    }
+
 }
+
+
+
   @media (max-width: 500px)
   {
     #btn-añadir
@@ -727,11 +822,52 @@ display: inline-block;
     {
       margin-left: -10px;
     }
-  }
+#panel
+{
+  margin-left: 20px;
+}
+#panel1
+{
+  margin-left: 20px;
+}
+#colinf
+{
+  width: 90%;
+  margin-left: 40px;
+}
+#btn-newSur
+{
+  margin-left: -150px;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: -80px;
+}
+
+#crearPlantilla
+{
+  margin-top: 10px;
+  margin-left: -50px;
+  width: 300px;
+}
+#tamañoLet
+{
+  font-size: 30px;
+}
+#actualizar
+{
+margin-left: 3%;
+}
+
+#btn-añadir
+{
+  margin-left: 5%;
+  width: 280px;
+
+}
 
 .panel-heading
 {
-width: 90%;
+width: 100%;
 }
 #infob{
 width: 400px;
@@ -760,6 +896,53 @@ width: 20px;
 
 }
 
+@media(max-width: 490px)
+{
+.cuadro
+{
+  margin-left: -37px;
+}
+}
+
+@media(max-width: 360px)
+{
+.cuadro {
+  margin-left: 170px;
+  width: auto;
+}
+
+.let
+{
+  width: 280px;
+  margin-right:  -70px;
+}
+.activa
+{
+  margin-left: 20px;
+}
+.redes
+{
+  margin-left: 0px;
+  width: 100%;
+}
+.activa
+{
+  width: auto;
+
+}
+.finalizada{
+  width: auto;
+}
+#infVer
+{
+  width: auto;
+}
+.btnOcultar
+{
+  margin-left: 70px;
+  margin-top: 0px;
+}
+}
 
 
 
