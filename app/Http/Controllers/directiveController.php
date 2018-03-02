@@ -354,7 +354,63 @@ class directiveController extends Controller
   }
   /*Fin funciones directivo regional*/
 
+  /*funciones directivo general */
 
+    public function busquedageneralrg(Request $request){
+      //$idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $regionname=$request->input('region');
+
+      $info=DB::table('encuestados')->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+
+ public function busquedalinearg(Request $request){
+      $idlinea=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      //$regionsname=$request->input('region');
+
+      $info=DB::table('encuestados')->where('lineaNegocio','=',$idlinea)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('lineaNegocio','=',$idlinea)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+  public function busquedamodalidadrg(Request $request){
+      $idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      //$regionsname=$request->input('region');
+
+      $info=DB::table('encuestados')->where('modalidad','=',$idmodalidad)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('modalidad','=',$idmodalidad)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+
+  /*Fun funciones generales*/
 
 
 }

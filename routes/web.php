@@ -96,7 +96,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/directives/login', function(){
     return view('auth.directive_login');
-});
+})->name("directivelogin");
 
 Route::get('/surveyeds/login/{ruta}/', function($ruta){
     return view('auth.surveyed_login', ['ruta' => $ruta]);
@@ -235,3 +235,9 @@ Route::post('/buscargeneralmr','directiveController@busquedageneralmodalidadr');
 Route::post('/buscarlinear','directiveController@busquedalinear');
 
 Route::post('/buscarmodalidadr','directiveController@busquedamodalidadr');
+
+Route::post('/buscargeneralrg','directiveController@busquedageneralrg');
+
+Route::post('/buscarlinearg','directiveController@busquedalinearg');
+
+Route::post('/buscarmodalidadrg','directiveController@busquedamodalidadrg');

@@ -6,14 +6,13 @@ function sltlinea(busq){
   }); 
   let id = busq;
   var idencuesta=document.getElementById("idencuesta").value;
-  var region=document.getElementById("region").value;
+  //var region=document.getElementById("region").value;
   if(id==1){
             $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscargeneralr',
-              data : {"idencuesta":idencuesta,
-                      "region":region},
+              url : '/buscargeneralrg',
+              data : {"idencuesta":idencuesta},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -88,13 +87,14 @@ function sltlinea(busq){
           });
 
  }else{
+  console.log(idencuesta);
+  console.log(id);
         $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscarlinear',
+              url : '/buscarlinearg',
               data : {"id": id,
-                      "idencuesta":idencuesta,
-                      "region":region},
+                      "idencuesta":idencuesta},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -181,15 +181,13 @@ function sltmodalidades(busq){
   }); 
   let id = busq;
   var idencuesta=document.getElementById("idencuesta").value;
-  var region=document.getElementById("region").value;
   console.log(id);
   if(id==1){
                 $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscargeneralr',
-              data : {"idencuesta":idencuesta,
-                      "region":region},
+              url : '/buscargeneralrg',
+              data : {"idencuesta":idencuesta},
               async:true,
               cache:false,
               beforeSend: function () {
@@ -267,10 +265,9 @@ function sltmodalidades(busq){
           $.ajax({
               dataType : 'json',
               type : 'post',
-              url : '/buscarmodalidadr',
+              url : '/buscarmodalidadrg',
               data : {"id": id,
-                      "idencuesta":idencuesta,
-                      "region":region},
+                      "idencuesta":idencuesta},
               async:true,
               cache:false,
               beforeSend: function () {

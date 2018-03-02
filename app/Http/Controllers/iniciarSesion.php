@@ -90,7 +90,6 @@ public function lencuesta(Request $request){
 
           if($isValid==null)
           {
-            echo $ruta;
           return redirect()->route('loginpagina',"sistema");
           }else{
    
@@ -110,8 +109,7 @@ public function ldirective(Request $request){
 
           if($isValid==null)
           {
-            //echo $ruta;
-            return redirect()->route('loginpagina',"sistema");
+            return redirect()->route('directivelogin');
           }else{
            $id=$isValid->idUsuario;
            Session::put('id', $id);
