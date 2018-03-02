@@ -34,7 +34,7 @@
 </div>
 
 <div>
-  <img src="/img/logos/Descripcion_Funciones.png" style="left: 30%;position:absolute;width: 43%;margin-top:12%;" >
+  <img src="/img/logos/Descripcion_Funciones.png" class="descGeneral" >
 </div>
 
 <!-- ##################################  Modal editar Imagen perfil ################################## -->

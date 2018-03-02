@@ -34,14 +34,14 @@
     </div>
 
 
-            <div class="panel panel-default ">
+            <div class="panel panel-default " id="panel1">
                 <div class="panel-heading fijado">
                     <div class="row">
                         <div class="col-md-3">
                           <h3><b>  Plantillas </b> </h3>
                         </div>
                         <div class="col-md-9 pull-right" id="infob">
-                            <div class="row">
+                            <div class="row" id="colinf">
                               <br />
                                 <div class="col-md-1">&nbsp</div>
                                 <div class="col-md-1 pull-right">
@@ -79,7 +79,7 @@
                      <div id="content-btn"class="text-center">
                    <span class="glyphicon glyphicon-plus" id="btn-newSur"></span>
                    <div id="crearPlantilla">
-                      <h1>Crear Plantilla</h1>
+                      <h1 id="tamañoLet">Crear Plantilla</h1>
                      </div>
                        </a>
                       </div>
@@ -150,7 +150,7 @@
                 <div class="panel-body scroll" id="pPBody">
                     <div class="row">
 
-                        <div class="" id="recibiendo">
+                        <div class="recibiendo" id="recibiendo">
 
                         </div>
 
