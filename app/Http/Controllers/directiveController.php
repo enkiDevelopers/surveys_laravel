@@ -193,6 +193,26 @@ class directiveController extends Controller
       return response()->json(array('info'=>$info,'infot'=>$infot));
 
   }
+  public function busquedamodalidad(Request $request){
+      $idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $campusname=$request->input('campus');
+
+      $info=DB::table('encuestados')->where('campus','=',$campusname)
+                                    ->where('modalidad','=',$idmodalidad)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('campus','=',$campusname)
+                                     ->where('modalidad','=',$idmodalidad)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
 
 
 

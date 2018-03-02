@@ -11,20 +11,26 @@
     
 </div>
 
-<div class="row col-lg-offset-2">
+<div class="row col-lg-offset-2 padding">
 	<!--<div class="col-md-13 col-md-offset-2">-->
+    <div class="col-md-4 margenarriba">
 		<?php 
 		foreach ($datoencuesta as $datoencuestas) {
-            echo "<div class='col-md-6'>";
-			echo "<h3><b>Título de la escuesta: </b>{$datoencuestas->tituloEncuesta}</h3>";
+            echo "<div class='col-md-6 text'>";
+			echo "<h3><b>Encuesta: </b>{$datoencuestas->tituloEncuesta}</h3>";
 			echo "<h4><b>Campus: {$campusname[0]->campus_name} </b></h4>";
 			echo "</div>";
-			echo "<div class='col-md-6'>";
-            echo "<br>";
-			//echo "<img width='30%' height='90px' src='\img/iconos/{$datoencuestas->imagePath}' onerror=\"this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'\">";
-			echo "</div>";
+
 		}?>
-        
+    </div> 
+    <div class="col-md-4 margenarriba">
+            <img class="img-responsive floatuvm" width="250px" height="100px" src="/img/mail_logo.png">    
+
+    
+    </div> 
+    <div class="col-md-4 margenarriba">
+        <img class="img-responsive float" width="150px" height="150px" src="/img/Por_Ti_EXPERIENCIA_UVM.png">    
+    </div>      
         <?php
         if($info[0]->total_encuestados==0){
             $avancegrl=0;
@@ -111,14 +117,15 @@
             </div>
         </div>
     <br>
-        <div class="col-md-7 cuadrogris">
+        <div class="col-md-7 cuadrogris" style="display:none">
+        <!--Se comenta un diplay none esperando el procedimiento NPS -->
             <div class="dato">
                 <h3>%</h3>
                 <p><strong>NPS Promedio</strong></p>
             </div>
         </div>
     </div>
-    </div>
+</div>
 
     <div class="row col-center">
         <div class="col-md-6">
@@ -138,11 +145,13 @@
           <legend>Modalidad</legend>
             <select class="form-control text-black" id="cmbmodalidad" value="Modalidades" selected="selected" onchange="sltmodalidades(this.value)">
                     <option>Seleccione una opción</option>  
-                <?php
+                    <?php
                         foreach ($modalidad as $modalidades) {
-                        echo "<option value={$modalidades->modalidad}>{$modalidades->modalidad}</option>";    
-                    }
-                ?>            
+                    ?>
+                             "<option value="{{$modalidades->modalidad}}">{{$modalidades->modalidad}}</option>";    
+                    <?php    
+                        }
+                    ?>            
             </select>
         </div>
     </div>
@@ -162,9 +171,9 @@
                     <th>#FBK</th>
                     <th>#HP12</th>
                     <th>#EMAIL</th>
-                    <th>#PRM</th>
+                <!--<th>#PRM</th>
                     <th>#DET</th>
-                    <th>%NPS</th>
+                    <th>%NPS</th>-->
                     <th>%Avance</th>
                 </tr>
                 </thead>

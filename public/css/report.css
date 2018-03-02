@@ -30,3 +30,19 @@
 		height: 300px;
 		background-color: #E7E7E5;
 	}
+	.padding{
+		padding-top: 20px;
+	}
+	.text{
+		margin-top: 40px;
+	}
+	.float{
+		float: right;
+		margin-top: 20px;
+	}
+	.floatuvm{
+	    margin-left: 15%;
+	}
+	.margenarriba{
+		margin-top: 10px;
+	}
