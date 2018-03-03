@@ -11,18 +11,6 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/sidebar.css">
   <link rel="stylesheet" href="/css/directive.css">
-  <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('js/directive.js') }}"></script>
-  <script src="/js/highcharts.js"></script>
-  <script src="/js/exporting.js"></script>
-  <script type="text/javascript">
-      $(document).ready(function () {
-        $("#sidebarMobile").on('click', '#menu', function(event) {
-          $("#contentSidebarMobile").toggle("slide");
-        });
-      });
-  </script>
 </head>
 <body id="wrapper">
   <div class="wrapper"  id="app">
@@ -87,7 +75,7 @@
           </li> 
           
           <li id="rol" style="float: right;background: linear-gradient(to bottom right, #1b5e20, #4caf50);height: 81px;width: 17%;margin-top: -74px;">
-            <a href="#" style="text-align: center;color: white">
+            <a href="{{ url('/directive')}}" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-bookmark"></i>
             </a>
           </li>
@@ -97,7 +85,9 @@
       <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
         <ul class="list-unstyled components">
           <li>
-            <span aria-hidden="true" style="font-size: 50px;float: right;color: white;border:5px solid white;border-radius: 50px;height: 40px;">&times;</span>
+            <p>
+               <span aria-hidden="true" style="font-size: 50px;float: right;color: white;height: 40px;border:5px solid white;border-radius: 50px;" id="closeContentMobile">&times;</span>
+            </p>
           </li>
           <li class="active">
             <a href="{{ url('/directive')}}" >
@@ -105,16 +95,27 @@
             </a>
           </li>
           <li id="log-out" class="exit">
-            <a href="{{ url('/logout') }}">
+            <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
               <span>SALIR</span>
             </a>
           </li>  
         </ul>
       </nav>
-                              @yield('content')
+        @yield('content')
+   </div>
 
-  
-  </div>
-
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="{{ asset('js/directive.js') }}"></script>
+  <script src="/js/highcharts.js"></script>
+  <script src="/js/exporting.js"></script>
+  <script type="text/javascript">
+      $(document).ready(function () {
+        $("#menu, #closeContentMobile").on('click', function(event) {
+          $("#contentSidebarMobile").toggle("slide");
+        });
+      });
+  </script>
 </body>
 </html>

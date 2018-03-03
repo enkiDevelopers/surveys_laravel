@@ -38,7 +38,7 @@
               <input class="form-control-file"  id="archivo" name="archivo" type="file" data-max-size="5148" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
               <a id="boton" data-toggle="tooltip" title="Ayuda"><span class="glyphicon glyphicon-question-sign"></span>.xlsx</a>
               <br>
-              <strong>Maximo por archivo 5mbs</strong>
+              <strong>Máximo por archivo 5 MB</strong>
           <hr>
             <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>
           <!--  <input type="submit" class="btn btn-default" value="Subir archivos"  />-->
@@ -123,7 +123,6 @@
   </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 <style type="text/css">
   .procesando {
@@ -427,8 +426,6 @@ try{
         </div>
       </div>
     </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <script type="text/javascript">

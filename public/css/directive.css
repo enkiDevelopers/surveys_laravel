@@ -1,16 +1,65 @@
-@media screen and (max-width: 767px){
-    .container{
-        margin-left: 0px;
-        margin-top: 90px; 
-    }
-    .col-md-11{
-        margin-right: -14%;
-    }
-  
+.card{
+  width: 25%;
+  height: 240px;
+  text-align: center;
+  border: 3px solid gray;
+  border-radius: 10px;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-bottom: 2%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+.title{
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #000;
+  font-family: fantasy;
+  display: block;
+  text-align: center;
+  height: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+  position: relative;
+  box-shadow: 0 2px 17px 0 rgba(0, 0, 0, 0.53), 0 9px 17px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  background-color: rgba(255,255,255,.88);
+}
+.card-desc{
+  margin-left: 5%;
+  margin-right: 5%;
+  color: #000;
+  display: block;
+  text-align: center;
+  height: auto;
+  max-height: 138px;
+  position: relative;
+  box-shadow: 0 2px 17px 0 rgba(0, 0, 0, 0.53), 0 9px 17px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+  background-color: rgba(255,255,255,.72);
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media screen and (max-width:991px) and (min-width:768px)  {
-    .col-md-6{
-        width: 43%;
-        display: -webkit-inline-box;
-    }
+  .card{
+    width: 35%;
+    display: inline-grid;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .container{
+    margin-left: 0px;
+    margin-top: 92px !important; 
+  }
+  .col-md-11{
+    margin-right: -14%;
+  }
+  .card{
+    width: 41%;
+    display: inline-grid;
+  }  
 }

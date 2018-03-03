@@ -4,7 +4,6 @@
 <!--modal section -->
 <div id="MdCorporativo" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -18,46 +17,35 @@
         <p id="variable" name="variable" style='display:none'></p>
         </div>
         <fieldset>
-            <a class='btn btn-default' href="javascript:getURLGeneral()" target="_blank">
-                    Reporte General
-            </a> 
+          <a class='btn btn-default' href="javascript:getURLGeneral()" target="_blank">
+            Reporte General
+          </a> 
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
             <select class="form-control text-black" id="cmbregioncorp" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
             <option>Seleccione una opción</option>
             <?php 
-                foreach ($regionestotal as $regionestotales) {
-                    echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";  
-                }
+              foreach ($regionestotal as $regionestotales) {
+                echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";  
+              }
             ?>
             </select>
-                <p id="cargar" name="cargar"></p>
-
-            <a class='btn btn-default' href="javascript:getURLRegionCorp()" target="_blank">
-                    Ver Reporte
-            </a> 
+              <p id="cargar" name="cargar"></p>
+            <a class='btn btn-default' href="javascript:getURLRegionCorp()" target="_blank">Ver Reporte</a> 
         </fieldset>
-     <fieldset>
+        <fieldset>
           <legend>Reporte Campus</legend>
-            <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp">
-
-            </select>
-                <a class='btn btn-default' href="javascript:getURLCorp()" target="_blank">
-                    Ver Reporte
-            </a> 
-               
+          <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp"></select>
+          <a class='btn btn-default' href="javascript:getURLCorp()" target="_blank">Ver Reporte</a> 
         </fieldset>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
-
   </div>
 </div>
-
 
 
 <div id="MdRegional" class="modal fade" role="dialog">
@@ -114,94 +102,77 @@
 
   </div>
 </div>
-
 <!--end modal section-->
-<div class="container" style="width:86%">
-   <div class="row">
-     <div class="col-md-11">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-4">
-                            Reportes
-                        </div>    
-                        <div class="col-md-8 ">
-                            <div class="row">
-                                <div class="col-md-1">&nbsp</div>  
-                                <div class="col-md-2 pull-right">
-                                    Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>    
+
+
+<div class="container" style="width:86%;margin-top:15px;">
+  <div class="row">
+    <div class="col-md-11">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="row">
+            <div class="col-md-4">
+              Reportes
+            </div>    
+
+          </div>    
+        </div>
+
+        <div class="panel-body">
+          <?php foreach ($encuestas as $encuesta) { ?>
+            <div class="col-md-6 card" style="background-image: url('/img/iconos/{{$encuesta->imagePath}}'), url('/img/Por_Ti_EXPERIENCIA_UVM.png')">
+              <div class="card-body">
+                <div class="row">
+                  <div class="title">
+                    <h4>{{$encuesta->tituloEncuesta}}</h4>
+                  </div>
                 </div>
-
-                <div class="panel-body">
-                    <?php foreach ($encuestas as $encuesta) { ?>
-                        <div class="col-md-6">
-                            <div class="card well" >
-                                
-
-                                <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagePath;?>" width="100%" height="90px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"> </div>
-                                        <div class="col-md-7">
-                                        <h4 class="card-title">  <?php echo $encuesta->tituloEncuesta;  ?></h4>
-                                    </div>
-                                </div>
-                                <hr size="30">
-                                <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->descripcion?></span></p>
-
-                                <?php
-                                     
-                                 switch ($datosdirective[0]->type) {
-                                    case '1':
-                                ?>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="corporativoModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reportes disponibles">
-                                            <span class="glyphicon glyphicon-signal" ></span>
-                                        </button>
-                                    </div>
-
-                                <?php 
-                                    break;
-                                    case '2': 
-                                ?>
-                                        <div class="btn-group " role="group" aria-label="...">
-                                        <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Regional">
-                                            <span class="glyphicon glyphicon-signal" ></span>
-                                        </button>
-                                        </div>
-                                <?php
-                                    break;
-                                    case '3':
-                                ?>
-                                    <div class="btn-group " role="group" aria-label="...">
-                                        <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
-                                            <span class="glyphicon glyphicon-signal" ></span>
-                                        </a>
-                                    </div>
-                                <?php 
-                                    break;
-                                    default:
-                                        echo "<p>Sin Asignar</p>";
-                                    break;
-                                }
-                            
-                                 ?>   
-
-                                </div>
-                            </div>
-                        </div>
-
-                <?php } ?>
+                <p class="card-desc">Descripción: 
+                  <span class="template-creator">{{$encuesta->descripcion}}</span>
+                </p>
+                <?php
+                  switch ($datosdirective[0]->type) {
+                    case '1':
+                ?>
+                <div class="btn-group " role="group" aria-label="...">
+                  <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="corporativoModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reportes disponibles">
+                    <span class="glyphicon glyphicon-signal" ></span>
+                  </button>
                 </div>
+                <?php 
+                    break;
+                    case '2': 
+                ?>
+                <div class="btn-group " role="group" aria-label="...">
+                  <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos" data-toggle="tooltip" data-placement="top" title="Reporte Regional">
+                    <span class="glyphicon glyphicon-signal"></span>
+                  </button>
+                </div>
+                <?php
+                  break;
+                  case '3':
+                ?>
+                <div class="btn-group " role="group" aria-label="...">
+                  <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
+                    <span class="glyphicon glyphicon-signal" ></span>
+                  </a>
+                </div>
+                <?php 
+                    break;
+                    default:
+                        echo "<p>Sin Asignar</p>";
+                    break;
+                  }              
+                ?>   
+
+              </div>
             </div>
+          <?php } ?>
+          </div>
         </div>
     </div>
+  </div>
 </div>
 
 
 	@endsection
-
-

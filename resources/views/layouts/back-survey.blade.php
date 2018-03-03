@@ -47,7 +47,7 @@
                 </ul>
             </nav>
 
-                 <nav id="sidebarMobile" class="navbar-default navbar-fixed-top visible-xs">
+       <nav id="sidebarMobile" class="navbar-default navbar-fixed-top visible-xs">
         <ul class="list-inline components">
           <center>
             <li id="UVM_Movil">
@@ -59,8 +59,8 @@
               <i class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
           </li> 
-          <li id="rol" style="float: right;background-color: blue;height: 81px;width: 17%;margin-top: -74px;">
-            <a href="#" style="text-align: center;color: white">
+          <li id="rol" style="float: right;background: linear-gradient(to bottom right, #0f1973, #0d47a1);height: 81px;width: 17%;margin-top: -74px;">
+            <a href="{{ url('/administrator/') }}" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-cog"></i>
             </a>
           </li>
@@ -70,7 +70,9 @@
       <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
         <ul class="list-unstyled components">
           <li>
-            <span aria-hidden="true" style="font-size: 50px;float: right;color: white;border:5px solid white;border-radius: 50px;height: 40px;">&times;</span>
+            <p>
+            <span aria-hidden="true" style="font-size: 50px;float: right;color: white;height: 40px;border:5px solid white;    border-radius: 55px;padding-top: 1px;" id="closeContentMobile">&times;</span>
+            </p>
           </li>
           <li id="home" >
             <a href="{{ url('/administrator/surveys')}}" >
@@ -88,7 +90,7 @@
             </a>
           </li>
           <li id="log-out__Content" class="exit">
-            <a href="{{ url('/logout') }}">
+            <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
               <span>SALIR</span>
             </a>
           </li>     
@@ -108,15 +110,8 @@
     <script src="/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            var alto = (screen.height) - (screen.availHeight);
-            var barra = screen.availHeight - alto - (alto/2) - (alto/4) - (alto/7);
 
-            $("#sidebar").height(barra);
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-             });
-
-            $("#sidebarMobile").on('click', '#menu', function(event) {
+            $("#menu, #closeContentMobile").on('click', function(event) {
                 $("#contentSidebarMobile").toggle("slide");
             });
         });
