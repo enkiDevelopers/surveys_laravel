@@ -17,7 +17,7 @@
         <p id="variable" name="variable" style='display:none'></p>
         </div>
         <fieldset>
-          <a class='btn btn-default' href="javascript:getURLGeneral()" target="_blank">
+          <a class='btn btn-default' href="javascript:getURLGeneral()" >
             Reporte General
           </a> 
         </fieldset>
@@ -32,12 +32,12 @@
             ?>
             </select>
               <p id="cargar" name="cargar"></p>
-            <a class='btn btn-default' href="javascript:getURLRegionCorp()" target="_blank">Ver Reporte</a> 
+            <a class='btn btn-default' href="javascript:getURLRegionCorp()" >Ver Reporte</a> 
         </fieldset>
         <fieldset>
           <legend>Reporte Campus</legend>
           <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp"></select>
-          <a class='btn btn-default' href="javascript:getURLCorp()" target="_blank">Ver Reporte</a> 
+          <a class='btn btn-default' href="javascript:getURLCorp()" >Ver Reporte</a> 
         </fieldset>
       </div>
       <div class="modal-footer">

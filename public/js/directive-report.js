@@ -49,11 +49,11 @@ var chart = new CanvasJS.Chart("canales", {
         yValueFormatString: "##0\"\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $conexion; ?>,label:"Conexion: ["+<?php echo $conexion2; ?>+"%]"  , name: "Conexion"},
-            {y: <?php echo $facebook; ?>,label:"Facebook: ["+<?php echo $facebook2; ?>+"%]"  , name: "Facebook"},
-            {y: <?php echo $mail; ?>,label:"Mail: ["+<?php echo $mail2; ?>+"%]"  , name: "Mail"},
-            {y: <?php echo $online; ?>,label:"Online: ["+<?php echo $online2; ?>+"%]"  , name: "Online"},
-            {y: <?php echo $sistema; ?>,label:"Sistema: ["+<?php echo $sistema2; ?>+"%]"  , name: "Sistema"},
+            {y: <?php echo $conexion; ?>,label:" ["+<?php echo $conexion2; ?>+"%]"  , name: "Conexion"},
+            {y: <?php echo $facebook; ?>,label:" ["+<?php echo $facebook2; ?>+"%]"  , name: "Facebook"},
+            {y: <?php echo $mail; ?>,label:" ["+<?php echo $mail2; ?>+"%]"  , name: "Mail"},
+            {y: <?php echo $online; ?>,label:" ["+<?php echo $online2; ?>+"%]"  , name: "Online"},
+            {y: <?php echo $sistema; ?>,label:" ["+<?php echo $sistema2; ?>+"%]"  , name: "Sistema"},
 
         ]
     }]
@@ -115,7 +115,9 @@ chart3.render();*/
               async:true,
               cache:false,
               beforeSend: function () {
-                $("#cargar").html("Cargando Regiones...");
+                console.log("hola");
+                var imagen="<tr><td></td> <td></td> <td></td> <td></td> <td></td><td><img  width='200px' height='170px' src='/img/load/4puntos.gif'></td></tr>";
+                $("#tabla").html(imagen);
               },
               success : function(response){
               //console.log(response["infot"]);
@@ -176,6 +178,7 @@ chart3.render();*/
                     dato+="<td>"+Avance+"%"+"</td>"
                     dato +="</tr>";
                   $("#tabla").html(dato);
+
                   i++;
 }
                 

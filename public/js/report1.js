@@ -17,7 +17,8 @@ function sltlinea(busq){
               async:true,
               cache:false,
               beforeSend: function () {
-                $("#cargar").html("Cargando Regiones...");
+                var imagen="<tr><td></td> <td></td> <td></td> <td></td> <td></td><td><img  width='200px' height='170px' src='/img/load/4puntos.gif'></td></tr>";
+                $("#tabla").html(imagen);
               },
               success : function(response){
               //console.log(response["infot"]);
@@ -98,7 +99,8 @@ function sltlinea(busq){
               async:true,
               cache:false,
               beforeSend: function () {
-                $("#cargar").html("Cargando Regiones...");
+                var imagen="<tr><td></td> <td></td> <td></td> <td></td> <td></td><td><img  width='200px' height='170px' src='/img/load/4puntos.gif'></td></tr>";
+                $("#tabla").html(imagen);
               },
               success : function(response){
               //console.log(response["infot"]);
@@ -192,7 +194,8 @@ if(id==1){
               async:true,
               cache:false,
               beforeSend: function () {
-                $("#cargar").html("Cargando Regiones...");
+                var imagen="<tr><td></td> <td></td> <td></td> <td></td> <td></td><td><img  width='200px' height='170px' src='/img/load/4puntos.gif'></td></tr>";
+                $("#tabla").html(imagen);
               },
               success : function(response){
               //console.log(response["infot"]);
@@ -274,7 +277,8 @@ if(id==1){
               async:true,
               cache:false,
               beforeSend: function () {
-                $("#cargar").html("Cargando Regiones...");
+                var imagen="<tr><td></td> <td></td> <td></td> <td></td> <td></td><td><img  width='200px' height='170px' src='/img/load/4puntos.gif'></td></tr>";
+                $("#tabla").html(imagen);
               },
               success : function(response){
               leg=response["infot"].length;

@@ -173,13 +173,13 @@ class directiveController extends Controller
       $modalidad=DB::table('encuestados')->select('modalidad')->where([['idEncuesta','=',$id],
                                                                       ['region','=',$regionname[0]->regions_name],])->distinct()->get();
 
-    $estadisticas = DB::table('estadisticas')
-                  ->join('ctlCampus', 'estadisticas.campus_campus_id', '=', 'ctlCampus.campus_id')
-                  ->select('estadisticas.*','ctlCampus.*')
-                  ->where('estadisticas.surveys_id','=',$id)
-                  ->where('ctlCampus.regions_regions_id','=',$idregion)
-                  ->orderBy('ctlCampus.campus_name')
+    $estadisticas = DB::table('encuestados')
+                  ->select('campus')
+                  ->where('idEncuesta','=',$id)
+                  ->where('region','=',$regionname[0]->regions_name)
+                  ->distinct()
                   ->get();
+
     $regioname= DB::table('ctlRegions')->where('regions_id','=',$idregion)->get();
     $datoencuesta=DB::table('templates')->where('id','=',$id)->get();
     return view('directive.report1',compact('datoencuesta','estadisticas','info','totalEncuestados','regioname','mail','conexion','hp12c','facebook','online','sistema','lineanegocios','modalidad'));
@@ -189,11 +189,10 @@ class directiveController extends Controller
           $totalEncuestados=DB::table('encuestados')->where([['idEncuesta','=',$id],])->count();
           $regiones=DB:: table('ctlRegions')->get();
 
-          $estadisticas = DB::table('estadisticas')
-                  ->join('ctlCampus',  'estadisticas.campus_campus_id', '=', 'ctlCampus.campus_id')
-                  ->join('ctlRegions', 'ctlRegions.regions_id', '=', 'ctlCampus.regions_regions_id')
-                  ->select('estadisticas.*','ctlCampus.*','ctlRegions.regions_id')
-                  ->where('estadisticas.surveys_id','=',$id)
+    $estadisticas = DB::table('encuestados')
+                  ->select('region')
+                  ->where('idEncuesta','=',$id)
+                  ->distinct()
                   ->get();
         $info=DB::table('encuestados')->where([['idEncuesta','=',$id],
                                             ['contestado','=',1],])->count();

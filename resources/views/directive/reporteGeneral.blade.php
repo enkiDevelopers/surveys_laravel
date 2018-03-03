@@ -37,6 +37,14 @@
 
         <!--Avance empleados-->
     <div class="col-md-11">
+        <hr>
+                <h2><strong><center>Avance por campus</center></strong></h2>
+
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+   
+    </div>
+    
+    <div class="col-md-11">
             <hr>
 
 
@@ -45,16 +53,17 @@
 </div>
 <div class="row col-center">
     <div class="col-md-6">
-        <p><strong>Encuestas Resueltas por canal</strong></p>
+        <h2><strong><center>Encuestados por canal</center></strong></h2>
         <div id="canales" style="height: 300px; width: 100%;background: transparent;"></div>
     </div>
     <div class="col-md-6">
-        <div class="col-md-7 cuadrogris">
+            <div class="col-md-7 cuadrogris">
             <div class="dato">
-                <h3><?php echo $totalEncuestados; ?></h3>
-                <p><strong>Total Encuestados</strong></p>
+                <h3><?php echo number_format($info);?></h3>
+                <p><strong>Encuestados</strong></p>
             </div>
         </div>
+
     <br>
         <div class="col-md-7 cuadrogris" style="display:none">
         <!--Se comenta un diplay none esperando el procedimiento NPS -->
@@ -65,8 +74,8 @@
         </div>
         <div class="col-md-7 cuadrogris">
             <div class="dato">
-                <h3><?php echo $info?></h3>
-                <p><strong>Total Contestados</strong></p>
+                <h3><?php echo number_format($totalEncuestados-$info); ?></h3>
+                <p><strong>Faltantes</strong></p>
             </div>
         </div>
     </div>
@@ -138,6 +147,8 @@
         </div>
     </div>
 </div>  
+    <div class="row" style="height:50px;">
+    </div>
         <!--End Avance empleados-->
 
 

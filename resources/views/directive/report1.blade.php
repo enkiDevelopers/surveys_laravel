@@ -24,13 +24,13 @@
         }?>
     </div> 
     <div class="col-md-4 margenarriba">
-            <img class="img-responsive floatuvm" width="250px" height="100px" src="/img/mail_logo.png">    
+            <img class="img-responsive floatuvm" width="200px" height="100px" src="/img/mail_logo.png">    
     </div> 
     <div class="col-md-4 margenarriba">
-        <img class="img-responsive float" width="150px" height="150px" src="\img/iconos/{{$datoencuestas->imagePath}}" onerror="src='/img/Por_Ti_EXPERIENCIA_UVM.png'">    
+        <img class="img-responsive float" width="100px" height="150px" src="\img/iconos/{{$datoencuestas->imagePath}}" onerror="src='/img/Por_Ti_EXPERIENCIA_UVM.png'">    
     </div>      
         <?php
-        /*if($info[0]->total_encuestados==0){
+     /*   if($info[0]->total_encuestados==0){
             $avancegrl=0;
             $avancealum=0;
             $avanceamp=0;
@@ -45,26 +45,20 @@
             $avancealum=($info[0]->total_incidentes_alumnos)+($info[0]->total_contestados_alumnos);
             $porcentajeavancealum=(100*$avancealum)/$info[0]->total_alumnos;
 
-           /* $avanceamp=($info[0]->total_incidentes_empleados)+($info[0]->total_contestados_empleados);
-            $porcentajeavanceemp=(100*$avanceamp)/$info[0]->total_empleados;*/
-        //}
+            $avanceamp=($info[0]->total_incidentes_empleados)+($info[0]->total_contestados_empleados);
+            $porcentajeavanceemp=(100*$avanceamp)/$info[0]->total_empleados;
+        }*/
         ?>
 
  
         <!--Avance General-->
-    <!--<div class="col-md-11">
+    <div class="col-md-11">
         <hr>
-        <div class="col-md-6">
-            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
-        </div> 
-        <div class="col-md-6">
-            <p>Situación de avance General de la encuesta</p>
-            <h3><b>Encuestados total: </b></h3>
-            <h5><b>Avance contestados: </b></h5>
-            <h5><b>Restante: </b></h5>
+                <h2><strong><center>Avance por campus</center></strong></h2>
 
-        </div>       
-    </div>-->
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+   
+    </div>
         <!--End Avance General-->
 
         <!--Avance alumnos-->
@@ -104,16 +98,17 @@
 </div>
 <div class="row col-center">
     <div class="col-md-6">
-        <p><strong>Encuestas Resueltas por canal</strong></p>
+        <h2><strong><center>Encuestados por canal</center></strong></h2>
         <div id="canales" style="height: 300px; width: 100%;background: transparent;"></div>
     </div>
     <div class="col-md-6">
-        <div class="col-md-7 cuadrogris">
+            <div class="col-md-7 cuadrogris">
             <div class="dato">
-                <h3><?php echo $totalEncuestados; ?></h3>
-                <p><strong>Total Encuestados</strong></p>
+                <h3><?php echo number_format($info)?></h3>
+                <p><strong>Encuestados</strong></p>
             </div>
         </div>
+
     <br>
         <div class="col-md-7 cuadrogris" style="display:none">
         <!--Se comenta un diplay none esperando el procedimiento NPS -->
@@ -124,8 +119,8 @@
         </div>
         <div class="col-md-7 cuadrogris">
             <div class="dato">
-                <h3><?php echo $info?></h3>
-                <p><strong>Total Contestados</strong></p>
+                <h3><?php echo number_format($totalEncuestados-$info); ?></h3>
+                <p><strong>Faltantes</strong></p>
             </div>
         </div>
     </div>
@@ -133,7 +128,7 @@
 
     <div class="row col-center">
         <div class="col-md-6">
-            <legend>Region</legend>
+            <legend>Región</legend>
                 <select class="form-control text-black"  value="Linea de negocios" selected="selected" disabled>
                     <option>{{$regioname[0]->regions_name}}</option>
                 </select>
@@ -200,7 +195,10 @@
 
         </div>
     </div>
+
 </div>  
+    <div class="row" style="height:50px;">
+    </div>
         <!--End Avance empleados-->
 
 

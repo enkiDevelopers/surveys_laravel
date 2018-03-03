@@ -1,6 +1,61 @@
 window.onload = function () {
+var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  title:{
+  },
+  axisY: {
+  },
+  legend: {
+    cursor:"pointer",
+    itemclick : toggleDataSeries
+  },
+  toolTip: {
+    shared: true,
+    content: toolTipFormatter
+  },
+  data: [{
+    type: "bar",
+    showInLegend: true,
+    name: "Encuestados",
+    color: "red",
+    dataPoints: [
+    <?php
+        foreach ($estadisticas as $estadistica) {
 
+            $dato=DB::table('encuestados')->where('campus','=',$estadistica->campus)
+                                          ->where('idEncuesta','=',$datoencuesta[0]->id)
+                                          ->count();
+            echo "{ label: ".'"'.$estadistica->campus.'"'.",y: ".$dato."},\n";
+        }
+    ?>
+    ]
+  }]
+  
+});
+chart.render();
+function toolTipFormatter(e) {
+  var str = "";
+  var total = 0 ;
+  var str3;
+  var str2 ;
+  for (var i = 0; i < e.entries.length; i++){
+    var str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\">" + e.entries[i].dataSeries.name + "</span>: <strong>"+  e.entries[i].dataPoint.y + "</strong> <br/>" ;
+    total = e.entries[i].dataPoint.y + total;
+    str = str.concat(str1);
+  }
+  str2 = "<strong>" + e.entries[0].dataPoint.label + "</strong> <br/>";
+  return (str2.concat(str));
+}
 
+function toggleDataSeries(e) {
+  if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+    e.dataSeries.visible = false;
+  }
+  else {
+    e.dataSeries.visible = true;
+  }
+  chart.render();
+}
   <?php
     $total=0;
     $conexion2=0;
@@ -31,11 +86,11 @@ var chart = new CanvasJS.Chart("canales", {
         yValueFormatString: "##0\"\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $conexion; ?>,label:"Conexion: ["+<?php echo $conexion2; ?>+"%]"  , name: "Conexion"},
-            {y: <?php echo $facebook; ?>,label:"Facebook: ["+<?php echo $facebook2; ?>+"%]"  , name: "Facebook"},
-            {y: <?php echo $mail; ?>,label:"Mail: ["+<?php echo $mail2; ?>+"%]"  , name: "Mail"},
-            {y: <?php echo $online; ?>,label:"Online: ["+<?php echo $online2; ?>+"%]"  , name: "Online"},
-            {y: <?php echo $sistema; ?>,label:"Sistema: ["+<?php echo $sistema2; ?>+"%]"  , name: "Sistema"},
+            {y: <?php echo $conexion; ?>,label:" ["+<?php echo $conexion2; ?>+"%]"  , name: "Conexion"},
+            {y: <?php echo $facebook; ?>,label:" ["+<?php echo $facebook2; ?>+"%]"  , name: "Facebook"},
+            {y: <?php echo $mail; ?>,label:" ["+<?php echo $mail2; ?>+"%]"  , name: "Mail"},
+            {y: <?php echo $online; ?>,label:" ["+<?php echo $online2; ?>+"%]"  , name: "Online"},
+            {y: <?php echo $sistema; ?>,label:" ["+<?php echo $sistema2; ?>+"%]"  , name: "Sistema"},
 
         ]
     }]
@@ -43,56 +98,7 @@ var chart = new CanvasJS.Chart("canales", {
 
 chart.render();
 
-/*var chart = new CanvasJS.Chart("chartContainer", {
-    animationEnabled: true,
-    title:{
-        text: "Reporte de Región"
-    },  
-    axisY: {
-        title: "Encuestas contestadas",
-        titleFontColor: "#4F81BC",
-        lineColor: "#4F81BC",
-        labelFontColor: "#4F81BC",
-        tickColor: "#4F81BC"
-    },
 
-    toolTip: {
-        shared: true
-    },
-    legend: {
-        cursor:"pointer",
-        itemclick: toggleDataSeries
-    },
-    data: [{
-        type: "column",
-        name: "Encuestas contestadas",
-        legendText: "Encuestas contestadas",
-        showInLegend: true, 
-        dataPoints:[
-    <?php
-        foreach ($estadisticas as $estadistica) {
-            $dato=$estadistica->total_contestados+$estadistica->total_incidentes;
-            echo "{ label: ".'"'.$estadistica->campus_name.'"'.",y: ".$dato."},\n";
-        }
-    ?>
-
-        ]
-    },
-    {
-        type: "column", 
-        name: "Encuestas aun no contestadas",
-        legendText: "Encuestas aun no contestadas",
-        showInLegend: true,
-        dataPoints:[
-    
-            
-
-
-
-        ]
-    }]
-});
-chart.render();*/
 
 
 /*function toggleDataSeries(e) {
@@ -181,8 +187,9 @@ $.ajaxSetup({
               async:true,
               cache:false,
               beforeSend: function () {
-                $("#cargar").html("Cargando Regiones...");
-              },
+                var imagen="<tr><td></td> <td></td> <td></td> <td></td> <td></td><td><img  width='200px' height='170px' src='/img/load/4puntos.gif'></td></tr>";
+                $("#tabla").html(imagen);
+                },
               success : function(response){
               //console.log(response["infot"]);
               leg=response["infot"].length;

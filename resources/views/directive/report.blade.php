@@ -46,17 +46,18 @@
 </div>
 <div class="row col-center">
     <div class="col-md-6">
-        <p><strong>Encuestas Resueltas por canal</strong></p>
+        <h2><strong><center>Encuestados por canal</center></strong></h2>
         <div id="canales" style="height: 300px; width: 100%;background: transparent;"></div>
     </div>
     <div class="col-md-6">
-        <div class="col-md-7 cuadrogris">
-            <div class="dato">
-                <h3><?php echo $totalEncuestados; ?></h3>
-                <p><strong>Total Encuestados</strong></p>
+            <div class="col-md-7 cuadrogris">
+                <div class="dato">
+                    <h3><?php echo number_format($info);?></h3>
+                    <p><strong>Encuestados</strong></p>
+                </div>
             </div>
-        </div>
-    <br>
+
+     <br>
         <div class="col-md-7 cuadrogris" style="display:none">
         <!--Se comenta un diplay none esperando el procedimiento NPS -->
             <div class="dato">
@@ -66,8 +67,8 @@
         </div>
         <div class="col-md-7 cuadrogris">
             <div class="dato">
-                <h3><?php echo $info?></h3>
-                <p><strong>Total Contestados</strong></p>
+                <h3><?php echo number_format($totalEncuestados-$info); ?></h3>
+                <p><strong>Faltantes</strong></p>
             </div>
         </div>
     </div>
@@ -75,7 +76,7 @@
 
     <div class="row col-center">
         <div class="col-md-6">
-            <legend>Campus</legend>
+            <legend><strong>Campus</strong></legend>
                 <select class="form-control text-black"  value="Linea de negocios" selected="selected" disabled>
                     <option>{{$campusname[0]->campus_name}}</option>
                 </select>
@@ -84,7 +85,7 @@
         </div>
         <div class="col-md-6">
 
-          <legend>Línea de negocios</legend>
+          <legend><strong>Línea de negocios</strong></legend>
           <input type="hidden" id="idencuesta" value="{{$datoencuesta[0]->id}}">
           <input type="hidden" id="campus" value="{{$campusname[0]->campus_name}}">
 
@@ -98,7 +99,7 @@
             </select>
         </div>
         <div class="col-md-6">
-          <legend>Modalidad</legend>
+          <legend><strong>Modalidad</strong></legend>
             <select class="form-control text-black" id="cmbmodalidad" value="Modalidades" selected="selected" onchange="sltmodalidades(this.value)">
                     <option value="1">Seleccione una opción</option>  
                     <?php
@@ -117,30 +118,31 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Línea de Negocio</th>
-                    <th>Modalidad</th>
-                    <th>#ENC</th>
-                    <th>#FAL</th>
-                    <th>#Total</th>
-                    <th>#SIS</th>
-                    <th>#OLN</th>
-                    <th>#CNX</th>
-                    <th>#FBK</th>
-                    <th>#HP12</th>
-                    <th>#EMAIL</th>
+                    <th class="text-center">Línea de Negocio</th>
+                    <th class="text-center">Modalidad</th>
+                    <th class="text-center">#ENC</th>
+                    <th class="text-center">#FAL</th>
+                    <th class="text-center">#Total</th>
+                    <th class="text-center">#SIS</th>
+                    <th class="text-center">#OLN</th>
+                    <th class="text-center">#CNX</th>
+                    <th class="text-center">#FBK</th>
+                    <th class="text-center">#HP12</th>
+                    <th class="text-center">#EMAIL</th>
                 <!--<th>#PRM</th>
                     <th>#DET</th>
                     <th>%NPS</th>-->
-                    <th>%Avance</th>
+                    <th class="text-center">%Avance</th>
                 </tr>
                 </thead>
                 <tbody id="tabla">
 
-                    
                 </tbody>
             </table>
 
         </div>
+    </div>
+    <div class="row" style="height:50px;">
     </div>
 </div>  
         <!--End Avance empleados-->
