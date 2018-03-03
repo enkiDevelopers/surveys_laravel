@@ -4,6 +4,12 @@
 {
   width: 100%;
 }
+.descGeneral{
+  left: 40%;
+  position:absolute;
+  width: 43%;
+  margin-top:180px;
+}
 
 .sep{
 width: auto;
@@ -672,6 +678,9 @@ display: inline-block;
 {
   margin-top: -60px;
 }
+.descGeneral{
+  left: 43%;
+}
 
 
 }
@@ -721,6 +730,10 @@ display: inline-block;
     margin-right: 150px;
     margin-left: 300px;
       }
+    .descGeneral{
+      left: 10%;
+      width: 80%;
+    }
 
   }
 
