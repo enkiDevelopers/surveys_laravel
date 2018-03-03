@@ -5,6 +5,7 @@ window.onload = function () {
   title:{
   },
   axisY: {
+    title:"Encuestados"
   },
   legend: {
     cursor:"pointer",
@@ -16,9 +17,8 @@ window.onload = function () {
   },
   data: [{
     type: "bar",
-    showInLegend: true,
-    name: "Encuestados",
-    color: "red",
+    showInLegend: false,
+    name:"Encuestados",
     dataPoints: [
     <?php
         foreach ($estadisticas as $estadistica) {

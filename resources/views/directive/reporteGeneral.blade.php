@@ -38,12 +38,12 @@
         <!--Avance empleados-->
     <div class="col-md-11">
         <hr>
-                <h2><strong><center>Avance por campus</center></strong></h2>
+                <h2><strong><center>Avance por Región</center></strong></h2>
 
             <div id="chartContainer" style="height: 300px; width: 100%;"></div>
    
     </div>
-    
+
     <div class="col-md-11">
             <hr>
 

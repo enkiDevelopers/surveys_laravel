@@ -4,6 +4,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
   title:{
   },
   axisY: {
+    title:"Encuestados",
   },
   legend: {
     cursor:"pointer",
@@ -15,9 +16,8 @@ var chart = new CanvasJS.Chart("chartContainer", {
   },
   data: [{
     type: "bar",
-    showInLegend: true,
+    showInLegend: false,
     name: "Encuestados",
-    color: "red",
     dataPoints: [
     <?php
         foreach ($estadisticas as $estadistica) {
