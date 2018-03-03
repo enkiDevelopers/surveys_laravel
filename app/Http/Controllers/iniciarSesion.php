@@ -56,12 +56,15 @@ if($search== "false")
  public function validar(Request $request)
 {
   $id= $request->session()->get('id');
+  $isValid = usuarios::where('idUsuario',$id)->select('type')->first();
+
   if($id == null)
   {
   return view('auth.login');
-}else {
-  $info = usuarios::find($id);
-  return view('administrator.home',compact('info'));
+  }else {
+
+        $info = usuarios::find($id);
+        return view('administrator.home',compact('info'));
 }
 
 }
@@ -90,33 +93,7 @@ public function lencuesta(Request $request){
             echo $ruta;
           return redirect()->route('loginpagina',"sistema");
           }else{
-            /*
-                $host = "192.168.1.100";
-                $user = $email;//"pruebas";
-                $pswd = $pass;//"Colocho_2104";
-                $ad = ldap_connect($host)
-                    or die("Imposible Conectar");
-             ldap_set_option($ad, LDAP_OPT_PROTOCOL_VERSION, 3)or die ("Imposible asignar el Protocolo LDAP");
-          if ($bd==false) {
-            return "error";
-          }
-          // Creo el DN
-              $dn = "OU=Usuarios,DC=pruebas,DC=local";
-
-              // Especifico los parámetros que quiero que me regrese la consulta
-              $attrs = array("displayname","mail","samaccountname","telephonenumber","givenname");
-
-              // Creo el filtro para la busqueda
-              $filter = "(samaccountname=$usuario)";
-              $search = ldap_search($ad, $dn, $filter, $attrs);
-          if($search== "false")
-          {
-              return "error";
-          }else {
-            $id=$isValid->idUsuario;
-            Session::put('id', $id);
-            return redirect()->route('adminHome');
-          }*/
+   
 
             $id=$isValid->noCuenta;
             Session::put(['id'=> $id,'canal'=> $ruta]);
@@ -125,6 +102,24 @@ public function lencuesta(Request $request){
           }
 
 }
+
+public function ldirective(Request $request){
+        $email = $request->email;
+        //$ruta   =  $request->ruta;
+        $isValid = usuarios::where('email',$email)->first();
+
+          if($isValid==null)
+          {
+            //echo $ruta;
+            return redirect()->route('loginpagina',"sistema");
+          }else{
+           $id=$isValid->idUsuario;
+           Session::put('id', $id);
+           return redirect()->route('directive');
+          }
+
+}
+
 
 
 

@@ -1,6 +1,6 @@
 window.onload = function () {
 
-var chart = new CanvasJS.Chart("chartContainer", {
+/*var chart = new CanvasJS.Chart("chartContainer", {
     animationEnabled: true,
     title:{
         text: "Reporte de Región"
@@ -41,12 +41,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
         legendText: "Encuestas aun no contestadas",
         showInLegend: true,
         dataPoints:[
-    <?php
-        foreach ($estadisticas as $estadistica) {
-            $faltante=$estadistica->total_encuestados-($estadistica->total_contestados+$estadistica->total_incidentes);
-            echo "{ label: ".'"'.$estadistica->campus_name.'"'.",y: ".$faltante."},\n";
-        }
-    ?>
+    
             
 
 
@@ -54,10 +49,10 @@ var chart = new CanvasJS.Chart("chartContainer", {
         ]
     }]
 });
-chart.render();
+chart.render();*/
 
 
-function toggleDataSeries(e) {
+/*function toggleDataSeries(e) {
     if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
         e.dataSeries.visible = false;
     }
@@ -65,8 +60,8 @@ function toggleDataSeries(e) {
         e.dataSeries.visible = true;
     }
     chart.render();
-}
-var chart = new CanvasJS.Chart("chartContainergrl", {
+}*/
+/*var chart = new CanvasJS.Chart("chartContainergrl", {
     backgroundColor: "transparent",
     animationEnabled: true,
     title: {
@@ -79,18 +74,16 @@ var chart = new CanvasJS.Chart("chartContainergrl", {
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y:<?php echo $totalgrl ?> , label: "Avance General"},
-            {y:<?php echo 100-$totalgrl ?>, label: "Restante"}
 
         ]
     }]
 });
 
-chart.render();
+chart.render();*/
 
 
 
-var chart2 = new CanvasJS.Chart("chartContaineralum", {
+/*var chart2 = new CanvasJS.Chart("chartContaineralum", {
     backgroundColor: "transparent",
     animationEnabled: true,
     title: {
@@ -102,8 +95,6 @@ var chart2 = new CanvasJS.Chart("chartContaineralum", {
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $totalalum?> , label: "Avance General Alumnos"},
-            {y: <?php echo 100-$totalalum?> , label: "Restante Alumnos"}
 
         ]
     }]
@@ -123,14 +114,99 @@ var chart3 = new CanvasJS.Chart("chartContaineremp", {
         yValueFormatString: "##0.00\"%\"",
         indexLabel: "{label} {y}",
         dataPoints: [
-            {y: <?php echo $totaltra ?> , label: "Avance General Alumnos"},
-            {y: <?php echo 100-$totaltra?>, label: "Restante Empleados"}
 
         ]
     }]
 });
 
-chart3.render();
+chart3.render();*/
+
+$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+}); 
+  var idencuesta=document.getElementById("idencuesta").value;
+  var region=document.getElementById("region").value;
+ 
+        $.ajax({
+              dataType : 'json',
+              type : 'post',
+              url : '/buscargeneralr',
+              data : {"idencuesta":idencuesta,
+                      "region":region},
+              async:true,
+              cache:false,
+              beforeSend: function () {
+                $("#cargar").html("Cargando Regiones...");
+              },
+              success : function(response){
+              //console.log(response["infot"]);
+              leg=response["infot"].length;
+              var dato="";
+              i=0;
+              //var ENC=0; FAL=0;  Total=0;  SIS=0;  OLN=0;  CNX=0;  FBK=0;  HP12=0; EMAIL=0;  PRM=0;  DET=0;  NPS=0;  Avance=0;
+              var json=jQuery.parseJSON(JSON.stringify(response["infot"]));
+              var json2=jQuery.parseJSON(JSON.stringify(response["info"]));//completo
+              while(i<leg){
+                  var ENC=0; FAL=0;  Total=0;  SIS=0;  OLN=0;  CNX=0;  FBK=0;  HP12=0; EMAIL=0;  PRM=0;  DET=0;  NPS=0;  Avance=0;
+                  for(post in json2){
+                    if(json[i].modalidad==json2[post].modalidad){
+                      Total++;
+                    if(json2[post].contestado=="1"){
+                      ENC++;
+                    }
+                    if(json2[post].contestado=="0"){
+                      FAL++;
+                    }
+                    if(json2[post].canal=="sistema"){
+                      SIS++;
+                    }
+                    if(json2[post].canal=="online"){
+                      OLN++;
+                    }
+                    if(json2[post].canal=="conexion"){
+                      CNX++;
+                    }
+                    if(json2[post].canal=="facebook"){
+                      FBK++;
+                    }
+                    if(json2[post].canal=="hp12c"){
+                      HP12++;
+                    }
+                    if(json2[post].canal=="mail"){
+                      EMAIL++;
+                    } 
+}
+
+                  }
+                                    Avance=(100*ENC)/Total;
+                    dato +="<tr>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].modalidad+"</td>"
+                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+FAL+"</td>"
+                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+SIS+"</td>"
+                    dato+="<td>"+OLN+"</td>"
+                    dato+="<td>"+CNX+"</td>"
+                    dato+="<td>"+FBK+"</td>"
+                    dato+="<td>"+HP12+"</td>"
+                    dato+="<td>"+EMAIL+"</td>"
+                   /* dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"
+                    dato+="<td>"+json[i].lineaNegocio+"</td>"*/
+                    dato+="<td>"+Avance+"%"+"</td>"
+                    dato +="</tr>";
+                  $("#tabla").html(dato);
+                  i++;
+}
+                
+              },
+              error : function(error) {
+                console.log(error);
+              }
+          });
 
 
 }

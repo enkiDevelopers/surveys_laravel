@@ -12,25 +12,26 @@
 
 <div class="container" >
     <div class="row">
-
       <div class="col-md-12 ">
-              <div class="sep">
-              <div class="row">
-                <div class="supSide">
-                <div class="circle">
-                </div>
+
+
+      <div class="sep">
+        <div class="row">
+          <div class="supSide">
+              <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
+              </div>
               <div class="cuadroPerfilSup">
-                <div class="eng">
-                  <span class="glyphicon glyphicon-cog"> &nbsp</span>
+                  <div class="eng">
+                    <span class="glyphicon glyphicon-cog"> &nbsp</span>
                   </div>
-                <div id="content">
-                  <div class="nombre"> Jorge Luis González Hernandez </div>
-                  <div class="correo">colocho-2104@gmail.com </div>
-                      </div>
+                  <div id="content">
+                      <div class="nombre"> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}  </div>
+                      <div class="correo"> {{$info->email}} </div>
+                  </div>
               </div>
-                </div>
-              </div>
-              </div>
+            </div>
+        </div>
+    </div>
 
 
             <div class="panel panel-default ">
@@ -99,32 +100,47 @@
                     <div class="panel panel-default"  id="panel" >
                     <div class="panel-heading"> <!-- INICIO ENCABEZADO PANEL -->
                       <div class="row">
-                          <div class="col-md-3">
-                            <h4><b>  Encuestas publicadas </b> </h4>
+                          <div class="col-md-5" id="Epublicadas">
+                            <h3><b>  Encuestas publicadas </b> </h3>
                           </div>
-                          <div class="col-md-9 pull-right" id="infob">
+                          <div class="col-md-8 pull-right" id="infob">
                               <div class="row">
-                                <br />
-                                  <div class="col-md-1">&nbsp</div>
-                                  <div class="col-md-1 pull-right">
-                      <a onclick="ocultar2();" id="btnOp"><span id="cambiar2" class="glyphicon glyphicon-chevron-up"></span> </a>
+
+                            <div class="cuadro">
+                              <div class="redes">
+                              <div class="col-md-4">
+                              <img id="btnT"
+                              src="/img/redes/twitter.png"
+                              width="40px" height="40px" onclick="infoT();"/>
+                              </div>
+                              <div class="col-md-4">
+                              <img id="btnF" src="/img/redes/Facebook.png"  width="40" height="40" onclick="infoF();"/>
+                              </div>
+                            </div>
+
+                                  <div class="let">
+                                  <div class="col-md-4 infoVer" id="infVer">
+                                      <b>Ver&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
                                   </div>
-                                  <div class="col-md-2 pull-right">
-                                      <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
+                                  <div class="activa ">
+                                  <b>  Activa </b> &nbsp&nbsp<div class="survey-status survey-status__active" style="display: inline-block;"></div>
                                   </div>
-                                  <div class="col-md-2 pull-right">
-                                    Activa<div class="pull-right survey-status survey-status__active"></div>
-                                  </div>
-                                  <div class="col-md-2 pull-right">
-                                    Finalizada<div class="pull-right survey-status survey-status__finished"></div>
-                                  </div>
-                                  <div class="col-md-2 pull-right">
-                                  <img id="btnT" src="/img/redes/twitter.png"  width="40" height="40" onclick="infoT();"/>
-                                  </div>
-                                  <div class="col-md-2 pull-right">
-                                  <img id="btnF" src="/img/redes/Facebook.png"  width="40" height="40" onclick="infoF();"/>
+                                  <div class="finalizada">
+                                    <b>Finalizada</b> &nbsp&nbsp<div class="survey-status survey-status__finished" style="display: inline-block;"></div>
                                   </div>
 
+                                  <div class="btnOcultar">
+                                <a onclick="ocultar2();"
+                                id="btnOp"><span id="cambiar2"
+                                class="glyphicon glyphicon-chevron-up"></span> </a>
+                                            </div>
+
+
+                                </div>
+
+
+
+                                </div>
                               </div>
                           </div>
                       </div>

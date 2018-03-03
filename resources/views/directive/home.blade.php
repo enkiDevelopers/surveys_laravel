@@ -116,9 +116,9 @@
 </div>
 
 <!--end modal section-->
-<div class="row">
-<div class="container" >
-        <div class="col-md-11">
+<div class="container" style="width:86%">
+   <div class="row">
+     <div class="col-md-11">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
@@ -144,7 +144,7 @@
 
                                 <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagePath;?>" width="100%" height="90px"> </div>
+                                    <div class="col-md-5"><img class="card-img-top" alt="Card image cap" src="\img/iconos/<?php echo $encuesta->imagePath;?>" width="100%" height="90px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"> </div>
                                         <div class="col-md-7">
                                         <h4 class="card-title">  <?php echo $encuesta->tituloEncuesta;  ?></h4>
                                     </div>
@@ -153,13 +153,13 @@
                                 <p class="card-text">Descripción: <span class="template-creator"><?php echo $encuesta->descripcion?></span></p>
 
                                 <?php
-                                    
+                                     
                                  switch ($datosdirective[0]->type) {
                                     case '1':
                                 ?>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="corporativoModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reportes disponibles">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                            <span class="glyphicon glyphicon-signal" ></span>
                                         </button>
                                     </div>
 
@@ -169,7 +169,7 @@
                                 ?>
                                         <div class="btn-group " role="group" aria-label="...">
                                         <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reporte Regional">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                            <span class="glyphicon glyphicon-signal" ></span>
                                         </button>
                                         </div>
                                 <?php
@@ -178,7 +178,7 @@
                                 ?>
                                     <div class="btn-group " role="group" aria-label="...">
                                         <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
-                                            <span class="glyphicon glyphicon-eye-open" ></span>
+                                            <span class="glyphicon glyphicon-signal" ></span>
                                         </a>
                                     </div>
                                 <?php 

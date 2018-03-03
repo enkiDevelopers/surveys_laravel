@@ -33,10 +33,12 @@ class directiveController extends Controller
       return view('administrator.edit',compact('titulo','descripcion','nombre'));
   }
 
-  public function show_cards($id)
+  public function show_cards(Request $request)
   {
+     $id= $request->session()->get('id');
+
       $campus=0;
-      $encuestas = DB::table('templates')->orderByRaw('updated_at - created_at DESC')->get();
+      $encuestas = DB::table('templates')->join('publicaciones','templates.id','=','publicaciones.idTemplate')->get();
       $datosdirective =DB::table('usuarios')->where('idUsuario','=',$id)->get();
 
       switch ($datosdirective["0"]->type) {
@@ -84,53 +86,94 @@ class directiveController extends Controller
     return response()->json($data);
   }
   public function estadisticaCampus($id,$idcampus){
-      $stadisticas= DB::table('estadisticas')->where([['surveys_id','=',$id],
-                                                   ['campus_campus_id','=',$idcampus],])->count();
-      if ($stadisticas==0){
-      $idstatica = DB::table('estadisticas')->insertGetId([
-                                                  'total_encuestados' => '0', 
-                                                  'total_alumnos' =>'0',
-                                                  'total_empleados' =>'0',
-                                                  'total_incidentes' =>'0',
-                                                  'total_incidentes_alumnos' =>'0',
-                                                  'total_incidentes_empleados' =>'0',
-                                                  'total_contestados' =>'0',
-                                                  'total_contestados_alumnos'=>'0',
-                                                  'total_contestados_empleados'=>'0',
-                                                  'campus_campus_id'=>$idcampus,
-                                                  'directives_idDirectives'=>1,
-                                                  'surveys_id'=> $id]);
-      }
-      $info= DB::table('estadisticas')->where([  ['surveys_id','=',$id],
-                                               ['campus_campus_id','=',$idcampus],])->get();
+      $stadisticas= DB::table('estadisticas')->where('surveys_id','=',$id)
+                                             ->where('campus_campus_id','=',$idcampus)->count();
+
+      $campusid=DB::table('ctlCampus')->select('campus_name')->where('campus_id','=',$idcampus)->get();
+
+
+      /*SELECCION DE LOS CANALES DE LA TABLA ENCUESTADOS*/
+      $mail= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['campus','=',$campusid[0]->campus_name],
+                                               ['canal','=','mail'],])->count();
+      $conexion= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['campus','=',$campusid[0]->campus_name],
+                                               ['canal','=','conexion'],])->count();
+      $hp12c= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['campus','=',$campusid[0]->campus_name],
+                                               ['canal','=','hp12c'],])->count();
+      $facebook= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['campus','=',$campusid[0]->campus_name],
+                                               ['canal','=','facebook'],])->count();
+      $online= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['campus','=',$campusid[0]->campus_name],
+                                               ['canal','=','online'],])->count();
+      $sistema= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['campus','=',$campusid[0]->campus_name],
+                                               ['canal','=','sistema'],])->count();
+      $totalEncuestados=DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                                        ['campus','=',$campusid[0]->campus_name],])->count();
+
+      /*Obtiene la linea de negocios de los encuestados disponibles*/
+      $lineanegocios=DB::table('encuestados')->select('lineaNegocio')->where([['idEncuesta','=',$id],
+                                                                              ['campus','=',$campusid[0]->campus_name],])->distinct()->get();
+
+
+      /*Obtiene las modalidades diponibles en linea de negocios*/
+      $modalidad=DB::table('encuestados')->select('modalidad')->where([['idEncuesta','=',$id],
+                                                                              ['campus','=',$campusid[0]->campus_name],])->distinct()->get();
+      /*END SELECCION DE LOS CANALES DE LA TABLA ENCUESTADOS*/
+
+      $info=DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                            ['campus','=',$campusid[0]->campus_name],
+                                            ['contestado','=',1],])->count();
+
       $campusname=DB::table('ctlCampus')->where('campus_id','=',$idcampus)->get();
 
-      $datoencuesta=DB::table('encuestas')->where('id','=',$id)->get();
-
-      return view('directive.report',compact('datoencuesta','info','campusname'));
+      $datoencuesta=DB::table('templates')->where('id','=',$id)->get();
+      return view('directive.report',compact('datoencuesta','info','campusname','totalEncuestados','mail','conexion','hp12c','facebook','online','sistema','lineanegocios','modalidad'));
+    
   }
+  
   public function estadisticasRegion($id,$idregion){
     $campus = DB::table('ctlCampus')->where('regions_regions_id','=',$idregion)->get();
+    $regionname=DB::table('ctlRegions')->select('regions_name')->where('regions_id','=',$idregion)->get();
+    
 
-    foreach ($campus as $campusdatos) {
-       $stadisticas= DB::table('estadisticas')->where([['surveys_id','=',$id],
-                                                    ['campus_campus_id','=',$campusdatos->campus_id],])->count();
-      if ($stadisticas==0){
-      $idstatica = DB::table('estadisticas')->insertGetId([
-                                                  'total_encuestados' => '0', 
-                                                  'total_alumnos' =>'0',
-                                                  'total_empleados' =>'0',
-                                                  'total_incidentes' =>'0',
-                                                  'total_incidentes_alumnos' =>'0',
-                                                  'total_incidentes_empleados' =>'0',
-                                                  'total_contestados' =>'0',
-                                                  'total_contestados_alumnos'=>'0',
-                                                  'total_contestados_empleados'=>'0',
-                                                  'campus_campus_id'=>$campusdatos->campus_id,
-                                                  'directives_idDirectives'=>1,
-                                                  'surveys_id'=> $id]);
-      }
-    }
+          /*SELECCION DE LOS CANALES DE LA TABLA ENCUESTADOS*/
+      $mail= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['region','=',$regionname[0]->regions_name],
+                                               ['canal','=','mail'],])->count();
+      $conexion= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['region','=',$regionname[0]->regions_name],
+                                               ['canal','=','conexion'],])->count();
+      $hp12c= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['region','=',$regionname[0]->regions_name],
+                                               ['canal','=','hp12c'],])->count();
+      $facebook= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['region','=',$regionname[0]->regions_name],
+                                               ['canal','=','facebook'],])->count();
+      $online= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['region','=',$regionname[0]->regions_name],
+                                               ['canal','=','online'],])->count();
+      $sistema= DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                               ['region','=',$regionname[0]->regions_name],
+                                               ['canal','=','sistema'],])->count();
+      $totalEncuestados=DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                                         ['region','=',$regionname[0]->regions_name],])->count();
+
+      /*Obtiene la linea de negocios de los encuestados disponibles*/
+      $info=DB::table('encuestados')->where([['idEncuesta','=',$id],
+                                            ['region','=',$regionname[0]->regions_name],
+                                            ['contestado','=',1],])->count();
+      /*Obtiene la linea de negocios de los encuestados disponibles*/
+      $lineanegocios=DB::table('encuestados')->select('lineaNegocio')->where([['idEncuesta','=',$id],
+                                                                              ['region','=',$regionname[0]->regions_name],])->distinct()->get();
+
+
+      /*Obtiene las modalidades diponibles en linea de negocios*/
+      $modalidad=DB::table('encuestados')->select('modalidad')->where([['idEncuesta','=',$id],
+                                                                      ['region','=',$regionname[0]->regions_name],])->distinct()->get();
 
     $estadisticas = DB::table('estadisticas')
                   ->join('ctlCampus', 'estadisticas.campus_campus_id', '=', 'ctlCampus.campus_id')
@@ -140,8 +183,8 @@ class directiveController extends Controller
                   ->orderBy('ctlCampus.campus_name')
                   ->get();
     $regioname= DB::table('ctlRegions')->where('regions_id','=',$idregion)->get();
-    $datoencuesta=DB::table('encuestas')->where('id','=',$id)->get();
-    return view('directive.report1',compact('datoencuesta','estadisticas','regioname'));
+    $datoencuesta=DB::table('templates')->where('id','=',$id)->get();
+    return view('directive.report1',compact('datoencuesta','estadisticas','info','totalEncuestados','regioname','mail','conexion','hp12c','facebook','online','sistema','lineanegocios','modalidad'));
 
   }
   public function estadisticasGeneral($id){
@@ -154,7 +197,7 @@ class directiveController extends Controller
                   ->where('estadisticas.surveys_id','=',$id)
                   ->get();
 
-        $datoencuesta=DB::table('encuestas')->where('id','=',$id)->get();
+        $datoencuesta=DB::table('templates')->where('id','=',$id)->get();
 
         return view('directive.reporteGeneral',compact('datoencuesta','estadisticas','regiones'));
   }
@@ -162,6 +205,85 @@ class directiveController extends Controller
     $clients =Client::all();
     $pdf=PDF::loadView('directive.reporteGeneral',['clients'=>$clients]);
     return $pdf->download('reporte.pdf');
+  }
+  public function busquedalinea(Request $request){
+      $idlinea=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $campusname=$request->input('campus');
+
+      $info=DB::table('encuestados')->where('campus','=',$campusname)
+                                    ->where('lineaNegocio','=',$idlinea)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('campus','=',$campusname)
+                                     ->where('lineaNegocio','=',$idlinea)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+                                     //echo $infot;
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+  public function busquedamodalidad(Request $request){
+      $idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $campusname=$request->input('campus');
+
+      $info=DB::table('encuestados')->where('campus','=',$campusname)
+                                    ->where('modalidad','=',$idmodalidad)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('campus','=',$campusname)
+                                     ->where('modalidad','=',$idmodalidad)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+  public function busquedageneral(Request $request){
+      //$idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $campusname=$request->input('campus');
+
+      $info=DB::table('encuestados')->where('campus','=',$campusname)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('campus','=',$campusname)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
+  }
+
+
+    public function busquedageneralr(Request $request){
+      //$idmodalidad=$request->Input('id');
+      $idencuesta=$request->input('idencuesta');
+      $regionname=$request->input('region');
+
+      $info=DB::table('encuestados')->where('region','=',$regionname)
+                                    ->where('idEncuesta','=',$idencuesta)
+                                    ->get();
+
+      $infot=DB::table('encuestados')->select('lineaNegocio','modalidad')
+                                     ->where('region','=',$regionname)
+                                     ->where('idEncuesta','=',$idencuesta)
+                                     ->distinct()
+                                     ->get();
+
+      return response()->json(array('info'=>$info,'infot'=>$infot));
+
   }
 
 

@@ -252,7 +252,7 @@ function busca(){
              }
              if (xmlhttp.readyState==4 && xmlhttp.status==200){
                  document.getElementById("recibiendo").innerHTML=xmlhttp.responseText;
-             }
+              }
          }
          xmlhttp.open("GET","/administrator/consultar/publicaciones/",true);
          xmlhttp.send();
@@ -436,4 +436,9 @@ function infoF()
 function infoT()
 {
 swal("Comparte en twitter:","www.uvmmejoraporti.mx/surveyeds/login/twitter");
+}
+
+function principal()
+{
+location.href ="/";
 }

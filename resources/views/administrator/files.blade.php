@@ -183,7 +183,7 @@ try{
                                       <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
                                         <div class="btn-group" role="group" aria-label="...">
-                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" >
                                             <span class="glyphicon glyphicon-edit"></span>
                                         </a>
                                         <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
