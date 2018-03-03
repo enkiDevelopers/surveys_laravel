@@ -201,7 +201,7 @@ hr{
 	    width: 60% !important;
 	    margin: 0px 7px 0px 0px;
 	    padding: 0px;
-    	float: left;
+    	float: right;
     	margin-left: -33px;
 	 }
 	 .type{
@@ -213,9 +213,11 @@ hr{
 	 .salto{
 	 	width:40% !important;
 	 	float:right;
+ 	    padding-right: 2%;
 	 }
 	 .btn-control{
 	 	width: 104px;
+	 	margin-right: 3%;
 	 }
 	 .titleQuestionModal{
 	 	width: 100%;
@@ -231,5 +233,6 @@ hr{
 	 }
 	 .selectRespon{
 	 	width: 30%;
+	 	float: right !important;
 	 }
 }

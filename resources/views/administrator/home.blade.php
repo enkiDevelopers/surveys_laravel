@@ -33,7 +33,9 @@
 </div>
 </div>
 
-
+<div>
+  <img src="/img/logos/Descripcion_Funciones.png" style="left: 30%;position:absolute;width: 43%;margin-top:12%;" >
+</div>
 
 <!-- ##################################  Modal editar Imagen perfil ################################## -->
 <div class="modal fade" id="editarImagen"  role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
