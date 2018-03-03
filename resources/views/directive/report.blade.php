@@ -10,14 +10,14 @@
 <div class="row">
     
 </div>
-
+ 
 <div class="row col-lg-offset-2 padding">
 	<!--<div class="col-md-13 col-md-offset-2">-->
     <div class="col-md-4 margenarriba">
 		<?php 
 		foreach ($datoencuesta as $datoencuestas) {
             echo "<div class='col-md-6 text'>";
-			echo "<h3><b>Encuesta: </b>{$datoencuestas->tituloEncuesta}</h3>";
+			echo "<h4><b>Encuesta: </b>{$datoencuestas->tituloEncuesta}</h4>";
 			echo "<h4><b>Campus: {$campusname[0]->campus_name} </b></h4>";
 			echo "</div>";
 
@@ -29,7 +29,7 @@
     
     </div> 
     <div class="col-md-4 margenarriba">
-        <img class="img-responsive float" width="150px" height="150px" src="\img/iconos/{{$datoencuestas->imagePath}}" onerror="src='/img/Por_Ti_EXPERIENCIA_UVM.png'">    
+        <img class="img-responsive float" width="150px" height="150px" src='/img/Por_Ti_EXPERIENCIA_UVM.png'>    
     </div>      
 
 

@@ -28,7 +28,7 @@
     
     </div> 
     <div class="col-md-4 margenarriba">
-        <img class="img-responsive float" width="150px" height="150px" src="\img/iconos/{{$datoencuestas->imagePath}}" onerror="src='/img/Por_Ti_EXPERIENCIA_UVM.png'">    
+        <img class="img-responsive float" width="150px" height="150px" src='/img/Por_Ti_EXPERIENCIA_UVM.png'>    
     </div>      
 
 
