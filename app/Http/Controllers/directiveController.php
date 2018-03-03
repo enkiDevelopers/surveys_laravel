@@ -40,15 +40,13 @@ class directiveController extends Controller
       $campus=0;
       $encuestas = DB::table('templates')->join('publicaciones','templates.id','=','publicaciones.idTemplate')->get();
       $datosdirective =DB::table('usuarios')->where('idUsuario','=',$id)->get();
-
       switch ($datosdirective["0"]->type) {
         case '1':
-              $datosdirective = DB::table('usuarios')
-            ->join('ctlCampus', 'usuarios.idCampus', '=', 'ctlCampus.campus_id')
-            ->select('usuarios.*','ctlCampus.*')
-            ->where('idUsuario','=',$id)
-            ->get();
-              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('campus_id','=',$datosdirective["0"]->campus_id)->get();
+              $datosdirective = DB::table('usuarios')->where('idUsuario','=',$id)->get();
+              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->get();
+              $regionestotal=DB::table('ctlRegions')->get();
+              $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->get();
+              return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus'));
           break;
         case '2':
               $datosdirective = DB::table('usuarios')

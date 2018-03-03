@@ -182,7 +182,6 @@ function sltmodalidades(busq){
   let id = busq;
   var idencuesta=document.getElementById("idencuesta").value;
   var region=document.getElementById("region").value;
-  console.log(id);
   if(id==1){
                 $.ajax({
               dataType : 'json',
@@ -277,7 +276,6 @@ function sltmodalidades(busq){
                 $("#cargar").html("Cargando Regiones...");
               },
               success : function(response){
-              console.log(response["infot"].length);
               leg=response["infot"].length;
               var dato="";
               i=0;

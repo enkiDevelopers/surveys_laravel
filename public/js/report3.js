@@ -87,8 +87,7 @@ function sltlinea(busq){
           });
 
  }else{
-  console.log(idencuesta);
-  console.log(id);
+
         $.ajax({
               dataType : 'json',
               type : 'post',
@@ -181,7 +180,6 @@ function sltmodalidades(busq){
   }); 
   let id = busq;
   var idencuesta=document.getElementById("idencuesta").value;
-  console.log(id);
   if(id==1){
                 $.ajax({
               dataType : 'json',

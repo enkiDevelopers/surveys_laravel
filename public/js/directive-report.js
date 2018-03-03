@@ -23,18 +23,16 @@ chart.render();*/
     $total=0;
     $conexion2=0;
     $facebook2=0;
-    $hp12c2=0;
     $mail2=0;
     $online2=0;
     $sistema2=0;
 
-    $total=$conexion+$facebook+$hp12c+$mail+$online+$sistema;
+    $total=$conexion+$facebook+$mail+$online+$sistema;
     if($total==0){
 
     }else{
      $conexion2=number_format((100*$conexion)/$total);
      $facebook2=number_format((100*$facebook)/$total);
-     $hp12c2=number_format((100*$hp12c)/$total);
      $mail2=number_format((100*$mail)/$total);
      $online2=number_format((100*$online)/$total);
      $sistema2=number_format((100*$sistema)/$total);
@@ -53,7 +51,6 @@ var chart = new CanvasJS.Chart("canales", {
         dataPoints: [
             {y: <?php echo $conexion; ?>,label:"Conexion: ["+<?php echo $conexion2; ?>+"%]"  , name: "Conexion"},
             {y: <?php echo $facebook; ?>,label:"Facebook: ["+<?php echo $facebook2; ?>+"%]"  , name: "Facebook"},
-            {y: <?php echo $hp12c; ?>,label:"HPC12C: ["+<?php echo $hp12c2;?>+"%]"  , name: "HP12C"},
             {y: <?php echo $mail; ?>,label:"Mail: ["+<?php echo $mail2; ?>+"%]"  , name: "Mail"},
             {y: <?php echo $online; ?>,label:"Online: ["+<?php echo $online2; ?>+"%]"  , name: "Online"},
             {y: <?php echo $sistema; ?>,label:"Sistema: ["+<?php echo $sistema2; ?>+"%]"  , name: "Sistema"},
