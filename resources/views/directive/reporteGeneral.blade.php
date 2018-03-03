@@ -36,11 +36,11 @@
         <!--End Avance alumnos-->
 
         <!--Avance empleados-->
-    <div class="col-md-11">
+    <div class="col-md-12">
         <hr>
                 <h2><strong><center>Avance por Región</center></strong></h2>
 
-            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
    
     </div>
 
@@ -89,7 +89,7 @@
         </div>
         <div class="col-md-6">
 
-          <legend>Línea de negocios</legend>
+          <legend><strong>Línea de negocios</strong></legend>
           <input type="hidden" id="idencuesta" value="{{$datoencuesta[0]->id}}">
 
             <select class="form-control text-black" id="cmblineanegocios" value="Linea de negocios" selected="selected" onchange="sltlinea(this.value)">
@@ -102,7 +102,7 @@
             </select>
         </div>
         <div class="col-md-6">
-          <legend>Modalidad</legend>
+          <legend><strong>Modalidad</strong></legend>
             <select class="form-control text-black" id="cmbmodalidad" value="Modalidades" selected="selected" onchange="sltmodalidades(this.value)">
                     <option value="1">Seleccione una opción</option>  
                     <?php

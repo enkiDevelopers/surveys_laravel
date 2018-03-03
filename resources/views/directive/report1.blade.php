@@ -24,10 +24,10 @@
         }?>
     </div> 
     <div class="col-md-4 margenarriba">
-            <img class="img-responsive floatuvm" width="200px" height="100px" src="/img/mail_logo.png">    
+            <img class="img-responsive floatuvm" width="250px" height="100px" src="/img/mail_logo.png">    
     </div> 
     <div class="col-md-4 margenarriba">
-        <img class="img-responsive float" width="100px" height="150px" src="\img/iconos/{{$datoencuestas->imagePath}}" onerror="src='/img/Por_Ti_EXPERIENCIA_UVM.png'">    
+        <img class="img-responsive float" width="150px" height="150px" src="\img/iconos/{{$datoencuestas->imagePath}}" onerror="src='/img/Por_Ti_EXPERIENCIA_UVM.png'">    
     </div>      
         <?php
      /*   if($info[0]->total_encuestados==0){
@@ -52,7 +52,7 @@
 
  
         <!--Avance General-->
-    <div class="col-md-11">
+    <div class="col-md-12">
         <hr>
                 <h2><strong><center>Avance por campus</center></strong></h2>
 
@@ -128,7 +128,7 @@
 
     <div class="row col-center">
         <div class="col-md-6">
-            <legend>Región</legend>
+            <legend><strong>Región</strong></legend>
                 <select class="form-control text-black"  value="Linea de negocios" selected="selected" disabled>
                     <option>{{$regioname[0]->regions_name}}</option>
                 </select>
@@ -137,7 +137,7 @@
         </div>
         <div class="col-md-6">
 
-          <legend>Línea de negocios</legend>
+          <legend><strong>Línea de negocios</strong></legend>
           <input type="hidden" id="idencuesta" value="{{$datoencuesta[0]->id}}">
           <input type="hidden" id="region" value="{{$regioname[0]->regions_name}}">
 
@@ -151,7 +151,7 @@
             </select>
         </div>
         <div class="col-md-6">
-          <legend>Modalidad</legend>
+          <legend><strong>Modalidad</strong></legend>
             <select class="form-control text-black" id="cmbmodalidad" value="Modalidades" selected="selected" onchange="sltmodalidades(this.value)">
                     <option value="1" >Seleccione una opción</option>  
                     <?php
