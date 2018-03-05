@@ -25,6 +25,7 @@ window.onload = function () {
 
             $dato=DB::table('encuestados')->where('region','=',$estadistica->region)
                                           ->where('idEncuesta','=',$datoencuesta[0]->id)
+                                          ->where('contestado','=',1)
                                           ->count();
             echo "{ label: ".'"'.$estadistica->region.'"'.",y: ".$dato."},\n";
         }

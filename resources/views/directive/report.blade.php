@@ -17,7 +17,7 @@
 		<?php 
 		foreach ($datoencuesta as $datoencuestas) {
             echo "<div class='col-md-6 text'>";
-			echo "<h4><b>Encuesta: </b>{$datoencuestas->tituloEncuesta}</h4>";
+			echo "<h3><b>Encuesta: </b>{$datoencuestas->tituloEncuesta}</h3>";
 			echo "<h4><b>Campus: {$campusname[0]->campus_name} </b></h4>";
 			echo "</div>";
 

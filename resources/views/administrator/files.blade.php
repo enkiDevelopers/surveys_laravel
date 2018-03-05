@@ -13,13 +13,23 @@
     opacity: 0;
     transition: opacity 1.3s;
 }
+  .procesando {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/img/load/cargando2.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
 
   </style>
 
 
 <div class="progress"></div>
-<div id="AgregarLista" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div id="AgregarLista" class="modal fade" role="dialog">
+   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -28,19 +38,14 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-        <form  method="post" id="formuploadajax" action="/ingresar" enctype="multipart/form-data">
+        <form  method="post" id="formuploadajax" action="/ingresar">
           <hr>
           {{ csrf_field() }}
 
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
-            <label for="exampleInputFile">Subir documento</label>
-              <input class="form-control-file"  id="archivo" name="archivo" type="file" data-max-size="5148" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
-              <a id="boton" data-toggle="tooltip" title="Ayuda"><span class="glyphicon glyphicon-question-sign"></span>.xlsx</a>
-              <br>
-              <strong>Máximo por archivo 5 MB</strong>
-          <hr>
-            <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>
+          <input type="submit" class="btn btn-default" value="Crear Lista">
+          <!--  <button type="button" id="btnsubir" onclick="data();" class="btn btn-default"> Subir Archivos</button>-->
           <!--  <input type="submit" class="btn btn-default" value="Subir archivos"  />-->
         </form>
 
@@ -71,9 +76,9 @@
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="datos" name="datos" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                  <input type="hidden" id="listaid" name="listaid" value="">
-                 <strong>Maximo por archivo 5mbs</strong>       
+                 <strong>Maximo por archivo 5MB</strong>       
           <hr>
-            <button type="button" id="btnsubir2" class="btn btn-default"> Subir Archivos</button>
+            <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivos</button>
           <!--  <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>-->
         </form>
 
@@ -124,26 +129,6 @@
 </div>
 
 
-<style type="text/css">
-  .procesando {
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    background: url('/img/load/cargando2.gif') 50% 50% no-repeat rgb(249,249,249);
-    opacity: .8;
-}
-</style>
-
-<script type="text/javascript">
-  $(window).load(function() {
-    $(".procesando").fadeOut("slow");
-});
-</script>
-
-
   <div class="procesando" id="procesando"></div>
 <div class="container">
     <div class="row" id="divid">
@@ -167,6 +152,151 @@
                                 </div>
                             </div>
                         </div>
+<div class="col-md-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nombre Lista</th>
+                    <th>Cargar Archivos</th>
+                    <th>Crear Lista</th>
+                    <th>Ver Lista</th>
+                    <th>Cargar Incidencias</th>
+                    <th>Ver incidencias</th>
+                    <th>Eliminar Lista</th>
+                  </tr>
+                </thead>
+                <tbody id="tabla">
+                  <?php 
+                    foreach ($listas as $lista) {
+                          if($lista->carga==1){
+                            if($lista->usado== 0){
+                  ?>
+                    <tr>
+                      <th>
+                          <?php echo $lista->nombre; ?>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled>
+                              <span class="glyphicon glyphicon-edit"></span>
+                          </a>
+                      </th>
+                      <th>
+                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
+                              <span class="glyphicon glyphicon-play-circle"></span>
+                          </a>   
+                      </th>
+                      <th>
+                          <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
+                              <span class="glyphicon glyphicon-eye-open"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                              <span class="glyphicon glyphicon-plus"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
+                              <span class="glyphicon glyphicon-alert"></span>
+                          </a> 
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
+                              <span class="glyphicon glyphicon-trash"></span>
+                          </a>
+                      </th>
+
+                    </tr>
+
+                  <?php
+                    }else{
+                  ?>
+                    <tr>
+                      <th>
+                          <?php echo $lista->nombre; ?>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
+                              <span class="glyphicon glyphicon-edit"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
+                              <span class="glyphicon glyphicon-play-circle"></span>
+                          </a>    
+                      </th>
+                      <th>
+                          <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
+                              <span class="glyphicon glyphicon-eye-open"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                              <span class="glyphicon glyphicon-plus"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
+                              <span class="glyphicon glyphicon-alert"></span>
+                          </a> 
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
+                              <span class="glyphicon glyphicon-trash"></span>
+                          </a>
+                      </th>
+
+                    </tr>
+
+                  <?php
+                    }
+                  }else{
+                  ?>
+                    <tr>
+                      <th>
+                          <?php echo $lista->nombre; ?>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
+                              <span class="glyphicon glyphicon-edit"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
+                              <span class="glyphicon glyphicon-play-circle"></span>
+                          </a> 
+                      </th>
+                      <th>
+                          <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black" disabled>
+                              <span class="glyphicon glyphicon-eye-open"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled >
+                              <span class="glyphicon glyphicon-plus"></span>
+                          </a>
+                      </th>
+                      <th>
+                          <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black" disabled>
+                              <span class="glyphicon glyphicon-alert"></span>
+                          </a> 
+                      </th>
+                      <th>
+                          <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
+                              <span class="glyphicon glyphicon-trash"></span>
+                          </a>
+                      </th>
+
+                    </tr>
+                  <?php
+                  }
+                }
+                  ?>
+                    
+                </tbody>
+            </table>
+</div>
+
 
 <?php
 try{
@@ -174,82 +304,16 @@ try{
     if($lista->carga==1){
       if($lista->usado== 0){
 ?>
-                        <div class="col-md-4" id="delete_{{$lista->idLista}}">
-                            <div class="card well text-center" >
-                                <img class="card-img-top" id="icono"  src="/img/lista.png" width="100px" height="100px">
-                                <div class="card-body">
-                                    <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
-                                      <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
-
-                                        <div class="btn-group" role="group" aria-label="...">
-                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" >
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </a>
-                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                        </a>
-                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
-                                            <span class="glyphicon glyphicon-alert"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
 <?php
               }else{
 ?>
-                        <div class="col-md-4" id="delete_{{$lista->idLista}}">
-                            <div class="card well text-center" >
-                                <img class="card-img-top" id="icono"  src="/img/lista.png" width="100px" height="100px">
-                                <div class="card-body">
-                                    <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
-                                      <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
-
-                                        <div class="btn-group" role="group" aria-label="...">
-                                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Registros" disabled>
-                                            <span class="glyphicon glyphicon-edit"></span>
-                                        </a>                                        
-                                        <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
-                                            <span class="glyphicon glyphicon-trash"></span>
-                                        </a>
-                                        <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                        </a>
-                                        <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
-                                            <span class="glyphicon glyphicon-alert"></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        
 <?php
 }
 }else{
   ?>
-                        <div class="col-md-4" id="delete_{{$lista->idLista}}">
-                            <div class="card well text-center" >
-                                <img class="card-img-top" id="icono"  src="/img/lista.png" width="100px" height="100px">
-                                <div class="card-body">
-                                    <h4 class="card-title"> <?php echo $lista->nombre; ?></h4>
-                                      <input type="hidden" id="idlista" name="idlista" value="<?php echo $lista->idLista ?>">
 
-                                        <div class="btn-group" role="group" aria-label="...">
-                                          <img src="/img/load/load.gif">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
 
   <?php
@@ -427,285 +491,9 @@ try{
       </div>
     </div>
 
+<!--Versión3.3.1 NO BORRAR-->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--Versión2.2.4 NO BORRAR-->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+                               <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>                     
+                               <script src="/js/file.js"></script>
 
-<script type="text/javascript">
-  var form = document.getElementById("formuploadajax");
-  var form2=document.getElementById("agregardatos");
-  var file = document.getElementById("archivo");
-  var file2 = document.getElementById("datos");
-
-
-document.getElementById("btnsubir").addEventListener("click", function () {
-  if(file.files[0].size > 5242880){
-            swal({
-                      title: "Información",
-                      text: "El archivo que intenta subir excede el limite permitido.",
-                      type: "info",
-                      showCancelButton: true,
-                      confirmButtonColor: '#DD6B55',
-                      confirmButtonText: 'Continuar',
-                      closeOnConfirm: true,
-                   });
-  }else{
-    form.submit();
-  }
-  
-
- 
-});
-
-document.getElementById("btnsubir2").addEventListener("click", function () {
-  if(file2.files[0].size > 5242880){
-            swal({
-                      title: "Información",
-                      text: "El archivo que intenta subir excede el limite permitido.",
-                      type: "info",
-                      showCancelButton: true,
-                      confirmButtonColor: '#DD6B55',
-                      confirmButtonText: 'Continuar',
-                      closeOnConfirm: true,
-                   });
-  }else{
-    form2.submit();
-  }
-  
-
- 
-});
-
-
-</script>
-
-
-
-
-
-  <script type="text/javascript">
-   $(document).ready(function() {
-        var refreshId = setInterval(function() {
-            $("#divid").load(" #divid");
-                    }, 5000);
-
-        $.ajaxSetup({ cache: false });              
-    });
-
-
-
-/*$(function(){
-      $("#formuploadajax").on("submit", function(e){
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-});
-
-          e.preventDefault();
-          var f = $(this);
-          var formData = new FormData($(this)[0]);
-
-
-       $.ajax({
-              type : 'post',
-              url : '/ingresar',
-              processData: false,
-              contentType: false,
-              data : formData,
-              enctype: 'multipart/form-data',
-              async:true,
-              cache:false,
-
-              beforeSend: function () { 
-                $("#procesando").show();
-
-              },
-              success : function(response){
-                $("#divid").load(" #divid");
-                $('#nombre').val('');
-                $('#archivo').val('');
-
-                $("#procesando").hide();
-              },
-              error : function(error) {
-                $("#procesando").hide();
-                 swal({
-                      title: "Información",
-                      text: "Verifique la estructura de su documento",
-                      type: "warning",
-                      showCancelButton: true,
-                      confirmButtonColor: '#DD6B55',
-                      confirmButtonText: 'Continuar',
-                      closeOnConfirm: true,
-                   })
-
-              }
-
-          });
-       $('#AgregarLista').hide();
-      $('.modal-backdrop').hide();
-
-     });
-<<<<<<< HEAD
-});*/
-
-
-
-
-$(function(){
-      $("#formincidentes").on("submit", function(e){
-
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-});
-          e.preventDefault();
-          var f = $(this);
-          var formData = new FormData($(this)[0]);
-
-
-       $.ajax({
-              type : 'post',
-              url : '/incidente',
-              processData: false,
-              contentType: false,
-              data : formData,
-              enctype: 'multipart/form-data',
-              async:true,
-              cache:false,
-
-              beforeSend: function () { 
-                $("#procesando").show();
-
-              },
-              success : function(response){
-
-              $("#divid").load(" #divid");
-
-                $('#nombre').val('');
-                $('#archivo').val('');
-                $("#procesando").hide();
-     
-
-              },
-              error : function(error) {
-                console.log(error);
-                                $("#procesando").hide();
-
-              }
-
-          });
-       $('#AgregarIncidentes').hide();
-      $('.modal-backdrop').hide();
-
-     
-   });
-  });
-  </script>
-
-    <script>
-    function limpiar()
-    {
-        document.getElementById("myForm").reset();
-    }
-        function addExclude(){
-            $("#loadingExclude").removeClass('invisible');
-        }
-
-      function deleteFile(id){
- $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-          });
-         swal({
-              title: "Confirmación",
-              text: "Desea eliminar esta Lista, se perdera los registros que contiene",
-              type: "warning",
-              showCancelButton: true,
-              confirmButtonColor: '#DD6B55',
-              confirmButtonText: 'Continuar',
-              cancelButtonText: 'Cancelar',
-              closeOnConfirm: true,
-              closeOnCancel: true
-           },
-           function(isConfirm){
-             if (isConfirm){
-                        $.ajax({
-              dataType : 'json',
-              type : 'post',
-              url : '/eliminarlista',
-              data : {"id": id},
-              async:true,
-              cache:false,
-              beforeSend: function () { 
-                $("#procesando").show();
-
-              },
-              success : function(response){
-                $("#procesando").hide();
-
-                    swal({
-                      title: "Información",
-                      text: "Lista Eliminada",
-                      type: "info",
-                      confirmButtonText: 'Continuar',
-                   })
-                $("#divid").load(" #divid");
-                //console.log(response);
-              },
-              error : function(error) {
-                console.log(error);
-                $("#procesando").hide();
-
-              }
-          });
-              } else {
-
-              }
-           });
-          
-                 
-      }
-
-        function uploadFile(){
-                    $("#loadingUploadFile").removeClass('invisible');
-
-        }
-
-function reply_click(clicked_id)
-{
-document.getElementById("idlista").value = clicked_id;
-document.getElementById("listaid").value=clicked_id;
-}
-
-
-
-
-
-
-document.getElementById("boton").onclick = function() {myFunction()};
-
-function myFunction(){
-                      swal({
-                      title: "Información",
-                      text: "Tener cuidado que los nombres de los campos sean exactamente a los siguientes: \n region, ciclo, campus, tipo_ingreso, linea_negocio, modalidad, no_cuenta, nombre_general, fecha_nacimiento, direccion, correo_electronico, telefono_casa, carrera, programacv, programa_desc, semestre, vertical, es_intercambio.\n Nota: El orden no es relevante.",
-                      type: "info",
-                      showCancelButton: true,
-                      confirmButtonColor: '#DD6B55',
-                      confirmButtonText: 'Continuar',
-                      closeOnConfirm: true,
-                   })
-        /*  Tener cuidado que los nombres de los campos sean exactamente a los siguientes:
-
-campo1, campo2, etc.
-
-Nota: El orden no es relevante.*/
-        }
-        window.onload = function() {
-            $("#files").addClass('active');
-        }
-
-
-    </script>
 @endsection

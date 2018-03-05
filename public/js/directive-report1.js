@@ -24,6 +24,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 
             $dato=DB::table('encuestados')->where('campus','=',$estadistica->campus)
                                           ->where('idEncuesta','=',$datoencuesta[0]->id)
+                                          ->where('contestado','=',1)
                                           ->count();
             echo "{ label: ".'"'.$estadistica->campus.'"'.",y: ".$dato."},\n";
         }

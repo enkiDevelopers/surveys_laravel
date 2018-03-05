@@ -20,8 +20,8 @@
 
               <th>Nombre</th>
               <th>email1</th>
-              <th>Cuenta</th>
-              <th>Campus</th>
+              <th>Region</th>
+              <th>Num. Cuenta</th>
           </tr>  
         </thead>  
         <tbody>  

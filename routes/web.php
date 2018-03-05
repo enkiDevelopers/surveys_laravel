@@ -241,3 +241,5 @@ Route::post('/buscargeneralrg','directiveController@busquedageneralrg');
 Route::post('/buscarlinearg','directiveController@busquedalinearg');
 
 Route::post('/buscarmodalidadrg','directiveController@busquedamodalidadrg');
+
+Route::post('/ingresarDatoslistas','listasController@ingresarDatos');

@@ -99,7 +99,7 @@ class listasController extends Controller
         //
     }
 
-private function ingresarDatos($idarray,$dato,$request){
+/*private function ingresarDatos($idarray,$dato,$request){
 
         $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
         echo $dato;
@@ -150,50 +150,56 @@ private function ingresarDatos($idarray,$dato,$request){
     $listas=DB::table('listaEncuestados')->where('creador','=',$creador)->get();
     //return view("administrator.files", compact('listas'));
     //return back();
+}*/
+public function ingresarDatos(Request $request){
+    $idlista=$request->input('id');
+    $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
+    foreach ($data as $datas) {
+        $job = new IngresarLista($datas->path,$idlista);
+        dispatch($job);
+    }
+    echo $data;
+    //return back();
+
 }
 
-private function guardarListaBD($dato,$nombre,$id2){
-$id = DB::table('listaEncuestados')->insertGetId(
-                                        array( 'nombre'  => $nombre,
-                                               'archivo' => $dato,
-                                               'carga'=>0,
-                                               'creador' => $id2));
-  return $id;  
-}
 public function ingresarMasDatos(Request $request){
+
         ini_set('max_execution_time', 0);
         $listaid=$request->input('listaid');
+        $nombrepath=md5(microtime(true));
+        $nombrepath=$nombrepath.".xlsx";
 
         if($request->hasFile('datos')) {
                 $file = $request->file('datos');
                 $dato=$request->file('datos')->getClientOriginalName();
-                $file->move('listas/', $dato);
+                $file->move('listas/', $nombrepath);
         }
-        $job = new IngresarLista($dato,$listaid);
-        dispatch($job);
-         $INFO=DB::table('listaEncuestados')->where('idLista','=',$listaid)
-                                            ->update(['carga'=> 0]); 
+        /*$job = new IngresarLista($dato,$listaid);
+        dispatch($job);*/
+         $INFO=DB::table('recursos')->insertGetId(['path'=> $nombrepath,
+                                                    'idlista'=>$listaid]); 
 
 return back();
 
 }
-
+private function guardarListaBD($nombre,$id2){
+$id = DB::table('listaEncuestados')->insertGetId(
+                                        array( 'nombre'  => $nombre,
+                                               'archivo' => null,
+                                               'carga'=>0,
+                                               'creador' => $id2));
+  return $id;  
+}
 public function ingresarlista(Request $request){
         $nombre=$request->input('nombre');
-        ini_set('max_execution_time', 0);
 
         $arreglo=null;
-        $nombre=$request->input('nombre');
-
-        if($request->hasFile('archivo')) {
-                $file = $request->file('archivo');
-                $dato=$request->file('archivo')->getClientOriginalName();
-                $file->move('listas/', $dato);
                 $usrid=$request->session()->get('id');  
-                $id=$this->guardarListaBD($dato,$nombre,$usrid);
-        }
-            $job = new IngresarLista($dato,$id);
-            dispatch($job);
+                $id=$this->guardarListaBD($nombre,$usrid);
+        
+           /*             dispatch($job);
+           dispach($job);*/
 
 
 
