@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
+use Session;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -167,6 +168,8 @@ class responderController extends Controller
     $idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
     //return view("administrator.encuestacontestada");
     //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
+      Auth::logout();
+        Session::flush();
     return view("administrator.encuestacontestada2");
 
     //return previous();

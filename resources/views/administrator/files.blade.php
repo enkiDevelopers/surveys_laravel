@@ -157,6 +157,7 @@
                 <thead>
                   <tr>
                     <th>Nombre Lista</th>
+                    <th>Encuesta Asociada</th>
                     <th>Cargar Archivos</th>
                     <th>Crear Lista</th>
                     <th>Ver Lista</th>
@@ -176,10 +177,13 @@
                           <?php echo $lista->nombre; ?>
                       </th>
                       <th>
+                      </th>
+                      <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled>
                               <span class="glyphicon glyphicon-edit"></span>
                           </a>
                       </th>
+
                       <th>
                         <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
                               <span class="glyphicon glyphicon-play-circle"></span>
@@ -216,10 +220,14 @@
                           <?php echo $lista->nombre; ?>
                       </th>
                       <th>
+                          <?php echo $lista->titulo; ?>                        
+                      </th>
+                      <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
                               <span class="glyphicon glyphicon-edit"></span>
                           </a>
                       </th>
+
                       <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
                               <span class="glyphicon glyphicon-play-circle"></span>
@@ -257,10 +265,13 @@
                           <?php echo $lista->nombre; ?>
                       </th>
                       <th>
+                      </th>
+                      <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
                               <span class="glyphicon glyphicon-edit"></span>
                           </a>
                       </th>
+
                       <th>
                           <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
                               <span class="glyphicon glyphicon-play-circle"></span>

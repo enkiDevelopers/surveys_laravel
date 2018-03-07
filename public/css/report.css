@@ -8,6 +8,14 @@
 		background: linear-gradient(white,#DDDED6);
 		/*background-color: #ECEAE6;*/
 	}
+	.cuadrogrisdato{
+		width: 180px;
+		height: 100px;
+		margin-top: 10px;
+		font-size: 17px;
+		margin-left: 30%;
+		margin-right: 30%;
+	}
 	.dato{
 		width: 100%;
 		height: 100%;

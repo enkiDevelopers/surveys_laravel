@@ -71,6 +71,14 @@
                 <p><strong>Faltantes</strong></p>
             </div>
         </div>
+        <div class="col-md-7 cuadrogrisdato">
+            <div class="col-md-8">Reporte Faltante:</div>
+            <div class="col-md-3">
+                <a type="button">
+                    <span><img src="\img/excel_icon.png" width="90px" height="90px"></span>
+                </a>
+            </div>
+        </div>    
     </div>
 </div>
 

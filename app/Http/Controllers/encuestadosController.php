@@ -25,8 +25,12 @@ public function showList(Request $request)
   {
   return redirect()->route('adminLogin');
   }
-
-    $listas = listaEncuestados::where("creador", $id)->get();
+    $listas = DB::table('listaEncuestados')
+            ->leftJoin('publicaciones', 'listaEncuestados.idLista', '=', 'publicaciones.destinatarios')
+            ->select('listaEncuestados.*','publicaciones.*')
+            ->where('listaEncuestados.creador','=',$id)
+            ->get();
+    //$listas = listaEncuestados::where("creador", $id)->get();
     return view("administrator.files", compact('listas'));
 }
 
