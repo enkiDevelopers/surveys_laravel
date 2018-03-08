@@ -1,3 +1,37 @@
+function excelinforme(){
+    var idencuesta=document.getElementById("idencuesta").value;
+    var campus=document.getElementById("campus").value;
+
+ $.ajax({
+                type : 'post',
+                url : '/excelcampus',
+                data : {"idencuesta": idencuesta,
+                        "campus":campus},
+                async:true,
+                cache:false,
+                beforeSend: function () { 
+                 // $("#procesando").show();
+
+                },
+                success : function(response){
+                    var a = document.createElement("a");
+                    a.href = response.file; 
+                    a.download = response.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                },
+                error : function(error) {
+                  console.log(error);
+
+                }
+            });
+}
+
+
+
+
+
 function sltlinea(busq){
   $.ajaxSetup({
         headers: {

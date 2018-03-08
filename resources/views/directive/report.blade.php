@@ -74,7 +74,7 @@
         <div class="col-md-7 cuadrogrisdato">
             <div class="col-md-8">Reporte Faltante:</div>
             <div class="col-md-3">
-                <a type="button">
+                <a type="button" onclick="excelinforme();return false;">
                     <span><img src="\img/excel_icon.png" width="90px" height="90px"></span>
                 </a>
             </div>

@@ -12,6 +12,7 @@ use Response;
 use App\Client;
 use PDF;
 use Illuminate\Support\Facades\Crypt;
+use Excel;
 
 
 
@@ -406,8 +407,45 @@ class directiveController extends Controller
       return response()->json(array('info'=>$info,'infot'=>$infot));
 
   }
+    /*Fun funciones generales*/
 
-  /*Fun funciones generales*/
+  public function excelcampus(Request $request){
+      $idencuesta=$request->input('idencuesta');
+      $campus=$request->input('campus');
+
+      $encuestados=DB::table('encuestados')->where('contestado','=',0)
+                                           ->where('idEncuesta','=',$idencuesta)
+                                           ->where('campus','=',$campus)
+                                           ->get();
+       $myFile= Excel::create('Data', function($excel)use($encuestados) {
+          $excel->sheet('Datos', function($sheet) use($encuestados) {
+            $sheet->row(2,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            foreach ($encuestados as $encuestado) {
+              $row=[];
+              $row[0]=$encuestado->region;
+              $row[1]=$encuestado->carrera;
+              $row[2]=$encuestado->modalidad;
+              $row[3]=$encuestado->campus;
+              $row[4]=$encuestado->lineaNegocio;
+              $row[5]=$encuestado->noCuenta;
+              $row[6]=$encuestado->nombreGeneral;
+              $row[7]=$encuestado->direccion;
+              $row[8]=$encuestado->email1;
+              $row[9]=$encuestado->telefonoCasa;
+              $sheet->appendRow($row);
+          }
+});
+        });
+
+
+$myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+$response =  array(
+   'name' => "filename", //no extention needed
+   'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
+);
+return response()->json($response);
+  }
+
 
 
 }
