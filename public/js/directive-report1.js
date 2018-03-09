@@ -237,7 +237,7 @@ $.ajaxSetup({
                     dato+="<td>"+json[i].modalidad+"</td>"
                     dato+="<td>"+ENC+"</td>"
                     dato+="<td>"+FAL+"</td>"
-                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+Total+"</td>"
                     dato+="<td>"+SIS+"</td>"
                     dato+="<td>"+OLN+"</td>"
                     dato+="<td>"+CNX+"</td>"

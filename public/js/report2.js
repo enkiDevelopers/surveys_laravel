@@ -1,3 +1,35 @@
+function excelinformeregion(){
+    var idencuesta=document.getElementById("idencuesta").value;
+    var region=document.getElementById("region").value;
+
+ $.ajax({
+                type : 'post',
+                url : '/excelregion',
+                data : {"idencuesta": idencuesta,
+                        "region":region},
+                async:true,
+                cache:false,
+                beforeSend: function () { 
+                 // $("#procesando").show();
+
+                },
+                success : function(response){
+                    var a = document.createElement("a");
+                    a.href = response.file; 
+                    a.download = response.name;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                },
+                error : function(error) {
+                  console.log(error);
+
+                }
+            });
+}
+
+
+
 function sltlinea(busq){
   $.ajaxSetup({
         headers: {
@@ -66,7 +98,7 @@ function sltlinea(busq){
                     dato+="<td>"+json[i].modalidad+"</td>"
                     dato+="<td>"+ENC+"</td>"
                     dato+="<td>"+FAL+"</td>"
-                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+Total+"</td>"
                     dato+="<td>"+SIS+"</td>"
                     dato+="<td>"+OLN+"</td>"
                     dato+="<td>"+CNX+"</td>"
@@ -148,7 +180,7 @@ function sltlinea(busq){
                     dato+="<td>"+json[i].modalidad+"</td>"
                     dato+="<td>"+ENC+"</td>"
                     dato+="<td>"+FAL+"</td>"
-                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+Total+"</td>"
                     dato+="<td>"+SIS+"</td>"
                     dato+="<td>"+OLN+"</td>"
                     dato+="<td>"+CNX+"</td>"
@@ -243,7 +275,7 @@ function sltmodalidades(busq){
                     dato+="<td>"+json[i].modalidad+"</td>"
                     dato+="<td>"+ENC+"</td>"
                     dato+="<td>"+FAL+"</td>"
-                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+Total+"</td>"
                     dato+="<td>"+SIS+"</td>"
                     dato+="<td>"+OLN+"</td>"
                     dato+="<td>"+CNX+"</td>"
@@ -324,7 +356,7 @@ function sltmodalidades(busq){
                     dato+="<td>"+json[i].modalidad+"</td>"
                     dato+="<td>"+ENC+"</td>"
                     dato+="<td>"+FAL+"</td>"
-                    dato+="<td>"+ENC+"</td>"
+                    dato+="<td>"+Total+"</td>"
                     dato+="<td>"+SIS+"</td>"
                     dato+="<td>"+OLN+"</td>"
                     dato+="<td>"+CNX+"</td>"

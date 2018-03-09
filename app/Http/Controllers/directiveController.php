@@ -409,6 +409,7 @@ class directiveController extends Controller
   }
     /*Fun funciones generales*/
 
+/*Funciones Excel */
   public function excelcampus(Request $request){
       $idencuesta=$request->input('idencuesta');
       $campus=$request->input('campus');
@@ -419,7 +420,79 @@ class directiveController extends Controller
                                            ->get();
        $myFile= Excel::create('Data', function($excel)use($encuestados) {
           $excel->sheet('Datos', function($sheet) use($encuestados) {
-            $sheet->row(2,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            foreach ($encuestados as $encuestado) {
+              $row=[];
+              $row[0]=$encuestado->region;
+              $row[1]=$encuestado->carrera;
+              $row[2]=$encuestado->modalidad;
+              $row[3]=$encuestado->campus;
+              $row[4]=$encuestado->lineaNegocio;
+              $row[5]=$encuestado->noCuenta;
+              $row[6]=$encuestado->nombreGeneral;
+              $row[7]=$encuestado->direccion;
+              $row[8]=$encuestado->email1;
+              $row[9]=$encuestado->telefonoCasa;
+              $sheet->appendRow($row);
+          }
+});
+        });
+
+
+$myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+$response =  array(
+   'name' => "filename", //no extention needed
+   'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
+);
+return response()->json($response);
+  }
+
+    public function excelregion(Request $request){
+      $idencuesta=$request->input('idencuesta');
+      $region=$request->input('region');
+
+      $encuestados=DB::table('encuestados')->where('contestado','=',0)
+                                           ->where('idEncuesta','=',$idencuesta)
+                                           ->where('region','=',$region)
+                                           ->get();
+       $myFile= Excel::create('Data', function($excel)use($encuestados) {
+          $excel->sheet('Datos', function($sheet) use($encuestados) {
+            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            foreach ($encuestados as $encuestado) {
+              $row=[];
+              $row[0]=$encuestado->region;
+              $row[1]=$encuestado->carrera;
+              $row[2]=$encuestado->modalidad;
+              $row[3]=$encuestado->campus;
+              $row[4]=$encuestado->lineaNegocio;
+              $row[5]=$encuestado->noCuenta;
+              $row[6]=$encuestado->nombreGeneral;
+              $row[7]=$encuestado->direccion;
+              $row[8]=$encuestado->email1;
+              $row[9]=$encuestado->telefonoCasa;
+              $sheet->appendRow($row);
+          }
+});
+        });
+
+
+$myFile = $myFile->string('xlsx'); //change xlsx for the format you want, default is xls
+$response =  array(
+   'name' => "filename", //no extention needed
+   'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
+);
+return response()->json($response);
+  }
+
+  public function excelgeneral(Request $request){
+      $idencuesta=$request->input('idencuesta');
+
+      $encuestados=DB::table('encuestados')->where('contestado','=',0)
+                                           ->where('idEncuesta','=',$idencuesta)
+                                           ->get();
+       $myFile= Excel::create('Data', function($excel)use($encuestados) {
+          $excel->sheet('Datos', function($sheet) use($encuestados) {
+            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
             foreach ($encuestados as $encuestado) {
               $row=[];
               $row[0]=$encuestado->region;
