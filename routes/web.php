@@ -245,3 +245,7 @@ Route::post('/buscarmodalidadrg','directiveController@busquedamodalidadrg');
 Route::post('/ingresarDatoslistas','listasController@ingresarDatos');
 
 Route::post('/excelcampus','directiveController@excelcampus');
+
+Route::post('/excelregion','directiveController@excelregion');
+
+Route::post('/excelgeneral','directiveController@excelgeneral');
