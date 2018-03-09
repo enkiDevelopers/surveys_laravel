@@ -197,8 +197,6 @@
         });               
 
     });
-
-
     /*********************************************************************************/      
 
     
@@ -611,31 +609,31 @@
                 complete: function(e, xhr, settings){
                     if(e.status === 200){
                         $("#loader").modal('hide');
-                        alertify.alert("Pregunta Guardada correctamente.", function(){
-                            alertify.success('Pregunta Añadida');          
-                            $("#ModalQuestion").modal('hide').find("input").val("");
-                        });
+                            alertify.notify('Pregunta Añadida', 'success', 5, function(){  
+                                $("#ModalQuestion").modal('hide').find("input").val("");
+                            });     
                             $("#container-questions").load(" #container-questions");
-                            setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
+                            setTimeout('$("#addQuestion").removeAttr("disabled")', 1000); 
                     }else{
-                        alertify.alert("No se ha podido agregar la pregunta.", function(){
-                            alertify.alert('Error al subir la pregunta');
+                        alertify.notify('No se ha podido agregar la pregunta.', 'error', 5, function(){
                             console.log(e.status);
-    //                        $("#ModalQuestion").modal('hide').find("input").val("");
+                        });  
+                           
+            //                 $("#ModalQuestion").modal('hide').find("input").val("");
 
-                        });
-                        setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
+                        setTimeout('$("#addQuestion").removeAttr("disabled")', 1000); 
                     }
                 },
-                error: function (textStatus, errorThrown) {
-                    alertify.alert("No se ha podido agregar la pregunta.", function(){                        
-                     });
-                setTimeout('$("#addQuestion").removeAttr("disabled")', 3000); 
-                }               
+/*                error: function (textStatus, errorThrown) {
+                    alertify.notify('No se ha podido agregadr la pregunta.', 'error', 5, function(){
+                        console.log(textStatus,errorThrown);
+                    });  
+                setTimeout('$("#addQuestion").removeAttr("disabled")', 1000); 
+                } */               
             });
         }
         else {
-            alertify.alert("Máximo 200 carácteres", function(){
+            alertify.alert("Máximo 250 carácteres", function(){
                 
             });
         }
