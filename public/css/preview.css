@@ -1,3 +1,14 @@
+input::-webkit-input-placeholder {
+    color:    blue;
+    font-weight: bold;
+    text-align: center;
+}
+input::-moz-placeholder {
+    color:    blue;
+    font-weight: bold;
+    text-align: center;
+}
+
 .title{
     font-size: 20px;
     font-family: "Source Sans Pro",sans-serif;
@@ -6,37 +17,117 @@
     font-weight: bold;
     margin-top: 20px;
 }
+
+
+#figTop{
+  width: 40%;
+  height: 30%;
+  margin-top: 3%;
+  margin-left: 30%;
+}
+
 .imagen{
-  width: 27%;
-  padding-top: 2%;
+  position: relative;
+  background-size: 90% 90%;
+  max-width: 300px;
+  background-repeat:no-repeat;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
-.descripcion{
-    color: #3D3D3D;
-    font-family: "Source Sans Pro",sans-serif;
-    font-size: 19px;
-    line-height: 145%;
-    border-color: transparent;
-    margin-left: 25%;
-    width: 50%;
+
+
+.titulo{
+  margin-top: 1%;
+  height: 13%;  
+  overflow: auto;
 }
+
+.cuerpo{
+  margin-top: 2%;
+  height: 33%;
+  width: 48%;
+  margin-left: 25%;
+  background-color: white;
+  overflow: auto;
+}
+
+.preguntas{
+  margin-top: 1%;
+  height: 48%;
+  background-color: white;
+  display: ;
+}
+
+.titlePreguntas{
+  margin-top: 1%;
+  height: 22%;  
+  overflow: auto;
+  word-wrap: break-word;
+}
+.zonarespuestas{
+  margin-top: 1%;
+  height: 64%;
+  width: 60%;
+  margin-left: 20%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  overflow: auto;
+}
+
+.pregAbierta{
+  border-radius: 5px;
+  width: 60%;
+  height: 40px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+
+}
+
+.botonContinuar{
+  width: 40%;
+  margin-left: 30%;  
+  height: 13%;  
+}
+
+.posCenterBoton{
+  position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.todo{
+            height: 100%;            
+}    
+
+
+#surveyContainer{
+  display: none;
+}
+
+
+
 #btnStart::hover, #btnStart::focus{
     text-decoration-color: #000;
     color: #000;
 }
-.bl_form {
-  margin: 100px 0 150px;
-}
 
-.bl_form input {
-  padding-top: 15px;
+.bl_form {  
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+
   background-color: #fff ;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   border: none;
   color: black;
-  padding: 10px 15px;
   border-radius: 25px;
   font-size: 16px;
-  outline: none;
 }
 
 
@@ -60,76 +151,77 @@
 
 @media screen and (max-width: 991px){
 	#descTemplate, #descripciondeEncuesta{
-		margin-left:25%;
-		margin-right:25%;
+		/*margin-left:25%;*/
+		/*margin-right:25%;*/
 }
 
+}
+
+@media screen and (max-height: 600px){
+.imagen{
+  max-height: 200px;
+}
 }
 
 
 @media screen and (max-width:550px){
-	.scroll label{
-	max-width:95%;
+	label{
+	max-width:100%;
 	}
-	#descTemplate{
-	width:100%;
-	}
+
+#figTop{
+  width: 80%;  
+  margin-top: 3%;
+  margin-left: 10%;
+  height: 25%;
 }
 
-@media screen and (max-width:517px){
-	input[type="radio"], label {
-    	vertical-align: middle;
-    	padding: 3px;
-}
-}    
-
-@media screen and (max-width:390px){
-	.scroll label{
-	max-width:90%;
-}
+.cuerpo{
+  width: 90%;
+  margin-left: 5%;  
 }
 
+.botonContinuar{
+  width: 90%;
+  margin-left: 5%;    
+}
 
-        @media screen and (max-width: 699px) and (min-width: 520px) {
-            ul li a {
-                
-                background: url(email-icon.png) left center no-repeat;
-            }
-        }
-                html,body {
+.zonarespuestas{
+  margin-top: 1%;
+  width: 90%;
+  margin-left: 5%;
+  background-color: white;
+  overflow: auto;
+}
 
-                    overflow-y:hidden; 
-                    overflow-x:hidden;
-                    }
+.imagen{
+  max-width: 160px;
+}
 
-                html,body{
 
-                margin:0px;
+}
 
-                height:100%;
+html,body {
+    overflow-y:hidden; 
+    overflow-x:hidden;
+    margin:0px;
+    height:100%;
+}
 
-                }
      #sumary{
 
-    height: 100%;
+        height: 100%;
 
      }
-     #surveyContainer{
-          height: 100%;
-
-     }
-     .fondogris{
-
-     }
+     
      .anchodiv{
-      height: 20%;
-      background-color: white;
+      /*height: 20%;*/
+      
      }
      .margenarriba{
       margin-top: 30px;
      }
      .fondo{
-       /*background-image: url('/img/fondoexitoso.png');*/
        background-color: white;
        background-repeat: no-repeat;
        background-position: right ; 
@@ -140,19 +232,21 @@
 
      }
      .btnsiguiente{
-      width: 300px;
+      width: 250px;
+      height: 80px;
       background-color: #31B404;
-     }
-     .pregunta{
-      margin-left: 1%;
-      margin-right: 1%;
      }
 
     .btnsta{
       background-color: #ffeb3b;
       width: 250px;
-      height: 40px;
+      height: 80px;
      }    
+
+.pregAbierta{
+  width: 90%;
+}
+
 
      @media screen and(max-width: 900px){
                 html,body {
@@ -160,13 +254,6 @@
                     overflow-y:hidden; 
                     overflow-x:hidden;
                     }
-            .fondo{
-                   display: inline-block;
-                  /* background-image: url('/img/fondoexitoso.png');*/
-                   background-color: white;
-                   background-repeat: no-repeat;
-                   background-position: center; 
-           }
 	
 
 
@@ -180,38 +267,20 @@
                     overflow-y:hidden; 
                     overflow-x:hidden;
                     }
-      .fondo{
-                 /*  background-image: url('/img/fondoexitoso.png');*/
-                   background-color: white;
-                   background-repeat: no-repeat;
-                   background-position: center; 
-           }
-    .scroll{
-            height: 30%;
-           /* overflow:scroll;*/
-    }
-    .imagen{
-  height: 110px;
-
-  padding-top: 5%;
-}
     .btnsta{
       background-color: #ffeb3b;
       width: 250px;
-      height: 40px;
+      height: 80px;
      }       
-     .btnsiguiente{
-margin-top:0px !important;
-                  width: 200px;
-                  background-color: #31B404;
-      }
+     
       .divmovil{
               overflow: auto;
               background-color: rgba(221, 222, 214, 0.8); 
       }
 
-      .btnsiguiente{
-                  width: 200px;
+      .btnsiguiente{                  
+                  width: 250px;
+                  height: 80px;
                   background-color: #31B404;
       }
 
@@ -223,25 +292,12 @@ margin-top:0px !important;
                     overflow-y:hidden; 
                     overflow-x:hidden;
                     }
-      .scrollhidde{
-                     /* overflow: hidden;*/
-      }
-      .fondo{
-                /*   background-image: url('/img/fondoexitoso.png');*/
-                   background-color: white;
-                   background-repeat: no-repeat;
-                   background-position: center; 
-           }
-
     .btnsta{
       background-color: #ffeb3b;
       width: 105px;
       height: 40px;
      }   
-         .scroll{
-            height: 30%;
-            overflow:scroll;
-    }    
+         
 
              .divmovil{
                 height: 300%;
@@ -249,8 +305,8 @@ margin-top:0px !important;
              }
 
               .btnsiguiente{
-                  width: 200px;
-                  height: 50px;
+                  width: 250px;
+                  height: 80px;
                   background-color: #31B404;
              }
 
@@ -260,9 +316,6 @@ margin-top:0px !important;
                 html,body {
                     overflow-y:auto; 
                     }
-#surveyContainer{
-  display: none;
-}
 
       }
           .scrolla{
@@ -272,14 +325,11 @@ margin-top:0px !important;
             padding-left: 15px;
             padding-right: 15px;
        }
-       .scroll{
-          height: 200px; 
+
+       .todo{        
             background-color: white ;
-            overflow:auto;
-            padding-left: 15px;
-            padding-right: 15px;
        }
-       .pregs .scroll{
+       .pregs{
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
        }

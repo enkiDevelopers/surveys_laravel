@@ -25,30 +25,41 @@
 
 </head>
 
-<body>
+<body class="todo">
 
-        <div id="sumary" class="col-md-12 fondo ">
-            <center><img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'"></center>
-            <br>
-            <div align="justify" class="col-md-6 col-md-offset-3 fondogris" style="word-wrap: break-word;"><h2 class="text-center text-black-body title">{{$titulo}}</h2></div>
-            <div align="justify" class="col-md-6 col-md-offset-3 anchodiv scroll" style="word-wrap: break-word;overflow-x:hidden;"><br><strong style="float: left" id="descripciondeEncuesta">Descripción de la encuesta: </strong><br><label id="descTemplate" style="word-wrap: break-word;width: 55%;font-weight:normal"> {{$descripcion}}</label>   </div>
-            <div align="justify" class="col-md-6 col-md-offset-3"><center>
-            <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta" ></center>
+            <div id="figTop">
+                <img src="\img/iconos/{{$imagePath}}" class=" imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
             </div>
 
-              
+
+        <div id="sumary" class="todo">
+            
+            <div align="justify" class="col-md-6 col-md-offset-3 titulo" style="word-wrap: break-word;">
+                <h2 class="text-center text-black-body title">{{$titulo}}</h2>
+            </div>
+            <div align="justify" class="cuerpo" style="word-wrap: break-word;">
+                <br>
+                <strong>Descripción de la encuesta: 
+                </strong>
+                <br>
+                <label id="descTemplate3" style="word-wrap: break-word;font-weight:normal"> {{$descripcion}}
+                </label>   
+            </div>
+            <div align="justify" class="botonContinuar">
+                
+                    <input type="button" id="btnStart" value="Comenzar con la encuesta" class="btn btn-lg text-black-body btnsta posCenterBoton" >
+                
+            </div>
         </div>
 
-<div id="surveyContainer"  class="col-md-12 fondo scroll" style="margin:0px;" >
-<center>
-<img src="\img/iconos/{{$imagePath}}" class="img-responsive imagen" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
-</center>
-        <div align="center" class="col-md-6 col-md-offset-3">
-            <label class="text-center text-black-body title fondogris" id="idTitlePregunta">Instrucciones Generales: </label>
+    <div id="surveyContainer"  class="todo">
+
+        <div align="center" class="col-md-6 col-md-offset-3 titulo" id="idTitlePregunta">
+            <h2 class="text-center text-black-body title">Instrucciones Generales: </h2>
         </div>
 
-        <div class="col-md-6 col-md-offset-3 total" >
-            <div class="col-md-10 pregs scroll " id="preg0" style="word-wrap: break-word;">
+
+            <div class="cuerpo" style="word-wrap: break-word;">
                 <div align="justify" class="form-group text-black-body ">
                     <ul>
                         <li><strong>Lee con atención las preguntas </strong></li>
@@ -60,7 +71,13 @@
                 </div>
             </div>
 
-     <form method="POST"  id="control"  action="" onKeypress="">
+            <div align="justify" class="botonContinuar">
+                <input type="button" class="btn btn-lg text-black-body btnsiguiente posCenterBoton"  id="idEntendido" value="Entendido">
+            </div>
+    </div>
+
+
+     <form class="preguntas" method="POST"  id="control"  action="" onKeypress="">
         <?php 
             $i=1;
             
@@ -68,11 +85,11 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-            <div class= "col-md-12 pregs pregunta" id="preg<?php echo $i ?>" style="display:none">
-                    <div align="center" class="fondogris">
-                        <label class="text-center text-black-body" style="font-size:21px;" >{{$dato->title}} </label>
+            <div id="preg<?php echo $i ?>" style="display:none">
+                    <div align="center" class="titlePreguntas">
+                        <h2 class="text-center text-black-body title" >{{$dato->title}} </h2>
                     </div>
-       <!-- <div class="divmovil">-->
+    
                 <input type="hidden" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
                 <input type="hidden" name="back"  id="num<?php echo $i?>" value="<?php echo $i ?>">
                 <input type="hidden" name="type"  id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
@@ -80,73 +97,63 @@
         <?php
             if($dato->type==1){
         ?>
-        <div class="scrolla">
-            <div class="bl_form" class="col-md-10 pregs " style="margin-top: 3%;margin-bottom:15px;" >
-                <div class="lb_wrap" style="position:relative; display: inline;"></div>
-                    <input type="input" style="height: 100%;width: 100%; " class="fondogris" size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" class="form-control"  placeholder="Escribe tu respuesta">   
-            </div>
-        </div>
+                <div class="zonarespuestas" >
+                    <input class="pregAbierta pregs" type="input"  size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" placeholder="Escribe tu respuesta">   
+                </div>
+        
         <?php
             }
             else{
         ?>
- <div class="scroll">
+                <div class= "zonarespuestas" style="padding-top: 5px;">
         <?php 
                 $opciones=$cada["options"]; 
                 foreach ($opciones as $option) {
         ?>
-                <div>
+                <div class="col-sm-6 col-lg-6 col-xs-6">
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden" class="form-control" >
-                </div> 
+                </div>
                                
-        <?php
-        }
-        ?>
-</div>
-        <?php }
-        ?>
-       <!-- </div>-->
-        </div>
+                <?php
+                }
+                ?>
+                </div>
+            <?php
+            }
+            ?>
+       
+            </div>
 
         <?php
-                 $i++;   
+            $i++;   
         } 
  
         ?>
-        <div class="col-md-10" id="preg<?php echo $i?>" style="display:none">
-
+        <div class="zonarespuestas" id="preg<?php echo $i?>" style="display:none">
+        
+        
+            <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
+            <div class="todo" id="gracias" style="display:none;">
+                <p align="center"><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
+                <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+            </div>
         </div>
-        <?php 
-        ?>
-        <input type="hidden" name="idencuestado" value="<?php echo $eid ?>">
-        <div class="col-md-10 scroll" id="gracias" style="margin-top: 7%;margin-bottom:15px;display:none;">
-        <p align="center"><strong>Para terminar el proceso ¡Da clic en el boton Enviar!</strong></p>
-        <input type="hidden" name="back" id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
-
-    </div>
         <?php
                 echo "<input type='hidden' id='idencuestado' name='idencuesta' value='".$idencuesta1."'>";
             
         ?>  
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <div class="col-md-12" >
-        <center>
-            <input type='button' onclick="get_action()" class='btn btn-lg text-black-body btnsiguiente' id='idenviar' value='Enviar Encuesta' style='display:none;color:white;margin-top: 25px;'>
-            <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
-            <input type="button" class="btn btn-lg text-black-body btnsiguiente"  id="idNext" value="Entendido" style="color:white;margin-top: 35px;">
-        </center>   
-
-        </div>
         </form>
-        </div>
-</div><br><br><br>
-<!-- onsubmit="get_action();"-->
-  
-
-
+            <!-- <button type="button" class="btn btn-md btn-default" id="idBack" disabled>Regresar</button>-->
+            
+            <div align="justify" class="botonContinuar">
+                <input type="button" class="btn btn-lg text-black-body btnsiguiente posCenterBoton"  id="idNext" value="Siguiente">
+            
+                <input type='button'  class='btn btn-lg text-black-body btnsiguiente posCenterBoton' id='idenviar' value='Finalizar' style='display:none;'>
+            </div>
 
 
 
