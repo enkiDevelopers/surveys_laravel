@@ -59,7 +59,7 @@ i, span {
     background: -webkit-linear-gradient(#616161,#212121, #000 );
     background: -o-linear-gradient(#616161,#212121, #000 );
     background: linear-gradient(#616161,#212121, #000 );
-    box-shadow: 3px 10px 8px #888;
+    box-shadow: 1px 1px 6px #888;
     position: fixed;
     top: 0;
     left: 0;
@@ -103,8 +103,8 @@ i, span {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
-    /* border-bottom: 1px solid #47748b; */
+  /*   padding: 20px 0;
+    border-bottom: 1px solid #47748b; */
 }
 
 #sidebar ul p {
@@ -124,7 +124,7 @@ i, span {
     width: 80%;
     color: white;
     border: 0;
-    border-bottom : 3px solid #eeeeee;
+    border-bottom : 1px solid #eeeeee;
 }
 #contentSidebarMobile ul li a{
     padding-top: 25px;
@@ -257,7 +257,7 @@ a.article, a.article:hover {
     CONTENT STYLE
 ----------------------------------------------------- */
 #content {
-    min-height: 100vh;
+ /*   min-height: 100vh; */
     transition: all 0.3s;
 }
 

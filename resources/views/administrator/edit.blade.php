@@ -15,12 +15,12 @@
 		            <div class="new-survey__controls " > 
 		                <div class="col-md-12">
 		                        <button class="btn btn-info new-survey__control" id="addQuestion">
-		                            <span class="glyphicon glyphicon-plus"></span>
-		                            <label>Agregar pregunta</label>
+		                            <span class="glyphicon glyphicon-plus" style="float: left;margin: 2px 9px 0px 14px;"></span>
+		                            <label style="margin-bottom: 0px;float: left;font-size: 13px; ">Agregar pregunta</label>
 		                        </button>
 		                       <button id="sortableQuestions" class="btn btn-info">
-		                            <span class="glyphicon glyphicon-th-list"></span>
-		                            <label>Reacomodar</label>
+		                            <span class="glyphicon glyphicon-random" style="float: left;margin: 2px 9px 0px 14px;"></span>
+		                            <label style="margin-bottom: 0px;float: left;font-size: 13px; ">Quitar Bifurcaciones</label>
 		                        </button>
 		                    </div>
 		            </div>
