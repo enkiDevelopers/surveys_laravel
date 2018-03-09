@@ -3,28 +3,102 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="/css/surveys.css">
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="/css/prueba.css">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
   <body>
-    <div class="supSide">
-    <div class="circle">
+
+    <div class="card">
+          <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+
     </div>
-<div class="cuadroPerfilSup">
-    <div class="eng">
-      <span class="glyphicon glyphicon-cog"> &nbsp</span>
+
+
+
+    <div class="card" >
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
+<!--stich -->
+    <div class="card">
+      <div id="imgIcon" style="background-image: url('/img/iconos/025942.png')">
+
       </div>
-    <div id="content">
-      <div class="nombre"> Jorge Luis González Hernandez </div>
-      <div class="correo">colocho-2104@gmail.com </div>
-          </div>
-</div>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
     </div>
 
+    <div class="card">
 
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
 
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
 
+    <div class="card">
 
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
+
+    <div class="card">
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
+
+    <div class="card">
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
+
+    <div class="card">
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
+
+    <div class="card">
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></span></a>
+        <a class="btn_dup"><span id="ic"  class="glyphicon glyphicon-duplicate"></span> </span></a>
+
+        <a class="btn_dup"><span id="ic" class="glyphicon glyphicon-duplicate"></span></a>
+    </div>
   </body>
 </html>

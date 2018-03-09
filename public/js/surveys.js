@@ -417,14 +417,14 @@ function ocultar()
 {
 //$("#pBody").toggle();
     $("#cambiar").toggleClass('glyphicon-chevron-up glyphicon-chevron-down')
-$('#pBody').toggle("fadeOut");
+$('#pBody').slideToggle("slow");
 }
 
 function ocultar2()
 {
 //$("#pBody").toggle();
-    $("#cambiar2").toggleClass('glyphicon-chevron-up glyphicon-chevron-down')
-$('#pPBody').toggle("fadeOut");
+    $("#cambiar2").toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+$('#pPBody').slideToggle("slow");
 }
 
 function infoF()

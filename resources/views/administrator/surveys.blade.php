@@ -73,17 +73,19 @@
                       </div>
 
 <!--##################################  inicio boton de añadir plantilla#########################################################################-->
-                       <div id="btn-añadir" class="col-md-12">
-
+             <div id="btn-añadir" class="col-md-12">
                    <a data-toggle="modal" data-target="#ModalTitle" >
-                     <div id="content-btn"class="text-center">
-                   <span class="glyphicon glyphicon-plus" id="btn-newSur"></span>
+
+                   <div id="content-btn">
+                      <span class="glyphicon glyphicon-plus" ></span>
+                   </div>
                    <div id="crearPlantilla">
-                      <h1 id="tamañoLet">Crear Plantilla</h1>
-                     </div>
-                       </a>
-                      </div>
-                        </div>
+                       <h2 id="tamañoLet">Crear Plantilla</h2>
+                   </div>
+
+                 </a>
+
+              </div>
 
 
 <!--Termina boton añadir plantila de encuesta -->
@@ -237,7 +239,7 @@
                           <div class="col md-6">
                                 <label for="termino">Fecha de Término:</label>
                                 <div class='input-group date datetimepicker'>
-                                    <input type="text" required id="termino" min="" class="datepicker form-control text-black-body"/>
+                                    <input type="text" required id="termino" readonly class="datepicker form-control text-black-body"/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar text-info"></span>
                                     </span>
@@ -369,8 +371,10 @@
   busca();
   showcards();
 
-  $(".datetimepicker, .datepicker").datetimepicker({
+  $(".datetimepicker").datetimepicker({
     format: 'YYYY-MM-DD HH:mm:ss',
+    ignoreReadonly: true,
+
       });
 
 </script>

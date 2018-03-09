@@ -10,13 +10,10 @@ if($publicacion->creador == $id)
 
   </div>
 <!-- fin boton duplicar-->
-
 <!-- boton editar -->
 <div class="row">
-
 </div>
   </div>
-
 <!-- fin boton editar -->
 <!--Titulo encuesta -->
 <div class="row">
@@ -38,8 +35,6 @@ if($publicacion->creador == $id)
 </div>
 <!--creador encuesta -->
 <div class="row">
-
-
 </div>
 
 <div class="right_buttons">

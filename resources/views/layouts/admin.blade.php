@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/sweetalert.min.css">
     <link rel="stylesheet" href="/css/datepicker.min.css">
+    <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+
+ <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
+  <script src="/js/sweetalert.min.js"></script>
+  <script src="/js/moment.min.js"></script>
+  <script src="/js/datepicker.js"></script>
+  <script src="/js/reporte.js"></script>
   </head>
   <body>
 
@@ -58,7 +66,7 @@
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
-          </li> 
+          </li>
           <li id="rol" style="float: right;background: linear-gradient(to bottom right, #0f1973, #0d47a1);height: 81px;width: 17%;margin-top: -74px;">
             <a href="{{ url('/administrator/') }}" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-cog"></i>
@@ -93,7 +101,7 @@
             <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
               <span>SALIR</span>
             </a>
-          </li>     
+          </li>
         </ul>
 
       </nav>
@@ -103,14 +111,7 @@
         </div>
 
 
-      <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
 
-   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
-    <script src="/js/sweetalert.min.js"></script>
-    <script src="/js/moment.min.js"></script>
-    <script src="/js/datepicker.js"></script>
-    <script src="/js/reporte.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
 

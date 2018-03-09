@@ -1,0 +1,34 @@
+.card
+{
+display: inline-block;
+width: 240px;
+height: 240px;
+border-radius: 3px;
+margin-left: 0;
+margin-bottom: 2%;
+padding-left: 0px;
+background-color: #DFDCE3;
+margin-top: 1%;
+padding-top: 0.5%;
+}
+
+.btn_dup{
+  text-align: center;
+  background-color: black;
+
+height:  14%;
+width: 14%;
+
+border-radius: 5px;
+display: inline-block;
+
+margin-left: 4%;
+margin-top: 1%;
+
+}
+
+#ic
+{
+vertical-align: bottom;
+color: #fff;
+}
