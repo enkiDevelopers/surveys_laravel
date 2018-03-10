@@ -30,7 +30,8 @@
                                     <label for="questionType">Tipo</label>
                                     <select class="form-control yes-no-question text-black-body" id="questionType">
                                         <option value="1">Abierta</option>
-                                        <option value="2">Opción multiple </option>
+                                        <option value="2">Opción múltiple </option>
+                                        <option value="3">Selección múltiple</option>
                                     </select>
                                 </div>
                             </div>

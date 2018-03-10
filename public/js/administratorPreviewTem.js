@@ -311,7 +311,7 @@
             $("#preg"+n).css("display", "inline");
             $("#idTitlePregunta").text("Pregunta " + n);
 
-            if(n>=$(".pregs").length){
+            if(n>$(".pregs").length){
                // $("#back"+n).val(n-1);
                 //$("#preg"+n).css("display", "none");
                 $("#idTitlePregunta").css("display", "none");

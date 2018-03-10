@@ -22,11 +22,16 @@
             <div class="col-md-3 type">
                 <div class=" form-group">
                     <label for="exampleInputEmail1">Tipo</label>
-                    <input type="text" readonly class="form-control-static form-control text-black-body" value="<?php echo ($dato->type==1?'Abierta':'Opc. Múltiple');?>">
+                    <input type="text" readonly class="form-control-static form-control text-black-body" value="<?php 
+                    echo ($dato->type== 1 ? 'Abierta':
+                            ($dato->type== 2 ? 'Opc. Múltiple':
+                            ($dato->type== 3 ? 'Selec. Múltiple' : 'Otro Tipo')));
+                     ?> ">
                 </div>
             </div>
+
 <?php
-    if($dato->type==1){
+    if($dato->type==1 || $dato->type==3){
 ?>
             <div class="col-md-2 salto">
                <label for="selectNumPregParent text-black-body">Salto: </label>
@@ -75,6 +80,38 @@
             }
         }
 ?>
+
+<?php
+        if($dato->type==3){
+            $opciones=$cada["options"];
+            foreach ($opciones as $option) {
+?>
+            <div class="row yes-no-question-block" id="yes-no-question-template" >
+                <div class="col-md-12" data-questions="0">
+                    <div id="multi-options">
+                        <div class="col-md-6 col-md-offset-1 " data-multioptions="0">
+                            <div class="form-group opcionesRespon" >
+                                <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
+                                <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
+                            </div>
+                        </div>
+                <!--    <div class="col-md-2 col-md-offset-1 pull-left selectRespon">                           
+                           <label for="selectNumPreg text-black-body">Salto: </label>
+                            <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
+                                <option value="N/A" selected disabled>{{$option->salto}}</option>
+                            </select>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+<?php                   
+            }
+        }
+?>
+
+
+
+
         </div>
     </div>
 </div>

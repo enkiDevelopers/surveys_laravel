@@ -55,6 +55,10 @@
                     tieneOpMul = true;
                     agregarOpcionMultiple($(this).parent().parent().parent());//el parámetro me genera dudas
             break;
+            case "3": //Seleccionó pregunta de opción múltiple
+                    tieneOpMul = true;
+                    agregarOpcionMultiple($(this).parent().parent().parent());//el parámetro me genera dudas
+
         }
     });
     /*********************************************************************************/      

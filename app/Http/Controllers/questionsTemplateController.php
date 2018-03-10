@@ -51,7 +51,7 @@ class questionsTemplateController extends Controller
             //echo $datos;
             foreach ($preguntas as $dato) {
                 //echo $dato . ",";
-                if($dato['type']==2){
+                if($dato['type']== 2 || $dato['type']== 3  ){
                     $idq=$dato['id'];
                     $opt=optionsMult::where('idParent',$idq)->get();
                     //echo $opt . ",";
@@ -99,7 +99,7 @@ class questionsTemplateController extends Controller
 
         $result = questionsTemplates::where('id',$idQuestion)->delete();
 
-        if ($typeQuestion == 2) {
+        if ($typeQuestion == 2 || $typeQuestion == 3 ) {
             $result = optionsMult::where('idParent', $idQuestion)->delete();
         }
 
@@ -119,7 +119,7 @@ class questionsTemplateController extends Controller
 
             $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
 
-        if ($typeQuestion == 2) {
+        if ($typeQuestion == 2 || $typeQuestion == 3) {
 
            // $pregunta = questionsTemplates::where('id',$idQuestion)->delete();
             $result = optionsMult::where('idParent', $idQuestion)->delete();
