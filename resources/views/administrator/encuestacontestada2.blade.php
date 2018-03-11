@@ -24,7 +24,6 @@
 <body>
   <div class="row">
     <div class="col-md-12" >
-      <img src="\img/default_questions.png" width="100%" height="30px">
         <div class="col-md-5 col-center col-centered text-center">
             <img src="\img/logos/UVM_Logo.png" class="img-responsive " width="70%">
         </div>
