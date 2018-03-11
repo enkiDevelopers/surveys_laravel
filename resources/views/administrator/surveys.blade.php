@@ -16,8 +16,7 @@
 
 
       <div class="sep">
-        <div class="row">
-          <div class="supSide">
+            <div class="supSide">
               <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
               </div>
               <div class="cuadroPerfilSup">
@@ -26,14 +25,19 @@
     <span class="glyphicon glyphicon-cog"> &nbsp</span>
   </div>
   <div id="content">
+    <div style="margin-top: 2%;">
       <div class="nombre"> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}  </div>
-      <div class="correo"> {{$info->email}} </div>
+</div>
+
+<div style="margin-top: 4%;">
+  <div class="correo"> {{$info->email}} </div>
+</div>
   </div>
 
 
               </div>
             </div>
-        </div>
+
     </div>
 
 
