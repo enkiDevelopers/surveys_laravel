@@ -134,7 +134,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', end
 
 margin-bottom: 20px;
 margin-left: 1%;
-margin-top: 1px;
+margin-top: 1%;
 margin-right: 0;
 
 display: inline-block;
@@ -527,7 +527,44 @@ overflow: hidden;
 {
 width: 100%
 }
-/* Media querys */
+
+
+
+#hTable
+{
+  width: 100%;
+}
+
+#hTable th
+{
+  text-align: center;
+
+}
+#hTable td
+{
+text-align: right;
+padding-right: 15px;
+
+}
+
+#hTable2
+{
+  width: 100%;
+}
+#hTable2 th
+{
+  text-align: center;
+
+}
+
+#hTable2 td
+{
+text-align: right;
+padding-right: 15px;
+
+}
+
+/*############################################################# Media querys##################################### */
 @media (max-width: 1125px) {
 .let
 {

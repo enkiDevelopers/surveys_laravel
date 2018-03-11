@@ -423,7 +423,6 @@ $('#pBody').slideToggle("slow");
 function ocultar2()
 {
 //$("#pBody").toggle();
-    $("#cambiar2").toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
 $('#pPBody').slideToggle("slow");
 }
 

@@ -9,6 +9,8 @@
       <link href="/css/surveys.css" rel="stylesheet"/>
       <script type="text/javascript" src="/js/surveys.js"></script>
       <script src="{{ asset('/vendors/ckeditor/ckeditor.js') }}"></script>
+      <link href="/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <script src="/js/bootstrap-toggle.min.js"></script>
 
 <div class="container" >
     <div class="row">
@@ -42,37 +44,30 @@
 
 
             <div class="panel panel-default " id="panel1">
-                <div class="panel-heading fijado">
-                    <div class="row">
-                        <div class="col-md-3">
-                          <h3><b>  Plantillas </b> </h3>
-                        </div>
-                        <div class="col-md-9 pull-right" id="infob">
-                            <div class="row" id="colinf">
-                              <br />
-                                <div class="col-md-1">&nbsp</div>
-                                <div class="col-md-1 pull-right">
-                    <a onclick="ocultar();" id="btnO"><span id="cambiar" class="glyphicon glyphicon-chevron-up"></span> </a>
-                                </div>
-                                <div class="col-md-2 pull-right">
-                                    <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
-                                </div>
-                                <div class="col-md-2 pull-right">
-                                    <b>  Editar&nbsp&nbsp<span class="glyphicon glyphicon-edit" ></span></b>
-                                </div>
-                                <div class="col-md-2 pull-right">
-                                    <b>  Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span></b>
-                                </div>
-                                <div class="col-md-2 pull-right">
-                                    <b>  Duplicar&nbsp&nbsp<span class="glyphicon glyphicon-duplicate"></span></b>
-                                </div>
-                                <div class="col-md-2 pull-right">
-                                    <b>  Eliminar&nbsp&nbsp<span class="glyphicon glyphicon-trash"></span></b>
-                                </div>
+        <div class="panel-heading fijado">
+<table id="hTable">
+<tr>
+  <th colspan="7">
+    <h3><b>  Plantillas </b> </h3>
+  </th>
 
-                            </div>
-                        </div>
-                    </div>
+
+</tr>
+  <tr>
+<td>  <b>  Eliminar&nbsp&nbsp<span class="glyphicon glyphicon-trash"></span></b>       </td>
+<td><b>  Duplicar&nbsp&nbsp<span class="glyphicon glyphicon-duplicate"></span></b>            </td>
+<td><b>  Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span></b> </td>
+<td> <b>  Editar&nbsp&nbsp<span class="glyphicon glyphicon-edit" ></span></b>           </td>
+<td>  <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>    </td>
+<td>   <input type="checkbox"
+  checked data-toggle="toggle" data-on="Ocultar"
+  data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+     id="btnO" onchange="ocultar();"
+  >
+</td>
+  </tr>
+</table>
+
                 </div>
                 <div class="panel-body scroll" id="pBody">
                     <div class="row" >
@@ -89,9 +84,7 @@
                    <div id="crearPlantilla">
                        <h2 id="tamañoLet">Crear Plantilla</h2>
                    </div>
-
                  </a>
-
               </div>
 
 
@@ -108,52 +101,36 @@
 
                     <div class="panel panel-default"  id="panel" >
                     <div class="panel-heading"> <!-- INICIO ENCABEZADO PANEL -->
-                      <div class="row">
-                          <div class="col-md-5" id="Epublicadas">
-                            <h3><b>  Encuestas publicadas </b> </h3>
-                          </div>
-                          <div class="col-md-8 pull-right" id="infob">
-                              <div class="row">
+                      <table id="hTable2">
+                        <tr>
+                          <th colspan="7">
+                             <h3><b>  Encuestas publicadas </b> </h3>
+                          </th>
 
-                            <div class="cuadro">
-                              <div class="redes">
-                              <div class="col-md-4">
-                              <img id="btnT"
-                              src="/img/redes/twitter.png"
-                              width="40px" height="40px" onclick="infoT();"/>
-                              </div>
-                              <div class="col-md-4">
-                              <img id="btnF" src="/img/redes/Facebook.png"  width="40" height="40" onclick="infoF();"/>
-                              </div>
-                            </div>
+                        </tr>
 
-                                  <div class="let">
-                                  <div class="col-md-4 infoVer" id="infVer">
-                                      <b>Ver&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
-                                  </div>
-                                  <div class="activa ">
-                                  <b>  Activa </b> &nbsp&nbsp<div class="survey-status survey-status__active" style="display: inline-block;"></div>
-                                  </div>
-                                  <div class="finalizada">
-                                    <b>Finalizada</b> &nbsp&nbsp<div class="survey-status survey-status__finished" style="display: inline-block;"></div>
-                                  </div>
+                        <tr>
 
-                                  <div class="btnOcultar">
-                                <a onclick="ocultar2();"
-                                id="btnOp"><span id="cambiar2"
-                                class="glyphicon glyphicon-chevron-up"></span> </a>
-                                            </div>
+                        <td><img id="btnT" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>  </td>
+
+                        <td>  <img id="btnF" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>      </td>
+
+                        <td> <b>Inactiva&nbsp<div class="survey-status survey-status__finished" style="display: inline-block;"> </b> </td>
+
+                        <td> <b>  Activa  &nbsp<div class="survey-status survey-status__active" style="display: inline-block;"></b></td>
+                        <td>
+                              <b>Ver&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
+                        </td>
 
 
-                                </div>
+                        <td>   <input type="checkbox"
+                        checked data-toggle="toggle" data-on="Ocultar"
+                        data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+                          id="btnOp" onchange="ocultar2();"
+                        > </td>
+                        </tr>
 
-
-
-                                </div>
-                              </div>
-                          </div>
-                      </div>
-
+                      </table>
                         </div>
                         <!-- fin ENCABEZADO PANEL -->
                 <div class="panel-body scroll" id="pPBody">
