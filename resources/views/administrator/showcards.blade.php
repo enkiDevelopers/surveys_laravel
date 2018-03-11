@@ -1,6 +1,20 @@
 
 <?php foreach ($propias as $plantilla) { ?>
-  <div class="card" id="{{$plantilla->id}}" style="background-image: url('/img/iconos/{{$plantilla->imagePath}}')">
+
+  <div class="card" id="{{$plantilla->id}}"
+     style="
+     <?php
+     $nombre_fichero = './img/iconos/'.$plantilla->imagePath;
+
+     if (file_exists($nombre_fichero)) {
+     echo "background-image: url('/img/iconos/$plantilla->imagePath');";
+     } else {
+     echo "background-image: url('/img/iconos/default.png');";
+     }
+     ?> "
+
+
+     >
     <div id="nombre">
           <div id="ver">
             <div  id="title">
@@ -102,7 +116,19 @@
 
 
 <?php foreach ($agenas as $plantilla) { ?>
-  <div class="card" id="{{$plantilla->id}}" style="background-image: url('/img/iconos/{{$plantilla->imagePath}}')">
+  <div class="card" id="{{$plantilla->id}}"
+    style="
+    <?php
+    $nombre_fichero = './img/iconos/'.$plantilla->imagePath;
+
+    if (file_exists($nombre_fichero)) {
+    echo "background-image: url('/img/iconos/$plantilla->imagePath');";
+    } else {
+    echo "background-image: url('/img/iconos/default.png');";
+    }
+    ?>
+
+    >
     <div id="nombre">
           <div id="ver">
             <div  id="title">
@@ -149,7 +175,16 @@
 
 
 <?php foreach ($publicadas as $plantilla) { ?>
-  <div class="card" id="{{$plantilla->id}}" style="background-image: url('/img/iconos/{{$plantilla->imagePath}}')">
+  <div class="card" id="{{$plantilla->id}}"  style="
+   <?php
+   $nombre_fichero = './img/iconos/'.$plantilla->imagePath;
+
+   if (file_exists($nombre_fichero)) {
+   echo "background-image: url('/img/iconos/$plantilla->imagePath');";
+   } else {
+   echo "background-image: url('/img/iconos/default.png');";
+   }
+   ?>>
     <div id="nombre">
           <div id="ver">
             <div  id="title">

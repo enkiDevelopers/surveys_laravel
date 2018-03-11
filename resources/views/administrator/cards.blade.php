@@ -2,7 +2,21 @@
 if($publicacion->creador == $id)
 {
   ?>
-  <div class="card" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}')">
+  <div class="card" id="{{$publicacion->idPub}}"
+    style="
+    <?php
+    $nombre_fichero = './img/iconos/'.$publicacion->imagePath;
+
+    if (file_exists($nombre_fichero)) {
+    echo "background-image: url('/img/iconos/$publicacion->imagePath');";
+    } else {
+    echo "background-image: url('/img/iconos/default.png');";
+    }
+    ?>
+
+    "
+
+    >
     <div id="nombre">
           <div id="ver">
             <div  id="title">
@@ -19,9 +33,7 @@ if($publicacion->creador == $id)
   <a id="btn_rec" onclick="reminder({{$publicacion->idPub}})" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Enviar recordatorio">
   <span class="glyphicon glyphicon-time ic"></span>
   </a>
-  <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
-  <span class="glyphicon glyphicon-file ic"></span>
-  </a>
+
 
   <a id="btn_edit" onclick="editPub({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="editar">
   <span class="glyphicon glyphicon-edit ic"></span>
@@ -63,7 +75,18 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 <?php }else{?>
 
 
-  <div class="card" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}')">
+  <div class="card" id="{{$publicacion->idPub}}"   style="
+    <?php
+    $nombre_fichero = './img/iconos/'.$publicacion->imagePath;
+
+    if (file_exists($nombre_fichero)) {
+    echo "background-image: url('/img/iconos/$publicacion->imagePath');";
+    } else {
+    echo "background-image: url('/img/iconos/default.png');";
+    }
+    ?>
+
+    ">
     <div id="nombre">
           <div id="ver">
             <div  id="title">
@@ -78,9 +101,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
                           </a>
 
 
-                                      <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
-                                          <span class="glyphicon glyphicon-file ic"></span>
-                                      </a>
+
 
 
 
@@ -100,7 +121,18 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 
 
 
-  <div class="card" id="{{$publicacion->idPub}}" style="background-image: url('/img/iconos/{{$publicacion->imagePath}}')">
+  <div class="card" id="{{$publicacion->idPub}}"   style="
+    <?php
+    $nombre_fichero = './img/iconos/'.$publicacion->imagePath;
+
+    if (file_exists($nombre_fichero)) {
+    echo "background-image: url('/img/iconos/$publicacion->imagePath');";
+    } else {
+    echo "background-image: url('/img/iconos/default.png');";
+    }
+    ?>
+
+    ">
     <div id="nombre">
           <div id="ver">
             <div  id="title">
@@ -115,9 +147,6 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
                           </a>
 
 
-                                      <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
-                                          <span class="glyphicon glyphicon-file ic"></span>
-                                      </a>
 
 
 

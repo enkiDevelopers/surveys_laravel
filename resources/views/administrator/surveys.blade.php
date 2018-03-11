@@ -16,7 +16,6 @@
     <div class="row">
       <div class="col-md-12 ">
 
-
       <div class="sep">
             <div class="supSide">
               <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">

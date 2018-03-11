@@ -1,6 +1,6 @@
 #imgC
 {
-  height: 200px;;
+  height: 200px;
   width: 100%;
 }
 
@@ -181,7 +181,7 @@ position: relative;
 
 #content-btn
 {
-  margin-top: 40px;
+  margin-top: 41%;
   margin-left: -12px;
 width: 240px;
 
@@ -228,6 +228,8 @@ width: 100%;
 color: #fff;
 position: relative;
 text-align: center;
+margin-top: -15%;
+
 }
 
 #marco
