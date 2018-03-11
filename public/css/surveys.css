@@ -762,6 +762,10 @@ display: inline-block;
   #panel1{
     margin-top: 100px;
   }
+  .descGeneral{
+    width: 82%;
+    left: 9%;
+  }
 
   }
 
