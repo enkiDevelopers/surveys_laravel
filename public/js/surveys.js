@@ -114,6 +114,7 @@ function UpdatePreviewCanvas()
 
 //alerta para eliminar
   function alerta(id,idAdmin) {
+
 swal({
 title: "¿Seguro que deseas continuar?",
 text: "No podrás deshacer este paso.",
@@ -452,4 +453,27 @@ function cambiar_tamaño()
         window.resizeTo(502,window.innerHeight); //esto no lo permiten los exploradores prueba un window.locaton.reload
 
     }
+}
+
+
+
+
+function editPub(id)
+{
+
+  swal({
+  title: "¿Seguro que deseas continuar?",
+  text: "Esta acción es peligrosa, puedes agregar, modificar o eliminar preguntas que ya son parte de tu encuesta. ¿Deseas continuar?",
+  type: "warning",
+  showCancelButton: true,
+  cancelButtonText: "Cancelar",
+  confirmButtonColor: "#DD6B55",
+  confirmButtonText: "continuar",
+  closeOnConfirm: true },
+  function(){
+      window.location.href = "/administrator/edit/"+id;
+  });
+
+
+
 }

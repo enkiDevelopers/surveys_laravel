@@ -173,7 +173,7 @@
                 <div class="modal-header">
   <div class="row">
       <div class="col-sm-10">
-        <h4 class="modal-title" id="myModalLabel1">Datos principales de la plantilla de encuesta</h4>
+        <h4 class="modal-title" id="myModalLabel1">Inicializar plantila</h4>
       </div>
 
       <div class="col-sm-2 pull-right pull-right">
@@ -181,29 +181,70 @@
           <a type="button" class="glyphicon glyphicon-remove" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()"></a>
                 </div>
                 </div>
+
                 </div>
                 </div>
+
                 <div class="modal-body">
-                    <input type="hidden" value="{{$id}}" name="creador" id="creador"/>
-                    <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
-                    <h5>Título de la encuesta:</h5>
-                    <input type="text" maxlength="40" class="form-control text-black " required id="ModalTitleInput" aria-describedby="emailHelp" placeholder="Ingrese el titulo " name="titulo"><br>
-                    <h5> Descripción de la encuesta:</h5>
-                    <textarea maxlength="500"class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Ingrese la Descripción "></textarea>
-                    <h5> Icono de la encuesta:</h5>
-                    <input type="file" id="foto1"  onchange="return ShowImagePreview( this.files );" name="icono" onclick="limpiar2();"/> <br />
-      <div id="previewcanvascontainer" style="height 200px; width 200px;">
-      <canvas id="previewcanvas" >
-        </canvas>
-          </div>
+                  <input type="hidden" value="{{$id}}" name="creador" id="creador"/>
+                    <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}"/>
+
+                    <table id="aPlantilla" class="table">
+                    <tr>
+                        <td style="width:70%">
+                        <div style="width:100%;">
+                          <input
+                          type="text" maxlength="40" class="form-control text-black "
+                          required id="ModalTitleInput" aria-describedby="emailHelp"
+                          placeholder="Titulo de la encuesta" name="titulo" style="margin-bottom: 20px;"/>
+                          </div>
+                        </td>
+                              <td style="width:30%">
+                              <input type="file" id="foto1"  onchange="return ShowImagePreview( this.files );" name="icono" onclick="limpiar2();"/>
+                              </td>
+                    </tr>
+                        <tr>
+                          <td>
+
+                            <textarea maxlength="500"
+                            class="form-control text-black" required
+                            cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc"
+                            placeholder="Descripción del proposito de la encuesta"></textarea>
+
+                          </td>
+
+
+                              <td>
+                                <div id="previewcanvascontainer" style="height 200px; width 200px;">
+                                <canvas id="previewcanvas" >
+                                </canvas>
+                                </div>
+                              </td>
+                        </tr>
+                    </table>
+
+
+
+
+
+
+
                 </div>
+
+
+
                 <div class="modal-footer">
 
              <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
                 </div>
+
+
+
             </div>
+
+
         </div>
           </form>
 
