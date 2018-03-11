@@ -76,7 +76,7 @@ function sltlinea(busq){
                     if(json2[post].canal=="sistema"){
                       SIS++;
                     }
-                    if(json2[post].canal=="online"){
+                    if(json2[post].canal=="Online"){
                       OLN++;
                     }
                     if(json2[post].canal=="conexion"){
@@ -158,7 +158,7 @@ function sltlinea(busq){
                     if(json2[post].canal=="sistema"){
                       SIS++;
                     }
-                    if(json2[post].canal=="online"){
+                    if(json2[post].canal=="Online"){
                       OLN++;
                     }
                     if(json2[post].canal=="conexion"){
@@ -253,7 +253,7 @@ if(id==1){
                     if(json2[post].canal=="sistema"){
                       SIS++;
                     }
-                    if(json2[post].canal=="online"){
+                    if(json2[post].canal=="Online"){
                       OLN++;
                     }
                     if(json2[post].canal=="conexion"){
@@ -335,7 +335,7 @@ if(id==1){
                     if(json2[post].canal=="sistema"){
                       SIS++;
                     }
-                    if(json2[post].canal=="online"){
+                    if(json2[post].canal=="Online"){
                       OLN++;
                     }
                     if(json2[post].canal=="conexion"){

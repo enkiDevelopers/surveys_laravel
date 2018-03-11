@@ -85,20 +85,20 @@
             foreach ($preguntas as $cada){
             $dato=$cada["questions"];
         ?>
-            <div id="preg<?php echo $i ?>" style="display:none">
+            <div class="pregs" id="preg<?php echo $i ?>" style="display:none">
                     <div align="center" class="titlePreguntas">
                         <h2 class="text-center text-black-body title" >{{$dato->title}} </h2>
                     </div>
     
-                <input type="hidden" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
+                <input type="text" name="back"  id="back<?php echo $i?>" value="<?php echo ($i-1)?>">
                 <input type="hidden" name="back"  id="num<?php echo $i?>" value="<?php echo $i ?>">
-                <input type="hidden" name="type"  id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
-                <input type="hidden" name="salto" id="saltoa<?php echo $i?>" value="<?php echo $dato->salto?>"> 
+                <input type="text" name="type"  id="type<?php echo $i?>" value="<?php echo $dato->type?>"> 
+                <input type="text" name="salto" id="saltoa<?php echo $i?>" value="<?php echo $dato->salto?>"> 
         <?php
             if($dato->type==1){
         ?>
                 <div class="zonarespuestas" >
-                    <input class="pregAbierta pregs" type="input"  size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" placeholder="Escribe tu respuesta">   
+                    <input class="pregAbierta pregs2" type="input"  size="300" data-name="opt<?php echo $i?>"  name="<?php echo $dato->id ?>" id="opt<?php echo $i?>" placeholder="Escribe tu respuesta">   
                 </div>
         
         <?php
@@ -112,7 +112,7 @@
         ?>
                 <div class="col-sm-6 col-lg-6 col-xs-6">
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
-                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
+                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="text" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden" class="form-control" >
                 </div>
                                
@@ -126,12 +126,12 @@
             ?>
                 <div class= "zonarespuestas" style="padding-top: 5px;">
             <?php
-                $opciones=$cada["options"]; 
-                foreach ($opciones as $option) {
+                $opciones2=$cada["options"]; 
+                foreach ($opciones2 as $option2) {
             ?>
                 <div class="col-sm-6 col-lg-6 col-xs-6">
-                    <input type="checkbox"  name="<?php echo "datos".$dato->id."[]" ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
-                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
+                    <input type="checkbox"  name="<?php echo "datos".$dato->id."[]" ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option2->id ?>" value="<?php echo $option->name ?>">
+                    <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="text" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden" class="form-control" >
                 </div>
             <?php

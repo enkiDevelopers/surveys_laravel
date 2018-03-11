@@ -141,7 +141,7 @@ chart3.render();*/
                     if(json2[post].canal=="sistema"){
                       SIS++;
                     }
-                    if(json2[post].canal=="online"){
+                    if(json2[post].canal=="Online"){
                       OLN++;
                     }
                     if(json2[post].canal=="conexion"){

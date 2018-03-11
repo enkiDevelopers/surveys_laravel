@@ -1,4 +1,4 @@
-﻿$(document).ready(function(){
+$(document).ready(function(){
     var b=-1;n=1;    
 
 
@@ -131,10 +131,27 @@
     function validar(){
         var validado=false;
         var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
-        var tipo2=$('#opt'+n).val();
+           
+             if($("#type"+n).val()=="3"){
 
+                validado=true;
+                salto = $("#saltoa"+n).val();
+                    console.log("tipo3"+salto);
+
+                if(salto==""){
+                    n++;  
+                    $("#back"+n).val(n-1);//configurar regreso para salto en pregunta abierta
+                }else{
+                    n=salto;
+                    console.log("aquino"+n);
+
+                }
+
+            
+            }
         //si la pregunta es de opción múltiple, se tiene que saber si hay brinco o no
         if($("#type"+n).val()=="2"){
+            console.log(n);
             var tempo= $('input:radio[data-name=opcion'+n+']:checked');
             var dato=tempo;
             
@@ -156,7 +173,7 @@
             }else{
                 m=tempo;
                 salto = $("#"+n+"salto"+m).val();
-                if(salto=="0"){
+                if(salto==""){
                     n++;
                 }else{
                     b=n;                    
@@ -167,6 +184,7 @@
         }
     }else{
         if($("#type"+n).val()=="1"){
+            console.log("preguntatipo 1");
             if(tipo2==''){
                 swal({
                 title:"Información",
@@ -183,47 +201,14 @@
                     n++;  
                     $("#back"+n).val(n-1);//configurar regreso para salto en pregunta abierta
                 }else{
-
                     n=salto;
+
                 }
 
             }
             }else{
-        if($("#type"+n).val()=="3"){
-            console.log("hola");
-            var tempo= $('input:checkbox[data-name=opcion'+n+']:checked');
-            var dato=tempo;
-            
-            tempo= $(tempo).data("salto");
-            
-            if(dato.val() == null){
-             swal({
-                title:"Información",
-                text: "Marque una de las opciones",
-                icon: "info",
-                //confirmButtonColor: "#DD6B55",
-                closeOnConfirm: true
-            }); 
-            }else{
-            validado=true;
-            if(tempo==null){
-                //$("#idNext").attr('disabled','disabled');
-              //  n++; //eliminar esta línea
-            }else{
-                m=tempo;
-                salto = $("#"+n+"salto"+m).val();
-                if(salto=="0"){
-                    n++;
-                }else{
-                    b=n;                    
-                    n=salto;
-                    $("#back"+n).val(b);
-                }
-            }
-        }
-    }else{
-                         n++;    
-    }
+
+
 
 
                                        
@@ -275,24 +260,20 @@
                 validado=true;
             }
         }else{
-            if($("#type"+n).val()=="3"){
-            var tempo= $('input:checkbox[data-name=opcion'+n+']:checked');
-            var dato=tempo;
+          if($("#type"+n).val()=="3"){
+
+                validado=true;
+                salto = $("#saltoa"+n).val();
+                if(salto==""){
+                    n++;  
+                    $("#back"+n).val(n-1);//configurar regreso para salto en pregunta abierta
+                }else{
+
+                    n=salto;
+                }
+
             
-            tempo= $(tempo).data("salto");
-            
-            if(dato.val() == null){
-             swal({
-                title:"Información",
-                text: "Marque una de las opciones",
-                icon: "info",
-                //confirmButtonColor: "#DD6B55",
-                closeOnConfirm: true
-            }); 
-            }else{
-            validado=true;
-        }
-        }
+            }
         }
     }
 
@@ -308,10 +289,11 @@
         $("#idBack").removeAttr('disabled');
         $("#preg"+n).css("display", "none");
         validar();
+            console.log("dato"+n);
             $("#preg"+n).css("display", "inline");
             $("#idTitlePregunta").text("Pregunta " + n);
 
-            if(n>$(".pregs").length){
+            if(n>=$(".pregs").length){
                // $("#back"+n).val(n-1);
                 //$("#preg"+n).css("display", "none");
                 $("#idTitlePregunta").css("display", "none");
@@ -323,7 +305,7 @@
                 //$("#idSave").css("display","inline");
                 //Si es falso entonces
                 //$("#idNext").removeAttr('disabled');
-                //atras();    
+                //atras(); 
             }
 
     });
@@ -347,4 +329,4 @@
         $("#preg"+n).css("display", "inline");
     });
 	
-});	
+});
