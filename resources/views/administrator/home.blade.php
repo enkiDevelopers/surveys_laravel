@@ -13,8 +13,12 @@
   <script src="/js/input/es.js"></script>
 
 <script src="/js/homeAdministrator.js"></script>
-<div class="sep">
+<div class="container">
 <div class="row">
+<div class="col-md-12">
+
+<div class="sep">
+
   <div class="supSide">
   <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')"
     data-toggle="modal" data-target="#editarImagen">
@@ -37,6 +41,8 @@
   <img src="/img/logos/Descripcion_Funciones.png" class="descGeneral" >
 </div>
 
+</div>
+</div>
 <!-- ##################################  Modal editar Imagen perfil ################################## -->
 <div class="modal fade" id="editarImagen"  role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
