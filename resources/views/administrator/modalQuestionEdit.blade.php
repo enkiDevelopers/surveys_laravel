@@ -30,8 +30,9 @@
                                 <div class=" form-group">
                                     <label for="questionTypeEdit">Tipo</label>
                                     <select class="form-control yes-no-question text-black-body" disabled id="questionTypeEdit">
-                                        <option value="1">Pregunta abierta</option>
-                                        <option value="2">Pregunta de opción multiple </option>
+                                        <option value="1">Abierta</option>
+                                        <option value="2">Opción múltiple</option>
+                                        <option value="3">Selección múltiple</option>
                                     </select>
                                 </div>
                             </div>

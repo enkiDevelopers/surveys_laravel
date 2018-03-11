@@ -52,13 +52,15 @@
                     tieneOpMul = false;
                 break;
             case "2": //Seleccionó pregunta de opción múltiple
+                    eliminarOpcionMultiple();
                     tieneOpMul = true;
                     agregarOpcionMultiple($(this).parent().parent().parent());//el parámetro me genera dudas
             break;
             case "3": //Seleccionó pregunta de opción múltiple
+                    eliminarOpcionMultiple();
                     tieneOpMul = true;
                     agregarOpcionMultiple($(this).parent().parent().parent());//el parámetro me genera dudas
-
+            break;
         }
     });
     /*********************************************************************************/      
@@ -171,9 +173,8 @@
  
         for (var i = act; i <= max; i++) {
              $(this).append('<option value="'+i+'">'+i+'</option>');
-        }
-        var final = i+1; 
-        $(this).append('<option value="'+final+'">Fin</option>');
+        } 
+        $(this).append('<option value="'+i+'">Fin</option>');
     });
 
     $("#container-questions").on('change', '.selectNumPregParent', function() {
@@ -191,10 +192,10 @@
             },
         })
         .done(function(data) {
-            alertify.alert("Se ha redireccionado a la pregunta : "+ salto+ " satisfactoriamente.", function(){});
+            alertify.notify('Se ha redireccionado a la pregunta : '+ salto+ ' satisfactoriamente.', 'success', 3, function(){});
         })
         .fail(function() {
-            alertify.alert("No se ha podido redireccionar la opción a la pregunta deseada.", function(){});
+            alertify.notify('No se ha podido redireccionar la opción a la pregunta deseada.', 'error', 3, function(){});
         })
         .always(function() {
             $("#loader").modal('hide');
@@ -235,13 +236,11 @@
             },
             })
             .done(function() {
-                alertify.alert("Pregunta Eliminada correctamente.", function(){
-                    alertify.error('Pregunta Eliminada');
-                  });
+                alertify.notify('Pregunta Eliminada correctamente.', 'error', 3, function(){});
                     $("#container-questions").load(" #container-questions");
             })
             .fail(function() {
-               alertify.alert("No se ha podido eliminar la pregunta.", function(){});
+                alertify.notify('No se ha podido eliminar la pregunta.', 'warning', 3, function(){});
             })
             .always(function() {
                 $(".new-question__control--edit-question").attr('disabled','false'); 
@@ -286,8 +285,8 @@
 
     $("#sortableQuestions").on('click', function(event) {
         var clase = $(this).children().attr('class');
-            if (clase == "glyphicon glyphicon-th-list"){
-            alertify.confirm("Si continua se eliminarán todos los saltos de las opciones multiples", 
+            if (clase == "glyphicon glyphicon-random"){
+            alertify.confirm("Si continua se eliminarán todos los saltos de las opciones múltiples", 
             function(){
                var idQuestion =  $(".title").map(function() {
                     return $(this).attr('id');
@@ -312,7 +311,7 @@
                 });
                 
 
-                $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
+                $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-random');
 
                 $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").hide('400');
                 $("#questionSaved").css('height', '73rem');
@@ -365,8 +364,8 @@
 
         }else{
             $("#container-questions").load(" #container-questions");
-            $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
-            $("#container-questions").sortable( "disable" )
+            $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-random');
+            $("#container-questions").sortable( "disable" );
 
             $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").show('400');
             $("#questionSaved").css('height', '50rem');
@@ -391,20 +390,19 @@
             processData:false,        // To send DOMDocument or non processed data file it is set to false
             complete: function(e, xhr, settings){
                         if(e.status === 200){
-                            alertify.alert("Datos Guardados correctamente.", function(){
+                            alertify.notify('Datos Guardados correctamente.', 'success', 3, function(){  
                                 $("#exampleInputEmail1").val(titleInput);
                                 $("#inputDesc").val(descInput);
                                 $("#ModalTitle").modal('hide');
-                              });
+                            });
                             $("#dataTemplateContainer").load(" #dataTemplateContainer");                            
                         }else{
-                            alertify.alert("No se han podido guardar los cambios.", function(){
-                            }); 
+                            alertify.notify('No se han podido guardar los cambios.', 'error', 3, function(){}); 
                         }
                     },
                     error: function (textStatus, errorThrown) {
-                        alertify.alert("No se ha podido agregar la pregunta.", function(){
-                         });                    }               
+                            alertify.notify('No se han podido guardar los cambios.', 'error', 3, function(){});                
+                    }               
 
         });
     });
@@ -613,13 +611,13 @@
                 complete: function(e, xhr, settings){
                     if(e.status === 200){
                         $("#loader").modal('hide');
-                            alertify.notify('Pregunta Añadida', 'success', 5, function(){  
+                            alertify.notify('Pregunta Añadida', 'success', 3, function(){  
                                 $("#ModalQuestion").modal('hide').find("input").val("");
                             });     
                             $("#container-questions").load(" #container-questions");
                             setTimeout('$("#addQuestion").removeAttr("disabled")', 1000); 
                     }else{
-                        alertify.notify('No se ha podido agregar la pregunta.', 'error', 5, function(){
+                        alertify.notify('No se ha podido agregar la pregunta.', 'error', 3, function(){
                             console.log(e.status);
                         });  
                            
@@ -673,10 +671,9 @@
             data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult },
             })
             .done(function() {
-                alertify.alert("Pregunta Editada correctamente.", function(){
-                    alertify.success('Pregunta Editada');                       
+                alertify.notify('Pregunta Editada correctamente.', 'success', 3, function(){
                     $("#ModalQuestionEdit").modal('hide').find("input").val("");
-                });
+                }); 
                 $("#container-questions").load(" #container-questions");                    
             
             })
@@ -700,18 +697,15 @@
     }
 
 //verificaciones de la carga de una imagen en la creacion de la plantilla
-    function ShowImagePreview( files )
-    {
+    function ShowImagePreview( files ){
 
-    if( !( window.File && window.FileReader && window.FileList && window.Blob ) )
-    {
+    if( !( window.File && window.FileReader && window.FileList && window.Blob ) ){
       alert('Por favor Ingrese un archivo de Imagen');
       document.getElementById("myForm").reset();
       return false;
     }
 
-    if( typeof FileReader === "undefined" )
-    {
+    if( typeof FileReader === "undefined" ){
         alert( "El archivo no es una imagen por favor ingrese una" );
         document.getElementById("myForm").reset();
         return false;
@@ -719,8 +713,7 @@
 
     var file = files[0];
 
-    if( !( /image/i ).test( file.type ) )
-    {
+    if( !( /image/i ).test( file.type ) ){
         alert( "El archivo no es una imagen" );
           document.getElementById("myForm").reset();
         return false;
@@ -737,8 +730,7 @@
 
 
 //cargar el preview de la imagen de la encuesta
-function UpdatePreviewCanvas()
-{
+function UpdatePreviewCanvas(){
     var img = this;
     $("#img_survey").hide();
     $("#previewcanvascontainer").css('display', 'inline');

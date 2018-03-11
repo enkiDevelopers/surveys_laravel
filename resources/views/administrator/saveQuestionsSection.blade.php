@@ -55,7 +55,6 @@
     </div>
 
   <div class="row hide yes-no-question-block " id="options-template">
-    <!--<div class="col-md-12 " data-questions="0" id="childSupport"> -->
     <div>
         <div class="col-md-12" id="multi-options">
             <div class="col-md-12 multi-options-template" data-multioptions="0" >
@@ -76,11 +75,9 @@
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
             </button>
     </div>
-    <!--</div>-->
   </div>
   
 </form>
-
 
     <div id="loader" class="modal fade">
         <img src="/img/load/loader.gif" alt="cargando..." width="50px" height="50px" style="margin-top: 25%;margin-left: 50%">

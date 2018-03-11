@@ -15,7 +15,7 @@
     <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
 
- <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
+  <!--<script src="/js/jqueryui.min.js"></script>-->
   <script src="/js/sweetalert.min.js"></script>
   <script src="/js/moment.min.js"></script>
   <script src="/js/datepicker.js"></script>

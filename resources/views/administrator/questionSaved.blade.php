@@ -6,7 +6,7 @@
 ?>
 <div class="well">
     <div class="row new-question-template" id="new-question-template">
-        <div class="col-md-12 " value="<?php echo ($dato->type==1?'Abierta':'Opc. Múltiple');?>">
+        <div class="col-md-12 " value="<?php echo ($dato->type== 1 ? 'Abierta':($dato->type== 2 ? 'Opc. Múltiple':($dato->type== 3 ? 'Selec. Múltiple' : 'Otro Tipo')));?> ">
             <div class="col-md-1 num">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Número</label>
@@ -95,12 +95,6 @@
                                 <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
                         </div>
-                <!--    <div class="col-md-2 col-md-offset-1 pull-left selectRespon">                           
-                           <label for="selectNumPreg text-black-body">Salto: </label>
-                            <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
-                                <option value="N/A" selected disabled>{{$option->salto}}</option>
-                            </select>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -108,9 +102,6 @@
             }
         }
 ?>
-
-
-
 
         </div>
     </div>

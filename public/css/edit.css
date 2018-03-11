@@ -13,16 +13,15 @@ hr{
 }
 .btn-control{
 	margin-bottom: 15px;
-	width: 104px;
 }
 .salto{
-	width: 18% !important;
+	width: 16% !important;
 }
 .type{
 	width: 17% !important;
 }
 .text-question{
-	width: 42% !important;
+	width: 42%;
 }
 .well{
 	margin-bottom: 11px !important;
@@ -63,9 +62,6 @@ hr{
 .num{
 	margin-left: -22px;
 	margin-right: 20px;
-}
-.text-question{
-	width: 46%;
 }
 .numPregs{
 	width: 42px;

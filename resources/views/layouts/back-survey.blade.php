@@ -106,7 +106,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/administratorAddQuestion.js"></script>
     <script src="/js/alertify.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="/js/jqueryui.min.js"></script>
     <script src="/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
