@@ -20,7 +20,7 @@ class IngresarLista implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $dato1;
     protected $id1;
-    protected $info=0;
+    protected $info;
     /**
      * Create a new job instance.
      *
@@ -51,6 +51,7 @@ class IngresarLista implements ShouldQueue
             if($row->no_cuenta== ""){
 
             }else{
+                echo "else";
                 $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
                 $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
                 $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
