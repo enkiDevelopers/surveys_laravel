@@ -157,7 +157,7 @@ public function ingresarDatos(Request $request){
     foreach ($data as $datas) {
         $job = new IngresarLista($datas->path,$idlista);
         dispatch($job);
-    }
+    } 
     echo $data;
     //return back();
 
