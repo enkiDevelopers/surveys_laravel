@@ -21,13 +21,16 @@
               <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
               </div>
               <div class="cuadroPerfilSup">
-                  <div class="eng">
-                    <span class="glyphicon glyphicon-cog"> &nbsp</span>
-                  </div>
-                  <div id="content">
-                      <div class="nombre"> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}  </div>
-                      <div class="correo"> {{$info->email}} </div>
-                  </div>
+
+  <div class="eng">
+    <span class="glyphicon glyphicon-cog"> &nbsp</span>
+  </div>
+  <div id="content">
+      <div class="nombre"> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}  </div>
+      <div class="correo"> {{$info->email}} </div>
+  </div>
+
+
               </div>
             </div>
         </div>
@@ -166,8 +169,8 @@
 <!-- #############################################3 Modal agregar plantilla -->
           <form id="myForm" method="post" action="/save" enctype="multipart/form-data" id="myForm">
                   {{ csrf_field() }}
-        <div class="modal fade" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade bd-example-modal-lg" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog modal-lg" role="document">
 
                 <div class="modal-content">
                 <div class="modal-header">
@@ -191,7 +194,7 @@
 
                     <table id="aPlantilla" class="table">
                     <tr>
-                        <td style="width:70%">
+                        <td style="width:50%">
                         <div style="width:100%;">
                           <input
                           type="text" maxlength="40" class="form-control text-black "
@@ -199,8 +202,8 @@
                           placeholder="Titulo de la encuesta" name="titulo" style="margin-bottom: 20px;"/>
                           </div>
                         </td>
-                              <td style="width:30%">
-                              <input type="file" id="foto1"  onchange="return ShowImagePreview( this.files );" name="icono" onclick="limpiar2();"/>
+                              <td style="text-align: center;">
+                        <input type="file" id="foto1" name="icono" onclick="limpiar2();"/>
                               </td>
                     </tr>
                         <tr>
@@ -212,30 +215,33 @@
                             placeholder="Descripción del proposito de la encuesta"></textarea>
 
                           </td>
-
-
                               <td>
-                                <div id="previewcanvascontainer" style="height 200px; width 200px;">
+                                    <div id="imgC">
+
+                                        <img id="imgSalida" src="/img/iconos/default.png"/>
+
+                                        </div>
+
+
+<!--
+                                <div id="previewcanvascontainer">
                                 <canvas id="previewcanvas" >
                                 </canvas>
                                 </div>
+-->
+
                               </td>
                         </tr>
                     </table>
 
 
-
-
-
-
-
                 </div>
-
 
 
                 <div class="modal-footer">
 
-             <a type="button" class="btn btn-default" data-dismiss="modal" href="administrator/surveys" onclick="limpiar()">Cancelar</a>
+             <a type="button" class="btn btn-default" data-dismiss="modal"
+             onclick="limpiar()">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
                 </div>
@@ -411,7 +417,7 @@
 <script>
   busca();
   showcards();
-
+  imagen();
   $(".datetimepicker").datetimepicker({
     format: 'YYYY-MM-DD HH:mm:ss',
     ignoreReadonly: true,

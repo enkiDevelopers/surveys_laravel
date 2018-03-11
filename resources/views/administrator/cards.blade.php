@@ -79,7 +79,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 
 
                                       <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
-                                          <span class="glyphicon glyphicon-edit ic"></span>
+                                          <span class="glyphicon glyphicon-file ic"></span>
                                       </a>
 
 
@@ -116,7 +116,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 
 
                                       <a id="btn_prevPub" onclick="get_action({{$publicacion->idTemplate}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Generar Reporte">
-                                          <span class="glyphicon glyphicon-edit ic"></span>
+                                          <span class="glyphicon glyphicon-file ic"></span>
                                       </a>
 
 

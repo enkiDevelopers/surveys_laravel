@@ -1,14 +1,13 @@
 
 //limpieza de los formularios
     function limpiar(){
-    var canvas = document.getElementById("previewcanvas");
-    canvas.width=canvas.width;
-    document.getElementById("myForm").reset();
+  $('#imgSalida').attr("src","/img/iconos/default.png");
+      document.getElementById("myForm").reset();
+
                       }
           function limpiar2()
                     {
-                      var canvas = document.getElementById("previewcanvas");
-                      canvas.width=canvas.width;
+                      $('#imgSalida').attr("src","/img/iconos/default.png");
                       }
 
     function limpiar3(){
@@ -474,6 +473,38 @@ function editPub(id)
       window.location.href = "/administrator/edit/"+id;
   });
 
-
-
 }
+
+
+
+
+
+function imagen(){
+     $('#foto1').change(function(e) {
+         addImage(e);
+        });
+
+        function addImage(e){
+         var file = e.target.files[0],
+         imageType = /image.*/;
+
+         if (!file.type.match(imageType))
+         {
+           swal({
+              title: "Su archivo no es una imagen",
+              type: "error",
+               });
+
+               return;
+         }
+         var reader = new FileReader();
+         reader.onload = fileOnload;
+         reader.readAsDataURL(file);
+        }
+
+        function fileOnload(e) {
+         var result=e.target.result;
+         $('#imgSalida').attr("src",result);
+        }
+
+     }

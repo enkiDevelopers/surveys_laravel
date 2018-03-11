@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+  @include('sweet::alert')
   <link rel="stylesheet" href="/css/surveys.css">
   <link href="css/input/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
   <script src="/js/input/jquery-3.2.1.min.js"></script>
@@ -58,7 +58,7 @@
 <br />
 <br />
 
-      <img id="imgSalida" width="200px" height="200px" src="/img/avatar/{{$info->imagenPerfil}}"/>
+      <img id="imgSalida" src="/img/avatar/{{$info->imagenPerfil}}"/>
       <br />
       <br />
 
