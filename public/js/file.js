@@ -1,3 +1,12 @@
+var cargar=0;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+}); 
+
+
+
 function creardato(ide){
     $.ajaxSetup({
         headers: {
@@ -35,11 +44,15 @@ function creardato(ide){
 
                       swal({
                         title: "Información",
-                        text: "",
+                        text: "Su lista esta siendo procesada",
                         type: "info",
                         confirmButtonText: 'Continuar',
-                     })
+                     });
+                  $("#datain").css('display','inline');
+
                   $("#divid").load(" #divid");
+                  cargar=1;
+
                   //console.log(response);
                 },
                 error : function(error) {
@@ -85,8 +98,43 @@ $(window).load(function() {
 
       $(document).ready(function() {
         var refreshId = setInterval(function() {
+          if(cargar==1){
+              $.ajax({
+                dataType : 'json',
+                type : 'post',
+                url : '/checarjobs',
+                data : {"id": 0},
+                async:true,
+                cache:false,
+                beforeSend: function () { 
+
+                },
+                success : function(response){
+                  if(response==0){
+
+                  }else{
+                     swal({
+                        title: "Información",
+                        text: "Su lista ha sido procesada.",
+                        type: "info",
+                        confirmButtonText: 'Continuar',
+                     });
+                    $("#datain").css('display','none');
+                     cargar=0
+                  }
+                  //console.log(response);
+                },
+                error : function(error) {
+                  console.log(error);
+                  $("#procesando").hide();
+
+                }
+            });
+            }
+
             $("#divid").load(" #divid");
-                    }, 5000);
+                    }, 10000);
+          
 
         $.ajaxSetup({ cache: false });              
     });

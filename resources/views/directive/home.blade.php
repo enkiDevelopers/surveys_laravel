@@ -105,7 +105,7 @@
 <!--end modal section-->
 
 
-<div class="container" style="width:86%;margin-top:15px;">
+<div class="container" style="width:86%;margin-top:15px;" >
   <div class="row">
     <div class="col-md-11">
       <div class="panel panel-default">
@@ -119,18 +119,27 @@
         </div>
 
         <div class="panel-body">
+        <div class="col-md-12" style="overflow-x:auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Encuesta</th>
+                <th>Titulo Encuesta</th>
+                <th>Descripción</th>
+                <th>Informe</th>
+              </tr>
+            </thead>
+            <tbody>
           <?php foreach ($encuestas as $encuesta) { ?>
-            <div class="col-md-6 card" style="background-image: url('/img/iconos/{{$encuesta->imagePath}}'), url('/img/Por_Ti_EXPERIENCIA_UVM.png')">
-              <div class="card-body">
-                <div class="row">
-                  <div class="title">
-                    <h4>{{$encuesta->tituloEncuesta}}</h4>
-                  </div>
-                </div>
-                <p class="card-desc">Descripción: 
-                  <span class="template-creator">{{$encuesta->descripcion}}</span>
-                </p>
-                <?php
+
+              <tr>
+                <td>
+                  <img src="\img/iconos/{{$encuesta->imagePath}}" width="55px" height="50px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
+                </td>
+                <td><p>{{$encuesta->tituloEncuesta}}</p></td>
+                <td><p>{{$encuesta->descripcion}}</p></td>
+                <td>
+                 <?php
                   switch ($datosdirective[0]->type) {
                     case '1':
                 ?>
@@ -163,15 +172,21 @@
                         echo "<p>Sin Asignar</p>";
                     break;
                   }              
-                ?>   
+                ?>    
 
-              </div>
-            </div>
-          <?php } ?>
+
+                </td>
+              </tr> 
+                      <?php } ?>
+               
+            </tbody>
+          </table>
+
           </div>
         </div>
     </div>
   </div>
+</div>
 </div>
 
 

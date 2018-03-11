@@ -45,16 +45,16 @@
 
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
-          <input type="submit" class="btn btn-default" value="Crear Lista">
-          <!--  <button type="button" id="btnsubir" onclick="data();" class="btn btn-default"> Subir Archivos</button>-->
-          <!--  <input type="submit" class="btn btn-default" value="Subir archivos"  />-->
+      <div class="modal-footer">
+              <input type="submit" class="btn btn-default" value="Crear Lista">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
         </form>
 
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
+
     </div>
 
   </div>
@@ -79,15 +79,16 @@
                  <input type="hidden" id="listaid" name="listaid" value="">
                  <strong>Maximo por archivo 5MB</strong>       
           <hr>
-            <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivos</button>
+      <div class="modal-footer">
+            <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivo</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
           <!--  <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>-->
         </form>
 
  
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
+
     </div>
 
   </div>
@@ -132,12 +133,12 @@
 
   <div class="procesando" id="procesando"></div>
 <div class="container" >
-    <div class="row" id="divid">
+    <div class="row" >
       <div class="col-md-12 ">
                           <div class="col-md-4 top">
                             <div class="card well" style="height:200px;">
                                     <p class="text-center parrafo">Añadir Nueva Lista</p>
-
+ 
                                <div class="card-body text-center">
                                     <p class="card-text"></p><br>
                                         <p>
@@ -148,11 +149,16 @@
                                 </div>
                             </div>
                         </div>
+                          <div class="col-md-4 top">
+                              <div style="display:none;" id="datain">
+                                    <p class="text-center parrafo">Procesando Lista</p>
+                                    <center><img src="/img/load/load.gif"></center>
+                              </div>
+                          </div>
 
 
 
-
-        <div class="col-md-12" style="overflow:auto;">
+        <div class="col-md-12" id="divid" style="overflow:auto;">
             <table class="table">
                 <thead>
                   <tr>
@@ -177,6 +183,7 @@
                           <?php echo $lista->nombre; ?>
                       </th>
                       <th>
+
                       </th>
                       <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled>

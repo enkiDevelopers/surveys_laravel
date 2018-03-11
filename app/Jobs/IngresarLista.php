@@ -21,6 +21,7 @@ class IngresarLista implements ShouldQueue
     protected $dato1;
     protected $id1;
     protected $info;
+    protected $cantidad1;
     /**
      * Create a new job instance.
      *
@@ -29,10 +30,11 @@ class IngresarLista implements ShouldQueue
 
 
 
-    public function __construct($dato,$id)
+    public function __construct($dato,$id,$cantidad)
     {
        $this->dato1=$dato;
        $this->id1=$id;
+       $this->cantidad1=$cantidad;
     }
 
     /**
@@ -43,6 +45,7 @@ class IngresarLista implements ShouldQueue
     public function handle()
     {
         $i=0;
+        echo $this->cantidad1;
         try{
         $idarray=['id' => $this->id1]; 
         Excel::filter('chunk')->load(public_path("/listas/".$this->dato1))->chunk(500, function($results) use ($idarray){
@@ -51,7 +54,6 @@ class IngresarLista implements ShouldQueue
             if($row->no_cuenta== ""){
 
             }else{
-                echo "else";
                 $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
                 $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
                 $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
@@ -88,9 +90,10 @@ class IngresarLista implements ShouldQueue
 
 
 }
+    if($this->cantidad1==1){
             $job2= new Marcarlisto($this->id1);
             dispatch($job2);
-
+}
 /*if (File::exists(('./listas/'.$this->dato1))) {
         File::delete(('./listas/'.$this->dato1));
     }else{

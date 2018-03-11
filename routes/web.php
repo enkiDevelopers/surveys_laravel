@@ -249,3 +249,5 @@ Route::post('/excelcampus','directiveController@excelcampus');
 Route::post('/excelregion','directiveController@excelregion');
 
 Route::post('/excelgeneral','directiveController@excelgeneral');
+
+Route::post('/checarjobs','listasController@checarjob');

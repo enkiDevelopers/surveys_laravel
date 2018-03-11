@@ -154,9 +154,12 @@ class listasController extends Controller
 public function ingresarDatos(Request $request){
     $idlista=$request->input('id');
     $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
+    $cantidad=DB::table('recursos')->where('idlista','=',$idlista)->count();
+
     foreach ($data as $datas) {
-        $job = new IngresarLista($datas->path,$idlista);
+        $job = new IngresarLista($datas->path,$idlista,$cantidad);
         dispatch($job);
+        $cantidad--;
     } 
     echo $data;
     //return back();
@@ -211,8 +214,17 @@ public function ingresarlista(Request $request){
 return back();
 
 }
+    public function checarjob(Request $request){
+        $data=DB::table('jobs')->count();
+        if($data==0){
+            return 1;
+        }else{
+            return 0;
+        }
 
-public function mostrarDatos($id){
+    }
+
+    public function mostrarDatos($id){
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
         return view('administrator/openFile',compact('data'));
