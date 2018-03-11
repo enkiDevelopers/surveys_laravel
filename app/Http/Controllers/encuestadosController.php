@@ -15,7 +15,7 @@ use DB;
 use App\Mail\mailencuestados;
 use Mail;
 use App\jobs\enviarEmail;
-use Response;
+use Response; 
 class encuestadosController extends Controller
 {
 public function showList(Request $request)
@@ -29,6 +29,7 @@ public function showList(Request $request)
             ->leftJoin('publicaciones', 'listaEncuestados.idLista', '=', 'publicaciones.destinatarios')
             ->select('listaEncuestados.*','publicaciones.*')
             ->where('listaEncuestados.creador','=',$id)
+            ->orderby('listaEncuestados.created_at','desc')
             ->get();
     //$listas = listaEncuestados::where("creador", $id)->get();
     return view("administrator.files", compact('listas'));

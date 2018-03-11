@@ -37,8 +37,13 @@ class previewtemController extends Controller
           $idq=$dato['id'];
           $opt=optionsMult::where('idParent',$idq)->get();
           //echo $opt . ",";
-        }else{
+        }
+        if($dato['type']==1){
           $opt=null;
+        }
+        if($dato['type']==3){
+          $idq=$dato['id'];
+          $opt=optionsMult::where('idParent',$idq)->get();
         }
         $datosOpt[] = [
         "questions" => $dato,

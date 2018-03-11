@@ -96,7 +96,7 @@ class responderController extends Controller
       	      $titulo = $consulta[0]->tituloEncuesta;
       	      $descripcion = $consulta[0]->descripcion;
       	      $imagePath = $consulta[0]->imagePath;
-
+ 
       	      $eid = $id;
       	      $datos = questionsTemplates::where('templates_idTemplates',$idencuesta1)->orderByRaw('orden')->get();
 
@@ -104,13 +104,18 @@ class responderController extends Controller
       	      //echo $datos;
       	      foreach ($datos as $dato) {
       	        //echo $dato . ",";
-      	        if($dato['type']==2){
-      	          $idq=$dato['id'];
-      	          $opt=optionsMult::where('idParent',$idq)->get();
-      	          //echo $opt . ",";
-      	        }else{
-      	          $opt=null;
-      	        }
+                if($dato['type']==2){
+                  $idq=$dato['id'];
+                  $opt=optionsMult::where('idParent',$idq)->get();
+                  //echo $opt . ",";
+                }
+                if($dato['type']==1){
+                  $opt=null;
+                }
+                if($dato['type']==3){
+                  $idq=$dato['id'];
+                  $opt=optionsMult::where('idParent',$idq)->get();
+                }
       	        $datosOpt[] = [
       	        "questions" => $dato,
       	        "options" => $opt];
@@ -150,16 +155,37 @@ class responderController extends Controller
     }
 
     $preguntas=DB::table('questionsTemplates')
-                ->select('id')
+                ->select('id','type')
                 ->where('templates_idTemplates','=',$idEncuesta)
                 ->get();
 
     foreach ($preguntas as $pregunta) {
+      $type=$pregunta->type;
+      if($type==3){
+       $nombrepregunta="datos".$pregunta->id;
+       if($request->Input($nombrepregunta)==""){
+
+       }else{
+        foreach ($request->Input($nombrepregunta) as $value){ 
+            DB::table('respuestas')->insert(['respuesta' => $value,
+                      'type'=>$type, 
+                      'idEncuesta' => $idEncuesta, 
+                      'idEncuestado'=>$idencuestado,
+                      'idPreguntasEncuestas' => $pregunta->id]);
+          }
+        } 
+      }else{
         $respuesta=$request->Input($pregunta->id);
-        DB::table('respuestas')->insert(['respuesta' => $respuesta, 
+        if($respuesta==""){
+
+        }else{
+        DB::table('respuestas')->insert(['respuesta' => $respuesta,
+                  'type'=>$type, 
                   'idEncuesta' => $idEncuesta, 
                   'idEncuestado'=>$idencuestado,
                   'idPreguntasEncuestas' => $pregunta->id]);
+      }
+}
     }
     DB::table('encuestados')->where('idE',$idencuestado)->update([
       'canal'=>$canal,
@@ -169,7 +195,7 @@ class responderController extends Controller
     //return view("administrator.encuestacontestada");
     //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
       Auth::logout();
-        Session::flush();
+      Session::flush();
     return view("administrator.encuestacontestada2");
 
     //return previous();

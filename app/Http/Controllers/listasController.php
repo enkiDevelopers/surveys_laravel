@@ -184,11 +184,13 @@ return back();
 
 }
 private function guardarListaBD($nombre,$id2){
-$id = DB::table('listaEncuestados')->insertGetId(
+    $factual=date('Y-m-d H:m:s');
+    $id = DB::table('listaEncuestados')->insertGetId(
                                         array( 'nombre'  => $nombre,
                                                'archivo' => null,
                                                'carga'=>0,
-                                               'creador' => $id2));
+                                               'creador' => $id2,
+                                               'created_at'=>$factual));
   return $id;  
 }
 public function ingresarlista(Request $request){

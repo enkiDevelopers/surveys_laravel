@@ -188,10 +188,44 @@
                 }
 
             }
-
-
             }else{
-                     n++;
+        if($("#type"+n).val()=="3"){
+            console.log("hola");
+            var tempo= $('input:checkbox[data-name=opcion'+n+']:checked');
+            var dato=tempo;
+            
+            tempo= $(tempo).data("salto");
+            
+            if(dato.val() == null){
+             swal({
+                title:"Información",
+                text: "Marque una de las opciones",
+                icon: "info",
+                //confirmButtonColor: "#DD6B55",
+                closeOnConfirm: true
+            }); 
+            }else{
+            validado=true;
+            if(tempo==null){
+                //$("#idNext").attr('disabled','disabled');
+              //  n++; //eliminar esta línea
+            }else{
+                m=tempo;
+                salto = $("#"+n+"salto"+m).val();
+                if(salto=="0"){
+                    n++;
+                }else{
+                    b=n;                    
+                    n=salto;
+                    $("#back"+n).val(b);
+                }
+            }
+        }
+    }else{
+                         n++;    
+    }
+
+
                                        
 
             }
@@ -240,6 +274,25 @@
             }else{
                 validado=true;
             }
+        }else{
+            if($("#type"+n).val()=="3"){
+            var tempo= $('input:checkbox[data-name=opcion'+n+']:checked');
+            var dato=tempo;
+            
+            tempo= $(tempo).data("salto");
+            
+            if(dato.val() == null){
+             swal({
+                title:"Información",
+                text: "Marque una de las opciones",
+                icon: "info",
+                //confirmButtonColor: "#DD6B55",
+                closeOnConfirm: true
+            }); 
+            }else{
+            validado=true;
+        }
+        }
         }
     }
 
