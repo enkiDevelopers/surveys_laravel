@@ -19,7 +19,7 @@
                 	<img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="200px" style="max-height: 200px;min-height: 200px" onerror="this.src='/img/iconos/default.png'">
             	</center>
             </div>
-            <div class="col-md-8 col-desc" style="margin-top: -14%; margin-bottom: 7%; margin-left: 257px;">
+            <div class="col-md-8 col-desc" style="margin-top: -12%; margin-bottom: 7%; margin-left: 257px;">
                 <textarea rows="5" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción" style="overflow-y: auto;">{{$descripcion}}</textarea>
             </div>
         </div>
