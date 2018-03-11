@@ -10,7 +10,14 @@ function imagen(){
          imageType = /image.*/;
 
          if (!file.type.match(imageType))
-          return;
+         {
+           swal({
+              title: "Su archivo no es una imagen",
+              type: "error",
+               });
+
+               return;
+         }
          var reader = new FileReader();
          reader.onload = fileOnload;
          reader.readAsDataURL(file);
