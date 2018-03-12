@@ -159,9 +159,9 @@
 
 
         <div class="col-md-12" id="divid" style="overflow:auto;">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
-                  <tr>
+                  <tr class="info">
                     <th>Nombre Lista</th>
                     <th>Encuesta Asociada</th>
                     <th>Cargar Archivos</th>
@@ -174,6 +174,7 @@
                 </thead>
                 <tbody id="tabla">
                   <?php 
+                    $hoy = date("Y-m-d h:i:s");
                     foreach ($listas as $lista) {
                           if($lista->carga==1){
                             if($lista->usado== 0){
@@ -246,9 +247,21 @@
                           </a>
                       </th>
                       <th>
+                      <?php
+                        if($hoy<=$lista->fechat){
+                      ?>
+                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled >
+                              <span class="glyphicon glyphicon-plus"></span>
+                          </a>
+                      <?php   
+                        }else{
+                      ?>
                           <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
                               <span class="glyphicon glyphicon-plus"></span>
                           </a>
+                      <?php
+                        }
+                      ?>
                       </th>
                       <th>
                           <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
