@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\usuarios;
 use App\ctlCampus;
 use App\ctlRegions;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class userController extends Controller
 {
@@ -66,14 +68,87 @@ class userController extends Controller
           $newUser->apMaterno = $aMaterno;
           $newUser->email=$correo;
           $newUser->addBy=$id;
-          $newUser->password = password_hash($pass, PASSWORD_BCRYPT);
+          $newUser->password =  Crypt::encryptString($pass);
           $newUser->type = 4;
           $newUser->save();
 
-            return "ok";
+  return response()->json(array('sms'=>'usuario registrado correctamente'));
 
               }
 
+
+public function deleteAdmin(Request $request)
+{
+
+  $id = $request->id;
+
+
+  usuarios::destroy($id);
+  return response()->json(array('sms'=>'usuario eliminado Correctamente'));
+}
+
+public function saveDirective(Request $request)
+{
+
+    $nombre = $request->nombre;
+    $aPaterno =$request->aPaterno;
+    $aMaterno = $request->aMaterno;
+    $correo = $request->correo;
+    $id = $request->addby;
+    $tipo = $request->tipos;
+
+    $region  = $request->regiones;
+    if($region == 'E')
+    {
+      $region = null;
+    }
+    $campus = $request->campus;
+    if($campus == 'E')
+    {
+      $campus = null;
+    }
+
+
+    $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    $longitudCadena=strlen($cadena);
+    $pass = "";
+    $longitudPass=8;
+    for($i=1 ; $i<=$longitudPass ; $i++){
+      $pos=rand(0,$longitudCadena-1);
+      $pass .= substr($cadena,$pos,1);
+    }
+
+    $newDir = new usuarios;
+    $newDir->nombre = $nombre;
+    $newDir->apPaterno = $aPaterno;
+    $newDir->apMaterno = $aMaterno;
+    $newDir->email=$correo;
+    $newDir->addBy=$id;
+    $newDir->password =  Crypt::encryptString($pass);
+    $newDir->type = $tipo;
+    $newDir->idRegion = $region;
+    $newDir->idCampus= $campus;
+    $newDir->save();
+
+    return response()->json(array('sms'=>'usuario registrado correctamente'));
+
+}
+
+function decrypt(Request $request)
+{
+  $id= $request->id;
+  $usuario = usuarios::find($id);
+  $pass = $usuario->password;
+try {
+  $dpass = Crypt::decryptString($pass);
+
+  return response()->json(array('sms'=> $dpass));
+} catch (Exception $e) {
+return response()->json(array('error'=> $e));
+}
+
+
+}
 
 
 }

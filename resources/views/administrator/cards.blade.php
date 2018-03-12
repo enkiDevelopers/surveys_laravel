@@ -18,13 +18,7 @@ if($publicacion->creador == $id)
 
     >
     <div id="nombre">
-          <div id="ver">
-            <div  id="title">
 
-        <?php echo $publicacion->tituloEncuesta;  ?></h5>
-
-            </div>
-            </div>
   <div class="pull-right survey-status survey-status__active">&nbsp</div>
         <a id="btn_prevPub" target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                             <span class="glyphicon glyphicon-eye-open ic"></span>
@@ -39,7 +33,13 @@ if($publicacion->creador == $id)
   <span class="glyphicon glyphicon-edit ic"></span>
   </a>
 
+  <div id="ver">
+    <div  id="title">
 
+<?php echo $publicacion->tituloEncuesta;  ?></h5>
+
+    </div>
+    </div>
     </div>
 
     </div>
@@ -88,20 +88,20 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 
     ">
     <div id="nombre">
-          <div id="ver">
-            <div  id="title">
 
-        <?php echo $publicacion->tituloEncuesta;  ?></h5>
-
-            </div>
-            </div>
             <div class="pull-right survey-status survey-status__active">&nbsp</div>
         <a id="btn_prevPub" target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                             <span class="glyphicon glyphicon-eye-open ic"></span>
                           </a>
 
 
+                          <div id="ver">
+                            <div  id="title">
 
+                        <?php echo $publicacion->tituloEncuesta;  ?></h5>
+
+                            </div>
+                            </div>
 
 
 
@@ -134,19 +134,19 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 
     ">
     <div id="nombre">
-          <div id="ver">
-            <div  id="title">
 
-        <?php echo $publicacion->tituloEncuesta;  ?></h5>
-
-            </div>
-            </div>
             <div class="pull-right survey-status survey-status__finished">&nbsp</div>
         <a id="btn_prevPub" target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
                             <span class="glyphicon glyphicon-eye-open ic"></span>
                           </a>
 
+                          <div id="ver">
+                            <div  id="title">
 
+                        <?php echo $publicacion->tituloEncuesta;  ?></h5>
+
+                            </div>
+                            </div>
 
 
 

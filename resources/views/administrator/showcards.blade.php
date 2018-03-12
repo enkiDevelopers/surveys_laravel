@@ -16,13 +16,7 @@
 
      >
     <div id="nombre">
-          <div id="ver">
-            <div  id="title">
 
-          <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
-
-            </div>
-            </div>
 
     <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar"
        id="btn_dup">
@@ -50,6 +44,13 @@
     <span class="glyphicon glyphicon-send ic"></span>
     </a>
 
+    <div id="ver">
+      <div  id="title">
+
+    <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
+
+      </div>
+      </div>
 
     </div>
 
@@ -126,17 +127,9 @@
     } else {
     echo "background-image: url('/img/iconos/default.png');";
     }
-    ?>
-
-    >
+    ?>" >
     <div id="nombre">
-          <div id="ver">
-            <div  id="title">
 
-          <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
-
-            </div>
-            </div>
             <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar"
                id="btn_dup">
               <span class="glyphicon glyphicon-duplicate ic"></span>
@@ -148,7 +141,7 @@
 
         <a disabled class="btn btn-default" data-toggle="tooltip" data-placement="top" id="btn_delete"
                       title="Eliminar">
-                        <span class="glyphicon glyphicon-trash"></span>
+                        <span class="glyphicon glyphicon-trash ic"></span>
                     </a>
                     <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}" class="btn btn-default" target="_blank"
                     id="btn_prev" title="Vista previa">
@@ -159,6 +152,14 @@
     <a  class="popup-link btn btn-default"  id="btn_pub" title="Publicar" disabled >
                       <span class="glyphicon glyphicon-send ic"></span>
                   </a>
+
+                  <div id="ver">
+                    <div  id="title">
+
+                  <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
+
+                    </div>
+                    </div>
 
     </div>
 
@@ -184,15 +185,9 @@
    } else {
    echo "background-image: url('/img/iconos/default.png');";
    }
-   ?>>
+   ?>">
     <div id="nombre">
-          <div id="ver">
-            <div  id="title">
 
-          <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
-
-            </div>
-            </div>
             <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar"
                id="btn_dup">
               <span class="glyphicon glyphicon-duplicate ic"></span>
@@ -217,6 +212,14 @@
                       <span class="glyphicon glyphicon-send ic"></span>
                   </a>
 
+
+                  <div id="ver">
+                    <div  id="title">
+
+                  <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
+
+                    </div>
+                    </div>
     </div>
 
     </div>

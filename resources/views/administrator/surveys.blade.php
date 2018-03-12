@@ -47,17 +47,19 @@
 <table id="hTable">
 <tr>
   <th colspan="7">
-    <h3><b>  Plantillas </b> </h3>
+    <h3><b> <div id="titP1">
+
+   Plantillas  </div> </b> </h3>
   </th>
 
 
 </tr>
   <tr>
-<td>  <b>  Eliminar&nbsp&nbsp<span class="glyphicon glyphicon-trash"></span></b>       </td>
-<td><b>  Duplicar&nbsp&nbsp<span class="glyphicon glyphicon-duplicate"></span></b>            </td>
-<td><b>  Publicar&nbsp&nbsp<span class="glyphicon glyphicon-send"></span></b> </td>
-<td> <b>  Editar&nbsp&nbsp<span class="glyphicon glyphicon-edit" ></span></b>           </td>
-<td>  <b>Ver&nbsp&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>    </td>
+<td>   </td>
+<td>   </td>
+<td>   </td>
+<td>   </td>
+<td>    </td>
 <td>   <input type="checkbox"
   checked data-toggle="toggle" data-on="Ocultar"
   data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
@@ -74,6 +76,9 @@
                       </div>
 
 <!--##################################  inicio boton de añadir plantilla#########################################################################-->
+<div id="btnT">
+
+
              <div id="btn-añadir" class="col-md-12">
                    <a data-toggle="modal" data-target="#ModalTitle" >
 
@@ -85,7 +90,7 @@
                    </div>
                  </a>
               </div>
-
+</div>
 
 <!--Termina boton añadir plantila de encuesta -->
 
@@ -103,22 +108,26 @@
                       <table id="hTable2">
                         <tr>
                           <th colspan="7">
-                             <h3><b>  Encuestas publicadas </b> </h3>
+
+                              <h3><b> <div id="titP2"> Encuestas publicadas</div> </b> </h3>
+
                           </th>
 
                         </tr>
 
                         <tr>
 
-                        <td><img id="btnT" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>  </td>
+                        <td><img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>  </td>
 
-                        <td>  <img id="btnF" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>      </td>
+                        <td>  <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>      </td>
 
-                        <td> <b>Inactiva&nbsp<div class="survey-status survey-status__finished" style="display: inline-block;"> </b> </td>
+                        <td>  </td>
 
-                        <td> <b>  Activa  &nbsp<div class="survey-status survey-status__active" style="display: inline-block;"></b></td>
+                        <td></td>
+
+
                         <td>
-                              <b>Ver&nbsp<span class="glyphicon glyphicon-eye-open"></span></b>
+
                         </td>
 
 
@@ -201,15 +210,6 @@
                                         <img id="imgSalida" src="/img/iconos/default.png"/>
 
                                         </div>
-
-
-<!--
-                                <div id="previewcanvascontainer">
-                                <canvas id="previewcanvas" >
-                                </canvas>
-                                </div>
--->
-
                               </td>
                         </tr>
                     </table>

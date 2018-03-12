@@ -25,7 +25,14 @@ Route::post('/uploadimage','AdministratorController@uploadImage');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::post('/administrator/addAdmin', 'userController@save');
+Route::post('/administrator/deleteAdmin', 'userController@deleteAdmin');
+Route::post('/administrator/saveDirective', 'userController@saveDirective');
+Route::get('/administrator/decrypt', 'userController@decrypt');
+
+
 Route::get('/administrator', 'iniciarSesion@validar')->name('adminHome');
 
 Route::get('/administrator/surveys/', 'surveyController@show_cards');

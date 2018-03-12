@@ -20,6 +20,37 @@
   <script src="/js/moment.min.js"></script>
   <script src="/js/datepicker.js"></script>
   <script src="/js/reporte.js"></script>
+
+<style>
+@media(max-width: 300px)
+{
+  #logoU
+  {
+    width: 150px;
+    position: absolute;
+    top: 10px;
+    left: 40%;
+margin-left: -50px;
+  }
+  #UVM_Movil
+  {
+    margin-top: 73px;
+  }
+  #menu
+  {
+    background-color: red;
+    width: 20%;
+    height: 400px;
+  }
+  #hamburger
+  {
+    font-size: 10px;
+
+  }
+}
+</style>
+
+
   </head>
   <body>
 
@@ -59,12 +90,12 @@
         <ul class="list-inline components">
           <center>
             <li id="UVM_Movil">
-              <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;" >
+              <img src="/img/logos/UVM_Logo_Blanco.png" alt="" width="210px;" style="margin-top: 10px;" id="logoU">
             </li>
           </center>
           <li id="menu" style="float: left;background-color: darkred;height: 81px;width: 17%;margin-top: -74px;">
-            <a href="#" style="text-align: center;color: white">
-              <i class="glyphicon glyphicon-menu-hamburger"></i>
+            <a href="#" style="text-align: center;color: white" id="hamburger">
+              <i  class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
           </li>
           <li id="rol" style="float: right;background: linear-gradient(to bottom right, #0f1973, #0d47a1);height: 81px;width: 17%;margin-top: -74px;">
