@@ -71,6 +71,15 @@ hr{
   margin: 2px 9px 0px 14px;
 }
 
+.titleContainer{
+	left:27%;
+}
+.header-template{
+	left: 25%;
+	display: inline-grid;
+	top: 100px; 
+}
+
 @media screen and (max-width: 1220px) {
 	.col-desc{
 	float: right;
@@ -163,13 +172,13 @@ hr{
 	}
 	.btn-editTitle {
 		margin-left: 10%;
-		width: 57px;
+		width: 58px !important;
 		height: 60px;
 		font-size: 35px;
 	}
 	.btn-preview{
 		margin-left: 35%;
-		width: 57px;
+		width: 58px !important;
 		height: 60px;
 		font-size: 35px;
 	}
@@ -242,5 +251,15 @@ hr{
    .icon-mobile{
      float: none;
      margin: 0px;
+   }
+
+   .titleContainer{
+   		left: 0px;
+   }
+   .header-template{
+    	left: 2%;
+    	display: initial;
+   		top: 0px;
+   		right: 10%; 
    }
 }

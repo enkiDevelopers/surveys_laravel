@@ -9,8 +9,8 @@
 .cards {
   border-radius: 25px;
   cursor: pointer;
-  height: 12em;
-  padding: 1.5em;
+  height: 11em;
+  padding: 1.2em;
   margin-top:9%;
   position: relative;
   -webkit-transition: height 0.4s, -webkit-box-shadow 0.5s;
