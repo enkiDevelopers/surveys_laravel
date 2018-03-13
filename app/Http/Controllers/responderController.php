@@ -145,10 +145,7 @@ class responderController extends Controller
         return back();//
 
   }
-  public function guardarencuesta(Request $request){
-    if(is_null($request->Input('idencuesta'))){
-
-    }else{
+  public function guardarencuesta(Request $request){   
       $idEncuesta=$request->Input('idencuesta');
       $idencuestado=$request->Input('idencuestado');
       $canal =$request->session()->get('canal');
@@ -204,7 +201,7 @@ class responderController extends Controller
     }else{
       //echo "Ya habías contestado";
     }
-  }
+
         Auth::logout();
         Session::flush();
       return view("administrator.encuestacontestada2");
