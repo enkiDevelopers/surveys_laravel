@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}"> 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta http-equiv="refresh" content="5;URL=http://www.uvmmejoraporti.mx/surveyeds/login/sistema"> 
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link rel="stylesheet" href="/css/sweetalert.min.css">

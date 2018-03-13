@@ -110,7 +110,7 @@
                 $opciones=$cada["options"]; 
                 foreach ($opciones as $option) {
         ?>
-                <div class="col-sm-6 col-lg-6 col-xs-6">
+                <div class="col-sm-12 col-lg-12 col-xs-12">
                     <input type="radio"  name="<?php echo $dato->id ?>" data-name="opcion<?php echo $i?>" id="opcion<?php echo $i?>" data-clave="opc<?php echo $i?>" data-salto="<?php echo $option->id ?>" value="<?php echo $option->name ?>">
                     <label for="Choice1" class="text-black-body"><?php echo $option->name?></label><input id="<?php echo $i?>salto<?php echo $option->id?>" type="hidden" name="salto" value="<?php echo $option->salto?>">           
                     <input type="hidden" class="form-control" >
