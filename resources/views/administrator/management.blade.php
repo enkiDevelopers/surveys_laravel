@@ -2,55 +2,76 @@
 @section('content')
 
 <link rel="stylesheet" href="/css/normalize.css">
-<link rel="stylesheet" href="/css/style.css">
-
-
+<link href="/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="/js/bootstrap-toggle.min.js"></script>
+<link rel="stylesheet" href="/css/management.css" />
 <div class="procesando" id="procesando" >
 </div>
 
-<div class=" container">
-  <div class="row">
+<div id="containertable">
+  <div class="row" id="tablaR">
       <div class="col-sm-12">
-        <div class="header ">Administradores registrados
-  <a  class="btn btn-primary" data-toggle="modal" data-target="#administrador">Añadir</a>
-        </div>
+        <div class="col-md-12 text-center" id="titulo">
+       <div class="col-md-6">
+       Administradores registrados
+       </div>
+       <div class="col-md-2">
+       <a  class="btn btn-primary" data-toggle="modal" data-target="#administrador">Añadir</a>
+       </div>
+       <div class="col-md-2">
+         <input type="checkbox"
+           checked data-toggle="toggle" data-on="Ocultar"
+           data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+              id="btnO" onchange="ocultar();"
+           />
+         </div>
+       </div>
 
-         <table cellspacing="0">
-            <tr>
-               <th class="text-center">Imagen</th>
-               <th class="text-center">Nombre</th>
-               <th class="text-center">E-mail</th>
-               <th class="text-center" width="230">Acciones</th>
-            </tr>
+        <table class="table table-fixed" id="bodyTablaAd">
+                 <thead>
+                               <tr>
+                     <th class="col-xs-3 text-center">Imagen</th>
+                     <th class="col-xs-3 text-center">Nombre(s)</th>
+                     <th class="col-xs-3 text-center">E-mail</th>
+                     <th class="col-xs-3 text-center">Acciones</th>
+                   </tr>
+                 </thead>
 
-            <?php foreach ($usuarios as $usuario) { ?>
-              <tr>
-                  <td class="text-center"><img src="/img/avatar/{{$usuario->imagenPerfil}}"></td>
-                 <td class="text-center">{{$usuario->nombre}}</td>
-                 <td class="text-center"> {{$usuario->email}}</td>
-                <td class="text-center" width="230">
-                  <center>
-<div class="col-md-6">
-  <a onclick="eliminar({{$usuario->idUsuario}});">
- <span class="glyphicon glyphicon-remove"></span>
- </a>
-</div>
+                 <tbody>
+                   <?php foreach ($usuarios as $usuario) { ?>
+                 <tr>
+                 <td class="col-xs-3 text-center">
+                   <img src="/img/avatar/{{$usuario->imagenPerfil}}" class="Iperfil" >
+                 </td>
+                 <td class="col-xs-3 text-center">{{$usuario->nombre}}</td>
+                 <td class="col-xs-3 text-center">
+                   <div  class="email">
+                   {{$usuario->email}}
+                 </div>
+                 </td>
+                 <td class="col-xs-3 text-center">
 
-<div class="col-md-6">
-  <a onclick="decrypt({{$usuario->idUsuario}})">
-  <span class="glyphicon glyphicon-lock"></span>
-  </a>
+                   <div class="col-md-6" id="btnEl">
+                     <a onclick="eliminar({{$usuario->idUsuario}});">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                   </div>
+                   <div class="col-md-6" id="btnDec">
+                     <a onclick="decrypt({{$usuario->idUsuario}})" >
+                     <span class="glyphicon glyphicon-lock"></span>
+                     </a>
+                   </div>
+</td>
 
-</div>
-
-               </center>
-      </td>
-              </tr>
+                                 </tr>
+                             <?php  } ?>
 
 
 
-          <?php  } ?>
-         </table>
+                 </tbody>
+
+               </table>
+
       </div>
     </div>
 
@@ -59,54 +80,143 @@
 
 
 
-
-    <div class="row">
+    <div class="row"  id="tablaR">
         <div class="col-sm-12">
-          <div class="header ">Directivos registrados
-            <a  class="btn btn-primary" data-toggle="modal" data-target="#directivos">Añadir</a>
-          </div>
+          <div class="col-md-12 text-center" id="titulo">
+         <div class="col-md-6">
+            Directivos registrados
+         </div>
+         <div class="col-md-2">
+         <a  class="btn btn-primary" data-toggle="modal" data-target="#directivos">Añadir</a>
+         </div>
+         <div class="col-md-2">
+           <input type="checkbox"
+             checked data-toggle="toggle" data-on="Ocultar"
+             data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+                id="btnO" onchange="ocultar2();"
+             />
+           </div>
+         </div>
 
-           <table cellspacing="0">
-              <tr>
-                 <th class="text-center">Imagen</th>
-                 <th class="text-center">Nombre</th>
-                 <th class="text-center">E-mail</th>
-                 <th class="text-center" width="230">Acciones</th>
-              </tr>
+          <table class="table table-fixed" id="bodyTablaDir">
+                   <thead>
+                                 <tr>
+                       <th class="col-xs-3 text-center">Imagen</th>
+                       <th class="col-xs-2 text-center">Nombre(s)</th>
+                       <th class="col-xs-3 text-center">E-mail</th>
+                       <th class="col-xs-2 text-center">Tipo</th>
+                       <th class="col-xs-2 text-center">Acciones</th>
 
-              <?php foreach ($directivos as $directivo) { ?>
-                <tr>
-                    <td class="text-center"><img src="/img/avatar/{{$directivo->imagenPerfil}}"></td>
-                   <td class="text-center">{{$directivo->nombre}}</td>
-                   <td class="text-center"> {{$directivo->email}}</td>
-                  <td class="text-center" width="230">
-                    <center>
+                     </tr>
+                   </thead>
 
-                      <div class="col-md-6">
-                        <a onclick="decrypt({{$directivo->idUsuario}});">
-                        <span class="glyphicon glyphicon-lock"></span>
-                        </a>
+                   <tbody>
+                     <?php foreach ($directivos as $directivo) { ?>
+                       <tr>
+                          <td class="col-xs-3 text-center"><img src="/img/avatar/{{$directivo->imagenPerfil}}" class="Iperfil"></td>
+                          <td class="col-xs-2 text-center">{{$directivo->nombre}}</td>
+                          <td class="col-xs-3 text-center" >
+                            <div  class="email">
+                              {{$directivo->email}}
+                            </div>
 
-<div class="col-md-6">
-  <a onclick="eliminar({{$directivo->idUsuario}});">
- <span class="glyphicon glyphicon-remove"></span>
- </a>
+                          </td>
+                          <td class="col-xs-2 text-center">
+                            <div  class="tipo">
+                             Directivo corporativo
+                           </div>
+                          </td>
+                         <td class="col-xs-2 text-center">
+
+           <div class="col-md-6" id="btnEl">
+           <a onclick="eliminar({{$directivo->idUsuario}});">
+           <span class="glyphicon glyphicon-remove"></span>
+           </a>
+           </div>
+
+           <div class="col-md-6" id="btnDec">
+           <a onclick="decrypt({{$directivo->idUsuario}})">
+           <span class="glyphicon glyphicon-lock"></span>
+           </a>
+
+           </div>
+
+               </td>
+                       </tr>
+
+                   <?php  } ?>
+                   <?php foreach ($dReg as $directivo) { ?>
+                     <tr>
+                      <td class="col-xs-3 text-center"><img src="/img/avatar/{{$directivo->imagenPerfil}}" class="Iperfil"></td>
+                        <td class="col-xs-2 text-center">{{$directivo->nombre}}</td>
+                        <td class="col-xs-3 text-center text-center">
+<div  class="email">
+                                  {{$directivo->email}}
 </div>
+                        </td>
+                          <td class="col-xs-2 text-center">
+                            <div  class="tipo">
+                            Directivo regional  <br />
+                            {{$directivo->regions_name}}
+                          </div>
+                          </td>
+                       <td class="col-xs-2 text-center">
+                         <center>
+                   <div class="col-md-6" id="btnEl">
+                   <a onclick="eliminar({{$directivo->idUsuario}});">
+                   <span class="glyphicon glyphicon-remove"></span>
+                   </a>
+                   </div>
+
+                   <div class="col-md-6" id="btnDec">
+                   <a onclick="decrypt({{$directivo->idUsuario}})">
+                   <span class="glyphicon glyphicon-lock"></span>
+                   </a>
+                   </div>
+                      </center>
+                   </td>
+                     </tr>
+
+                   <?php  } ?>
 
 
+                   <?php foreach ($dCamp as $directivo) { ?>
+                     <tr>
+                         <td class="col-xs-3 text-center"><img src="/img/avatar/{{$directivo->imagenPerfil}}" class="Iperfil"></td>
+                        <td class="col-xs-2 text-center">{{$directivo->nombre}}</td>
+                        <td class="col-xs-3 text-center">
+                          <div  class="email">
+                                    {{$directivo->email}}
+                                  </div>
+                        </td>
+                        <td class="col-xs-2 text-center">
+                          <div  class="tipo">
+                           Directivo Campus <br />
+                           Campus: {{$directivo->campus_name}}
+                         </div>
+                        </td>
+                       <td class="col-xs-2 text-center">
 
+                         <center>
+                   <div class="col-md-6" id="btnEl">
+                   <a onclick="eliminar({{$directivo->idUsuario}});">
+                   <span class="glyphicon glyphicon-remove"></span>
+                   </a>
+                   </div>
 
+                   <div class="col-md-6" id="btnDec">
+                   <a onclick="decrypt({{$directivo->idUsuario}})">
+                   <span class="glyphicon glyphicon-lock"></span>
+                   </a>
 
+                   </div>
+                      </center>
+                   </td>
+                     </tr>
 
-                 </div>
-                 </center>
-        </td>
-                </tr>
-
-
-
-            <?php  } ?>
-           </table>
+                   <?php  } ?>
+                   </tbody>
+                 </table>
         </div>
       </div>
 
@@ -245,8 +355,6 @@
 
 </div>
 
-
-
 <script>
 
     window.onload = function() {
@@ -313,7 +421,7 @@
       var correo = $("#dCorreo").val();
       var tipos = $("#tipo").val();
       var regiones = $("#regiones").val();
-      var campus = $("campus").val();
+      var campus = $("#campus").val();
 
       $.ajax({
       url: "/administrator/saveDirective",
@@ -494,6 +602,14 @@ function decrypt(id)
 
 }
 
+function ocultar(){
+  $('#bodyTablaAd').slideToggle("fast");
+
+}
+function ocultar2(){
+  $('#bodyTablaDir').slideToggle("fast");
+
+}
 </script>
 
 @endsection

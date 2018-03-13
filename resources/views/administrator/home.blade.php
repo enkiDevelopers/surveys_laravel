@@ -64,7 +64,7 @@
 <br />
 <br />
 
-      <img id="imgSalida" src="/img/avatar/{{$info->imagenPerfil}}"/>
+      <img id="imgSalida2" src="/img/avatar/{{$info->imagenPerfil}}"/>
       <br />
       <br />
 
@@ -83,7 +83,7 @@
 <script>
   function limpiar(){
         document.getElementById("actualizar").reset();
-        $('#imgSalida').attr("src","/img/avatar/{{$info->imagenPerfil}}");
+        $('#imgSalida2').attr("src","/img/avatar/{{$info->imagenPerfil}}");
     }
   imagen();
 </script>

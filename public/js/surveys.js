@@ -416,7 +416,6 @@ swal({
 function ocultar()
 {
 //$("#pBody").toggle();
-    $("#cambiar").toggleClass('glyphicon-chevron-up glyphicon-chevron-down')
 $('#pBody').slideToggle("slow");
 }
 

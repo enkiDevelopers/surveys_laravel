@@ -16,6 +16,18 @@ max-height: 80%;
 border-radius: 5px;
 }
 
+#imgSalida2
+{
+margin-left: 10%;
+margin-right: 10%;
+margin-top: 10%;
+
+max-width: 200px;
+max-height: 200px;
+
+border-radius: 5px;
+}
+
 #previewcanvascontainer, #previewcanvas
 {
   margin-left: 10%;
@@ -415,8 +427,7 @@ color: #fff;
 {
   color: white;
   position: relative;
-  margin-top: 20px;
-  display: inline-grid;
+  margin-top: 12px;
   margin-left: 60px;
   font-size: 23px;
   display: inline-block;
@@ -435,9 +446,10 @@ color: #fff;
 
 }
 .nombre{
-height: 40px;
+height: auto;
 text-align:right;
 overflow: hidden;
+margin-left: 15%;
 }
 .correo
 {
@@ -485,8 +497,6 @@ overflow: hidden;
 {
 width: 100%
 }
-
-
 
 #hTable
 {

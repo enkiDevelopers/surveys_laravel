@@ -14,12 +14,22 @@ class userController extends Controller
     {
         $id = $request->session()->get('id');
         $usuarios = usuarios::where('addBy', $id)->where("type",4)->get();
-        $directivos = usuarios::where('addBy', $id)->where("type", "!=", 4)->get();
+
+        $directivos = usuarios::where('addBy', $id)->where("type", "=", 1)
+          ->get();
+
+        $dReg = usuarios::where('addBy', $id)->where("type", "=", 2)
+        ->join('ctlRegions','usuarios.idRegion','=','ctlRegions.regions_id')
+        ->get();
+
+        $dCamp = usuarios::where('addBy', $id)->where("type", "=", 3)
+        ->join('ctlCampus','usuarios.idCampus', "=", 'ctlCampus.campus_id')
+        ->get();
 
         $campus = ctlCampus::all();
         $regiones = ctlRegions::all();
 
-        return view('administrator.management',compact('usuarios', 'campus', 'regiones', 'id', 'directivos'));
+        return view('administrator.management',compact('usuarios', 'campus', 'regiones', 'id', 'directivos', 'dReg','dCamp'));
     }
 
     function generaPass(){
@@ -79,11 +89,9 @@ class userController extends Controller
 
 public function deleteAdmin(Request $request)
 {
-
   $id = $request->id;
-
-
-  usuarios::destroy($id);
+    $delus =  usuarios::find($id);
+    $delus->delete();
   return response()->json(array('sms'=>'usuario eliminado Correctamente'));
 }
 

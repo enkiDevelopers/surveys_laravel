@@ -1,0 +1,101 @@
+#containertable
+{
+margin-left: 260px;
+width: 80%;
+margin-top: 20px;
+}
+
+#titulo
+{
+  background-color: #215F8F;
+   color: white;
+   font-size: 1.5em;
+   padding: 1rem;
+   text-align: center;
+   text-transform: uppercase;
+   border-radius: 5px;
+   margin-bottom: 7px;
+}
+
+.Iperfil
+{
+  border-radius: 50%;
+    height: 60px;
+    width: 60px;
+
+}
+
+
+.table-fixed thead,
+.table-fixed tfoot{
+  width: 100%;
+}
+
+.table-fixed tbody {
+  height: 230px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed thead,
+.table-fixed tbody,
+.table-fixed tfoot,
+.table-fixed tr,
+.table-fixed td,
+.table-fixed th {
+  display: block;
+}
+.table-fixed thead > tr> th
+{
+  float: left;
+}
+.table-fixed tbody td,
+.table-fixed tfoot > tr> td{
+  float: left;
+height:  90px;
+
+}
+
+.email, .tipo{
+
+  word-break: break-all;
+text-align: center;
+width: 100%;
+}
+
+@media(max-width: 979px)
+{
+table
+{
+  font-size: 10px;
+}
+}
+
+@media(max-width: 767px)
+{
+  #containertable
+  {
+  margin-top: 100px;;
+  margin-left: 10px;
+  width: 100%;
+  }
+}
+
+
+@media(max-width: 392px)
+{
+  .table-fixed tbody td,
+  .table-fixed tfoot > tr> td{
+
+  height:  120px;
+  vertical-align: middle;
+text-align: center;
+  overflow: hidden;
+  }
+
+  .btnEl,.btnDec
+  {
+  margin-bottom: 20px;
+  font-size: 20px;
+  }
+}
