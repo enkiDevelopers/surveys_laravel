@@ -154,55 +154,60 @@ class responderController extends Controller
       $canal="mail";
     }
 
-    $preguntas=DB::table('questionsTemplates')
-                ->select('id','type')
-                ->where('templates_idTemplates','=',$idEncuesta)
-                ->get();
+    $yacontestado = DB::table('encuestados')
+                ->where('idencuesta','=',$idEncuesta)->where('idE','=',$idencuestado)->where('contestado','=',1)->count();
+    //echo $yacontestado;
+    if($yacontestado==0){
+      $preguntas=DB::table('questionsTemplates')
+                  ->select('id','type')
+                  ->where('templates_idTemplates','=',$idEncuesta)
+                  ->get();
 
-    foreach ($preguntas as $pregunta) {
-      $type=$pregunta->type;
-      if($type==3){
-       $nombrepregunta="datos".$pregunta->id;
-       if($request->Input($nombrepregunta)==""){
+      foreach ($preguntas as $pregunta) {
+        $type=$pregunta->type;
+        if($type==3){
+         $nombrepregunta="datos".$pregunta->id;
+         if($request->Input($nombrepregunta)==""){
 
-       }else{
-        foreach ($request->Input($nombrepregunta) as $value){ 
-            DB::table('respuestas')->insert(['respuesta' => $value,
-                      'type'=>$type, 
-                      'idEncuesta' => $idEncuesta, 
-                      'idEncuestado'=>$idencuestado,
-                      'idPreguntasEncuestas' => $pregunta->id]);
-          }
-        } 
-      }else{
-        $respuesta=$request->Input($pregunta->id);
-        if($respuesta==""){
-
+         }else{
+          foreach ($request->Input($nombrepregunta) as $value){ 
+              DB::table('respuestas')->insert(['respuesta' => $value,
+                        'type'=>$type, 
+                        'idEncuesta' => $idEncuesta, 
+                        'idEncuestado'=>$idencuestado,
+                        'idPreguntasEncuestas' => $pregunta->id]);
+            }
+          } 
         }else{
-        DB::table('respuestas')->insert(['respuesta' => $respuesta,
-                  'type'=>$type, 
-                  'idEncuesta' => $idEncuesta, 
-                  'idEncuestado'=>$idencuestado,
-                  'idPreguntasEncuestas' => $pregunta->id]);
-      }
-}
-    }
-    DB::table('encuestados')->where('idE',$idencuestado)->update([
-      'canal'=>$canal,
-      'contestado_fecha' => $factual,
-      'contestado'=>1]);
-    $idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
-    //return view("administrator.encuestacontestada");
-    //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
-      Auth::logout();
-      Session::flush();
-    return view("administrator.encuestacontestada2");
+          $respuesta=$request->Input($pregunta->id);
+          if($respuesta==""){
 
-    //return previous();
-    //return redirect()->back();
-    //return $this->regresar($idencuestado);
+          }else{
+          DB::table('respuestas')->insert(['respuesta' => $respuesta,
+                    'type'=>$type, 
+                    'idEncuesta' => $idEncuesta, 
+                    'idEncuestado'=>$idencuestado,
+                    'idPreguntasEncuestas' => $pregunta->id]);
+        }
+  }
+      }
+      DB::table('encuestados')->where('idE',$idencuestado)->update([
+        'canal'=>$canal,
+        'contestado_fecha' => $factual,
+        'contestado'=>1]);
+      //$idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
+      //return view("administrator.encuestacontestada");
+      //return redirect()->action('responderController@completo',$idmatricula[0]->matricula);
+  }else{
+    //echo "Ya habías contestado";
+  }
+        Auth::logout();
+        Session::flush();
+      return view("administrator.encuestacontestada2");
 
   }
+
+
   public function completo($matricula){
 //poner un 1 cuando venga del correo y un 0 cuando venga de la cuenta
     if($matricula==0){
