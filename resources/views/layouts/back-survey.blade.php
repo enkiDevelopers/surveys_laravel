@@ -71,27 +71,27 @@
         <ul class="list-unstyled components">
           <li>
             <p>
-            <span aria-hidden="true" style="font-size: 50px;float: right;color: white;height: 40px;border:5px solid white;    border-radius: 55px;padding-top: 1px;" id="closeContentMobile">&times;</span>
+            <span aria-hidden="true" id="closeContentMobile">&times;</span>
             </p>
           </li>
           <li id="home" >
             <a href="{{ url('/administrator/surveys')}}" >
-              <span>ENCUESTAS</span>
+              <span class="itemMenuMobile">ENCUESTAS</span>
             </a>
           </li>
           <li id="files">
             <a href="{{ url('/administrator/files') }}" >
-              <span>LISTAS</span>
+              <span class="itemMenuMobile">LISTAS</span>
             </a>
           </li>
           <li id="admin-list">
             <a href="{{ url('/administrator/management') }}">
-              <span>ADMINISTRADORES</span>
+              <span class="itemMenuMobile">ADMINISTRADORES</span>
             </a>
           </li>
           <li id="log-out__Content" class="exit">
             <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
-              <span>SALIR</span>
+              <span class="itemCloseMenuMobile">SALIR</span>
             </a>
           </li>     
         </ul>

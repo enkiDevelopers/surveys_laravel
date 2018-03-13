@@ -55,12 +55,8 @@
 
 </tr>
   <tr>
-<td>   </td>
-<td>   </td>
-<td>   </td>
-<td>   </td>
-<td>    </td>
-<td>   <input type="checkbox"
+
+<td class="btn-toggle-center">   <input type="checkbox"
   checked data-toggle="toggle" data-on="Ocultar"
   data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
      id="btnO" onchange="ocultar();"
@@ -131,7 +127,7 @@
                         </td>
 
 
-                        <td>   <input type="checkbox"
+                        <td class="btn-toggle-center">   <input type="checkbox"
                         checked data-toggle="toggle" data-on="Ocultar"
                         data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
                           id="btnOp" onchange="ocultar2();"
