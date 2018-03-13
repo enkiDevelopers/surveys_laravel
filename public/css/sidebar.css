@@ -251,7 +251,29 @@ a.article, a.article:hover {
 
 }
 
-
+.itemMenuMobile{
+    font-size: 22px;
+    color: white;
+    border-bottom: 3px solid white;
+    width: 100%;
+    height: 50px;
+    padding-top: 2%;
+}
+.itemCloseMenuMobile{
+    font-size: 22px;
+    padding-top: 2%;
+}
+#closeContentMobile{
+    font-size: 50px;
+    float: right;
+    color: white;
+    height: 40px;
+    border:5px solid white;
+    border-radius: 55px;padding-top: 1px;
+    position: absolute;
+    left: 90%;
+    top: -9px;
+}
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

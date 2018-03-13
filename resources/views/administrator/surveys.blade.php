@@ -46,27 +46,23 @@
         <div class="panel-heading fijado">
 <table id="hTable">
 <tr>
-  <th colspan="7">
+  <td >
     <h3><b> <div id="titP1">
-
    Plantillas  </div> </b> </h3>
-  </th>
+ </td>
+ <td><img id="tw"   width="40px" height="40px" style="visibility: hidden;"/>  </td>
 
+ <td>  <img  id="fb"   width="40px" height="40px" style="visibility: hidden;"/>      </td>
+
+  <td class="btn-toggle-center" style="text-align: right;">   <input type="checkbox"
+    checked data-toggle="toggle" data-on="Ocultar"
+    data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+       id="btnO" onchange="ocultar();"
+    >
+  </td>
 
 </tr>
-  <tr>
-<td>   </td>
-<td>   </td>
-<td>   </td>
-<td>   </td>
-<td>    </td>
-<td>   <input type="checkbox"
-  checked data-toggle="toggle" data-on="Ocultar"
-  data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
-     id="btnO" onchange="ocultar();"
-  >
-</td>
-  </tr>
+
 </table>
 
                 </div>
@@ -107,37 +103,19 @@
                     <div class="panel-heading"> <!-- INICIO ENCABEZADO PANEL -->
                       <table id="hTable2">
                         <tr>
-                          <th colspan="7">
+                          <td>
+                              <h3><b> <div id="titP2"> Encuestas</div> </b> </h3>
+                          </td>
+                          <td><img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>  </td>
 
-                              <h3><b> <div id="titP2"> Encuestas publicadas</div> </b> </h3>
-
-                          </th>
+                          <td>  <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>      </td>
+                          <td class="btn-toggle-center" style="text-align: right;">   <input type="checkbox"
+                          checked data-toggle="toggle" data-on="Ocultar"
+                          data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+                            id="btnOp" onchange="ocultar2();"
+                          > </td>
 
                         </tr>
-
-                        <tr>
-
-                        <td><img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>  </td>
-
-                        <td>  <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>      </td>
-
-                        <td>  </td>
-
-                        <td></td>
-
-
-                        <td>
-
-                        </td>
-
-
-                        <td>   <input type="checkbox"
-                        checked data-toggle="toggle" data-on="Ocultar"
-                        data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
-                          id="btnOp" onchange="ocultar2();"
-                        > </td>
-                        </tr>
-
                       </table>
                         </div>
                         <!-- fin ENCABEZADO PANEL -->
