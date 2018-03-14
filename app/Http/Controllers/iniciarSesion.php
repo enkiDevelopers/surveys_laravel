@@ -15,7 +15,7 @@ public function ldap(Request $request)
   $email = $request->email;
   $pass = $request->password;
 $isValid = usuarios::where('email',$email)->where('type','4')->first();
-  if($email == "administrador@administrador" and $pass=="12345678")
+  if($email == "admin@admin.com" and $pass=="12345678")
   {
     $id=$isValid->idUsuario;
     Session::put('id', $id);
@@ -124,7 +124,7 @@ public function validar2(Request $request)
 
 
 public function lencuesta(Request $request){
-      
+
       $cuenta = $request->cuenta;
       $ruta   =  $request->ruta;
       $isValid = DB::table('encuestados')->where('noCuenta','=',$cuenta)->first();
