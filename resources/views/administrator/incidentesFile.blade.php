@@ -1,8 +1,8 @@
 <!DOCTYPE html>   
 <html lang="en">   
-<head>   
+<head>    
 <meta charset="utf-8">   
-<title>Final Output</title>   
+<title>Incidencias Disponibles</title>   
 <meta name="description" content="Bootstrap.">  
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -20,7 +20,6 @@
 
               <th>Nombre</th>
               <th>email1</th>
-              <th>Comentario</th>
               <th>Campus</th>
   <!--            <th>apPaterno</th>
               <th>apMaterno</th>
@@ -36,7 +35,6 @@
                     <tr>
                         <td><?php echo $info->nombreGeneral   ?>   </td>
                         <td><?php echo $info->email1          ?>   </td>
-                        <td><?php echo $info->comentario      ?>   </td>
                         <td><?php echo $info->campus          ?>   </td>
 
                     </tr>      

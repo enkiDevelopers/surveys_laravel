@@ -2,7 +2,7 @@
 <html lang="en">   
 <head>   
 <meta charset="utf-8">   
-<title>Final Output</title>   
+<title>Registros disponibles</title>   
 <meta name="description" content="Bootstrap.">  
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -41,7 +41,7 @@
                 }
 
             ?> 
- 
+  
         </tbody>  
       </table>  
     </div>

@@ -1,4 +1,5 @@
 var cargar=0;
+var incidentecargar=0;
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,8 +120,9 @@ $(window).load(function() {
                         type: "info",
                         confirmButtonText: 'Continuar',
                      });
-                    $("#datain").css('display','none');
-                     cargar=0
+                     cargar=0;
+                     $("#datain").css('display','none');
+
                   }
                   //console.log(response);
                 },
@@ -131,7 +133,40 @@ $(window).load(function() {
                 }
             });
             }
+          if(incidentecargar==1){
+              $.ajax({
+                dataType : 'json',
+                type : 'post',
+                url : '/checarjobs',
+                data : {"id": 0},
+                async:true,
+                cache:false,
+                beforeSend: function () { 
 
+                },
+                success : function(response){
+                  if(response==0){
+
+                  }else{
+                     swal({
+                        title: "Información",
+                        text: "Su lista ha sido procesada.",
+                        type: "info",
+                        confirmButtonText: 'Continuar',
+                     });
+                    incidentecargar=0;
+                              $("#datain").css('display','none');
+
+                  }
+                  //console.log(response);
+                },
+                error : function(error) {
+                  console.log(error);
+                  $("#procesando").hide();
+
+                }
+            });
+            }
             $("#divid").load(" #divid");
                     }, 10000);
           
@@ -179,18 +214,21 @@ $(function(){
 
               },
               success : function(response){
+                $("#datain").css('display','none');
 
               $("#divid").load(" #divid");
 
                 $('#nombre').val('');
                 $('#archivo').val('');
                 $("#procesando").hide();
-     
+                  $("#datain").css('display','inline');
+
+                incidentecargar=1;
 
               },
               error : function(error) {
                 console.log(error);
-                                $("#procesando").hide();
+              $("#procesando").hide();
 
               }
 

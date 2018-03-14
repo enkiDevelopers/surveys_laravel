@@ -116,15 +116,16 @@
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                  <input type="hidden" id="idlista" name="idlista" value="">
         
-          <hr>
-            <input type="submit" class="btn btn-default" value="Subir archivos"  />
+              <div class="modal-footer">
+
+                <input type="submit" class="btn btn-default" value="Subir archivos"  />
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              </div>
         </form>
 
  
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
+
     </div>
 
   </div>
@@ -174,7 +175,7 @@
                 </thead>
                 <tbody id="tabla">
                   <?php 
-                    $hoy = date("Y-m-d h:i:s");
+                    $hoy = date("Y-m-d H:i:s");
                     foreach ($listas as $lista) {
                           if($lista->carga==1){
                             if($lista->usado== 0){
@@ -248,7 +249,7 @@
                       </th>
                       <th>
                       <?php
-                        if($hoy<=$lista->fechat){
+                        if($hoy>=$lista->fechat){
                       ?>
                           <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled >
                               <span class="glyphicon glyphicon-plus"></span>
