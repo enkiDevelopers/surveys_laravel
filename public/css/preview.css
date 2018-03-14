@@ -29,7 +29,7 @@ input::-moz-placeholder {
 .imagen{
   position: relative;
   background-size: 90% 90%;
-  max-width: 300px;
+  max-width: 280px;
   background-repeat:no-repeat;
   margin-left: auto;
   margin-right: auto;
@@ -195,7 +195,14 @@ input::-moz-placeholder {
 }
 
 .imagen{
-  max-width: 160px;
+  max-width: 140px;
+}
+
+.title{
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: bold;
+    margin-top: 20px;
 }
 
 
