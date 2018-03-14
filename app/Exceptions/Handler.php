@@ -44,7 +44,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return redirect('/login');
+        return redirect('/');
 
     }
 
