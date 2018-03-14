@@ -124,23 +124,30 @@ public function validar2(Request $request)
 
 
 public function lencuesta(Request $request){
-        $cuenta = $request->cuenta;
-        $ruta   =  $request->ruta;
-        $isValid = DB::table('encuestados')->where('noCuenta','=',$cuenta)->first();
+      
+      $cuenta = $request->cuenta;
+      $ruta   =  $request->ruta;
+      $isValid = DB::table('encuestados')->where('noCuenta','=',$cuenta)->first();
 
           if($isValid==null)
           {
-          return redirect()->route('loginpagina',"sistema");
+              return redirect()->route('loginpagina',"sistema");
           }else{
-
-
             $id=$isValid->noCuenta;
             Session::put(['id'=> $id,'canal'=> $ruta]);
             return redirect()->route('encuesta');
-
           }
-
 }
+
+public function lencuesta2(){
+    return redirect()->route('loginpagina',"sistema");
+}
+
+
+public function ldirective2(){
+    return redirect()->route("directivelogin");
+}
+
 
 public function ldirective(Request $request){
         $email = $request->email;

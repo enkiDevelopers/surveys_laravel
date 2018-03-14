@@ -17,8 +17,9 @@ Route::get('/administrator/login', 'iniciarSesion@validar')->name("adminLogin");
 Route::post('/administrator/validate', 'iniciarSesion@ldap');
 
 Route::post('/surveyed/validate', 'iniciarSesion@lencuesta');
+Route::get('/surveyed/validate', 'iniciarSesion@lencuesta2');
 Route::post('/directive/validate', 'iniciarSesion@ldirective');
-
+Route::get('/directive/validate', 'iniciarSesion@ldirective2');
 
 Route::post('/uploadimage','AdministratorController@uploadImage');
 
@@ -197,6 +198,7 @@ Route::post('/administrator/addSalto/','questionsTemplateController@addSalto');
 Route::post('/administrator/deleteQuestion','questionsTemplateController@deleteQuestion');
 
 Route::post('/guardar',['as'=>'guardar' , 'uses'=> 'responderController@guardarencuesta']);
+Route::get('/guardar', 'iniciarSesion@lencuesta2');
 
 Route::get('/administrator/modalQuestionEdit', function(){
     return view("administrator.modalQuestionEdit");
