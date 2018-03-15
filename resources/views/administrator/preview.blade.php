@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <meta http-equiv="Expires" content="0"/>
     <meta http-equiv="pragma" content="no-cache"/>
-    <!-- Styles -->
+    <!-- Styles --> 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="/css/sidebar.css">
     <link rel="stylesheet" href="/css/alertify.min.css">
@@ -207,6 +207,8 @@ function get_action(){
     if(id==''){
         pop();
     }else{
+        document.getElementById("idenviar").value="Procesando...";
+        document.getElementById("idenviar").disabled=true;
         document.getElementById("control").action = "/guardar";
         document.getElementById("control").submit();
 }

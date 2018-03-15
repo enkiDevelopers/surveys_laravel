@@ -29,6 +29,8 @@ function creardato(ide){
            },
            function(isConfirm){
              if (isConfirm){
+
+
               $.ajax({
                 dataType : 'json',
                 type : 'post',
@@ -36,7 +38,10 @@ function creardato(ide){
                 data : {"id": id},
                 async:true,
                 cache:false,
-                beforeSend: function () { 
+                beforeSend: function () {
+                  console.log(ide);
+                    document.getElementById(ide).value = "Enviando...";
+                  document.getElementById(ide).disabled = true; 
                   $("#procesando").show();
 
                 },
@@ -86,6 +91,8 @@ function data () {
                       closeOnConfirm: true,
                    });
   }else{
+    document.getElementById("btnsubir2").value = "Enviando...";
+    document.getElementById("btnsubir2").disabled = true;
     form2.submit();
   }
   
@@ -338,5 +345,10 @@ function myFunction(){
         window.onload = function() {
             $("#files").addClass('active');
         }
+function checkSubmit() {
+    document.getElementById("btsubmit").value = "Enviando...";
+    document.getElementById("btsubmit").disabled = true;
+    return true;
+}
 
 

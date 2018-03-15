@@ -39,14 +39,15 @@
         <h4 class="modal-title">Agregar Nueva lista de Encuestados</h4>
       </div>
       <div class="modal-body" >
-        <form  method="post" id="formuploadajax" action="/ingresar">
+        <form  method="post" id="formuploadajax" action="/ingresar" onsubmit="return checkSubmit();">
           <hr>
           {{ csrf_field() }}
 
             <label for="exampleInputFile">Nombre de la Lista</label>
               <input class="form-control" id="nombre" name="nombre" type="text">
       <div class="modal-footer">
-              <input type="submit" class="btn btn-default" value="Crear Lista">
+            <!--  <input type="submit" class="btn btn-default" value="Crear Lista">-->
+    <input type="submit" class="btn btn-default" id="btsubmit" value="Crear Lista" />
 
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
@@ -135,21 +136,24 @@
   <div class="procesando" id="procesando"></div>
 <div class="container" >
     <div class="row" >
-      <div class="col-md-12 ">
-                          <div class="col-md-4 top">
-                            <div class="card well" style="height:200px;">
-                                    <p class="text-center parrafo">Añadir Nueva Lista</p>
- 
-                               <div class="card-body text-center">
-                                    <p class="card-text"></p><br>
-                                        <p>
-                                            <a data-toggle="modal" data-target="#AgregarLista" class="btn btn-default btn-lg btn-new-survey">
-                                              <span class="glyphicon glyphicon-plus text-center"></span>
-                                            </a>
-                                        </p>
-                                </div>
-                            </div>
+                          <div class="col-sm-0">
+                      </div>
+      <div class="col-md-12 top">
+                <div id="btnT">
+
+
+                       <div id="btn-añadir" class="col-md-12">
+                             <a data-toggle="modal" data-target="#AgregarLista" >
+
+                             <div id="content-btn">
+                                <span class="glyphicon glyphicon-plus" ></span>
+                             </div>
+                             <div id="crearPlantilla">
+                                 <h2 id="tamañoLet">Nueva Lista</h2>
+                             </div>
+                           </a>
                         </div>
+                </div>
                           <div class="col-md-4 top">
                               <div style="display:none;" id="datain">
                                     <p class="text-center parrafo">Procesando Lista</p>
