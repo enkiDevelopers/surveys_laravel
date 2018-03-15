@@ -122,9 +122,14 @@ class questionsTemplateController extends Controller
 
             $valOptions = count(json_decode(json_encode($optionsResult), true)); //Cuenta las opciones mult.
             for ($i=0; $i < $valOptions; $i++) { 
-
-            optionsMult::where('idParent', $idQuestion)->where('id',$idOption[$i])->update(array('name' => $optionsResult[$i]));
-           }
+                if ($idOption[$i] != null || $idOption[$i] != "" ){
+                    optionsMult::where('idParent', $idQuestion)->where('id',$idOption[$i])->update(array('name' => $optionsResult[$i]));   
+                }else{
+                    DB::table('optionsMult')->insert([
+                        ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
+                    ]);   
+                }
+            }
             $result = 1;
         }   
 
