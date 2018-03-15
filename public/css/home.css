@@ -60,6 +60,17 @@
   height: 200px;
  }
 
+ @media screen and (min-width: 1200px) {
+   .img_UVM_logo{
+      margin-top: 3%;
+   }
+ }
+
+@media screen and (min-width: 1500) {
+     .img_UVM_logo{
+      margin-top: 9%;
+   }
+}
  @media screen and (max-width: 767px) {
   .container{
     margin-top: 0px !important;

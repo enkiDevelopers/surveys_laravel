@@ -13,7 +13,7 @@
       <span class=" glyphicon glyphicon-eye-open"></span>
     </a>
   </div>
-	<div class="col-md-3 col-img" style="margin-top: -73px; margin-bottom: 3%;">
+	<div class="col-md-3 col-img" style="margin-top: -73px; margin-bottom: 3%;padding-left: 0px;left: -1%;">
 		<center>
   	 <img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="200px" height="200px" style="max-height: 200px; min-height: 200px;max-width: 200px;min-width: 200px;" onerror="this.src='/img/iconos/default.png'">
     </center>
