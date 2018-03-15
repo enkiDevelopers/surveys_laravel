@@ -50,7 +50,7 @@ class IngresarLista implements ShouldQueue
         $idarray=['id' => $this->id1]; 
         $path = public_path()."/listas/". $this->dato1;
         echo $path;
-        Excel::filter('chunk')->load($path,null,true)->chunk(500, function($results) use ($idarray){
+        Excel::filter('chunk')->load("../listas/".$this->dato1)->chunk(500, function($results) use ($idarray){
          $data=count($results);
          foreach($results as $row){
             if($row->no_cuenta== ""){

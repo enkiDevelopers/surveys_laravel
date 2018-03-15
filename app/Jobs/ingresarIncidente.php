@@ -42,9 +42,9 @@ class ingresarIncidente implements ShouldQueue
                 if($row->De_Cuenta_De_Alumno=="" && $row->nombre_alumno==""){
                 }else{
                     $idencuestados=DB::table('encuestados')->select('idE')
-                                                           ->where('noCuenta','=',$row->numero_de_cuenta_de_alumno)   
+                                                           ->where('noCuenta','=',$row->numero_de_cuenta_de_alumno)  
                                                            ->where('listaEncuestados_idLista','=',$idarray['id'])->get();
-                if($idencuestados[0]->idE == "[]"){
+                if(empty($idencuestados[0]->idE)){
 
                 }else{
                     $datos=DB::table('incidentes')->insert(['lineaNegocio'  =>  $row->linea_de_negocio,
