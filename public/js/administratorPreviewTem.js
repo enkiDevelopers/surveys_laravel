@@ -320,7 +320,7 @@ $(document).ready(function(){
         if(validarUltimaPreg()){
             get_action();
         }else{
-                 get_action();       
+             get_action();       
         }
     });
 

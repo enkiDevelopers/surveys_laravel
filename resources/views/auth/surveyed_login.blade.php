@@ -5,9 +5,12 @@
             <section class="col-centered text-center">
                 <img src="/img/logos/UVM_Logo.png" alt="Cargando Logo UVM ..." class="img_UVM_logo">
             </section>
+
             </div>
+
             <div class="col-md-4 pull-right" style="margin-right: 16%;">
                 <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
+
             </div>
             <div class="col-md-5 col-md-offset-1">
                     <form class="form-horizontal" method="POST" action="/surveyed/validate">
@@ -42,4 +45,5 @@
                     </form>        
             </div>
 </div>
+
 @endsection

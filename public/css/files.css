@@ -1,5 +1,5 @@
 	.top{
-		margin-top: 5%;
+		margin-top: 1%;
 	}
 
 	.pad{
@@ -16,13 +16,13 @@
 	}
 	@media screen and (max-width: 700px) {
 	.top{
-		margin-top: 20%;
+		margin-top: 30%;
 		margin-left: 5%;
 
 	}
 	@media screen and (max-width: 500px) {
 	.top{
-		margin-top: 25%;
+		margin-top: 30%;
 		margin-left: 10%;
 
 	}
