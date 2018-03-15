@@ -78,7 +78,6 @@ class questionsTemplateController extends Controller
         $option = optionsMult::where('idParent',$idQuestion)->where('id',$idOption)->update(array('salto' => $salto));
 
         return $option;
-
     }
 
     public function addSaltoParent(Request $request){
@@ -115,28 +114,21 @@ class questionsTemplateController extends Controller
         $titleEdit = $request['titleEdit'];
         $salto = $request['salto'];
         $optionsResult = $request['optionsResult'];
+        $idOption = $request['idOption'];
 
-
-            $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
+        $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
 
         if ($typeQuestion == 2 || $typeQuestion == 3) {
 
-           // $pregunta = questionsTemplates::where('id',$idQuestion)->delete();
-            $result = optionsMult::where('idParent', $idQuestion)->delete();
-
-            $valOptions = count(json_decode(json_encode($optionsResult), true));
+            $valOptions = count(json_decode(json_encode($optionsResult), true)); //Cuenta las opciones mult.
             for ($i=0; $i < $valOptions; $i++) { 
-            DB::table('optionsMult')->insert([
-                    ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
-                ]);               
-            }
+
+            optionsMult::where('idParent', $idQuestion)->where('id',$idOption[$i])->update(array('name' => $optionsResult[$i]));
+           }
+            $result = 1;
         }   
 
         return $result;     
-    }
-
-    public function editQuestion(Request $request){
-
     }
 
     public function deleteOptions(Request $request){
@@ -148,8 +140,6 @@ class questionsTemplateController extends Controller
         }
 
         return "1";
-
-
     }
 
     public function updateOrderQuestion(Request $request){

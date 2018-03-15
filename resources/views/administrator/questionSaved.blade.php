@@ -69,7 +69,7 @@
                         </div>
                         <div class="col-md-2 col-md-offset-1 pull-left selectRespon">                           
                            <label for="selectNumPreg text-black-body">Salto: </label>
-                            <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg">
+                            <select order="{{$dato->orden}}" id="{{$dato->id}}" idOption="{{$option->id}}" class="form-control text-black-body selectNumPreg {{$dato->id}}">
                                 <option value="N/A" selected disabled>{{$option->salto}}</option>
                             </select>
                         </div>
@@ -92,7 +92,7 @@
                         <div class="col-md-6 col-md-offset-1 " data-multioptions="0">
                             <div class="form-group opcionesRespon" >
                                 <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
-                                <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
+                                <input type="text" idOption="{{$option->id}}" readonly class="form-control-static form-control text-black-body option {{$dato->id}}" id="{{$option->id}}" value="{{$option->name}}" >
                             </div>
                         </div>
                     </div>

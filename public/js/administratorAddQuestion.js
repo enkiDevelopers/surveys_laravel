@@ -285,7 +285,7 @@
 
     $("#sortableQuestions").on('click', function(event) {
         var clase = $(this).children().attr('class');
-            if (clase == "glyphicon glyphicon-random"){
+            if (clase == "glyphicon glyphicon-th-list"){
             alertify.confirm("Si continua se eliminarán todos los saltos de las opciones múltiples",
             function(){
                var idQuestion =  $(".title").map(function() {
@@ -311,7 +311,7 @@
                 });
 
 
-                $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-random');
+                $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
 
                 $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").hide('400');
                 $("#questionSaved").css('height', '73rem');
@@ -364,8 +364,8 @@
 
         }else{
             $("#container-questions").load(" #container-questions");
-            $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-random');
-            $("#container-questions").sortable( "disable" );
+            $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
+            $("#container-questions").sortable( "disable" )
 
             $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").show('400');
             $("#questionSaved").css('height', '50rem');
@@ -646,7 +646,15 @@
         var idQuestion = $("#idQuestion").val();
         var typeQuestion = $("#questionTypeEdit").val();
         var salto = parseInt($("#numPregSigEdit").val()) + 1;
+        var idOption = "";
+        var idOptions = document.getElementsByClassName(idQuestion);
+        for (var i = 0; i < idOptions.length; i++) {
+            idOption = idOption + '¬' + idOptions[i].getAttribute('idOption');
+        }
+            idOption = idOption.split('¬');
+            idOption = idOption.splice(1,500);
 
+            console.log(idOption);
         var titleEdit = $("#questionInputEdit").val();
         var optionsResult = "";
         var questionOptionInputsA = document.getElementsByClassName('questionOptionInputsEdit');
@@ -668,7 +676,7 @@
                 $(".edit-question__control--edit-question").attr('disabled','true');
                 $(".edit-question__control--delete-question").attr('disabled','true');
             },
-            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult },
+            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult,idOption: idOption },
             })
             .done(function() {
                 alertify.notify('Pregunta Editada correctamente.', 'success', 3, function(){
@@ -677,9 +685,11 @@
                 $("#container-questions").load(" #container-questions");
 
             })
-            .fail(function() {
+            .fail(function(data) {
+                console.log(data);
             })
-            .always(function() {
+            .always(function(data) {
+                console.log(data);
             });
         }
     }

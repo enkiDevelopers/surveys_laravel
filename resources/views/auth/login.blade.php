@@ -8,13 +8,14 @@
                 <img src="/img/logos/UVM_Logo.png" alt="Cargando Logo UVM ..." class="img_UVM_logo">
             </section>
             </div>
-            <div class="col-md-4 pull-right" style="margin-right: 16%">
+            <div class="col-md-3 pull-right" style="right: 19%">
                 <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
             </div>
-            <div class="col-md-5 col-md-offset-1" >
+            
             <form class="form-horizontal" method="POST" action="/administrator/validate">
+                <div class="col-md-6 col-md-offset-1 form-container" >
                 {{ csrf_field() }}
-                <div class=" col-md-12 form-group{{ $errors->has('email') ? ' has-error' : ''  }}" style="margin-bottom: 7%">
+                <div class=" col-md-12  form-group{{ $errors->has('email') ? ' has-error' : ''  }}">
                     <label for="email" class="col-md-5  control-label text-black">Correo: </label><br><br>
                     <div class="col-md-10">
                         <input id="email" type="email" class="form-control text-black-body" placeholder="Correo" name="email" value="{{ old('email') }}" required autofocus>
@@ -37,15 +38,15 @@
                         @endif
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-8 col-md-offset-4">
+                </div>
+                
+                    <div class="col-md-2 col-md-offset-5">
                         <button type="submit" class="btn btn-primary">
                             Ingresar
                         </button>
                     </div>
-                </div>
+                
             </form>           
-        </div>
     </div>
 </div>
 @endsection
