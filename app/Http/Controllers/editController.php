@@ -29,7 +29,7 @@ class editController extends Controller
     foreach ($datos as $dato) {
       if($dato['type']==2 || $dato['type'] == 3){
         $idq=$dato['id'];
-        $opt=optionsMult::where('idParent',$idq)->get();
+        $opt=optionsMult::where('idParent',$idq)->orderby('id','asc')->get();
       }else{
         $opt=0;
       }

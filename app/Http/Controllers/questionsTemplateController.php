@@ -53,7 +53,7 @@ class questionsTemplateController extends Controller
                 //echo $dato . ",";
                 if($dato['type']== 2 || $dato['type']== 3  ){
                     $idq=$dato['id'];
-                    $opt=optionsMult::where('idParent',$idq)->get();
+                    $opt=optionsMult::where('idParent',$idq)->orderby('orden','asc')->get();
                     //echo $opt . ",";
                 }else{
                     $opt=null;
@@ -120,18 +120,22 @@ class questionsTemplateController extends Controller
 
         if ($typeQuestion == 2 || $typeQuestion == 3) {
 
+            $result = optionsMult::where('idParent', $idQuestion)->delete();
+
             $valOptions = count(json_decode(json_encode($optionsResult), true)); //Cuenta las opciones mult.
             for ($i=0; $i < $valOptions; $i++) { 
-                if ($idOption[$i] != null || $idOption[$i] != "" ){
-                    optionsMult::where('idParent', $idQuestion)->where('id',$idOption[$i])->update(array('name' => $optionsResult[$i]));   
-                }else{
-                    DB::table('optionsMult')->insert([
-                        ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
-                    ]);   
-                }
-            }
-            $result = 1;
-        }   
+    
+                $surv = new optionsMult;
+                $surv->name = $optionsResult[$i];
+                $surv->idParent = $idQuestion;
+                $surv->salto = $salto;
+                $surv->save();
+ 
+             }
+            $result = 1;   
+                     }
+
+           
 
         return $result;     
     }

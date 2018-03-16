@@ -5,17 +5,10 @@
             <section class="col-centered text-center">
                 <img src="/img/logos/UVM_Logo.png" alt="Cargando Logo UVM ..." class="img_UVM_logo">
             </section>
-
-            </div>
-<<<<<<< HEAD
-            <div class="col-md-3 pull-right" style="right: 19%;">
-=======
-
-            <div class="col-md-4 pull-right" style="margin-right: 16%;">
->>>>>>> 7fcdcd005c910765f8f758d481ceb745027b889f
-                <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
-
-            </div>
+        </div>
+        <div class="col-md-3 pull-right" style="right: 19%;">
+            <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
+        </div>
 
             <form class="form-horizontal" method="POST" action="/surveyed/validate">
                 <div class="col-md-6 col-md-offset-1 form-container">
