@@ -75,7 +75,7 @@ margin-left: -50px;
                     </li>
                     <li id="admin-list">
                         <a href="{{ url('/administrator/management') }}">
-                            <span>ADMINISTRADORES</span>
+                            <span>USUARIOS</span>
                         </a>
                     </li>
                     <li id="log-out">
@@ -125,7 +125,7 @@ margin-left: -50px;
           </li>
           <li id="admin-list">
             <a href="{{ url('/administrator/management') }}">
-              <span class="itemMenuMobile">ADMINISTRADORES</span>
+              <span class="itemMenuMobile">USUARIOS</span>
             </a>
           </li>
           <li id="log-out__Content" class="exit">
