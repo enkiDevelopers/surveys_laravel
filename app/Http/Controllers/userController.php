@@ -7,6 +7,7 @@ use App\ctlRegions;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class userController extends Controller
 {
@@ -149,9 +150,8 @@ function decrypt(Request $request)
   $pass = $usuario->password;
 try {
   $dpass = Crypt::decryptString($pass);
-
   return response()->json(array('sms'=> $dpass));
-} catch (Exception $e) {
+}  catch (DecryptException $e) {
 return response()->json(array('error'=> $e));
 }
 
