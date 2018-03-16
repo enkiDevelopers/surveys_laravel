@@ -114,7 +114,6 @@ class questionsTemplateController extends Controller
         $titleEdit = $request['titleEdit'];
         $salto = $request['salto'];
         $optionsResult = $request['optionsResult'];
-        $idOption = $request['idOption'];
 
         $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
 
@@ -125,11 +124,9 @@ class questionsTemplateController extends Controller
             $valOptions = count(json_decode(json_encode($optionsResult), true)); //Cuenta las opciones mult.
             for ($i=0; $i < $valOptions; $i++) { 
     
-                $surv = new optionsMult;
-                $surv->name = $optionsResult[$i];
-                $surv->idParent = $idQuestion;
-                $surv->salto = $salto;
-                $surv->save();
+                DB::table('optionsMult')->insert([
+                        ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
+                    ]);     
  
              }
             $result = 1;   

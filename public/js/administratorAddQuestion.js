@@ -646,16 +646,7 @@
         var idQuestion = $("#idQuestion").val();
         var typeQuestion = $("#questionTypeEdit").val();
         var salto = parseInt($("#numPregSigEdit").val()) + 1;
-        var idOption = "";
-        var idOptions = document.getElementsByClassName(idQuestion);
-        for (var i = 0; i < idOptions.length; i++) {
-            idOption = idOption + '¬' + idOptions[i].getAttribute('idOption');
-        }
-            idOption = idOption.split('¬');
-            idOption = idOption.splice(1,500);
-
-            console.log(idOption);
-        var titleEdit = $("#questionInputEdit").val();
+          var titleEdit = $("#questionInputEdit").val();
         var optionsResult = "";
         var questionOptionInputsA = document.getElementsByClassName('questionOptionInputsEdit');
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
@@ -676,7 +667,7 @@
                 $(".edit-question__control--edit-question").attr('disabled','true');
                 $(".edit-question__control--delete-question").attr('disabled','true');
             },
-            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult,idOption: idOption },
+            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult},
             })
             .done(function() {
                 alertify.notify('Pregunta Editada correctamente.', 'success', 3, function(){
