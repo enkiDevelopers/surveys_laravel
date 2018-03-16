@@ -136,7 +136,7 @@
             </a>
       <a id="btn_edit" disabled
         class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-            <span class="glyphicon glyphicon-pencil ic"></span>
+            <span class="glyphicon glyphicon-edit ic"></span>
         </a>
 
         <a disabled class="btn btn-default" data-toggle="tooltip" data-placement="top" id="btn_delete"
@@ -194,7 +194,7 @@
             </a>
       <a id="btn_edit" disabled
         class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-            <span class="glyphicon glyphicon-pencil ic"></span>
+            <span class="glyphicon glyphicon-edit ic"></span>
         </a>
 
         <a disabled class="btn btn-default" data-toggle="tooltip" data-placement="top" id="btn_delete"
