@@ -12,3 +12,4 @@ yarn-error.log
 /pubic/css/app.css
 /.env
 /composer.lock
+app/Exceptions/Handler.php

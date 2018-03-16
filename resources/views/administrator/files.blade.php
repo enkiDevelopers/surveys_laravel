@@ -44,7 +44,7 @@
           {{ csrf_field() }}
 
             <label for="exampleInputFile">Nombre de la Lista</label>
-              <input class="form-control" id="nombre" name="nombre" type="text">
+              <input class="form-control" id="nombre" name="nombre" type="text" required>
       <div class="modal-footer">
             <!--  <input type="submit" class="btn btn-default" value="Crear Lista">-->
     <input type="submit" class="btn btn-default" id="btsubmit" value="Crear Lista" />
@@ -76,7 +76,7 @@
         {{ csrf_field() }}
           <p>Agregar datos en la lista existente.</p>
             <label for="exampleInputFile">Subir documento</label>
-              <input class="form-control-file"  id="datos" name="datos" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+              <input class="form-control-file"  id="datos" name="datos" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                  <input type="hidden" id="listaid" name="listaid" value="">
                  <strong>Maximo por archivo 5MB</strong>       
           <hr>

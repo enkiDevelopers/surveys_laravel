@@ -7,6 +7,7 @@ use App\usuarios;
 use DB;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
+
 class iniciarSesion extends Controller
 {
 
@@ -150,18 +151,54 @@ public function ldirective2(){
 
 
 public function ldirective(Request $request){
-        $email = $request->email;
-        //$ruta   =  $request->ruta;
-        $isValid = usuarios::where('email',$email)->first();
 
-          if($isValid==null)
-          {
-            return redirect()->route('directivelogin');
-          }else{
-           $id=$isValid->idUsuario;
-           Session::put('id', $id);
-           return redirect()->route('directive');
-          }
+        $email = $request->email;
+        $pass = $request->password;
+
+        $isValid = usuarios::where('email',$email)->where('type', "!=" , '4')->first();
+
+
+        if($isValid==null)
+        {
+          $mensaje = "El usuario no existe";
+          echo "<script>";
+          echo "if(confirm('$mensaje'));";
+          echo "window.location = '/directives/login';";
+          echo "</script>";
+
+        }else{
+          $cEncryt = $isValid->password;
+
+          try {
+          $cDecrypt =Crypt::decryptString($cEncryt);
+                    } catch (DecryptException $e) {
+
+            $mensaje = "No se pudo desencriptar la contraseña";
+            echo "<script>";
+            echo "if(confirm('$mensaje'));";
+            echo "window.location = '/directives/login';";
+            echo "</script>";
+
+            //  sleep(5);
+              }
+
+        if($cDecrypt == $pass )
+        {
+          $id=$isValid->idUsuario;
+          Session::put('id', $id);
+          return redirect()->route('directive');
+        }else {
+          $mensaje = "Error Usuario y/o contraseña incorrecta";
+          echo "<script>";
+          echo "if(confirm('$mensaje'));";
+          echo "window.location = '/directives/login';";
+          echo "</script>";
+        }
+
+        }
+
+
+
 
 }
 
