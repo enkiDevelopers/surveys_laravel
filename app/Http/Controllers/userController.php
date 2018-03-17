@@ -30,7 +30,11 @@ class userController extends Controller
         $campus = ctlCampus::all();
         $regiones = ctlRegions::all();
 
-        return view('administrator.management',compact('usuarios', 'campus', 'regiones', 'id', 'directivos', 'dReg','dCamp'));
+
+$info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
+
+
+        return view('administrator.management',compact('usuarios', 'campus', 'regiones', 'id', 'directivos', 'dReg','dCamp','info'));
     }
 
     function generaPass(){

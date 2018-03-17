@@ -78,7 +78,7 @@
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="datos" name="datos" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                  <input type="hidden" id="listaid" name="listaid" value="">
-                 <strong>Maximo por archivo 5MB</strong>       
+                 <strong>Maximo por archivo 5MB</strong>
           <hr>
       <div class="modal-footer">
             <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivo</button>
@@ -87,7 +87,7 @@
           <!--  <button type="button" id="btnsubir" class="btn btn-default"> Subir Archivos</button>-->
         </form>
 
- 
+
       </div>
 
     </div>
@@ -116,7 +116,7 @@
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="incidentes" name="incidentes" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                  <input type="hidden" id="idlista" name="idlista" value="">
-        
+
               <div class="modal-footer">
 
                 <input type="submit" class="btn btn-default" value="Subir archivos"  />
@@ -124,7 +124,7 @@
               </div>
         </form>
 
- 
+
       </div>
 
     </div>
@@ -134,7 +134,39 @@
 
 
   <div class="procesando" id="procesando"></div>
-<div class="container" >
+
+
+
+  <div class="sep">
+
+        <div class="supSide">
+          <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
+          </div>
+          <div class="cuadroPerfilSup">
+
+  <div class="eng">
+  <span class="glyphicon glyphicon-cog">&nbsp</span>
+  </div>
+  <div id="content">
+  <div style="margin-top: 1%;">
+  <div class="nombre">  {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
+   </div>
+  </div>
+
+  <div style="margin-top: 2%;">
+  <div class="correo"> {{$info->email}} </div>
+  </div>
+  </div>
+
+
+          </div>
+        </div>
+
+  </div>
+
+
+
+<div class="container" style="margin-top: 130px;" >
     <div class="row" >
                           <div class="col-sm-0">
                       </div>
@@ -178,7 +210,7 @@
                   </tr>
                 </thead>
                 <tbody id="tabla">
-                  <?php 
+                  <?php
                     $hoy = date("Y-m-d H:i:s");
                     foreach ($listas as $lista) {
                           if($lista->carga==1){
@@ -200,7 +232,7 @@
                       <th>
                         <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
                               <span class="glyphicon glyphicon-play-circle"></span>
-                          </a>   
+                          </a>
                       </th>
                       <th>
                           <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
@@ -215,7 +247,7 @@
                       <th>
                           <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
                               <span class="glyphicon glyphicon-alert"></span>
-                          </a> 
+                          </a>
                       </th>
                       <th>
                           <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
@@ -233,7 +265,7 @@
                           <?php echo $lista->nombre; ?>
                       </th>
                       <th>
-                          <?php echo $lista->titulo; ?>                        
+                          <?php echo $lista->titulo; ?>
                       </th>
                       <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
@@ -244,7 +276,7 @@
                       <th>
                           <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
                               <span class="glyphicon glyphicon-play-circle"></span>
-                          </a>    
+                          </a>
                       </th>
                       <th>
                           <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
@@ -258,7 +290,7 @@
                           <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled >
                               <span class="glyphicon glyphicon-plus"></span>
                           </a>
-                      <?php   
+                      <?php
                         }else{
                       ?>
                           <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
@@ -271,7 +303,7 @@
                       <th>
                           <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
                               <span class="glyphicon glyphicon-alert"></span>
-                          </a> 
+                          </a>
                       </th>
                       <th>
                           <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
@@ -300,7 +332,7 @@
                       <th>
                           <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
                               <span class="glyphicon glyphicon-play-circle"></span>
-                          </a> 
+                          </a>
                       </th>
                       <th>
                           <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black" disabled>
@@ -315,7 +347,7 @@
                       <th>
                           <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black" disabled>
                               <span class="glyphicon glyphicon-alert"></span>
-                          </a> 
+                          </a>
                       </th>
                       <th>
                           <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
@@ -328,7 +360,7 @@
                   }
                 }
                   ?>
-                    
+
                 </tbody>
             </table>
 </div>
@@ -340,7 +372,7 @@
 
 <!--Versión3.3.1 NO BORRAR-->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--Versión2.2.4 NO BORRAR-->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-                               <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>                     
+                               <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                                <script src="/js/file.js"></script>
 
 @endsection

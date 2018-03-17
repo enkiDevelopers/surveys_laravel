@@ -1,8 +1,8 @@
 #containertable
 {
 margin-left: 260px;
-width: 80%;
-margin-top: 20px;
+width: 100%;
+margin-top: 140px;
 }
 
 #titulo
@@ -62,6 +62,111 @@ height:  90px;
 text-align: center;
 width: 100%;
 }
+
+#procesando {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/img/load/procesando.gif') 50% 50% no-repeat rgba(249,249,249,0.5);
+    opacity: .8;
+    display: none;
+}
+
+.sep{
+
+position relative;
+height: 150px;
+
+}
+
+.supSide
+{
+  position: absolute;
+  left: 47%;
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+}
+.circle {
+    width: 125px;
+    height: 125px;
+    top: 10px;
+    display: inline-block;
+    margin-left: 0px;
+    position: absolute;
+    border-radius: 100%;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: 100% ;
+    background-position: center;
+
+}
+.circle:hover
+{
+  cursor: pointer;
+}
+
+.cuadroPerfilSup
+{
+
+  background: rgba(37,66,118,1);
+  background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(37,66,118,1)), color-stop(51%, rgba(42,76,135,1)), color-stop(100%, rgba(47,85,151,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
+  width: 85%;
+  height: 112px;
+  z-index: -1;
+  border-radius: 30px;
+  margin-top: 15px;
+
+  position: relative;
+  margin-left: 70px;
+  display: inline-block;
+}
+.eng
+{
+  color: white;
+  position: relative;
+  margin-top: 12px;
+  margin-left: 60px;
+  font-size: 23px;
+  display: inline-block;
+}
+
+#content{
+  display: inline-block;
+  width: 280px;
+  float: right;
+  color: white;
+  margin-right: 20px;
+  margin-top: -40px;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 80%;
+  font-size: 18px;
+
+}
+.nombre{
+height: auto;
+text-align:right;
+overflow: hidden;
+margin-left: 15%;
+}
+.correo
+{
+  overflow: hidden;
+  height: 40px;
+  text-align:right;
+  overflow: hidden;
+
+}
+
 
 @media(max-width: 979px)
 {

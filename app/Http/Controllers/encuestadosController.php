@@ -6,6 +6,7 @@ use App\listaEncuestados;
 use App\encuestas;
 use App\publicaciones;
 use App\optionsMult;
+use App\usuarios;
 use App\templates;
 use App\preguntasEncuestas;
 use App\optionsMultEncuestas;
@@ -15,7 +16,7 @@ use DB;
 use App\Mail\mailencuestados;
 use Mail;
 use App\jobs\enviarEmail;
-use Response; 
+use Response;
 class encuestadosController extends Controller
 {
 public function showList(Request $request)
@@ -31,8 +32,10 @@ public function showList(Request $request)
             ->where('listaEncuestados.creador','=',$id)
             ->orderby('listaEncuestados.created_at','desc')
             ->get();
+
     //$listas = listaEncuestados::where("creador", $id)->get();
-    return view("administrator.files", compact('listas'));
+    $info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
+    return view("administrator.files", compact('listas', 'info'));
 }
 
 
