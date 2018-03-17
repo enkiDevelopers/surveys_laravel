@@ -74,7 +74,7 @@
 
 
     /**** Se tiene que cuidar que siempre haya al menos dos opciones de pregunta******/
-    $("#ModalQuestion").on("click", ".delete-question-to-yes-no", function(){
+    $("#ModalQuestion", "#ModalQuestionEdit").on("click", ".delete-question-to-yes-no", function(){
         $(this).parent().parent().parent().remove();
         var options = $(".multi-options-template").length;
         if( options <= '3'){ //3
@@ -268,12 +268,14 @@
 
            $(".edit-question__control--edit-question").removeAttr('disabled');
            $(".edit-question__control--delete-question").removeAttr('disabled');
+           $(".delete-question-to-yes-no").removeAttr("disabled");
+
 
            $(".options-edit").empty();
            if (typeQuestion == 2 || typeQuestion == 3) {
             $(".add-question-to-yes-no").removeClass('hidden');
                for (var i = 0; i < opciones.length; i++) {
-                   $("#optionsMultEdit").append('<div class="form-group options-edit"><label for="exampleInputEmail1">Opción Respuesta</label><input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" value="'+opciones[i]+'" maxlength="200"><button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>');
+                   $("#optionsMultEdit").append('<div class="form-group options-edit"><label for="exampleInputEmail1">Opción Respuesta</label><input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" value="'+opciones[i]+'" maxlength="200"><button class="btn btn-danger delete-question-to-yes-no pull-right" style="margin-top: 5px;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>');
                }
            }else{
             $(".add-question-to-yes-no").addClass('hidden');
