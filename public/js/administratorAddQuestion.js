@@ -285,7 +285,8 @@
 
     $("#sortableQuestions").on('click', function(event) {
         var clase = $(this).children().attr('class');
-            if (clase == "glyphicon glyphicon-th-list"){
+        console.log(clase);
+            if (clase == "glyphicon glyphicon-th-list icon-mobile"){
             alertify.confirm("Si continua se eliminarán todos los saltos de las opciones múltiples",
             function(){
                var idQuestion =  $(".title").map(function() {
@@ -365,7 +366,6 @@
         }else{
             $("#container-questions").load(" #container-questions");
             $("#sortableQuestions").children('span').toggleClass('glyphicon-ok').toggleClass('glyphicon-th-list');
-            $("#container-questions").sortable( "disable" )
 
             $(".yes-no-question-block, .btn-control, #addQuestion, #dataTemplateContainer").show('400');
             $("#questionSaved").css('height', '50rem');

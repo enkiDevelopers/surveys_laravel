@@ -51,14 +51,12 @@
                                 </div>
                                 <div class="col-md-4"></div>
                             </div>
-                            <div class="btn-group btn-group-sm pull-right " role="group">
-                                    <button class="btn btn-success add-question-to-yes-no hidden">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                                    </button>
-                            </div>
                         </div>
-
-
+                        </div>
+                        <div class="btn-group btn-group-sm pull-right " role="group">
+                            <button class="btn btn-success add-question-to-yes-no hidden">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            </button>
                         </div>
                     </div>
                     <div class="modal-footer">
