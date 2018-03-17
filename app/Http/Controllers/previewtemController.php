@@ -35,7 +35,8 @@ class previewtemController extends Controller
         //echo $dato . ",";
         if($dato['type']==2){
           $idq=$dato['id'];
-          $opt=optionsMult::where('idParent',$idq)->get();
+          $opt=optionsMult::where('idParent',$idq)->orderby('id','asc')->get();
+
           //echo $opt . ",";
         }
         if($dato['type']==1){
@@ -43,7 +44,8 @@ class previewtemController extends Controller
         }
         if($dato['type']==3){
           $idq=$dato['id'];
-          $opt=optionsMult::where('idParent',$idq)->get();
+          $opt=optionsMult::where('idParent',$idq)->orderby('id','asc')->get();
+
         }
         $datosOpt[] = [
         "questions" => $dato,
