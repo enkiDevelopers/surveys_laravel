@@ -388,20 +388,24 @@
             contentType: false,       // The content type used when sending data to the server.
             cache: false,             // To unable request pages to be cached
             processData:false,        // To send DOMDocument or non processed data file it is set to false
+            beforeSend: function( xhr ) {
+                $(".btn").attr('disabled','true');
+            },
             complete: function(e, xhr, settings){
                         if(e.status === 200){
-                            alertify.notify('Datos Guardados correctamente.', 'success', 3, function(){
+                            alertify.notify('Datos Guardados correctamente.', 'success', 2, function(){
                                 $("#exampleInputEmail1").val(titleInput);
                                 $("#inputDesc").val(descInput);
                                 $("#ModalTitle").modal('hide');
                             });
                             $("#dataTemplateContainer").load(" #dataTemplateContainer");
                         }else{
-                            alertify.notify('No se han podido guardar los cambios.', 'error', 3, function(){});
+                            alertify.notify('No se han podido guardar los cambios.', 'error', 2, function(){});
                         }
-                    },
+                $(".btn").removeAttr('disabled');
+            },
                     error: function (textStatus, errorThrown) {
-                            alertify.notify('No se han podido guardar los cambios.', 'error', 3, function(){});
+                            alertify.notify('No se han podido guardar los cambios.', 'error', 2, function(){});
                     }
 
         });
@@ -686,19 +690,57 @@
     }
 
     function limpiar(){
+    $("#imgSalida").css('display', 'inline');
+    $("#previewcanvascontainer").css('display', 'none');
+
+        document.getElementById("updateDataTemplateForm").reset();
+    }
+
+    function imagen(){
+        $('#icon_survey').change(function(e) {
+        addImage(e);
+    });
+
+        function addImage(e){
+            var file = e.target.files[0],
+            imageType = /image.*/;
+
+            if (!file.type.match(imageType)){
+                swal({
+                title: "Su archivo no es una imagen",
+                type: "error",
+                });
+                return;
+            }
+            var reader = new FileReader();
+            reader.onload = fileOnload;
+            reader.readAsDataURL(file);
+        }
+
+        function fileOnload(e) {
+            var result=e.target.result;
+            $('#imgSalida').attr("src",result);
+        }
+
+    }
+
+/*    function limpiar(){
         var canvas = document.getElementById("previewcanvas");
         canvas.width=canvas.width;
         $("#previewcanvascontainer").css('display', 'none');
         $("#img_survey").css('display', 'inline');
-    }
+    } 
 
     function limpiar2(){
         var canvas = document.getElementById("previewcanvas");
         canvas.width=canvas.width;
-    }
+    } */
 
 //verificaciones de la carga de una imagen en la creacion de la plantilla
     function ShowImagePreview( files ){
+
+    $("#imgSalida").css('display', 'none');
+
 
     if( !( window.File && window.FileReader && window.FileList && window.Blob ) ){
       alert('Por favor Ingrese un archivo de Imagen');
