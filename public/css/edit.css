@@ -79,6 +79,25 @@ hr{
 	display: inline-grid;
 	top: 100px; 
 }
+#imgSalida, #previewcanvas {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 5px;
+}
+
+#imgC {
+    height: 200px;
+    width: 100%;
+}
+
+#icon_survey{    
+	width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 @media screen and (max-width: 1220px) {
 	.col-desc{

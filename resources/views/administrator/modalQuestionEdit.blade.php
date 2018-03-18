@@ -43,10 +43,11 @@
                                 <div class="col-md-12 multi-options-template-edit" data-multioptions="0" >
                                     <div class="form-group hidden" id="optionEdit">
                                         <label for="exampleInputEmail1">Opción Respuesta</label>
-                                        <input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="250">
-                                        <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;">
+                                        <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-bottom: 4px;margin-top: 2px;">
                                             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
+                                        <input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="250">
+
                                     </div>
                                 </div>
                                 <div class="col-md-4"></div>

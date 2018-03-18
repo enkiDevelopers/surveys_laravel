@@ -73,14 +73,7 @@
     /*********************************************************************************/
 
 
-    /**** Se tiene que cuidar que siempre haya al menos dos opciones de pregunta******/
-    $("#ModalQuestion", "#ModalQuestionEdit").on("click", ".delete-question-to-yes-no", function(){
-        $(this).parent().parent().parent().remove();
-        var options = $(".multi-options-template").length;
-        if( options <= '3'){ //3
-            $(".delete-question-to-yes-no").attr("disabled","disabled");
-        }
-    });
+
     /*********************************************************************************/
 
 
@@ -111,6 +104,16 @@
     }
 
     /**** Se tiene que cuidar que siempre haya al menos dos opciones de pregunta******/
+    $("#ModalQuestion").on("click", ".delete-question-to-yes-no", function(){
+        $(this).parent().parent().parent().remove();
+        var options = $(".multi-options-template").length;
+        if( options <= '3'){ //3
+            $(".delete-question-to-yes-no").attr("disabled","disabled");    
+        }
+    });
+    /*********************************************************************************/
+
+    /**** Se tiene que cuidar que siempre haya al menos dos opciones de pregunta******/
     $("#ModalQuestionEdit").on("click", ".delete-question-to-yes-no", function(){
         $(this).parent().remove();
         var options = $(".options-edit").length;
@@ -118,8 +121,6 @@
             $(".delete-question-to-yes-no").attr("disabled","disabled");
         }
     });
-    /*********************************************************************************/
-
 
     //Contar todos los divs de todas la preguntas y mostrarlas en el select, enviar salto a la pregunta siguiente
     $("#container-questions").on('mousedown','.selectNumPreg',function(){
@@ -275,7 +276,7 @@
            if (typeQuestion == 2 || typeQuestion == 3) {
             $(".add-question-to-yes-no").removeClass('hidden');
                for (var i = 0; i < opciones.length; i++) {
-                   $("#optionsMultEdit").append('<div class="form-group options-edit"><label for="exampleInputEmail1">Opción Respuesta</label><input type="text" class="form-control text-black-body questionOptionInputsEdit"  id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" value="'+opciones[i]+'" maxlength="200"><button class="btn btn-danger delete-question-to-yes-no pull-right" style="margin-top: 5px;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button></div>');
+                   $("#optionsMultEdit").append('<div class="form-group options-edit"><label for="exampleInputEmail1">Opción Respuesta</label><button class="btn btn-danger delete-question-to-yes-no pull-right" style="margin-bottom: 4px;margin-top: 2px;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> <input type="text" class="form-control text-black-body questionOptionInputsEdit" id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" value="'+opciones[i]+'" maxlength="200"></div>');
                }
            }else{
             $(".add-question-to-yes-no").addClass('hidden');

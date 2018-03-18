@@ -60,10 +60,10 @@
             <div class="col-md-12 multi-options-template" data-multioptions="0" >
                 <div class="form-group">
                     <label for="exampleInputEmail1">Opción Respuesta</label>
-                    <input type="text" class="form-control text-black-body questionOptionInputs"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="256">
-                    <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-top: 5px;">
+                    <button class="btn btn-danger delete-question-to-yes-no pull-right" disabled style="margin-bottom: 4px;margin-top: 2px;">
                         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    </button>
+                    </button>                    
+                    <input type="text" class="form-control text-black-body questionOptionInputs"  id="questionOptionInput" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?"  maxlength="256">
                 </div>
             </div>
             <div class="col-md-4">

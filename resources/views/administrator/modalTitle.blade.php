@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <table id="aPlantilla" class="table">
+                <table id="aPlantilla" class="table" style="width: 100%;">
                     <tr>
                         <td style="width:50%">
                             <div style="width:100%;">
@@ -33,8 +33,8 @@
                         <td>
                             <div id="imgC">
                                 <center>
-                                    <img id="imgSalida" src="\img/iconos/{{$nombre}}" onchange="return ShowImagePreview( this.files );" width="300" height="150" onerror="this.src='/img/iconos/default.png'"/>
-                                    <div id="previewcanvascontainer" style="height 200px; width 200px;display: none;">
+                                    <img id="imgSalida" src="\img/iconos/{{$nombre}}" onchange="return ShowImagePreview( this.files );" onerror="this.src='/img/iconos/default.png'"/>
+                                    <div id="previewcanvascontainer" >
                                         <canvas id="previewcanvas"></canvas>
                                     </div>
                                 </center>

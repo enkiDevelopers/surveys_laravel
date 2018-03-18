@@ -136,10 +136,10 @@
   <div class="procesando" id="procesando"></div>
 
 
-
+  
   <div class="sep">
 
-        <div class="supSide">
+        <div class="supSide" style="left: 60%;">
           <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
           </div>
           <div class="cuadroPerfilSup">
