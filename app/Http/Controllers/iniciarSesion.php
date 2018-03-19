@@ -15,16 +15,31 @@ public function ldap(Request $request)
 {
   $email = $request->email;
   $pass = $request->password;
-$isValid = usuarios::where('email',$email)->where('type','4')->first();
+
+
+
   if($email == "admin@admin.com" and $pass=="12345678")
   {
+    $isValid = usuarios::where('email',$email)->where('type','4')->first();
     $id=$isValid->idUsuario;
     Session::put('id', $id);
     return redirect()->route('adminHome');
   }else{
 
+
+
+
 if($isValid==null)
 {
+  $found = usuarios::where('email',$email)->where('type','4')->get();
+
+  foreach ($found as $foun) {
+      if(Crypt::decryptString($foun->password) == $pass)
+      {
+        $isValid = $foun ;
+        break;
+      }
+  }
   $mensaje = "El usuario no existe";
   echo "<script>";
   echo "if(confirm('$mensaje'));";
@@ -155,8 +170,15 @@ public function ldirective(Request $request){
         $email = $request->email;
         $pass = $request->password;
 
-        $isValid = usuarios::where('email',$email)->where('type', "!=" , '4')->first();
 
+        $found = usuarios::where('email',$email)->where('type', "!=" , '4')->get();
+        foreach ($found as $foun) {
+            if(Crypt::decryptString($foun->password) == $pass)
+            {
+              $isValid = $foun ;
+              break;
+            }
+        }
 
         if($isValid==null)
         {
