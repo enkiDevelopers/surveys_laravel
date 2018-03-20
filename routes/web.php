@@ -10,16 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'iniciarSesion@validar2');
+Route::get('/', 'iniciarSesion@validarInicio');
 
-Route::get('/administrator/login', 'iniciarSesion@validar')->name("adminLogin");
+Route::get('/administrator/login', 'iniciarSesion@validarAdmin')->name("adminLogin");
+Route::post('/administrator/validate', 'iniciarSesion@validaUsuarioAdmin');
 
-Route::post('/administrator/validate', 'iniciarSesion@ldap');
 
 Route::post('/surveyed/validate', 'iniciarSesion@lencuesta');
 Route::get('/surveyed/validate', 'iniciarSesion@lencuesta2');
-Route::post('/directive/validate', 'iniciarSesion@ldirective');
-Route::get('/directive/validate', 'iniciarSesion@ldirective2');
+
+Route::post('/directive/validate', 'iniciarSesion@validarDirective');
+
+
 
 Route::post('/uploadimage','AdministratorController@uploadImage');
 
@@ -34,7 +36,7 @@ Route::post('/administrator/saveDirective', 'userController@saveDirective');
 Route::get('/administrator/decrypt', 'userController@decrypt');
 
 
-Route::get('/administrator', 'iniciarSesion@validar')->name('adminHome');
+Route::get('/administrator', 'iniciarSesion@inicioAdmin')->name('adminHome');
 
 Route::get('/administrator/surveys/', 'surveyController@show_cards');
 Route::post('/administrator/reminderSend', 'surveyController@send');

@@ -11,7 +11,7 @@
         <div class="col-md-3 pull-right" style="right: 19%">
             <img src="/img/logos/Por_Ti.png" alt="Cargando Logo UVM ..." class="img_Por_ti_logo pull-right">
         </div>
-            
+
         <form class="form-horizontal" method="POST" action="/administrator/validate">
             <div class="col-md-6 col-md-offset-1 form-container" >
             {{ csrf_field() }}
@@ -39,14 +39,14 @@
                     </div>
                 </div>
                 </div>
-                
+
                     <div class="col-md-2 col-md-offset-5">
                         <button type="submit" class="btn btn-primary">
                             Ingresar
                         </button>
                     </div>
-                
-            </form>           
+
+            </form>
     </div>
 </div>
 @endsection
