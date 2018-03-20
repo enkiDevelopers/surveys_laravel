@@ -122,7 +122,7 @@
         <div class="col-md-12" style="overflow-x:auto;">
           <table class="table">
             <thead>
-              <tr>
+              <tr style="background-color:#D9EDF7">
                 <th>Encuesta</th>
                 <th>Titulo Encuesta</th>
                 <th>Descripción</th>

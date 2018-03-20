@@ -55,6 +55,8 @@ class directiveController extends Controller
             ->where('idUsuario','=',$id)
             ->get();
               $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('regions_regions_id','=',$datosdirective["0"]->idRegion)->get();
+              $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->where('regions_id','=',$datosdirective["0"]->idRegion)->get();
+
             break;
         case '3':
               $datosdirective = DB::table('usuarios')
@@ -63,14 +65,12 @@ class directiveController extends Controller
             ->where('idUsuario','=',$id)
             ->get();
              $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->where('campus_id','=',$datosdirective["0"]->campus_id)->get();
+             $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->get();
 
              break;
         default:
-
-          break;
       }
       $regionestotal=DB::table('ctlRegions')->get();
-      $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->get();
 
       return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus'));
 
