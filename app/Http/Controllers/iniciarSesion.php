@@ -165,7 +165,7 @@ public function validarDirective(Request $request)
   {
     $id=$isValid->idUsuario;
     Session::put('id', $id);
-    return redirect('/');
+    return redirect('/directive');
   }else {
     $mensaje = "Error Usuario y/o contraseña incorrecta";
     echo "<script>";

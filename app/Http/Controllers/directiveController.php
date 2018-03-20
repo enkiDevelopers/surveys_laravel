@@ -37,17 +37,16 @@ class directiveController extends Controller
   public function show_cards(Request $request)
   {
      $id= $request->session()->get('id');
-
       $campus=0;
       $encuestas = DB::table('templates')->join('publicaciones','templates.id','=','publicaciones.idTemplate')->get();
       $datosdirective =DB::table('usuarios')->where('idUsuario','=',$id)->get();
+
       switch ($datosdirective["0"]->type) {
         case '1':
               $datosdirective = DB::table('usuarios')->where('idUsuario','=',$id)->get();
               $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->get();
               $regionestotal=DB::table('ctlRegions')->get();
               $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->get();
-              return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus'));
           break;
         case '2':
               $datosdirective = DB::table('usuarios')
@@ -67,7 +66,7 @@ class directiveController extends Controller
 
              break;
         default:
-          
+
           break;
       }
       $regionestotal=DB::table('ctlRegions')->get();
@@ -131,13 +130,13 @@ class directiveController extends Controller
 
       $datoencuesta=DB::table('templates')->where('id','=',$id)->get();
       return view('directive.report',compact('datoencuesta','info','campusname','totalEncuestados','mail','conexion','hp12c','facebook','online','sistema','lineanegocios','modalidad'));
-    
+
   }
-  
+
   public function estadisticasRegion($id,$idregion){
     $campus = DB::table('ctlCampus')->where('regions_regions_id','=',$idregion)->get();
     $regionname=DB::table('ctlRegions')->select('regions_name')->where('regions_id','=',$idregion)->get();
-    
+
 
       /*SELECCION DE LOS CANALES DE LA TABLA ENCUESTADOS*/
       $mail= DB::table('encuestados')->where([['idEncuesta','=',$id],
@@ -420,7 +419,7 @@ class directiveController extends Controller
                                            ->get();
        $myFile= Excel::create('Data', function($excel)use($encuestados) {
           $excel->sheet('Datos', function($sheet) use($encuestados) {
-            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);
             foreach ($encuestados as $encuestado) {
               $row=[];
               $row[0]=$encuestado->region;
@@ -457,7 +456,7 @@ return response()->json($response);
                                            ->get();
        $myFile= Excel::create('Data', function($excel)use($encuestados) {
           $excel->sheet('Datos', function($sheet) use($encuestados) {
-            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);
             foreach ($encuestados as $encuestado) {
               $row=[];
               $row[0]=$encuestado->region;
@@ -492,7 +491,7 @@ return response()->json($response);
                                            ->get();
        $myFile= Excel::create('Data', function($excel)use($encuestados) {
           $excel->sheet('Datos', function($sheet) use($encuestados) {
-            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);  
+            $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);
             foreach ($encuestados as $encuestado) {
               $row=[];
               $row[0]=$encuestado->region;
