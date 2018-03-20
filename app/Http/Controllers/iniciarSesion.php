@@ -133,7 +133,15 @@ public function validar2(Request $request)
  {
  return view('welcome');
 }else {
- return redirect('/administrator');
+$us = usuarios::find($id);
+if($us->type == 4)
+{
+   return redirect('/administrator');
+}
+if($us->type == 1 || $us->type == 3 || $us->type == 2){
+  return redirect()->route('directive');
+}
+
 }
 
 }
