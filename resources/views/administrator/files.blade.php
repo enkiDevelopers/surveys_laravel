@@ -78,7 +78,7 @@
             <label for="exampleInputFile">Subir documento</label>
               <input class="form-control-file"  id="datos" name="datos" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                  <input type="hidden" id="listaid" name="listaid" value="">
-                 <strong>Maximo por archivo 5MB</strong>
+                 <!-- <strong>Maximo por archivo 5MB</strong> -->
           <hr>
       <div class="modal-footer">
             <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivo</button>

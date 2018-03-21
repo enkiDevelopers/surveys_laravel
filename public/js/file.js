@@ -80,7 +80,7 @@ function data () {
     var file2 = document.getElementById("datos");
 
 
-    if(file2.files[0].size > 5242880){
+    /*if(file2.files[0].size > 5242880){
             swal({
                       title: "Información",
                       text: "El archivo que intenta subir excede el limite permitido.",
@@ -90,11 +90,11 @@ function data () {
                       confirmButtonText: 'Continuar',
                       closeOnConfirm: true,
                    });
-  }else{
+  }else{*/
     document.getElementById("btnsubir2").value = "Enviando...";
     document.getElementById("btnsubir2").disabled = true;
     form2.submit();
-  }
+  //}
   
 }
 

@@ -166,9 +166,14 @@ public function ingresarDatos(Request $request){
 
 }
 
-public function ingresarMasDatos(Request $request){
+public function ingresarMasDatos2(Request $request){
+            echo "Algo raro está pasando \n";    
+            //return back();
+}
 
-        ini_set('max_execution_time', 0);
+public function ingresarMasDatos(Request $request){
+    try{
+        //ini_set('max_execution_time', 0);
         $listaid=$request->input('listaid');
         $nombrepath=md5(microtime(true));
         $nombrepath=$nombrepath.".xlsx";
@@ -177,14 +182,20 @@ public function ingresarMasDatos(Request $request){
                 $file = $request->file('datos');
                 $dato=$request->file('datos')->getClientOriginalName();
                 $file->move('listas/', $nombrepath);
+                $INFO=DB::table('recursos')->insertGetId(['path'=> $nombrepath,
+                                                    'idlista'=>$listaid]);
+                return back();
+        }else{
+            echo "Algo raro está pasando \n";    
         }
         /*$job = new IngresarLista($dato,$listaid);
         dispatch($job);*/
-         $INFO=DB::table('recursos')->insertGetId(['path'=> $nombrepath,
-                                                    'idlista'=>$listaid]); 
-
-return back();
-
+          
+         
+    }catch(Exception $e){
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+    }
+    return back();
 }
 private function guardarListaBD($nombre,$id2){
     $factual=date('Y-m-d H:m:s');
