@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\surveys;
 use DB;
 use File;
+use App\usuarios;
 use Input;
 use Response;
 use App\Client;
@@ -71,8 +72,8 @@ class directiveController extends Controller
         default:
       }
       $regionestotal=DB::table('ctlRegions')->get();
-
-      return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus'));
+      $info = usuarios::find($id);
+      return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus','info'));
 
   }
   public function buscar(Request $request){

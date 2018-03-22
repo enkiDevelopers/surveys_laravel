@@ -1,6 +1,6 @@
 @extends('layouts.directive')
 @section('content')
-
+<link rel="stylesheet" href="/css/direct.css" />
 <!--modal section -->
 <div id="MdCorporativo" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -19,25 +19,25 @@
         <fieldset>
           <a class='btn btn-default' href="javascript:getURLGeneral()" >
             Reporte General
-          </a> 
+          </a>
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
             <select class="form-control text-black" id="cmbregioncorp" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
             <option>Seleccione una opción</option>
-            <?php 
+            <?php
               foreach ($regionestotal as $regionestotales) {
-                echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";  
+                echo "<option value=".$regionestotales->regions_id.">".$regionestotales->regions_name."</option>";
               }
             ?>
             </select>
               <p id="cargar" name="cargar"></p>
-            <a class='btn btn-default' href="javascript:getURLRegionCorp()" >Ver Reporte</a> 
+            <a class='btn btn-default' href="javascript:getURLRegionCorp()" >Ver Reporte</a>
         </fieldset>
         <fieldset>
           <legend>Reporte Campus</legend>
           <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp"></select>
-          <a class='btn btn-default' href="javascript:getURLCorp()" >Ver Reporte</a> 
+          <a class='btn btn-default' href="javascript:getURLCorp()" >Ver Reporte</a>
         </fieldset>
       </div>
       <div class="modal-footer">
@@ -71,7 +71,7 @@
             <select id="cmbregion" name="cmbregion" class="form-control text-black" disabled>
             <?php
                 foreach ($regiones as $region) {
-                    echo "<option value={$region->regions_id}>{$region->regions_name}</option>";     
+                    echo "<option value={$region->regions_id}>{$region->regions_name}</option>";
                 }
             ?>
             </select>
@@ -85,7 +85,7 @@
                 <select id="cmbcampus" name="cmbcampus" class="form-control text-black">
                 <?php
                     foreach ($campus as $campuss) {
-                        echo "<option value={$campuss->campus_id}>{$campuss->campus_name}</option>";    
+                        echo "<option value={$campuss->campus_id}>{$campuss->campus_name}</option>";
                     }
                 ?>
                 </select>
@@ -104,8 +104,37 @@
 </div>
 <!--end modal section-->
 
+<div class="sep">
 
-<div class="container" style="width:86%;margin-top:15px;" >
+      <div class="supSide" style="left: 60%">
+        <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')">
+        </div>
+        <div class="cuadroPerfilSup">
+
+<div class="eng">
+<span class="glyphicon glyphicon-bookmark icon">&nbsp</span>
+</div>
+<div id="content">
+<div style="margin-top: 1%;">
+<div class="nombre">  {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
+ </div>
+</div>
+
+<div style="margin-top: 2%;">
+<div class="correo"> {{$info->email}} </div>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+</div>
+
+
+
+
+<div class="container" style="width:86%;margin-top:140px;" >
   <div class="row">
     <div class="col-md-11">
       <div class="panel panel-default">
@@ -113,9 +142,9 @@
           <div class="row">
             <div class="col-md-4">
               Reportes
-            </div>    
+            </div>
 
-          </div>    
+          </div>
         </div>
 
         <div class="panel-body">
@@ -148,9 +177,9 @@
                     <span class="glyphicon glyphicon-signal" ></span>
                   </button>
                 </div>
-                <?php 
+                <?php
                     break;
-                    case '2': 
+                    case '2':
                 ?>
                 <div class="btn-group " role="group" aria-label="...">
                   <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos" data-toggle="tooltip" data-placement="top" title="Reporte Regional">
@@ -166,19 +195,19 @@
                     <span class="glyphicon glyphicon-signal" ></span>
                   </a>
                 </div>
-                <?php 
+                <?php
                     break;
                     default:
                         echo "<p>Sin Asignar</p>";
                     break;
-                  }              
-                ?>    
+                  }
+                ?>
 
 
                 </td>
-              </tr> 
+              </tr>
                       <?php } ?>
-               
+
             </tbody>
           </table>
 
