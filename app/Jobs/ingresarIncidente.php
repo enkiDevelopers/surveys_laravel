@@ -37,7 +37,7 @@ class ingresarIncidente implements ShouldQueue
     public function handle()
     {
         $idarray=['id' => $this->idlista1]; 
-        Excel::filter('chunk')->load("../listas/".$this->archivonombre1)->chunk(30000, function($results) use ($idarray){
+        Excel::filter('chunk')->load("../listas/".$this->archivonombre1)->chunk(1300, function($results) use ($idarray){
             foreach($results as $row){
                 if($row->De_Cuenta_De_Alumno=="" && $row->nombre_alumno==""){
                 }else{
