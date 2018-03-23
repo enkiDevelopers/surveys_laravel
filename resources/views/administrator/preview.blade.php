@@ -196,10 +196,11 @@ function pop(){
             function(isConfirm) {
             if (isConfirm) {
                 location.href ="/contestado";
-            } else {
-            
-            }
-            });
+            }else{
+                document.getElementById("idenviar").style.display='block';           
+            } 
+            });             
+    
 }
 function get_action(){
     var id=document.getElementById("idencuestado").value;

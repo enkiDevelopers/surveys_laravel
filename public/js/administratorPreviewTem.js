@@ -261,6 +261,7 @@ $(document).ready(function(){
             }
         }else{
             if($("#type"+n).val()=="3"){
+                /*
             console.log("3");
 
             var tempo= $('input:checkbox[data-name=opcion'+n+']:checked');
@@ -278,7 +279,8 @@ $(document).ready(function(){
             }); 
             }else{
             validado=true;
-        }
+        }*/
+            validado=true;
         }
         }
     }
@@ -316,12 +318,16 @@ $(document).ready(function(){
 
 
     /********Funcionalidades del botón Enviar encuesta************/
-    $("#idenviar").click(function(){ 
+    $("#idenviar").click(function(){
+        $("#idenviar").hide();
+        //$("#idenviar").prop( "disabled", true );
         if(validarUltimaPreg()){
             get_action();
         }else{
-             get_action();       
-        }
+            $("#idenviar").show();
+            //$("#idenviar").prop( "disabled", false );
+             //get_action();       
+        } 
     });
 
 
