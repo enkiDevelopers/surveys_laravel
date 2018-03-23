@@ -78,7 +78,7 @@ function creardato(ide){
 function data () {
     var form2=document.getElementById("agregardatos");
     var file2 = document.getElementById("datos");
-
+ 
 
     /*if(file2.files[0].size > 5242880){
             swal({

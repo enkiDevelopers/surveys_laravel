@@ -80,7 +80,7 @@
                  <input type="hidden" id="listaid" name="listaid" value="">
                  <!-- <strong>Maximo por archivo 5MB</strong> -->
           <hr>
-      <div class="modal-footer">
+      <div class="modal-footer"> 
             <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivo</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
@@ -195,7 +195,7 @@
 
 
 
-        <div class="col-md-12" id="divid" style="overflow:auto;">
+        <div class="col-md-12 marge" id="divid" style="overflow:auto;">
             <table class="table table-striped">
                 <thead>
                   <tr class="info">

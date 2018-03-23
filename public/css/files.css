@@ -14,22 +14,39 @@
 	.fondo{
 		background-color: #ECEAE6;
 	}
+
 	@media screen and (max-width: 700px) {
 	.top{
 		margin-top: 30%;
 		margin-left: 5%;
 
 	}
+	.marge{
+		margin-left: 5px;
+		padding-left: 1%;
+
+	}
+}
+
 	@media screen and (max-width: 500px) {
 	.top{
 		margin-top: 30%;
 		margin-left: 10%;
 
 	}
-		@media screen and (max-width: 300px) {
+	.marge{
+		margin-left: 5px;
+		padding-left: 1%;
+	}
+}
+	@media screen and (max-width: 300px) {
 	.top{
 		margin-top: 30%;
 		margin-left: 10%;
 
+	}
+	.marge{
+		margin-right: 10%;
+		padding-left: 1%;
 	}
 	}

@@ -24,11 +24,6 @@
         <div class="profile center text-center">
         <?php
           foreach ($datosdirective as $datosdirectives) {
-            echo "<p style='margin:-5px';>".$datosdirective[0]->nombre." ".$datosdirective[0]->apPaterno." ".$datosdirective[0]->apMaterno."  </p>";
-          }
-        ?>
-        <?php
-          foreach ($datosdirective as $datosdirectives) {
             switch ($datosdirective[0]->type) {
               case '1':
                 echo "<p>Directivo Corporativo</p>";
