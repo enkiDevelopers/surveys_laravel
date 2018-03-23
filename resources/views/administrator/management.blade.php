@@ -638,6 +638,11 @@ function ocultar2(){
   $('#bodyTablaDir').slideToggle("fast");
 
 }
+
+function principal()
+{
+location.href ="/";
+}
 </script>
 
 @endsection

@@ -80,7 +80,7 @@
                  <input type="hidden" id="listaid" name="listaid" value="">
                  <!-- <strong>Maximo por archivo 5MB</strong> -->
           <hr>
-      <div class="modal-footer"> 
+      <div class="modal-footer">
             <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivo</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
       </div>
@@ -136,7 +136,7 @@
   <div class="procesando" id="procesando"></div>
 
 
-  
+
   <div class="sep">
 
         <div class="supSide" style="left: 60%;">
@@ -374,5 +374,10 @@
 <!--Versión2.2.4 NO BORRAR-->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
                                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
                                <script src="/js/file.js"></script>
-
+                              <script>
+                              function principal()
+                              {
+                              location.href ="/";
+                              }
+                              </script>
 @endsection
