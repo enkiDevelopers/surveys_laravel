@@ -224,13 +224,13 @@
 
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled>
+                          <a class="btn btn-default" title="Agregar Datos" disabled="disabled">
                               <span class="glyphicon glyphicon-edit"></span>
                           </a>
                       </th>
 
                       <th>
-                        <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
+                        <a class="btn btn-default" title="Agregar Datos" disabled="disabled" >
                               <span class="glyphicon glyphicon-play-circle"></span>
                           </a>
                       </th>
@@ -240,7 +240,7 @@
                           </a>
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                          <a class="btn btn-default" data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
                               <span class="glyphicon glyphicon-plus"></span>
                           </a>
                       </th>
@@ -268,13 +268,13 @@
                           <?php echo $lista->titulo; ?>
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
+                          <a class="btn btn-default" title="Agregar Datos" disabled="disabled" >
                               <span class="glyphicon glyphicon-edit"></span>
                           </a>
                       </th>
 
                       <th>
-                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos" disabled >
+                          <a class="btn btn-default" data-placement="top" title="Agregar Datos" disabled="disabled" >
                               <span class="glyphicon glyphicon-play-circle"></span>
                           </a>
                       </th>
@@ -287,7 +287,7 @@
                       <?php
                         if($hoy>=$lista->fechat){
                       ?>
-                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled >
+                          <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
                               <span class="glyphicon glyphicon-plus"></span>
                           </a>
                       <?php
@@ -306,7 +306,7 @@
                           </a>
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" disabled>
+                          <a class="btn btn-default" data-placement="top" title="Eliminar lista" disabled="disabled">
                               <span class="glyphicon glyphicon-trash"></span>
                           </a>
                       </th>
@@ -324,7 +324,7 @@
                       <th>
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
+                          <a class="btn btn-default" data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
                               <span class="glyphicon glyphicon-edit"></span>
                           </a>
                       </th>
@@ -335,22 +335,22 @@
                           </a>
                       </th>
                       <th>
-                          <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black" disabled>
+                          <a class="btn btn-default"  title="Vista previa"  disabled="disabled">
                               <span class="glyphicon glyphicon-eye-open"></span>
                           </a>
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled >
+                          <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
                               <span class="glyphicon glyphicon-plus"></span>
                           </a>
                       </th>
                       <th>
-                          <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black" disabled>
+                          <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  disabled>
                               <span class="glyphicon glyphicon-alert"></span>
                           </a>
                       </th>
                       <th>
-                          <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
+                          <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
                               <span class="glyphicon glyphicon-trash"></span>
                           </a>
                       </th>
