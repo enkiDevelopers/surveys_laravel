@@ -204,7 +204,7 @@ function pop(){
 }
 function get_action(){
     var id=document.getElementById("idencuestado").value;
-    console.log(id);
+    //console.log(id);
     if(id==''){
         pop();
     }else{

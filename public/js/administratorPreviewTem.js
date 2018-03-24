@@ -1,7 +1,6 @@
 $(document).ready(function(){
     var b=-1;n=1;    
 
-
         $("#btnStart").click(function(){
                 $("#surveyContainer").css('display','block');
                 $("#sumary").fadeOut( "slow" );
@@ -19,8 +18,14 @@ $(document).ready(function(){
                 if($(".pregs").length==0){
                     alert("No hay preguntas aún");
                 }else{
-                    $("#surveyContainer").fadeOut( "slow" );                
-                    $("#idNext").css('display','block');
+                    $("#surveyContainer").fadeOut( "slow" );
+                    if($(".pregs").length==1){
+                        //alert("listo");
+                        $("#idNext").hide(); 
+                        $("#idenviar").show();
+                    }else{
+                        $("#idNext").css('display','block');
+                    }
                     $("#preg"+n).css("display", "inline");
                 }
         });
@@ -241,11 +246,11 @@ $(document).ready(function(){
                 closeOnConfirm: true
             }); 
             }else{
-            validado=true;
-        }
+                validado=true;
+            }
         }else{
             if($("#type"+n).val()=="1"){
-            console.log("2");
+            //console.log("2");
 
                 if(tipo2==''){
                     swal({
@@ -261,27 +266,8 @@ $(document).ready(function(){
             }
         }else{
             if($("#type"+n).val()=="3"){
-                /*
-            console.log("3");
-
-            var tempo= $('input:checkbox[data-name=opcion'+n+']:checked');
-            var dato=tempo;
-
-            tempo= $(tempo).data("salto");
-           
-            if(dato.val() == null){
-             swal({
-                title:"Información",
-                text: "Marque una de las opciones",
-                icon: "info",
-                //confirmButtonColor: "#DD6B55",
-                closeOnConfirm: true
-            }); 
-            }else{
-            validado=true;
-        }*/
-            validado=true;
-        }
+                validado=true;
+            }
         }
     }
 
@@ -319,9 +305,12 @@ $(document).ready(function(){
 
     /********Funcionalidades del botón Enviar encuesta************/
     $("#idenviar").click(function(){
+        
         $("#idenviar").hide();
         //$("#idenviar").prop( "disabled", true );
-        if(validarUltimaPreg()){
+        var validar=validarUltimaPreg();
+        //alert(validar);
+        if(validar){            
             get_action();
         }else{
             $("#idenviar").show();
