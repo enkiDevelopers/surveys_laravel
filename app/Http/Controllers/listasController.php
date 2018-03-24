@@ -155,6 +155,7 @@ public function ingresarDatos(Request $request){
     $idlista=$request->input('id');
     $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
     $cantidad=DB::table('recursos')->where('idlista','=',$idlista)->count();
+    DB::table('listaEncuestados')->where('idLista',$idlista)->update(['carga'=>3]);
 
     foreach ($data as $datas) {
         $job = new IngresarLista($datas->path,$idlista,$cantidad);
@@ -170,6 +171,11 @@ public function ingresarMasDatos2(Request $request){
             echo "Algo raro está pasando \n";    
             //return back();
 }
+public function checarlist(Request $request){
+    $data=DB::table('recursos')->select('orginalname')->where('idLista','=',$request->id)->get();
+
+    return response()->json($data);
+}
 
 public function ingresarMasDatos(Request $request){
     try{
@@ -182,9 +188,11 @@ public function ingresarMasDatos(Request $request){
                 $file = $request->file('datos');
                 $dato=$request->file('datos')->getClientOriginalName();
                 $file->move('listas/', $nombrepath);
-                $INFO=DB::table('recursos')->insertGetId(['path'=> $nombrepath,
-                                                    'idlista'=>$listaid]);
-                return back();
+                $INFO=DB::table('recursos')->insertGetId([ 'path'=> $nombrepath,
+                                                           'orginalname'=>$dato,
+                                                           'idlista'=>$listaid]);
+                DB::table('listaEncuestados')->where('idLista',$listaid)->update(['carga'=>2]);
+                
         }else{
             echo "Algo raro está pasando \n";    
         }
@@ -271,6 +279,8 @@ return back();
                 $dato=$request->file('incidentes')->getClientOriginalName();
                 $file->move('listas', $dato);
         }
+        DB::table('listaEncuestados')->where('idLista',$listaid)->update(['carga'=>3]);
+
       $job = new ingresarIncidente($listaid,$dato);
       dispatch($job);
         

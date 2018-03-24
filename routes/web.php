@@ -262,3 +262,5 @@ Route::post('/excelregion','directiveController@excelregion');
 Route::post('/excelgeneral','directiveController@excelgeneral');
 
 Route::post('/checarjobs','listasController@checarjob');
+
+Route::post('/archivos' ,'listasController@checarlist');

@@ -54,7 +54,6 @@ function creardato(ide){
                         type: "info",
                         confirmButtonText: 'Continuar',
                      });
-                  $("#datain").css('display','inline');
 
                   $("#divid").load(" #divid");
                   cargar=1;
@@ -128,7 +127,6 @@ $(window).load(function() {
                         confirmButtonText: 'Continuar',
                      });
                      cargar=0;
-                     $("#datain").css('display','none');
 
                   }
                   //console.log(response);
@@ -162,7 +160,6 @@ $(window).load(function() {
                         confirmButtonText: 'Continuar',
                      });
                     incidentecargar=0;
-                              $("#datain").css('display','none');
 
                   }
                   //console.log(response);
@@ -221,14 +218,12 @@ $(function(){
 
               },
               success : function(response){
-                $("#datain").css('display','none');
 
               $("#divid").load(" #divid");
 
                 $('#nombre').val('');
                 $('#archivo').val('');
                 $("#procesando").hide();
-                  $("#datain").css('display','inline');
 
                 incidentecargar=1;
 
@@ -275,7 +270,7 @@ $(function(){
            },
            function(isConfirm){
              if (isConfirm){
-                        $.ajax({
+            $.ajax({
               dataType : 'json',
               type : 'post',
               url : '/eliminarlista',
@@ -283,11 +278,9 @@ $(function(){
               async:true,
               cache:false,
               beforeSend: function () { 
-                $("#procesando").show();
 
               },
               success : function(response){
-                $("#procesando").hide();
 
                     swal({
                       title: "Información",
@@ -300,7 +293,6 @@ $(function(){
               },
               error : function(error) {
                 console.log(error);
-                $("#procesando").hide();
 
               }
           });
@@ -319,8 +311,39 @@ $(function(){
 
 function reply_click(clicked_id)
 {
+  $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+}); 
+  $.ajax({
+              dataType : 'json',
+              type : 'post',
+              url : '/archivos',
+              data : {"id": clicked_id},
+              async:true,
+              cache:false,
+              beforeSend: function () { 
+
+              },
+              success : function(response){
+                console.log(response);
+              dato="";
+              var json=jQuery.parseJSON(JSON.stringify(response));
+              for(post in json){
+                dato+="<p>"+json[post].orginalname+"</p>"
+              }
+                $("#data").html(dato);
+                $('#AgregarDatos').modal('show');
+              },
+              error : function(error) {
+                console.log(error);
+
+              }
+          });
 document.getElementById("idlista").value = clicked_id;
-document.getElementById("listaid").value=clicked_id;
+document.getElementById("listaid").value= clicked_id;
+
 }
 
 
@@ -346,8 +369,10 @@ function myFunction(){
             $("#files").addClass('active');
         }
 function checkSubmit() {
+
     document.getElementById("btsubmit").value = "Enviando...";
     document.getElementById("btsubmit").disabled = true;
+
     return true;
 }
 

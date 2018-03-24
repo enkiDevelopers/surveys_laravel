@@ -1,6 +1,16 @@
 	.top{
 		margin-top: 1%;
 	}
+	#titulo{
+  	background-color: #215F8F;
+   color: white;
+   font-size: 1.5em;
+   padding: 1rem;
+   text-align: center;
+   text-transform: uppercase;
+   border-radius: 5px;
+   margin-bottom: 7px;
+	}
 
 	.pad{
 		padding-right: 5%;
