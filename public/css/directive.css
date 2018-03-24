@@ -1,3 +1,43 @@
+th,td{
+    text-align: center;
+}
+.descripcion{
+  text-align: justify;
+  color: black;
+
+}
+table{
+  margin: 0px !important;
+    border-spacing: 0;
+    display: flex;/*Se ajuste dinamicamente al tamano del dispositivo**/
+    max-height:80vh; /*El alto que necesitemos**/
+    overflow-y: auto; /**El scroll verticalmente cuando sea necesario*/
+    overflow-x: hidden;/*Sin scroll horizontal*/
+    table-layout: fixed;/**Forzamos a que las filas tenga el mismo ancho**/
+}
+thead{
+    position: fixed !important;/*el thead va ser siempre estatico**/
+    z-index: 1049;
+}
+thead tr th{
+  font-size: 13px;
+  font-weight: bold;
+}
+th,td{
+    font-weight: normal;
+    margin: 0;
+    max-width: 21vw; /**Ancho por celda*/
+    min-width: 21vw;/**Ancho por celda*/
+    word-wrap: break-word;/*Si el contenido supera el tamano, adiciona a una nueve linea**/
+    font-size: 14px;
+    height: 4.5vh !important;/*El mismo alto para todas las celdas**/
+    padding: 4px;
+    border-right: 1px solid #c4c0c9;
+} 
+tbody{
+  margin-top: 2%;
+}
+
 .card{
   width: 25%;
   height: 240px;
@@ -54,6 +94,9 @@
   .container{
     margin-left: 0px;
     margin-top: 92px !important; 
+    width: 100% !important;
+    padding-left: 7px;
+    padding-right: 7px;
   }
   .col-md-11{
     margin-right: -14%;
@@ -61,5 +104,15 @@
   .card{
     width: 41%;
     display: inline-grid;
-  }  
+  }
+  .descripcion{
+    text-overflow: ellipsis;
+    overflow-x: auto;
+    word-wrap: break-word;
+    white-space: nowrap;
+  }
+  tbody{
+    margin-top: 17%;
+  }
+
 }

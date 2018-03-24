@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>UVM - Mejora Por Ti</title>
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/sidebar.css">
@@ -21,28 +21,6 @@
       </div>
       <hr class="divider">
       <ul class="list-unstyled components">
-        <div class="profile center text-center">
-        <?php
-          foreach ($datosdirective as $datosdirectives) {
-            switch ($datosdirective[0]->type) {
-              case '1':
-                echo "<p>Directivo Corporativo</p>";
-                break;
-              case '2': 
-                echo "<p style='margin: -5px 0'>Directivo Regional</p>";
-                echo "<p style='margin: -5px 0'>".$datosdirective[0]->regions_name."</p>";                                    
-                break;
-              case '3':
-                echo "<p style='margin: -5px 0'>Directivo Campus</p>";
-                echo "<p style='margin: -5px 0'>".$campus[0]->campus_name."</p>";
-                break;    
-              default:
-                echo "<p>Sin Asignar</p>";
-                break;
-            }
-          }
-        ?>
-        </div>
           <li class="active">
             <a href="{{ url('/directive')}}" >
               <span>REPORTES</span>

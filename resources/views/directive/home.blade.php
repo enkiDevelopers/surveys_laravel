@@ -114,17 +114,39 @@
 <div class="eng">
 <span class="glyphicon glyphicon-bookmark icon">&nbsp</span>
 </div>
-<div id="content">
+<div id="content" style="height: 85%;">
 <div style="margin-top: 1%;">
-<div class="nombre">  {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
+<div class="nombre" style="white-space: pre;margin-left: 0px;">  {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
  </div>
 </div>
 
-<div style="margin-top: 2%;">
+<div style="margin-top: -9%;">
 <div class="correo"> {{$info->email}} </div>
+ 
+  <div style="margin-top: -3%">
+        <?php
+          foreach ($datosdirective as $datosdirectives) {
+            switch ($datosdirective[0]->type) {
+              case '1':
+                echo "<div style='height: auto;text-align: right;margin-left: 15%;color: white;font-size: 18px;}'>Directivo Corporativo</div>";
+                break;
+              case '2': 
+                echo "<div style='height: auto;text-align: right;margin-left: 15%;color: white;font-size: 18px;white-space: pre; }'>Directivo Regional ".$datosdirective[0]->regions_name."</div>";
+                break;
+              case '3':
+                echo "<div style='height: auto;text-align: right;margin-left: 0%;color: white;font-size: 15px;white-space: pre;font-weight:bold;}'>Directivo Campus ".$campus[0]->campus_name."</div>";
+                break;    
+              default:
+                echo "<p>Sin Asignar</p>";
+                break;
+            }
+          }
+        ?>
+        </div>
 </div>
 </div>
 
+      
 
         </div>
       </div>
@@ -134,26 +156,16 @@
 
 
 
-<div class="container" style="width:86%;margin-top:140px;" >
+<div class="container" style="width:93%;margin-top:140px;" >
   <div class="row">
-    <div class="col-md-11">
+    <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="row">
-            <div class="col-md-4">
-              Reportes
-            </div>
-
-          </div>
-        </div>
-
-        <div class="panel-body">
-        <div class="col-md-12" style="overflow-x:auto;">
-          <table class="table">
+        <div>
+          <table class="table table-striped table-hover table-bordered">
             <thead>
-              <tr style="background-color:#D9EDF7">
+              <tr style="background-color:#338537; color: white;">
                 <th>Encuesta</th>
-                <th>Titulo Encuesta</th>
+                <th>Título</th>
                 <th>Descripción</th>
                 <th>Informe</th>
               </tr>
@@ -165,8 +177,8 @@
                 <td>
                   <img src="\img/iconos/{{$encuesta->imagePath}}" width="55px" height="50px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
                 </td>
-                <td><p>{{$encuesta->tituloEncuesta}}</p></td>
-                <td><p>{{$encuesta->descripcion}}</p></td>
+                <td class="descripcion"><p>{{$encuesta->tituloEncuesta}}</p></td>
+                <td class="descripcion"><p>{{$encuesta->descripcion}}</p></td>
                 <td>
                  <?php
                   switch ($datosdirective[0]->type) {
@@ -190,8 +202,8 @@
                   break;
                   case '3':
                 ?>
-                <div class="btn-group " role="group" aria-label="...">
-                  <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
+                <div class="btn-group">
+                  <a class='btn btn-default' style="background-color: #689f38;color: white;" href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
                     <span class="glyphicon glyphicon-signal" ></span>
                   </a>
                 </div>
@@ -211,7 +223,6 @@
             </tbody>
           </table>
 
-          </div>
         </div>
     </div>
   </div>

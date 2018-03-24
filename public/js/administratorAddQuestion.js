@@ -54,12 +54,20 @@
             case "2": //Seleccionó pregunta de opción múltiple
                     eliminarOpcionMultiple();
                     tieneOpMul = true;
-                    agregarOpcionMultiple($(this).parent().parent().parent());//el parámetro me genera dudas
+                    var options = $(".multi-options-template").length;
+                        if( options <= '3'){ //3
+                           $(".delete-question-to-yes-no").attr("disabled","disabled");    
+                    }
+                    agregarOpcionMultiple($(this).parent().parent().parent());
             break;
             case "3": //Seleccionó pregunta de opción múltiple
                     eliminarOpcionMultiple();
                     tieneOpMul = true;
-                    agregarOpcionMultiple($(this).parent().parent().parent());//el parámetro me genera dudas
+                    var options = $(".multi-options-template").length;
+                        if( options <= '3'){ //3
+                           $(".delete-question-to-yes-no").attr("disabled","disabled");    
+                    }
+                    agregarOpcionMultiple($(this).parent().parent().parent());
             break;
         }
     });
@@ -72,11 +80,6 @@
     });
     /*********************************************************************************/
 
-
-
-    /*********************************************************************************/
-
-
     // Agrega una nueva opcion a un bloque de preguntas de opción múltiple
     $("#ModalQuestion").on("click", ".add-question-to-yes-no", function(e){
         // Habilitar-Deshabilitar Botón de eliminar de opción de bloque de preguntas de opción
@@ -86,7 +89,7 @@
     });
     /*********************************************************************************/
 
-    // Agrega una nueva opcion a un bloque de preguntas de opción múltiple
+    // Agrega una nueva opcion a un bloque de preguntas de opción múltiple  --MODAL EDIT--
     $("#ModalQuestionEdit").on("click", ".add-question-to-yes-no", function(e){
         // Habilitar-Deshabilitar Botón de eliminar de opción de bloque de preguntas de opción
         var options = $(".multi-options-template-edit").length;
@@ -272,7 +275,7 @@
            $(".delete-question-to-yes-no").removeAttr("disabled");
 
 
-           $(".options-edit").empty();
+           $(".options-edit").remove();  //estaba en empty
            if (typeQuestion == 2 || typeQuestion == 3) {
             $(".add-question-to-yes-no").removeClass('hidden');
                for (var i = 0; i < opciones.length; i++) {
@@ -421,105 +424,6 @@
        $("#questionSaved").css('height','55rem');
 
     });
-/*
-    //Eliminar una opcion multiple
-    var parentYesNo;
-    $("#ModalQuestion").on('click',".delete-question-to-yes-no", function(e){
-
-
-
-        if (classCount() <= '4') { //4
-            $(".delete-question-to-yes-no").attr("disabled", "true");
-        }
-        e.preventDefault();
-        parentYesNo = $(this).parent().parent();
-        parentYesNo.remove();
-        //var elem = $("#multi-options").clone().appendTo(".new-survey__question-container");
-        //parentYesNo.append(elem);
-        // parentYesNo.data("questions", parentYesNo.data("multi-options") - 1 );
-        //console.log(parentYesNo);
-    });
-
-*/
-
-/*
-    // Editar una pregunta
-    $(".new-survey__question-container").on("click", ".new-question__control--edit-question", function(){
-        $(this).parent().parent().parent().parent().remove();
-        //setNumberOfQuestionsToSelect();
-        //getnumberQuestion();
-
-        //Abrrir modal
-        //Copiar datos de los inputs del div
-        //igualar los valores de los inputs del moda al del div
-    });
-*/
-
-/*    function hasNestedQuestion(elem){
-        return elem.parent().parent().parent().has('.new-satisfaction-question-template').length != 0 || elem.parent().parent().parent().has('.yes-no-question-block').length != 0;
-    }
-
-    function hasNestedQuestionOfType(elem, type){
-        return elem.parent().parent().parent().has(type).length != 0;
-    }
-*/
-    // Agrega una nueva pregunta a un bloque de preguntas de si/no
-  /*  var parentYesNo;
-    $(".new-survey__question-container").on("click", ".add-question-to-yes-no", function(e){
-        e.preventDefault();
-        parentYesNo = $(this).parent().parent();
-        var elem = $("#new-question-template").clone().removeClass("hide").appendTo(".new-survey__question-container");
-        parentYesNo.append(elem);
-        parentYesNo.data("questions", parentYesNo.data("questions") + 1);
-       // console.log(parentYesNo.data("questions"));
-
-    });
-*/
-
-
-    // Agregar una nueva pregunta a la encuesta general
-    /*$("#add-question").on("click", function(){
-        //Agregando número de pregunta
-        if ($("#add-question").hasClass("disabled")){
-            alert("Ingrese un título");
-        }else{
-            if ($("#add-question").hasClass('aux')){
-                $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("");
-                $("#add-question").removeClass('aux');
-            }else{
-                $("#new-question-template").clone().removeClass("hide").addClass("question").appendTo(".new-survey__question-container").find("input").val("").end();
-                //("#childSupport").hide();
-                //setNumberOfQuestionsToSelect();
-                //getnumberQuestion();
-
-            }
-        }
-    });
-
-    function setNumberOfQuestionsToSelect(){
-        var el = $(".question:not(.hide)");
-        var select =  $(".questions-of-master-survey");
-        select.empty();
-
-        for(var i = 1; i <= el.length; i++){
-            var o = new Option("i", i);
-            $(o).html(i);
-            select.append(o);
-        }
-    }
-
-    function getnumberQuestion(){
-        var el = $(".question:not(.hide)");
-        var select = $(".number-questions-survey");
-        select.empty();
-
-        for (var i = el.length.selected; i <= el.length; i++) {
-            var o = new Option("i", i);
-            $(o).html(i);
-            select.append(o);
-        }
-    }
-    */
 
 });
 
@@ -727,17 +631,6 @@
 
     }
 
-/*    function limpiar(){
-        var canvas = document.getElementById("previewcanvas");
-        canvas.width=canvas.width;
-        $("#previewcanvascontainer").css('display', 'none');
-        $("#img_survey").css('display', 'inline');
-    } 
-
-    function limpiar2(){
-        var canvas = document.getElementById("previewcanvas");
-        canvas.width=canvas.width;
-    } */
 
 //verificaciones de la carga de una imagen en la creacion de la plantilla
     function ShowImagePreview( files ){
