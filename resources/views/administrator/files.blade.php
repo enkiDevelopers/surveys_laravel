@@ -449,13 +449,13 @@
                                   <td>
                                   </td>
                                   <td>
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
+                                      <a class="btn btn-default"  disabled="disabled"  >
                                           <span class="glyphicon glyphicon-edit"></span>
                                       </a>
                                   </td>
 
                                   <td>
-                                          <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
+                                          <a type="button"   class="btn btn-default"  disabled="disabled" >
                                               <span class="glyphicon glyphicon-play-circle"></span>
                                           </a>
                                   </td>
@@ -497,13 +497,13 @@
                                   <td>
                                   </td>
                                   <td>
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
+                                      <a class="btn btn-default"  disabled="disabled" >
                                           <span class="glyphicon glyphicon-edit"></span>
                                       </a>
                                   </td>
 
                                   <td>
-                                          <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
+                                          <a type="button"  class="btn btn-default" disabled="disabled"  >
                                               <span class="glyphicon glyphicon-play-circle"></span>
                                           </a>
                                   </td>
