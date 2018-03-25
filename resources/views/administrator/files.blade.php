@@ -357,7 +357,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-default" data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
+                                    <a class="btn btn-default" data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click2(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
                                         <span class="glyphicon glyphicon-plus"></span>
                                     </a>
                                 </td>
@@ -441,7 +441,55 @@
                       ?>
                             <tr>
                                   <td>
-                                    <img src="/img/cargando.png" width="30px" height="30px">
+                                    <img src="/img/cargando.png" width="30px" height="30px" data-toggle="tooltip" data-placement="top" title="Agregando datos de listas">
+                                  </td>
+                                  <td>
+                                      <?php echo $lista->nombre; ?>
+                                  </td>
+                                  <td>
+                                  </td>
+                                  <td>
+                                      <a class="btn btn-default" data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
+                                          <span class="glyphicon glyphicon-edit"></span>
+                                      </a>
+                                  </td>
+
+                                  <td>
+                                          <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
+                                              <span class="glyphicon glyphicon-play-circle"></span>
+                                          </a>
+                                  </td>
+
+                                  <td>
+                                      <a class="btn btn-default"  title="Vista previa"  disabled="disabled">
+                                          <span class="glyphicon glyphicon-eye-open"></span>
+                                      </a>
+                                  </td>
+                                  <td>
+                                      <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
+                                          <span class="glyphicon glyphicon-plus"></span>
+                                      </a>
+                                  </td>
+                                  <td>
+                                      <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  disabled>
+                                          <span class="glyphicon glyphicon-alert"></span>
+                                      </a>
+                                  </td>
+                                  <td>
+                                      <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
+                                          <span class="glyphicon glyphicon-trash"></span>
+                                      </a>
+                                  </td>
+
+                                </tr>
+
+                      <?php
+                      break;
+                      case '4':
+                      ?>
+                            <tr>
+                                  <td>
+                                    <img src="/img/cargando.png" width="30px" height="30px" data-toggle="tooltip" data-placement="top" title="Agregando incidentes">
                                   </td>
                                   <td>
                                       <?php echo $lista->nombre; ?>

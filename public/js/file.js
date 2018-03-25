@@ -308,7 +308,11 @@ $(function(){
                     $("#loadingUploadFile").removeClass('invisible');
 
         }
-
+function reply_click2(clicked_id)
+{
+  document.getElementById("idlista").value = clicked_id;
+document.getElementById("listaid").value= clicked_id;
+}
 function reply_click(clicked_id)
 {
   $.ajaxSetup({

@@ -279,7 +279,7 @@ return back();
                 $dato=$request->file('incidentes')->getClientOriginalName();
                 $file->move('listas', $dato);
         }
-        DB::table('listaEncuestados')->where('idLista',$listaid)->update(['carga'=>3]);
+        DB::table('listaEncuestados')->where('idLista',$listaid)->update(['carga'=>4]);
 
       $job = new ingresarIncidente($listaid,$dato);
       dispatch($job);
