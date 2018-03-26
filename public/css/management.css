@@ -168,6 +168,22 @@ margin-left: 15%;
 
 }
 
+@media(max-width: 1063px)
+{
+#titulo
+{
+  font-size: 15px;
+}
+}
+@media(max-width: 991px)
+{
+.btnAdd
+{
+
+display: inline-block;
+}
+
+}
 
 @media(max-width: 979px)
 {
@@ -208,4 +224,15 @@ text-align: center;
   margin-bottom: 20px;
   font-size: 20px;
   }
+}
+@media(max-width: 322px)
+{
+  #titulo
+  {
+    font-size: 12px;
+  }
+#tablaR
+{
+  width: 322px;
+}
 }

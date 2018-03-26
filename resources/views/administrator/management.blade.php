@@ -52,13 +52,13 @@ onclick="return principal();">
   <div class="row" id="tablaR">
       <div class="col-sm-12">
         <div class="col-md-12 text-center" id="titulo">
-       <div class="col-md-6">
+       <div class="col-md-6 tit">
        Administradores registrados
        </div>
-       <div class="col-md-2">
+       <div class="col-md-2 btnAdd">
        <a  class="btn btn-primary" data-toggle="modal" data-target="#administrador">Añadir</a>
        </div>
-       <div class="col-md-2" >
+       <div class="col-md-2 btnAdd" >
          <input type="checkbox"
            checked data-toggle="toggle" data-on="Ocultar"
            data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
@@ -123,19 +123,22 @@ onclick="return principal();">
     <div class="row"  id="tablaR">
         <div class="col-sm-12">
           <div class="col-md-12" id="titulo">
-         <div class="col-md-6">
-            Directivos registrados
-         </div>
-         <div class="col-md-2">
-         <a  class="btn btn-primary" data-toggle="modal" data-target="#directivos">Añadir</a>
-         </div>
-         <div class="col-md-2">
-           <input type="checkbox"
-             checked data-toggle="toggle" data-on="Ocultar"
-             data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
-                id="btnO" onchange="ocultar2();"
-             />
+         <div class="col-md-6 tit">
+                        Directivos registrados
+                     </div>
+
+           <div class="col-md-2 btnAdd"  >
+           <a class="btn btn-primary" data-toggle="modal" data-target="#directivos">Añadir</a>
            </div>
+           <div class="col-md-2 btnAdd">
+             <input type="checkbox"
+               checked data-toggle="toggle" data-on="Ocultar"
+               data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+                  id="btnO" onchange="ocultar2();"
+               />
+             </div>
+
+
          </div>
 
           <table class="table table-fixed" id="bodyTablaDir">
