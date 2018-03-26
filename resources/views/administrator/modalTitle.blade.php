@@ -42,6 +42,9 @@
                         </td>
                     </tr>
                 </table>
+                <div style="height: 70px;;">
+
+                </div>
             </div>
             <div class="modal-footer">
                 <a type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiar()">Cancelar</a>

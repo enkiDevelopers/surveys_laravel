@@ -7,14 +7,17 @@ margin-top: 140px;
 
 #titulo
 {
+    width: 96%;
   background-color: #215F8F;
    color: white;
    font-size: 1.5em;
-   padding: 1rem;
+   padding: 0.5rem;
    text-align: center;
-   text-transform: uppercase;
+   
    border-radius: 5px;
    margin-bottom: 7px;
+
+   margin-left: 2%;
 }
 
 .Iperfil

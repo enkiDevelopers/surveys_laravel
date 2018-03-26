@@ -1,3 +1,28 @@
+#previewcanvascontainer, #previewcanvas
+{
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#aPlantilla
+{
+  width: 100%;
+}
+#imgC
+{
+  height: 200px;
+  width: 100%;
+}
+#imgSalida
+{
+margin-left: 10%;
+margin-right: 10%;
+margin-top: 10%;
+
+max-width: 80%;
+max-height: 80%;
+
+border-radius: 5px;
+}
 hr{
     border-top: 2px solid #c62828;
 }
@@ -77,7 +102,7 @@ hr{
 .header-template{
 	left: 25%;
 	display: inline-grid;
-	top: 100px; 
+	top: 100px;
 }
 #imgSalida, #previewcanvas {
     margin-left: 10%;
@@ -93,7 +118,7 @@ hr{
     width: 100%;
 }
 
-#icon_survey{    
+#icon_survey{
 	width: 80%;
     margin-left: 10%;
     margin-right: 10%;
@@ -179,7 +204,7 @@ hr{
 		min-height: 120px !important;
 		min-width: 120px !important;
 		margin-top: 23%;
-	}	
+	}
 }
 @media screen and (max-width: 767px) {
 	#sidebar{
@@ -286,7 +311,7 @@ hr{
     	left: 2%;
     	display: initial;
    		top: 0px;
-   		right: 10%; 
+   		right: 10%;
    }
 }
 
