@@ -42,7 +42,7 @@
                         </td>
                     </tr>
                 </table>
-                <div style="height: 70px;;">
+                <div style="height: 100px;">
 
                 </div>
             </div>
