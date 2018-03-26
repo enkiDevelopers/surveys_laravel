@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <textarea maxlength="500" class="form-control text-black" required cols="10" rows="5" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Descripción del proposito de la encuesta">{{$descripcion}}</textarea>
+                            <textarea maxlength="500" class="form-control text-black" required cols="10" rows="10" name="descripcion" id="ModalDescInput" aria-describedby="desc" placeholder="Descripción del proposito de la encuesta">{{$descripcion}}</textarea>
                         </td>
                         <td>
                             <div id="imgC">
