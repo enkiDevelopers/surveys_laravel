@@ -654,15 +654,15 @@ margin-left: 20px;
 }
 
 }
-@media(max-width: 1440px)
+@media(max-width: 1450px)
 {
   #pBody
   {
-    max-height: 60vh;
+    max-height: 58vh;
   }
   #pPBody
   {
-    max-height: 60vh;
+    max-height: 58vh;
   }
 
 
