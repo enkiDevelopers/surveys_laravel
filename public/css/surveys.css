@@ -368,14 +368,14 @@ position: relative;
 {
   width: 100%;
   height: auto;
-  max-height: 60vh;
+  max-height: 65vh;
 }
 
 #pPBody
 {
   width: 100%;
   height: auto;
-  max-height: 45vh;
+  max-height: 60vh;
 }
 .CCperfil
 {
@@ -652,6 +652,19 @@ margin-left: 20px;
 .btn-toggle-center{
   text-align: center !important;
 }
+
+}
+@media(max-width: 1366px)
+{
+  #pBody
+  {
+    max-height: 47vh;
+  }
+  #pPBody
+  {
+    max-height: 47vh;
+  }
+
 
 }
 
