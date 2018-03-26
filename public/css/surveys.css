@@ -367,11 +367,15 @@ position: relative;
 #pBody
 {
   width: 100%;
+  height: auto;
+  max-height: 60vh;
 }
 
 #pPBody
 {
   width: 100%;
+  height: auto;
+  max-height: 60vh;
 }
 .CCperfil
 {
