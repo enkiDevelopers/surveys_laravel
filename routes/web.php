@@ -257,7 +257,7 @@ Route::post('/ingresarDatoslistas','listasController@ingresarDatos');
 
 Route::post('/excelcampus','directiveController@excelcampus');
 
-Route::post('/excelregion','directiveController@excelregion');
+Route::post('/excelregion','directiveController@excelregion1');
 
 Route::post('/excelgeneral','directiveController@excelgeneral');
 

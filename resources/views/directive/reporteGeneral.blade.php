@@ -29,6 +29,7 @@
     </div> 
     <div class="col-md-4 margenarriba">
         <img class="img-responsive float" width="150px" height="150px" src='/img/Por_Ti_EXPERIENCIA_UVM.png'>    
+          <input type="hidden" id="idencuesta" value="{{$datoencuesta[0]->id}}">
     </div>      
 
 
@@ -81,6 +82,7 @@
         <div class="col-md-7 cuadrogrisdato">
             <div class="col-md-8">Reporte Faltante:</div>
             <div class="col-md-3">
+
                 <a type="button" onclick="excelinformegeneral();return false;">
                     <span><img src="\img/excel_icon.png" width="90px" height="90px"></span>
                 </a>
@@ -89,42 +91,9 @@
     </div>
 </div>
 
-    <div class="row col-center">
-        <div class="col-md-6">
 
-        </div>
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-6">
-
-          <legend><strong>Línea de negocios</strong></legend>
-          <input type="hidden" id="idencuesta" value="{{$datoencuesta[0]->id}}">
-
-            <select class="form-control text-black" id="cmblineanegocios" value="Linea de negocios" selected="selected" onchange="sltlinea(this.value)">
-                    <option value="1">Seleccione una opción</option> 
-                <?php
-                        foreach ($lineanegocios as $lineanegocio) {
-                        echo "<option value={$lineanegocio->lineaNegocio}>{$lineanegocio->lineaNegocio}</option>";    
-                    }
-                ?> 
-            </select>
-        </div>
-        <div class="col-md-6">
-          <legend><strong>Modalidad</strong></legend>
-            <select class="form-control text-black" id="cmbmodalidad" value="Modalidades" selected="selected" onchange="sltmodalidades(this.value)">
-                    <option value="1">Seleccione una opción</option>  
-                    <?php
-                        foreach ($modalidad as $modalidades) {
-                    ?>
-                             "<option value="{{$modalidades->modalidad}}">{{$modalidades->modalidad}}</option>";    
-                    <?php    
-                        }
-                    ?>            
-            </select>
-        </div>
-    </div>
     <br>
-    <div class="row-center scroll">
+   <!-- <div class="row-center scroll">
         <div class="col-md-12 ">
             <table class="table">
                 <thead>
@@ -140,9 +109,9 @@
                     <th>#FBK</th>
                     <th>#HP12</th>
                     <th>#EMAIL</th>
-                <!--<th>#PRM</th>
+                <th>#PRM</th>
                     <th>#DET</th>
-                    <th>%NPS</th>-->
+                    <th>%NPS</th>
                     <th>%Avance</th>
                 </tr>
                 </thead>
@@ -153,7 +122,7 @@
             </table>
 
         </div>
-    </div>
+    </div>-->
 </div>  
     <div class="row" style="height:50px;">
     </div>

@@ -4,7 +4,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
   title:{
   },
   axisY: {
-    title:"Encuestados",
+    title:"Porcentaje de Encuestados",
   },
   legend: {
     cursor:"pointer",
@@ -20,13 +20,17 @@ var chart = new CanvasJS.Chart("chartContainer", {
     name: "Encuestados",
     dataPoints: [
     <?php
+        $datototal=DB::table('encuestados')->where('idEncuesta','=',$datoencuesta[0]->id)
+                                           ->where('contestado','=',1)
+                                           ->count();
         foreach ($estadisticas as $estadistica) {
-
             $dato=DB::table('encuestados')->where('campus','=',$estadistica->campus)
                                           ->where('idEncuesta','=',$datoencuesta[0]->id)
                                           ->where('contestado','=',1)
                                           ->count();
-            echo "{ label: ".'"'.$estadistica->campus.'"'.",y: ".$dato."},\n";
+            $datoporcentaje=number_format(((100*$dato)/$datototal),2);
+
+            echo "{ label: ".'"'.$estadistica->campus.'"'.",y: ".$datoporcentaje."},\n";
         }
     ?>
     ]

@@ -21,13 +21,18 @@ window.onload = function () {
     name:"Encuestados",
     dataPoints: [
     <?php
+            $datototal=DB::table('encuestados')->where('idEncuesta','=',$datoencuesta[0]->id)
+                                               ->where('contestado','=',1)
+                                               ->count();
         foreach ($estadisticas as $estadistica) {
 
             $dato=DB::table('encuestados')->where('region','=',$estadistica->region)
                                           ->where('idEncuesta','=',$datoencuesta[0]->id)
                                           ->where('contestado','=',1)
                                           ->count();
-            echo "{ label: ".'"'.$estadistica->region.'"'.",y: ".$dato."},\n";
+            $datoporcentaje=number_format(((100*$dato)/$datototal),2);
+
+            echo "{ label: ".'"'.$estadistica->region.'"'.",y: ".$datoporcentaje."},\n";
         }
     ?>
     ]

@@ -1,8 +1,13 @@
 function excelinformeregion(){
     var idencuesta=document.getElementById("idencuesta").value;
     var region=document.getElementById("region").value;
-
- $.ajax({
+  $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+  }); 
+              $.ajax({
+                dataType : 'json',
                 type : 'post',
                 url : '/excelregion',
                 data : {"idencuesta": idencuesta,
@@ -10,22 +15,17 @@ function excelinformeregion(){
                 async:true,
                 cache:false,
                 beforeSend: function () { 
-                 // $("#procesando").show();
 
                 },
                 success : function(response){
-                    var a = document.createElement("a");
-                    a.href = response.file; 
-                    a.download = response.name;
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
+
                 },
                 error : function(error) {
                   console.log(error);
 
                 }
             });
+
 }
 
 

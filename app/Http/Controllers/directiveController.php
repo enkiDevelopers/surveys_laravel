@@ -13,6 +13,7 @@ use Response;
 use App\Client;
 use PDF;
 use Illuminate\Support\Facades\Crypt;
+use App\jobs\crearExcel;
 use Excel;
 
 
@@ -410,7 +411,7 @@ class directiveController extends Controller
     /*Fun funciones generales*/
 
 /*Funciones Excel */
-  public function excelcampus(Request $request){
+ /* public function excelcampus(Request $request){
       $idencuesta=$request->input('idencuesta');
       $campus=$request->input('campus');
 
@@ -445,17 +446,18 @@ $response =  array(
    'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
 );
 return response()->json($response);
-  }
+  } */
 
-    public function excelregion(Request $request){
+    public function excelregion1(Request $request){
       $idencuesta=$request->input('idencuesta');
       $region=$request->input('region');
 
-      $encuestados=DB::table('encuestados')->where('contestado','=',0)
-                                           ->where('idEncuesta','=',$idencuesta)
-                                           ->where('region','=',$region)
-                                           ->get();
-       $myFile= Excel::create('Data', function($excel)use($encuestados) {
+        
+        $job = new crearExcel($idencuesta,$region);
+        dispatch($job); 
+        return response()->json("hola"); 
+  }
+ /*      $myFile= Excel::create('Data', function($excel)use($encuestados) {
           $excel->sheet('Datos', function($sheet) use($encuestados) {
             $sheet->row(1,['Region','Carrera','Modalidad','Campus','Lin. Negocio','No. Cuenta','Nombre','Dirección','Email','Tel.Casa']);
             foreach ($encuestados as $encuestado) {
@@ -481,8 +483,8 @@ $response =  array(
    'name' => "filename", //no extention needed
    'file' => "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,".base64_encode($myFile) //mime type of used format
 );
-return response()->json($response);
-  }
+return response()->json($response);*/
+
 
   public function excelgeneral(Request $request){
       $idencuesta=$request->input('idencuesta');
