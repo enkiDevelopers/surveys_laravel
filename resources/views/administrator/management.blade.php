@@ -11,7 +11,19 @@
 <div class="sep">
 
       <div class="supSide" style="left: 60%">
-        <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
+        <div class="circle"
+        style="
+        <?php
+        $nombre_fichero = './img/avatar/'.$info->imagenPerfil;
+
+        if (file_exists($nombre_fichero)) {
+        echo "background-image: url('/img/avatar/$info->imagenPerfil');";
+        } else {
+        echo "background-image: url('/img/avatar/default.png');";
+        }
+        ?>
+        "
+onclick="return principal();">
         </div>
         <div class="cuadroPerfilSup">
 
@@ -69,7 +81,7 @@
                    <?php foreach ($usuarios as $usuario) { ?>
                  <tr>
                  <td class="col-xs-3 text-center">
-                   <img src="/img/avatar/{{$usuario->imagenPerfil}}" class="Iperfil" >
+                   <img src="/img/avatar/{{$usuario->imagenPerfil}}" class="Iperfil" onerror="this.src='../img/avatar/default.png';" >
                  </td>
                  <td class="col-xs-3 text-center">{{$usuario->nombre}}</td>
                  <td class="col-xs-3 text-center">
@@ -141,7 +153,9 @@
                    <tbody>
                      <?php foreach ($directivos as $directivo) { ?>
                        <tr>
-                          <td class="col-xs-3 text-center"><img src="/img/avatar/{{$directivo->imagenPerfil}}" class="Iperfil"></td>
+                          <td class="col-xs-3 text-center"><img src="/img/avatar/{{$directivo->imagenPerfil}}" class="Iperfil"
+onerror="this.src='../img/avatar/default.png';"
+                            ></td>
                           <td class="col-xs-2 text-center">{{$directivo->nombre}}</td>
                           <td class="col-xs-3 text-center" >
                             <div  class="email">

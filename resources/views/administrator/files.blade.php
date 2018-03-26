@@ -89,7 +89,7 @@
 
       </div>
 </div>
-      
+
     </div>
       <div class="modal-footer">
             <button type="button" id="btnsubir2" onclick="data();" class="btn btn-default"> Subir Archivo</button>
@@ -149,7 +149,19 @@
   <div class="sep">
 
         <div class="supSide" style="left: 60%;">
-          <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')" onclick="return principal();">
+          <div class="circle"
+          style="
+          <?php
+          $nombre_fichero = './img/avatar/'.$info->imagenPerfil;
+
+          if (file_exists($nombre_fichero)) {
+          echo "background-image: url('/img/avatar/$info->imagenPerfil');";
+          } else {
+          echo "background-image: url('/img/avatar/default.png');";
+          }
+          ?>
+          "
+onclick="return principal();">
           </div>
           <div class="cuadroPerfilSup">
 
@@ -430,7 +442,7 @@
                                 </a>
                             </td>
                           </tr>
-                        
+
 
                       <?php
                       }
@@ -534,9 +546,9 @@
                       <?php
                       break;
 
-                        
+
                         default:
-                          
+
                           break;
                       }
 

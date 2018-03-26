@@ -469,7 +469,7 @@ margin-left: 15%;
     border-radius: 100%;
     background-color: #fff;
     background-repeat: no-repeat;
-    background-size: 100% ;
+    background-size: contain;
     background-position: center;
 
 }
