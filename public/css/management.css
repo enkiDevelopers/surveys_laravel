@@ -32,7 +32,8 @@ margin-top: 140px;
 }
 
 .table-fixed tbody {
-  height: 60vh;
+  height: auto;
+  max-height: 60vh;
   overflow-y: auto;
   width: 100%;
 }
