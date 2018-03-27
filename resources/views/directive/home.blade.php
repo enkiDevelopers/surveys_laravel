@@ -160,7 +160,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div>
+        <div class="table-width-no-border">
           <table class="table table-striped table-hover table-bordered">
             <thead>
               <tr style="background-color:#338537; color: white;">

@@ -16,8 +16,12 @@ table{
     table-layout: fixed;/**Forzamos a que las filas tenga el mismo ancho**/
 }
 thead{
-    position: fixed !important;/*el thead va ser siempre estatico**/
+    position: absolute !important;/*el thead va ser siempre estatico**/
     z-index: 1049;
+    margin-top: -1px;
+}
+.table-width-no-border{
+  max-width: 78vw;
 }
 thead tr th{
   font-size: 13px;
@@ -26,8 +30,8 @@ thead tr th{
 th,td{
     font-weight: normal;
     margin: 0;
-    max-width: 21vw; /**Ancho por celda*/
-    min-width: 21vw;/**Ancho por celda*/
+    max-width: 19vw; /**Ancho por celda*/
+    min-width: 19vw;/**Ancho por celda*/
     word-wrap: break-word;/*Si el contenido supera el tamano, adiciona a una nueve linea**/
     font-size: 14px;
     height: 4.5vh !important;/*El mismo alto para todas las celdas**/
@@ -35,7 +39,7 @@ th,td{
     border-right: 1px solid #c4c0c9;
 } 
 tbody{
-  margin-top: 2%;
+  margin-top: 4%;
 }
 
 .card{
@@ -112,7 +116,24 @@ tbody{
     white-space: nowrap;
   }
   tbody{
-    margin-top: 17%;
+    margin-top: 12%;
   }
-
+  .table-width-no-border{
+    max-width: 100vw;
+  }
+  th,td{
+    max-width: 26vw;
+    min-width: 23vw;
+  }
+  table{    
+    width: 105% !important;
+    max-width: 105% !important;
+  }
+  tbody td:nth-child(2){
+    max-width: 23vw;
+  }
+  thead th:nth-child(3){
+    max-width: 26vw;
+    min-width: 26vw;
+  }
 }

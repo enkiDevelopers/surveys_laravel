@@ -24,7 +24,6 @@
   text-align: center;
   padding: 0em;
   position: relative;
-  left: 43%;
   top: 0em;
   -webkit-transition: font-size .3s ease, left .3s ease;
   transition: font-size .3s ease, left .3s ease;
@@ -38,18 +37,21 @@
   background: -webkit-linear-gradient(top left, #1b5e20, #4caf50, #ffca28);
   background: -o-linear-gradient(top left, #1b5e20, #4caf50, #ffca28);
   background: linear-gradient(to bottom right, #1b5e20, #4caf50, #ffca28);
+  text-align: -webkit-center;
 }
 
 .card-encuestado{
   background: -webkit-linear-gradient(top left, yellow, red);
   background: -o-linear-gradient(top left, yellow, red);
   background: linear-gradient(to bottom right, yellow, red);
+  text-align: -webkit-center;
 }
 
 .card-administrador{
   background: -webkit-linear-gradient(top left, #0f1973, #1a237e, #0d47a1);
   background: -o-linear-gradient(top left, #0f1973, #1a237e, #0d47a1);
   background: linear-gradient(to bottom right, #0f1973, #1a237e, #0d47a1);
+  text-align: -webkit-center;
 }
 .img_UVM_logo{
   height: 20%;

@@ -32,21 +32,18 @@
                         </td>
                         <td>
                             <div id="imgC">
-                                <center>
+                                
                                     <img id="imgSalida" src="\img/iconos/{{$nombre}}" onchange="return ShowImagePreview( this.files );" onerror="this.src='/img/iconos/default.png'"/>
                                     <div id="previewcanvascontainer" >
                                         <canvas id="previewcanvas"></canvas>
                                     </div>
-                                </center>
+                                
                             </div>
                         </td>
                     </tr>
                 </table>
-                <div style="height: 100px;">
-
-                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="z-index: 3000;position: relative;">
                 <a type="button" class="btn btn-default" data-dismiss="modal" onclick="limpiar()">Cancelar</a>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>

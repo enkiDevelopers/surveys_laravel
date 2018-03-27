@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         </div>
-                            <div class="col-md-2 col-md-offset-5">
+                            <div class="col-md-8 col-md-offset-2" style="text-align: center;">
                                 <button type="submit" class="btn btn-primary">
                                     Ingresar
                                 </button>                         
