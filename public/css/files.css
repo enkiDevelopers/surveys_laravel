@@ -2,13 +2,13 @@
 		margin-top: 1%;
 	}
 	#titulo{
-		    width: 96%;
+		    width: 98%;
   	background-color: #cdcdcd;
    color: black;
    font-size: 1.5em;
    padding: 1rem;
    text-align: center;
-   margin-left: 2%;
+   margin-left: 1%;
    border-radius: 5px;
    margin-bottom: 7px;
 	}
@@ -26,6 +26,11 @@
 		background-color: #ECEAE6;
 	}
 
+	.container{
+		margin-top: 150px;
+	}
+	
+
 	@media screen and (max-width: 700px) {
 	.top{
 		margin-top: 30%;
@@ -40,9 +45,13 @@
 }
 
 	@media screen and (max-width: 500px) {
+	.container{
+		margin-top: 100px;
+	}
+
 	.top{
 		margin-top: 30%;
-		margin-left: 10%;
+		margin-left: 5%;
 
 	}
 	.marge{

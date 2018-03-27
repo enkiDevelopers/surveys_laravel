@@ -176,42 +176,29 @@ onclick="return principal();">
 
 
 
-<div class="container" style="margin-top: 130px;" >
-    <div class="row" >
+<div class="container"  >
+    
+      <!--
                           <div class="col-sm-0">
                       </div>
-      <div class="col-md-12 top">
-             <!--   <div id="btnT">
+      -->
+      
 
-
-                       <div id="btn-añadir" class="col-md-12">
-                             <a data-toggle="modal" data-target="#AgregarLista" >
-
-                             <div id="content-btn">
-                                <span class="glyphicon glyphicon-plus" ></span>
-                             </div>
-                             <div id="crearPlantilla">
-                                 <h2 id="tamañoLet">Nueva Lista</h2>
-                             </div>
-                           </a>
-                        </div>
-                </div>-->
-                          <div class="col-md-4 top">
                               <div style="display:none;" id="datain">
                                     <p class="text-center parrafo">Procesando Lista</p>
                                     <center><img src="/img/load/load.gif"></center>
                               </div>
-                          </div>
+
 
 
       <div class="col-md-12 text-center" id="titulo">
          <div class="col-md-6">Agregar Nueva Lista</div>
-         <div class="col-md-2">
+         <div class="col-md-6">
               <a  class="btn btn-primary" data-toggle="modal" data-target="#AgregarLista">Añadir</a>
          </div>
        </div>
 
-       <hr>
+      
         <div class="col-md-12 marge" id="divid" style="overflow:auto;">
             <table class="table table-striped">
                 <thead>
@@ -546,11 +533,11 @@ onclick="return principal();">
 
                 </tbody>
             </table>
-</div>
+        </div>
 
 
-      </div>
-    </div>
+      
+    
 </div>
 
 <!--Versión3.3.1 NO BORRAR-->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
