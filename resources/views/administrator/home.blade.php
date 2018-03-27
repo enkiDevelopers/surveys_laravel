@@ -20,7 +20,7 @@
 <div class="sep">
 
   <div class="supSide">
-  <div class="circle" style="background-image: url('/img/avatar/{{$info->imagenPerfil}}')"
+  <div class="circle" style=" <?php $nombre_fichero = './img/avatar/'.$info->imagenPerfil;if (file_exists($nombre_fichero)) {echo "background-image: url('/img/avatar/$info->imagenPerfil');";} else {echo "background-image: url('/img/avatar/default.png');";}  ?> "
     data-toggle="modal" data-target="#editarImagen">
 
   </div>

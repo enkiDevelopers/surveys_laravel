@@ -149,18 +149,7 @@
   <div class="sep">
 
         <div class="supSide" style="left: 60%;">
-          <div class="circle"
-          style="
-          <?php
-          $nombre_fichero = './img/avatar/'.$info->imagenPerfil;
-
-          if (file_exists($nombre_fichero)) {
-          echo "background-image: url('/img/avatar/$info->imagenPerfil');";
-          } else {
-          echo "background-image: url('/img/avatar/default.png');";
-          }
-          ?>
-          "
+          <div class="circle" style=" <?php $nombre_fichero = './img/avatar/'.$info->imagenPerfil;if (file_exists($nombre_fichero)) {echo "background-image: url('/img/avatar/$info->imagenPerfil');";} else {echo "background-image: url('/img/avatar/default.png');";}  ?> "
 onclick="return principal();">
           </div>
           <div class="cuadroPerfilSup">
