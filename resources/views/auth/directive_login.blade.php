@@ -12,11 +12,11 @@
         </div>
                
                     <form class="form-horizontal" method="POST" action="/directive/validate"> 
-                        <div class="col-md-6 col-md-offset-1 form-container"> 
+                        <div class="col-md-7 col-md-offset-2 form-container"> 
                         {{ csrf_field() }}
 
                         <div class=" col-md-12 form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <label for="email" class="col-md-5  control-label text-black">Correo: </label><br><br>
+                        <label for="email" class="col-md-5  control-label text-black">Correo: </label>
                             <div class="col-md-10">
                                 <input id="email" type="email" class="form-control text-black" placeholder="Correo" name="email" value="{{ old('email') }}" required autofocus>
                                 @if ($errors->has('email'))
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="col-md-12 form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-5 control-label text-black" style="margin-left: 33px;">Contraseña</label><br><br>
+                            <label for="password" class="col-md-5 control-label text-black">Contraseña</label>
                             <div class="col-md-10">
                                 <input id="password" type="password" placeholder="Contraseña" class="form-control text-black-body" name="password" required>
                                 @if ($errors->has('password'))
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         </div>
-                            <div class="col-md-8 col-md-offset-2" style="text-align: center;">
+                            <div class="col-md-8 col-md-offset-2 form-button-login">
                                 <button type="submit" class="btn btn-primary">
                                     Ingresar
                                 </button>                         

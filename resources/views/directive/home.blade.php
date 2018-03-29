@@ -203,7 +203,7 @@
                   case '3':
                 ?>
                 <div class="btn-group">
-                  <a class='btn btn-default' style="background-color: #689f38;color: white;" href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
+                  <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
                     <span class="glyphicon glyphicon-signal" ></span>
                   </a>
                 </div>
