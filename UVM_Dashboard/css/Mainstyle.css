@@ -1,0 +1,76 @@
+/**************************************************************/
+/**	mainstyle.css**/
+/**	Estilo par la apariencia global del Dashboard**/
+/**	Version 	Fecha			Iniciales **/
+/**************************************************************/
+/*	1.0			28-Marzo-2018	ADG*/
+
+	<style type="text/css">
+		/* Common to smartphone, tablet and desktop */
+		.hdr_mid { width: 100%; background: #fc5c65} 
+		.hdr_side { display: none; }
+		.d_Logo1,.d_Logo2 { max-width: 65%;  max-height: 120px; margin: auto;}
+		.m_Logo {max-width: 65%;  max-height: 75px; margin: auto; display: table; }
+		.d_Logo1 { display: none; }
+		.d_Logo2 { display: none; }
+		.KPI { width: 100%; }
+		.score { width: 50%; }
+		.Agg { width: 100%; }
+		.barras1 { width: 100%; }
+		.pie { width: 100%; }
+		.barras2 { width: 100%; }
+		.export { width: 100%; }
+		.filtros { width: 100%; }
+		.chart-container { width: 99%; height: auto; position: relative; }
+		.select-style {
+    border: 0px solid #ccc;
+    width: 200px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa 90% 50%;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+		/* Tablet version */
+		@media (min-width: 40em) {
+			.m_Logo { display: none; }
+			.d_Logo1 { display: table; }
+			.d_Logo2 { display: none; }
+			.hdr_mid { width: 40%; background: #ffffff;} 
+			.hdr_side { width: 30%; display: table;}
+			.KPI { width: 25%; }
+			.score { width: 100%; }
+			.Agg { width: 75%; }
+			.barras1 { width: 100%; }
+			.pie { width: 100%; }
+			.barras2 { width: 70%; }
+			.export { width: 30%; }
+			}
+		/* Desktop version*/
+		@media (min-width: 60em) {
+			.hdr_mid { width: 40%; background: #ffffff;}
+			.hdr_side { width: 30%; display: table;}
+			.m_Logo { display: none; }
+			.d_Logo1 { display: table; }
+			.d_Logo2 { display: table; }
+			.KPI { width: 100%; }
+			.score { width: 25%; }
+			.Agg { width: 100%; }
+			.barras1 { width: 50%; }
+			.pie { width: 50%; }
+			.barras2 { width: 75%; }
+			.export { width: 25%; }
+			}
+	</style>	

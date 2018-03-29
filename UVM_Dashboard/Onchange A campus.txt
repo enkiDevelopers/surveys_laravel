@@ -1,0 +1,29 @@
+//DG inicio
+console.log("La url_Lista2 cerca: " + url_Lista2);
+url_Lista2 = url_Lista+"&Campus='"+$('#Campus').find(":selected").text()+"'";
+g_Campus = url_Lista2;	
+g_Campus = "&Campus='"+Campus[0]+"'"; //Default de Primer opción
+output_url = output_url + g_Campus;
+url_barras2 = output_url;
+console.log(" La url_barras2 quedo: " + url_barras2);
+//DG final
+
+
+	<div class=\"block-group\">
+		<div class=\"filtros block\"><div class=\"box inuendo\">
+			<select name=\"Region\" id=\"Region\" onchange=\"GraficaFiltro(g_Region);\" class=\"select-style\">
+				<option value=\"Region\">Region</option>
+			</select>
+			<select name=\"Campus\" id=\"Campus\" onchange=\"GraficaFiltro();\" class=\"select-style\">
+				<option value=\"Todos\">Seleccione una Región</option>
+			</select>
+		</div></div>
+    </div>	
+
+
+
+
+
+
+
+$(\"#Campus\").change(GraficaFiltro(g_Campus));

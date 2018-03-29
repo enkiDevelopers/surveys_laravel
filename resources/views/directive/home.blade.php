@@ -23,7 +23,7 @@
         </fieldset>
         <fieldset>
           <legend>Reporte regional</legend>
-            <select class="form-control text-black" id="cmbregioncorp" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
+            <select class="form-control text-black" id="cmbregioncorp" name="cmbregioncorp" value="Zonas Disponibles" selected="selected" onchange="selecciona(this.value)">
             <option>Seleccione una opción</option>
             <?php
               foreach ($regionestotal as $regionestotales) {
@@ -36,7 +36,7 @@
         </fieldset>
         <fieldset>
           <legend>Reporte Campus</legend>
-          <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp"></select>
+          <select class="form-control text-black"  value="Seleccione Zona" id="regionescorp" name="regionescorp"></select>
           <a class='btn btn-default' href="javascript:getURLCorp()" >Ver Reporte</a>
         </fieldset>
       </div>

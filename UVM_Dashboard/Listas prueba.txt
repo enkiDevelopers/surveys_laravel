@@ -1,0 +1,88 @@
+$(document).ready(function(){
+	$.ajax({
+		url:"https://uvmmejoraporti.mx/UVM_Dashboard/ListaRegionCampus.php?idE=2",
+		//url:"https://uvmmejoraporti.mx/UVM_Dashboard/ListaRegionCampus.php?idE=2&Region='Sur'",
+		method: "GET",
+		success: function(data) {
+			//console.log(data);
+			//var Rubro = [];//Va antes de Avance en la consulta
+			var RegionL = [];//Lista sin relaciones. Depurada de duplicados
+			var CampusL = [];//Lista sin relaciones. Depurada de duplicados
+			var Region = [];
+			var Campus = [];
+			
+			for(var i in data) {
+				if (data[i].Region !== undefined){//Lista depurada
+					if (RegionL.indexOf(data[i].Region) == -1 ){
+					RegionL.push(data[i].Region);}
+					//console.log(Region[i]);	
+					}
+				/*if (data[i].Campus !== undefined){//Lista Semidepurada, No hay repeticiones pero estan TODOS LOS CAMPUS
+					if (CampusL.indexOf(data[i].Campus) == -1 ){
+					CampusL.push(data[i].Campus);}
+					//console.log(Region[i]);	
+					}*/
+				
+				if (data[i].Region !== undefined){//Solo acepta registros definidos
+					Region.push(data[i].Region);}
+					//console.log(Region[i]);
+				if (data[i].Campus !== undefined){//Solo acepta registros definidos
+					Campus.push(data[i].Campus);}
+					//console.log(Campus[i]);
+			}
+			/*for (var i in CampusL){
+				console.log(CampusL[i]);
+			}*/
+			
+function makeUL(RegionL) {
+    // Create the list element:
+    //var list = document.createElement('<select name="Region">');
+	var list = document.createElement('ul');
+	
+	
+    for (var i = 0; i < array.length; i++) {
+        // Create the list item:
+        var item = document.createElement('li');
+		//var cont=i+1;
+		//var item= document.createElement('<option value= "' + cont + '">' + RegionL[i] + '</option>');
+		
+		//Set its contents:
+			item.appendChild(document.createTextNode(array[i]));
+
+        // Add it to the list:
+        list.appendChild(item);
+    }
+
+    // Finally, return the constructed list:
+    return list;
+}
+document.getElementById('listR-container').appendChild(makeUL(options[0]));
+			
+			
+			//Tal vez se use, tal vez no
+/*			//Eliqe el set de datos a graficar//usar
+			if (Campus.length == 0 ){//Si no tiene Campus entonces arroja Region en la consulta	
+				for (var i2 in Region){
+				Rubro.push (Region[i2]);
+				}
+			}
+			else {//Si tiene campus
+			if (LineaNegocio.length == 0){//Si tiene Campus && NO Tiene linea de negocio arroja Campus	
+				for (var i2 in Campus){
+				Rubro.push (Campus[i2]);
+				}
+			}
+			else {//si tiene LineaNegocio ademas de capus
+				for (var i2 in LineaNegocio){
+					Rubro.push (LineaNegocio[i2]);
+				}
+			}
+			}//cierra if anidado*/
+		},//Cierra function(data)
+		error: function(data) {
+			console.log(data);
+		}
+		
+		
+	});
+});

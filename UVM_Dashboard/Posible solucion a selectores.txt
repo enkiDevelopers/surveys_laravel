@@ -1,0 +1,25 @@
+I threw CMS's excellent answer into a quick jQuery extension:
+
+(function($, window) {
+  $.fn.replaceOptions = function(options) {
+    var self, $option;
+
+    this.empty();
+    self = this;
+
+    $.each(options, function(index, option) {
+      $option = $("<option></option>")
+        .attr("value", option.value)
+        .text(option.text);
+      self.append($option);
+    });
+  };
+})(jQuery, window);
+It expects an array of objects which contain "text" and "value" keys. So usage is as follows:
+
+var options = [
+  {text: "one", value: 1},
+  {text: "two", value: 2}
+];
+
+$("#foo").replaceOptions(options);

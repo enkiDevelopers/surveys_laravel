@@ -140,36 +140,38 @@ function selecciona(busq){
 
         function getURL(){
             var id=document.getElementById('idencues').innerText;
-            var dirt = document.getElementById('cmbcampus').value;
-            var url = '/campus/'+id+'/'+dirt;
+            var dirt = $('select[name="cmbcampus"] option:selected').text();
+            var cmbre =$('select[name="cmbregion"] option:selected').text();
+            var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id+"&Region='"+dirt+"'"+"&Campus='"+cmbre+"'";
             var ventana=window.open(url,'_blank');
             ventana.focus();
         }
         function getURLRegion(){
             var id   = document.getElementById('idencues').innerText;
-            var cmbre = document.getElementById('cmbregion').value;
-            var url = '/region/'+id+'/'+cmbre;
+            var cmbre =$('select[name="cmbregion"] option:selected').text();
+            var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id+"&Region='"+cmbre+"'";
             var ventana=window.open(url,'_blank');
             ventana.focus();
         }
 
         function getURLCorp(){
             var id=document.getElementById('variable').innerText;
-            var dirt = document.getElementById('regionescorp').value;
-            var url = '/campus/'+id+'/'+dirt;
+            var dirt=$('select[name="cmbregioncorp"] option:selected').text();
+            var cmbre =$('select[name="regionescorp"] option:selected').text();
+            var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id+"&Region='"+dirt+"'"+"&Campus='"+cmbre+"'";
             var ventana=window.open(url,'_blank');
             ventana.focus();
         }
         function getURLRegionCorp(){
             var id   = document.getElementById('variable').innerText;
-            var cmbre = document.getElementById('cmbregioncorp').value;
-            var url = '/region/'+id+'/'+cmbre;
+            var cmbre=$('select[name="cmbregioncorp"] option:selected').text();
+            var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id+"&Region='"+cmbre+"'";
             var ventana=window.open(url,'_blank');
             ventana.focus();
-        }
+        } 
         function getURLGeneral(){
             var id   = document.getElementById('variable').innerText;
-            var url = '/general/'+id;
+            var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id;
             var ventana=window.open(url,'_blank');
             ventana.focus();
         }

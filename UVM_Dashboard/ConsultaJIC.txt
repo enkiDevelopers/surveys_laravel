@@ -1,0 +1,41 @@
+$sql = "
+/*Query para Barras Horizontales, la fórmula de avance es: % * Encuestado/(Total - Incidencia)*/
+SELECT
+	Q.Region
+	,
+	Q.Campus  /*Quitar si no está definido Region*/
+	,
+	Q.LineaNegocio /*Quitar si no está definido Campus*/
+	,SUM(Q.Encuestado) AS Encuestado
+	,SUM(Q.Incidencia) AS Incidencia
+	,SUM(Q.Total) AS Total
+	FROM (
+		SELECT
+			 CASE WHEN UPPER(E.lineaNegocio) = 'ONLINE' THEN 'OnLine' ELSE E.region END AS [Region]
+			,CASE WHEN UPPER(E.lineaNegocio) = 'ONLINE' THEN 'OnLine' ELSE E.campus END AS [Campus]
+			,E.lineaNegocio AS [LineaNegocio]
+			,contestado AS [Encuestado]
+			,incidente AS [Incidencia]
+			,1 AS Total
+			FROM
+				[SurveyCollector].[uvm].[encuestados]  AS E with(nolock)
+				WHERE
+					E.idEncuesta = 2 /*Siempre lleva filtro por idE, si no hay default a 2*/
+					AND E.contestado = 1
+					AND E.noCuenta IS NOT NULL
+		) AS Q
+	--WHERE /*Incluir sólo si está definido Region*/
+		--Q.Region IN ()
+		--AND Q.Campus IN () /*Incluir sólo si está definido Campus*/
+	GROUP BY
+		Q.Region
+		,
+		Q.Campus /*Quitar si no está definido Region*/
+		,
+		Q.LineaNegocio /*Quitar si no está definido Campus*/
+	ORDER BY 
+		Q.Region ASC
+		,
+		Q.Campus ASC /*Quitar si no está definido Region*/
+		,
+		Q.LineaNegocio ASC /*Quitar si no está definido Campus*/";

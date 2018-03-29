@@ -1,0 +1,137 @@
+body {
+	margin: 0;
+	font-size: .9em;
+	font-family: Arial;
+	line-height: 1.5em;
+}
+
+h1 {
+	font-family: "Open Sans";
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+h3 {
+	font-family: "Open Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
+p {
+	font-family: "Open Sans";
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+blockquote {
+	font-family: "Open Sans";
+	font-size: 21px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 30px;
+}
+pre {
+	font-family: "Open Sans";
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18.5714px;
+}
+
+
+.box {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 100%;
+
+/*	background: -moz-linear-gradient(top,  rgba(255,255,255,.5) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+/*	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.5)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+/*	background: -webkit-linear-gradient(top,  rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+/*	background: -o-linear-gradient(top,  rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+/*	background: -ms-linear-gradient(top,  rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+/*	background: linear-gradient(to bottom,  rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 100%); /* W3C */
+/*	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#99ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+/*	background-color: #EEE;/*#E0E9FF; /* Old browsers */
+
+	font-size: .8em;
+	
+	color: #FFF;
+
+/*	border: solid 0px #DDD;*/
+	border-radius: 2px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+/* Box-sizing polyfill for IE6 and IE7 
+.block-group, .block, .block-group:after, .block:after, .block-group:before, .block:before {
+  *behavior: url(../js/boxsizing-pocketgrid.htc);
+}*/
+
+.block-group .block-group .box {
+/*	background-color: #CDF;
+	border: solid 1px #BCD;*/
+}
+/*! PocketGrid 1.1.0
+* Copyright 2013 Arnaud Leray
+* MIT License
+*/
+/* Border-box-sizing */
+.block-group, .block, .block-group:after, .block:after, .block-group:before, .block:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Clearfix */
+.block-group {
+  *zoom: 1;
+}
+.block-group:before, .block-group:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.block-group:after {
+  clear: both;
+}
+
+.block-group {
+  /* ul/li compatibility */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Nested grid */
+.block-group > .block-group {
+  clear: none;
+  float: left;
+  margin: 0 !important;
+}
+
+/* Default block */
+.block {
+  float: left;
+  width: 100%;
+}
+
+
+/*Colores de fondo*/
+
+.twinkleblue { background: #d1d8e0; }
+.inuendo { background: #a5b1c2; }
+.bluegray { background: #778ca3; }
+.bluehorizon { background: #4b6584; }
+.highblue { background: #45aaf2; }
+.boyzone { background: #2d98da; }
+
