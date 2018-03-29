@@ -1,3 +1,23 @@
+
+.btnLista{
+  color: #ffff;
+  background-color: #254f76;
+  border-color: #254f76;
+  font-weight:bold;
+}
+
+.headerFont{
+	background-color: #254f76;
+	color: white;
+	text-align: center;
+}
+
+
+.tablaListas{
+	table-layout: fixed;
+	text-align: center;
+}
+
 	.top{
 		margin-top: 1%;
 	}
@@ -30,6 +50,21 @@
 		margin-top: 150px;
 	}
 	
+	@media screen and (max-width: 1110px) {
+		.headerFont{
+			font-size: 10px;
+		}
+
+	}
+
+	@media screen and (max-width: 900px) {
+		.headerFont{
+			font-size: 9px;
+		}
+
+	}
+
+
 
 	@media screen and (max-width: 700px) {
 	.top{
@@ -42,6 +77,15 @@
 		padding-left: 1%;
 
 	}
+
+	.tablaListas{
+		table-layout:auto;
+	}
+	.headerFont{
+		font-size: 10px;
+	}
+
+
 }
 
 	@media screen and (max-width: 500px) {

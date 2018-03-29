@@ -192,22 +192,22 @@ onclick="return principal();">
 
 
       <div class="col-md-12 text-center" id="titulo">
-         <div class="col-md-6">Agregar Nueva Lista</div>
+         <div class="col-md-6">Listas</div>
          <div class="col-md-6">
-              <a  class="btn btn-primary" data-toggle="modal" data-target="#AgregarLista">Añadir</a>
+              <a  class="btn glyphicon glyphicon-plus btnLista" data-toggle="modal" data-target="#AgregarLista"> Crear </a>
          </div>
        </div>
 
       
         <div class="col-md-12 marge" id="divid" style="overflow:auto;">
-            <table class="table table-striped">
+            <table class="table table-striped tablaListas">
                 <thead>
-                  <tr class="info">
+                  <tr class="headerFont">
                     <th>Estado</th>
                     <th>Nombre Lista</th>
                     <th>Encuesta Asociada</th>
-                    <th>Cargar Archivos</th>
-                    <th>Crear Lista</th>
+                    <th>Subir Archivos</th>
+                    <th>Procesar Lista</th>
                     <th>Ver Lista</th>
                     <th>Cargar Incidencias</th>
                     <th>Ver incidencias</th>
@@ -230,7 +230,7 @@ onclick="return principal();">
                                   </td>
                                   <td>
                                   </td>
-                                  <td>
+                                  <td >
                                       <a class="btn btn-default" data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
                                           <span class="glyphicon glyphicon-edit"></span>
                                       </a>
