@@ -199,338 +199,144 @@ onclick="return principal();">
        </div>
 
       
-        <div class="col-md-12 marge" id="divid" style="overflow:auto;">
-            <table class="table table-striped tablaListas">
+        <div class="col-md-12" style="overflow:auto;">
+            <table class="table table-striped table-bordered tablaListas">
                 <thead>
-                  <tr class="headerFont">
-                    <th>Estado</th>
-                    <th>Nombre Lista</th>
-                    <th>Encuesta Asociada</th>
-                    <th>Subir Archivos</th>
-                    <th>Procesar Lista</th>
-                    <th>Ver Lista</th>
-                    <th>Cargar Incidencias</th>
-                    <th>Ver incidencias</th>
-                    <th>Eliminar Lista</th>
+                  <tr class="headerFont">                    
+                    <th class="descrHeaderTbl">Nombre Lista</th>
+                    <th class="iconoHeaderTbl">Estado</th>
+                    <th class="descrHeaderTbl">Encuesta Asociada</th>
+                    <th class="iconoHeaderTbl">Subir Archivos</th>
+                    <th class="iconoHeaderTbl">Procesar Lista</th>
+                    <th class="iconoHeaderTbl">Ver Lista</th>
+                    <th class="iconoHeaderTbl">Cargar Incidencias</th>
+                    <th class="iconoHeaderTbl">Ver incidencias</th>
+                    <th class="iconoHeaderTbl">Eliminar Lista</th>
                   </tr>
                 </thead>
+                
                 <tbody id="tabla">
                   <?php
                     $hoy = date("Y-m-d H:i:s");
                     foreach ($listas as $lista) {
+                      $eliminarD="";
+                      $nombreLista=$lista->nombre;
+                      $estado="src='/img/listo.jpg' data-toggle='tooltip' data-placement='top' title='Nombre de lista Creado'";
+                      $encuestaAsociada="";                         
+                      $subirArchivos="data-target='#AgregarDatos' id='$lista->idLista' onClick='reply_click(this.id)' data-toggle='tooltip' data-placement='top'";
+                      $procesarLista="disabled='disabled'";
+                      $verLista="disabled='disabled'";
+                      $cargarIncidencias="disabled='disabled'";
+                      $verIncidencias="disabled='disabled'";
+                      
                       switch ($lista->carga) {
-                        case '0':
-                        ?>
-                                  <tr>
-                                  <td>
-                                    <img src="/img/listo.jpg" width="30px" height="30px">
-                                  </td>
-                                  <td>
-                                      <?php echo $lista->nombre; ?>
-                                  </td>
-                                  <td>
-                                  </td>
-                                  <td >
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#AgregarDatos" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
-                                          <span class="glyphicon glyphicon-edit"></span>
-                                      </a>
-                                  </td>
-
-                                  <td>
-                                      <a type="button" class="btn btn-default" disabled="disabled">
-                                          <span class="glyphicon glyphicon-play-circle"></span>
-                                      </a>
-                                  </td>
-
-                                  <td>
-                                      <a class="btn btn-default"  title="Vista previa"  disabled="disabled">
-                                          <span class="glyphicon glyphicon-eye-open"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
-                                          <span class="glyphicon glyphicon-plus"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  disabled>
-                                          <span class="glyphicon glyphicon-alert"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
-                                          <span class="glyphicon glyphicon-trash"></span>
-                                      </a>
-                                  </td>
-
-                                </tr>
-
-                      <?php
+                        case '0': 
+                          $encuestaAsociada="Ninguna";
                           break;
-                      case '2':
-                      ?>
-                                <tr>
-                                   <td>
-                                    <img src="/img/listo.jpg" width="30px" height="30px">
-                                  </td>
-                                  <td>
-                                      <?php echo $lista->nombre; ?>
-                                  </td>
-                                  <td>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default"  id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Datos"  >
-                                          <span class="glyphicon glyphicon-edit"></span>
-                                      </a>
-                                  </td>
-
-                                  <td>
-                                          <a type="button"  id="<?php echo $lista->idLista; ?>" onClick="creardato(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Cargar Datos">
-                                              <span class="glyphicon glyphicon-play-circle"></span>
-                                          </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default"  title="Vista previa"  disabled="disabled">
-                                          <span class="glyphicon glyphicon-eye-open"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
-                                          <span class="glyphicon glyphicon-plus"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  disabled>
-                                          <span class="glyphicon glyphicon-alert"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
-                                          <span class="glyphicon glyphicon-trash"></span>
-                                      </a>
-                                  </td>
-
-                                </tr>
-
-                      <?php
-                      break;
-                      case '1':
-                        if($lista->usado== 0){
-                      ?>
-                              <tr>
-                                <td>
-                                    <img src="/img/listo.jpg" width="30px" height="30px">
-                                </td>
-                                <td>
-                                    <?php echo $lista->nombre; ?>
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    <a class="btn btn-default" title="Agregar Datos" disabled="disabled">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                    </a>
-                                </td>
-
-                                <td>
-                                  <a class="btn btn-default" title="Agregar Datos" disabled="disabled" >
-                                        <span class="glyphicon glyphicon-play-circle"></span>
-                                    </a>
-                                </td>
-
-                                <td>
-                                    <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
-                                        <span class="glyphicon glyphicon-eye-open"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a class="btn btn-default" data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click2(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
-                                        <span class="glyphicon glyphicon-plus"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
-                                        <span class="glyphicon glyphicon-alert"></span>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </a>
-                                </td>
-
-                              </tr>
-
-                       <?php }else{?>
-                          <tr>
-                             <td>
-                                    <img src="/img/listo.jpg" width="10px" height="10px">
-                             </td>
-                            <td>
-                                <?php echo $lista->nombre; ?>
-                            </td>
-                            <td>
-                                <?php echo $lista->titulo; ?>
-                            </td>
-                            <td>
-                                <a class="btn btn-default" title="Agregar Datos" disabled="disabled" >
-                                    <span class="glyphicon glyphicon-edit"></span>
-                                </a>
-                            </td>
-
-                            <td>
-                                <a class="btn btn-default" data-placement="top" title="Agregar Datos" disabled="disabled" >
-                                    <span class="glyphicon glyphicon-play-circle"></span>
-                                </a>
-                            </td>
-
-                            <td>
-                                <a type="button" href="/administrator/file/open/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa" target="_black">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
-                                </a>
-                            </td>
-                            <td>
-                            <?php
+                        case '2': //caso donde se suben los archivos
+                          $encuestaAsociada="Caso 2";
+                          $nombreLista=$lista->nombre;                
+                          $estado="src='/img/listo.jpg' data-toggle='tooltip' data-placement='top' title='Archivo(s) de Excel Subido(s)'";
+                          $encuestaAsociada=" Caso 2";
+                          $procesarLista= "onClick='creardato(this.id)' data-toggle='tooltip' data-placement='top' title='Cargar Datos'"; 
+                          $subirArchivos="data-target='#AgregarDatos' id='$lista->idLista' onClick='reply_click(this.id)' data-toggle='tooltip' data-placement='top'";
+                          //$procesarLista="title='Agregar Datos' disabled='disabled'";
+                          $verLista="disabled='disabled'";
+                          $cargarIncidencias="disabled='disabled'";
+                          $verIncidencias="disabled='disabled'";
+                          break;
+                        case '1': //caso predeterminado sucede después de crear una lista
+                            $estado="src='/img/listo.jpg' data-toggle='tooltip' data-placement='top' title='Lista subida en Base de Datos'";
+                            $encuestaAsociada="Caso 1";
+                            $subirArchivos="disabled='disabled'";
+                            $verLista="type='button' href='/administrator/file/open/$lista->idLista'  data-toggle='tooltip' data-placement='top'  target='_black'";
+                            $cargarIncidencias="data-target='#AgregarIncidentes' id='$lista->idLista' onClick='reply_click2(this.id)' data-toggle='tooltip' data-placement='top'";
+                            $verIncidencias="href='/administrator/file/incidentes/$lista->idLista' target='_black'"; 
+                            if($lista->usado== 0){
+                            }else{
+                              $encuestaAsociada=$lista->titulo;
                               if($hoy>=$lista->fechat){
-                            ?>
-                                <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </a>
-                            <?php
-                              }else{
-                            ?>
-                                <a data-toggle="modal" data-target="#AgregarIncidentes" id="<?php echo $lista->idLista; ?>" onClick="reply_click(this.id)" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" >
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </a>
-                            <?php
+                                $cargarIncidencias="disabled='disabled'";
                               }
-                            ?>
-                            </td>
-                            <td>
-                                <a type="button" href="/administrator/file/incidentes/<?php echo $lista->idLista ?>" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias" target="_black">
-                                    <span class="glyphicon glyphicon-alert"></span>
-                                </a>
-                            </td>
-                            <td>
-                                <a class="btn btn-default" data-placement="top" title="Eliminar lista" disabled="disabled">
-                                    <span class="glyphicon glyphicon-trash"></span>
-                                </a>
-                            </td>
-                          </tr>
-
-
-                      <?php
-                      }
-                      break;
-                      ?>
-                      <?php
-                      case '3':
-                      ?>
-                            <tr>
-                                  <td>
-                                    <img src="/img/cargando.png" width="30px" height="30px" data-toggle="tooltip" data-placement="top" title="Agregando datos de listas">
-                                  </td>
-                                  <td>
-                                      <?php echo $lista->nombre; ?>
-                                  </td>
-                                  <td>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default"  disabled="disabled"  >
-                                          <span class="glyphicon glyphicon-edit"></span>
-                                      </a>
-                                  </td>
-
-                                  <td>
-                                          <a type="button"   class="btn btn-default"  disabled="disabled" >
-                                              <span class="glyphicon glyphicon-play-circle"></span>
-                                          </a>
-                                  </td>
-
-                                  <td>
-                                      <a class="btn btn-default"  title="Vista previa"  disabled="disabled">
-                                          <span class="glyphicon glyphicon-eye-open"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
-                                          <span class="glyphicon glyphicon-plus"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  disabled>
-                                          <span class="glyphicon glyphicon-alert"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
-                                          <span class="glyphicon glyphicon-trash"></span>
-                                      </a>
-                                  </td>
-
-                                </tr>
-
-                      <?php
-                      break;
-                      case '4':
-                      ?>
-                            <tr>
-                                  <td>
-                                    <img src="/img/cargando.png" width="30px" height="30px" data-toggle="tooltip" data-placement="top" title="Agregando incidentes">
-                                  </td>
-                                  <td>
-                                      <?php echo $lista->nombre; ?>
-                                  </td>
-                                  <td>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default"  disabled="disabled" >
-                                          <span class="glyphicon glyphicon-edit"></span>
-                                      </a>
-                                  </td>
-
-                                  <td>
-                                          <a type="button"  class="btn btn-default" disabled="disabled"  >
-                                              <span class="glyphicon glyphicon-play-circle"></span>
-                                          </a>
-                                  </td>
-
-                                  <td>
-                                      <a class="btn btn-default"  title="Vista previa"  disabled="disabled">
-                                          <span class="glyphicon glyphicon-eye-open"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias" disabled="disabled" >
-                                          <span class="glyphicon glyphicon-plus"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  disabled>
-                                          <span class="glyphicon glyphicon-alert"></span>
-                                      </a>
-                                  </td>
-                                  <td>
-                                      <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" >
-                                          <span class="glyphicon glyphicon-trash"></span>
-                                      </a>
-                                  </td>
-
-                                </tr>
-
-                      <?php
-                      break;
-
-
-                        default:
-
+                            $eliminarD="disabled='disabled'";
+                          }
                           break;
+                        case '3': //caso predeterminado sucede después de crear una lista
+                          $nombreLista=$lista->nombre;
+                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando archivos a Base de Datos'";
+                          $encuestaAsociada="Caso 3";
+                          $subirArchivos="disabled='disabled'";
+                          $procesarLista="disabled='disabled'";
+                          $cargarIncidencias="disabled='disabled'";
+                          $verIncidencias="disabled='disabled'";
+                          break;
+                        case '4': // sucede después de cargar una lista en Base de Datos
+                          $encuestaAsociada="Caso 4";
+                          $nombreLista=$lista->nombre;
+                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando Incidentes'";
+                          $encuestaAsociada="";  
+                          $subirArchivos="disabled='disabled'";
+                          $procesarLista="disabled='disabled'";
+                          $cargarIncidencias="disabled='disabled'";
+                          $verIncidencias="disabled='disabled'";        
+                         break; 
+                        default:
+                         break;
                       }
+                      ?>
+                      <tr>
+                        <td >
+                          <?php echo $nombreLista ?>
+                        </td>
+                        <td>
+                          <img <?php echo $estado ?> width="30px" height="30px">
+                        </td>
+                        <td>
+                          <?php echo $encuestaAsociada ?>
+                        </td> 
 
+                        <td  class="lisSub">
+                          <a class="btn btn-default" title="Agregar Datos" <?php echo $subirArchivos ?>>
+                            <span class="glyphicon glyphicon-edit"></span>
+                          </a>
+                        </td>
+
+                        <td class="lisSub"> 
+                          <a id="<?php echo $lista->idLista; ?>" type="button" class="btn btn-default" <?php echo $procesarLista; ?>>
+                            <span class="glyphicon glyphicon-play-circle"></span>
+                          </a>
+                        </td>
+
+                        <td class="lisSub">
+                          <a class="btn btn-default"  title="Vista previa" <?php echo $verLista; ?>>
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                          </a>
+                        </td>
+
+                        <td class="IncSub">
+                          <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias"  <?php echo $cargarIncidencias; ?>>
+                            <span class="glyphicon glyphicon-plus"></span>
+                          </a>
+                        </td>
+
+                        <td class="IncSub">
+                          <a type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Mostrar incidencias"  <?php echo $verIncidencias; ?>>
+                            <span class="glyphicon glyphicon-alert"></span>
+                          </a>
+                        </td>
+
+
+                        <td>
+                          <a class="btn btn-default" data-toggle="modal" data-target="#deleteFileModal" onclick="deleteFile({{$lista->idLista}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar lista" <?php echo $eliminarD; ?> >
+                            <span class="glyphicon glyphicon-trash"></span>
+                          </a>
+                        </td>
+
+                      </tr>
+
+                    <?php
                     }
                     ?>
-
                 </tbody>
             </table>
         </div>

@@ -1,20 +1,39 @@
+.lisSub{
+	background-color: rgba(170,170,170,0.5);
+}
+
+.IncSub{
+	background-color: rgba(205,205,205,0.5);		
+}
+
+
+.iconoHeaderTbl{
+	width: 10%;
+	text-align: center;
+}
+
+.descrHeaderTbl{
+	text-align: center;	
+}
 
 .btnLista{
   color: #ffff;
   background-color: #254f76;
   border-color: #254f76;
   font-weight:bold;
+
+  vertical-align: middle;
 }
 
 .headerFont{
-	background-color: #254f76;
-	color: white;
+	/*background-color: #254f76;
+	color: white;*/
 	text-align: center;
 }
 
 
 .tablaListas{
-	table-layout: fixed;
+	table-layout:auto;
 	text-align: center;
 }
 
@@ -62,6 +81,11 @@
 			font-size: 9px;
 		}
 
+	.tablaListas{
+		table-layout:auto;
+	}
+
+
 	}
 
 
@@ -70,11 +94,6 @@
 	.top{
 		margin-top: 30%;
 		margin-left: 5%;
-
-	}
-	.marge{
-		margin-left: 5px;
-		padding-left: 1%;
 
 	}
 
@@ -98,19 +117,11 @@
 		margin-left: 5%;
 
 	}
-	.marge{
-		margin-left: 5px;
-		padding-left: 1%;
-	}
 }
 	@media screen and (max-width: 300px) {
 	.top{
 		margin-top: 30%;
 		margin-left: 10%;
 
-	}
-	.marge{
-		margin-right: 10%;
-		padding-left: 1%;
 	}
 	}
