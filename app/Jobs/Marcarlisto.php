@@ -16,14 +16,16 @@ class Marcarlisto implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $id1;
+    protected $carga;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($id,$carga)
     {
         $this->id1=$id;
+        $this->carga=$carga;
     }
 
     /**
@@ -33,7 +35,6 @@ class Marcarlisto implements ShouldQueue
      */
     public function handle()
     {
-            $INFO=DB::table('listaEncuestados')->where('idLista','=',$this->id1)
-                                       ->update(['carga'=> 1]);
+            $INFO=DB::table('listaEncuestados')->where('idLista','=',$this->id1)->update(['carga'=> $this->carga]);
     }
 }

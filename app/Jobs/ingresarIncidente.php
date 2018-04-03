@@ -59,7 +59,7 @@ class ingresarIncidente implements ShouldQueue
                 }
                 } 
             }
-            $job2= new Marcarlisto($idarray['id']);
+            $job2= new Marcarlisto($idarray['id'],5);
             dispatch($job2);
 
             });

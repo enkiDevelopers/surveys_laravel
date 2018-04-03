@@ -48,60 +48,71 @@ class IngresarLista implements ShouldQueue
         echo $this->cantidad1;
         try{
         $idarray=['id' => $this->id1]; 
-        $path = public_path()."/listas/". $this->dato1;
-        echo $path;
-        Excel::filter('chunk')->load(public_path("/listas/").$this->dato1)->chunk(8000, function($results) use ($idarray){
-        //Excel::filter('chunk')->load(public_path("/listas/").$this->dato1)->chunk(1300, function($results) use ($idarray){
-         $data=count($results);
-         foreach($results as $row){
-            if($row->no_cuenta== ""){
+        $path = public_path("/listas/").$this->dato1;
+        //echo $path;
+        if (file_exists($path) {
+            Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
+            //Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
+             $data=count($results);
+             foreach($results as $row){
+                if($row->no_cuenta== ""){
 
-            }else{
-                $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
-                $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
-                $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
-                $infor=DB::table('encuestados')->insert([
-                                                    'region'  =>  $row->region,
-                                                    'ciclo'=>$row->ciclo,
-                                                    'campus'=>$row->campus,
-                                                    'tipoIngreso'=>$row->tipo_ingreso,
-                                                    'lineaNegocio'=>$row->linea_negocio,
-                                                    'modalidad'=>$row->modalidad,
-                                                    'noCuenta'=>$row->no_cuenta,
-                                                    'nombreGeneral'=>$row->nombre_general,
-                                                    'fechaNacimiento'=>$row->fecha_nacimiento,
-                                                    'direccion'=>$row->direccion,
-                                                    'email1'=>$correo1,
-                                                    'email2'=>$correo2,
-                                                    'email3'=>$correo3,
-                                                    'telefonoCasa'=>$row->telefono_casa,
-                                                    'carrera'=>$row->carrera,
-                                                    'programaCV'=>$row->programacv,
-                                                    'programaDesc'=>$row->programa_desc,
-                                                    'semestre'=>$row->semestre,
-                                                    'vertical'=>$row->vertical,
-                                                    'esIntercambio'=>$row->es_intercambio,
-                                                    'contestado' => 0,
-                                                    'listaEncuestados_idLista' => $idarray['id']  ]);
-       }
+                }else{
+                    $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
+                    $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
+                    $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
+                    $infor=DB::table('encuestados')->insert([
+                                                        'region'  =>  $row->region,
+                                                        'ciclo'=>$row->ciclo,
+                                                        'campus'=>$row->campus,
+                                                        'tipoIngreso'=>$row->tipo_ingreso,
+                                                        'lineaNegocio'=>$row->linea_negocio,
+                                                        'modalidad'=>$row->modalidad,
+                                                        'noCuenta'=>$row->no_cuenta,
+                                                        'nombreGeneral'=>$row->nombre_general,
+                                                        'fechaNacimiento'=>$row->fecha_nacimiento,
+                                                        'direccion'=>$row->direccion,
+                                                        'email1'=>$correo1,
+                                                        'email2'=>$correo2,
+                                                        'email3'=>$correo3,
+                                                        'telefonoCasa'=>$row->telefono_casa,
+                                                        'carrera'=>$row->carrera,
+                                                        'programaCV'=>$row->programacv,
+                                                        'programaDesc'=>$row->programa_desc,
+                                                        'semestre'=>$row->semestre,
+                                                        'vertical'=>$row->vertical,
+                                                        'esIntercambio'=>$row->es_intercambio,
+                                                        'contestado' => 0,
+                                                        'listaEncuestados_idLista' => $idarray['id']  ]);
+               }
 
-}
+        }
 
-        },$shouldQueue = true);
+            },$shouldQueue = true);
 
-}catch(Exception $e){
+            }catch(Exception $e){
+                        $idarray=['id' => $this->id1];            
+                        $job2= new Marcarlisto($idarray['id'],6);
+                        dispatch($job2);
 
 
-}
+            }
+            
+        } else {
+            //El archivo de excel no existe
+            $this->cantidad1==100; //El archivo de excel no existe
+        }
+    if($this->cantidad1==100){
+            $idarray=['id' => $this->id1, 'carga'=> 6];
+            //El archivo de excel no existe        
+            $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+            dispatch($job2);
+        }
     if($this->cantidad1==1){
-            $job2= new Marcarlisto($this->id1);
+            $idarray=['id' => $this->id1, 'carga'=> 1];
+            $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
             dispatch($job2);
 }
-/*if (File::exists(('./listas/'.$this->dato1))) {
-        File::delete(('./listas/'.$this->dato1));
-    }else{
-        return "noaparece".$this->dato1;
- }*/
 
 }
 

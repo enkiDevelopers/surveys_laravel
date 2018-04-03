@@ -99,58 +99,7 @@ class listasController extends Controller
         //
     }
 
-/*private function ingresarDatos($idarray,$dato,$request){
 
-        $handle = fopen('listas/'.$dato, "r",'ISO-8859-1');
-        echo $dato;
-        $fila = 1;
-        Excel::load('listas/'.$dato, function($reader) use($idarray)  {
-        $excel = $reader->get();
-
-        $reader->each(function($row) use($idarray) {
-
-        $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
-        $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
-        $correo3= filter_var($row->correo_electronico_3, FILTER_VALIDATE_EMAIL);
-
-        if($row->region=="" && $row->nombre=="" && $row->no_cuenta=""){
-
-        }else{
-        $infor=DB::table('encuestados')->insert([
-                                                    'region'  =>  $row->region,
-                                                    'ciclo'=>$row->ciclo,
-                                                    'campus'=>$row->campus,
-                                                    'tipoIngreso'=>$row->tipo_ingreso,
-                                                    'lineaNegocio'=>$row->linea_negocio,
-                                                    'modalidad'=>$row->modalidad,
-                                                    'noCuenta'=>$row->no_cuenta,
-                                                    'nombreGeneral'=>$row->nombre_general,
-                                                    'fechaNacimiento'=>$row->fecha_nacimiento,
-                                                    'direccion'=>$row->direccion,
-                                                    'email1'=>$correo1,
-                                                    'email2'=>$correo2,
-                                                    'email3'=>$correo3,
-                                                    'telefonoCasa'=>$row->telefono_casa,
-                                                    'carrera'=>$row->carrera,
-                                                    'programaCV'=>$row->programacv,
-                                                    'programaDesc'=>$row->programa_desc,
-                                                    'semestre'=>$row->semestre,
-                                                    'vertical'=>$row->vertical,
-                                                    'esIntercambio'=>$row->es_intercambio,
-                                                    'contestado' => 0,
-                                                    'listaEncuestados_idLista' => $idarray['id']  ]);
-}
-        });
-    
-    });
-
-
-    $creador= $request->session()->get('id');
-
-    $listas=DB::table('listaEncuestados')->where('creador','=',$creador)->get();
-    //return view("administrator.files", compact('listas'));
-    //return back();
-}*/
 public function ingresarDatos(Request $request){
     $idlista=$request->input('id');
     $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
@@ -221,13 +170,7 @@ public function ingresarlista(Request $request){
         $arreglo=null;
                 $usrid=$request->session()->get('id');  
                 $id=$this->guardarListaBD($nombre,$usrid);
-        
-           /*             dispatch($job);
-           dispach($job);*/
-
-
-
- 
+  
     /* $INFO=DB::table('listaEncuestados')->where('idLista','=',$idarray['id'])
                                         ->update(['carga'=> 1]); */ 
 return back();

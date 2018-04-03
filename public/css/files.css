@@ -1,3 +1,6 @@
+.headerStatic{
+}
+
 .lisSub{
 	background-color: rgba(170,170,170,0.5);
 }
@@ -29,6 +32,7 @@
 	/*background-color: #254f76;
 	color: white;*/
 	text-align: center;
+
 }
 
 

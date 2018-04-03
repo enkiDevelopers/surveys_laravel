@@ -177,17 +177,10 @@ onclick="return principal();">
 
 
 <div class="container"  >
-    
-      <!--
-                          <div class="col-sm-0">
-                      </div>
-      -->
-      
-
-                              <div style="display:none;" id="datain">
-                                    <p class="text-center parrafo">Procesando Lista</p>
-                                    <center><img src="/img/load/load.gif"></center>
-                              </div>
+  <div style="display:none;" id="datain">
+    <p class="text-center parrafo">Procesando Lista</p>
+    <center><img src="/img/load/load.gif"></center>
+  </div>
 
 
 
@@ -201,7 +194,7 @@ onclick="return principal();">
       
         <div class="col-md-12" id="divid" style="overflow:auto;">
             <table class="table table-striped table-bordered tablaListas">
-                <thead>
+                <thead class="headerStatic">
                   <tr class="headerFont">                    
                     <th class="descrHeaderTbl">Nombre Lista</th>
                     <th class="iconoHeaderTbl">Estado</th>
@@ -221,7 +214,6 @@ onclick="return principal();">
                     foreach ($listas as $lista) {
                       $eliminarD="";
                       $nombreLista=$lista->nombre;
-                      $estado="src='/img/listo.jpg' data-toggle='tooltip' data-placement='top' title='Nombre de lista Creado'";
                       $encuestaAsociada="";                         
                       $subirArchivos="data-target='#AgregarDatos' id='$lista->idLista' onClick='reply_click(this.id)' data-toggle='tooltip' data-placement='top'";
                       $procesarLista="disabled='disabled'";
@@ -230,14 +222,15 @@ onclick="return principal();">
                       $verIncidencias="disabled='disabled'";
                       
                       switch ($lista->carga) {
-                        case '0': 
-                          $encuestaAsociada="Ninguna";
-                          break;
+                        case '0': //Se crea el nombre del archivo
+                          
+                          $estado="src='/img/nameCreated.png' data-toggle='tooltip' data-placement='top' title='Nombre de lista Creado'";
+
+                          break;                                        
                         case '2': //caso donde se suben los archivos
-                          $encuestaAsociada="Caso 2";
+                          
                           $nombreLista=$lista->nombre;                
-                          $estado="src='/img/listo.jpg' data-toggle='tooltip' data-placement='top' title='Archivo(s) de Excel Subido(s)'";
-                          $encuestaAsociada=" Caso 2";
+                          $estado="src='/img/subirArchivo.png' data-toggle='tooltip' data-placement='top' title='Archivo(s) de Excel Subido(s)'";
                           $procesarLista= "onClick='creardato(this.id)' data-toggle='tooltip' data-placement='top' title='Cargar Datos'"; 
                           $subirArchivos="data-target='#AgregarDatos' id='$lista->idLista' onClick='reply_click(this.id)' data-toggle='tooltip' data-placement='top'";
                           //$procesarLista="title='Agregar Datos' disabled='disabled'";
@@ -245,9 +238,44 @@ onclick="return principal();">
                           $cargarIncidencias="disabled='disabled'";
                           $verIncidencias="disabled='disabled'";
                           break;
-                        case '1': //caso predeterminado sucede después de crear una lista
-                            $estado="src='/img/listo.jpg' data-toggle='tooltip' data-placement='top' title='Lista subida en Base de Datos'";
-                            $encuestaAsociada="Caso 1";
+                        case '1': // se procesan los archivos y se suben a la base de datos
+                            $estado="src='/img/listo.png' data-toggle='tooltip' data-placement='top' title='Lista subida en Base de Datos'";
+                            
+                            $subirArchivos="disabled='disabled'";
+                            $verLista="type='button' href='/administrator/file/open/$lista->idLista'  data-toggle='tooltip' data-placement='top'  target='_black'";
+                            $cargarIncidencias="data-toggle='modal' data-target='#AgregarIncidentes' id='$lista->idLista' onClick='reply_click2(this.id)' data-toggle='tooltip' data-placement='top'";
+                            $verIncidencias="href='/administrator/file/incidentes/$lista->idLista' target='_black'";
+                            if($lista->usado== 0){
+                            }else{
+                              $encuestaAsociada=$lista->titulo;
+                              if($hoy>=$lista->fechat){
+                                $cargarIncidencias="disabled='disabled'";
+                              }
+                              $eliminarD="disabled='disabled'";
+                            }
+
+                          break;
+                        case '3': //caso predeterminado sucede mientras se está procesando una lista
+                          $nombreLista=$lista->nombre;
+                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando archivos a Base de Datos'";
+                          
+                          $subirArchivos="disabled='disabled'";
+                          $procesarLista="disabled='disabled'";
+                          $cargarIncidencias="disabled='disabled'";
+                          $verIncidencias="disabled='disabled'";
+                          break;
+                        case '4': // sucede mientras se está cargando una incidencia
+                          $encuestaAsociada="Caso 4";
+                          $nombreLista=$lista->nombre;
+                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando Incidentes'";
+                          $subirArchivos="disabled='disabled'";
+                          $procesarLista="disabled='disabled'";
+                          $cargarIncidencias="disabled='disabled'";
+                          $verIncidencias="disabled='disabled'";        
+                         break; 
+                        case '5': // sucede cuando se sube una incidencia
+                            $estado="src='/img/incidenciaReady.gif' data-toggle='tooltip' data-placement='top' title='Incidencia subida en Base de Datos'";
+                            $encuestaAsociada="Caso 5";
                             $subirArchivos="disabled='disabled'";
                             $verLista="type='button' href='/administrator/file/open/$lista->idLista'  data-toggle='tooltip' data-placement='top'  target='_black'";
                             $cargarIncidencias="data-toggle='modal' data-target='#AgregarIncidentes' id='$lista->idLista' onClick='reply_click2(this.id)' data-toggle='tooltip' data-placement='top'";
@@ -258,28 +286,19 @@ onclick="return principal();">
                               if($hoy>=$lista->fechat){
                                 $cargarIncidencias="disabled='disabled'";
                               }
-                            $eliminarD="disabled='disabled'";
-                          }
+                              $eliminarD="disabled='disabled'";
+                            }
                           break;
-                        case '3': //caso predeterminado sucede después de crear una lista
+                        case '6': //caso cuando un archivo se cargó incorrectamente
                           $nombreLista=$lista->nombre;
-                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando archivos a Base de Datos'";
-                          $encuestaAsociada="Caso 3";
+                          $estado="src='/img/fileBad.png' data-toggle='tooltip' data-placement='top' title='Agregando archivos a Base de Datos'";
+                          $encuestaAsociada="Caso 6";
                           $subirArchivos="disabled='disabled'";
                           $procesarLista="disabled='disabled'";
                           $cargarIncidencias="disabled='disabled'";
                           $verIncidencias="disabled='disabled'";
                           break;
-                        case '4': // sucede después de cargar una lista en Base de Datos
-                          $encuestaAsociada="Caso 4";
-                          $nombreLista=$lista->nombre;
-                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando Incidentes'";
-                          $encuestaAsociada="";  
-                          $subirArchivos="disabled='disabled'";
-                          $procesarLista="disabled='disabled'";
-                          $cargarIncidencias="disabled='disabled'";
-                          $verIncidencias="disabled='disabled'";        
-                         break; 
+
                         default:
                          break;
                       }
