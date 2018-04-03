@@ -250,7 +250,7 @@ onclick="return principal();">
                             $encuestaAsociada="Caso 1";
                             $subirArchivos="disabled='disabled'";
                             $verLista="type='button' href='/administrator/file/open/$lista->idLista'  data-toggle='tooltip' data-placement='top'  target='_black'";
-                            $cargarIncidencias="data-target='#AgregarIncidentes' id='$lista->idLista' onClick='reply_click2(this.id)' data-toggle='tooltip' data-placement='top'";
+                            $cargarIncidencias="data-toggle='modal' data-target='#AgregarIncidentes' id='$lista->idLista' onClick='reply_click2(this.id)' data-toggle='tooltip' data-placement='top'";
                             $verIncidencias="href='/administrator/file/incidentes/$lista->idLista' target='_black'"; 
                             if($lista->usado== 0){
                             }else{
@@ -314,7 +314,7 @@ onclick="return principal();">
                         </td>
 
                         <td class="IncSub">
-                          <a class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Agregar Incidencias"  <?php echo $cargarIncidencias; ?>>
+                          <a class="btn btn-default"  data-placement="top" title="Agregar Incidencias"  <?php echo $cargarIncidencias; ?>>
                             <span class="glyphicon glyphicon-plus"></span>
                           </a>
                         </td>
