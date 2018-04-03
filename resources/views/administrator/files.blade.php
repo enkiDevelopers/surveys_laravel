@@ -199,7 +199,7 @@ onclick="return principal();">
        </div>
 
       
-        <div class="col-md-12" style="overflow:auto;">
+        <div class="col-md-12" id="divid" style="overflow:auto;">
             <table class="table table-striped table-bordered tablaListas">
                 <thead>
                   <tr class="headerFont">                    
