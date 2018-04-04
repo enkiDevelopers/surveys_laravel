@@ -40,14 +40,13 @@ function creardato(ide){
                 cache:false,
                 beforeSend: function () {
                   console.log(ide);
-                    document.getElementById(ide).value = "Enviando...";
+                  document.getElementById(ide).value = "Enviando...";
                   document.getElementById(ide).disabled = true; 
                   $("#procesando").show();
 
                 },
                 success : function(response){
                   $("#procesando").hide();
-
                       swal({
                         title: "Información",
                         text: "Su lista esta siendo procesada",
@@ -311,7 +310,7 @@ $(function(){
 function reply_click2(clicked_id)
 {
   document.getElementById("idlista").value = clicked_id;
-document.getElementById("listaid").value= clicked_id;
+  document.getElementById("listaid").value= clicked_id;
 }
 function reply_click(clicked_id)
 {

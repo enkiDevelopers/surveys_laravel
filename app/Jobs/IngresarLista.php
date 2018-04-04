@@ -1,20 +1,15 @@
 <?php
-
 namespace App\Jobs;
-
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable; 
 use App\jobs\Marcarlisto;
-
-
 use Excel;
 use DB;
 use File;
 use Log;
-
 class IngresarLista implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -27,16 +22,12 @@ class IngresarLista implements ShouldQueue
      *
      * @return void
      */
-
-
-
     public function __construct($dato,$id,$cantidad)
     {
        $this->dato1=$dato;
        $this->id1=$id;
        $this->cantidad1=$cantidad;
     }
-
     /**
      * Execute the job.
      *
@@ -50,13 +41,12 @@ class IngresarLista implements ShouldQueue
         $idarray=['id' => $this->id1]; 
         $path = public_path("/listas/").$this->dato1;
         //echo $path;
-        if (file_exists($path) {
+        if (file_exists($path)) {
             Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
             //Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
              $data=count($results);
              foreach($results as $row){
                 if($row->no_cuenta== ""){
-
                 }else{
                     $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
                     $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
@@ -84,36 +74,29 @@ class IngresarLista implements ShouldQueue
                                                         'esIntercambio'=>$row->es_intercambio,
                                                         'contestado' => 0,
                                                         'listaEncuestados_idLista' => $idarray['id']  ]);
-               }
-
-        }
-
+                    }
+                }
             },$shouldQueue = true);
-
-            }catch(Exception $e){
+}else{
+                //El archivo de excel no existe
+            $this->cantidad1==100; //El archivo de excel no existe
+}
+            
+        }catch(Exception $e){
                         $idarray=['id' => $this->id1];            
                         $job2= new Marcarlisto($idarray['id'],6);
                         dispatch($job2);
-
-
-            }
-            
-        } else {
-            //El archivo de excel no existe
-            $this->cantidad1==100; //El archivo de excel no existe
-        }
+            } 
     if($this->cantidad1==100){
             $idarray=['id' => $this->id1, 'carga'=> 6];
             //El archivo de excel no existe        
             $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
             dispatch($job2);
         }
-    if($this->cantidad1==1){
-            $idarray=['id' => $this->id1, 'carga'=> 1];
-            $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
-            dispatch($job2);
-}
-
-}
-
+            if($this->cantidad1==1){
+                    $idarray=['id' => $this->id1, 'carga'=> 1];
+                    $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+                    dispatch($job2);
+            }
+  }
 }

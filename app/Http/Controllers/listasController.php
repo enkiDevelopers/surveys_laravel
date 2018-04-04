@@ -104,14 +104,15 @@ public function ingresarDatos(Request $request){
     $idlista=$request->input('id');
     $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
     $cantidad=DB::table('recursos')->where('idlista','=',$idlista)->count();
-    DB::table('listaEncuestados')->where('idLista',$idlista)->update(['carga'=>3]);
+    //DB::table('listaEncuestados')->where('idLista',$idlista)->update(['carga'=>3]);
 
     foreach ($data as $datas) {
-        $job = new IngresarLista($datas->path,$idlista,$cantidad);
-        dispatch($job);
-        $cantidad--;
+         $path= $datas->path;
+         $job = new IngresarLista($path,$idlista,$cantidad);
+         dispatch($job);
+         $cantidad--;
     } 
-    echo $data;
+    //echo $data;
     //return back();
 
 }
