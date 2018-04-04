@@ -104,7 +104,7 @@ public function ingresarDatos(Request $request){
     $idlista=$request->input('id');
     $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
     $cantidad=DB::table('recursos')->where('idlista','=',$idlista)->count();
-    //DB::table('listaEncuestados')->where('idLista',$idlista)->update(['carga'=>3]);
+    DB::table('listaEncuestados')->where('idLista',$idlista)->update(['carga'=>3]);
 
     foreach ($data as $datas) {
          $path= $datas->path;

@@ -274,7 +274,7 @@ onclick="return principal();">
                           $verIncidencias="disabled='disabled'";        
                          break; 
                         case '5': // sucede cuando se sube una incidencia
-                            $estado="src='/img/incidenciaReady.gif' data-toggle='tooltip' data-placement='top' title='Incidencia subida en Base de Datos'";
+                            $estado="src='/img/incidenciaReady.png' data-toggle='tooltip' data-placement='top' title='Incidencia subida en Base de Datos'";
                             $encuestaAsociada="Caso 5";
                             $subirArchivos="disabled='disabled'";
                             $verLista="type='button' href='/administrator/file/open/$lista->idLista'  data-toggle='tooltip' data-placement='top'  target='_black'";
@@ -308,7 +308,7 @@ onclick="return principal();">
                           <?php echo $nombreLista ?>
                         </td>
                         <td>
-                          <img <?php echo $estado ?> width="30px" height="30px">
+                          <img <?php echo $estado ?> width="20px" height="20px">
                         </td>
                         <td>
                           <?php echo $encuestaAsociada ?>
