@@ -187,11 +187,12 @@ onclick="return principal();">
       <div class="col-md-12 text-center" id="titulo">
          <div class="col-md-6">Listas</div>
          <div class="col-md-6">
-              <a  class="btn glyphicon glyphicon-plus btnLista" data-toggle="modal" data-target="#AgregarLista"> Crear </a>
+            <a class="btn glyphicon glyphicon-plus btnLista" data-toggle="modal" data-target="#AgregarLista">
+              <label>Crear</label>
+            </a>
          </div>
        </div>
 
-      
         <div class="col-md-12" id="divid" style="overflow:auto;">
             <table class="table table-bordered tablaListas">
                 <thead class="headerStatic">
