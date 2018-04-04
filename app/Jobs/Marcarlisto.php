@@ -34,7 +34,7 @@ class Marcarlisto implements ShouldQueue
      * @return void
      */
     public function handle()
-    {       $output->writeln($this->carga);
+    {       
             $INFO=DB::table('listaEncuestados')->where('idLista','=',$this->id1)->update(['carga'=> $this->carga]);
     }
 }

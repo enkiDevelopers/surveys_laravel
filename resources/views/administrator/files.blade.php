@@ -185,17 +185,9 @@ onclick="return principal();">
 
 
       <div class="col-md-12 text-center" id="titulo">
-<<<<<<< HEAD
          <div class="col-md-6 sectionListas">Listas</div>
          <div class="col-md-6 sectionCrear">
               <a  class="btn glyphicon glyphicon-plus btnLista" data-toggle="modal" data-target="#AgregarLista"> Crear </a>
-=======
-         <div class="col-md-6">Listas</div>
-         <div class="col-md-6">
-            <a class="btn glyphicon glyphicon-plus btnLista" data-toggle="modal" data-target="#AgregarLista">
-              <label>Crear</label>
-            </a>
->>>>>>> eefbb992d35b34352fcea561b02a58dc2a2d1cd0
          </div>
        </div>
 
