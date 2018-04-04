@@ -45,7 +45,7 @@ onclick="return principal();">
        Administradores registrados
        </div>
        <div class="col-md-2 btnAdd">
-       <a  class="btn btn-primary" data-toggle="modal" data-target="#administrador">Añadir</a>
+       <a  class="btn btnLista" data-toggle="modal" data-target="#administrador"><span class="glyphicon-plus">Crear</a>
        </div>
        <div class="col-md-2 btnAdd" >
          <input type="checkbox"
@@ -117,7 +117,8 @@ onclick="return principal();">
                      </div>
 
            <div class="col-md-2 btnAdd"  >
-           <a class="btn btn-primary" data-toggle="modal" data-target="#directivos">Añadir</a>
+           <a class="btn  btnLista text-center" data-toggle="modal" data-target="#directivos"><span class="mas glyphicon-plus"></span>Crear</a>
+
            </div>
            <div class="col-md-2 btnAdd">
              <input type="checkbox"

@@ -5,6 +5,15 @@ width: 100%;
 margin-top: 140px;
 }
 
+.btnLista{
+  color: #ffff;
+  background-color: #254f76;
+  border-color: #254f76;
+  font-weight:bold;
+text-align: center;
+  vertical-align: middle;
+}
+
 #titulo
 {
     width: 96%;

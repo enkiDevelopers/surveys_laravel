@@ -47,13 +47,48 @@
 
             <div class="panel panel-default " id="panel1">
         <div class="panel-heading fijado">
+
+
+<div class="row">
+<div class="col-md-12">
+<div class="col-md-4" style="text-align: top; ">
+<b style="font-size: 30px;">Plantillas</b>
+</div>
+
+<div class="col-md-4" style="text-align: right;">
+  <div style="margin: 1rem;">
+    <a class="btn  btnLista text-center" data-toggle="modal" data-target="#ModalTitle"><span class="mas glyphicon-plus"></span>Crear</a>
+  </div>
+</div>
+
+<div class="col-md-4" style="text-align: right;">
+  <div style="margin: 1rem;">
+    <input type="checkbox"
+      checked data-toggle="toggle" data-on="Ocultar"
+      data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+         id="btnO" onchange="ocultar();"
+      >
+
+  </div>
+
+</div>
+
+</div>
+</div>
+          <!--
 <table id="hTable">
 <tr>
   <td >
-    <h3><b> <div id="titP1">
+    <h3><b> <div id="titP1" style="vertical-align: middle">
    Plantillas  </div> </b> </h3>
  </td>
- <td><img id="tw"   width="40px" height="40px" style="visibility: hidden;"/>  </td>
+ <td><img id="tw"   width="40px" height="40px" style="visibility: hidden;"/>
+   <div class="col-md-2 btnAdd"  >
+   <a class="btn  btnLista text-center" data-toggle="modal" data-target="#ModalTitle"><span class="mas glyphicon-plus"></span>Crear</a>
+
+   </div>
+
+ </td>
 
  <td>  <img  id="fb"   width="40px" height="40px" style="visibility: hidden;"/>      </td>
 
@@ -67,7 +102,7 @@
 </tr>
 
 </table>
-
+-->
                 </div>
                 <div class="panel-body scroll" id="pBody">
                     <div class="row" >
@@ -75,21 +110,7 @@
                       </div>
 
 <!--##################################  inicio boton de añadir plantilla#########################################################################-->
-<div id="btnT">
 
-
-             <div id="btn-añadir" class="col-md-12">
-                   <a data-toggle="modal" data-target="#ModalTitle" >
-
-                   <div id="content-btn">
-                      <span class="glyphicon glyphicon-plus" ></span>
-                   </div>
-                   <div id="crearPlantilla">
-                       <h2 id="tamañoLet">Crear Plantilla</h2>
-                   </div>
-                 </a>
-              </div>
-</div>
 
 <!--Termina boton añadir plantila de encuesta -->
 
@@ -104,6 +125,40 @@
 
                     <div class="panel panel-default"  id="panel" >
                     <div class="panel-heading"> <!-- INICIO ENCABEZADO PANEL -->
+                      <div class="row">
+                      <div class="col-md-12">
+                      <div class="col-md-4" style="text-align: top; ">
+                      <b style="font-size: 30px;">Encuestas</b>
+                      </div>
+
+                      <div class="col-md-4" style="text-align: right;">
+
+                        <div  class="col-md-2"style="margin: 1rem;">
+                          <img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>
+                        </div>
+                        <div class="col-md-2" style="margin: 1rem;">
+                          <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-4" style="text-align: right;">
+                        <div style="margin: 1rem;">
+                          <input type="checkbox"
+                          checked data-toggle="toggle" data-on="Ocultar"
+                          data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
+                            id="btnOp" onchange="ocultar2();"
+                          >
+
+                        </div>
+
+                      </div>
+
+                      </div>
+                      </div>
+<!--
+
+
                       <table id="hTable2">
                         <tr>
                           <td>
@@ -119,7 +174,7 @@
                           > </td>
 
                         </tr>
-                      </table>
+                      </table>-->
                         </div>
                         <!-- fin ENCABEZADO PANEL -->
                 <div class="panel-body scroll" id="pPBody">

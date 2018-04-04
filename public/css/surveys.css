@@ -1,3 +1,18 @@
+
+
+.btnLista{
+  color: #ffff;
+  background-color: #254f76;
+  border-color: #254f76;
+  font-weight:bold;
+text-align: center;
+  vertical-align: middle;
+}
+
+body
+{
+  overflow-y: scroll;
+}
 #imgC
 {
   height: 200px;
