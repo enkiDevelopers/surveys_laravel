@@ -87,6 +87,19 @@ tbody{
   text-overflow: ellipsis;
 }
 
+@media screen and (min-width: 1300px ) {
+  .table-width-no-border{
+    max-width: 85vw;
+  }
+  th, td{
+    max-width: 20.8vw;
+    min-width: 20.8vw;
+  }
+  table{
+    overflow-x: auto;
+  }
+}
+
 @media screen and (max-width:991px) and (min-width:768px)  {
   .card{
     width: 35%;

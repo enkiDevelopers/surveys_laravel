@@ -163,7 +163,7 @@
         <div class="table-width-no-border">
           <table class="table table-striped table-hover table-bordered">
             <thead>
-              <tr style="background-color:#338537; color: white;">
+              <tr style="background-color: #cdcdcd; color: black;">
                 <th>Encuesta</th>
                 <th>Título</th>
                 <th>Descripción</th>
@@ -177,8 +177,8 @@
                 <td>
                   <img src="\img/iconos/{{$encuesta->imagePath}}" width="55px" height="50px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
                 </td>
-                <td class="descripcion"><p>{{$encuesta->tituloEncuesta}}</p></td>
-                <td class="descripcion"><p>{{$encuesta->descripcion}}</p></td>
+                <td class="descripcion"><p style="color: black;">{{$encuesta->tituloEncuesta}}</p></td>
+                <td class="descripcion"><p style="color: black;">{{$encuesta->descripcion}}</p></td>
                 <td>
                  <?php
                   switch ($datosdirective[0]->type) {
