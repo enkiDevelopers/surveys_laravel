@@ -55,6 +55,7 @@
 <b style="font-size: 30px;">Plantillas</b>
 </div>
 
+
 <div class="col-md-4" style="text-align: right;">
   <div style="margin: 1rem;">
     <a class="btn  btnLista text-center" data-toggle="modal" data-target="#ModalTitle"><span class="mas glyphicon-plus"></span>Crear</a>
