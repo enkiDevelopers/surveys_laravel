@@ -18,7 +18,7 @@ function creardato(ide){
 
            swal({
               title: "Confirmación",
-              text: "¿Desea ingresar los registro en la lista? ",
+              text: "¿Desea ingresar los registros en la Base de Datos? ",
               type: "info",
               showCancelButton: true,
               confirmButtonColor: '#DD6B55',

@@ -2,8 +2,17 @@ body{
 	overflow-y: scroll;
 }
 
-.headerStatic{
+.sectionListas{
+  font-weight:bold;
+  font-size: 30px;
 }
+
+.sectionCrear{
+	vertical-align: middle;
+	padding-top: 5px;
+}
+
+
 
 .lisSub{
 	background-color: rgba(170,170,170,0.5);
@@ -25,16 +34,18 @@ body{
 
 .btnLista{
   color: #ffff;
+  font-family: 'Poppins', sans-serif;
   background-color: #254f76;
   border-color: #254f76;
   font-weight:bold;
-
+  font-size: 14px;
   vertical-align: middle;
 }
 
 .headerFont{
 	/*background-color: #254f76;
 	color: white;*/
+	color: black;
 	text-align: center;
 
 }

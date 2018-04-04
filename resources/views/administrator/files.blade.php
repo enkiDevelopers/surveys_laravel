@@ -68,15 +68,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Agregar Datos</h4>
+        <h4 class="modal-title">Subir Archivos</h4>
       </div>
       <div class="modal-body" >
       <div class="row">
       <div class="col-md-7">
         <form  method="post" id="agregardatos" action="/agregarRegistros" enctype="multipart/form-data">
         {{ csrf_field() }}
-          <p>Agregar datos en la lista existente.</p>
-            <label for="exampleInputFile">Subir documento</label>
+          <!--<p>Agregar datos en la lista existente.</p>-->
+            <label for="exampleInputFile">Seleccionar archivo</label>
               <input class="form-control-file"  id="datos" name="datos" type="file" value="Subir archivo"accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required>
                  <input type="hidden" id="listaid" name="listaid" value="">
                  <!-- <strong>Maximo por archivo 5MB</strong> -->
@@ -185,8 +185,8 @@ onclick="return principal();">
 
 
       <div class="col-md-12 text-center" id="titulo">
-         <div class="col-md-6">Listas</div>
-         <div class="col-md-6">
+         <div class="col-md-6 sectionListas">Listas</div>
+         <div class="col-md-6 sectionCrear">
               <a  class="btn glyphicon glyphicon-plus btnLista" data-toggle="modal" data-target="#AgregarLista"> Crear </a>
          </div>
        </div>
@@ -194,14 +194,14 @@ onclick="return principal();">
       
         <div class="col-md-12" id="divid" style="overflow:auto;">
             <table class="table table-bordered tablaListas">
-                <thead class="headerStatic">
+                <thead>
                   <tr class="headerFont">                    
                     <th class="descrHeaderTbl">Nombre Lista</th>
                     <th class="iconoHeaderTbl">Estado</th>
-                    <th class="descrHeaderTbl">Encuesta Asociada</th>
                     <th class="iconoHeaderTbl">Subir Archivos</th>
                     <th class="iconoHeaderTbl">Procesar Lista</th>
                     <th class="iconoHeaderTbl">Ver Lista</th>
+                    <th class="descrHeaderTbl">Encuesta Asociada</th>
                     <th class="iconoHeaderTbl">Cargar Incidencias</th>
                     <th class="iconoHeaderTbl">Ver incidencias</th>
                     <th class="iconoHeaderTbl">Eliminar Lista</th>
@@ -267,7 +267,7 @@ onclick="return principal();">
                         case '4': // sucede mientras se está cargando una incidencia
                           $encuestaAsociada="Caso 4";
                           $nombreLista=$lista->nombre;
-                          $estado="src='/img/cargando.png' data-toggle='tooltip' data-placement='top' title='Agregando Incidentes'";
+                          $estado="src='/img/cargandoi.png' data-toggle='tooltip' data-placement='top' title='Agregando Incidentes'";
                           $subirArchivos="disabled='disabled'";
                           $procesarLista="disabled='disabled'";
                           $cargarIncidencias="disabled='disabled'";
@@ -310,9 +310,6 @@ onclick="return principal();">
                         <td>
                           <img <?php echo $estado ?> width="20px" height="20px">
                         </td>
-                        <td>
-                          <?php echo $encuestaAsociada ?>
-                        </td> 
 
                         <td  class="lisSub">
                           <a class="btn btn-default" title="Agregar Datos" <?php echo $subirArchivos ?>>
@@ -331,6 +328,10 @@ onclick="return principal();">
                             <span class="glyphicon glyphicon-eye-open"></span>
                           </a>
                         </td>
+
+                        <td>
+                          <?php echo $encuestaAsociada ?>
+                        </td> 
 
                         <td class="IncSub">
                           <a class="btn btn-default"  data-placement="top" title="Agregar Incidencias"  <?php echo $cargarIncidencias; ?>>

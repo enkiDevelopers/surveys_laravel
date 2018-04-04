@@ -39,11 +39,10 @@ class IngresarLista implements ShouldQueue
         echo $this->cantidad1;
         try{
         $idarray=['id' => $this->id1]; 
-        $path = public_path("/listas/").$this->dato1;
+        $path = public_path("/list/").$this->dato1;
         //echo $path;
         if (file_exists($path)) {
-            Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
-            //Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
+            Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){            
              $data=count($results);
              foreach($results as $row){
                 if($row->no_cuenta== ""){
@@ -77,26 +76,26 @@ class IngresarLista implements ShouldQueue
                     }
                 }
             },$shouldQueue = true);
-}else{
-                //El archivo de excel no existe
+        }else{
+            //El archivo de excel no existe
             $this->cantidad1==100; //El archivo de excel no existe
-}
+        }
             
         }catch(Exception $e){
-                        $idarray=['id' => $this->id1];            
-                        $job2= new Marcarlisto($idarray['id'],6);
-                        dispatch($job2);
-            } 
+            $idarray=['id' => $this->id1];            
+            //$job2= new Marcarlisto($idarray['id'],6);//hubo un error
+            //dispatch($job2);
+        } 
     if($this->cantidad1==100){
             $idarray=['id' => $this->id1, 'carga'=> 6];
             //El archivo de excel no existe        
-            $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
-            dispatch($job2);
+            //$job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+            //dispatch($job2);
         }
             if($this->cantidad1==1){
                     $idarray=['id' => $this->id1, 'carga'=> 1];
-                    $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
-                    dispatch($job2);
+                    //$job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+                    //dispatch($job2);
             }
   }
 }
