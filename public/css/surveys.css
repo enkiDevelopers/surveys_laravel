@@ -580,7 +580,7 @@ overflow: hidden;
   margin-left: 90px;
 
 }
-#actualizar
+#actualizar, #recibiendo
 {
 width: 100%;
 
@@ -711,8 +711,17 @@ margin-left: 20px;
 
 @media(max-width: 991px)
 {
+	#recibiendo
+	{
+
+width: 70%;
+margin-left: 15%;
+margin-right: 15%;
+text-align: center;
+	}
 #actualizar
 {
+
 	width: 80%;
 	margin-left: 10%;
 	margin-right: 10%;

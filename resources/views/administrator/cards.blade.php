@@ -1,20 +1,56 @@
+<div class="col-md-12 text-center">
+    <hr style="height: 2px; background-color: black;"/>
+  <h3>Encuestas activas </h3>
+    <hr style="height: 2px; background-color: black;"/>
+</div>
+
 <?php foreach ($actuales as $publicacion) {
 if($publicacion->creador == $id)
 {
   ?>
+
+  <div class="col-md-3 col-md-offset-3 text-center cont" id="{{$publicacion->idPub}}">
+    <div class="title">
+<h5><?php echo $publicacion->tituloEncuesta;  ?></h5>
+    </div>
+  <div class="btnC">
+
+    <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-icon text-center"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                      </a>
+
+<a  onclick="reminder({{$publicacion->idPub}})" class="btn btn-icon text-center"  data-toggle="tooltip" data-placement="top" title="Enviar recordatorio">
+<span class="glyphicon glyphicon-time ic"></span>
+</a>
+
+
+<a  onclick="editPub({{$publicacion->idTemplate}});" class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" title="editar">
+<span class="glyphicon glyphicon-edit ic"></span>
+</a>
+
+  </div>
+
+  				<div class="horizontal">
+  		<div class="vertical">
+  			<img src="/img/iconos/{{$publicacion->imagePath}}" class="img-responsive center-block img"
+  			  onerror="this.src='/img/iconos/default.png';"/>
+  		</div>
+  	</div>
+
+
+  				</div>
+
+
+
+
+
+
+
+
+<!--
+
+
   <div class="card" id="{{$publicacion->idPub}}"
-    style="
-    <?php
-    $nombre_fichero = './img/iconos/'.$publicacion->imagePath;
-
-    if (file_exists($nombre_fichero)) {
-    echo "background-image: url('/img/iconos/$publicacion->imagePath');";
-    } else {
-    echo "background-image: url('/img/iconos/default.png');";
-    }
-    ?>
-
-    "
 
     >
     <div id="nombre">
@@ -36,78 +72,38 @@ if($publicacion->creador == $id)
   <div id="ver">
     <div  id="title">
 
-<?php echo $publicacion->tituloEncuesta;  ?></h5>
+<?php echo $publicacion->tituloEncuesta;  ?>
 
     </div>
     </div>
     </div>
 
     </div>
+-->
 
-
-
-<!--Termina
-
-  <div class="col-md-3 modificar" id="{{$publicacion->idPub}}">
-      <div class="card well" id="cartaPub">
-<img class="card-img-top" id="marco" src="/img/iconos/<?php echo $publicacion->imagePath;?>"
-width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
->
-          <div class="card-body">
-              <h4 class="titleA">{{$publicacion->tituloEncuesta}}</h4>
-              <p class="card-text"></p>
-             <div class="btn-group " role="group" aria-label="...">
-    <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                      <span class="glyphicon glyphicon-eye-open"></span>
-                  </a>
-              </div>
-              <div class="btn-group " role="group" aria-label="...">
-                   <a  onclick="reminder({{$publicacion->idPub}})" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Enviar recordatorio">
-                       <span class="glyphicon glyphicon-time"></span>
-                   </a>
-
-               </div>
-              <div class="pull-right survey-status survey-status__active">&nbsp</div>
-          </div>
-      </div>
-  </div>
-   -->
 <?php }else{?>
-
-
-  <div class="card" id="{{$publicacion->idPub}}"   style="
-    <?php
-    $nombre_fichero = './img/iconos/'.$publicacion->imagePath;
-
-    if (file_exists($nombre_fichero)) {
-    echo "background-image: url('/img/iconos/$publicacion->imagePath');";
-    } else {
-    echo "background-image: url('/img/iconos/default.png');";
-    }
-    ?>
-
-    ">
-    <div id="nombre">
-
-            <div class="pull-right survey-status survey-status__active">&nbsp</div>
-        <a id="btn_prevPub" target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-default"  data-toggle="tooltip" data-placement="top" title="Vista previa">
-                            <span class="glyphicon glyphicon-eye-open ic"></span>
-                          </a>
-
-
-                          <div id="ver">
-                            <div  id="title">
-
-                        <?php echo $publicacion->tituloEncuesta;  ?></h5>
-
-                            </div>
-                            </div>
-
-
-
+  <div class="col-md-3 col-md-offset-3 text-center cont" id="{{$publicacion->idPub}}">
+    <div class="title">
+<h5><?php echo $publicacion->tituloEncuesta;  ?></h5>
     </div>
+  <div class="btnC">
 
-    </div>
+    <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-icon text-center"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                      </a>
+  </div>
+
+  				<div class="horizontal">
+  		<div class="vertical">
+  			<img src="/img/iconos/{{$publicacion->imagePath}}" class="img-responsive center-block img"
+  			  onerror="this.src='/img/iconos/default.png';"/>
+  		</div>
+  	</div>
+
+
+  				</div>
+
+
 
 
   <?php } ?>
@@ -116,11 +112,37 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
 <?php } ?>
 
 
+<div class="col-md-12 text-center">
+    <hr style="height: 2px; background-color: black;"/>
+  <h3>Encuestas finalizadas </h3>
+    <hr style="height: 2px; background-color: black;"/>
+</div>
+
 <?php foreach ($finalizadas as $publicacion) {?>
 
+  <div class="col-md-3 col-md-offset-3 text-center cont" id="{{$publicacion->idPub}}">
+    <div class="title">
+<h5><?php echo $publicacion->tituloEncuesta;  ?></h5>
+    </div>
+  <div class="btnC">
+
+    <a target="_blank" href="{{ url('/administrator/previewtem') }}/{{$publicacion->idTemplate}}" type="button" class="btn btn-icon text-center"  data-toggle="tooltip" data-placement="top" title="Vista previa">
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                      </a>
+  </div>
+
+  				<div class="horizontal">
+  		<div class="vertical">
+  			<img src="/img/iconos/{{$publicacion->imagePath}}" class="img-responsive center-block img"
+  			  onerror="this.src='/img/iconos/default.png';"/>
+  		</div>
+  	</div>
 
 
+  				</div>
 
+
+<!--
   <div class="card" id="{{$publicacion->idPub}}"   style="
     <?php
     $nombre_fichero = './img/iconos/'.$publicacion->imagePath;
@@ -153,7 +175,7 @@ width="100px" height="100px" onerror="this.src='/img/iconos/default.png'"
     </div>
 
     </div>
-
+-->
 <?php } ?>
 
 <script src="{{asset('js/app.js')}}"></script>
