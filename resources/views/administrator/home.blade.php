@@ -25,13 +25,25 @@
 
   </div>
 <div class="cuadroPerfilSup">
-  <div class="eng">
-    <span class="glyphicon glyphicon-cog"> &nbsp</span>
+
+  <div class="row">
+
+        <span class="glyphicon glyphicon-cog eng">&nbsp</span>
+
+    <div id="titName">
+
+        {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
     </div>
-  <div id="content">
-    <div class="nombre"> {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}</div>
-    <div class="correo">{{$info->email}} </div>
-        </div>
+  </div>
+
+  <div class="row">
+  <div class="col-md-8" id="titEm">
+        {{$info->email}}
+    </div>
+  </div>
+
+
+
 </div>
   </div>
 </div>
