@@ -1,13 +1,12 @@
-
-
-
 		.horizontal
 		{
-			width: 100%;
-			height: 100%;
-			
-			display: inline-flex;
-			justify-content: center;
+			width: 220px;
+				margin-left: -15px;
+				height: 100%;
+				border-radius: 5px;
+				background-color:  rgba(205,205,205,0.4);
+				display: inline-flex;
+				justify-content: center;
 		}
 		.vertical
 		{
@@ -23,16 +22,16 @@
 			justify-content: center;
 			margin-right: auto;
 			margin-left: auto;
-			max-width: 100%;
-			max-height: 100%;
-			min-width: 100%;
+			max-width: 98%;
+			max-height: 98%;
+			min-width: 98%;
 
 			border-radius: 5px;
 			}
 
 			.cont
 			{
-		background-color: rgba(205,205,205,0.6);
+
 		display:inline-block;
     margin-left: 0px;
     margin-right: 30px;
@@ -45,25 +44,20 @@
 
 			}
 
-				.btnIcon
-				{
-					background-color: rgba(0, 0, 0, 0.5);
-					width: 14%;
-					height: 100%;
-					color: #fff;
-					display: inline-block;
-					margin-right: 2%;
-          border-radius: 5px;
-
-				}
-
-
+.btn-icon
+{
+	background-color: rgba(0, 0, 0, 0.4);
+			color: #fff;
+			border: 0px solid black;
+			border-radius: 5px;
+}
 
 				.btnC
 				{
+
 					width: 100%;
 					height: 14%;
-
+					margin-top: 2%;
 					position: absolute;
 					margin-left: -15px;
 					text-align: center;
@@ -76,37 +70,20 @@
 
 
 				}
-				.divi
-				{
-					width: 8%;
-					display: inline-block;
-				}
+
 				.title
-				{
-					width: 100%;
-					height: 22%;
-					background-color: rgba(0,0,0,0.6);
-					position: absolute;
-					margin-top: -48px;
-					margin-left: -15px;
-				  border-radius: 5px;
-					color: #fff;
-				}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+							{
+								margin-top: 78%;
+								margin-left: -15px;
+								position: absolute;
+								background-color: rgba(0,0,0,0.4);
+								width: 100%;
+								height: 22%;
+								border-radius: 5px;
+								color: #fff;
+								word-break: break-all;
+								word-wrap: break-word;
+							}
 
 .btnLista{
   color: #ffff;
@@ -243,41 +220,6 @@ margin-top: 3px;
   display: inline-block;
   margin-left: 12px;
 }
-#btn-añadir
-{
-  width: 240px;
-  height: 240px;
-
-  background: rgba(37,66,118,1);
-background: -moz-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(37,66,118,1)), color-stop(51%, rgba(42,76,135,1)), color-stop(100%, rgba(47,85,151,1)));
-background: -webkit-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-background: -o-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
-
--moz-border-radius: 50%;
-     -webkit-border-radius: 50%;
-     border-radius: 50%;
-
-margin-bottom: 20px;
-margin-left: 1%;
-margin-top: 1%;
-margin-right: 0;
-
-display: inline-block;
--webkit-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
--moz-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
-box-shadow: -2px 3px 33px -3px rgba(0,0,0,0.75);
-
-position: relative;
-
-}
-#btn-añadir:hover
-{
-  cursor: pointer;
-}
 
 .loader {
     position: fixed;
@@ -391,16 +333,6 @@ margin-top: 1%;
 padding-top: 0.5%;
 }
 
-#btn_edit,#btn_prev,#btn_delete, #btn_pub, #btn_dup{
-text-align: center;
-background-color: rgba(0, 0, 0, 0.6);
-opacity: 0.7;
-height:  14%;
-width: 14%;
-border-radius: 5px;
-margin-left: 4%;
-margin-top: 1%;
-}
 
 .ic
 {
@@ -636,7 +568,8 @@ overflow: hidden;
 }
 #actualizar
 {
-width: 100%
+width: 100%;
+
 }
 
 #hTable
@@ -672,49 +605,6 @@ text-align: left;
 
 }
 /*############################################################# Media querys##################################### */
-@media(max-width: 1125px)
-{
-  #btn-añadir
-  {
-width: 40%;
-height: 130px;
- border-radius: 100px 100px 100px 100px;
-margin-left: 30%;
-    }
-  #actualizar
-  {
-
-    width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 20px;
-  }
-  .card
-  {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
-  }
-
-  #content-btn
-  {
-    width: 80%;
-    margin-top: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  #recibiendo
-  {
-    width: 80%;
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-  #ver{
-    margin-top: 155px;
-    margin-bottom: 2%;
-
-  }
-}
 
 @media(max-width: 865px)
 {
@@ -804,6 +694,28 @@ margin-left: 20px;
 
 
 }
+
+@media(max-width: 991px)
+{
+#actualizar
+{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+#btn-crear{
+	display: inline-block;
+
+	width: 40%;
+}
+#btn-aC
+{
+	display: inline-block;
+	width: 40%;
+}
+}
+
+
 
 @media(max-width: 630px)
 {

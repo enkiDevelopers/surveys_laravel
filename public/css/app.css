@@ -3209,8 +3209,7 @@ table th[class*="col-"] {
 .table > tfoot > tr > th.info,
 .table > tfoot > tr.info > td,
 .table > tfoot > tr.info > th {
-  background-color: rgba(37,66,118,1);
-  color: white;
+  background-color: #d9edf7;
 }
 
 .table-hover > tbody > tr > td.info:hover,

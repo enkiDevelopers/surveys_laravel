@@ -1,18 +1,39 @@
 
 <?php foreach ($propias as $plantilla) { ?>
-  <div class="col-md-3 col-md-offset-3 text-center cont" >
-  <div class="btnC">
-  		<div class="btnIcon" style="margin-left: 2%;">
-  				</div>
-  		<div class="btnIcon">
-  		</div>
 
-  		<div class="btnIcon">
-  		</div>
-  		<div class="btnIcon">
-  		</div>
-  		<div class="btnIcon" style="margin-right: 0%;">
-  		</div>
+  <div class="col-md-3 col-md-offset-3 text-center cont" id="{{$plantilla->id}}">
+    <div class="title">
+<h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
+    </div>
+  <div class="btnC">
+
+    <a href="{{url('administrator/edit')}}/{{$plantilla->id}}"
+        class="btn btn-icon text-center " data-toggle="tooltip" data-placement="top" title="Editar">
+      <span class="glyphicon glyphicon-edit "></span>
+    </a>
+    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});"
+        data-toggle="tooltip" data-placement="top" title="Duplicar"
+      >
+      <span class="glyphicon glyphicon-duplicate"></span>
+    </a>
+
+
+    <a class="btn btn-icon text-center" onclick="alerta({{$plantilla->id}},{{$plantilla->creador}})"
+     data-toggle="tooltip" data-placement="top"
+    title="Eliminar">
+    <span class="glyphicon glyphicon-trash "></span>
+    </a>
+
+    <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}"  target="_blank"
+     title="Vista previa" class="btn btn-icon text-center">
+      <span class="glyphicon glyphicon-eye-open" ></span>
+    </a>
+
+    <a onclick="openModal({{$plantilla->id}});" class="popup-link btn btn-icon text-center" title="Publicar" >
+    <span class="glyphicon glyphicon-send"></span>
+    </a>
+
+
   </div>
 
   				<div class="horizontal">
@@ -22,120 +43,70 @@
   		</div>
   	</div>
 
-  	<div class="title">
 
-  	</div>
   				</div>
 
-
-<!--
-
-  <div class="card" id="{{$plantilla->id}}"
-     style="
-     <?php
-     $nombre_fichero = './img/iconos/'.$plantilla->imagePath;
-
-     if (file_exists($nombre_fichero)) {
-     echo "background-image: url('/img/iconos/$plantilla->imagePath');";
-     } else {
-     echo "background-image: url('/img/iconos/default.png');";
-     }
-     ?> "
-
-
-     >
-    <div id="nombre">
-
-
-    <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar"
-       id="btn_dup">
-      <span class="glyphicon glyphicon-duplicate ic"></span>
-    </a>
-
-
-    <a href="{{url('administrator/edit')}}/{{$plantilla->id}}" id="btn_edit"
-    class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-        <span class="glyphicon glyphicon-edit ic"></span>
-    </a>
-
-    <a onclick="alerta({{$plantilla->id}},{{$plantilla->creador}})"
-    class="btn btn-default" data-toggle="tooltip" data-placement="top" id="btn_delete"
-    title="Eliminar">
-    <span class="glyphicon glyphicon-trash ic"></span>
-    </a>
-
-    <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}" class="btn btn-default" target="_blank"
-    id="btn_prev" title="Vista previa">
-      <span class="glyphicon glyphicon-eye-open ic" ></span>
-    </a>
-
-    <a onclick="openModal({{$plantilla->id}});" class="popup-link btn btn-default"  id="btn_pub" title="Publicar" >
-    <span class="glyphicon glyphicon-send ic"></span>
-    </a>
-
-    <div id="ver">
-      <div  id="title">
-
-    <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
-
-      </div>
-      </div>
-
-    </div>
-
-    </div>
--->
 <?php } ?>
+
+
+<div class="col-md-12 text-center">
+    <hr style="height: 2px; background-color: black;"/>
+  <h3>Plantillas de otros administradores </h3>
+    <hr style="height: 2px; background-color: black;"/>
+</div>
 
 
 <?php foreach ($agenas as $plantilla) { ?>
-  <div class="card" id="{{$plantilla->id}}"
-    style="
-    <?php
-    $nombre_fichero = './img/iconos/'.$plantilla->imagePath;
-
-    if (file_exists($nombre_fichero)) {
-    echo "background-image: url('/img/iconos/$plantilla->imagePath');";
-    } else {
-    echo "background-image: url('/img/iconos/default.png');";
-    }
-    ?>" >
-    <div id="nombre">
-
-            <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar"
-               id="btn_dup">
-              <span class="glyphicon glyphicon-duplicate ic"></span>
-            </a>
-      <a id="btn_edit" disabled
-        class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-            <span class="glyphicon glyphicon-edit ic"></span>
-        </a>
-
-        <a disabled class="btn btn-default" data-toggle="tooltip" data-placement="top" id="btn_delete"
-                      title="Eliminar">
-                        <span class="glyphicon glyphicon-trash ic"></span>
-                    </a>
-                    <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}" class="btn btn-default" target="_blank"
-                    id="btn_prev" title="Vista previa">
-                      <span class="glyphicon glyphicon-eye-open ic" ></span>
-                    </a>
 
 
-    <a  class="popup-link btn btn-default"  id="btn_pub" title="Publicar" disabled >
-                      <span class="glyphicon glyphicon-send ic"></span>
-                  </a>
+  <div class="col-md-3 col-md-offset-3 text-center cont" id="{{$plantilla->id}}">
+    <div class="title">
+  <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
+    </div>
+  <div class="btnC">
 
-                  <div id="ver">
-                    <div  id="title">
+    <a disabled
+        class="btn btn-icon text-center " data-toggle="tooltip" data-placement="top" title="Editar">
+      <span class="glyphicon glyphicon-edit "></span>
+    </a>
+    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});"
+        data-toggle="tooltip" data-placement="top" title="Duplicar"
+      >
+      <span class="glyphicon glyphicon-duplicate"></span>
+    </a>
 
-                  <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
 
-                    </div>
-                    </div>
+    <a class="btn btn-icon text-center" disabled
+     data-toggle="tooltip" data-placement="top"
+    title="Eliminar">
+    <span class="glyphicon glyphicon-trash "></span>
+    </a>
 
+    <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}"  target="_blank"
+     title="Vista previa" class="btn btn-icon text-center">
+      <span class="glyphicon glyphicon-eye-open" ></span>
+    </a>
+
+    <a  disabled   class="popup-link btn btn-icon text-center" title="Publicar" >
+    <span class="glyphicon glyphicon-send"></span>
+    </a>
+
+
+  </div>
+
+          <div class="horizontal">
+      <div class="vertical">
+        <img src="/img/iconos/{{$plantilla->imagePath}}" class="img-responsive center-block img"
+          onerror="this.src='/img/iconos/default.png';"/>
+      </div>
     </div>
 
-    </div>
+
+          </div>
+
+
+
+
 
 
 
@@ -144,57 +115,70 @@
 <?php } ?>
 
 
+<div class="col-md-12 text-center">
+  <hr style="height: 2px; background-color: black;"/>
+  <h3>Plantillas Publicadas </h3>
+  <hr style="height: 2px; background-color: black;"/>
+</div>
 
 
 
 <?php foreach ($publicadas as $plantilla) { ?>
-  <div class="card" id="{{$plantilla->id}}"  style="
-   <?php
-   $nombre_fichero = './img/iconos/'.$plantilla->imagePath;
 
-   if (file_exists($nombre_fichero)) {
-   echo "background-image: url('/img/iconos/$plantilla->imagePath');";
-   } else {
-   echo "background-image: url('/img/iconos/default.png');";
-   }
-   ?>">
-    <div id="nombre">
+  <div class="col-md-3 col-md-offset-3 text-center cont" id="{{$plantilla->id}}">
+    <div class="title">
+  <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
+    </div>
+  <div class="btnC">
 
-            <a onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Duplicar"
-               id="btn_dup">
-              <span class="glyphicon glyphicon-duplicate ic"></span>
-            </a>
-      <a id="btn_edit" disabled
-        class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar">
-            <span class="glyphicon glyphicon-edit ic"></span>
-        </a>
-
-        <a disabled class="btn btn-default" data-toggle="tooltip" data-placement="top" id="btn_delete"
-                      title="Eliminar">
-                        <span class="glyphicon glyphicon-trash ic"></span>
-                    </a>
-
-        <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}" class="btn btn-default" target="_blank"
-                    id="btn_prev" title="Vista previa">
-                      <span class="glyphicon glyphicon-eye-open ic" ></span>
-        </a>
+    <a disabled
+        class="btn btn-icon text-center " data-toggle="tooltip" data-placement="top" title="Editar">
+      <span class="glyphicon glyphicon-edit "></span>
+    </a>
+    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});"
+        data-toggle="tooltip" data-placement="top" title="Duplicar"
+      >
+      <span class="glyphicon glyphicon-duplicate"></span>
+    </a>
 
 
-    <a  class="popup-link btn btn-default"  id="btn_pub" title="Publicar" disabled >
-                      <span class="glyphicon glyphicon-send ic"></span>
-                  </a>
+    <a class="btn btn-icon text-center" disabled
+     data-toggle="tooltip" data-placement="top"
+    title="Eliminar">
+    <span class="glyphicon glyphicon-trash "></span>
+    </a>
+
+    <a href="{{url('administrator/previewtem')}}/{{$plantilla->id}}"  target="_blank"
+     title="Vista previa" class="btn btn-icon text-center">
+      <span class="glyphicon glyphicon-eye-open" ></span>
+    </a>
+
+    <a  disabled   class="popup-link btn btn-icon text-center" title="Publicar" >
+    <span class="glyphicon glyphicon-send"></span>
+    </a>
 
 
-                  <div id="ver">
-                    <div  id="title">
+  </div>
 
-                  <h5><?php echo $plantilla->tituloEncuesta;  ?></h5>
-
-                    </div>
-                    </div>
+          <div class="horizontal">
+      <div class="vertical">
+        <img src="/img/iconos/{{$plantilla->imagePath}}" class="img-responsive center-block img"
+          onerror="this.src='/img/iconos/default.png';"/>
+      </div>
     </div>
 
-    </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
 
 
 <?php } ?>

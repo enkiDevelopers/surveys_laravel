@@ -41,13 +41,11 @@
 
               </div>
             </div>
-
     </div>
 
 
             <div class="panel panel-default " id="panel1">
         <div class="panel-heading fijado">
-
 
 <div class="row">
 <div class="col-md-12">
@@ -55,14 +53,13 @@
 <b style="font-size: 30px;">Plantillas</b>
 </div>
 
-
-<div class="col-md-4" style="text-align: right;">
+<div class="col-md-4" style="text-align: left;" id="btn-crear">
   <div style="margin: 1rem;">
     <a class="btn  btnLista text-center" data-toggle="modal" data-target="#ModalTitle"><span class="mas glyphicon-plus"></span>Crear</a>
   </div>
 </div>
 
-<div class="col-md-4" style="text-align: right;">
+<div class="col-md-4" style="text-align: right;" id="btn-aC">
   <div style="margin: 1rem;">
     <input type="checkbox"
       checked data-toggle="toggle" data-on="Ocultar"
@@ -76,51 +73,13 @@
 
 </div>
 </div>
-          <!--
-<table id="hTable">
-<tr>
-  <td >
-    <h3><b> <div id="titP1" style="vertical-align: middle">
-   Plantillas  </div> </b> </h3>
- </td>
- <td><img id="tw"   width="40px" height="40px" style="visibility: hidden;"/>
-   <div class="col-md-2 btnAdd"  >
-   <a class="btn  btnLista text-center" data-toggle="modal" data-target="#ModalTitle"><span class="mas glyphicon-plus"></span>Crear</a>
-
-   </div>
-
- </td>
-
- <td>  <img  id="fb"   width="40px" height="40px" style="visibility: hidden;"/>      </td>
-
-  <td class="btn-toggle-center" style="text-align: right;">   <input type="checkbox"
-    checked data-toggle="toggle" data-on="Ocultar"
-    data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
-       id="btnO" onchange="ocultar();"
-    >
-  </td>
-
-</tr>
-
-</table>
--->
                 </div>
                 <div class="panel-body scroll" id="pBody">
-                    <div class="row" >
-                      <div class="col-sm-0">
-                      </div>
 
-<!--##################################  inicio boton de añadir plantilla#########################################################################-->
+                              <div class="col-md-12 text-center" id="actualizar">
 
+                              </div>
 
-<!--Termina boton añadir plantila de encuesta -->
-
-                        <div class="col-sm-0">
-                        </div>
-                                  <div id="actualizar">
-
-                                  </div>
-                    </div>
                 </div>
             </div>
 
@@ -157,25 +116,6 @@
 
                       </div>
                       </div>
-<!--
-
-
-                      <table id="hTable2">
-                        <tr>
-                          <td>
-                              <h3><b> <div id="titP2"> Encuestas</div> </b> </h3>
-                          </td>
-                          <td><img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>  </td>
-
-                          <td>  <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>      </td>
-                          <td class="btn-toggle-center" style="text-align: right;">   <input type="checkbox"
-                          checked data-toggle="toggle" data-on="Ocultar"
-                          data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
-                            id="btnOp" onchange="ocultar2();"
-                          > </td>
-
-                        </tr>
-                      </table>-->
                         </div>
                         <!-- fin ENCABEZADO PANEL -->
                 <div class="panel-body scroll" id="pPBody">
@@ -288,7 +228,7 @@
                               <!-- Cuerpo del modal inicio -->
                         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="idModal" />
-                        <div class="row col-md-12">
+                        <div class="col-md-12">
                           <div class="col-md-6">
                                 <label for="inicio">Fecha de inicio</label>
                                 <div class='input-group date datetimepicker'>
@@ -309,15 +249,15 @@
                           </div>
                           <hr>
                         </div>
-                        <div class="row col-md-12">
+                        <div class=" col-md-12">
                           <label for="asunto">Asunto del correo:</label>
                           <input type="text" name="asunto" id="asunto" maxlength="100" class="form-control text-black-body">
                           <hr>
                         </div>
-                        <div class="row col-md-12 text-center">
+                        <div class=" col-md-12 text-center">
                           <label for="descripcion">Instrucciones de la encuesta:</label>
                         </div>
-                        <div class="row col-md-12 text-center">
+                        <div class=" col-md-12 text-center">
                           <textarea id="instrucciones" name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor"></textarea><hr>
                         </div>
 
@@ -331,7 +271,7 @@
         <label for="tipo">Tipo de encuesta: </label>
       </div>
     </div>
-    <div >
+    <div>
     <div class="col-md-6 text-center">
 
     <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
