@@ -448,6 +448,19 @@ position: relative;
 display: inline-block;
 color: #fff;
 }
+#titName
+{
+
+width: 50%;
+display: inline-block;
+font-size: 15px;
+overflow: hidden;
+overflow: hidden;
+}
+#titEm
+{
+	margin-left: 35%;
+}
 .Cperfil
 {
   width: 100px;
@@ -472,11 +485,12 @@ color: #fff;
   background: -ms-linear-gradient(-45deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
   background: linear-gradient(135deg, rgba(37,66,118,1) 0%, rgba(42,76,135,1) 51%, rgba(47,85,151,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#254276', endColorstr='#2f5597', GradientType=1 );
-  width: 85%;
-  height: 112px;
+  width: 300px;
+  height: 80px;
   z-index: -1;
   border-radius: 30px;
-  margin-top: 15px;
+  margin-top: 30px;
+	color: #fff;
   position: relative;
   margin-left: 70px;
   display: inline-block;
@@ -485,10 +499,10 @@ color: #fff;
 {
   color: white;
   position: relative;
-  margin-top: 12px;
-  margin-left: 60px;
+  margin-top: 1.5rem;
+  margin-left: 25%;
   font-size: 23px;
-  display: inline-block;
+
 }
 #content{
   display: inline-block;
@@ -713,6 +727,26 @@ margin-left: 20px;
 	display: inline-block;
 	width: 40%;
 }
+
+#contRedes
+{
+	display: inline-block;
+	width: 40%;
+
+}
+#imgF, #imgT
+{
+	display: inline-block;
+
+	width: 20%;
+}
+#btn-aC2
+{
+
+	width: 40%;
+	display: inline-block;
+}
+
 }
 
 
@@ -778,55 +812,29 @@ margin-top: 26px;
 }
 
 
-@media(max-width: 401px)
+@media(max-width: 409px)
 {
 
+#contRedes, #btn-crear
+{
+width: 50%;
+}
 
-    #btn-añadir
-    {
-      width: 90%;
-      margin-left: 5%;
-      margin-right: 5%;
-    }
-  .card
-  {
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-  }
 }
 
 
-@media(max-width: 386px)
+@media(max-width: 344px)
 {
-#btn_edit,#btn_prev,#btn_delete, #btn_pub, #btn_dup,#btn_prevPub, #btn_rec
-{
-  font-size: 10px;
-  padding-left: 10px;
-}
-#titP2,#titP1
-{
-  font-size: 15px;
-}
-#fb
-{
-width: 20px;
-height: 20px;
-}
-#tw
-{
-width: 20px;
-height: 20px;
-}
 
-#btn-añadir
+#contRedes, #btn-crear
 {
-  width: 98%;
-margin-left: 1%;
+width: 60%;
 }
-#content-btn
+#btn-aC2, #btn-aC
 {
-  margin-left: 15px;
+
+	width: 30%;
+margin-left: -10px;
 }
 
 }
@@ -843,6 +851,13 @@ margin-left: 1%;
   width: 322px;
 }
 
+#btn-aC2, #btn-aC
+{
+
+	width: 30%;
+	margin-left: -10px;
+
+}
 }
 
 

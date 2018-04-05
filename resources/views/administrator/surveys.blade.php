@@ -23,22 +23,21 @@
  onclick="return principal();">
               </div>
               <div class="cuadroPerfilSup">
+              <div class="row">
 
-  <div class="eng">
-    <span class="glyphicon glyphicon-cog">&nbsp</span>
-  </div>
-  <div id="content">
-    <div style="margin-top: 1%;">
-      <div class="nombre">  {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
-       </div>
-</div>
+                    <span class="glyphicon glyphicon-cog eng">&nbsp</span>
 
-<div style="margin-top: 2%;">
-  <div class="correo"> {{$info->email}} </div>
-</div>
-  </div>
+                <div id="titName">
 
+                    {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
+                </div>
+              </div>
 
+              <div class="row">
+              <div class="col-md-8" id="titEm">
+                    {{$info->email}}
+                </div>
+              </div>
               </div>
             </div>
     </div>
@@ -91,18 +90,18 @@
                       <b style="font-size: 30px;">Encuestas</b>
                       </div>
 
-                      <div class="col-md-4" style="text-align: right;">
+                      <div class="col-md-4" id="contRedes">
 
-                        <div  class="col-md-2"style="margin: 1rem;">
+                        <div  class="col-md-2" id="imgT" style="margin: 1rem;">
                           <img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>
                         </div>
-                        <div class="col-md-2" style="margin: 1rem;">
+                        <div class="col-md-2" id="imgF"style="margin: 1rem;">
                           <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>
                         </div>
 
                       </div>
 
-                      <div class="col-md-4" style="text-align: right;">
+                      <div class="col-md-4" id="btn-aC2"style="text-align: right;">
                         <div style="margin: 1rem;">
                           <input type="checkbox"
                           checked data-toggle="toggle" data-on="Ocultar"
@@ -228,72 +227,102 @@
                               <!-- Cuerpo del modal inicio -->
                         <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" id="idModal" />
-                        <div class="col-md-12">
-                          <div class="col-md-6">
-                                <label for="inicio">Fecha de inicio</label>
-                                <div class='input-group date datetimepicker'>
-                                    <input type="text" readonly id="inicio" class="datepicker form-control text-black-body"/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar text-info"></span>
-                                    </span>
-                                </div>
-                          </div>
-                          <div class="col md-6">
+
+                        <div class="row">
+                          <div clas="col-md-12">
+                            <div class="col-md-6 text-center">
+                            <label for="inicio">Fecha de inicio:</label>
+                            </div>
+                            <div class="col-md-6  text-center">
                                 <label for="termino">Fecha de Término:</label>
-                                <div class='input-group date datetimepicker'>
-                                    <input type="text" required id="termino" readonly class="datepicker form-control text-black-body"/>
-                                    <span class="input-group-addon">
-                                        <span class="glyphicon glyphicon-calendar text-info"></span>
-                                    </span>
-                                </div>
+                            </div>
                           </div>
-                          <hr>
-                        </div>
-                        <div class=" col-md-12">
-                          <label for="asunto">Asunto del correo:</label>
-                          <input type="text" name="asunto" id="asunto" maxlength="100" class="form-control text-black-body">
-                          <hr>
-                        </div>
-                        <div class=" col-md-12 text-center">
-                          <label for="descripcion">Instrucciones de la encuesta:</label>
-                        </div>
-                        <div class=" col-md-12 text-center">
-                          <textarea id="instrucciones" name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor"></textarea><hr>
                         </div>
 
-    <div class="row">
+                        <div class="row">
+                          <div clas="col-md-12">
+                            <div class="col-md-6 text-center">
+                              <div class='input-group date datetimepicker'>
+                                                               <input type="text" disabled readonly id="inicio" class="datepicker form-control text-black-body"/>
+                                                               <span class="input-group-addon">
+                                                                   <span class="glyphicon glyphicon-calendar text-info"></span>
+                                                               </span>
+                                                           </div>
+                            </div>
+                            <div class="col-md-6  text-center">
+                              <div class='input-group date datetimepicker'>
+                                                                  <input type="text" required id="termino" readonly class="datepicker form-control text-black-body"/>
+                                                                  <span class="input-group-addon">
+                                                                      <span class="glyphicon glyphicon-calendar text-info"></span>
+                                                                  </span>
+                                                              </div>
+                            </div>
+                          </div>
+                        </div>
+<hr />
 
-    <div class="row">
-      <div class="col-md-6 text-center">
-        <label for="destinatarios">Destinatarios: </label>
-      </div>
-      <div class="col-md-6 text-center">
-        <label for="tipo">Tipo de encuesta: </label>
-      </div>
-    </div>
-    <div>
-    <div class="col-md-6 text-center">
+                        <div class="row">
+                          <div clas="col-md-12">
+                            <div class="col-md-6 text-center">
+                            <label for="destinatarios">Destinatarios: </label>
+                            </div>
+                            <div class="col-md-6  text-center">
+                              <label for="tipo">Tipo de encuesta: </label>
+                            </div>
+                          </div>
+                        </div>
 
-    <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
+                        <div class="row">
+                          <div clas="col-md-12">
+                            <div class="col-md-6 text-center">
+                              <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
 
-      <?php foreach ($listas as $lista) {?>
-        <option value="{{$lista->idLista}}" >  {{$lista->nombre}}</option>
-      <?php } ?>
-    </select>
-      </div>
-    <div class="col-md-6 text-center">
-    <select  id="tipo" name="tipo" class="form-control text-black-body" required>
-                <?php foreach ($tipos as $tipo) {?>
-                <option value="{{$tipo->idTipo}}" > <?php echo $tipo->tipo; ?>  </option>
-                <?php  } ?>
+                                   <?php foreach ($listas as $lista) {?>
+                                     <option value="{{$lista->idLista}}" >  {{$lista->nombre}}</option>
+                                   <?php } ?>
+                                 </select>
+                            </div>
+                            <div class="col-md-6  text-center">
+                              <select  id="tipo" name="tipo" class="form-control text-black-body" required>
+                                             <?php foreach ($tipos as $tipo) {?>
+                                             <option value="{{$tipo->idTipo}}" > <?php echo $tipo->tipo; ?>  </option>
+                                             <?php  } ?>
 
-    </select>
-    </div>
-    </div>
-                  <hr>
+                                 </select>
+                            </div>
+                          </div>
+                        </div>
+                          <hr />
 
-        </div>
-        </div>
+                          <div class="row">
+                            <div class="col-md-12 text-center">
+                               <label for="asunto">Asunto del correo:</label>
+                            </div>
+                            <div class="col-md-12">
+                               <input type="text" name="asunto" id="asunto" maxlength="100" class="form-control text-black-body">
+
+                            </div>
+                          </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <label for="descripcion">Instrucciones de la encuesta:</label>
+                              </div>
+                            </div>
+
+                          <div class="row">
+                              <div class="col-md-12">
+                              <textarea id="instrucciones"
+                               name="instrucciones" maxlength="500" rows="5" cols="50" required  class="ckeditor" style="resize: none;">
+
+                               </textarea>
+                            </div>
+                          </div>
+
+
+
+      </div> <!-- -->
         <div class="modal-footer">
            <input type="button" name="cancelar" value="Cancelar" class="btn btn-warning" onclick="limpiar3()" data-dismiss="modal">
             <input type="submit" name="enviar" class="btn btn-danger" id="publicar" value="Publicar" />
