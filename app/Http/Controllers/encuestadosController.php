@@ -129,9 +129,13 @@ public function enviar(Request $request)
 $Iuser = encuestados::find('17552');
 $asunto = "prueba";
 $instrucciones = "instrucciones";
+
+$plantilla = templates::find("108");
+$imagen = $plantilla->imagePath;
+
 $host = $_SERVER["HTTP_HOST"];
   Mail::to('colocho-2104@hotmail.com')
- ->send(new mailencuestados($Iuser,$asunto,$instrucciones,$host));
+ ->send(new mailencuestados($Iuser,$asunto,$instrucciones,$host,$imagen));
 
   return "nueva prueba enviada";
 }

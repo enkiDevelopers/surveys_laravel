@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<td style="padding: 0">
-			<img style="padding: 0; display: block; margin-left:25%" src="https://image.ibb.co/gBh4rc/default2.png" width="50%" height="auto">
+			<img style="padding: 0; display: block; margin-left:25%; margin-top: 10%; border-radius: 5px;" src="https://uvmmejoraporti.mx/img/iconos/<?php echo $imagen; ?>" width="50%" height="auto">
 		</td>
 	</tr>
 	<tr>
