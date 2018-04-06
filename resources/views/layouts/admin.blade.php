@@ -108,11 +108,6 @@ margin-left: -50px;
 
       <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
         <ul class="list-unstyled components">
-          <li>
-            <p>
-            <span aria-hidden="true" id="closeContentMobile">&times;</span>
-            </p>
-          </li>
           <li id="home" >
             <a href="{{ url('/administrator/surveys')}}" >
               <span class="itemMenuMobile">ENCUESTAS</span>
@@ -144,13 +139,16 @@ margin-left: -50px;
 
 
     <script type="text/javascript">
-        $(document).ready(function () {
-
-          $("#menu, #closeContentMobile").on('click', function(event) {
+      $(document).ready(function () {
+        window.addEventListener('click', function(e){
+          if (document.getElementById('menu').contains(e.target)){
             $("#contentSidebarMobile").toggle("slide");
-          });
+          } else{
+            $("#contentSidebarMobile").hide("slide");
+          }
+        })
+      });
 
-        });
     </script>
   </body>
 </html>

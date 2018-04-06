@@ -141,6 +141,8 @@ hr{
 	.control_btn{
 		margin-left: 0px !important;
 		width: 190px;
+		padding-left: 0px !important;
+		padding-right: 9px !important;
 	}
 }
 @media screen and (max-width: 1023px) and (min-width: 768px ) {
@@ -236,6 +238,8 @@ hr{
 	}
 	 .new-survey__controls{
 	 	margin-bottom: 4%;
+	 	display: table;
+		margin: 0px auto;
 	 }
 	 #sortableQuestions{
 	 	margin-top: 3%;

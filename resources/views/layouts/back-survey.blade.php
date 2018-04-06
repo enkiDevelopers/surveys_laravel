@@ -69,12 +69,7 @@
 
       <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
         <ul class="list-unstyled components">
-          <li>
-            <p>
-            <span aria-hidden="true" id="closeContentMobile">&times;</span>
-            </p>
-          </li>
-          <li id="home" >
+          <li id="home">
             <a href="{{ url('/administrator/surveys')}}" >
               <span class="itemMenuMobile">ENCUESTAS</span>
             </a>
@@ -109,12 +104,15 @@
     <script src="/js/jqueryui.min.js"></script>
     <script src="/js/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-
-            $("#menu, #closeContentMobile").on('click', function(event) {
-                $("#contentSidebarMobile").toggle("slide");
-            });
-        });
+      $(document).ready(function () {
+        window.addEventListener('click', function(e){
+          if (document.getElementById('menu').contains(e.target)){
+            $("#contentSidebarMobile").toggle("slide");
+          } else{
+            $("#contentSidebarMobile").hide("slide");
+          }
+        })
+      });
     </script>
 </body>
 </html>

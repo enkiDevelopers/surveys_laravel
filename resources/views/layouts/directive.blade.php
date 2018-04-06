@@ -57,11 +57,6 @@
 
       <nav id="contentSidebarMobile" class="navbar-default navbar-fixed-top" hidden="true">
         <ul class="list-unstyled components">
-          <li>
-            <p>
-               <span aria-hidden="true" style="font-size: 50px;float: right;color: white;height: 40px;border:5px solid white;border-radius: 50px;" id="closeContentMobile">&times;</span>
-            </p>
-          </li>
           <li class="active">
             <a href="{{ url('/directive')}}" >
               <span>REPORTES</span>
@@ -84,11 +79,15 @@
   <script src="/js/highcharts.js"></script>
   <script src="/js/exporting.js"></script>
   <script type="text/javascript">
-      $(document).ready(function () {
-        $("#menu, #closeContentMobile").on('click', function(event) {
+    $(document).ready(function () {
+      window.addEventListener('click', function(e){
+        if (document.getElementById('menu').contains(e.target)){
           $("#contentSidebarMobile").toggle("slide");
-        });
-      });
+        } else{
+          $("#contentSidebarMobile").hide("slide");
+        }
+      })
+    });
   </script>
 </body>
 </html>
