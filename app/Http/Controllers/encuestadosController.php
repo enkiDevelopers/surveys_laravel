@@ -126,15 +126,12 @@ else {
 public function enviar(Request $request)
 {
 
-  $data =  array('mensaje' => "correo normal" );
-  $user = array('destino'=> 'colocho364@hotmail.com');
-
-  Mail::send('administrator.prueba', $data, function ($message) use ($user){
-      $message->subject('Asunto del correo');
-      $message->to('colocho-2104@hotmail.com');
-      $message->sender("colocho364@hotmail.com", $name = 'jorge Luis Gonzalez');
-
-  });
+$Iuser = encuestados::find('17552');
+$asunto = "prueba";
+$instrucciones = "instrucciones";
+$host = $_SERVER["HTTP_HOST"];
+  Mail::to('colocho-2104@hotmail.com')
+ ->send(new mailencuestados($Iuser,$asunto,$instrucciones,$host));
 
   return "nueva prueba enviada";
 }

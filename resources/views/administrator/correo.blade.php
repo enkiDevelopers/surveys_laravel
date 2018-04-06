@@ -13,7 +13,7 @@
 	</tr>
 	<tr>
 		<td style="padding: 0">
-			<img style="padding: 0; display: block" src="https://image.ibb.co/gni1Lx/banner.jpg" width="100%" height="200px">
+			<img style="padding: 0; display: block; margin-left:25%" src="https://image.ibb.co/gBh4rc/default2.png" width="50%" height="auto">
 		</td>
 	</tr>
 	<tr>
