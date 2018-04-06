@@ -266,7 +266,7 @@ onclick="return principal();">
                           $verIncidencias="disabled='disabled'";
                           break;
                         case '4': // sucede mientras se está cargando una incidencia
-                          $encuestaAsociada="Caso 4";
+                          $encuestaAsociada="";
                           $nombreLista=$lista->nombre;
                           $estado="src='/img/cargandoi.png' data-toggle='tooltip' data-placement='top' title='Agregando Incidentes'";
                           $subirArchivos="disabled='disabled'";
@@ -276,7 +276,7 @@ onclick="return principal();">
                          break;
                         case '5': // sucede cuando se sube una incidencia
                             $estado="src='/img/incidenciaReady.png' data-toggle='tooltip' data-placement='top' title='Incidencia subida en Base de Datos'";
-                            $encuestaAsociada="Caso 5";
+                            $encuestaAsociada="";
                             $subirArchivos="disabled='disabled'";
                             $verLista="type='button' href='/administrator/file/open/$lista->idLista'  data-toggle='tooltip' data-placement='top'  target='_black'";
                             $cargarIncidencias="data-toggle='modal' data-target='#AgregarIncidentes' id='$lista->idLista' onClick='reply_click2(this.id)' data-toggle='tooltip' data-placement='top'";
@@ -292,12 +292,29 @@ onclick="return principal();">
                           break;
                         case '6': //caso cuando un archivo se cargó incorrectamente
                           $nombreLista=$lista->nombre;
-                          $estado="src='/img/fileBad.png' data-toggle='tooltip' data-placement='top' title='Agregando archivos a Base de Datos'";
-                          $encuestaAsociada="Caso 6";
+                          $estado="src='/img/fileBad.png' data-toggle='tooltip' data-placement='top' title='Hubo detalles con uno o más archivos subidos'";
+                          $encuestaAsociada="";
                           $subirArchivos="disabled='disabled'";
                           $procesarLista="disabled='disabled'";
                           $cargarIncidencias="disabled='disabled'";
                           $verIncidencias="disabled='disabled'";
+                          break;
+                        case '7': //caso cuando una incidencia se cargó incorrectamente
+                          $nombreLista=$lista->nombre;
+                          $estado="src='/img/fileBad.png' data-toggle='tooltip' data-placement='top' title='Hubo detalles con uno o más archivos subidos en incidencia'";
+                          $encuestaAsociada="";
+                          $subirArchivos="disabled='disabled'";
+                          $procesarLista="disabled='disabled'";
+                          $cargarIncidencias="disabled='disabled'";
+                          $verIncidencias="disabled='disabled'";
+                          if($lista->usado== 0){
+                          }else{
+                              $encuestaAsociada=$lista->titulo;
+                              if($hoy>=$lista->fechat){
+                                $cargarIncidencias="disabled='disabled'";
+                              }
+                              $eliminarD="disabled='disabled'";
+                            }
                           break;
 
                         default:

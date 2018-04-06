@@ -112,9 +112,6 @@ public function ingresarDatos(Request $request){
          dispatch($job);
          $cantidad--;
     } 
-    //echo $data;
-    //return back();
-
 }
 
 public function ingresarMasDatos2(Request $request){

@@ -37,7 +37,11 @@ class ingresarIncidente implements ShouldQueue
     public function handle()
     {
         $idarray=['id' => $this->idlista1]; 
-        Excel::filter('chunk')->load(public_path("/listas/".$this->archivonombre1))->chunk(1300, function($results) use ($idarray){
+        //Server
+        $path="../listas/" . $this->archivonombre1);
+        //Local
+        //$path=public_path("/listas/".$this->archivonombre1);
+        Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
             foreach($results as $row){
                 if($row->De_Cuenta_De_Alumno=="" && $row->nombre_alumno==""){
                 }else{
@@ -65,4 +69,21 @@ class ingresarIncidente implements ShouldQueue
             });
 
     }
+
+/**
+     * The job failed to process.
+     *
+     * @param  Exception  $exception
+     * @return void
+     */
+  public function failed($exception){
+    //$exception->getMessage();
+    // etc...
+            $idarray=['id' => $this->id1, 'carga'=> 7];
+            //El archivo de excel no existe        
+            $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+            dispatch($job2);
+
+  }
+
 }

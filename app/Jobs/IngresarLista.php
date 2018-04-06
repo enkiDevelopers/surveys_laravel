@@ -36,20 +36,17 @@ class IngresarLista implements ShouldQueue
     public function handle()
     {
         $i=0;
-        echo $this->cantidad1;
-        try{
-        $idarray=['id' => $this->id1]; 
-        $path = public_path("/listas/$this->dato1");
-        //$contents = Storage::exists($path);
-        //echo $path;
-        //if ($contents) {
-            //$error=true;
-            Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){            
+        $idarray=['id' => $this->id1];
+        //Server
+        $path = "../listas/".$this->dato1;
+        //Local
+        //$path = public_path("/listas/") . $this->dato1;          
+        Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){            
              $data=count($results);
              foreach($results as $row){
-              //  $error=false;
+              
                 if($row->no_cuenta== ""){
-                    $this->cantidad1=100;
+                    //$this->cantidad1=100;
                 }else{
                     $correo1= filter_var($row->correo_electronico, FILTER_VALIDATE_EMAIL);
                     $correo2= filter_var($row->correo_electronico_sf, FILTER_VALIDATE_EMAIL);
@@ -80,24 +77,33 @@ class IngresarLista implements ShouldQueue
                     }
                 }
             },$shouldQueue = true);
-        //}else{
-            //El archivo de excel no existe
-          //  $this->cantidad1==100; //El archivo de excel no existe
-        //}
-            
-        }catch(Exception $e){
-           $this->cantidad1=100; //El archivo de excel no existe o hubo otro tipo de error
-        } 
-   if($this->cantidad1==100){
+    if($this->cantidad1==100){
             $idarray=['id' => $this->id1, 'carga'=> 6];
             //El archivo de excel no existe        
             $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
             dispatch($job2);
     }
-            if($this->cantidad1==1){
-                    $idarray=['id' => $this->id1, 'carga'=> 1];
-                    $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
-                    dispatch($job2);
-            }
+    if($this->cantidad1==1){
+      $idarray=['id' => $this->id1, 'carga'=> 1];
+      $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+      dispatch($job2);
+    }
+  }
+
+
+ /**
+     * The job failed to process.
+     *
+     * @param  Exception  $exception
+     * @return void
+     */
+  public function failed($exception){
+    //$exception->getMessage();
+    // etc...
+            $idarray=['id' => $this->id1, 'carga'=> 6];
+            //El archivo de excel no existe        
+            $job2= new Marcarlisto($idarray['id'],$idarray['carga']);
+            dispatch($job2);
+
   }
 }
