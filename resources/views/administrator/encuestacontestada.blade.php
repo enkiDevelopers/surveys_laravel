@@ -35,7 +35,7 @@
             	<p><h2>¡Muchas gracias por hacerte escuchar!
                 </h2></p>
                 <img src="\img/logos/Por_Ti_EXPERIENCIA_UVM.png" height="180px" class="img-resposive"><br><br>
-            	<a class="btn btn-info btn-lg" style="width: 40%" href="javascript:window.close();">Salir</a>
+            	<a class="btn btn-info btn-lg" style="width: 40%" href="https://uvmmejoraporti.mx/surveyeds/login/sistema">Salir</a>
             	</center>
     		</div>
     </div>

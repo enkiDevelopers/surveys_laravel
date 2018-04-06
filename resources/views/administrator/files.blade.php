@@ -273,6 +273,15 @@ onclick="return principal();">
                           $procesarLista="disabled='disabled'";
                           $cargarIncidencias="disabled='disabled'";
                           $verIncidencias="disabled='disabled'";
+                            if($lista->usado== 0){
+                            }else{
+                              $encuestaAsociada=$lista->titulo;
+                              if($hoy>=$lista->fechat){
+                                $cargarIncidencias="disabled='disabled'";
+                              }
+                              $eliminarD="disabled='disabled'";
+                            }
+                          
                          break;
                         case '5': // sucede cuando se sube una incidencia
                             $estado="src='/img/incidenciaReady.png' data-toggle='tooltip' data-placement='top' title='Incidencia subida en Base de Datos'";
