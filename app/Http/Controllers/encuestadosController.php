@@ -97,7 +97,7 @@ try {
                      ->offset($inicio)
                        ->limit($termino)
                          ->get();
-                     $job = new enviarEmail($Iusers2,$asunto,$instrucciones, $idPlantilla,$host);
+                     $job = new enviarEmail($Iusers2,$asunto,$instrucciones,$idPlantilla,$host);
                       dispatch($job);
                       $inicio = $inicio+$termino;
                     }

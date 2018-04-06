@@ -115,7 +115,7 @@ onclick="return principal();">
         <div class="col-sm-12">
           <div class="col-md-12" id="titulo">
          <div class="col-md-6 tit">
-                        Directivos registrados
+                      Líderes registrados
                      </div>
 
            <div class="col-md-2 btnAdd"  >
@@ -160,7 +160,7 @@ onerror="this.src='../img/avatar/default.png';"
                           </td>
                           <td class="col-xs-2 text-center">
                             <div  class="tipo">
-                             Directivo corporativo
+                             Líder corporativo
                            </div>
                           </td>
                          <td class="col-xs-2 text-center">
@@ -193,7 +193,7 @@ onerror="this.src='../img/avatar/default.png';"
                         </td>
                           <td class="col-xs-2 text-center">
                             <div  class="tipo">
-                            Directivo regional  <br />
+                            Líder regional  <br />
                             {{$directivo->regions_name}}
                           </div>
                           </td>
@@ -228,7 +228,7 @@ onerror="this.src='../img/avatar/default.png';"
                         </td>
                         <td class="col-xs-2 text-center">
                           <div  class="tipo">
-                           Directivo Campus <br />
+                           Líderes Campus <br />
                            Campus: {{$directivo->campus_name}}
                          </div>
                         </td>
@@ -311,7 +311,7 @@ onerror="this.src='../img/avatar/default.png';"
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Registrar Directivos</h5>
+              <h5 class="modal-title">Registrar líderes</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar2();">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -343,9 +343,9 @@ onerror="this.src='../img/avatar/default.png';"
 <div class="form-group">
     <label for="tipo">Tipo</label>
     <select name="tipo" required id="tipo" class="form-control text-black-body" onchange="sRegs();">
-      <option value="1">Directivo corporativo</option>
-      <option value="2">Directivo regional</option>
-      <option value="3">Directivo campus</option>
+      <option value="1">Líder corporativo</option>
+      <option value="2">Líder regional</option>
+      <option value="3">Líder campus</option>
     </select>
 </div>
 
