@@ -15,18 +15,19 @@ class mailencuestados extends Mailable
       public $instrucciones;
       public $protocolo;
       public $host;
+      public $imagen;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($infousuario, $asunto, $instrucciones, $host)
+    public function __construct($infousuario, $asunto, $instrucciones, $host, $imagen)
     {
 
       $this->infousuario = $infousuario;
       $this->instrucciones = $instrucciones;
       $this->subject = $asunto;
-
+      $this->imagen = $imagen;
       if($infousuario->email2!=null)
        {
 
