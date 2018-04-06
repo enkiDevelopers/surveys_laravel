@@ -171,8 +171,8 @@
                       <div class="col-md-4">
                           <br />
                         <div class="col-md-3 col-md-offset-3 text-center cont">
-                          <div class="title">
-
+                          <div class="title text-center">
+                            Título de prueba
                           </div>
                         <div class="btnC">
                           <a class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" >
@@ -212,10 +212,10 @@
 
 
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-4 text-center">
                       <label class="btn btn-info btn-file">
                         Seleccione su imagen
-                        <input type="file" id="foto1" name="icono" onclick="limpiar2();"/>
+                        <input type="file" id="foto1" name="icono" onclick="limpiar2();" style="display:none;"/>
                       </label>
                       </div>
 
