@@ -43,13 +43,13 @@ onclick="return principal();">
   <div class="row" id="tablaR">
       <div class="col-sm-12">
         <div class="col-md-12 text-center" id="titulo">
-       <div class="col-md-6 tit">
+       <div class="col-md-4 tit">
        Administradores registrados
        </div>
-       <div class="col-md-2 btnAdd">
+       <div class="col-md-4 btnAdd">
        <a  class="btn btnLista" data-toggle="modal" data-target="#administrador"><span class="glyphicon-plus">Crear</a>
        </div>
-       <div class="col-md-2 btnAdd" >
+       <div class="col-md-4 btnAdd" >
          <input type="checkbox"
            checked data-toggle="toggle" data-on="Ocultar"
            data-off="Mostrar" data-onstyle="danger" data-offstyle="success"
@@ -114,15 +114,15 @@ onclick="return principal();">
     <div class="row"  id="tablaR">
         <div class="col-sm-12">
           <div class="col-md-12" id="titulo">
-         <div class="col-md-6 tit">
+         <div class="col-md-4 tit">
                       Líderes registrados
                      </div>
 
-           <div class="col-md-2 btnAdd"  >
+           <div class="col-md-4 btnAdd"  >
            <a class="btn  btnLista text-center" data-toggle="modal" data-target="#directivos"><span class="mas glyphicon-plus"></span>Crear</a>
 
            </div>
-           <div class="col-md-2 btnAdd">
+           <div class="col-md-4 btnAdd">
              <input type="checkbox"
                checked data-toggle="toggle" data-on="Ocultar"
                data-off="Mostrar" data-onstyle="danger" data-offstyle="success"

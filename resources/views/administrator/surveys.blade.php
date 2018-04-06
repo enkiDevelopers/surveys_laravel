@@ -52,7 +52,7 @@
 <b style="font-size: 30px;">Plantillas</b>
 </div>
 
-<div class="col-md-4" style="text-align: left;" id="btn-crear">
+<div class="col-md-4" style="text-align: center;" id="btn-crear">
   <div style="margin: 1rem;">
     <a class="btn  btnLista text-center" data-toggle="modal" data-target="#ModalTitle"><span class="mas glyphicon-plus"></span>Crear</a>
   </div>
@@ -301,6 +301,7 @@
 
                         <div class="row">
                           <div clas="col-md-12">
+                              <br />
                             <div class="col-md-6 text-center">
                             <label for="destinatarios">Destinatarios:
                               <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
@@ -311,7 +312,7 @@
                                  </select>
                              </label>
                             </div>
-                            <br />
+                  
                             <div class="col-md-6  text-center">
                               <label for="tipo">Tipo de encuesta:
                                 <select  id="tipo" name="tipo" class="form-control text-black-body" required>

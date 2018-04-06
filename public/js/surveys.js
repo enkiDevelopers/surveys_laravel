@@ -289,7 +289,7 @@ function duplicar()
 
     swal({
        title: "Su plantilla ha sido duplicada",
-       text: "",
+       text: sms["sms"],
        type: "success",
         });
           showcards();
