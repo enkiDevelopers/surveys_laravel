@@ -763,6 +763,10 @@ text-align: center;
 	display: inline-block;
 }
 
+#pHorizontal
+{
+	margin-left: 28%;
+}
 }
 
 
@@ -811,6 +815,11 @@ text-align: center;
   {
     margin-top: -60px;
   }
+
+	#pHorizontal
+	{
+		margin-left: 22%;
+	}
 }
 
 @media(max-width: 436px)
@@ -838,7 +847,14 @@ width: 50%;
 
 }
 
+@media(max-width: 391px)
+{
+	#pHorizontal
+	{
+		margin-left: 10%;
 
+	}
+}
 @media(max-width: 344px)
 {
 

@@ -134,7 +134,7 @@
 <!-- #############################################3 Modal agregar plantilla -->
           <form id="myForm" method="post" action="/save" enctype="multipart/form-data" id="myForm">
                   {{ csrf_field() }}
-        <div class="modal fade bd-example-modal-lg" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal fade bd-example-modal-lg" id="ModalTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static" tabindex="-1" style="z-index: 1050;" role ="dialog" aria-labelledby="myModalLabel1" style="min-width: 200px;">
             <div class="modal-dialog modal-lg" role="document">
 
                 <div class="modal-content">
@@ -168,7 +168,7 @@
                                                       placeholder="Descripción del proposito de la encuesta"></textarea>
                       </div>
 
-                      <div class="col-md-4">
+                      <div class="col-md-4" id="pHorizontal">
                           <br />
                         <div class="col-md-3 col-md-offset-3 text-center cont">
                           <div class="title text-center">
@@ -191,11 +191,14 @@
                           <span class="glyphicon glyphicon-send"></span>
                           </a>
                         </div>
-                        				<div class="horizontal">
-                        		<div class="vertical">
-                                <img id="imgSalida" class="img-responsive center-block img" src="/img/iconos/default.png"/>
-                            </div>
-                        	</div>
+
+                          <div class="horizontal" >
+                        <div class="vertical">
+                            <img id="imgSalida" class="img-responsive center-block img" src="/img/iconos/default.png"/>
+                        </div>
+
+                        </div>
+
 
 
                         				</div>
@@ -269,67 +272,60 @@
                         <div class="row">
                           <div clas="col-md-12">
                             <div class="col-md-6 text-center">
-                            <label for="inicio">Fecha de inicio:</label>
-                            </div>
-                            <div class="col-md-6  text-center">
-                                <label for="termino">Fecha de Término:</label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div clas="col-md-12">
-                            <div class="col-md-6 text-center">
+                            <label for="inicio">
+                              Fecha de inicio:
                               <div class='input-group date datetimepicker'>
                                                                <input type="text" disabled readonly id="inicio" class="datepicker form-control text-black-body"/>
                                                                <span class="input-group-addon">
                                                                    <span class="glyphicon glyphicon-calendar text-info"></span>
                                                                </span>
                                                            </div>
+                            </label>
+
                             </div>
                             <div class="col-md-6  text-center">
-                              <div class='input-group date datetimepicker'>
-                                                                  <input type="text" required id="termino" readonly class="datepicker form-control text-black-body"/>
-                                                                  <span class="input-group-addon">
-                                                                      <span class="glyphicon glyphicon-calendar text-info"></span>
-                                                                  </span>
-                                                              </div>
+                                <label for="termino">Fecha de Término:
+                                  <div class='input-group date datetimepicker'>
+                                                                      <input type="text" required id="termino" readonly class="datepicker form-control text-black-body"/>
+                                                                      <span class="input-group-addon">
+                                                                          <span class="glyphicon glyphicon-calendar text-info"></span>
+                                                                      </span>
+                                                                  </div>
+                                </label>
                             </div>
                           </div>
                         </div>
+
+
 <hr />
 
                         <div class="row">
                           <div clas="col-md-12">
                             <div class="col-md-6 text-center">
-                            <label for="destinatarios">Destinatarios: </label>
-                            </div>
-                            <div class="col-md-6  text-center">
-                              <label for="tipo">Tipo de encuesta: </label>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div clas="col-md-12">
-                            <div class="col-md-6 text-center">
+                            <label for="destinatarios">Destinatarios:
                               <select name="destinatarios" id="destinatarios" class="form-control text-black-body" required>
 
                                    <?php foreach ($listas as $lista) {?>
                                      <option value="{{$lista->idLista}}" >  {{$lista->nombre}}</option>
                                    <?php } ?>
                                  </select>
+                             </label>
                             </div>
+                            <br />
                             <div class="col-md-6  text-center">
-                              <select  id="tipo" name="tipo" class="form-control text-black-body" required>
-                                             <?php foreach ($tipos as $tipo) {?>
-                                             <option value="{{$tipo->idTipo}}" > <?php echo $tipo->tipo; ?>  </option>
-                                             <?php  } ?>
+                              <label for="tipo">Tipo de encuesta:
+                                <select  id="tipo" name="tipo" class="form-control text-black-body" required>
+                                               <?php foreach ($tipos as $tipo) {?>
+                                               <option value="{{$tipo->idTipo}}" > <?php echo $tipo->tipo; ?>  </option>
+                                               <?php  } ?>
 
-                                 </select>
+                                   </select>
+                               </label>
                             </div>
                           </div>
                         </div>
+
+
                           <hr />
 
                           <div class="row">
