@@ -44,13 +44,13 @@ class directiveController extends Controller
       $datosdirective =DB::table('usuarios')->where('idUsuario','=',$id)->get();
 
       switch ($datosdirective["0"]->type) {
-        case '1':
+        case '1': //directivo corporativo
               $datosdirective = DB::table('usuarios')->where('idUsuario','=',$id)->get();
               $campus=DB::table('ctlCampus')->select(['campus_name','campus_id'])->get();
               $regionestotal=DB::table('ctlRegions')->get();
               $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->get();
           break;
-        case '2':
+        case '2':   //directivo regional
               $datosdirective = DB::table('usuarios')
             ->join('ctlRegions', 'usuarios.idRegion', '=', 'ctlRegions.regions_id')
             ->select('usuarios.*','ctlRegions.regions_id','ctlRegions.regions_name')
@@ -60,7 +60,7 @@ class directiveController extends Controller
               $regiones=DB::table('ctlRegions')->select(['regions_name','regions_id'])->where('regions_id','=',$datosdirective["0"]->idRegion)->get();
 
             break;
-        case '3':
+        case '3':   //directivo campus
               $datosdirective = DB::table('usuarios')
             ->join('ctlCampus', 'usuarios.idCampus', '=', 'ctlCampus.campus_id')
             ->select('usuarios.*','ctlCampus.campus_id')

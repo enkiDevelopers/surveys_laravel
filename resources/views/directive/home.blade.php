@@ -125,16 +125,22 @@
  
   <div style="margin-top: -3%">
         <?php
+          $regional="";
+          $campusz="";
           foreach ($datosdirective as $datosdirectives) {
+            $divHeader="<div style='height: auto;text-align: right;margin-left: 15%;color: white;font-size: 18px;}'>";
             switch ($datosdirective[0]->type) {
-              case '1':
-                echo "<div style='height: auto;text-align: right;margin-left: 15%;color: white;font-size: 18px;}'>Directivo Corporativo</div>";
+              case '1': //Directivo corporativo
+                echo $divHeader . "Líder Corporativo</div>";
                 break;
               case '2': 
-                echo "<div style='height: auto;text-align: right;margin-left: 15%;color: white;font-size: 18px;white-space: pre; }'>Directivo Regional ".$datosdirective[0]->regions_name."</div>";
+                $regional=$datosdirective[0]->regions_name;
+                echo $divHeader . "Líder Regional ".$regional."</div>";
                 break;
               case '3':
-                echo "<div style='height: auto;text-align: right;margin-left: 0%;color: white;font-size: 15px;white-space: pre;font-weight:bold;}'>Directivo Campus ".$campus[0]->campus_name."</div>";
+                $regional=$regiones[0]->regions_name;
+                $campusz=$campus[0]->campus_name;
+                echo $divHeader . "Líder Campus ".$campusz."</div>";
                 break;    
               default:
                 echo "<p>Sin Asignar</p>";
@@ -185,28 +191,39 @@
                     case '1':
                 ?>
                 <div class="btn-group " role="group" aria-label="...">
+                  <a class='btn btn-default glyphicon glyphicon-signal' href="javascript:getURLGeneral({{$encuesta->id}})" > </a>
+                  <!--
                   <button type="button" id="{{$encuesta->id}}" class="btn btn-default" onclick="corporativoModal(this)" name="btn_datos"  data-toggle="tooltip" data-placement="top" title="Reportes disponibles">
                     <span class="glyphicon glyphicon-signal" ></span>
                   </button>
+                -->
                 </div>
                 <?php
                     break;
                     case '2':
                 ?>
                 <div class="btn-group " role="group" aria-label="...">
+                  <a class='btn btn-default glyphicon glyphicon-signal' href="javascript:getURLRegionCorp({{$encuesta->id}},'{{$regional}}')" ></a>
+                  <!--
                   <button type="button"  id="{{$encuesta->id}}" class="btn btn-default" onclick="regionalModal({{$encuesta->id}},{{$datosdirective[0]->idUsuario}})" name="btn_datos" data-toggle="tooltip" data-placement="top" title="Reporte Regional">
                     <span class="glyphicon glyphicon-signal"></span>
                   </button>
+                  -->
                 </div>
                 <?php
                   break;
                   case '3':
                 ?>
+                <div class="btn-group " role="group" aria-label="...">
+                  <a class='btn btn-default glyphicon glyphicon-signal' href="javascript:getURLCorp({{$encuesta->id}},'{{$regional}}','{{$campusz}}')" ></a>
+                </div>                
+                <!--
                 <div class="btn-group">
                   <a class='btn btn-default' href="{{url('campus',array('id'=>$encuesta->id,'idcampus'=>$datosdirective[0]->campus_id))}}" target="_blank">
                     <span class="glyphicon glyphicon-signal" ></span>
                   </a>
                 </div>
+                -->
                 <?php
                     break;
                     default:
