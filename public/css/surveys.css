@@ -1,3 +1,5 @@
+
+
 		.horizontal
 		{
 			width: 220px;
@@ -104,29 +106,9 @@ body
   width: 100%;
 }
 
-#imgSalida
-{
-margin-left: 10%;
-margin-right: 10%;
-margin-top: 10%;
 
-max-width: 80%;
-max-height: 80%;
 
-border-radius: 5px;
-}
 
-#imgSalida2
-{
-margin-left: 10%;
-margin-right: 10%;
-margin-top: 10%;
-
-max-width: 200px;
-max-height: 200px;
-
-border-radius: 5px;
-}
 
 #previewcanvascontainer, #previewcanvas
 {
@@ -556,7 +538,7 @@ color: #fff;
     border-radius: 100%;
     background-color: #fff;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
     background-position: center;
 
 }

@@ -76,7 +76,7 @@
 <br />
 <br />
 
-      <img id="imgSalida2" src="/img/avatar/{{$info->imagenPerfil}}"/>
+      <img id="imgSalida2" src="/img/avatar/{{$info->imagenPerfil}}" onerror="this.src='/img/iconos/default.png';"/>
       <br />
       <br />
 

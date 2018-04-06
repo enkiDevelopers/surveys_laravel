@@ -156,38 +156,76 @@
                 <div class="modal-body">
                   <input type="hidden" value="{{$id}}" name="creador" id="creador"/>
                     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}"/>
-
-                    <table id="aPlantilla" class="table">
-                    <tr>
-                        <td style="width:50%">
-                        <div style="width:100%;">
-                          <input
+                      <div class="row">
+                      <div class="col-md-4">
+                        <input
                           type="text" maxlength="40" class="form-control text-black "
                           required id="ModalTitleInput" aria-describedby="emailHelp"
                           placeholder="Titulo de la encuesta" name="titulo" style="margin-bottom: 20px;"/>
+                          <textarea maxlength="500" style="resize:none"
+                                                      class="form-control text-black" required
+                                                      cols="10" rows="10" name="descripcion" id="ModalDescInput" aria-describedby="desc"
+                                                      placeholder="Descripción del proposito de la encuesta"></textarea>
+                      </div>
+
+                      <div class="col-md-4">
+                          <br />
+                        <div class="col-md-3 col-md-offset-3 text-center cont">
+                          <div class="title">
+
                           </div>
-                        </td>
-                              <td style="text-align: center;">
+                        <div class="btnC">
+                          <a class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" >
+                          <span class="glyphicon glyphicon-edit "></span>
+                          </a>
+                          <a class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" >
+                          <span class="glyphicon glyphicon-duplicate"></span>
+                          </a>
+                          <a class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" >
+                          <span class="glyphicon glyphicon-trash "></span>
+                          </a>
+                          <a class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" >
+                        <span class="glyphicon glyphicon-eye-open" ></span>
+                          </a>
+                          <a class="btn btn-icon text-center" data-toggle="tooltip" data-placement="top" >
+                          <span class="glyphicon glyphicon-send"></span>
+                          </a>
+                        </div>
+                        				<div class="horizontal">
+                        		<div class="vertical">
+                                <img id="imgSalida" class="img-responsive center-block img" src="/img/iconos/default.png"/>
+                            </div>
+                        	</div>
+
+
+                        				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                      </div>
+                      <div class="col-md-4">
+                      <label class="btn btn-info btn-file">
+                        Seleccione su imagen
                         <input type="file" id="foto1" name="icono" onclick="limpiar2();"/>
-                              </td>
-                    </tr>
-                        <tr>
-                          <td>
+                      </label>
+                      </div>
 
-                            <textarea maxlength="500"
-                            class="form-control text-black" required
-                            cols="10" rows="10" name="descripcion" id="ModalDescInput" aria-describedby="desc"
-                            placeholder="Descripción del proposito de la encuesta"></textarea>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
 
-                          </td>
-                              <td>
-                                    <div id="imgC">
-                                    <img id="imgSalida" src="/img/iconos/default.png"/>
-                                        </div>
-                              </td>
-                        </tr>
-                    </table>
+                        </div>
 
+                      </div>
 
                 </div>
 
