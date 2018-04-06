@@ -69,7 +69,7 @@ function creardato(ide){
 
               }
            });
-
+ 
 }
 
 

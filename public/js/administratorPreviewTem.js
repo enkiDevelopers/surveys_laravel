@@ -225,6 +225,7 @@ $(document).ready(function(){
 
 
     function validarUltimaPreg(){
+
         var validado=false;
         var checkradio= $('input:radio[data-name=opcion'+n+']:checked');
         var tipo2=$('#opt'+n).val();
@@ -268,6 +269,7 @@ $(document).ready(function(){
             if($("#type"+n).val()=="3"){
                 validado=true;
             }
+            validado=true;
         }
     }
 
@@ -304,10 +306,12 @@ $(document).ready(function(){
 
 
     /********Funcionalidades del botón Enviar encuesta************/
+
     $("#idenviar").click(function(){
         
         $("#idenviar").hide();
         //$("#idenviar").prop( "disabled", true );
+
         var validar=validarUltimaPreg();
         //alert(validar);
         if(validar){            
