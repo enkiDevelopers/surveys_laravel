@@ -189,9 +189,7 @@ public function ajaxshowcards(Request $request)
     ->get();
 
     $publicadas=
-    templates::join('usuarios', 'templates.creador', '=', 'usuarios.idUsuario')
-    ->where('usuarios.idUsuario','=',$id)
-    ->where('encuesta','1')
+    templates::where('encuesta','1')
     ->orderby('id', 'asc')
     ->get();
 
