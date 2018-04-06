@@ -13,7 +13,7 @@
   <script src="/js/input/es.js"></script>
 
 <script src="/js/homeAdministrator.js"></script>
-<div class="container">
+<div class="container1">
 <div class="row">
 <div class="col-md-12">
 
@@ -49,9 +49,9 @@
 </div>
 </div>
 
-<div>
-  <img src="/img/logos/Descripcion_Funciones.png" class="descGeneral" >
-</div>
+
+  <img src="/img/logos/Descripcion_Funciones.png" class="fdesc" >
+
 
 </div>
 </div>
@@ -76,7 +76,14 @@
 <br />
 <br />
 
-      <img id="imgSalida2" src="/img/avatar/{{$info->imagenPerfil}}" onerror="this.src='/img/iconos/default.png';"/>
+
+            <img id="imgSalida2" src="/img/avatar/{{$info->imagenPerfil}}" onerror="this.src='/img/iconos/default.png';"/>
+
+
+
+
+
+
       <br />
       <br />
 
@@ -99,7 +106,6 @@
     }
   imagen();
 </script>
-
 
 
 @endsection
