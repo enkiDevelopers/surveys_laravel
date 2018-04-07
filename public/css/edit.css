@@ -69,7 +69,7 @@ hr{
 }
 .num{
 	margin-left: -22px;
-	margin-right: 20px;
+	/*margin-right: 20px; */
 }
 .numPregs{
 	width: 42px;
@@ -140,7 +140,7 @@ hr{
 		margin-top: -4%;
 	}
 	.btn-control{
-		width: 104px;
+		width: 92px;
 	}
 }
 
@@ -198,16 +198,16 @@ hr{
 	}
 	.text-question{
 		display: inline-table;
-		width: 80%;
+		width: 30%;
 	}
 	.type{
-		width: 30% !important;
-	    margin-left: -22px;
-	    margin-right: 22px;
+		width: 15% !important;
+	    /* margin-left: -22px; */
+	    /* margin-right: 22px; */
 	    display: inline-table;
 	}
 	.salto {
-    width: 25% !important;
+	/*    width: 25% !important;*/
     display: inline-table;
 	}
 	.titleContainer{
