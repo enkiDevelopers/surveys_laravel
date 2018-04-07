@@ -579,12 +579,16 @@ overflow: hidden;
   margin-left: 90px;
 
 }
-#actualizar, #recibiendo
+#actualizar
 {
 width: 100%;
-
 }
 
+#recibiendo
+{
+
+	padding-left: 25px;
+}
 #hTable
 {
   width: 100%;
