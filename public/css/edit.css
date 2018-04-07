@@ -214,6 +214,11 @@ hr{
 
     background-color: #fff;
 	}
+	.titleOptions{
+		width: 77%;
+	    display: inline-table;
+	    float: left;
+	}
 }
 
 @media screen and (max-width: 877px) {

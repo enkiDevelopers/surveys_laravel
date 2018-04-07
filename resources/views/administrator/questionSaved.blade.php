@@ -61,7 +61,7 @@
             <div class="row yes-no-question-block" id="yes-no-question-template" >
                 <div class="col-md-12" data-questions="0">
                     <div id="multi-options">
-                        <div class="col-md-6 col-md-offset-1 " data-multioptions="0">
+                        <div class="col-md-6 col-md-offset-1 titleOptions" data-multioptions="0">
                             <div class="form-group opcionesRespon" >
                                 <label for="{{$option->id}}">Opción de la pregunta {{$dato->orden}}</label>
                                 <input type="text" readonly class="form-control-static form-control text-black-body option" id="{{$option->id}}" value="{{$option->name}}" >
