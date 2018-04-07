@@ -16,15 +16,20 @@ hr{
 }
 .btn-control{
 	margin-bottom: 15px;
+    padding-right: 1px;
+    width: 104px;
 }
 .salto{
 	width: 16% !important;
+    padding-right: 1px;
 }
 .type{
 	width: 17% !important;
+	padding-right: 1px;
 }
 .text-question{
-	width: 42%;
+	width: 37%;
+    padding-right: 1px;
 }
 .well{
 	margin-bottom: 11px !important;
@@ -101,7 +106,9 @@ hr{
     margin-left: 10%;
     margin-right: 10%;
 }
-
+.col-desc{
+	left: 6px;
+}
 @media screen and (max-width: 1220px) {
 	.col-desc{
 	float: right;
@@ -124,7 +131,7 @@ hr{
 		font-size: 11px;
 	}
 	.text-question{
-		width: 44%;
+		width: 36%;
 	}
 	.new-question__control{
 		margin-right: 0px;
@@ -202,6 +209,10 @@ hr{
 	.salto {
     width: 25% !important;
     display: inline-table;
+	}
+	.titleContainer{
+
+    background-color: #fff;
 	}
 }
 
