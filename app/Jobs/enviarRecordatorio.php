@@ -7,7 +7,8 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-
+use DB;
+use App\templates;
 use encuestados;
 use Mail;
 use App\Mail\mailencuestados;
@@ -22,6 +23,8 @@ class enviarRecordatorio implements ShouldQueue
     public $idPlantilla;
     public $host;
     public $timeout = 1200;
+    public $plantilla;
+    public $imagen;
     /**
      * Create a new job instance.
      *
@@ -34,6 +37,10 @@ class enviarRecordatorio implements ShouldQueue
       $this->asunto = $asunto;
       $this->instrucciones = $instrucciones;
       $this->idPlantilla = $id;
+
+      $plantilla = DB::table('templates')->where('id',   $this->idPlantilla)->first();
+      $this->imagen = $plantilla->imagePath;
+
       $this->host = $host;
     }
 
@@ -49,7 +56,7 @@ class enviarRecordatorio implements ShouldQueue
     if(filter_var($Iuser->email1, FILTER_VALIDATE_EMAIL)){
     try {
       Mail::to($Iuser->email1)
-     ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host));
+     ->send(new mailencuestados($Iuser,$this->asunto,$this->instrucciones,$this->host, $this->imagen));
     } catch (Exception $e) {
       $file = fopen("archivo.txt", "w");
     fwrite($file, $e . PHP_EOL);
