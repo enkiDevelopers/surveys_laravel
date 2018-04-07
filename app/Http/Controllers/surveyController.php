@@ -119,8 +119,7 @@ class surveyController extends Controller
   public function duplicar(Request $request){
   $nNombre = $request->nNombre;
   $id=$request->id;
-  $creador=$request->session()->get('id');
-
+  $creador=$request->creador;
 
   $cPlantilla=templates::where('id', $id)->get();
   $Plantilla = templates::create([

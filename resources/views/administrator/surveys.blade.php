@@ -312,7 +312,7 @@
                                  </select>
                              </label>
                             </div>
-                  
+
                             <div class="col-md-6  text-center">
                               <label for="tipo">Tipo de encuesta:
                                 <select  id="tipo" name="tipo" class="form-control text-black-body" required>
@@ -377,7 +377,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar4()">
                         <span aria-hidden="true">&times;</span>
                         </button>
-                            <h4 class="modal-title" id="myModalLabel">Duplicar encuesta</h4>
+                            <h4 class="modal-title" id="myModalLabel">Duplicar plantila</h4>
                   </div>
                     <div class="modal-body">
                       <div class="row">

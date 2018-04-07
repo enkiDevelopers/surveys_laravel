@@ -69,7 +69,7 @@
         class="btn btn-icon text-center " data-toggle="tooltip" data-placement="top" title="Editar">
       <span class="glyphicon glyphicon-edit "></span>
     </a>
-    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});"
+    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$id}});"
         data-toggle="tooltip" data-placement="top" title="Duplicar"
       >
       <span class="glyphicon glyphicon-duplicate"></span>
@@ -135,7 +135,7 @@
         class="btn btn-icon text-center " data-toggle="tooltip" data-placement="top" title="Editar">
       <span class="glyphicon glyphicon-edit "></span>
     </a>
-    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$plantilla->creador}});"
+    <a class="btn btn-icon text-center" onclick="DuModal({{$plantilla->id}},{{$id}});"
         data-toggle="tooltip" data-placement="top" title="Duplicar"
       >
       <span class="glyphicon glyphicon-duplicate"></span>
