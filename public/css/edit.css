@@ -133,7 +133,7 @@ hr{
 		margin-top: -4%;
 	}
 	.btn-control{
-		width: 100px;
+		width: 104px;
 	}
 }
 
@@ -186,8 +186,22 @@ hr{
     margin-left: 24%;
 
 	}
-	.num, .text-question{
-		width: 100%;
+	.num{
+		display: inline-table;
+	}
+	.text-question{
+		display: inline-table;
+		width: 80%;
+	}
+	.type{
+		width: 30% !important;
+	    margin-left: -22px;
+	    margin-right: 22px;
+	    display: inline-table;
+	}
+	.salto {
+    width: 25% !important;
+    display: inline-table;
 	}
 }
 
@@ -249,14 +263,14 @@ hr{
 	 	font-size: 20px;
 	 }
 	 .num{
-		width: 40%;
+		width: 16%;
 		margin: 0px 7px 0px 0px;
 		padding: 0px;
 		float: left;
 	 }
 
 	 .text-question{
-	    width: 60% !important;
+	    width: 76% !important;
 	    margin: 0px 7px 0px 0px;
 	    padding: 0px;
     	float: right;
@@ -269,7 +283,7 @@ hr{
 		float: left;
 	 }
 	 .salto{
-	 	width:40% !important;
+	 	width:42% !important;
 	 	float:right;
  	    padding-right: 2%;
 	 }
@@ -302,13 +316,24 @@ hr{
    		left: 0px;
    }
    .header-template{
-    	left: 2%;
+    	left: 13vw;
     	display: initial;
    		top: 0px;
    		right: 10%; 
    }
 }
 
+@media screen and (max-width: 538px) {
+   .header-template{
+    	left: 7vw;
+   }
+}
+
+@media screen and (max-width: 378px) {
+   .header-template{
+    	left: 3vw;
+   }
+}
 
 @media screen and (min-height: 850px) {
 	#questionSaved{
