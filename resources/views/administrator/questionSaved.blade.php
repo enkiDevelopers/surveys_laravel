@@ -16,7 +16,7 @@
             <div class="col-md-6 text-question">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Título de la pregunta</label>
-                    <input type="text" readonly class="form-control-static form-control text-black-body title" id="{{$dato->id}}" value="{{$dato->title}}">
+                    <input type="text" readonly class="form-control-static form-control text-black-body" id="{{$dato->id}}" value="{{$dato->title}}">
                 </div>
             </div>
             <div class="col-md-3 type">
