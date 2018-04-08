@@ -13,10 +13,8 @@
       <span class=" glyphicon glyphicon-eye-open"></span>
     </a>
   </div>
-	<div class="col-md-3 col-img" style="margin-top: -73px; margin-bottom: 3%;padding-left: 0px;left: -1%;">
-		<center>
-  	 <img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="200px" height="200px" style="max-height: 200px; min-height: 200px;max-width: 200px;min-width: 200px;" onerror="this.src='/img/iconos/default.png'">
-    </center>
+	<div class="col-md-3 col-img" style="margin-top: -5vw;">
+  	<img src="\img/iconos/{{$nombre}}" class="img-thumbnail" width="15vw" height="15vw" style="max-height: 15vw; min-height: 15vw;max-width: 15vw;min-width: 15vw;" onerror="this.src='/img/iconos/default.png'">
   </div>
   <div class="col-md-8 col-desc" >
     <textarea rows="5" cols="50" class="form-control text-black" disabled id="inputDesc" aria-describedby="desc" placeholder="Descripción" style="overflow-y: auto;">{{$descripcion}}</textarea>

@@ -42,7 +42,7 @@ hr{
 	 position: relative;
 	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 	 padding: 1px 10px 0px 5px;
-	 margin: 0px 15px 0px 258px;
+	 margin: 0px 15px 0px 24%;
 }
 .new-question__control--edit-question{
 	/* box-shadow: 3px 3px 3px #174340; */
@@ -80,7 +80,10 @@ hr{
 }
 
 .titleContainer{
-	left:27%;
+    left: 24%;
+    width: 64%;
+    margin-right: 2.66666%;
+    margin-top: 1%;
 }
 .header-template{
 	left: 25%;
@@ -107,13 +110,17 @@ hr{
     margin-right: 10%;
 }
 .col-desc{
-	left: 6px;
+	left: -2.8%;
+}
+#dataTemplateContainer{
+	margin-bottom: 4%;
 }
 @media screen and (max-width: 1220px) {
 	.col-desc{
 	float: right;
-    margin-right: 6%;
-    width: 63%;
+    margin-right: 7%;
+    width: 68%;
+    margin-top: 2%;
 	}
 	.new-survey__control, #sortableQuestions{
 		font-size: 13px;
@@ -125,7 +132,7 @@ hr{
 		width: 9.799%;
 	}
 	#questionSaved{
-		margin-left: 180px !important;
+		/*margin-left: 180px !important; */
 	}
 	.new-survey__control, #sortableQuestions{
 		font-size: 11px;
@@ -172,7 +179,7 @@ hr{
 		margin-left: 15px !important;
 	}
 	.light-grey{
-		margin-top: 80px;
+		margin-top: 5vw;
 		/*margin-bottom: -75px; */
 	}
 	.img-thumbnail{
@@ -330,6 +337,8 @@ hr{
 
    .titleContainer{
    		left: 0px;
+   		width: 100%;
+        margin-right: 0px;
    }
    .header-template{
     	left: 13vw;

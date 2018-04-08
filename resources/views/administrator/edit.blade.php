@@ -9,7 +9,7 @@
 
         	<div class="row col-md-3">
             <div class="new-survey__controls" >
-              <div class="col-md-12 control_btn" style="margin-left: 17px;">
+              <div class="col-md-12 control_btn">
                 <button class="btn btn-info new-survey__control" id="addQuestion">
                   <span class="glyphicon glyphicon-plus icon-mobile"></span>
                   <label style="margin-bottom: 0px;float: left;font-size: 11px; ">Agregar pregunta</label>
