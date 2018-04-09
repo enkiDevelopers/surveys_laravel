@@ -73,7 +73,7 @@
 </div>
 </div>
                 </div>
-                <div class="panel-body scroll paddLeft" id="pBody">
+                <div class="panel-body scroll" id="pBody">
 
                               <div class="col-md-12 text-center" id="actualizar">
 
@@ -92,10 +92,10 @@
 
                       <div class="col-md-4" id="contRedes">
 
-                        <div  class="col-md-6 redesSocialesIcons" id="imgT">
+                        <div  class="col-md-2" id="imgT" style="margin: 1rem;">
                           <img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>
                         </div>
-                        <div class="col-md-6 redesSocialesIcons" id="imgF">
+                        <div class="col-md-2" id="imgF"style="margin: 1rem;">
                           <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>
                         </div>
 
@@ -117,7 +117,7 @@
                       </div>
                         </div>
                         <!-- fin ENCABEZADO PANEL -->
-                <div class="panel-body scroll paddLeft" id="pPBody">
+                <div class="panel-body scroll" id="pPBody">
                     <div class="row">
 
                         <div class="recibiendo" id="recibiendo">

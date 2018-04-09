@@ -1,10 +1,3 @@
-.paddLeft{
-  padding-left: 5%;
-}
-.redesSocialesIcons{
-  text-align: center;
-  padding-top: 7px;
-}
 
 .container1
 {
@@ -570,13 +563,12 @@ color: #fff;
 {
   cursor: pointer;
 }
-
 .supSide
 {
-  position: relative;
-  margin-left: 35%;
-  /*transform: translate(-50%);
-  -webkit-transform: translate(-50%);*/
+  position: absolute;
+  left: 53%;
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
 }
 
 #texto
@@ -631,64 +623,8 @@ text-align: left;
 }
 /*############################################################# Media querys##################################### */
 
-/*@media(max-width: 1600px)
-{
-  .paddLeft{
-    padding-left: 20px;
-  }
-
-}
-*/
-
-
-@media(max-width: 1440px)
-{
-  .supSide{
-    margin-left: 34%;
-  }
-
-}
-
-@media(max-width: 1346px)
-{
-  .supSide{
-    margin-left: 30%;
-  }
-
-}
-
-@media(max-width: 1190px)
-{
-  .supSide{
-    margin-left: 25%;
-  }
-
-}
-
-@media(max-width: 1134px){
-
-  .paddLeft{
-    padding-left: 5%;
-  }
-}
-
-@media(max-width: 1020px)
-{
-  .supSide{
-    margin-left: 20%;
-  }
-
-}
-
-
-
 @media(max-width: 865px)
 {
-
-  .supSide{
-    margin-left: 15%;
-  }
-
 #tamañoLet
 {
   font-size: 20px;
@@ -724,12 +660,6 @@ margin-right: 15%;
 
 @media(max-width: 768px)
 {
-
-  .paddLeft{
-    padding-left: 10%;
-  }
-
-
 .sep
 {
   display: none;
@@ -778,11 +708,6 @@ margin-left: 20px;
 }
 @media(max-width: 1450px)
 {
-
-  .paddLeft{
-    padding-left: 5%;
-  }
-
   #pBody
   {
     max-height: 58vh;
@@ -797,12 +722,6 @@ margin-left: 20px;
 
 @media(max-width: 991px)
 {
-
-.paddLeft{
-  padding-left: 10%;
-}
-
-
 	#recibiendo
 	{
 
@@ -858,9 +777,6 @@ text-align: center;
 
 @media(max-width: 630px)
 {
-.paddLeft{
-  padding-left: 10%;
-}
 #tamañoLet
 {
   font-size: 30px;
