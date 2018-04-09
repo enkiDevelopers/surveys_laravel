@@ -92,10 +92,10 @@
 
                       <div class="col-md-4" id="contRedes">
 
-                        <div  class="col-md-2" id="imgT" style="margin: 1rem;">
+                        <div  class="col-md-6 redesSocialesIcons" id="imgT">
                           <img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>
                         </div>
-                        <div class="col-md-2" id="imgF"style="margin: 1rem;">
+                        <div class="col-md-6 redesSocialesIcons" id="imgF">
                           <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>
                         </div>
 
