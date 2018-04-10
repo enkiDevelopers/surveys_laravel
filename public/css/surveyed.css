@@ -1,3 +1,26 @@
+.cont-cards
+{
+  
+}
+
+.horizontal
+{
+  width: 200px;
+    margin-left: -15px;
+    height: 120px;
+    border-radius: 5px;
+  display: inline-flex;
+    justify-content: center;
+}
+.vertical
+{
+
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
 .content-all
 {
   width: 82%;
@@ -32,6 +55,7 @@ width: 210px;
 height: 280px;
 margin-right: 20px;
 margin-bottom: 20px;
+display: inline-block;
 }
   body
   {
@@ -41,7 +65,7 @@ margin-bottom: 20px;
 
 @media (max-width: 360px) {
 .cont-cards{
-  
+
   width: 90%;
   margin-left: 5%;
 }

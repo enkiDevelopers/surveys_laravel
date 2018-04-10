@@ -35,7 +35,15 @@
                   ?>
                       <div class='col-md-4 tarjetas'>
                         <div class='card well' >
-                         <img class="img-responsive" src="\img/iconos/{{$dato->imagePath}}"  style="border-radius: 5px; margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+
+                            <div class="horizontal">
+                                <div class="vertical">
+<img class="img-responsive" src="\img/iconos/{{$dato->imagePath}}"  style="border-radius: 5px;  max-height: 100px;" onerror="this.src='/img/iconos/default.png'">
+                                </div>
+                            </div>
+
+
+
                           <div class='card-body'>
                                         <h5 class='card-title text-center'><?php echo $dato->tituloEncuesta ?></h5>
                                         <p class='card-text text-center'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
@@ -101,9 +109,9 @@
                         $createDate = new DateTime($date);
                         $strip = $createDate->format('Y-m-d H:s');
                   ?>
-                      <div class='col-md-4 tarjetas'>
+                      <div class='tarjetas'>
                         <div class='card well' >
-                         <img class="img-responsive" src="\img/iconos/{{$dato->imagePath}}" style="border-radius: 5px; margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+                         <img class="img-responsive" src="\img/iconos/{{$dato->imagePath}}" style="border-radius: 5px; margin-top:5%; max-height: 200px;" onerror="this.src='/img/iconos/default.png'">
                           <div class='card-body'>
                                         <h4 class='card-title'><?php echo $dato->tituloEncuesta ?></h4>
                                         <p class='card-text'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
