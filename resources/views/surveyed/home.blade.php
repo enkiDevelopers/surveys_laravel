@@ -3,7 +3,7 @@
 @section('content')
 
 
-  <div class="col-md-8 col-md-offset-2">
+  <div class="content-all">
             <div class="panel panel-default">
                 <div class="panel-heading">
                   <div class="row">
@@ -21,7 +21,7 @@
 
                 </div>
 
-                <div class="panel-body"id="pEncuestas">
+                <div class="panel-body" id="pEncuestas">
                   <div class="cont-cards">
 
 
@@ -124,6 +124,9 @@
 
                   </div>
                   </div>
+</div>
+
+</div>
 
 
                   <script>

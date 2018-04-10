@@ -1,4 +1,18 @@
-  .barraGris{
+.content-all
+{
+  width: 82%;
+  margin-left: 10%;
+  margin-right: auto;
+
+}
+#pEncuestas, #pEncuestas2
+{
+height: auto;
+max-height: 400px;
+overflow-y: scroll;
+}
+
+.barraGris{
     background-color: #636b6f;
     color: black;
     font-weight: bold;
@@ -27,9 +41,9 @@ margin-bottom: 20px;
 
 @media (max-width: 360px) {
 .cont-cards{
-
-  width: 80%;
-  margin-left: 10%;
+  
+  width: 90%;
+  margin-left: 5%;
 }
 }
 
