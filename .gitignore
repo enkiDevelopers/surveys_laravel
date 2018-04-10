@@ -13,3 +13,4 @@ yarn-error.log
 /.env
 /composer.lock
 app/Exceptions/Handler.php
+app/Exceptions/Handler.php
