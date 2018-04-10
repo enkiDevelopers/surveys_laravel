@@ -38,7 +38,7 @@ class IngresarLista implements ShouldQueue
         $i=0;
         $idarray=['id' => $this->id1];
         //Server
-        $path = "../listas/".$this->dato1;
+         $path = "../listas/".$this->dato1;
         //Local
         //$path = public_path("/listas/") . $this->dato1;          
         Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){            

@@ -38,7 +38,7 @@ class ingresarIncidente implements ShouldQueue
     {
         $idarray=['id' => $this->idlista1]; 
         //Server
-        $path="../listas/" . $this->archivonombre1);
+         $path="../listas/" . $this->archivonombre1;
         //Local
         //$path=public_path("/listas/".$this->archivonombre1);
         Excel::filter('chunk')->load($path)->chunk(1300, function($results) use ($idarray){
