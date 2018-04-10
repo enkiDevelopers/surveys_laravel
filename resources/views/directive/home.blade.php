@@ -182,7 +182,7 @@
 
               <tr>
                 <td>
-                  <img src="\img/iconos/{{$encuesta->imagePath}}" width="55px" height="50px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
+                  <img src="\img/iconos/{{$encuesta->imagePath}}" width="70px" onerror="this.src='/img/Por_Ti_EXPERIENCIA_UVM.png'">
                 </td>
                 <td class="descripcion"><p style="color: black;">{{$encuesta->tituloEncuesta}}</p></td>
                 <td class="descripcion"><p style="color: black;">{{$encuesta->descripcion}}</p></td>
