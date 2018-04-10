@@ -27,7 +27,7 @@
 						@include('administrator.questionSaved')
 					</div>
 				</div>
-    	
+
     	</div>
   	</div>
 	</div>
@@ -35,5 +35,18 @@
 
 				@include('administrator.modalTitle')
 				@include('administrator.modalQuestionEdit')
+
+
+        <?php
+          echo '<script>';
+          echo "function limpiar2(){";
+            echo "$('#imgSalida').attr('src','/img/iconos/$nombre');";
+            echo "}";
+        echo "</script>";
+         ?>
+
+
+
+
 
  @endsection

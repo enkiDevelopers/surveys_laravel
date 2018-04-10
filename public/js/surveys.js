@@ -3,7 +3,6 @@
     function limpiar(){
   $('#imgSalida').attr("src","/img/iconos/default.png");
       document.getElementById("myForm").reset();
-
                       }
           function limpiar2()
                     {

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/css/alertify.min.css">
     <link rel="stylesheet" type="text/css" href="/css/themes/default.min.css">
     <link rel="stylesheet" href="/css/edit.css">
+      <script src="/js/edit.js"></script>
 </head>
 <body>
 
@@ -58,7 +59,7 @@
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
-          </li> 
+          </li>
           <li id="rol" style="float: right;background: linear-gradient(to bottom right, #0f1973, #0d47a1);height: 81px;width: 17%;margin-top: -74px;">
             <a href="{{ url('/administrator/') }}" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-cog"></i>
@@ -88,7 +89,7 @@
             <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
               <span class="itemCloseMenuMobile">SALIR</span>
             </a>
-          </li>     
+          </li>
         </ul>
 
       </nav>
@@ -113,6 +114,8 @@
           }
         })
       });
+
+      imagen();
     </script>
 </body>
 </html>

@@ -141,7 +141,7 @@
                 <div class="modal-header">
   <div class="row">
       <div class="col-sm-10">
-        <h4 class="modal-title" id="myModalLabel1">Inicializar plantila</h4>
+        <h4 class="modal-title" id="myModalLabel1">Inicializar plantilla</h4>
       </div>
 
       <div class="col-sm-2 pull-right pull-right">
