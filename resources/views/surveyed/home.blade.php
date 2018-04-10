@@ -3,10 +3,11 @@
 @section('content')
 
 
+
     <div class="col-md-8 col-md-offset-2">
 
             <div class="panel panel-default">
-                <div class="panel-heading">Encuestas Pendientes</div>
+                <div class="barraGris">Encuestas Pendientes</div>
 
                 <div class="panel-body">
                   <?php 
@@ -16,55 +17,38 @@
                         $date = $dato->fechat;
                         $createDate = new DateTime($date);
                         $strip = $createDate->format('Y-m-d H:s');
-
-                    if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){
-
-                       echo"<div class='col-md-4 tarjetas'>
-                                <div class='card well' >"
                   ?>
-                     <img src="\img/iconos/{{$dato->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
-
-                  <?php                  
-                            echo"<div class='card-body'>
-                                        <h4 class='card-title'><p>{$dato->tituloEncuesta}</p></h4>
-                                        <p class='card-text'><strong>Fecha Límite: ".$strip."</strong></p>
-                                        <a  class='btn btn-red' href=/surveyed/previewtem/".$dato->idE.">Responder</a>
-                                    </div>
-                                </div>
-                              </div>";
-
-                    }else{
-                      if($fecha >= $dato->fechai){
-                    ?>
-
                       <div class='col-md-4 tarjetas'>
-                          <div class='card well' >
-                              <img src="\img/iconos/{{$dato->imagePath}}"  width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+                        <div class='card well' >
+                         <img src="\img/iconos/{{$dato->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
                           <div class='card-body'>
                                         <h4 class='card-title'><?php echo $dato->tituloEncuesta ?></h4>
                                         <p class='card-text'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
-                                        <a  class='btn btn-red' href="#" disabled>Responder</a>
-                          </div>
-                          </div>
-                      </div>
-                  <?php 
+
+                  <?php                  
+                    if($fecha >= $dato->fechai  and $fecha <= $dato->fechat){
+                        $valorA= "<a  class='btn btn-red' href=/surveyed/previewtem/".$dato->idE.">Responder</a>";
                     }else{
-
+                      if($fecha >= $dato->fechai){
+                        $valorA= "<a  class='btn btn-red' href='#' disabled>Encuesta Cerrada</a>";
+                        }else{
+                        }
                     }
-                    
-                  }
-                }
-                
+                    echo $valorA;
                     ?>
+                          </div>
+                        </div>
+                      </div>
 
-
-                        
-                  </div>
+              <?php 
+                }
+              ?>
+              </div>
             </div>
 
 
             <div class="panel panel-default">
-                <div class="panel-heading">Encuestas Realizadas</div>
+                <div class="barraGris">Encuestas Realizadas</div>
                   <div class="row">
 
                 <div class="panel-body">
@@ -74,16 +58,14 @@
                         $date = $constestados->fechat;
                         $createDate = new DateTime($date);
                         $strip = $createDate->format('Y-m-d H:s');
-
-                        echo "<div class='col-md-4 tarjetas'>
-                              <div class='card well'>"
-                        ?>
-                     <img src="\img/iconos/{{$constestados->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
-
-                                <div class='card-body'>
-                                    <h4 class='card-title'>{{$constestados->tituloEncuesta}}</h4>
-                                    <p class='card-text'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
-                                    <a href='contestado' target="_blank" class='btn btn-primary'>Ver encuesta</a>
+                  ?>
+                      <div class='col-md-4 tarjetas'>
+                        <div class='card well' >
+                         <img src="\img/iconos/{{$dato->imagePath}}"   width='100%' height='100px' style="margin-top:5%" onerror="this.src='/img/iconos/default.png'">
+                          <div class='card-body'>
+                                        <h4 class='card-title'><?php echo $dato->tituloEncuesta ?></h4>
+                                        <p class='card-text'><strong>Fecha Límite: </strong><?php echo $strip; ?></p>
+                                    <a href='contestado' target="_blank" class='btn btn-primary'>Gracias</a>
                                 </div>
                             </div>
                         </div>

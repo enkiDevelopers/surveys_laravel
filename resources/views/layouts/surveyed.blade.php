@@ -11,9 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!--<link rel="stylesheet" href="/css/sidebar.css">-->
-    <link rel="stylesheet" href="/css/surveyed.css">
+    <!--<link rel="stylesheet" href="/css/sidebar.css">-->    
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="/css/surveyed.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 <style type="text/css">

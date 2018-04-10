@@ -1,3 +1,12 @@
+  .barraGris{
+    background-color: #636b6f;
+    color: black;
+    font-weight: bold;
+    height: 30px; 
+    text-align: left;
+    font-size: 14px;
+    padding-top: 5px;
+  }
 
   /* remove outer padding */
   .main .row{
@@ -56,6 +65,20 @@
   transition: all 0.3s ease-out;
   margin-left: -200px;
 }
+
+@media screen and (max-width: 1850px){
+  .tarjetas{
+    width: 23%;
+  }
+}
+
+@media screen and (max-width: 1550px){
+  .tarjetas{
+    width: 28%;
+  }
+}
+
+
 @media screen and (max-width: 991px){
 	.tarjetas{
 		width: 33%;
