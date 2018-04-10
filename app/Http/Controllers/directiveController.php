@@ -452,10 +452,10 @@ return response()->json($response);
       $idencuesta=$request->input('idencuesta');
       $region=$request->input('region');
 
-        
+
         $job = new crearExcel($idencuesta,$region);
-        dispatch($job); 
-        return response()->json("hola"); 
+        dispatch($job);
+        return response()->json("hola");
   }
  /*      $myFile= Excel::create('Data', function($excel)use($encuestados) {
           $excel->sheet('Datos', function($sheet) use($encuestados) {
@@ -521,6 +521,27 @@ $response =  array(
 return response()->json($response);
   }
 
+
+
+public function uploadImage(Request $request)
+{
+  $idUsuario = $request->session()->get('id');
+
+  $icono=$request->file('file-input');
+  if (empty($icono)) {
+      $nombre="default.png";
+  }else {
+    $nombre=date("his").".png";
+    $icono->move('img/avatar',$nombre);
+
+  }
+$usuario = usuarios::find($idUsuario);
+$usuario->imagenPerfil=$nombre;
+$usuario->save();
+
+$info= $usuario;
+    return redirect()->route('directive');
+}
 
 
 }

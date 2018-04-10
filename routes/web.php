@@ -24,7 +24,7 @@ Route::post('/directive/validate', 'iniciarSesion@validarDirective');
 
 
 Route::post('/uploadimage','AdministratorController@uploadImage');
-
+Route::post('/uploadimage2','directiveController@uploadImage');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

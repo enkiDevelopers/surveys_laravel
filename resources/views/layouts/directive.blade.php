@@ -11,6 +11,7 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="/css/sidebar.css">
   <link rel="stylesheet" href="/css/directive.css">
+    <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body id="wrapper">
   <div class="wrapper"  id="app">
@@ -45,8 +46,8 @@
             <a href="#" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-menu-hamburger"></i>
             </a>
-          </li> 
-          
+          </li>
+
           <li id="rol" style="float: right;background: linear-gradient(to bottom right, #1b5e20, #4caf50);height: 81px;width: 17%;margin-top: -74px;">
             <a href="{{ url('/directive')}}" style="text-align: center;color: white">
               <i class="glyphicon glyphicon-bookmark"></i>
@@ -66,19 +67,21 @@
             <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
               <span>SALIR</span>
             </a>
-          </li>  
+          </li>
         </ul>
       </nav>
         @yield('content')
    </div>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+
   <script src="/js/jqueryui.min.js"></script>
   <script src="{{ asset('js/directive.js') }}"></script>
   <script src="/js/highcharts.js"></script>
   <script src="/js/exporting.js"></script>
+
   <script type="text/javascript">
+
     $(document).ready(function () {
       window.addEventListener('click', function(e){
         if (document.getElementById('menu').contains(e.target)){

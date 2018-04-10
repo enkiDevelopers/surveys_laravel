@@ -5,7 +5,7 @@ function corporativoModal(comp){
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-}); 
+});
         $.ajax({
               dataType : 'json',
               type : 'post',
@@ -33,7 +33,7 @@ function corporativoModal(comp){
 }
 
 function regionalModal(comp){
-  
+
 $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -129,7 +129,7 @@ function selecciona(busq){
               $("#cargar").html("");
 
 
-                
+
               },
               error : function(error) {
                 console.log(error);
@@ -168,11 +168,10 @@ function selecciona(busq){
             var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id+"&Region='"+cmbre+"'";
             var ventana=window.open(url,'_blank');
             ventana.focus();
-        } 
+        }
         function getURLGeneral(id){
             //var id   = document.getElementById('variable').innerText;
             var url = 'http://uvmmejoraporti.mx/UVM_Dashboard/Dashboard.php?idE='+id;
             var ventana=window.open(url,'_blank');
             ventana.focus();
         }
-   
