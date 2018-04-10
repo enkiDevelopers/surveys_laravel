@@ -40125,7 +40125,7 @@ Vue$3.prototype.$mount = function (
 };
 
 // devtools global hook
-/* istanbul ignore next */
+/* istanbul ignore next
 Vue$3.nextTick(function () {
   if (config.devtools) {
     if (devtools) {
@@ -40149,7 +40149,7 @@ Vue$3.nextTick(function () {
   }
 }, 0);
 
-/*  */
+*/
 
 var defaultTagRE = /\{\{((?:.|\n)+?)\}\}/g;
 var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;

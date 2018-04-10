@@ -5,20 +5,27 @@ use Session;
 use Illuminate\Http\Request;
 use App\usuarios;
 use DB;
+use Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
-
+use App\encuestados;
 class iniciarSesion extends Controller
 {
 
 public function validarInicio(Request $request)
 {
+
    $id= $request->session()->get('id');
   if ($id== null) {
  return view('welcome');
 }else {
 
   $usuario = usuarios::find($id);
+  $encuestado = encuestados::where('noCuenta', $id)->count();
+if($encuestado != 0)
+{
+   return redirect('logout');
+}else{
 
   if($usuario->type == 4)
   {
@@ -28,8 +35,9 @@ public function validarInicio(Request $request)
   {
     return redirect('/directive');
   }
-
 }
+}
+
 }
 
 public function validarAdmin(Request $request)

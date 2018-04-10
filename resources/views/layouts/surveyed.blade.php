@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!--<link rel="stylesheet" href="/css/sidebar.css">-->    
+    <!--<link rel="stylesheet" href="/css/sidebar.css">-->
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="/css/surveyed.css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -44,7 +44,7 @@
         ?>
     </center>
   </div>
-  
+
 <!--<nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <a id="menu-toggle" href="#" class="navbar-toggle">
@@ -76,11 +76,12 @@
 </nav>-->
   <div class="main" >
 
-                @yield('content')        
+                @yield('content')
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
+<link href="/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <script src="/js/bootstrap-toggle.min.js"></script>
 </body>
 </html>

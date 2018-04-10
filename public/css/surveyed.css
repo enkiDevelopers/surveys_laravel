@@ -2,7 +2,7 @@
     background-color: #636b6f;
     color: black;
     font-weight: bold;
-    height: 30px; 
+    height: 30px;
     text-align: left;
     font-size: 14px;
     padding-top: 5px;
@@ -13,7 +13,34 @@
     padding: 0px;
     margin: 0px;
   }
+.card , .tarjetas{
+width: 210px;
+height: 280px;
+margin-right: 20px;
+margin-bottom: 20px;
+}
+  body
+  {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 
+@media (max-width: 360px) {
+.cont-cards{
+
+  width: 80%;
+  margin-left: 10%;
+}
+}
+
+@media  (max-width: 322px) {
+.panel
+{
+  width: 300px;
+  margin-left: 11px;
+}
+
+}
   /*Remove rounded coners*/
 
 
@@ -64,52 +91,4 @@
 #sidebar-wrapper.sidebar-toggle {
   transition: all 0.3s ease-out;
   margin-left: -200px;
-}
-
-@media screen and (max-width: 1850px){
-  .tarjetas{
-    width: 23%;
-  }
-}
-
-@media screen and (max-width: 1550px){
-  .tarjetas{
-    width: 28%;
-  }
-}
-
-
-@media screen and (max-width: 991px){
-	.tarjetas{
-		width: 33%;
-	}
-}
-@media screen and (max-width: 900px){
-      html,body {
-          overflow:auto; 
-      }
-}
-
-}
-@media screen and (max-width: 800px){
-  .col-md-4{
-    width: 40px;
-  }
-}
-@media screen and (max-width: 650px){
-	.tarjetas{
-		width: 40%;
-	}
-}
-
-@media screen and (max-width: 565px){
-	.tarjetas{
-		width: 50%;
-	}
-}
-
-@media screen and (max-width: 475px){
-	.tarjetas{
-		width: 100%;
-	}
 }
