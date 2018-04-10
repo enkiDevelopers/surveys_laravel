@@ -6,6 +6,9 @@
 .container1
 {
 	margin-left: 250px;
+
+width: 100%;
+
 }
 		#imgSalida2
 		{
@@ -17,8 +20,9 @@
 		{
 min-width: 222px;
 		max-width: 60%;
-	max-height: 60%;
-		margin-left: 20%;
+	max-height: 70vh;
+
+		margin-left: 26%;
 		}
 
 		.horizontal
@@ -707,7 +711,12 @@ margin-left: 20px;
   margin-left: 0px;
   margin-top: 100px;
 }
+.fdesc
+{
 
+  width: 80%;
+  margin-left: 20%;
+}
 
 }
 @media(max-width: 1450px)
