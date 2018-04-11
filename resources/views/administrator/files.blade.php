@@ -158,14 +158,14 @@ onclick="return principal();">
 
                   <span class="glyphicon glyphicon-cog eng">&nbsp</span>
 
-              <div id="titName">
+              <div id="titName" style="height: 20px;">
 
                   {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
               </div>
             </div>
 
             <div class="row">
-            <div class="col-md-8" id="titEm">
+            <div class="col-md-8" id="titEm" style="width: 150px; height: 20px; overflow:hidden;">
                   {{$info->email}}
               </div>
             </div>
@@ -281,7 +281,7 @@ onclick="return principal();">
                               }
                               $eliminarD="disabled='disabled'";
                             }
-                          
+
                          break;
                         case '5': // sucede cuando se sube una incidencia
                             $estado="src='/img/incidenciaReady.png' data-toggle='tooltip' data-placement='top' title='Incidencia subida en Base de Datos'";

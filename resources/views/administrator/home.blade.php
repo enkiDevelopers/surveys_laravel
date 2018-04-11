@@ -30,7 +30,7 @@
 
         <span class="glyphicon glyphicon-cog eng">&nbsp</span>
 
-    <div id="titName">
+    <div id="titName" style="height: 20px;">
 
         {{$info->nombre}} {{$info->apPaterno}} {{$info->apMaterno}}
     </div>
