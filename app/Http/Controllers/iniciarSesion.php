@@ -55,6 +55,7 @@ public function validarAdmin(Request $request)
 
 public function validaUsuarioAdmin(Request $request)
 {
+  $isValid = null;
   $email = $request->email;
   $pass = $request->password;
 
@@ -66,17 +67,24 @@ public function validaUsuarioAdmin(Request $request)
     return redirect()->route('adminHome');
   }
 
-$isValid = null;
+$isValid = 0;
   $found = usuarios::where('email',$email)->where('type', "=" , '4')->get();
   foreach ($found as $foun) {
-      if(Crypt::decryptString($foun->password) == $pass)
-      {
-        $isValid = $foun ;
-        break;
-      }
+
+          try {
+          $decPass =  Crypt::decryptString($foun->password);
+          if($decPass == $pass)
+          {
+            $isValid = $foun ;
+            break;
+          }
+          } catch (DecryptException $e) {
+                break;
+          }
+
   }
 
-  if($isValid==null)
+  if($isValid==0)
   {
     $mensaje = "usuario y/o contraseña incorrecta";
     echo "<script>";
@@ -131,7 +139,7 @@ public function inicioAdmin(Request $request)
 
 public function validarDirective(Request $request)
 {
-
+  $isValid = null;
   $email = $request->email;
   $pass = $request->password;
 
