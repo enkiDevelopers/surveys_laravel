@@ -67,7 +67,6 @@ public function validaUsuarioAdmin(Request $request)
     return redirect()->route('adminHome');
   }
 
-$isValid = 0;
   $found = usuarios::where('email',$email)->where('type', "=" , '4')->get();
   foreach ($found as $foun) {
 
@@ -84,7 +83,7 @@ $isValid = 0;
 
   }
 
-  if($isValid==0)
+  if($isValid==null)
   {
     $mensaje = "usuario y/o contraseña incorrecta";
     echo "<script>";
