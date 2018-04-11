@@ -60,12 +60,12 @@
         <ul class="list-unstyled components">
           <li class="active">
             <a href="{{ url('/directive')}}" >
-              <span>REPORTES</span>
+              <span class="itemMenuMobile">REPORTES</span>
             </a>
           </li>
           <li id="log-out" class="exit">
             <a href="{{ url('/logout') }}" style="border-bottom: 0;height: auto;">
-              <span>SALIR</span>
+              <span class="itemCloseMenuMobile">SALIR</span>
             </a>
           </li>
         </ul>

@@ -86,8 +86,12 @@ tbody{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-@media screen and (min-width: 1300px ) {
+@media screen and (min-width: 1220px ) {
+  tbody{
+    margin-top:3%;
+  }
+}
+   @media screen and (min-width: 1300px ) {
   .table-width-no-border{
     max-width: 85vw;
   }
@@ -105,6 +109,9 @@ tbody{
     width: 35%;
     display: inline-grid;
   }
+  tbody {
+    margin-top: 6%;
+}
 }
 
 @media screen and (max-width: 767px){
@@ -129,7 +136,7 @@ tbody{
     white-space: nowrap;
   }
   tbody{
-    margin-top: 12%;
+    margin-top: 9vw;
   }
   .table-width-no-border{
     max-width: 100vw;
