@@ -459,6 +459,8 @@ color: #fff;
 {
 
 width: 50%;
+white-space:nowrap;
+text-overflow: ellipsis;
 display: inline-block;
 font-size: 15px;
 overflow: hidden;
@@ -467,6 +469,8 @@ overflow: hidden;
 #titEm
 {
 	margin-left: 35%;
+  white-space:nowrap;
+    text-overflow: ellipsis;
 }
 .Cperfil
 {

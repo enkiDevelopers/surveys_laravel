@@ -28,10 +28,14 @@ display: inline-block;
 font-size: 15px;
 overflow: hidden;
 overflow: hidden;
+white-space:nowrap;
+    text-overflow: ellipsis;
 }
 #titEm
 {
 	margin-left: 35%;
+  white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 
