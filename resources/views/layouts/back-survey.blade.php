@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/themes/default.min.css">
     <link rel="stylesheet" href="/css/edit.css">
       <script src="/js/edit.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
 
@@ -99,7 +100,7 @@
         </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+
     <script src="/js/administratorAddQuestion.js"></script>
     <script src="/js/alertify.min.js"></script>
     <script src="/js/jqueryui.min.js"></script>

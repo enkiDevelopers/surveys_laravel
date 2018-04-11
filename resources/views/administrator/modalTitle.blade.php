@@ -63,7 +63,7 @@
               <div class="col-md-4 text-center">
               <label class="btn btn-info btn-file">
                 Seleccione su imagen
-                <input type="file" id="icon_survey" name="icon_survey" onclick="limpiar2({{$nombre}});" style="display:none;"/>
+                <input type="file" id="icon_survey" name="icon_survey" onclick="limpiar2();" style="display:none;">
               </label>
               </div>
 
@@ -73,7 +73,7 @@
 
             </div>
             <div class="modal-footer" style="z-index: 3000;position: relative;">
-                <a class="btn btn-default" data-dismiss="modal"onclick="limpiar2({{$nombre}});">
+                <a class="btn btn-default" data-dismiss="modal"onclick="limpiar2();">
                 Cancelar
                 </a>
                 <button type="submit" class="btn btn-primary">Guardar</button>
