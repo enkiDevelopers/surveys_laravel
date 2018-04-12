@@ -83,12 +83,15 @@ onclick="return principal();">
                  <td class="col-xs-3 text-center">
 
                    <div class="col-md-6" id="btnEl">
-                     <a onclick="eliminar({{$usuario->idUsuario}});">
+                     <a onclick="eliminar({{$usuario->idUsuario}});" class="btn btn-warning">
                     <span class="glyphicon glyphicon-remove"></span>
                     </a>
+                    <div style="height: 5px;">
+
+                    </div>
                    </div>
                    <div class="col-md-6" id="btnDec">
-                     <a onclick="decrypt({{$usuario->idUsuario}})" >
+                     <a onclick="decrypt({{$usuario->idUsuario}})" class="btn btn-info">
                      <span class="glyphicon glyphicon-lock"></span>
                      </a>
                    </div>
@@ -166,13 +169,16 @@ onerror="this.src='../img/avatar/default.png';"
                          <td class="col-xs-2 text-center">
 
            <div class="col-md-6" id="btnEl">
-           <a onclick="eliminar({{$directivo->idUsuario}});">
+           <a onclick="eliminar({{$directivo->idUsuario}});" class="btn btn-warning">
            <span class="glyphicon glyphicon-remove"></span>
            </a>
+           <div style="height: 5px;">
+
+           </div>
            </div>
 
            <div class="col-md-6" id="btnDec">
-           <a onclick="decrypt({{$directivo->idUsuario}})">
+           <a onclick="decrypt({{$directivo->idUsuario}})" class="btn btn-info">
            <span class="glyphicon glyphicon-lock"></span>
            </a>
 
@@ -200,15 +206,19 @@ onerror="this.src='../img/avatar/default.png';"
                        <td class="col-xs-2 text-center">
                          <center>
                    <div class="col-md-6" id="btnEl">
-                   <a onclick="eliminar({{$directivo->idUsuario}});">
+                   <a onclick="eliminar({{$directivo->idUsuario}});" class="btn btn-warning">
                    <span class="glyphicon glyphicon-remove"></span>
                    </a>
+                   <div style="height: 5px;">
+
+                   </div>
                    </div>
 
                    <div class="col-md-6" id="btnDec">
-                   <a onclick="decrypt({{$directivo->idUsuario}})">
+                   <a onclick="decrypt({{$directivo->idUsuario}})" class="btn btn-info">
                    <span class="glyphicon glyphicon-lock"></span>
                    </a>
+
                    </div>
                       </center>
                    </td>
@@ -236,13 +246,16 @@ onerror="this.src='../img/avatar/default.png';"
 
                          <center>
                    <div class="col-md-6" id="btnEl">
-                   <a onclick="eliminar({{$directivo->idUsuario}});">
+                   <a onclick="eliminar({{$directivo->idUsuario}});" class="btn btn-warning">
                    <span class="glyphicon glyphicon-remove"></span>
                    </a>
+                   <div style="height: 5px;">
+
+                   </div>
                    </div>
 
                    <div class="col-md-6" id="btnDec">
-                   <a onclick="decrypt({{$directivo->idUsuario}})">
+                   <a onclick="decrypt({{$directivo->idUsuario}})" class="btn btn-info">
                    <span class="glyphicon glyphicon-lock"></span>
                    </a>
 
@@ -425,16 +438,27 @@ onerror="this.src='../img/avatar/default.png';"
         $("#procesando").show();
       },
       success: function( sms ) {
+           var r = sms['sms'];
+            if(r == 'ok')
+            {
+              swal({
+                 title: "Administrador agregado",
+                 text: "",
+                 type: "success",
+                  });
+            }
+            if(r== 'bad')
+            {
+              swal({
+                 title: "Error",
+                 text: "El correo ya existe",
+                 type: "warning",
+                  });
+            }
 
-        swal({
-           title: "Administrador agregado",
-           text: "",
-           type: "success",
-            });
-
-          document.getElementById("adminForm").reset();
+            document.getElementById("adminForm").reset();
           $('#administrador').modal('hide');
-            location.reload();
+            location.href="administrator/management";
           },error: function(result) {
             $("#procesando").hide();
             swal({
@@ -480,15 +504,27 @@ onerror="this.src='../img/avatar/default.png';"
       },
       success: function( sms ) {
 
-        swal({
-           title: "Directivo agregado",
-           text: "",
-           type: "success",
-            });
+        var r = sms['sms'];
+         if(r == 'ok')
+         {
+           swal({
+              title: "lider agregado",
+              text: "",
+              type: "success",
+               });
+         }
+         if(r== 'bad')
+         {
+           swal({
+              title: "Error",
+              text: "El correo ya existe",
+              type: "warning",
+               });
+         }
 
           document.getElementById("directForm").reset();
           $('#directivos').modal('hide');
-            location.reload();
+            location.href="administrator/management";
           },error: function(result) {
             $("#procesando").hide();
             swal({

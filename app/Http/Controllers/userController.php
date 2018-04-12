@@ -65,6 +65,13 @@ $info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
           $aPaterno =$request->aPaterno;
           $aMaterno = $request->aMaterno;
           $correo = $request->correo;
+
+          $validar= usuarios::where('email' , $correo)->count();
+          if($validar != 0 )
+          {
+            return response()->json(array('sms'=>'bad'));
+          }
+
           $id = $request->addby;
 
 
@@ -87,7 +94,7 @@ $info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
           $newUser->type = 4;
           $newUser->save();
 
-  return response()->json(array('sms'=>'usuario registrado correctamente'));
+  return response()->json(array('sms'=>'ok'));
 
               }
 
@@ -107,6 +114,13 @@ public function saveDirective(Request $request)
     $aPaterno =$request->aPaterno;
     $aMaterno = $request->aMaterno;
     $correo = $request->correo;
+
+    $validar= usuarios::where('email' , $correo)->count();
+    if($validar != 0 )
+    {
+      return response()->json(array('sms'=>'bad'));
+    }
+
     $id = $request->addby;
     $tipo = $request->tipos;
 
@@ -143,7 +157,7 @@ public function saveDirective(Request $request)
     $newDir->idCampus= $campus;
     $newDir->save();
 
-    return response()->json(array('sms'=>'usuario registrado correctamente'));
+    return response()->json(array('sms'=>'ok'));
 
 }
 
