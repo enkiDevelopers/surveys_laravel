@@ -14,24 +14,46 @@ class userController extends Controller
     public function show(Request $request)
     {
         $id = $request->session()->get('id');
-        $usuarios = usuarios::where('addBy', $id)->where("type",4)->get();
 
-        $directivos = usuarios::where('addBy', $id)->where("type", "=", 1)
-          ->get();
+        $user = usuarios::find($id);
 
-        $dReg = usuarios::where('addBy', $id)->where("type", "=", 2)
-        ->join('ctlRegions','usuarios.idRegion','=','ctlRegions.regions_id')
-        ->get();
+        if($user->email == 'admin@admin.com')
+          {
+            $usuarios = usuarios::where("type",4)->get();
 
-        $dCamp = usuarios::where('addBy', $id)->where("type", "=", 3)
-        ->join('ctlCampus','usuarios.idCampus', "=", 'ctlCampus.campus_id')
-        ->get();
+            $directivos = usuarios::where("type", "=", 1)
+              ->get();
+
+            $dReg = usuarios::where("type", "=", 2)
+            ->join('ctlRegions','usuarios.idRegion','=','ctlRegions.regions_id')
+            ->get();
+
+            $dCamp = usuarios::where("type", "=", 3)
+            ->join('ctlCampus','usuarios.idCampus', "=", 'ctlCampus.campus_id')
+            ->get();
+
+          }else{
+            $usuarios = usuarios::where('addBy', $id)->where("type",4)->get();
+
+            $directivos = usuarios::where('addBy', $id)->where("type", "=", 1)
+              ->get();
+
+            $dReg = usuarios::where('addBy', $id)->where("type", "=", 2)
+            ->join('ctlRegions','usuarios.idRegion','=','ctlRegions.regions_id')
+            ->get();
+
+            $dCamp = usuarios::where('addBy', $id)->where("type", "=", 3)
+            ->join('ctlCampus','usuarios.idCampus', "=", 'ctlCampus.campus_id')
+            ->get();
+          }
+
+
 
         $campus = ctlCampus::all();
         $regiones = ctlRegions::all();
 
 
-$info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
+       $info = usuarios::where('idUsuario', $id)->where('type', '4')->first();
 
 
         return view('administrator.management',compact('usuarios', 'campus', 'regiones', 'id', 'directivos', 'dReg','dCamp','info'));
