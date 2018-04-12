@@ -27,15 +27,15 @@ class responderController extends Controller
           return view("administrator.encuestacontestada");
     }else{//hay entrada de matricula
     $info=DB::table('encuestados')->where('noCuenta','=',$matricula)->get();
-
-		$datos=DB::table('encuestados') //encuestas no contestadas
+//encuestas no contestadas
+		$datos=DB::table('encuestados') 
 			->join('templates','encuestados.idEncuesta','=','templates.id')
       ->join('publicaciones','encuestados.idEncuesta','=','publicaciones.idTemplate')
 			->where('encuestados.noCuenta','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
-
-      $contestado=DB::table('encuestados')//enuuestas  contestadas
+//enuuestas  contestadas
+      $contestado=DB::table('encuestados')
       ->join('templates','encuestados.idEncuesta','=','templates.id')      
       ->join('publicaciones','encuestados.idEncuesta','=','publicaciones.idTemplate')
       ->where('encuestados.noCuenta','=',$matricula)
