@@ -77,15 +77,15 @@ class directiveController extends Controller
       return view('directive.home', compact('encuestas','datosdirective','regionestotal','regiones','campus','info'));
 
   }
-  public function buscar(Request $request){
+  public function buscar(Request $request){//Busqueda de todas las encuestas
     $data = DB::table('templates')->where("id", $request->id)->get();
     return response()->json($data);
   }
-  public function busquedacampus(Request $request){
+  public function busquedacampus(Request $request){//busqueda por campus
     $data = DB::table('ctlCampus')->where('regions_regions_id',$request->id)->get();
     return response()->json($data);
   }
-  public function estadisticaCampus($id,$idcampus){
+  public function estadisticaCampus($id,$idcampus){//
       $stadisticas= DB::table('estadisticas')->where('surveys_id','=',$id)
                                              ->where('campus_campus_id','=',$idcampus)->count();
 

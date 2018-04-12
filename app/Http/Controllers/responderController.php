@@ -22,20 +22,20 @@ class responderController extends Controller
     $matricula=$request->session()->get('id');
 
 		//$id es el la variable de la table encuestados donde se almacena la informacion
-    if($matricula==0){
+    if($matricula==0){//NO hay entra de matricula si no mandar mensaje de error
           echo $matricula;
           return view("administrator.encuestacontestada");
-    }else{
+    }else{//hay entrada de matricula
     $info=DB::table('encuestados')->where('noCuenta','=',$matricula)->get();
 
-		$datos=DB::table('encuestados') 
+		$datos=DB::table('encuestados') //encuestas no contestadas
 			->join('templates','encuestados.idEncuesta','=','templates.id')
       ->join('publicaciones','encuestados.idEncuesta','=','publicaciones.idTemplate')
 			->where('encuestados.noCuenta','=',$matricula)
 			->where('encuestados.contestado','=',0)
 			->get();
 
-      $contestado=DB::table('encuestados')
+      $contestado=DB::table('encuestados')//enuuestas  contestadas
       ->join('templates','encuestados.idEncuesta','=','templates.id')      
       ->join('publicaciones','encuestados.idEncuesta','=','publicaciones.idTemplate')
       ->where('encuestados.noCuenta','=',$matricula)

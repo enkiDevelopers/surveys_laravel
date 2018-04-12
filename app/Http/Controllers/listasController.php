@@ -100,16 +100,20 @@ class listasController extends Controller
     }
 
 
-public function ingresarDatos(Request $request){
+public function ingresarDatos(Request $request){//acepta los datos 
     $idlista=$request->input('id');
+    //obtiene los recursos que le correponde a lista
     $data=DB::table('recursos')->where('idlista','=',$idlista)->get();
     $cantidad=DB::table('recursos')->where('idlista','=',$idlista)->count();
+    //marca lista con stauts 3
     DB::table('listaEncuestados')->where('idLista',$idlista)->update(['carga'=>3]);
-
+    //recorre las listas encontradas
     foreach ($data as $datas) {
          $path= $datas->path;
+         //despacha las listas a los jobs
          $job = new IngresarLista($path,$idlista,$cantidad);
          dispatch($job);
+         //manda un contador
          $cantidad--;
     } 
 }
@@ -118,26 +122,31 @@ public function ingresarMasDatos2(Request $request){
             echo "Algo raro está pasando \n";    
             //return back();
 }
-public function checarlist(Request $request){
+public function checarlist(Request $request){//funcion que obtiene el nombre para mostrar
+
     $data=DB::table('recursos')->select('orginalname')->where('idLista','=',$request->id)->get();
 
     return response()->json($data);
 }
 
-public function ingresarMasDatos(Request $request){
+public function ingresarMasDatos(Request $request){//recibe el archivo que se guarda
     try{
         //ini_set('max_execution_time', 0);
         $listaid=$request->input('listaid');
+        //obtiene un nombre con codificacion md5
         $nombrepath=md5(microtime(true));
         $nombrepath=$nombrepath.".xlsx";
-
+        //cuestiona la existencia del archivo
         if($request->hasFile('datos')) {
                 $file = $request->file('datos');
                 $dato=$request->file('datos')->getClientOriginalName();
+                //guada archivo en carpeta
                 $file->move('listas/', $nombrepath);
+                //inserta el nombre del archivo y obtiene el id
                 $INFO=DB::table('recursos')->insertGetId([ 'path'=> $nombrepath,
                                                            'orginalname'=>$dato,
                                                            'idlista'=>$listaid]);
+                //actualiza el estatus del archivo
                 DB::table('listaEncuestados')->where('idLista',$listaid)->update(['carga'=>2]);
                 
         }else{
@@ -152,8 +161,9 @@ public function ingresarMasDatos(Request $request){
     }
     return back();
 }
-private function guardarListaBD($nombre,$id2){
+private function guardarListaBD($nombre,$id2){//crea nombre de la lista la tabla
     $factual=date('Y-m-d H:m:s');
+
     $id = DB::table('listaEncuestados')->insertGetId(
                                         array( 'nombre'  => $nombre,
                                                'archivo' => null,
@@ -162,10 +172,10 @@ private function guardarListaBD($nombre,$id2){
                                                'created_at'=>$factual));
   return $id;  
 }
-public function ingresarlista(Request $request){
+public function ingresarlista(Request $request){//llama funcion guardarlistabd
         $nombre=$request->input('nombre');
 
-        $arreglo=null;
+                $arreglo=null;
                 $usrid=$request->session()->get('id');  
                 $id=$this->guardarListaBD($nombre,$usrid);
   
@@ -174,7 +184,7 @@ public function ingresarlista(Request $request){
 return back();
 
 }
-    public function checarjob(Request $request){
+    public function checarjob(Request $request){//realizar constantes peticiones para ver los estatus de la lista
         $data=DB::table('jobs')->count();
         if($data==0){
             return 1;
@@ -184,14 +194,14 @@ return back();
 
     }
 
-    public function mostrarDatos($id){
+    public function mostrarDatos($id){ //muesta los datos que contienen las listas
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)->get();
 
         return view('administrator/openFile',compact('data'));
 
 
     }
-    public function mostrarIncidentes($id){
+    public function mostrarIncidentes($id){//muestra los datos de incidentes que contienen las listas
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$id)
                                       ->where('incidente','=',1)
                                       ->get();
@@ -200,7 +210,7 @@ return back();
 
 
     }
-    public function eliminarlista(Request $request){
+    public function eliminarlista(Request $request){//elimina listas
         $data=DB::table('listaEncuestados')->where('idLista','=',$request->id)->delete();
         $data=DB::table('encuestados')->where('listaEncuestados_idLista','=',$request->id)->delete();
 
@@ -210,18 +220,19 @@ return back();
     public function respuesta(){
         return "algo";
     }
-    public function incidente(Request $request){
+    public function incidente(Request $request){//ingresa lista de incidentes 
         ini_set('max_execution_time', 0);
         $listaid=$request->input('idlista');
         $inicial=0;
         $arreglo=null;
+        //cuestiona la existencia
          if($request->hasFile('incidentes')) {
                 $file = $request->file('incidentes');
                 $dato=$request->file('incidentes')->getClientOriginalName();
                 $file->move('listas', $dato);
         }
         DB::table('listaEncuestados')->where('idLista',$listaid)->update(['carga'=>4]);
-
+        //despacha los datos
       $job = new ingresarIncidente($listaid,$dato);
       dispatch($job);
         
