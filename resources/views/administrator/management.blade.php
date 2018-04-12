@@ -458,7 +458,7 @@ onerror="this.src='../img/avatar/default.png';"
 
             document.getElementById("adminForm").reset();
           $('#administrador').modal('hide');
-            location.href="administrator/management";
+            location.reload();
           },error: function(result) {
             $("#procesando").hide();
             swal({
@@ -524,7 +524,7 @@ onerror="this.src='../img/avatar/default.png';"
 
           document.getElementById("directForm").reset();
           $('#directivos').modal('hide');
-            location.href="administrator/management";
+            location.reload();
           },error: function(result) {
             $("#procesando").hide();
             swal({
