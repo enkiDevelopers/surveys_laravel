@@ -27,7 +27,7 @@ onclick="return principal();">
           </div>
 
           <div class="row">
-          <div class="col-md-8" id="titEm" style="width: 150px; height: 20px; overflow:hidden;">
+          <div class="col-md-8" id="titEm" style="width: 204px; height: 20px; overflow:hidden;">
                 {{$info->email}}
             </div>
           </div>
