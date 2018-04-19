@@ -6,7 +6,6 @@
 .container1
 {
 	margin-left: 250px;
-
 width: 100%;
 
 }
@@ -593,7 +592,9 @@ overflow: hidden;
 }
 #actualizar
 {
-width: 100%;
+width: 101%;
+margin-left: -2px;
+
 }
 
 #recibiendo
@@ -791,6 +792,15 @@ text-align: center;
 }
 
 
+
+@media(max-width: 930px)
+{
+.redesSocialesIcons
+{
+
+  margin-left: 10px;
+}
+}
 
 @media(max-width: 630px)
 {

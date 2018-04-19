@@ -252,7 +252,7 @@
 
 <!--  modal de  creacion de encuesta-->
     <!-- Modal publicar encuesta-->
-        <form id="form" onsubmit="return detener();">
+        <form id="form" onsubmit="return detener(event);">
       <div class="modal fade" id="miModal"
         role="dialog" aria-labelledby="myModalLabel"
         data-backdrop="static" data-keyboard="false">
@@ -367,7 +367,7 @@
 	      </div>
     </form>
 <!-- #######################################################################Modal Duplicar######################################################## -->
-        <form id="duForm" onsubmit="return detener2();">
+        <form id="duForm" onsubmit="return detener2(event);">
               <div class="modal fade" id="duModal" tabindex="-1"
                 role="dialog" aria-labelledby="myModalLabel"
                 data-backdrop="static" data-keyboard="false">

@@ -223,7 +223,7 @@ var instrucciones = CKEDITOR.instances['instrucciones'].getData();
 
 }
 //detiene el envio del formulario para no recargar la pagina
-function detener()
+function detener(event)
 {
 event.preventDefault();
 enviar();
@@ -309,7 +309,7 @@ function duplicar()
 }
 
 //no recargar la pagina al duplicar
-function detener2()
+function detener2(event)
 {
 event.preventDefault();
 duplicar();
