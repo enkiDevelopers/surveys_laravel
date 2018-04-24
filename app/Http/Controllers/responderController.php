@@ -146,15 +146,17 @@ class responderController extends Controller
 
   }
   private function checarCanal($canal){
+      $canalOK="SISTEMA";
       if($canal==null){
         $canal="mail";
       }
-      if($canal == "blackboard" || $canal == "conexion" || $canal == "facebook" || $canal == "laboratorios" || $canal == "mail"  || $canal== "online" || $canal=="sistema" || $canal=="sms"){
-        $canal=strtoupper($canal);
+      $canal=strtoupper($canal);
+      if($canal == "BLACKBOARD" || $canal == "CONEXION" || $canal == "FACEBOOK" || $canal == "LABORATORIOS" || $canal == "MAIL"  || $canal== "ONLINE" || $canal=="SISTEMA" || $canal=="SMS"){
+        $canalOK=$canal;
       }else{
-        $canal="SISTEMA";
+        $canalOK="SISTEMA";
       }
-      return $canal;
+      return $canalOK;
   }
   public function guardarencuesta(Request $request){   
       $idEncuesta=$request->Input('idencuesta');
