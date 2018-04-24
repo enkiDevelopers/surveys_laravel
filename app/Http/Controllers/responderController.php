@@ -145,14 +145,25 @@ class responderController extends Controller
         return back();//
 
   }
+  private function checarCanal($canal){
+      if($canal==null){
+        $canal="mail";
+      }
+      if($canal == "blackboard" || $canal == "conexion" || $canal == "facebook" || $canal == "laboratorios" || $canal == "mail"  || $canal== "online" || $canal=="sistema" || $canal=="sms"){
+        $canal=strtoupper($canal);
+      }else{
+        $canal="SISTEMA";
+      }
+      return $canal;
+  }
   public function guardarencuesta(Request $request){   
       $idEncuesta=$request->Input('idencuesta');
       $idencuestado=$request->Input('idencuestado');
       $canal =$request->session()->get('canal');
       $factual=date('Y-m-d H:m:s');
-      if($canal==null){
-        $canal="mail";
-      }
+
+      $cadenacanal=$this->checarCanal($canal);
+      
 
       $yacontestado = DB::table('encuestados')
                   ->where('idencuesta','=',$idEncuesta)->where('idE','=',$idencuestado)->where('contestado','=',1)->count();
@@ -192,7 +203,7 @@ class responderController extends Controller
     }
         }
         DB::table('encuestados')->where('idE',$idencuestado)->update([
-          'canal'=>$canal,
+          'canal'=>$cadenacanal,
           'contestado_fecha' => $factual,
           'contestado'=>1]);
         //$idmatricula=DB::table('encuestados')->select('noCuenta')->where('idE','=',$idencuestado)->get();
