@@ -86,13 +86,11 @@
                     <div class="panel-heading"> <!-- INICIO ENCABEZADO PANEL -->
                       <div class="row">
                       <div class="col-md-12">
-                      <div class="col-md-4" style="text-align: top; ">
+                      <div class="col-md-6" style="text-align: top; ">
                       <b style="font-size: 30px;">Encuestas</b>
                       </div>
 
-                  
-
-                      <div class="col-md-4" id="btn-aC2"style="text-align: right;">
+                      <div class="col-md-6" id="btn-aC2"style="text-align: right;">
                         <div style="margin: 1rem;">
                           <input type="checkbox"
                           checked data-toggle="toggle" data-on="Ocultar"
