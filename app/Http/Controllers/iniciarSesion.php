@@ -21,11 +21,6 @@ public function validarInicio(Request $request)
 }else {
 
   $usuario = usuarios::find($id);
-  $encuestado = encuestados::where('noCuenta', $id)->count();
-if($encuestado != 0)
-{
-   return redirect('logout');
-}else{
 
   if($usuario->type == 4)
   {
@@ -33,9 +28,9 @@ if($encuestado != 0)
     return view('administrator.home',compact('info'));
   }elseif($usuario->type == 3 || $usuario->type == 2 || $usuario->type == 1 )
   {
-    return redirect('/directive');
+    return redirect('directive');
   }
-}
+
 }
 
 }

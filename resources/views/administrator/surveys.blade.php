@@ -90,16 +90,7 @@
                       <b style="font-size: 30px;">Encuestas</b>
                       </div>
 
-                      <div class="col-md-4" id="contRedes">
-
-                        <div  class="col-md-6 redesSocialesIcons" id="imgT">
-                          <img id="tw" src="/img/redes/twitter.png" width="40px" height="40px" onclick="infoT();"/>
-                        </div>
-                        <div class="col-md-6 redesSocialesIcons" id="imgF">
-                          <img id="fb" src="/img/redes/Facebook.png"  width="40px" height="40px" onclick="infoF();"/>
-                        </div>
-
-                      </div>
+                  
 
                       <div class="col-md-4" id="btn-aC2"style="text-align: right;">
                         <div style="margin: 1rem;">
