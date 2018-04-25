@@ -764,6 +764,7 @@ text-align: center;
 {
 	display: inline-block;
 	width: 40%;
+
 }
 
 #contRedes
@@ -780,8 +781,9 @@ text-align: center;
 }
 #btn-aC2
 {
-
-	width: 40%;
+background-color: red;
+width: 80%;
+text-align: center;
 	display: inline-block;
 }
 
@@ -875,6 +877,11 @@ margin-top: 26px;
 {
 width: 50%;
 }
+#btn-aC2
+{
+  
+  width: 90%;
+}
 
 }
 
@@ -893,11 +900,16 @@ width: 50%;
 {
 width: 60%;
 }
-#btn-aC2, #btn-aC
+#btn-aC
 {
 
 	width: 30%;
 margin-left: -10px;
+}
+#btn-aC2
+{
+  width: 100%;
+  margin-left: 9%;
 }
 
 }
@@ -914,7 +926,7 @@ margin-left: -10px;
   width: 322px;
 }
 
-#btn-aC2, #btn-aC
+#btn-aC
 {
 
 	width: 30%;
