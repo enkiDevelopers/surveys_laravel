@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 */
 
 //Agregando web services
+//Agregando un comentario
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
