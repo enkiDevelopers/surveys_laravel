@@ -32,20 +32,26 @@ class apiController extends Controller
 
   public function checkSurveys($token,$idUser){ //No de cuenta
 
-    $checkToken = DB::table('tokens')->where("token",$token)->count();
+    $checkToken = DB::table('tokens')->where('token',$token)->count();
     $checkUser = DB::table('encuestados')->where('noCuenta', $idUser)->count();
+    $checkExpToken = DB::table('tokens')->where('token',$token)->where('timestampConsumo','!=',NULL)->count();
+    $date = date("Y-m-d H:i:s");
+    $mod_date = strtotime($date."+ 5 minutes");
+    $fecha_vencimiento = date("Y-m-d H:i:s",$mod_date);
+    $tokenExp = DB::table('tokens')->where('token',$token)->pluck('timestampConsumo')->first();
+    $fecha_actual = strtotime($date);
+    $fecha_entrada = strtotime($tokenExp);
     if($checkToken == 0){
       return response()->json("Token Invalido");
     }elseif ($checkUser == 0) {
       return response()->json("Usuario Invalido");
+    }elseif ($fecha_actual > $fecha_entrada && $checkExpToken > 0) {
+      return response()->json("Ha expirado el tiempo de uso válido del token ingresado");
     }    
 
-    $date = date("Y-m-d H:i:s");
-    //Incrementando 5
-    $mod_date = strtotime($date."+ 5 minutes");
-    $fecha_vencimiento = date("Y-m-d H:i:s",$mod_date);
-    
-    DB::table('tokens')->where('token', $token)->update(['log' => "Completado", 'idE' => $idUser, 'timestampConsumo' => $fecha_vencimiento]);
+    if ($checkExpToken == 0) {
+      DB::table('tokens')->where('token', $token)->update(['log' => "Completado", 'idE' => $idUser, 'timestampConsumo' => $fecha_vencimiento]);
+    }
 
     //checar número encuestas NO contestadas
     $surveys = DB::table('encuestados')->where("noCuenta",$idUser)->where("contestado",0)->where('idEncuesta','!=',NULL)->count();  
