@@ -19,4 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/administrator/login', 'iniciarSesion@validarAdmin')->name("adminLogin");
+Route::get('/token/{platformName}/{idUser}','apiController@checkPlatform');
+
+Route::get('/numEncuestas/{token}/{idUser}','apiController@checkSurveys');
