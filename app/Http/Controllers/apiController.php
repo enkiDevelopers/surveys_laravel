@@ -10,24 +10,24 @@ class apiController extends Controller
   public function checkPlatform($platformName,$idUser){
 
     $ip = $_SERVER['REMOTE_ADDR'];
-    $idPlataforma = DB::table('ctlPlataformas')->where("nombre", $platformName)->first()->id;
     $fecha_actual = date("Y-m-d H:i:s");
 
     $checkPlatform = DB::table('ctlPlataformas')->where("nombre",$platformName)->count();
     
     if($checkPlatform == 0){
-      return view("errors.404");
+      return response()->json("Plataforma Invalida");
     }
 
     $api_token = date("YmdHis").str_random(6);
+    $idPlataforma = DB::table('ctlPlataformas')->where("nombre", $platformName)->first()->id;
 
-   DB::table('tokens')->insert([
-      ['idPlataforma' => $idPlataforma, 'token' => $api_token, 'ip' => $ip, 'idE' => $idUser,'timestampPeticion' => $fecha_actual, 'servicio' => 'token' ,'log' => "Procesando"],
+    DB::table('tokens')->insert([
+      ['idPlataforma' => $idPlataforma, 'token' => $api_token, 'ip' => $ip, 'idE' => $idUser,'timestampPeticion' => $fecha_actual],
     ]);
 
-   DB::table('logs')->insert([
-    ['token'=> $api_token, 'log' => 'Generacion del token'],
-   ]);
+    DB::table('logs')->insert([
+      ['token'=> $api_token, 'log' => 'Generacion del token', 'timestamp' => $fecha_actual],
+    ]);
 
     return ($api_token);
   }
@@ -51,26 +51,26 @@ class apiController extends Controller
 
     if($checkToken == 0){
       DB::table('logs')->insert([
-        ['token'=> $token, 'log' => 'Encuestas No contestadas - Token Inválido'],
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - Token Inválido', 'timestamp' => $date],
       ]);
 
       return response()->json("Token Invalido");
     }elseif ($checkUser == 0) {
       DB::table('logs')->insert([
-        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Inválido'],
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Inválido', 'timestamp' => $date],
       ]);
 
       return response()->json("Usuario Invalido");
     }elseif ($fecha_actual > $fecha_entrada && $checkExpToken > 0) {
       DB::table('logs')->insert([
-        ['token'=> $token, 'log' => 'Encuestas No contestadas - El token ha expirado'],
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - El token ha expirado', 'timestamp' => $date],
       ]);
 
       return response()->json("Ha expirado el tiempo de uso válido del token ingresado");
     }    
 
     if ($checkExpToken == 0) {
-      DB::table('tokens')->where('token', $token)->update(['log' => "Completado", 'timestampConsumo' => $fecha_vencimiento]);
+      DB::table('tokens')->where('token', $token)->update(['timestampConsumo' => $fecha_vencimiento]);
     }
 
     //Obtener título y url de cada encuesta no contestada
@@ -94,7 +94,7 @@ class apiController extends Controller
     $resultado = array_merge($NumSurveys,$datosSurveys);
 
      DB::table('logs')->insert([
-      ['token'=> $token, 'log' => 'Encuestas No contestadas - satisfactorio'],
+      ['token'=> $token, 'log' => 'Encuestas No contestadas - satisfactorio', 'timestamp' => $date],
      ]);
 
     return response()->json($resultado);
