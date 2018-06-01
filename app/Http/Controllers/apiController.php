@@ -22,7 +22,7 @@ class apiController extends Controller
     $idPlataforma = DB::table('ctlPlataformas')->where("nombre", $platformName)->first()->id;
 
     DB::table('tokens')->insert([
-      ['idPlataforma' => $idPlataforma, 'token' => $api_token, 'ip' => $ip, 'idE' => $idUser,'timestampPeticion' => $fecha_actual],
+      ['idPlataforma' => $idPlataforma, 'token' => $api_token, 'ip' => $ip, 'noCuenta' => $idUser,'timestampPeticion' => $fecha_actual],
     ]);
 
     DB::table('logs')->insert([
