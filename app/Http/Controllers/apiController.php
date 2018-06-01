@@ -19,12 +19,12 @@ class apiController extends Controller
     
     if($checkPlatform == 0){
       DB::table('logs')->insert([
-        ['token'=> $api_token, 'log' => 'Generacion del token - Plataforma Invalida', 'timestamp' => $fecha_actual],
+        ['token'=> $api_token, 'log' => 'Generacion del token - Plataforma Inválida', 'timestamp' => $fecha_actual],
       ]);
       return response()->json("Plataforma Invalida");
     }elseif ($checkUser == 0) {
       DB::table('logs')->insert([
-        ['token'=> $api_token, 'log' => 'Generacion del token - Usuario Invalido', 'timestamp' => $fecha_actual],
+        ['token'=> $api_token, 'log' => 'Generacion del token - Usuario Inválido', 'timestamp' => $fecha_actual],
       ]);
       return response()->json("Usuario Invalido");
     }
@@ -36,7 +36,7 @@ class apiController extends Controller
     ]);
 
     DB::table('logs')->insert([
-      ['token'=> $api_token, 'log' => 'Generacion del token', 'timestamp' => $fecha_actual],
+      ['token'=> $api_token, 'log' => 'Generacion del token - satisfactorio', 'timestamp' => $fecha_actual],
     ]);
 
     return ($api_token);
@@ -48,6 +48,7 @@ class apiController extends Controller
     $checkToken = DB::table('tokens')->where('token',$token)->count();
     $checkUser = DB::table('encuestados')->where('noCuenta', $idUser)->count();
     $checkExpToken = DB::table('tokens')->where('token',$token)->where('timestampConsumo','!=',NULL)->count();
+    $userValidate = DB::table('tokens')->where('token',$token)->where('noCuenta',$idUser)->count();
 
     $date = date("Y-m-d H:i:s");
     $mod_date = strtotime($date."+ 5 minutes");
@@ -77,6 +78,12 @@ class apiController extends Controller
       ]);
 
       return response()->json("Ha expirado el tiempo de uso válido del token ingresado");
+    }elseif ($userValidate == 0){
+      DB::table('logs')->insert([
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Inválido para token', 'timestamp' => $date],
+      ]);
+
+      return response()->json("Usuario Invalido para token");
     }    
 
     if ($checkExpToken == 0) {
