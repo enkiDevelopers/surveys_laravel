@@ -12,13 +12,23 @@ class apiController extends Controller
     $ip = $_SERVER['REMOTE_ADDR'];
     $fecha_actual = date("Y-m-d H:i:s");
 
+    $api_token = date("YmdHis").str_random(6);
+
     $checkPlatform = DB::table('ctlPlataformas')->where("nombre",$platformName)->count();
+    $checkUser = DB::table('encuestados')->where('noCuenta', $idUser)->count();
     
     if($checkPlatform == 0){
+      DB::table('logs')->insert([
+        ['token'=> $api_token, 'log' => 'Generacion del token - Plataforma Invalida', 'timestamp' => $fecha_actual],
+      ]);
       return response()->json("Plataforma Invalida");
+    }elseif ($checkUser == 0) {
+      DB::table('logs')->insert([
+        ['token'=> $api_token, 'log' => 'Generacion del token - Usuario Invalido', 'timestamp' => $fecha_actual],
+      ]);
+      return response()->json("Usuario Invalido");
     }
 
-    $api_token = date("YmdHis").str_random(6);
     $idPlataforma = DB::table('ctlPlataformas')->where("nombre", $platformName)->first()->id;
 
     DB::table('tokens')->insert([
