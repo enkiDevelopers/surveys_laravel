@@ -19,14 +19,15 @@ class apiController extends Controller
     
     if($checkPlatform == 0){
       DB::table('logs')->insert([
-        ['token'=> $api_token, 'log' => 'Generacion del token - Plataforma Inválida', 'timestamp' => $fecha_actual],
+        ['token'=> $api_token, 'log' => 'Generacion del token - Plataforma Invalida', 'timestamp' => $fecha_actual],
       ]);
       return response()->json("Plataforma Invalida");
     }elseif ($checkUser == 0) {
       DB::table('logs')->insert([
-        ['token'=> $api_token, 'log' => 'Generacion del token - Usuario Inválido', 'timestamp' => $fecha_actual],
+        ['token'=> $api_token, 'log' => 'Generacion del token - Usuario Invalido', 'timestamp' => $fecha_actual],
       ]);
       return response()->json("Usuario Invalido");
+      exit();
     }
 
     $idPlataforma = DB::table('ctlPlataformas')->where("nombre", $platformName)->first()->id;
@@ -62,13 +63,13 @@ class apiController extends Controller
 
     if($checkToken == 0){
       DB::table('logs')->insert([
-        ['token'=> $token, 'log' => 'Encuestas No contestadas - Token Inválido', 'timestamp' => $date],
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - Token Invalido', 'timestamp' => $date],
       ]);
 
       return response()->json("Token Invalido");
     }elseif ($checkUser == 0) {
       DB::table('logs')->insert([
-        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Inválido', 'timestamp' => $date],
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Invalido', 'timestamp' => $date],
       ]);
 
       return response()->json("Usuario Invalido");
@@ -80,12 +81,11 @@ class apiController extends Controller
       return response()->json("Ha expirado el tiempo de uso válido del token ingresado");
     }elseif ($userValidate == 0){
       DB::table('logs')->insert([
-        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Inválido para token', 'timestamp' => $date],
+        ['token'=> $token, 'log' => 'Encuestas No contestadas - Usuario Invalido para token', 'timestamp' => $date],
       ]);
 
-      return response()->json("Usuario Invalido para token");
-    }    
-
+      return "Usuario Invalido para token";
+    }   
     if ($checkExpToken == 0) {
       DB::table('tokens')->where('token', $token)->update(['timestampConsumo' => $fecha_vencimiento]);
     }
