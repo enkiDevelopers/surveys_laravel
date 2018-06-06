@@ -10,157 +10,140 @@ use File;
 use Input;
 class questionsTemplateController extends Controller
 {
-    public function saveQuestionsTemplate(Request $request){
+  public function saveQuestionsTemplate(Request $request){
+    $numPregSig = $request['numPregSig'];
+    $questionInput = $request['questionInput'];
+    $questionType = $request['questionType'];
+    $questionDesign = $request['questionDesign'];
+    $idTemplate = $request['idTemplate'];
+    $optionsResult = $request['optionsResult'];
+    $salto = $request['salto'];
 
-        $numPregSig = $request['numPregSig'];
-        $questionInput = $request['questionInput'];
-        $questionType = $request['questionType'];
-        $idTemplate = $request['idTemplate'];
-        $optionsResult = $request['optionsResult'];
-        $salto = $request['salto'];
+    $surv = new questionsTemplates;
+    $surv->templates_idTemplates = $idTemplate;
+    $surv->orden = $numPregSig;
+    $surv->title = $questionInput;
+    $surv->type = $questionType;
+    $surv->design = $questionDesign;
+    $surv->salto = $salto;
+    $surv->save();
 
-            $surv = new questionsTemplates;
-            $surv->templates_idTemplates = $idTemplate;
-            $surv->orden = $numPregSig;
-            $surv->title = $questionInput;
-            $surv->type = $questionType;
-            $surv->salto = $salto;
-            //$surv->idParent = $idParent;
-            $surv->save();
+    $preguntas = questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
 
-        if($questionType == 1){
+    if($questionType == 1){
+      return $preguntas;
+    }else{
+      $eid = $surv->id;
+      $valOptions = count(json_decode(json_encode($optionsResult), true));
 
-            return questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
+      for ($i=0; $i < $valOptions; $i++) {         
+        DB::table('optionsMult')->insert([
+          ['name' => $optionsResult[$i], 'idParent' => $eid, 'salto' => $salto],
+        ]);               
+      }
 
+      $datosOpt = [];
+
+      foreach ($preguntas as $dato) {
+        if($dato['type'] == 2 || $dato['type'] == 3){
+          $idq=$dato['id'];
+          $opt=optionsMult::where('idParent',$idq)->get();
         }else{
-
-            $eid = $surv->id;
-
-            $valOptions = count(json_decode(json_encode($optionsResult), true));
-            for ($i=0; $i < $valOptions; $i++) { 
-        
-                DB::table('optionsMult')->insert([
-                    ['name' => $optionsResult[$i], 'idParent' => $eid, 'salto' => $salto],
-                ]);               
-
-            }
-
-            $preguntas = questionsTemplates::where('templates_idTemplates',$idTemplate)->get();
-
-            $datosOpt = [];
-            //echo $datos;
-            foreach ($preguntas as $dato) {
-                //echo $dato . ",";
-                if($dato['type']== 2 || $dato['type']== 3  ){
-                    $idq=$dato['id'];
-                    $opt=optionsMult::where('idParent',$idq)->orderby('orden','asc')->get();
-                    //echo $opt . ",";
-                }else{
-                    $opt=null;
-                }
-                $datosOpt[] = [
-                "questions" => $dato,
-                "options" => $opt];
-            }
-
-            $options=serialize($datosOpt);
-
-            return $options;
-
+          $opt=null;
         }
+        $datosOpt[] = [
+        "questions" => $dato,
+        "options" => $opt];
+      }
+
+      $options=serialize($datosOpt);
+
+      return $options;
+    }
+  }
+
+  public function addSalto(Request $request){
+    $salto = $request['salto'];
+    $idQuestion = $request['idQuestion'];
+    $idOption = $request['idOption'];
+    $option = optionsMult::where('idParent',$idQuestion)->where('id',$idOption)->update(array('salto' => $salto));
+
+    return $option;
+  }
+
+  public function addSaltoParent(Request $request){
+    $salto = $request['salto'];
+    $idQuestion = $request['idQuestion'];
+
+    $option = questionsTemplates::where('id',$idQuestion)->update(array('salto' => $salto));
+
+    return $option;
+  }
+
+  public function deleteQuestion(Request $request){
+    $idQuestion = $request['idQuestion'];
+    $idTemplate = $request['idTemplate'];
+    $orden = $request['orden'];
+    $typeQuestion =$request['typeQuestion'];
+
+    $result = questionsTemplates::where('id',$idQuestion)->delete();
+
+    if ($typeQuestion == 2 || $typeQuestion == 3 ) {
+        $result = optionsMult::where('idParent', $idQuestion)->delete();
     }
 
-    public function addSalto(Request $request){
-        $salto = $request['salto'];
-        $idQuestion = $request['idQuestion'];
-        $idOption = $request['idOption'];
+    $update = questionsTemplates::where('orden','>',$orden)->where('templates_idTemplates',$idTemplate)
+                ->decrement('orden');
 
-        $option = optionsMult::where('idParent',$idQuestion)->where('id',$idOption)->update(array('salto' => $salto));
+    return $result;
+  }
 
-        return $option;
+  public function editEliminarQuestion(Request $request){
+    $idQuestion = $request['idQuestion'];
+    $typeQuestion = $request['typeQuestion'];
+    $titleEdit = $request['titleEdit'];
+    $salto = $request['salto'];
+    $optionsResult = $request['optionsResult'];
+
+    $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
+
+    if ($typeQuestion == 2 || $typeQuestion == 3) {
+      $result = optionsMult::where('idParent', $idQuestion)->delete();
+      $valOptions = count(json_decode(json_encode($optionsResult), true)); //Cuenta las opciones mult.
+      
+      for ($i=0; $i < $valOptions; $i++) { 
+        DB::table('optionsMult')->insert([
+          ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
+        ]);     
+      }
+          
+      $result = 1;   
     }
 
-    public function addSaltoParent(Request $request){
-        $salto = $request['salto'];
-        $idQuestion = $request['idQuestion'];
+    return $result;     
+  }
 
-        $option = questionsTemplates::where('id',$idQuestion)->update(array('salto' => $salto));
-
-        return $option;
-    }
-
-    public function deleteQuestion(Request $request){
-
-        $idQuestion = $request['idQuestion'];
-        $idTemplate = $request['idTemplate'];
-        $orden = $request['orden'];
-        $typeQuestion =$request['typeQuestion'];
-
-        $result = questionsTemplates::where('id',$idQuestion)->delete();
-
-        if ($typeQuestion == 2 || $typeQuestion == 3 ) {
-            $result = optionsMult::where('idParent', $idQuestion)->delete();
-        }
-
-        $update = questionsTemplates::where('orden','>',$orden)->where('templates_idTemplates',$idTemplate)
-                    ->decrement('orden');
-
-        return $result;
-    }
-
-    public function editEliminarQuestion(Request $request){
-        $idQuestion = $request['idQuestion'];
-        $typeQuestion = $request['typeQuestion'];
-        $titleEdit = $request['titleEdit'];
-        $salto = $request['salto'];
-        $optionsResult = $request['optionsResult'];
-
-        $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
-
-        if ($typeQuestion == 2 || $typeQuestion == 3) {
-
-            $result = optionsMult::where('idParent', $idQuestion)->delete();
-
-            $valOptions = count(json_decode(json_encode($optionsResult), true)); //Cuenta las opciones mult.
-            for ($i=0; $i < $valOptions; $i++) { 
+  public function deleteOptions(Request $request){
+    $idQuestion = $request['idQuestion'];
+    $valOptions = count(json_decode(json_encode($idQuestion), true));
     
-                DB::table('optionsMult')->insert([
-                        ['name' => $optionsResult[$i], 'idParent' => $idQuestion, 'salto' => $salto],
-                    ]);     
- 
-             }
-            $result = 1;   
-                     }
-
-           
-
-        return $result;     
+    for ($i=0; $i < $valOptions; $i++) { 
+      DB::table('optionsMult')->where('idParent', $idQuestion[$i])->update(array('salto' => 0));
     }
 
-    public function deleteOptions(Request $request){
-        $idQuestion = $request['idQuestion'];
+    return "1";
+  }
 
-        $valOptions = count(json_decode(json_encode($idQuestion), true));
-            for ($i=0; $i < $valOptions; $i++) { 
-            DB::table('optionsMult')->where('idParent', $idQuestion[$i])->update(array('salto' => 0));
-        }
+  public function updateOrderQuestion(Request $request){
+    $newOrden = $request['newOrden'];
+    $idQuestion = $request['idQuestion'];
+    $valOptions = count(json_decode(json_encode($idQuestion), true));
 
-        return "1";
+    for ($i=0; $i < $valOptions; $i++) { 
+      DB::table('questionsTemplates')->where('id', $idQuestion[$i])->update(array('orden' => $newOrden[$i]));
     }
 
-    public function updateOrderQuestion(Request $request){
-
-        $newOrden = $request['newOrden'];
-        $idQuestion = $request['idQuestion'];
-
-        $valOptions = count(json_decode(json_encode($idQuestion), true));
-        for ($i=0; $i < $valOptions; $i++) { 
-            DB::table('questionsTemplates')->where('id', $idQuestion[$i])->update(array('orden' => $newOrden[$i]));
-        }
-
-//        $surv::where('id', $idTemplate)->update(array('orden' => $orden));
-
-        return $valOptions;
-    }
+    return $valOptions;
+  }
 
 }

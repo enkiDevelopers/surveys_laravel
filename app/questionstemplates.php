@@ -9,6 +9,6 @@
 
 	protected $table ='questionsTemplates';
 
-     protected $fillable = ['title', 'type', 'orden','templates_idTemplates','salto'];
+     protected $fillable = ['title', 'type', 'design' ,'orden','templates_idTemplates','salto'];
 
  }

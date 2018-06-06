@@ -174,7 +174,7 @@ a[data-toggle="collapse"] {
 }
 
 a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
+    /*content: '\e259'; */
     display: block;
     position: absolute;
     right: 20px;
@@ -182,7 +182,7 @@ a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
     font-size: 0.6em;
 }
 a[aria-expanded="true"]::before {
-    content: '\e260';
+    /*content: '\e260'; */
 }
 
 

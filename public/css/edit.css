@@ -4,8 +4,7 @@ table{
 hr{
     border-top: 2px solid #c62828;
 }
-.btnC
-{
+.btnC{
 	width: 100%;
 	height: 14%;
 	margin-top: 2%;
@@ -13,77 +12,63 @@ hr{
 	margin-left: -15px;
 	text-align: center;
 }
-.btn-icon
-{
+.btn-icon{
 	background-color: rgba(0, 0, 0, 0.4);
-			color: #fff;
-			border: 0px solid black;
-			border-radius: 5px;
+	color: #fff;
+	border: 0px solid black;
+	border-radius: 5px;
 }
-.horizontal
-{
+.horizontal{
 	width: 220px;
-		margin-left: -15px;
-		height: 100%;
-		border-radius: 5px;
-		background-color:  rgba(205,205,205,0.4);
-		display: inline-flex;
-		justify-content: center;
+	margin-left: -15px;
+	height: 100%;
+	border-radius: 5px;
+	background-color:  rgba(205,205,205,0.4);
+	display: inline-flex;
+	justify-content: center;
 }
-.vertical
-{
-
+.vertical{
 	display: inline-flex;
 	flex-direction: column;
 	justify-content: center;
 }
-
-.imgIcon
-	{
-			display: flex;
+.imgIcon{
+	display: flex;
 	justify-content: center;
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 98%;
 	max-height: 98%;
 	min-width: 98%;
-
 	border-radius: 5px;
-	}
-
-.titleed
-			{
-				margin-top: 78%;
-				margin-left: -15px;
-				position: absolute;
-				background-color: rgba(0,0,0,0.4);
-				width: 100%;
-				height: 22%;
-				border-radius: 5px;
-				color: #fff;
-				word-break: break-all;
-				word-wrap: break-word;
-			}
-.cont
-{
-
-display:inline-block;
-margin-left: 0px;
-margin-right: 30px;
-width: 210px;
-height: 220px;
-min-width: 220px;
-max-width: 220px;
-border-radius: 5px;
-margin-bottom: 20px;
-
 }
-
+.titleed{
+	margin-top: 78%;
+	margin-left: -15px;
+	position: absolute;
+	background-color: rgba(0,0,0,0.4);
+	width: 100%;
+	height: 22%;
+	border-radius: 5px;
+	color: #fff;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+.cont{
+	display:inline-block;
+	margin-left: 0px;
+	margin-right: 30px;
+	width: 210px;
+	height: 220px;
+	min-width: 220px;
+	max-width: 220px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
 .col-img{
-		padding-top: 30px;
-		padding-left: 5%;
+	padding-top: 30px;
+	padding-left: 5%;
 }
-
 .container{
 	width: 100%;
 }
@@ -115,14 +100,14 @@ margin-bottom: 20px;
 	margin-bottom: 11px !important;
 }
 #questionSaved{
-	 overflow-x: hidden;
-	 overflow-y: auto;
-	 height: auto;
-	 max-height: 50rem;
-	 position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: auto;
+	max-height: 50rem;
+	position: relative;
 	/* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
-	 padding: 1px 10px 0px 5px;
-	 margin: 0px 15px 0px 24%;
+	padding: 1px 10px 0px 5px;
+	margin: 0px 15px 0px 24%;
 }
 .new-question__control--edit-question{
 	/* box-shadow: 3px 3px 3px #174340; */
@@ -158,18 +143,15 @@ margin-bottom: 20px;
   float: left;
   margin: 2px 9px 0px 14px;
 }
-
 .titleContainer{
     /*left: 23.5%;
     width: 64%;
     margin-right: 2.66666%;*/
     margin-top: 1%;
 }
-
 .titleWrite{
     background-color: #eeeeee;
     border-radius: 5px;
-
 }
 .header-template{
 	/*left: 25%;
@@ -177,33 +159,25 @@ margin-bottom: 20px;
 	top: 100px;
 	text-align: right;
 }
-
 #imgSalida, #previewcanvas {
     max-width: 80%;
     max-height: 80%;
     border-radius: 5px;
 }
-
 #imgC {
     height: 200px;
     width: 100%;
     margin-left: 25%;
     margin-top: 11%;
-
 }
-
 #icon_survey{
 	width: 80%;
     margin-left: 10%;
     margin-right: 10%;
 }
-.col-desc{
-
-}
 #dataTemplateContainer{
 	margin-bottom: 4%;
 }
-
 .img-thumbnail{
 		width:15vw;
 		height:15;
@@ -219,7 +193,6 @@ margin-bottom: 20px;
 	    margin-left: -102%;
 	    margin-bottom: 3%;*/
 }
-
 
 
 @media screen and (max-width: 1220px) {
