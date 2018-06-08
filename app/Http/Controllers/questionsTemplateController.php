@@ -101,11 +101,12 @@ class questionsTemplateController extends Controller
   public function editEliminarQuestion(Request $request){
     $idQuestion = $request['idQuestion'];
     $typeQuestion = $request['typeQuestion'];
+    $questionDesign = $request["questionDesign"];
     $titleEdit = $request['titleEdit'];
     $salto = $request['salto'];
     $optionsResult = $request['optionsResult'];
 
-    $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit));
+    $result = questionsTemplates::where('id',$idQuestion)->update(array('title' => $titleEdit, 'design' => $questionDesign));
 
     if ($typeQuestion == 2 || $typeQuestion == 3) {
       $result = optionsMult::where('idParent', $idQuestion)->delete();

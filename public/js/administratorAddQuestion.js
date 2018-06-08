@@ -16,7 +16,13 @@ $(document).ready(function(){
     function setOpenQuestionAsDefault(){
        if (tieneOpMul){
             eliminarOpcionMultiple();
+            ocultarConfig();
         }
+        $("ul li").removeClass("active"); //removemos clase active de todos
+        $("ul li a").attr('aria-expanded', 'false');
+        $("#one").addClass("active"); //añadimos a la actual la clase active
+        $("#one a").attr('aria-expanded', 'true');
+       
         $('#questionType').val(1); //colocamos la pregunta abierta como default
         $('select option[value="1"]').attr("selected"); //colocamos la pregunta abierta como default
     }
@@ -44,6 +50,10 @@ $(document).ready(function(){
     }
     /*********************************************************************************/
 
+    function ocultarConfig(){
+        $(".config").addClass('hidden');
+    }
+
     function setHiddenClass(){
         $(".btns-horizontal").addClass('hidden');
         $(".btns-vertical").addClass('hidden');
@@ -70,32 +80,35 @@ $(document).ready(function(){
                     }
                     agregarOpcionMultiple($(this).parent().parent().parent());
                     $(".config").removeClass('hidden');
-                    $(".opMult").removeClass('hidden');
-                    $(".selMult").addClass('hidden');
-                    setHiddenClass();
-                    $(".radios").removeClass('hidden');    
+                    $(".typeDesign").removeClass('hidden');
+                    setHiddenClass();   
+                    $("#questionDesign option[data-design=option]").removeClass('hidden');
+                    $("#questionDesign option[data-design=select]").addClass('hidden');
             break;
             case "3": //Seleccionó pregunta de selección múltiple
                     eliminarOpcionMultiple();
                     tieneOpMul = true;
                     var options = $(".multi-options-template").length;
-                    if( options <= '3'){ //3
-                        $(".delete-question-to-yes-no").attr("disabled","disabled");    
+                        if( options <= '3'){ //3
+                           $(".delete-question-to-yes-no").attr("disabled","disabled");    
                     }
                     agregarOpcionMultiple($(this).parent().parent().parent());
                     $(".config").removeClass('hidden');
-                    $(".selMult").removeClass('hidden');
-                    $(".opMult").addClass('hidden');
+                    $(".typeDesign").removeClass('hidden');
                     setHiddenClass();
-                    $(".examplecheckboxes").removeClass('hidden');
+                    $("#questionDesign option[data-design=option]").addClass('hidden');
+                    $("#questionDesign option[data-design=select]").removeClass('hidden');
             break;
         }
+        $("#questionDesign").prop('selectedIndex', '0'); 
     });
     /*********************************************************************************/
 
 
     /**** Cancelar Agregar Pregunta***************************************************/
     $("#ModalQuestion").on("click", "#cancelarAgregarPreg", function(){
+       $("#step2, #step3").removeClass('in active');
+        $("#step1").addClass('in active');
        $("#ModalQuestion").modal('hide').find("input").val("").find(".yes-no-question").val('1');//ocultamos el modal
     });
     /*********************************************************************************/
@@ -280,10 +293,19 @@ $(document).ready(function(){
         var orden =$(this).attr('orden');
         var title = $(this).parent().parent().parent().children('.col-md-6').children().find('input').val();
         var typeQuestion = parseInt($(this).attr('typeQuestion'));
+        var designQuestion = parseInt($(this).attr('designQuestion'));
         var opciones= $($(this).parent().parent().parent().children('.yes-no-question-block').children().find('input')).map(function() {
             return $(this).val();
         }).get().join("¬").split('¬');
         var salto = parseInt(orden) + 1;
+
+        $("ul li").removeClass("active"); //removemos clase active de todos
+        $("ul li a").attr('aria-expanded', 'false');
+        $("#oneEdit").addClass("active"); //añadimos a la actual la clase active
+        $("#oneEdit a").attr('aria-expanded', 'true');
+        $("#step2Edit").removeClass('in active');
+        $("#step1Edit").addClass('in active');
+
 
            $("#questionInputEdit").val(title);
            $("#numPregSigEdit").val(orden);
@@ -297,13 +319,46 @@ $(document).ready(function(){
 
            $(".options-edit").remove();  //estaba en empty
            if (typeQuestion == 2 || typeQuestion == 3) {
-            $(".add-question-to-yes-no").removeClass('hidden');
+                $(".config").removeClass('hidden');
+                $(".typeDesign").removeClass('hidden');
+                $("#questionDesignEdit option[value="+designQuestion+"]").attr("selected","selected");
+                setHiddenClass();
+                switch(designQuestion){
+                    case 1: 
+                        $(".radios").removeClass('hidden');    
+                    break;
+                    case 2:
+                        $(".btns-horizontal").removeClass('hidden');
+                    break;
+                    case 3:
+                        $(".btns-vertical").removeClass('hidden');
+                        break;
+                    case 4:
+                        $(".exampleselects").removeClass('hidden');
+                    break;
+                    case 10:
+                        $(".examplecheckboxes").removeClass('hidden');
+                    break;
+                    case 11:
+                        $(".boxSel").removeClass('hidden');
+                    break;
+                } 
+                $(".add-question-to-yes-no").removeClass('hidden');
                for (var i = 0; i < opciones.length; i++) {
                    $("#optionsMultEdit").append('<div class="form-group options-edit"><label for="exampleInputEmail1">Opción Respuesta</label><button class="btn btn-danger delete-question-to-yes-no pull-right" style="margin-bottom: 4px;margin-top: 2px;"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button> <input type="text" class="form-control text-black-body questionOptionInputsEdit" id="questionOptionInputEdit" aria-describedby="emailHelp" placeholder="¿Cual es la pregunta?" value="'+opciones[i]+'" maxlength="200"></div>');
-               }
+                }
+                if (typeQuestion == 2 ){
+                    $("#questionDesignEdit option[data-design=option]").removeClass('hidden');
+                    $("#questionDesignEdit option[data-design=select]").addClass('hidden');                  
+                }else{
+                    $("#questionDesignEdit option[data-design=option]").addClass('hidden');
+                    $("#questionDesignEdit option[data-design=select]").removeClass('hidden');                      
+                }
+  
            }else{
             $(".add-question-to-yes-no").addClass('hidden');
-           }
+            ocultarConfig();
+            }
            $("#ModalQuestionEdit").appendTo('body').modal();
     });
     /*********************************************************************************/
@@ -446,37 +501,58 @@ $(document).ready(function(){
     });
 
     $("#ModalQuestion").on("change", "#questionDesign", function(){
+        setHiddenClass();
         switch($(this).val()){
             case "1": 
-                setHiddenClass();
                 $(".radios").removeClass('hidden');    
             break;
             case "2":
-                setHiddenClass();
                 $(".btns-horizontal").removeClass('hidden');
-
             break;
             case "3":
-                setHiddenClass();
                 $(".btns-vertical").removeClass('hidden');
                 break;
             case "4":
-                setHiddenClass();
                 $(".exampleselects").removeClass('hidden');
             break;
             case "10":
-                setHiddenClass();
                 $(".examplecheckboxes").removeClass('hidden');
             break;
             case "11":
-                setHiddenClass();
                 $(".boxSel").removeClass('hidden');
             break;
         }
     });
 
+    $("#ModalQuestionEdit").on("change", "#questionDesignEdit", function(){
+        setHiddenClass();
+        switch($(this).val()){
+            case "1": 
+                $(".radios").removeClass('hidden');    
+            break;
+            case "2":
+                $(".btns-horizontal").removeClass('hidden');
+            break;
+            case "3":
+                $(".btns-vertical").removeClass('hidden');
+                break;
+            case "4":
+                $(".exampleselects").removeClass('hidden');
+            break;
+            case "10":
+                $(".examplecheckboxes").removeClass('hidden');
+            break;
+            case "11":
+                $(".boxSel").removeClass('hidden');
+            break;
+        }
+    });
+
+
+    
     $('.pasar').click(function() { return !$('#origen option:selected').remove().appendTo('#destino'); });  
     $('.quitar').click(function() { return !$('#destino option:selected').remove().appendTo('#origen'); });
+
 });
 
     window.onload = function() {
@@ -491,7 +567,7 @@ $(document).ready(function(){
         var questionInput = $("#questionInput").val();
         var questionOptionInputsA = document.getElementsByClassName('questionOptionInputs');
         var questionType= $("#questionType").val();
-        var questionDesign = $("#questionDesign").prop("selectedIndex");
+        var questionDesign = $("#questionDesign").prop('value');
         var vacio = false;
         var salto = parseInt(numPregSig) + 1;
         var token = $("#token").val();
@@ -533,15 +609,18 @@ $(document).ready(function(){
                         $("#loader").modal('hide');
                             alertify.notify('Pregunta Añadida', 'success', 3, function(){
                                 $("#ModalQuestion").modal('hide').find("input").val("");
+                                $("#step2, #step3").removeClass('in active');
+                                $("#step1").addClass('in active');
                             });
                             $("#container-questions").load(" #container-questions");
                             setTimeout('$("#addQuestion").removeAttr("disabled")', 1000);
                     }else{
                         alertify.notify('No se ha podido agregar la pregunta.', 'error', 3, function(){
                             console.log(e.status);
+                            $("#step2, #step3").removeClass('in active');
+                            $("#step1").addClass('in active');
                         });
-
-            //                 $("#ModalQuestion").modal('hide').find("input").val("");
+     //                 $("#ModalQuestion").modal('hide').find("input").val("");
 
                         setTimeout('$("#addQuestion").removeAttr("disabled")', 1000);
                     }
@@ -565,8 +644,9 @@ $(document).ready(function(){
         var idTemplate = id;
         var idQuestion = $("#idQuestion").val();
         var typeQuestion = $("#questionTypeEdit").val();
+        var questionDesign = $("#questionDesignEdit").prop('value');
         var salto = parseInt($("#numPregSigEdit").val()) + 1;
-          var titleEdit = $("#questionInputEdit").val();
+        var titleEdit = $("#questionInputEdit").val();
         var optionsResult = "";
         var questionOptionInputsA = document.getElementsByClassName('questionOptionInputsEdit');
         for (var i = 0; i < questionOptionInputsA.length; i++)  {
@@ -587,7 +667,7 @@ $(document).ready(function(){
                 $(".edit-question__control--edit-question").attr('disabled','true');
                 $(".edit-question__control--delete-question").attr('disabled','true');
             },
-            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult},
+            data: {idQuestion: idQuestion, typeQuestion: typeQuestion,questionDesign:questionDesign ,titleEdit: titleEdit,salto: salto,optionsResult: optionsResult},
             })
             .done(function() {
                 alertify.notify('Pregunta Editada correctamente.', 'success', 3, function(){

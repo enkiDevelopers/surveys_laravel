@@ -45,7 +45,7 @@
             <div class="col-md-2 pull-right btn-control">
                 <div class="row">
                     <button class="btn btn-info col-md-4  new-question__control new-question__control--edit-question"
-                    id="{{$dato->id}}" typeQuestion="{{$dato->type}}" orden="{{$dato->orden}}" idTemplate= {{$eid}}>
+                    id="{{$dato->id}}" designQuestion="{{$dato->design}}" typeQuestion="{{$dato->type}}" orden="{{$dato->orden}}" idTemplate= {{$eid}}>
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                             </button>
                     <button class="btn btn-danger col-md-4 new-question__control delete-question__control--delete-question" id="{{$dato->id}}" typeQuestion="{{$dato->type}}" orden="{{$dato->orden}}" idTemplate= {{$eid}}>

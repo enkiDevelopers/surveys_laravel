@@ -12,13 +12,12 @@
             <div class="navbar">
               <div class="navbar-inner">
                 <ul class="nav nav-pills">
-                  <li class="active"><a href="#step1" data-toggle="tab" data-step="1">Definición</a></li>
+                  <li id="one" class="active"><a href="#step1" data-toggle="tab" data-step="1">Definición</a></li>
                   <li class="config hidden"><a href="#step2" data-toggle="tab" data-step="2">Configuración</a></li>
-                  <li class="pull-right btn-info"><a href="#step3" data-toggle="tab" onmouseover="this.style.backgroundColor='transparent';" data-step="3">Guardar como personalizada</a></li>
+                  <li><a href="#step3" data-toggle="tab" data-step="3">Guardar como personalizada</a></li>
                 </ul>
               </div>
             </div>
-
             <div class="col-md-12 well">
               <div class="tab-content">
                 <div class="tab-pane fade in active" id="step1">
@@ -46,37 +45,28 @@
                   </div>
                 </div>
                 <div class="tab-pane fade" id="step2">
-                  <div class="col-md-12 opMult hidden">
+                  <div class="col-md-12 typeDesign hidden">
                     <div class="col-md-4">
                       <label for="questionDesign">Tipo de display: </label>
                     </div>
                     <div class="col-md-8">
                       <select  class="form-control yes-no-question text-black-body" id="questionDesign">
                         <option selected value="0" disabled="true">Seleccione un diseño</option>
-                        <option value="1">Radio Buttons</option>
-                        <option value="2">Botones Verticales</option>
-                        <option value="3">Botones Horizontales</option>
-                        <option value="4">Menú Desplegable</option>
+                        <option value="1" data-design="option">Radio Buttons</option>
+                        <option value="2" data-design="option">Botones Horizontales</option>
+                        <option value="3" data-design="option">Botones Verticales</option>
+                        <option value="4" data-design="option">Menú Desplegable</option>
+                        <option value="10" data-design="select">CheckBox</option>
+                        <option value="11" data-design="select">Caja de selección múltipe</option>
                       </select>
                     </div> 
                   </div>
-                  <div class="col-md-12 selMult hidden">
-                    <div class="col-md-4">
-                      <label for="questionDesign">Tipo de display: </label>
-                    </div>
-                    <div class="col-md-8">
-                      <select  class="form-control yes-no-question text-black-body" id="questionDesign">
-                        <option value="10">CheckBox</option>
-                        <option value="11">Caja de selección múltipe</option>
-                      </select>
-                    </div>                    
-                  </div><br><br><br>
                   <div class="examples">
                     <div class="col-md-12">
                       <label class="col-md-4">Vista previa:</label><br><br>
                     </div>
                     <center>
-                      <div class="radios"> 
+                      <div class="radios hidden"> 
                         <input id="exampleradio1" class="form-check-input" type="Radio" name="exampleradio">
                         <label for="exampleradio1">Opción 1</label> <br><br>
                         <input id="exampleradio2" class="form-check-input" type="Radio" name="exampleradio">
@@ -84,15 +74,15 @@
                         <input id="exampleradio3" class="form-check-input" type="Radio" name="exampleradio">
                         <label for="exampleradio3">Opción 3</label>
                       </div>
-                      <div class="btns-horizontal hidden">                    
-                        <input type="button" class="btn btn-primary" value="Opción 1">
-                        <input type="button" class="btn btn-primary" value="Opción 2">
-                        <input type="button" class="btn btn-primary" value="Opción 3">
+                      <div class="btns-horizontal hidden">            
+                        <button class="btn btn-primary">Opción 1</button>
+                        <button class="btn btn-primary">Opción 2</button>
+                        <button class="btn btn-primary">Opcion 3</button>        
                       </div>
                       <div class="btns-vertical hidden">
-                        <input type="button" class="btn btn-primary" value="Opción 1"><br><br>
-                        <input type="button" class="btn btn-primary" value="Opción 2"><br><br>
-                        <input type="button" class="btn btn-primary" value="Opción 3">
+                        <button class="btn btn-primary">Opción 1</button><br><br>
+                        <button class="btn btn-primary">Opción 2</button><br><br>
+                        <button class="btn btn-primary">Opcion 3</button>
                       </div>
                       <div class="exampleselects hidden col-md-4 col-md-push-4">
                         <select  class="form-control yes-no-question text-black-body">
@@ -123,8 +113,8 @@
                           </select>
                         </div>
                         <div>
-                          <input type="button" class="btn btn-default pasar izq" value="Pasar »">
-                          <input type="button" class="btn btn-default quitar der" value="« Quitar"><br />
+                          <button class="btn btn-default pasar izq">Pasar »</button>
+                          <button class="btn btn-default quitar der">« Quitar</button> <br />
                         </div>
                       </div>
                     </center>
@@ -152,7 +142,6 @@
       </div>
     </div>
   </div>
-
   <div class="row hide yes-no-question-block " id="options-template">
     <div>
       <div class="col-md-12" id="multi-options">
@@ -173,10 +162,8 @@
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </button>
     </div>
-  </div>
-  
+  </div>  
 </form>
-
   <div id="loader" class="modal fade">
       <img src="/img/load/loader.gif" alt="cargando..." width="50px" height="50px" style="margin-top: 25%;margin-left: 50%">
   </div>

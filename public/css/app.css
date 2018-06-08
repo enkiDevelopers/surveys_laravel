@@ -5214,6 +5214,7 @@ tbody.collapse.in {
 .nav-pills > li.active > a:focus {
   color: #fff;
   background-color: #DE0D0D;
+  cursor: initial;
 }
 
 .nav-stacked > li {
