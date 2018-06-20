@@ -51,6 +51,11 @@ class apiController extends Controller
     $checkExpToken = DB::table('tokens')->where('token',$token)->where('timestampConsumo','!=',NULL)->count();
     $userValidate = DB::table('tokens')->where('token',$token)->where('noCuenta',$idUser)->count();
 
+
+    $platformName = DB::table('tokens')->where('token',$token)->where('noCuenta',$idUser)->pluck('idPlataforma')->first();
+    $checkPlatformName = DB::table('ctlPlataformas')->where('id',$platformName)->pluck('nombre')->first();
+
+
     $date = date("Y-m-d H:i:s");
     $mod_date = strtotime($date."+ 5 minutes");
     $fecha_vencimiento = date("Y-m-d H:i:s",$mod_date);
@@ -98,11 +103,12 @@ class apiController extends Controller
     foreach ($urls as $url) {
 
       $titulo = DB::table('publicaciones')->where('idTemplate', $url->idEncuesta)->first();
-      $surveyExp = strtotime(($titulo->fechat)." 23:59:59");
+      $surveyExp = strtotime(($titulo->fechat));
+      // $surveyExp = strtotime(($titulo->fechat)." 23:59:59");
       if ($fecha_actual < $surveyExp) {
         $datosSurveys[] = [
         "titulo" => $titulo->titulo,
-        "url" => "https://www.uvmmejoraporti.mx/surveyed/previewtem/".$url->idE];
+        "url" => "https://www.uvmmejoraporti.mx/surveyed/previewtem/".$url->idE."/".$checkPlatformName ];
       }
 
     }

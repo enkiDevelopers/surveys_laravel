@@ -244,5 +244,14 @@ class responderController extends Controller
 
   }
 
+	public function busquedaAndCanal($id,$canal){
 
+	    $checkPlatform = DB::table('ctlPlataformas')->where("nombre",$canal)->exists();
+	    
+	    if($checkPlatform){
+	        Session::put(['canal'=> $canal]);
+			return $this->buscar($id);  
+	    }
+	    return $checkPlatform;
+	}
 }
